@@ -33,9 +33,11 @@ class Global
 
 	public static var SAVE_SLOT:Int = 1;
 
-	public static function change_saveslot(newslot:Int = 1)
+	public static var SAVE_SLOT_NAME:String = 'SINCOandPORT-SLOT';
+
+	public static function change_saveslot(newslot:Dynamic = 1)
 	{
 		SAVE_SLOT = newslot;
-		FlxG.save.bind('SINCOandPORT-SLOT$SAVE_SLOT', APPCURMETA.get('company'));
+		FlxG.save.bind('$SAVE_SLOT_NAME-$SAVE_SLOT', APPCURMETA.get('company'));
 	}
 }
