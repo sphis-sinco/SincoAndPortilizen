@@ -82,8 +82,11 @@ class TitleState extends FlxState
 					ease: FlxEase.sineOut,
 					onComplete: _tween ->
 					{
-						FlxG.camera.flash(0xFFFFFF, 4);
-						CURRENT_STATE = FLASH;
+						FlxTimer.wait(1, () ->
+						{
+							FlxG.camera.flash(0xFFFFFF, 4);
+							CURRENT_STATE = FLASH;
+						});
 					}
 				});
 
