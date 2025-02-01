@@ -27,4 +27,5 @@ class Global
 		return #if debug true #else false #end;
 	}
 	public static function pass() {}
+	public static var DEFAULT_IMAGE_SCALE_MULTIPLIER:Int = 4;
 }

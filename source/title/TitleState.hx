@@ -20,13 +20,13 @@ class TitleState extends FlxState
 	override public function create()
 	{
 		charring.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing'));
-		charring.scale.set(4, 4);
+		charring.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 		charring.screenCenter(X);
 		charring.y = -(charring.height * 2);
 		add(charring);
 
 		pressany.loadGraphic(FileManager.getImageFile('titlescreen/PressAnyToPlay'));
-		pressany.scale.set(4, 4);
+		pressany.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 		pressany.screenCenter(XY);
 		pressany.visible = false;
 		add(pressany);
