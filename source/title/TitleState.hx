@@ -55,6 +55,8 @@ class TitleState extends FlxState
 		if (CURRENT_STATE == INTRO)
 			FlxG.sound.play(FileManager.getSoundFile('sounds/start-synth'));
 
+		pressanyTargY =  FlxG.height - (pressany.height * 2) - (16 * 2);
+
 		super.create();
 	}
 
@@ -68,7 +70,7 @@ class TitleState extends FlxState
 			{
 				FlxG.sound.play(FileManager.getSoundFile('sounds/blipSelect'));
 				FlxG.camera.flash(0xFFFFFF, 2);
-				FlxFlicker.flicker(pressany, 23, 0.1, false, false, flicker ->
+				FlxFlicker.flicker(pressany, 3, 0.5, false, false, flicker ->
 				{
 					FlxG.switchState(() -> new MainMenu());
 				});
@@ -99,7 +101,7 @@ class TitleState extends FlxState
 				if (FlxG.sound.music == null)
 					FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
 				
-				pressany.y = FlxG.height - (pressany.height * 2) - (16 * 2);
+				pressany.y = pressanyTargY;
 				pressany.visible = true;
 				titlebg.visible = true;
 
@@ -109,10 +111,19 @@ class TitleState extends FlxState
 				});
 
 			case DONE:
+				if (FlxG.sound.music == null)
+					FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
+				
+				if (pressany.y != pressanyTargY) pressany.y = pressanyTargY;
+				if (!pressany.visible) pressany.visible = true;
+				if (!titlebg.visible) titlebg.visible = true;
+
 				randomBGChar(sinco, 6);
 				randomBGChar(port, 4);
 		}
 	}
+
+	var pressanyTargY:Float = 0;
 
 	public function randomBGChar(char:FlxSprite, chance:Float)
 	{
