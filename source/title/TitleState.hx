@@ -52,6 +52,9 @@ class TitleState extends FlxState
 		port.visible = false;
 		add(port);
 
+		if (CURRENT_STATE == INTRO)
+			FlxG.sound.play(FileManager.getSoundFile('sounds/start-synth'));
+
 		super.create();
 	}
 
