@@ -16,9 +16,15 @@ class MainMenu extends FlxState
 	var menuboxtexts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 	var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'exit'], 'play' => ['new', 'continue', 'back']];
 
-	public static var menutextsSelection:String = 'menu';
+	public var menutextsSelection:String = 'menu';
 	
 	var CUR_SELECTION:Int = 0;
+
+	override public function new(select:String = 'menu') {
+		super();
+
+		menutextsSelection = select;
+	}
 
 	override function create()
 	{
@@ -89,15 +95,7 @@ class MainMenu extends FlxState
 
 		if (FlxG.keys.justReleased.ENTER)
 		{
-			switch (CUR_SELECTION)
-			{
-				case 1:
-					if (menutextsSelection == 'menu')
-					{
-						menutextsSelection = 'play';
-						FlxG.resetState();
-					}
-			}
+			selectionCheck();
 		}
 
 		super.update(elapsed);
@@ -127,5 +125,14 @@ class MainMenu extends FlxState
 			menuboxtexts.add(newtext);
 			i++;
 		}
+	}
+
+	public function selectionCheck()
+	{
+		switch (CUR_SELECTION)
+			{
+				case 0:
+					FlxG.switchState(PlayMenu.new);
+			}
 	}
 }

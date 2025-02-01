@@ -70,7 +70,7 @@ class TitleState extends FlxState
 				FlxG.camera.flash(0xFFFFFF, 2);
 				FlxFlicker.flicker(pressany, 23, 0.1, false, false, flicker ->
 				{
-					FlxG.switchState(MainMenu.new);
+					FlxG.switchState(() -> new MainMenu());
 				});
 			}
 		}

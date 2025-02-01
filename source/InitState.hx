@@ -40,7 +40,7 @@ class InitState extends FlxState
 
 		#if SKIP_TITLE
 		trace('Skipping Title');
-		FlxG.switchState(MainMenu.new);
+		FlxG.switchState(() -> new MainMenu());
 		return;
 		#end
 
