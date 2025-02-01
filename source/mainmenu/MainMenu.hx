@@ -2,13 +2,20 @@ package mainmenu;
 
 class MainMenu extends FlxState
 {
-	override public function new()
-	{
-		super();
-	}
+	var sinco:MenuCharacter = new MenuCharacter(0,0,"Sinco");
+	var port:MenuCharacter = new MenuCharacter(0,0,"Portilizen");
 
 	override function create()
 	{
+		sinco.screenCenter();
+		port.screenCenter();
+
+		sinco.x -= sinco.width;
+		port.x += port.width;
+
+		add(sinco);
+		add(port);
+
 		super.create();
 	}
 
