@@ -95,6 +95,7 @@ class MainMenu extends FlxState
 		for (text in menutexts.get(mapstring))
 		{
 			var newtext:FlxText = new FlxText(menuselectbox.x, menuselectbox.y - menuselectbox.height + (i * 48), 0, text, 32);
+			newtext.screenCenter(X);
 
 			newtext.alignment = CENTER;
 			newtext.ID = i;
