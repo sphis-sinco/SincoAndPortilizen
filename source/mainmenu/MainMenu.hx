@@ -10,10 +10,12 @@ class MainMenu extends FlxState
 		sinco.screenCenter();
 		port.screenCenter();
 
-		sinco.x -= sinco.width;
-		port.x += port.width;
+		sinco.x -= sinco.width * 1.5;
+		port.x += port.width * 1.5;
 
 		add(sinco);
+
+		port.flipX = true;
 		add(port);
 
 		super.create();
