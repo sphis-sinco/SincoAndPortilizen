@@ -20,6 +20,7 @@ class TitleState extends FlxState
 	var titlebg:FlxSprite = new FlxSprite();
 
 	var sinco:TitleSinco = new TitleSinco();
+	var port:TitlePort = new TitlePort();
 
 	override public function create()
 	{
@@ -44,6 +45,10 @@ class TitleState extends FlxState
 		sinco.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 		sinco.visible = false;
 		add(sinco);
+
+		port.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		port.visible = false;
+		add(port);
 
 		super.create();
 	}
@@ -78,21 +83,27 @@ class TitleState extends FlxState
 				CURRENT_STATE = DONE;
 
 			case DONE:
-				if (FlxG.random.bool(5) && !sinco.visible)
+				randomBGChar(sinco, 6);
+				randomBGChar(port, 4);
+		}
+	}
+
+	public function randomBGChar(char:FlxSprite, chance:Float)
+	{
+		if (FlxG.random.bool(chance) && !char.visible)
+		{
+			char.visible = true;
+			char.y = FlxG.height - (32 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+			char.x = -(char.width * 2);
+			FlxTween.tween(char, {x: FlxG.width + (char.width * 2)}, 2, {
+				onComplete: _tween ->
 				{
-					sinco.visible = true;
-					sinco.y = FlxG.height - (32 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
-					sinco.x = -(sinco.width * 2);
-					FlxTween.tween(sinco, {x: FlxG.width + (sinco.width * 2)}, 2, {
-						onComplete: _tween ->
-						{
-							FlxTimer.wait(FlxG.random.float(1, 4), () ->
-							{
-								sinco.visible = false;
-							});
-						}
+					FlxTimer.wait(FlxG.random.float(1, 4), () ->
+					{
+						char.visible = false;
 					});
 				}
+			});
 		}
 	}
 }
