@@ -63,6 +63,7 @@ class TitleState extends FlxState
 		{
 			if (FlxG.keys.justReleased.ANY)
 			{
+				FlxG.sound.play(FileManager.getSoundFile('sounds/blipSelect'));
 				FlxG.camera.flash(0xFFFFFF, 2);
 				FlxFlicker.flicker(pressany, 4, 0.1, false, false, flicker ->
 				{
