@@ -16,9 +16,16 @@ class TitleState extends FlxState
 
 	var charring:FlxSprite = new FlxSprite();
 	var pressany:FlxSprite = new FlxSprite();
+	var titlebg:FlxSprite = new FlxSprite();
 
 	override public function create()
 	{
+		titlebg.loadGraphic(FileManager.getImageFile('titlescreen/TitleBG'));
+		titlebg.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER + 2, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER + 2);
+		titlebg.screenCenter(XY);
+		titlebg.visible = false;
+		add(titlebg);
+
 		charring.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing'));
 		charring.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 		charring.screenCenter(X);
@@ -62,6 +69,7 @@ class TitleState extends FlxState
 			case FLASH:
 				pressany.y = FlxG.height - (pressany.height * 2) - (16 * 2);
 				pressany.visible = true;
+				titlebg.visible = true;
 
 				CURRENT_STATE = DONE;
 
