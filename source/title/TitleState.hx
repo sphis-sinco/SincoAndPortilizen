@@ -1,5 +1,6 @@
 package title;
 
+import flixel.effects.FlxFlicker;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
@@ -59,7 +60,11 @@ class TitleState extends FlxState
 
 		if (CURRENT_STATE == DONE)
 		{
-			if (FlxG.keys.justReleased.ANY) {}
+			if (FlxG.keys.justReleased.ANY)
+			{
+				FlxG.camera.flash(0xFFFFFF, 2);
+				FlxFlicker.flicker(pressany, 4, 0.1, false, false, flicker -> {});
+			}
 		}
 
 		super.update(elapsed);
