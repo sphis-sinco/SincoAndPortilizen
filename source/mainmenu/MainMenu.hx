@@ -17,6 +17,8 @@ class MainMenu extends FlxState
 	var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'exit'], 'play' => ['new', 'continue', 'back']];
 
 	public var menutextsSelection:String = 'menu';
+
+	public static var menucharvis:Array<Bool> = null;
 	
 	var CUR_SELECTION:Int = 0;
 
@@ -28,10 +30,13 @@ class MainMenu extends FlxState
 
 	override function create()
 	{
+		menucharvis ??= [false, true];
+		
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));
-		add(gridbg);
 		gridbg.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 		gridbg.screenCenter();
+		gridbg.x += ((port.animation.name == 'blank') ? 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		add(gridbg);
 
 		sinco.screenCenter();
 		port.screenCenter();
@@ -52,26 +57,27 @@ class MainMenu extends FlxState
 
 		set_menuboxtexts(menutextsSelection);
 
-		add(menuboxtexts);
+		add(menuboxtexts);		
+
+        this.cycle = public_cycle;
+
+        this.sinco.animation.play((menucharvis[0]) ? 'visible' : 'blank');
+        this.port.animation.play((menucharvis[1]) ? 'visible' : 'blank');
 
 		super.create();
 	}
 
-	var cycle:Int = 0;
+	public static var public_cycle:Int = 0;
+	public var cycle:Int = 0;
 
 	override function update(elapsed:Float)
 	{
 		cycle++;
+		public_cycle = cycle;
 
 		if (cycle % 100 == 0)
 		{
-			cycle = 0;
-			sinco.animation.play((sinco.animation.name == 'blank') ? 'visible' : 'blank');
-			port.animation.play((port.animation.name == 'blank') ? 'visible' : 'blank');
-
-			FlxTween.tween(gridbg, {
-				x: gridbg.x + ((port.animation.name == 'blank') ? 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER)
-			}, 1/10, {});
+			cycleUpdate();
 		}
 
 		for (text in menuboxtexts.members)
@@ -134,5 +140,17 @@ class MainMenu extends FlxState
 				case 0:
 					FlxG.switchState(PlayMenu.new);
 			}
+	}
+
+	public function cycleUpdate() {
+		if (cycle % 100 == 0) cycle = 0;
+
+		sinco.animation.play((sinco.animation.name == 'blank') ? 'visible' : 'blank');
+		port.animation.play((port.animation.name == 'blank') ? 'visible' : 'blank');
+
+		menucharvis[0] = sinco.animation.name == 'visible';
+		menucharvis[1] = port.animation.name == 'visible';
+
+		gridbg.x += ((port.animation.name == 'blank') ? 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 	}
 }
