@@ -16,6 +16,8 @@ class PanelCutscene extends FlxState
 		panel.screenCenter();
 		add(panel);
 
+		FlxG.sound.play(FileManager.getSoundFile('sounds/paper-rustle'));
+
 		super.create();
 	}
 
@@ -28,6 +30,7 @@ class PanelCutscene extends FlxState
 			{
 				finishedCutscene();
 			}
+			FlxG.sound.play(FileManager.getSoundFile('sounds/paper-rustle'));
 			setPanel('${PANEL_PREFIX}panel$CUR_PANEL');
 			panelEvents(CUR_PANEL);
 		}
