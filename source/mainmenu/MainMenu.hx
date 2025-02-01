@@ -12,7 +12,7 @@ class MainMenu extends FlxState
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));
 		add(gridbg);
 		gridbg.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
-		gridbg.setPosition(0,0);
+		gridbg.screenCenter();
 
 		sinco.screenCenter();
 		port.screenCenter();
