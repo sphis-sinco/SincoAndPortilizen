@@ -1,5 +1,6 @@
 package;
 
+import cutscenes.intro.IntroCutscene;
 import title.TitleState;
 
 class InitState extends FlxState
@@ -30,6 +31,11 @@ class InitState extends FlxState
 	}
 	public function proceed()
 	{
+		#if CUTSCENE_TESTING
+		trace('Testing Intro Cutscenes');
+		FlxG.switchState(IntroCutscene.new);
+		#end
+
 		FlxG.switchState(TitleState.new);
 	}
 }
