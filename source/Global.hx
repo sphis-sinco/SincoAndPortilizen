@@ -28,4 +28,11 @@ class Global
 	}
 	public static function pass() {}
 	public static var DEFAULT_IMAGE_SCALE_MULTIPLIER:Int = 4;
+	public static var SAVE_SLOT:Int = 1;
+
+	public static function change_saveslot(newslot:Int = 1)
+	{
+		SAVE_SLOT = newslot;
+		FlxG.save.bind('SINCO AND PORTILIZEN SLOT $SAVE_SLOT', APPCURMETA.get('company'));
+	}
 }
