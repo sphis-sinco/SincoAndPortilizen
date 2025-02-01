@@ -8,7 +8,7 @@ class InitState extends FlxState
 	{
 		trace('Sinco and Portilizen v${Global.VERSION}');
 
-		FlxG.switchState(new TitleState());
+		FlxG.switchState(TitleState.new);
 
 		super.create();
 	}
