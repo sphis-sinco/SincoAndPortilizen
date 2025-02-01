@@ -14,7 +14,7 @@ enum abstract TitleStates(Int) from Int to Int
 
 class TitleState extends FlxState
 {
-	public var CURRENT_STATE:TitleStates = INTRO;
+	public static var CURRENT_STATE:TitleStates = INTRO;
 
 	var charring:FlxSprite = new FlxSprite();
 	var pressany:FlxSprite = new FlxSprite();
