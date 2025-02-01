@@ -51,7 +51,7 @@ class TitleState extends FlxState
 		port.visible = false;
 		add(port);
 
-		if (!FlxG.sound.music.playing)
+		if (FlxG.sound.music == null)
 			FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
 
 		super.create();
