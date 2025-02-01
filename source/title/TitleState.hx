@@ -77,6 +77,7 @@ class TitleState extends FlxState
 
 		super.update(elapsed);
 	}
+	
 	public function stateChecks()
 	{
 		switch (CURRENT_STATE)
