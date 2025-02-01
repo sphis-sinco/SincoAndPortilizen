@@ -57,7 +57,10 @@ class TitleState extends FlxState
 	{
 		stateChecks();
 
-		if (CURRENT_STATE == DONE) {}
+		if (CURRENT_STATE == DONE)
+		{
+			if (FlxG.keys.justReleased.ANY) {}
+		}
 
 		super.update(elapsed);
 	}
@@ -80,7 +83,10 @@ class TitleState extends FlxState
 				pressany.visible = true;
 				titlebg.visible = true;
 
-				CURRENT_STATE = DONE;
+				FlxTimer.wait(1, () ->
+				{
+					CURRENT_STATE = DONE;
+				});
 
 			case DONE:
 				randomBGChar(sinco, 6);
