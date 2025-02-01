@@ -51,9 +51,6 @@ class TitleState extends FlxState
 		port.visible = false;
 		add(port);
 
-		if (FlxG.sound.music == null)
-			FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
-
 		super.create();
 	}
 
@@ -87,6 +84,9 @@ class TitleState extends FlxState
 				});
 
 			case FLASH:
+				if (FlxG.sound.music == null)
+					FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
+				
 				pressany.y = FlxG.height - (pressany.height * 2) - (16 * 2);
 				pressany.visible = true;
 				titlebg.visible = true;
