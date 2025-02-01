@@ -88,7 +88,7 @@ class TitleState extends FlxState
 				pressany.visible = true;
 				titlebg.visible = true;
 
-				FlxTimer.wait(1, () ->
+				FlxTimer.wait(5, () ->
 				{
 					CURRENT_STATE = DONE;
 				});
