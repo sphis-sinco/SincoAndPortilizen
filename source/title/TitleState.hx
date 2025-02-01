@@ -2,6 +2,7 @@ package title;
 
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
 
 enum abstract TitleStates(Int) from Int to Int
 {
@@ -17,6 +18,8 @@ class TitleState extends FlxState
 	var charring:FlxSprite = new FlxSprite();
 	var pressany:FlxSprite = new FlxSprite();
 	var titlebg:FlxSprite = new FlxSprite();
+
+	var sinco:TitleSinco = new TitleSinco();
 
 	override public function create()
 	{
@@ -38,6 +41,10 @@ class TitleState extends FlxState
 		pressany.visible = false;
 		add(pressany);
 
+		sinco.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		sinco.visible = false;
+		add(sinco);
+
 		super.create();
 	}
 
@@ -51,9 +58,6 @@ class TitleState extends FlxState
 	}
 	public function stateChecks()
 	{
-		if (CURRENT_STATE == DONE)
-			return;
-
 		switch (CURRENT_STATE)
 		{
 			case INTRO:
@@ -74,7 +78,21 @@ class TitleState extends FlxState
 				CURRENT_STATE = DONE;
 
 			case DONE:
-				return;
+				if (FlxG.random.bool(5) && !sinco.visible)
+				{
+					sinco.visible = true;
+					sinco.y = FlxG.height - (32 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+					sinco.x = -(sinco.width * 2);
+					FlxTween.tween(sinco, {x: FlxG.width + (sinco.width * 2)}, 2, {
+						onComplete: _tween ->
+						{
+							FlxTimer.wait(FlxG.random.float(1, 4), () ->
+							{
+								sinco.visible = false;
+							});
+						}
+					});
+				}
 		}
 	}
 }
