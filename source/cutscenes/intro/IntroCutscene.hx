@@ -4,6 +4,15 @@ import title.TitleState;
 
 class IntroCutscene extends PanelCutscene
 {
+	override public function new()
+	{
+		super({
+			max_panels: 5,
+			panel_prefix: 'intro-',
+			panel_folder: 'intro/'
+		});
+	}
+
 	override function finishedCutscene()
 	{
 		super.finishedCutscene();
