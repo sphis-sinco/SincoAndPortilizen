@@ -17,4 +17,10 @@ class Global
 	{
 		return APPCURMETA.get('version');
 	}
+	public static var GAME_BUILD(get, never):String;
+
+	static function get_GAME_BUILD():String
+	{
+		return APPCURMETA.get('build');
+	}
 }
