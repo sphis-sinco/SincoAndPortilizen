@@ -8,13 +8,28 @@ class InitState extends FlxState
 	{
 		trace('Sinco and Portilizen v${Global.VERSION}');
 
-		FlxG.switchState(TitleState.new);
+		#if !debug
+		proceed();
+		#else
+		trace('DEBUG BUILD: Press [ANY] to start');
+		#end
 
 		super.create();
 	}
 
 	override public function update(elapsed:Float)
 	{
+		#if debug
+		if (FlxG.keys.justReleased.ANY)
+		{
+			proceed();
+		}
+		#end
+
 		super.update(elapsed);
+	}
+	public function proceed()
+	{
+		FlxG.switchState(TitleState.new);
 	}
 }
