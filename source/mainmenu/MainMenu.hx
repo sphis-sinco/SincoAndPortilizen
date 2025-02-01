@@ -1,11 +1,13 @@
 package mainmenu;
 
+import flixel.util.FlxColor;
 
 class MainMenu extends FlxState
 {
 	var sinco:MenuCharacter = new MenuCharacter(0,0,"Sinco");
 	var port:MenuCharacter = new MenuCharacter(0,0,"Portilizen");
 	var gridbg:FlxSprite = new FlxSprite();
+	var menuselectbox:FlxSprite = new FlxSprite();
 
 	override function create()
 	{
@@ -24,6 +26,11 @@ class MainMenu extends FlxState
 
 		port.flipX = true;
 		add(port);
+
+		menuselectbox.makeGraphic(64, 64, FlxColor.BLACK);
+		menuselectbox.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		menuselectbox.screenCenter();
+		add(menuselectbox);
 
 		super.create();
 	}
