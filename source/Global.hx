@@ -31,13 +31,15 @@ class Global
 
 	public static var DEFAULT_IMAGE_SCALE_MULTIPLIER:Int = 4;
 
-	public static var SAVE_SLOT:Int = 1;
+	public static var SAVE_SLOT:Dynamic = 1;
 
-	public static var SAVE_SLOT_NAME:String = 'SINCOandPORT-SLOT';
+	public static var SAVE_SLOT_PREFIX:String = 'SINCOandPORT-SLOT';
 
-	public static function change_saveslot(newslot:Dynamic = 1)
+	public static function change_saveslot(slotsuffix:Dynamic = 1)
 	{
-		SAVE_SLOT = newslot;
-		FlxG.save.bind('$SAVE_SLOT_NAME-$SAVE_SLOT', APPCURMETA.get('company'));
+		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
+		FlxG.save.bind(SAVE_SLOT, APPCURMETA.get('company'));
+
+		trace('Switched save slot to "$SAVE_SLOT"');
 	}
 }
