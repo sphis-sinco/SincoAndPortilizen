@@ -10,5 +10,8 @@
 			"source.sortImports": "explicit"
 		}
 	},
-	"haxe.enableExtendedIndentation": true
+	"haxe.enableExtendedIndentation": true,
+	"vscord.app.privacyMode.enable": true,
+	"vscord.app.name": "Visual Studio Code",
+	"vscord.status.showElapsedTime": true
 }
