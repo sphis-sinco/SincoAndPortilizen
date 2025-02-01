@@ -1,6 +1,7 @@
 package;
 
 import cutscenes.intro.IntroCutscene;
+import mainmenu.MainMenu;
 import title.TitleState;
 
 class InitState extends FlxState
@@ -34,8 +35,16 @@ class InitState extends FlxState
 		#if CUTSCENE_TESTING
 		trace('Testing Intro Cutscenes');
 		FlxG.switchState(IntroCutscene.new);
-		#else
-		FlxG.switchState(TitleState.new);
+		return;
 		#end
+
+		#if SKIP_TITLE
+		trace('Skipping Title');
+		FlxG.switchState(MainMenu.new);
+		return;
+		#end
+
+		FlxG.switchState(TitleState.new);
+
 	}
 }

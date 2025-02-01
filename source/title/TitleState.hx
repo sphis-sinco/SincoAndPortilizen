@@ -4,6 +4,7 @@ import flixel.effects.FlxFlicker;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import mainmenu.MainMenu;
 
 enum abstract TitleStates(Int) from Int to Int
 {
@@ -63,7 +64,10 @@ class TitleState extends FlxState
 			if (FlxG.keys.justReleased.ANY)
 			{
 				FlxG.camera.flash(0xFFFFFF, 2);
-				FlxFlicker.flicker(pressany, 4, 0.1, false, false, flicker -> {});
+				FlxFlicker.flicker(pressany, 4, 0.1, false, false, flicker ->
+				{
+					FlxG.switchState(MainMenu.new);
+				});
 			}
 		}
 
