@@ -90,4 +90,10 @@
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here-->
+	<icon path=".dev/AppIcon-16.png" size="16"/>
+	<icon path=".dev/AppIcon-32.png" size="32"/>
+	<icon path=".dev/AppIcon-64.png" size="64"/>
+	<icon path=".dev/AppIcon-128.png" size="128"/>
+	<icon path=".dev/AppIcon-256.png" size="256"/>
+	<icon path=".dev/AppIcon-512.png" size="512"/>
 </project>
