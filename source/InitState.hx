@@ -34,8 +34,8 @@ class InitState extends FlxState
 		#if CUTSCENE_TESTING
 		trace('Testing Intro Cutscenes');
 		FlxG.switchState(IntroCutscene.new);
-		#end
-
+		#else
 		FlxG.switchState(TitleState.new);
+		#end
 	}
 }
