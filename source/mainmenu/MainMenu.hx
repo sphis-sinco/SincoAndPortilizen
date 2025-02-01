@@ -71,6 +71,20 @@ class MainMenu extends FlxState
 			text.color = (CUR_SELECTION == text.ID) ? FlxColor.LIME : FlxColor.WHITE;
 		}
 
+		if (FlxG.keys.justReleased.UP)
+		{
+			CUR_SELECTION--;
+			if (CUR_SELECTION < 0)
+				CUR_SELECTION = 0;
+		}
+
+		if (FlxG.keys.justReleased.DOWN)
+		{
+			CUR_SELECTION++;
+			if (CUR_SELECTION > menuboxtexts.members.length - 1)
+				CUR_SELECTION = menuboxtexts.members.length - 1;
+		}
+
 		super.update(elapsed);
 	}
 
