@@ -4,6 +4,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import title.TitleState;
 
 class MainMenu extends FlxState
 {
@@ -14,7 +15,7 @@ class MainMenu extends FlxState
 	var menuselectbox:FlxSprite = new FlxSprite();
 
 	var menuboxtexts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
-	var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'exit'], 'play' => ['new', 'continue', 'back']];
+	var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'leave'], 'play' => ['new', 'continue', 'back']];
 
 	public var menutextsSelection:String = 'menu';
 
@@ -139,6 +140,8 @@ class MainMenu extends FlxState
 			{
 				case 0:
 					FlxG.switchState(PlayMenu.new);
+				case 1:
+					FlxG.switchState(TitleState.new);
 			}
 	}
 
