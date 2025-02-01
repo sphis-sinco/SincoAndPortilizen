@@ -1,6 +1,5 @@
 package mainmenu;
 
-import flixel.addons.display.FlxGridOverlay;
 
 class MainMenu extends FlxState
 {
@@ -13,7 +12,7 @@ class MainMenu extends FlxState
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));
 		add(gridbg);
 		gridbg.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
-		gridbg.screenCenter();
+		gridbg.setPosition(0,0);
 
 		sinco.screenCenter();
 		port.screenCenter();
