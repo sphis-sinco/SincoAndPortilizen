@@ -15,6 +15,7 @@ class TitleState extends FlxState
 	public var CURRENT_STATE:TitleStates = INTRO;
 
 	var charring:FlxSprite = new FlxSprite();
+	var pressany:FlxSprite = new FlxSprite();
 
 	override public function create()
 	{
@@ -24,6 +25,11 @@ class TitleState extends FlxState
 		charring.y = -(charring.height * 2);
 		add(charring);
 
+		pressany.loadGraphic(FileManager.getImageFile('titlescreen/PressAnyToPlay'));
+		pressany.scale.set(4, 4);
+		pressany.screenCenter(XY);
+		pressany.visible = false;
+		add(pressany);
 
 		super.create();
 	}
@@ -54,7 +60,10 @@ class TitleState extends FlxState
 				});
 
 			case FLASH:
-				Global.pass();
+				pressany.y = FlxG.height - (pressany.height * 2) - (16 * 2);
+				pressany.visible = true;
+
+				CURRENT_STATE = DONE;
 
 			case DONE:
 				return;
