@@ -9,7 +9,7 @@ class MenuCharacter extends FlxSprite
         loadGraphic(FileManager.getImageFile('mainmenu/MainMenu$CHARSUFFIX'), true, 80, 96);
         animation.add('visible', [0]);
         animation.add('blank', [1]);
-        animation.play('visible');
+        animation.play('blank');
         scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
     }
 }
