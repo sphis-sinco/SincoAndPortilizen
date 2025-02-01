@@ -15,7 +15,13 @@ class Global
 
 	static function get_VERSION():String
 	{
-		return APPCURMETA.get('version');
+		var version = APPCURMETA.get('version');
+		var build = '';
+
+		if (DEBUG_BUILD)
+			build = '/#$GAME_BUILD';
+
+		return '${version}${build}';
 	}
 
 	public static var GAME_BUILD(get, never):String;
