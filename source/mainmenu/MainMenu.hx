@@ -15,6 +15,8 @@ class MainMenu extends FlxState
 
 	var menuboxtexts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 	var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'exit'], 'play' => ['new', 'continue', 'back']];
+	
+	var CUR_SELECTION:Int = 0;
 
 	override function create()
 	{
@@ -60,9 +62,13 @@ class MainMenu extends FlxState
 			port.animation.play((port.animation.name == 'blank') ? 'visible' : 'blank');
 
 			FlxTween.tween(gridbg, {
-				x: gridbg.x + ((port.animation.name == 'blank') ? 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER),
-				y: gridbg.y + ((port.animation.name == 'blank') ? 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER)
-			}, 1/4, {});
+				x: gridbg.x + ((port.animation.name == 'blank') ? 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER)
+			}, 1/10, {});
+		}
+
+		for (text in menuboxtexts.members)
+		{
+			text.color = (CUR_SELECTION == text.ID) ? FlxColor.LIME : FlxColor.WHITE;
 		}
 
 		super.update(elapsed);
