@@ -1,6 +1,5 @@
 package title;
 
-import flixel.tweens.FlxEase.EaseFunction;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 
