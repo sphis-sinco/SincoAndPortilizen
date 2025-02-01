@@ -2,7 +2,7 @@ package cutscenes;
 
 typedef PanelCutsceneSettings =
 {
-	var max_panels:Int;
+	var max_panels:Null<Int>;
 
 	var panel_folder:String;
 	var panel_prefix:String;
@@ -22,13 +22,16 @@ class PanelCutscene extends FlxState
 	{
 		super();
 
+		if (cutsceneSettings.panel_folder == null)
+			cutsceneSettings.panel_folder = 'intro/';
+		if (cutsceneSettings.panel_prefix == null)
+			cutsceneSettings.panel_prefix = 'intro-';
+		if (cutsceneSettings.max_panels == null)
+			cutsceneSettings.max_panels = 5;
+
 		PANEL_FOLDER = cutsceneSettings.panel_folder;
 		PANEL_PREFIX = cutsceneSettings.panel_prefix;
 		MAX_PANELS = cutsceneSettings.max_panels;
-
-		PANEL_FOLDER ??= 'intro/';
-		PANEL_PREFIX ??= 'intro-';
-		MAX_PANELS ??= 5;
 	}
 
 	override public function create()
