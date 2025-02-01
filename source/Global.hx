@@ -26,4 +26,5 @@ class Global
 	{
 		return #if debug true #else false #end;
 	}
+	public static function pass() {}
 }
