@@ -100,9 +100,8 @@ class TitleState extends FlxState
 				});
 
 			case FLASH:
-				if (FlxG.sound.music == null)
-					FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
-				
+				Global.playMenuMusic();
+
 				pressany.y = pressanyTargY;
 				titlebg.visible = true;
 
@@ -116,8 +115,7 @@ class TitleState extends FlxState
 				});
 
 			case DONE:
-				if (FlxG.sound.music == null)
-					FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
+				Global.playMenuMusic();
 				
 				if (pressany.y != pressanyTargY) pressany.y = pressanyTargY;
 				if (!pressany.visible) pressany.visible = true;

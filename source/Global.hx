@@ -53,4 +53,16 @@ class Global
 
 		return returnsprite;
 	}
+
+	public static function playMenuMusic() {
+		if (FlxG.sound.music != null)
+			{
+				if (!FlxG.sound.music.playing)
+					{
+						FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
+					}
+			} else {
+				FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
+			}
+	}
 }
