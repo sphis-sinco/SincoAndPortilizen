@@ -16,7 +16,7 @@ class Stage1 extends FlxState
 	var osin:Osin = new Osin();
 
 	var OSIN_HEALTH:Int = 10;
-	var SINCO_HEALTH:Int = 1;
+	var SINCO_HEALTH:Int = 10;
 
 	var osinHealthIndicator:FlxText = new FlxText();
 	var sincoHealthIndicator:FlxText = new FlxText();
