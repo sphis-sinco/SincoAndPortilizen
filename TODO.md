@@ -10,6 +10,7 @@
             - Fade out
 
 # Misc
+- Settings menu
 - Version Counter (Title Screen)
     - Input - Game version
     - Output - FlxText in the top left corner with the Game version (i.e v`2025.2.2`)
