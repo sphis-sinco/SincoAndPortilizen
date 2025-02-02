@@ -38,13 +38,20 @@ class Worldmap extends FlxState
 
         if (FlxG.keys.anyJustReleased([LEFT, RIGHT]) && character.animation.name != 'run')
         {
+
             character.flipX = FlxG.keys.justReleased.LEFT;
-            character.animation.play('run');
-            FlxTween.tween(character, {x: character.x + ((character.flipX) ? -256 : 256)}, 1, {
-                onComplete: tween -> {
-                    character.animation.play('idle');
-                }
-            });
+
+            current_level += (character.flipX) ? -1 : 1;
+
+            if (current_level >= 1 || current_level <= 3)
+            {
+                character.animation.play('run');
+                FlxTween.tween(character, {x: character.x + ((character.flipX) ? -256 : 256)}, 1, {
+                    onComplete: tween -> {
+                        character.animation.play('idle');
+                    }
+                });
+            }
         }
     }
 }
