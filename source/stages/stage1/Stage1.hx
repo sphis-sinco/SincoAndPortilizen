@@ -122,54 +122,57 @@ class Stage1 extends FlxState
 			});
 		}
 
-		if (FlxG.keys.justPressed.SPACE)
+		if (OSIN_HEALTH >= 1)
 		{
-			if (sinco.x != sincoPos.x)
-				return;
+			if (FlxG.keys.justPressed.SPACE)
+			{
+				if (sinco.x != sincoPos.x)
+					return;
 
-			sinco.animation.play('jump');
-			FlxTween.tween(sinco, {x: osinPos.x, y: osinPos.y}, sinco_jump_speed, {
-				onComplete: _tween ->
-				{
-					if (sinco.overlaps(osin) && osin.animation.name != 'jump')
+				sinco.animation.play('jump');
+				FlxTween.tween(sinco, {x: osinPos.x, y: osinPos.y}, sinco_jump_speed, {
+					onComplete: _tween ->
 					{
-						osinHealthIndicator.color = 0xff0000;
-						FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
-						OSIN_HEALTH--;
-						osin.animation.play('hurt');
+						if (sinco.overlaps(osin) && osin.animation.name != 'jump')
+						{
+							osinHealthIndicator.color = 0xff0000;
+							FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
+							OSIN_HEALTH--;
+							osin.animation.play('hurt');
+						}
+
+						FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
+							onComplete: _tween ->
+							{
+								sinco.animation.play('run');
+								if (osin.animation.name == 'hurt')
+									osin.animation.play('run');
+							}
+						});
 					}
+				});
+			}
 
-					FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
-						onComplete: _tween ->
-						{
-							sinco.animation.play('run');
-							if (osin.animation.name == 'hurt')
-								osin.animation.play('run');
-						}
-					});
-				}
-			});
-		}
+			if (FlxG.keys.justPressed.RIGHT)
+			{
+				if (sinco.x != sincoPos.x)
+					return;
 
-		if (FlxG.keys.justPressed.RIGHT)
-		{
-			if (sinco.x != sincoPos.x)
-				return;
-
-			sinco.y += 64;
-			sinco.animation.play('jump');
-			FlxTween.tween(sinco, {x: osinPos.x}, sinco_jump_speed, {
-				onComplete: _tween ->
-				{
-					FlxTween.tween(sinco, {x: sincoPos.x,}, sinco_jump_speed, {
-						onComplete: _tween ->
-						{
-							sinco.animation.play('run');
-							sinco.y -= 64;
-						}
-					});
-				}
-			});
+				sinco.y += 64;
+				sinco.animation.play('jump');
+				FlxTween.tween(sinco, {x: osinPos.x}, sinco_jump_speed, {
+					onComplete: _tween ->
+					{
+						FlxTween.tween(sinco, {x: sincoPos.x,}, sinco_jump_speed, {
+							onComplete: _tween ->
+							{
+								sinco.animation.play('run');
+								sinco.y -= 64;
+							}
+						});
+					}
+				});
+			}
 		}
 
 		if (SINCO_HEALTH < 1)
