@@ -17,13 +17,13 @@ class Worldmap extends FlxState
         super.create();
 
         character.screenCenter();
-        character.x = 0 + character.width;
+        character.x = 32 + character.width;
 
         var i = 0;
         while(i < 3)
         {
-            var level:FlxSprite = new FlxSprite(character.getGraphicMidpoint().x - 16 + (i * 256), character.getGraphicMidpoint().y);
-            level.makeGraphic(24, 24, FlxColor.WHITE);
+            var level:FlxSprite = new FlxSprite(character.getGraphicMidpoint().x - 12 + (i * 256), character.getGraphicMidpoint().y);
+            level.makeGraphic(24, 24, FlxColor.RED);
             mapGRP.add(level);
 
             i++;
