@@ -27,28 +27,28 @@ class TitleState extends FlxState
 	override public function create()
 	{
 		titlebg.loadGraphic(FileManager.getImageFile('titlescreen/TitleBG'));
-		titlebg.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER + 2, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER + 2);
+		Global.scaleSprite(titlebg, 2);
 		titlebg.screenCenter(XY);
 		titlebg.visible = false;
 		add(titlebg);
 
 		charring.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing'));
-		charring.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		Global.scaleSprite(charring, 0);
 		charring.screenCenter(X);
 		charring.y = -(charring.height * 2);
 		add(charring);
 
 		pressany.loadGraphic(FileManager.getImageFile('titlescreen/PressAnyToPlay'));
-		pressany.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		Global.scaleSprite(pressany, 0);
 		pressany.screenCenter(XY);
 		pressany.visible = false;
 		add(pressany);
 
-		sinco.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		Global.scaleSprite(sinco, 0);
 		sinco.visible = false;
 		add(sinco);
 
-		port.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		Global.scaleSprite(port, 0);
 		port.visible = false;
 		add(port);
 

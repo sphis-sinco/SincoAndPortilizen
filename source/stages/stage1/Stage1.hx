@@ -12,7 +12,7 @@ class Stage1 extends FlxState
         background.animation.add('animation', [0, 1], 16);
         background.animation.play('animation');
 
-        background.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER + 1, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER + 1);
+		Global.scaleSprite(background, 1);
         background.screenCenter();
         add(background);
     }

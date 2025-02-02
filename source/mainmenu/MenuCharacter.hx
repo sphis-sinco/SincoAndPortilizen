@@ -10,6 +10,6 @@ class MenuCharacter extends FlxSprite
         animation.add('visible', [0]);
         animation.add('blank', [1]);
         animation.play('blank');
-        scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		Global.scaleSprite(this, 0);
     }
 }

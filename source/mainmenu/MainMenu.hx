@@ -34,7 +34,7 @@ class MainMenu extends FlxState
 		menucharvis ??= [false, true];
 		
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));
-		gridbg.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		Global.scaleSprite(gridbg, 0);
 		gridbg.screenCenter();
 		gridbg.x += ((port.animation.name == 'blank') ? 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 		add(gridbg);
@@ -52,7 +52,7 @@ class MainMenu extends FlxState
 		port.animation.play('visible');
 
 		menuselectbox.makeGraphic(64, 64, FlxColor.BLACK);
-		menuselectbox.scale.set(Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		Global.scaleSprite(menuselectbox, 0);
 		menuselectbox.screenCenter();
 		add(menuselectbox);
 
