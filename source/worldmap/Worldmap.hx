@@ -50,7 +50,8 @@ class Worldmap extends FlxState
 
 			if (current_level < 1)
 			{
-				current_level += 1;
+				FlxG.switchState(() -> new MainMenu());
+                current_level += 1;
 				return;
 			}
 			if (current_level > 3)
