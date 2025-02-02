@@ -6,6 +6,7 @@ import flixel.system.debug.log.LogStyle;
 import mainmenu.MainMenu;
 import stages.stage1.Stage1;
 import title.TitleState;
+import worldmap.Worldmap;
 
 class InitState extends FlxState
 {
@@ -42,7 +43,7 @@ class InitState extends FlxState
 	public function proceed()
 	{
 		#if CUTSCENE_TESTING
-		trace('Testing Chaos Emerald Cutscene');
+		trace('Moving to Chaos Emerald Cutscene');
 		FlxG.switchState(() -> new ChaosEmerald());
 		return;
 		#end
@@ -54,10 +55,17 @@ class InitState extends FlxState
 		#end
 
 		#if STAGE_1
-		trace('Testing Stage 1');
+		trace('Moving to Stage 1');
 		FlxG.switchState(() -> new Stage1());
 		return;
 		#end
+
+		#if WORLDMAP
+		trace('Moving to Worldmap');
+		FlxG.switchState(() -> new Worldmap());
+		return;
+		#end
+
 
 		FlxG.switchState(TitleState.new);
 
