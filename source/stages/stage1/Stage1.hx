@@ -188,7 +188,8 @@ class Stage1 extends FlxState
 
 		if (OSIN_HEALTH < 0)
 		{
-			
+			background.animation.pause();
+			FlxTween.tween(sinco, {x: 1280}, .5);
 		}
 	}
 }
