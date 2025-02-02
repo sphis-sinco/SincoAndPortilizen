@@ -34,7 +34,7 @@ class Worldmap extends FlxState
     override function update(elapsed:Float) {
         super.update(elapsed);
 
-        if (FlxG.keys.anyJustReleased([LEFT, RIGHT]))
+        if (FlxG.keys.anyJustReleased([LEFT, RIGHT]) && character.animation.name != 'run')
         {
             character.flipX = FlxG.keys.justReleased.LEFT;
             character.animation.play('run');
