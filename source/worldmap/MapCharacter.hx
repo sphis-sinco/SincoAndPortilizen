@@ -10,9 +10,11 @@ class MapCharacter extends FlxSprite
         animation.play('idle');
     }
 
+    public var char:String = 'Sinco';
+
     public function swapCharacter() {
         loadGraphic(FileManager.getImageFile(
-            'worldmap/SincoWorldMap'
+            'worldmap/${char}WorldMap'
         ), true, 16, 16);
         animation.add('idle', [0]);
         animation.add('jump', [1]);
