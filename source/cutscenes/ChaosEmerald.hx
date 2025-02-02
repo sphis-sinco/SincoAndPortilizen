@@ -57,8 +57,7 @@ class ChaosEmerald extends FlxState
 
             wantedPos = chaos_emerald.y;
 
-            if (chaos_emerald.emerld + 1 > FlxG.save.data.gameplaystatus.chaos_emeralds)
-                chaos_emerald.color = 0x000000;
+            chaos_emerald.color = 0x000000;
 
             chaos_emerald.y = -640;
             chaos_emerald.x = (64 * (chaos_emerald.emerld + 1)) + 64;
@@ -76,11 +75,13 @@ class ChaosEmerald extends FlxState
                     onComplete: _tween -> {
                         FlxTimer.wait(1 + (chaos_emerald.emerld / 100), () -> {
                             if (chaos_emerald.emerld == 0) Global.playSoundEffect('gameplay/chaos-emerald');
-                            if (chaos_emerald.color == 0x000000)
+                            if (chaos_emerald.emerld + 1 > FlxG.save.data.gameplaystatus.chaos_emeralds)
                             {
                                 FlxTween.tween(chaos_emerald, {y: -640}, 2, {
                                     ease: FlxEase.sineInOut
                                 });
+                            } else {
+                                FlxTween.tween(chaos_emerald,{color: 0xffffff}, 1);
                             }
                             if (chaos_emerald.emerld == 0) {
                                 FlxTimer.wait(2, () -> {
