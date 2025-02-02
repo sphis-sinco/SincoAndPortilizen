@@ -6,11 +6,7 @@
 # Gameplay
 - Stage 1
     - Osin lose sequence
-        - Input - Osin Health < 1
         - Output
-            - Background animation stops
-            - Sinco speeds ahead
-            - Osin slows falls off
             - Fade out
 
 # Misc

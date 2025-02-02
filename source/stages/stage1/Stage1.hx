@@ -191,8 +191,18 @@ class Stage1 extends FlxState
 
 		if (OSIN_HEALTH < 1)
 		{
+			osin_canjump = false;
+			osin_warning = false;
+
 			background.animation.pause();
 			FlxTween.tween(sinco, {x: 1280}, .5);
+
+			osin.animation.play('hurt');
+			FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
+				onComplete: _tween -> {
+					FlxG.switchState(() -> new PlayMenu());
+				}
+			});
 		}
 	}
 }
