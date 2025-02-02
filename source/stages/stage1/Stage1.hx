@@ -37,9 +37,13 @@ class Stage1 extends FlxState
 
         sincoPos = new FlxPoint(0,0);
 		sincoPos.set(sinco.x, sinco.y);
+
+        osinPos = new FlxPoint(0,0);
+		osinPos.set(osin.x, osin.y);
 	}
 
 	var sincoPos:FlxPoint;
+	var osinPos:FlxPoint;
     var sinco_jump_speed:Float = 0.25;
 
 	override function update(elapsed:Float)
@@ -51,17 +55,20 @@ class Stage1 extends FlxState
             if (sinco.x != sincoPos.x) return;
 
 			sinco.animation.play('jump');
-			FlxTween.tween(sinco, {x: osin.x, y: osin.y}, sinco_jump_speed, {
+			FlxTween.tween(sinco, {x: osinPos.x, y: osinPos.y}, sinco_jump_speed, {
 				onComplete: _tween ->
 				{
-					OSIN_HEALTH--;
-                    osin.animation.play('hurt');
+					if (sinco.overlaps(osin))
+					{
+						OSIN_HEALTH--;
+						osin.animation.play('hurt');
+					}
 
 					FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
 						onComplete: _tween ->
 						{
 							sinco.animation.play('run');
-                            osin.animation.play('run');
+                            if (osin.animation.name == 'hurt') osin.animation.play('run');
 						}
 					});
 				}
