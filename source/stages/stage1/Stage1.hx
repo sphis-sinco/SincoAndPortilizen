@@ -79,6 +79,7 @@ class Stage1 extends FlxState
 		sincoHealthIndicator.text = 'HP: $SINCO_HEALTH/10';
 
 		if (SINCO_HEALTH >= 1
+			&& OSIN_HEALTH >= 1
 			&& FlxG.random.int(0, 200) < 50
 			&& (osin.animation.name != 'jump' && osin.animation.name != 'hurt')
 			&& osin_canjump)
@@ -183,6 +184,11 @@ class Stage1 extends FlxState
 					FlxG.switchState(() -> new PlayMenu());
 				}
 			});
+		}
+
+		if (OSIN_HEALTH < 0)
+		{
+			
 		}
 	}
 }
