@@ -5,6 +5,8 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.util.typeLimit.NextState;
+import mainmenu.MainMenu;
 
 class ChaosEmeraldObject extends FlxSprite {
 
@@ -28,15 +30,16 @@ class ChaosEmeraldObject extends FlxSprite {
 
 class ChaosEmerald extends FlxState
 {
-    var cur_emerald:Int = 0;
-
     var chaosemerlds:FlxTypedGroup<ChaosEmeraldObject> = new FlxTypedGroup<ChaosEmeraldObject>();
 
-    override public function new(emerld:Int = 0) {
+    override public function new(?nextState:Dynamic = null) {
         super();
 
-        cur_emerald = emerld;
+        this.nextState = nextState;
+        this.nextState ??= () -> new MainMenu();
     }
+
+    var nextState:Dynamic = () -> new MainMenu();
 
     override function create() {
         super.create();
@@ -77,6 +80,13 @@ class ChaosEmerald extends FlxState
                             {
                                 FlxTween.tween(chaos_emerald, {y: -640}, 2, {
                                     ease: FlxEase.sineInOut
+                                });
+                            }
+                            if (chaos_emerald.emerld == 0) {
+                                FlxTimer.wait(2, () -> {
+                                    FlxG.camera.fade(0x000000, 0.5, false, () -> {
+                                        FlxG.switchState(nextState);
+                                    });
                                 });
                             }
                         });
