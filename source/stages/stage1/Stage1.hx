@@ -60,6 +60,7 @@ class Stage1 extends FlxState
 	var osin_jump_speed:Float = 0.3;
 
 	var osin_canjump:Bool = true;
+	var osin_warning:Bool = false;
 
 	override function update(elapsed:Float)
 	{
@@ -67,6 +68,7 @@ class Stage1 extends FlxState
 
 		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
 		osinHealthIndicator.text = 'HP: $OSIN_HEALTH/10';
+		if (osin_warning) osinHealthIndicator.text += '\nDODGE';
 
 		sincoHealthIndicator.setPosition(sinco.x, sinco.y - 64);
 		sincoHealthIndicator.text = 'HP: $SINCO_HEALTH/10';
@@ -74,8 +76,10 @@ class Stage1 extends FlxState
 		if (FlxG.random.int(0, 200) < 50 && (osin.animation.name != 'jump' && osin.animation.name != 'hurt') && osin_canjump)
 		{
 			osin_canjump = false;
+			osin_warning = true;
 			FlxTimer.wait(FlxG.random.float(0, 2), () ->
 			{
+				osin_warning = false;
 				osin.animation.play('jump');
 				FlxTween.tween(osin, {x: sincoPos.x, y: sincoPos.y}, osin_jump_speed, {
 					onComplete: _tween ->
