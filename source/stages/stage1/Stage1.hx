@@ -10,6 +10,8 @@ class Stage1 extends FlxState
 	var sinco:Sinco = new Sinco();
 	var osin:Osin = new Osin();
 
+	var OSIN_HEALTH:Int = 10;
+
 	override function create()
 	{
 		super.create();
@@ -52,6 +54,7 @@ class Stage1 extends FlxState
 			FlxTween.tween(sinco, {x: osin.x, y: osin.y}, sinco_jump_speed, {
 				onComplete: _tween ->
 				{
+					OSIN_HEALTH--;
                     osin.animation.play('hurt');
 
 					FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
