@@ -18,6 +18,7 @@ class MapCharacter extends FlxSprite
         animation.add('jump', [1]);
         animation.add('wait', [2]);
         animation.add('run', [3, 4], 12);
+        Global.scaleSprite(this);
     }
     
 }
