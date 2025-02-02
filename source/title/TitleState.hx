@@ -1,8 +1,10 @@
 package title;
 
 import flixel.effects.FlxFlicker;
+import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import mainmenu.MainMenu;
 
@@ -23,6 +25,8 @@ class TitleState extends FlxState
 
 	var sinco:TitleSinco = new TitleSinco();
 	var port:TitlePort = new TitlePort();
+
+	var versiontext:FlxText = new FlxText();
 
 	override public function create()
 	{
@@ -56,6 +60,12 @@ class TitleState extends FlxState
 			Global.playSoundEffect('start-synth');
 
 		pressanyTargY =  FlxG.height - (pressany.height * 2) - (16 * 2);
+
+		versiontext.size = 16;
+		versiontext.setPosition(5, 5);
+		versiontext.text = 'v${Global.VERSION}';
+		versiontext.color = FlxColor.BLACK;
+		add(versiontext);
 
 		super.create();
 	}
