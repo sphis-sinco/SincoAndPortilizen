@@ -5,7 +5,8 @@ class GameplayStatus
 
     public static function returnDefaultGameplayStatus() {
         return {
-            level: 1
+            level: 1,
+            chaos_emeralds: 0
         };
     }
 
@@ -15,6 +16,7 @@ class GameplayStatus
 
         // actual values
         FlxG.save.data.gameplaystatus.level ??= 1;
+        FlxG.save.data.gameplaystatus.chaos_emeralds ??= 0;
     }
     
 }
