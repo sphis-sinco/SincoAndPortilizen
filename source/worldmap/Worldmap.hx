@@ -4,16 +4,21 @@ class Worldmap extends FlxState
 {
     var character:MapCharacter = new MapCharacter();
 
-    var map:Map<Int, String> = [
-        1 => "stage1",
-        2 => "stage2",
-        3 => "stage3"
-    ];
+    var current_level:Int = 1;
 
     override function create() {
         super.create();
 
         character.screenCenter();
         add(character);
+    }
+
+    override function update(elapsed:Float) {
+        super.update(elapsed);
+
+        if (FlxG.keys.anyJustReleased([LEFT, RIGHT]))
+        {
+            character.flipX = FlxG.keys.justReleased.LEFT;
+        }
     }
 }
