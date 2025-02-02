@@ -69,4 +69,8 @@ class Global
 	public static function playSoundEffect(name:String) {
 		FlxG.sound.play(FileManager.getSoundFile('sounds/$name'));
 	}
+
+	public static function hitHurt() {
+		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(0,4)}');
+	}
 }

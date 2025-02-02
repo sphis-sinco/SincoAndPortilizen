@@ -90,6 +90,7 @@ class Stage1 extends FlxState
 			{
 				osin_warning = false;
 				osin.animation.play('jump');
+				Global.playSoundEffect('gameplay/sinco-jump');
 				FlxTween.tween(osin, {x: sincoPos.x, y: sincoPos.y}, osin_jump_speed, {
 					onComplete: _tween ->
 					{
@@ -102,6 +103,7 @@ class Stage1 extends FlxState
 
 							SINCO_HEALTH--;
 							waitn = 0;
+							Global.hitHurt();
 
 							if (SINCO_HEALTH < 1)
 								return;
@@ -129,6 +131,7 @@ class Stage1 extends FlxState
 				if (sinco.x != sincoPos.x)
 					return;
 
+				Global.playSoundEffect('gameplay/sinco-jump');
 				sinco.animation.play('jump');
 				FlxTween.tween(sinco, {x: osinPos.x, y: osinPos.y}, sinco_jump_speed, {
 					onComplete: _tween ->
@@ -139,6 +142,7 @@ class Stage1 extends FlxState
 							FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
 							OSIN_HEALTH--;
 							osin.animation.play('hurt');
+							Global.hitHurt();
 						}
 
 						FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
@@ -157,9 +161,10 @@ class Stage1 extends FlxState
 			{
 				if (sinco.x != sincoPos.x)
 					return;
-
+			
 				sinco.y += 64;
 				sinco.animation.play('jump');
+				Global.playSoundEffect('gameplay/sinco-spin');
 				FlxTween.tween(sinco, {x: osinPos.x}, sinco_jump_speed, {
 					onComplete: _tween ->
 					{
@@ -185,6 +190,12 @@ class Stage1 extends FlxState
 			FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 				onComplete: _tween -> {
 					FlxG.switchState(() -> new PlayMenu());
+				},
+				onStart: _tween -> {
+					if (!playedDeathFX) {
+						Global.playSoundEffect('gameplay/dead');
+						playedDeathFX = true;
+					}
 				}
 			});
 		}
@@ -201,8 +212,16 @@ class Stage1 extends FlxState
 			FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
 				onComplete: _tween -> {
 					FlxG.switchState(() -> new PlayMenu());
+				},
+				onStart: _tween -> {
+					if (!playedDeathFX) {
+						Global.playSoundEffect('gameplay/explosion');
+						playedDeathFX = true;
+					}
 				}
 			});
 		}
 	}
+
+	var playedDeathFX:Bool = false;
 }
