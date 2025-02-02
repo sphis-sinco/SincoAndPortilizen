@@ -16,6 +16,7 @@ class Stage1 extends FlxState
 	var SINCO_HEALTH:Int = 10;
 
 	var osinHealthIndicator:FlxText = new FlxText();
+	var sincoHealthIndicator:FlxText = new FlxText();
 
 	override function create()
 	{
@@ -48,6 +49,9 @@ class Stage1 extends FlxState
 
 		osinHealthIndicator.size = 16;
 		add(osinHealthIndicator);
+
+		sincoHealthIndicator.size = 16;
+		add(sincoHealthIndicator);
 	}
 
 	var sincoPos:FlxPoint;
@@ -63,6 +67,9 @@ class Stage1 extends FlxState
 
 		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
 		osinHealthIndicator.text = 'HP: $OSIN_HEALTH/10';
+
+		sincoHealthIndicator.setPosition(sinco.x, sinco.y - 64);
+		sincoHealthIndicator.text = 'HP: $SINCO_HEALTH/10';
 
 		if (FlxG.random.int(0, 200) < 50 && (osin.animation.name != 'jump' && osin.animation.name != 'hurt') && osin_canjump)
 		{
