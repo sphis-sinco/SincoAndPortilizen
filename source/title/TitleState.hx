@@ -60,18 +60,20 @@ class TitleState extends FlxState
 		super.create();
 	}
 
+	var transitioning:Bool = false;
+
 	override public function update(elapsed:Float)
 	{
 		stateChecks();
 
 		if (CURRENT_STATE == DONE)
 		{
-			if (FlxG.keys.justReleased.ANY)
+			if (FlxG.keys.justReleased.ANY && !transitioning)
 			{
+				transitioning = !transitioning;
 				FlxG.sound.play(FileManager.getSoundFile('sounds/blipSelect'));
 				FlxG.camera.flash(0xFFFFFF, 2);
-				FlxFlicker.flicker(pressany, 3, 0.5, false, false, flicker ->
-				{
+				FlxFlicker.flicker(pressany, 3, 0.04, true, true, _flicker -> {
 					FlxG.switchState(() -> new MainMenu());
 				});
 			}
