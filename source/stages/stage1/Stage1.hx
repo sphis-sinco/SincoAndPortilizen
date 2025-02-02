@@ -2,8 +2,11 @@ package stages.stage1;
 
 import flixel.math.FlxPoint;
 import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import mainmenu.MainMenu;
+import mainmenu.PlayMenu;
 
 class Stage1 extends FlxState
 {
@@ -13,7 +16,7 @@ class Stage1 extends FlxState
 	var osin:Osin = new Osin();
 
 	var OSIN_HEALTH:Int = 10;
-	var SINCO_HEALTH:Int = 10;
+	var SINCO_HEALTH:Int = 1;
 
 	var osinHealthIndicator:FlxText = new FlxText();
 	var sincoHealthIndicator:FlxText = new FlxText();
@@ -68,12 +71,16 @@ class Stage1 extends FlxState
 
 		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
 		osinHealthIndicator.text = 'HP: $OSIN_HEALTH/10';
-		if (osin_warning) osinHealthIndicator.text += '\nDODGE';
+		if (osin_warning)
+			osinHealthIndicator.text += '\nDODGE';
 
 		sincoHealthIndicator.setPosition(sinco.x, sinco.y - 64);
 		sincoHealthIndicator.text = 'HP: $SINCO_HEALTH/10';
 
-		if (FlxG.random.int(0, 200) < 50 && (osin.animation.name != 'jump' && osin.animation.name != 'hurt') && osin_canjump)
+		if (SINCO_HEALTH >= 1
+			&& FlxG.random.int(0, 200) < 50
+			&& (osin.animation.name != 'jump' && osin.animation.name != 'hurt')
+			&& osin_canjump)
 		{
 			osin_canjump = false;
 			osin_warning = true;
@@ -84,10 +91,19 @@ class Stage1 extends FlxState
 				FlxTween.tween(osin, {x: sincoPos.x, y: sincoPos.y}, osin_jump_speed, {
 					onComplete: _tween ->
 					{
-						if (osin.overlaps(sinco))
-							SINCO_HEALTH--;
+						var waitn = .25;
 
-						FlxTimer.wait(.25, () -> {
+						if (osin.overlaps(sinco))
+						{
+							SINCO_HEALTH--;
+							waitn = 0;
+
+							if (SINCO_HEALTH < 1)
+								return;
+						}
+
+						FlxTimer.wait(waitn, () ->
+						{
 							FlxTween.tween(osin, {x: osinPos.x, y: osinPos.y}, osin_jump_speed, {
 								onComplete: _tween ->
 								{
@@ -145,6 +161,20 @@ class Stage1 extends FlxState
 							sinco.y -= 64;
 						}
 					});
+				}
+			});
+		}
+
+		if (SINCO_HEALTH < 1)
+		{
+			sinco.animation.play('ded');
+
+			osin.animation.pause();
+			background.animation.pause();
+
+			FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
+				onComplete: _tween -> {
+					FlxG.switchState(() -> new PlayMenu());
 				}
 			});
 		}
