@@ -20,6 +20,7 @@ class Stage1 extends FlxState
 
         sinco.screenCenter();
         sinco.y += sinco.height * 4;
+        sinco.x -= sinco.width * 4;
         add(sinco);
     }
 
