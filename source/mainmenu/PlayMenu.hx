@@ -21,9 +21,12 @@ class PlayMenu extends MainMenu
 				case 0:
                     FlxG.save.data.gameplaystatus ??= GameplayStatus.returnDefaultGameplayStatus();
                     FlxG.save.data.gameplaystatus.level = 1;
+
+                    FlxG.sound.music.stop();
                     FlxG.switchState(() -> new IntroCutscene());
 
 				case 1:
+                    FlxG.sound.music.stop();
                     FlxG.switchState(() -> new Continue());
 
 				case 2:
