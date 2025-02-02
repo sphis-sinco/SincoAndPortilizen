@@ -1,5 +1,6 @@
 package stages.stage1;
 
+import cutscenes.ChaosEmerald;
 import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
@@ -189,7 +190,7 @@ class Stage1 extends FlxState
 
 			FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 				onComplete: _tween -> {
-					FlxG.switchState(() -> new PlayMenu());
+					FlxG.switchState(() -> new ChaosEmerald());
 				},
 				onStart: _tween -> {
 					if (!playedDeathFX) {
@@ -211,7 +212,7 @@ class Stage1 extends FlxState
 			osin.animation.play('hurt');
 			FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
 				onComplete: _tween -> {
-					FlxG.switchState(() -> new PlayMenu());
+					FlxG.switchState(() -> new ChaosEmerald());
 				},
 				onStart: _tween -> {
 					if (!playedDeathFX) {
