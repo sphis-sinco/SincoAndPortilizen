@@ -37,6 +37,7 @@ class PanelCutscene extends FlxState
 	override public function create()
 	{
 		setPanel('${PANEL_PREFIX}panel$CUR_PANEL');
+		panel.antialiasing = true;
 		panel.screenCenter();
 		add(panel);
 
