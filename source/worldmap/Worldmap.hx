@@ -24,6 +24,9 @@ class Worldmap extends FlxState
         var i = 0;
         while(i < 3)
         {
+
+            // TODO: change these to use MapTile once you figure out the bug
+
             var level:FlxSprite = new FlxSprite(character.getGraphicMidpoint().x - 12 + (i * 256), character.getGraphicMidpoint().y);
             level.makeGraphic(24, 24, FlxColor.RED);
 
