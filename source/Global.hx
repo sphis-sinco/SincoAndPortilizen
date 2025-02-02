@@ -65,4 +65,8 @@ class Global
 				FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
 			}
 	}
+
+	public static function playSoundEffect(name:String) {
+		FlxG.sound.play(FileManager.getSoundFile('sounds/$name'));
+	}
 }

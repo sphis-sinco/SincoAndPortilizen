@@ -53,7 +53,7 @@ class TitleState extends FlxState
 		add(port);
 
 		if (CURRENT_STATE == INTRO)
-			FlxG.sound.play(FileManager.getSoundFile('sounds/start-synth'));
+			Global.playSoundEffect('start-synth');
 
 		pressanyTargY =  FlxG.height - (pressany.height * 2) - (16 * 2);
 
@@ -71,7 +71,7 @@ class TitleState extends FlxState
 			if (FlxG.keys.justReleased.ANY && !transitioning)
 			{
 				transitioning = !transitioning;
-				FlxG.sound.play(FileManager.getSoundFile('sounds/blipSelect'));
+				Global.playSoundEffect('blipSelect');
 				FlxG.camera.flash(0xFFFFFF, 2);
 				FlxFlicker.flicker(pressany, 3, 0.04, true, true, _flicker -> {
 					FlxG.switchState(() -> new MainMenu());
