@@ -122,6 +122,7 @@ class TitleState extends FlxState
 				if (pressany.y != pressanyTargY) pressany.y = pressanyTargY;
 				if (!pressany.visible) pressany.visible = true;
 				if (!titlebg.visible) titlebg.visible = true;
+				if (charring.y != charring.height + 16) charring.y = charring.height + 16;
 
 				randomBGChar(sinco, 6);
 				randomBGChar(port, 4);
