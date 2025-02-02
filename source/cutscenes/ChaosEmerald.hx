@@ -57,7 +57,10 @@ class ChaosEmerald extends FlxState
 
             wantedPos = chaos_emerald.y;
 
-            chaos_emerald.color = 0x000000;
+            if (chaos_emerald.emerld + 1 < FlxG.save.data.gameplaystatus.chaos_emeralds)
+                chaos_emerald.color = 0xffffff;
+            else
+                chaos_emerald.color = 0x000000;
 
             chaos_emerald.y = -640;
             chaos_emerald.x = (64 * (chaos_emerald.emerld + 1)) + 64;
