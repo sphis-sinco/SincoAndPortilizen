@@ -4,6 +4,16 @@
 - Function explanations
 
 # Gameplay
+- World Map
+    - Sinco Portilizen Swap Button
+        - Input - Mouse Click
+        - Output - Swap Characters and swap levels (Sinco and Port have different levels until the final one)
+    - Levels
+        - Input - Enter Key
+        - Output
+            - Fade in
+            - Switch Levels
+            - Fade out
 - Stage 1
     - Osin lose sequence
         - Output
