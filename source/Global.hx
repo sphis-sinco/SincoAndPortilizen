@@ -40,6 +40,8 @@ class Global
 		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
 		FlxG.save.bind(SAVE_SLOT, APPCURMETA.get('company'));
 
+		GameplayStatus.setupGameplayStatus();
+
 		trace('Switched save slot to "$SAVE_SLOT"');
 	}
 

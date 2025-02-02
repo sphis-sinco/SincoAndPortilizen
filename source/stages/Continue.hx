@@ -8,12 +8,7 @@ class Continue extends FlxState
     override function create() {
         super.create();
 
-        if (FlxG.save.data.gameplaystatus == null)
-        {
-            FlxG.save.data.gameplaystatus = {
-                level: 1
-            };
-        }
+        FlxG.save.data.gameplaystatus ??= GameplayStatus.returnDefaultGameplayStatus();
 
         switch (FlxG.save.data.gameplaystatus.level)
         {
