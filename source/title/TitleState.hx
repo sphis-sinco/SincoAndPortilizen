@@ -104,12 +104,15 @@ class TitleState extends FlxState
 					FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
 				
 				pressany.y = pressanyTargY;
-				pressany.visible = true;
 				titlebg.visible = true;
 
 				FlxTimer.wait(5, () ->
 				{
 					CURRENT_STATE = DONE;
+					pressany.visible = true;
+					pressany.alpha = 0;
+
+					FlxTween.tween(pressany, {alpha: 1}, 1);
 				});
 
 			case DONE:
