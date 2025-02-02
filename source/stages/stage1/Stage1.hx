@@ -74,7 +74,7 @@ class Stage1 extends FlxState
 		if (osin_warning)
 			osinHealthIndicator.text += '\nDODGE';
 
-		sincoHealthIndicator.setPosition(sinco.x, sinco.y - 64);
+		sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
 		sincoHealthIndicator.text = 'HP: $SINCO_HEALTH/10';
 
 		if (SINCO_HEALTH >= 1
