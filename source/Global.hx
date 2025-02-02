@@ -42,4 +42,13 @@ class Global
 
 		trace('Switched save slot to "$SAVE_SLOT"');
 	}
+
+	public static function scaleSprite(sprite:FlxSprite, ?addition:Int = 0)
+	{
+		var returnsprite:FlxSprite = sprite;
+
+		returnsprite.scale.set(DEFAULT_IMAGE_SCALE_MULTIPLIER + addition, DEFAULT_IMAGE_SCALE_MULTIPLIER + addition);
+
+		return returnsprite;
+	}
 }
