@@ -20,10 +20,11 @@ class MainMenu extends FlxState
 	public var menutextsSelection:String = 'menu';
 
 	public static var menucharvis:Array<Bool> = null;
-	
+
 	var CUR_SELECTION:Int = 0;
 
-	override public function new(select:String = 'menu') {
+	override public function new(select:String = 'menu')
+	{
 		super();
 
 		menutextsSelection = select;
@@ -32,7 +33,7 @@ class MainMenu extends FlxState
 	override function create()
 	{
 		menucharvis ??= [false, true];
-		
+
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));
 		Global.scaleSprite(gridbg, 0);
 		gridbg.screenCenter();
@@ -58,17 +59,18 @@ class MainMenu extends FlxState
 
 		set_menuboxtexts(menutextsSelection);
 
-		add(menuboxtexts);		
+		add(menuboxtexts);
 
-        this.cycle = public_cycle;
+		this.cycle = public_cycle;
 
-        this.sinco.animation.play((menucharvis[0]) ? 'visible' : 'blank');
-        this.port.animation.play((menucharvis[1]) ? 'visible' : 'blank');
+		this.sinco.animation.play((menucharvis[0]) ? 'visible' : 'blank');
+		this.port.animation.play((menucharvis[1]) ? 'visible' : 'blank');
 
 		super.create();
 	}
 
 	public static var public_cycle:Int = 0;
+
 	public var cycle:Int = 0;
 
 	override function update(elapsed:Float)
@@ -119,7 +121,6 @@ class MainMenu extends FlxState
 			}
 		}
 
-
 		var i = 0;
 		for (text in menutexts.get(mapstring))
 		{
@@ -136,17 +137,22 @@ class MainMenu extends FlxState
 
 	public function selectionCheck()
 	{
-		switch (CUR_SELECTION)
+		if (menutextsSelection == 'menu')
+		{
+			switch (CUR_SELECTION)
 			{
 				case 0:
 					FlxG.switchState(PlayMenu.new);
 				case 1:
 					FlxG.switchState(TitleState.new);
 			}
+		}
 	}
 
-	public function cycleUpdate() {
-		if (cycle % 100 == 0) cycle = 0;
+	public function cycleUpdate()
+	{
+		if (cycle % 100 == 0)
+			cycle = 0;
 
 		sinco.animation.play((sinco.animation.name == 'blank') ? 'visible' : 'blank');
 		port.animation.play((port.animation.name == 'blank') ? 'visible' : 'blank');
