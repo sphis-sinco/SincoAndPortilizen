@@ -1,5 +1,8 @@
 package mainmenu;
 
+import cutscenes.intro.IntroCutscene;
+import flixel.tweens.FlxTween;
+
 class PlayMenu extends MainMenu
 {
 	override public function new()
@@ -16,7 +19,7 @@ class PlayMenu extends MainMenu
 			switch (CUR_SELECTION)
 			{
 				case 0:
-					Global.pass();
+                    FlxG.switchState(() -> new IntroCutscene());
 
 				case 1:
 					Global.pass();
