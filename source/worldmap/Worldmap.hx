@@ -47,13 +47,6 @@ class Worldmap extends FlxState
 			character.flipX = FlxG.keys.justReleased.LEFT;
 
 			current_level += (character.flipX) ? -1 : 1;
-
-			if (current_level < 1)
-			{
-				FlxG.switchState(() -> new MainMenu());
-                current_level += 1;
-				return;
-			}
 			if (current_level > 3)
 			{
 				current_level -= 1;
@@ -65,6 +58,12 @@ class Worldmap extends FlxState
 				onComplete: tween ->
 				{
 					character.animation.play('idle');
+
+                    if (current_level < 1)
+                    {
+                        FlxG.switchState(() -> new MainMenu());
+                        current_level += 1;
+                    }
 				}
 			});
 		}
