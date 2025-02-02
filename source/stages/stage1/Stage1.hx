@@ -9,6 +9,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import mainmenu.MainMenu;
 import mainmenu.PlayMenu;
+import worldmap.Worldmap;
 
 class Stage1 extends FlxState
 {
@@ -190,7 +191,7 @@ class Stage1 extends FlxState
 
 			FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 				onComplete: _tween -> {
-					FlxG.switchState(() -> new ChaosEmerald());
+					FlxG.switchState(() -> new ChaosEmerald(() -> new Worldmap()));
 				},
 				onStart: _tween -> {
 					if (!playedDeathFX) {
@@ -212,8 +213,9 @@ class Stage1 extends FlxState
 			osin.animation.play('hurt');
 			FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
 				onComplete: _tween -> {
+					Global.setLevel(2);
 					Global.setEmeraldAmount(1);
-					FlxG.switchState(() -> new ChaosEmerald());
+					FlxG.switchState(() -> new ChaosEmerald(() -> new Worldmap()));
 				},
 				onStart: _tween -> {
 					if (!playedDeathFX) {

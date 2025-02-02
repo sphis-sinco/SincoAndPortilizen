@@ -79,4 +79,9 @@ class Global
 		if (FlxG.save.data.gameplaystatus.chaos_emeralds == emerald - 1)
 			FlxG.save.data.gameplaystatus.chaos_emeralds = emerald;
 	}
+
+	public static function setLevel(lvl:Int = 1) {
+		if (FlxG.save.data.gameplaystatus.level < lvl - 1)
+			FlxG.save.data.gameplaystatus.level = lvl;
+	}
 }

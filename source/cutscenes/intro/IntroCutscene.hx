@@ -2,6 +2,7 @@ package cutscenes.intro;
 
 import stages.stage1.Stage1;
 import title.TitleState;
+import worldmap.Worldmap;
 
 class IntroCutscene extends PanelCutscene
 {
@@ -18,7 +19,7 @@ class IntroCutscene extends PanelCutscene
 	{
 		super.finishedCutscene();
         
-		FlxG.switchState(Stage1.new);
+		FlxG.switchState(() -> new Worldmap());
 	}
 
 	override function panelEvents(panel:Int)

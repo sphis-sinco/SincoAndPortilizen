@@ -1,6 +1,7 @@
 package stages;
 
 import stages.stage1.Stage1;
+import worldmap.Worldmap;
 
 class Continue extends FlxState
 {
@@ -9,13 +10,8 @@ class Continue extends FlxState
         super.create();
 
         FlxG.save.data.gameplaystatus ??= GameplayStatus.returnDefaultGameplayStatus();
-
-        switch (FlxG.save.data.gameplaystatus.level)
-        {
-            case 1:
-                FlxG.switchState(Stage1.new);
-        }
-
+        
+        FlxG.switchState(Worldmap.new);
     }
     
 }
