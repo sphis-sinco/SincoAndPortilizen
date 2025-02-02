@@ -1,6 +1,7 @@
 package worldmap;
 
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 
@@ -39,8 +40,10 @@ class Worldmap extends FlxState
         {
             character.flipX = FlxG.keys.justReleased.LEFT;
             character.animation.play('run');
-            FlxTimer.wait(1, () -> {
-                character.animation.play('idle');
+            FlxTween.tween(character, {x: character.x + ((character.flipX) ? -256 : 256)}, 1, {
+                onComplete: tween -> {
+                    character.animation.play('idle');
+                }
             });
         }
     }
