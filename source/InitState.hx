@@ -8,6 +8,7 @@ import stages.stage1.Stage1;
 import title.TitleState;
 import worldmap.Worldmap;
 
+// This is initalization stuff + compiler condition flags
 class InitState extends FlxState
 {
 	override public function create()
@@ -32,6 +33,7 @@ class InitState extends FlxState
 	override public function update(elapsed:Float)
 	{
 		#if debug
+		// when on debug builds you have to press something to stop
 		if (FlxG.keys.justReleased.ANY)
 		{
 			proceed();
@@ -46,28 +48,20 @@ class InitState extends FlxState
 		trace('Moving to Chaos Emerald Cutscene');
 		FlxG.switchState(() -> new ChaosEmerald());
 		return;
-		#end
-
-		#if SKIP_TITLE
+		#elseif SKIP_TITLE
 		trace('Skipping Title');
 		FlxG.switchState(() -> new MainMenu());
 		return;
-		#end
-
-		#if STAGE_1
+		#elseif STAGE_1
 		trace('Moving to Stage 1');
 		FlxG.switchState(() -> new Stage1());
 		return;
-		#end
-
-		#if WORLDMAP
+		#elseif WORLDMAP
 		trace('Moving to Worldmap');
 		FlxG.switchState(() -> new Worldmap());
 		return;
 		#end
 
-
 		FlxG.switchState(TitleState.new);
-
 	}
 }

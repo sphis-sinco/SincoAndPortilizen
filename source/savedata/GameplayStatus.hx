@@ -10,6 +10,9 @@ class GameplayStatus
         };
     }
 
+    /**
+     * This makes sure there are no null value in the savedata gameplaystatus
+     */
     public static function setupGameplayStatus() {
         // just the base thing
         FlxG.save.data.gameplaystatus ??= GameplayStatus.returnDefaultGameplayStatus();
