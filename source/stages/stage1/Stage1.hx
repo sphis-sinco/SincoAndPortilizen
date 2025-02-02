@@ -4,6 +4,8 @@ class Stage1 extends FlxState
 {
     var background:FlxSprite = new FlxSprite();
 
+    var sinco:Sinco = new Sinco();
+
     override function create() {
         super.create();
 
@@ -15,6 +17,10 @@ class Stage1 extends FlxState
 		Global.scaleSprite(background, 1);
         background.screenCenter();
         add(background);
+
+        sinco.screenCenter();
+        sinco.y += sinco.height * 4;
+        add(sinco);
     }
 
     override function update(elapsed:Float) {
