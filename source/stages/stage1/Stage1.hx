@@ -96,7 +96,8 @@ class Stage1 extends FlxState
 
 						if (osin.overlaps(sinco))
 						{
-							FlxTween.color(sincoHealthIndicator, 1, 0xff0000, 0xffffff);
+							sincoHealthIndicator.color = 0xff0000;
+							FlxTween.tween(sincoHealthIndicator, {color: 0xffffff}, 1);
 
 							SINCO_HEALTH--;
 							waitn = 0;
@@ -131,7 +132,8 @@ class Stage1 extends FlxState
 				{
 					if (sinco.overlaps(osin) && osin.animation.name != 'jump')
 					{
-						FlxTween.color(osinHealthIndicator, 1, 0xff0000, 0xffffff);
+						osinHealthIndicator.color = 0xff0000;
+						FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
 						OSIN_HEALTH--;
 						osin.animation.play('hurt');
 					}
