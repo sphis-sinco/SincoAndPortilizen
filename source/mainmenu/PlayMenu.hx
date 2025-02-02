@@ -1,7 +1,7 @@
 package mainmenu;
 
 import cutscenes.intro.IntroCutscene;
-import flixel.tweens.FlxTween;
+import stages.Continue;
 
 class PlayMenu extends MainMenu
 {
@@ -19,10 +19,12 @@ class PlayMenu extends MainMenu
 			switch (CUR_SELECTION)
 			{
 				case 0:
+                    FlxG.save.data.gameplaystatus ??= {};
+                    FlxG.save.data.gameplaystatus.level = 1;
                     FlxG.switchState(() -> new IntroCutscene());
 
 				case 1:
-					Global.pass();
+                    FlxG.switchState(() -> new Continue());
 
 				case 2:
 					FlxG.switchState(() -> new MainMenu());
