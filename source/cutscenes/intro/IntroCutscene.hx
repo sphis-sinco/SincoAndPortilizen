@@ -1,5 +1,6 @@
 package cutscenes.intro;
 
+import stages.stage1.Stage1;
 import title.TitleState;
 
 class IntroCutscene extends PanelCutscene
@@ -17,7 +18,7 @@ class IntroCutscene extends PanelCutscene
 	{
 		super.finishedCutscene();
         
-		FlxG.switchState(TitleState.new);
+		FlxG.switchState(Stage1.new);
 	}
 
 	override function panelEvents(panel:Int)
