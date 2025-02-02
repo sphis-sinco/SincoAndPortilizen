@@ -65,6 +65,9 @@ class MainMenu extends FlxState
 
 		this.sinco.animation.play((menucharvis[0]) ? 'visible' : 'blank');
 		this.port.animation.play((menucharvis[1]) ? 'visible' : 'blank');
+		
+		if (FlxG.sound.music == null)
+			FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
 
 		super.create();
 	}
