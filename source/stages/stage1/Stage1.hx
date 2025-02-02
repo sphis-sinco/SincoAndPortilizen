@@ -4,6 +4,7 @@ import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import mainmenu.MainMenu;
 import mainmenu.PlayMenu;
@@ -95,6 +96,8 @@ class Stage1 extends FlxState
 
 						if (osin.overlaps(sinco))
 						{
+							FlxTween.color(sincoHealthIndicator, 1, 0xff0000, 0xffffff);
+
 							SINCO_HEALTH--;
 							waitn = 0;
 
