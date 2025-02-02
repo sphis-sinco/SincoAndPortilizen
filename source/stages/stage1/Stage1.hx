@@ -48,12 +48,15 @@ class Stage1 extends FlxState
 	var sinco_jump_speed:Float = 0.25;
 	var osin_jump_speed:Float = 0.25;
 
+	var osin_canjump:Bool = true;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (FlxG.random.int(0, 200) < 50 && osin.animation.name != 'jump')
+		if (FlxG.random.int(0, 200) < 50 && (osin.animation.name != 'jump' && osin.animation.name != 'hurt') && osin_canjump)
 		{
+			osin_canjump = false;
 			FlxTimer.wait(FlxG.random.float(0, 2), () ->
 			{
 				osin.animation.play('jump');
@@ -65,6 +68,7 @@ class Stage1 extends FlxState
 								onComplete: _tween ->
 								{
 									osin.animation.play('run');
+									osin_canjump = true;
 								}
 							});
 						});
