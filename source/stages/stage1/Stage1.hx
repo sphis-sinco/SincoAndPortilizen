@@ -131,6 +131,7 @@ class Stage1 extends FlxState
 				{
 					if (sinco.overlaps(osin) && osin.animation.name != 'jump')
 					{
+						FlxTween.color(osinHealthIndicator, 1, 0xff0000, 0xffffff);
 						OSIN_HEALTH--;
 						osin.animation.play('hurt');
 					}
