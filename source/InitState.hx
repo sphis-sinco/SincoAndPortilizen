@@ -1,5 +1,6 @@
 package;
 
+import cutscenes.ChaosEmerald;
 import cutscenes.intro.IntroCutscene;
 import flixel.system.debug.log.LogStyle;
 import mainmenu.MainMenu;
@@ -41,8 +42,8 @@ class InitState extends FlxState
 	public function proceed()
 	{
 		#if CUTSCENE_TESTING
-		trace('Testing Intro Cutscenes');
-		FlxG.switchState(IntroCutscene.new);
+		trace('Testing Chaos Emerald Cutscene');
+		FlxG.switchState(() -> new ChaosEmerald());
 		return;
 		#end
 
