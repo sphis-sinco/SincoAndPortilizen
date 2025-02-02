@@ -1,6 +1,7 @@
 package stages.stage1;
 
 import flixel.math.FlxPoint;
+import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
@@ -13,6 +14,8 @@ class Stage1 extends FlxState
 
 	var OSIN_HEALTH:Int = 10;
 	var SINCO_HEALTH:Int = 10;
+
+	var osinHealthIndicator:FlxText = new FlxText();
 
 	override function create()
 	{
@@ -42,6 +45,9 @@ class Stage1 extends FlxState
 
 		osinPos = new FlxPoint(0, 0);
 		osinPos.set(osin.x, osin.y);
+
+		osinHealthIndicator.size = 16;
+		add(osinHealthIndicator);
 	}
 
 	var sincoPos:FlxPoint;
@@ -54,6 +60,9 @@ class Stage1 extends FlxState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
+		osinHealthIndicator.text = 'HP: $OSIN_HEALTH/10';
 
 		if (FlxG.random.int(0, 200) < 50 && (osin.animation.name != 'jump' && osin.animation.name != 'hurt') && osin_canjump)
 		{
