@@ -1,5 +1,7 @@
 package worldmap;
 
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 
 class Worldmap extends FlxState
@@ -8,10 +10,24 @@ class Worldmap extends FlxState
 
     var current_level:Int = 1;
 
+    var mapGRP:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+
     override function create() {
         super.create();
 
         character.screenCenter();
+
+        var i = 0;
+        while(i < 3)
+        {
+            var level:FlxSprite = new FlxSprite(character.x + (i * 128), character.y);
+            level.makeGraphic(16, 16, FlxColor.WHITE);
+            mapGRP.add(level);
+
+            i++;
+        }
+
+        add(mapGRP);
         add(character);
     }
 
