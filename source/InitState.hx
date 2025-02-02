@@ -1,6 +1,7 @@
 package;
 
 import cutscenes.intro.IntroCutscene;
+import flixel.system.debug.log.LogStyle;
 import mainmenu.MainMenu;
 import stages.stage1.Stage1;
 import title.TitleState;
@@ -10,6 +11,16 @@ class InitState extends FlxState
 	override public function create()
 	{
 		trace('Sinco and Portilizen v${Global.VERSION}');
+		
+		#if !debug
+		// Make errors less annoying on release builds.
+		LogStyle.ERROR.openConsole = false;
+		LogStyle.ERROR.errorSound = null;
+		#end
+
+		// Make errors and warnings less annoying.
+		LogStyle.WARNING.openConsole = false;
+		LogStyle.WARNING.errorSound = null;
 
 		#if !debug
 		proceed();
