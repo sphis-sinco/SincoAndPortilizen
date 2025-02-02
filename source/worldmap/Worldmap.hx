@@ -43,15 +43,21 @@ class Worldmap extends FlxState
 
             current_level += (character.flipX) ? -1 : 1;
 
-            if (current_level >= 1 || current_level <= 3)
-            {
-                character.animation.play('run');
-                FlxTween.tween(character, {x: character.x + ((character.flipX) ? -256 : 256)}, 1, {
-                    onComplete: tween -> {
-                        character.animation.play('idle');
-                    }
-                });
+            if (current_level < 1) {
+                current_level += 1;
+                return;
             }
+            if (current_level > 3) {
+                current_level -= 1;
+                return;
+            }
+            
+              character.animation.play('run');
+                FlxTween.tween(character, {x: character.x + ((character.flipX) ? -256 : 256)}, 1, {
+                onComplete: tween -> {
+                    character.animation.play('idle');
+                }
+            });
         }
     }
 }
