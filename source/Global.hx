@@ -73,4 +73,10 @@ class Global
 	public static function hitHurt() {
 		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(0,4)}');
 	}
+
+	public static function setEmeraldAmount(emerald:Int = 1)
+	{
+		if (FlxG.save.data.gameplaystatus.chaos_emeralds == emerald - 1)
+			FlxG.save.data.gameplaystatus.chaos_emeralds = emerald;
+	}
 }

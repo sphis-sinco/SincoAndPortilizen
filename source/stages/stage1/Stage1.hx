@@ -212,6 +212,7 @@ class Stage1 extends FlxState
 			osin.animation.play('hurt');
 			FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
 				onComplete: _tween -> {
+					Global.setEmeraldAmount(1);
 					FlxG.switchState(() -> new ChaosEmerald());
 				},
 				onStart: _tween -> {
