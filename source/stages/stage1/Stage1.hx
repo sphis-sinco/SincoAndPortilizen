@@ -8,6 +8,7 @@ class Stage1 extends FlxState
 	var background:FlxSprite = new FlxSprite();
 
 	var sinco:Sinco = new Sinco();
+	var osin:Osin = new Osin();
 
 	override function create()
 	{
@@ -27,12 +28,17 @@ class Stage1 extends FlxState
 		sinco.x -= sinco.width * 4;
 		add(sinco);
 
+        osin.screenCenter();
+        osin.y += osin.height * 2;
+        osin.x += osin.width * 4;
+        add(osin);
+
         sincoPos = new FlxPoint(0,0);
 		sincoPos.set(sinco.x, sinco.y);
 	}
 
 	var sincoPos:FlxPoint;
-    var sinco_jump_speed:Float = 0.5;
+    var sinco_jump_speed:Float = 0.25;
 
 	override function update(elapsed:Float)
 	{
@@ -40,14 +46,19 @@ class Stage1 extends FlxState
 
 		if (FlxG.keys.justPressed.SPACE)
 		{
+            if (sinco.x != sincoPos.x) return;
+
 			sinco.animation.play('jump');
-			FlxTween.tween(sinco, {x: 0, y: 0}, sinco_jump_speed, {
+			FlxTween.tween(sinco, {x: osin.x, y: osin.y}, sinco_jump_speed, {
 				onComplete: _tween ->
 				{
+                    osin.animation.play('hurt');
+
 					FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
 						onComplete: _tween ->
 						{
 							sinco.animation.play('run');
+                            osin.animation.play('run');
 						}
 					});
 				}
