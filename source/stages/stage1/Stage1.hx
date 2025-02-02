@@ -23,15 +23,15 @@ class Stage1 extends FlxState
 		background.screenCenter();
 		add(background);
 
-		sinco.screenCenter();
-		sinco.y += sinco.height * 4;
-		sinco.x -= sinco.width * 4;
-		add(sinco);
-
         osin.screenCenter();
         osin.y += osin.height * 2;
         osin.x += osin.width * 4;
         add(osin);
+
+		sinco.screenCenter();
+		sinco.y += sinco.height * 4;
+		sinco.x -= sinco.width * 4;
+		add(sinco);
 
         sincoPos = new FlxPoint(0,0);
 		sincoPos.set(sinco.x, sinco.y);
