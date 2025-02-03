@@ -47,6 +47,10 @@ class ChaosEmerald extends FlxState
 
         add(chaosemerlds);
 
+        #if debug
+        FlxG.save.data.gameplaystatus.chaos_emeralds = FlxG.random.int(0, 6);
+        #end
+
         var wantedPos:Float = 0;
 
         var i = 6;
