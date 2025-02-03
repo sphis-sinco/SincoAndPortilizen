@@ -191,7 +191,7 @@ class Stage1 extends FlxState
 
 			FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 				onComplete: _tween -> {
-					FlxG.switchState(() -> new ChaosEmerald(() -> new Worldmap()));
+					FlxG.switchState(() -> new Worldmap());
 				},
 				onStart: _tween -> {
 					if (!playedDeathFX) {
@@ -215,7 +215,7 @@ class Stage1 extends FlxState
 				onComplete: _tween -> {
 					Global.setLevel(2);
 					Global.setEmeraldAmount(1);
-					FlxG.switchState(() -> new ChaosEmerald(() -> new Worldmap()));
+					FlxG.switchState(() -> new ChaosEmerald(() -> new PostStage1Cutscene()));
 				},
 				onStart: _tween -> {
 					if (!playedDeathFX) {
