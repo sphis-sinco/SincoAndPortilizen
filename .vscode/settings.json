@@ -11,7 +11,7 @@
 		}
 	},
 	"haxe.enableExtendedIndentation": true,
-	"vscord.app.privacyMode.enable": true,
+	"vscord.app.privacyMode.enable": false,
 	"vscord.app.name": "Visual Studio Code",
 	"vscord.status.showElapsedTime": true
 }
