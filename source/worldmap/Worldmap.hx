@@ -94,6 +94,12 @@ class Worldmap extends FlxState
 		if (FlxG.keys.justReleased.SPACE && character.animationname() == 'idle')
 		{
 			charWheel.animation.play('${character.lowercase_char()}-${character.swappedchar().toLowerCase()}');
+			
+			FlxTimer.wait(2 / 12, () -> {
+				FlxG.camera.flash(0xffffff, 1/12);
+				character.swapCharacter();
+				character.animation.play('idle');
+			});
 		}
 	}
 }
