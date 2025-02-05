@@ -40,5 +40,9 @@ class MapCharacter extends FlxSprite
     public function animationname() {
         return animation.name;
     }
+
+    public function swappedchar() {
+        return characterList.get(char);
+    }
     
 }
