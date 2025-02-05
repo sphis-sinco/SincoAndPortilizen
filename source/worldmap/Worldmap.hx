@@ -10,6 +10,7 @@ import stages.stage1.Stage1;
 class Worldmap extends FlxState
 {
 	var character:MapCharacter = new MapCharacter();
+	var charWheel:CharacterWheel = new CharacterWheel();
 
 	var current_level:Int = 1;
 
@@ -40,6 +41,13 @@ class Worldmap extends FlxState
 
 		add(mapGRP);
 		add(character);
+
+		charWheel.screenCenter(X);
+		charWheel.y = charWheel.height + 16;
+
+		charWheel.animation.play('sinco');
+
+		add(charWheel);
 	}
 
 	override function update(elapsed:Float)
