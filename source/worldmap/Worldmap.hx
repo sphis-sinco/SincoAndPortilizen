@@ -90,5 +90,10 @@ class Worldmap extends FlxState
 					FlxG.switchState(() -> new MainMenu());
 			}
 		}
+
+		if (FlxG.keys.justReleased.SPACE && character.animationname() == 'idle')
+		{
+			charWheel.animation.play('${character.lowercase_char()}-${character.swappedchar().toLowerCase()}');
+		}
 	}
 }
