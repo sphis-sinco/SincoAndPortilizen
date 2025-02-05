@@ -2,10 +2,17 @@ package worldmap;
 
 class MapCharacter extends FlxSprite
 {
+    // This is so I don't have to do this:
+    // char = (char == "Sinco") ? "Port" : "Sinco"
+    public var characterList:Map<String, String> = [
+        "Sinco" => "Port",
+        "Port" => "Sinco"
+    ];
 
-    override public function new() {
+    override public function new(curchar:String = 'Sinco') {
         super();
 
+        char = characterList.get(curchar);
         swapCharacter();
         animation.play('idle');
     }
@@ -13,6 +20,9 @@ class MapCharacter extends FlxSprite
     public var char:String = 'Sinco';
 
     public function swapCharacter() {
+
+        char = characterList.get(char);
+
         loadGraphic(FileManager.getImageFile(
             'worldmap/${char}WorldMap'
         ), true, 16, 16);
