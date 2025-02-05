@@ -54,7 +54,7 @@ class Worldmap extends FlxState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.anyJustReleased([LEFT, RIGHT]) && character.animation.name != 'run')
+		if (FlxG.keys.anyJustReleased([LEFT, RIGHT]) && character.animationname() != 'run')
 		{
 			character.flipX = FlxG.keys.justReleased.LEFT;
 
@@ -80,7 +80,7 @@ class Worldmap extends FlxState
 			});
 		}
 
-		if (FlxG.keys.justReleased.ENTER && character.animation.name == 'idle')
+		if (FlxG.keys.justReleased.ENTER && character.animationname() == 'idle')
 		{
 			switch (current_level)
 			{
