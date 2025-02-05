@@ -30,8 +30,8 @@ class Worldmap extends FlxState
 			var level:FlxSprite = new FlxSprite(character.getGraphicMidpoint().x - 12 + (i * 256), character.getGraphicMidpoint().y);
 			level.makeGraphic(24, 24, FlxColor.RED);
 
-            if (character.lowercase_char() == 'sinco' && FlxG.save.data.gameplaystatus.level - 1 > i)
-                level.color = FlxColor.LIME;
+			if (character.lowercase_char() == 'sinco' && FlxG.save.data.gameplaystatus.level - 1 > i)
+				level.color = FlxColor.LIME;
 
 			mapGRP.add(level);
 
@@ -63,11 +63,11 @@ class Worldmap extends FlxState
 				{
 					character.animation.play('idle');
 
-                    if (current_level < 1)
-                    {
-                        FlxG.switchState(() -> new MainMenu());
-                        current_level += 1;
-                    }
+					if (current_level < 1)
+					{
+						FlxG.switchState(() -> new MainMenu());
+						current_level += 1;
+					}
 				}
 			});
 		}
@@ -77,14 +77,7 @@ class Worldmap extends FlxState
 			switch (current_level)
 			{
 				case 1:
-					if (character.lowercase_char() == 'sinco')
-					{
-						FlxG.switchState(() -> new Stage1());
-					}
-					else
-					{
-						FlxG.switchState(() -> new MainMenu());
-					}
+					FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1() : new MainMenu()));
 				default:
 					FlxG.switchState(() -> new MainMenu());
 			}
