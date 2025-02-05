@@ -32,5 +32,9 @@ class MapCharacter extends FlxSprite
         animation.add('run', [3, 4], 12);
         Global.scaleSprite(this);
     }
+
+    public function lowercase_char() {
+        return char.toLowerCase();
+    }
     
 }

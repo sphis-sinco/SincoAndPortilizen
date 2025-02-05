@@ -30,7 +30,7 @@ class Worldmap extends FlxState
 			var level:FlxSprite = new FlxSprite(character.getGraphicMidpoint().x - 12 + (i * 256), character.getGraphicMidpoint().y);
 			level.makeGraphic(24, 24, FlxColor.RED);
 
-            if (character.char.toLowerCase() == 'sinco' && FlxG.save.data.gameplaystatus.level - 1 > i)
+            if (character.lowercase_char() == 'sinco' && FlxG.save.data.gameplaystatus.level - 1 > i)
                 level.color = FlxColor.LIME;
 
 			mapGRP.add(level);
@@ -77,7 +77,7 @@ class Worldmap extends FlxState
 			switch (current_level)
 			{
 				case 1:
-					if (character.char.toLowerCase() == 'sinco')
+					if (character.lowercase_char() == 'sinco')
 					{
 						FlxG.switchState(() -> new Stage1());
 					}
