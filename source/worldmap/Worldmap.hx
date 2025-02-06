@@ -6,6 +6,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import mainmenu.MainMenu;
 import stages.stage1.Stage1;
+import stages.stage4.Stage4;
 
 class Worldmap extends FlxState
 {
@@ -89,7 +90,7 @@ class Worldmap extends FlxState
 			switch (current_level)
 			{
 				case 1:
-					FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1() : new MainMenu()));
+					FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1() : new Stage4()));
 				default:
 					FlxG.switchState(() -> new MainMenu());
 			}
