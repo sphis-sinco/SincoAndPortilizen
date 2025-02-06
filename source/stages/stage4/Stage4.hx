@@ -1,6 +1,7 @@
 package stages.stage4;
 
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tile.FlxTilemap;
 import flixel.util.FlxTimer;
 
@@ -9,15 +10,14 @@ class Stage4 extends FlxState
 	var port:PortS4 = new PortS4();
 	var port_dir:Int = 0; // 0 - left, 1 - down, 2 - up, 3 - right
 
-	var level:FlxOgmo3Loader;
-	var level_tilemap:FlxTilemap = new FlxTilemap();
+	var level_tilemap:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 
 	override function create()
 	{
 		super.create();
 
-		level = new FlxOgmo3Loader(FileManager.getDataFile('Stage4Map.ogmo'), FileManager.getDataFile('Stage4Map.json'));
-		level.loadTilemap(FileManager.getImageFile('gameplay/port stages/Stage4Tileset'), "baselayer", level_tilemap);
+        var leveldata:Array<Dynamic> = FileManager.getJSON(FileManager.getDataFile('Stage4Map.json')).layers[0].data2D;
+        trace(leveldata[0]);
 
         add(level_tilemap);
 
