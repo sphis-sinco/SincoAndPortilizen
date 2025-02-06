@@ -6,6 +6,7 @@ class Stage4 extends FlxState
 {
 	var port:PortS4 = new PortS4();
 	var port_dir:Int = 0; // 0 - left, 1 - down, 2 - up, 3 - right
+	var enemy:EnemyS4 = new EnemyS4();
 
 	override function create()
 	{
@@ -13,6 +14,9 @@ class Stage4 extends FlxState
 
 		port.screenCenter();
 		add(port);
+
+		enemy.screenCenter();
+		add(enemy);
 
 		moveOp();
 	}
