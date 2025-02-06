@@ -7,7 +7,7 @@ class PortS4 extends FlxSprite
         super();
 
         loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage4Port'), true, 32, 32);
-        animation.add('run', [0,2,5,2], 6);
+        animation.add('run', [0,2,5,2], 2);
 
         animation.play('run');
 
