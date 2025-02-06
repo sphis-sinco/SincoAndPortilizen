@@ -6,7 +6,7 @@ class EnemyS4 extends FlxSprite
         super();
 
         loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage4Enemy'), true, 32, 8);
-        animation.add('run', [0,1,2,1], 12);
+        animation.add('run', [0,1,2,1], 4);
         animation.play('run');
 
         Global.scaleSprite(this);
