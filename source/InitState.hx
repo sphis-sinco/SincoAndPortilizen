@@ -5,6 +5,7 @@ import cutscenes.intro.IntroCutscene;
 import flixel.system.debug.log.LogStyle;
 import mainmenu.MainMenu;
 import stages.stage1.Stage1;
+import stages.stage4.Stage4;
 import title.TitleState;
 import worldmap.Worldmap;
 
@@ -52,9 +53,9 @@ class InitState extends FlxState
 		trace('Skipping Title');
 		FlxG.switchState(() -> new MainMenu());
 		return;
-		#elseif STAGE_1
-		trace('Moving to Stage 1');
-		FlxG.switchState(() -> new Stage1());
+		#elseif GAMEPLAY
+		trace('Moving to Stage 4');
+		FlxG.switchState(() -> new Stage4());
 		return;
 		#elseif WORLDMAP
 		trace('Moving to Worldmap');
