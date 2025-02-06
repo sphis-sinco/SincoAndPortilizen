@@ -1,47 +1,65 @@
 package stages.stage4;
 
+import flixel.addons.editors.ogmo.FlxOgmo3Loader;
+import flixel.tile.FlxTilemap;
 import flixel.util.FlxTimer;
 
 class Stage4 extends FlxState
 {
-    var port:PortS4 = new PortS4();
-    var port_dir:Int = 0; // 0 - left, 1 - down, 2 - up, 3 - right
+	var port:PortS4 = new PortS4();
+	var port_dir:Int = 0; // 0 - left, 1 - down, 2 - up, 3 - right
 
-    override function create() {
-        super.create();
+	var level:FlxOgmo3Loader;
+	var level_tilemap:FlxTilemap = new FlxTilemap();
 
-        port.screenCenter();
-        add(port);
+	override function create()
+	{
+		super.create();
 
-        moveOp();
-    }
+		level = new FlxOgmo3Loader(FileManager.getDataFile('Stage4Map.ogmo'), FileManager.getDataFile('Stage4Map.json'));
+		level.loadTilemap(FileManager.getImageFile('gameplay/port stages/Stage4Tileset'), "baselayer", level_tilemap);
 
-    override function update(elapsed:Float) {
-        super.update(elapsed);
+        add(level_tilemap);
 
-        if (FlxG.keys.justReleased.LEFT) port_dir = 0;
-        if (FlxG.keys.justReleased.DOWN) port_dir = 1;
-        if (FlxG.keys.justReleased.UP) port_dir = 2;
-        if (FlxG.keys.justReleased.RIGHT) port_dir = 3;
+		port.screenCenter();
+		add(port);
 
-    }
+		moveOp();
+	}
 
-    public function moveOp()
-    {
-        switch (port_dir)
-        {
-            case 0:
-                port.flipX = true;
-                port.x -= port.width;
-            case 1:
-                port.y += port.width;
-            case 2:
-                port.y -= port.width;
-            case 3:
-                port.flipX = false;
-                port.x += port.width;
-        }
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
 
-        FlxTimer.wait(1, () -> { moveOp(); });
-    }
+		if (FlxG.keys.justReleased.LEFT)
+			port_dir = 0;
+		if (FlxG.keys.justReleased.DOWN)
+			port_dir = 1;
+		if (FlxG.keys.justReleased.UP)
+			port_dir = 2;
+		if (FlxG.keys.justReleased.RIGHT)
+			port_dir = 3;
+	}
+
+	public function moveOp()
+	{
+		switch (port_dir)
+		{
+			case 0:
+				port.flipX = true;
+				port.x -= port.width;
+			case 1:
+				port.y += port.width;
+			case 2:
+				port.y -= port.width;
+			case 3:
+				port.flipX = false;
+				port.x += port.width;
+		}
+
+		FlxTimer.wait(1, () ->
+		{
+			moveOp();
+		});
+	}
 }
