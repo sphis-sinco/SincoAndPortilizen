@@ -1,6 +1,5 @@
 package stages.stage4;
 
-import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxTimer;
 
 class Stage4 extends FlxState
@@ -8,49 +7,9 @@ class Stage4 extends FlxState
 	var port:PortS4 = new PortS4();
 	var port_dir:Int = 0; // 0 - left, 1 - down, 2 - up, 3 - right
 
-	var level_tilemap:FlxTypedGroup<Tile> = new FlxTypedGroup<Tile>();
-
 	override function create()
 	{
 		super.create();
-
-        var leveldata:Array<Dynamic> = FileManager.getJSON(FileManager.getDataFile('Stage4Map.json')).layers[0].data2D;
-        
-        var width:Int = 16;
-        var height:Int = 16;
-        var i:Int = 0;
-        var ii:Int = 0;
-        for (tilearray in leveldata)
-        {
-            for (tile in leveldata)
-            {
-                trace(tile);
-
-                for (tile in tile)
-                {
-                    
-                }
-
-                var tilespr:Tile = new Tile();
-                Global.scaleSprite(tilespr);
-    
-                var x:Float = 0 * (i / width) + tilespr.width;
-                var y:Float = 0 * (i / height) + tilespr.height;
-    
-                trace('New Tile(X:$x, Y:$y)');
-    
-                tilespr.setPosition(x,y);
-    
-    
-                level_tilemap.add(tilespr);
-    
-                ii++;
-            }
-
-            i++;
-        }
-
-        add(level_tilemap);
 
 		port.screenCenter();
 		add(port);
