@@ -20,6 +20,10 @@ class Worldmap extends FlxState
 	{
 		super.create();
 
+		var bg = new FlxSprite();
+		bg.makeGraphic(FlxG.width, FlxG.height);
+		add(bg);
+
 		character.screenCenter();
 		character.x = 32 + character.width;
 
