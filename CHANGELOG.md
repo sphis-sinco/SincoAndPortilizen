@@ -1,4 +1,4 @@
-# 0.0.2 - 2/?/2025
+# 0.0.2 - 2/6/2025
 - Added post-stage 1 cutscene
 - Added title screen version text
 - Worldmap Changes:
