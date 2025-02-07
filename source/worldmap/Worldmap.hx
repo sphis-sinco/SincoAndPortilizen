@@ -38,6 +38,7 @@ class Worldmap extends FlxState
 
 		character.screenCenter();
 		character.x = 32 + character.width;
+		mapTileXPosThing = character.getGraphicMidpoint().x;
 
 		makeMap();
 
@@ -51,6 +52,8 @@ class Worldmap extends FlxState
 
 		add(charWheel);
 	}
+
+	var mapTileXPosThing:Float = 0;
 
 	override function update(elapsed:Float)
 	{
@@ -119,7 +122,7 @@ class Worldmap extends FlxState
 		{
 			// TODO: change these to use MapTile once you figure out the bug
 
-			var level:FlxSprite = new FlxSprite(character.getGraphicMidpoint().x - 12 + (i * 256), character.getGraphicMidpoint().y);
+			var level:FlxSprite = new FlxSprite(mapTileXPosThing - 12 + (i * 256), character.getGraphicMidpoint().y);
 
 			if (implementedLevels.get(character.lowercase_char())[i] == false)
 				level.makeGraphic(24, 24, FlxColor.BLACK);
