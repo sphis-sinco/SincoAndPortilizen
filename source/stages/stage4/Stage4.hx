@@ -1,5 +1,6 @@
 package stages.stage4;
 
+import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
 class Stage4 extends FlxState
@@ -24,14 +25,32 @@ class Stage4 extends FlxState
 
 		enemy.screenCenter();
 		enemy.x -= enemy.width * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+		enemyX = enemy.x;
 		add(enemy);
 
 		port.y = Std.int(FlxG.height - port.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * (Global.DEFAULT_IMAGE_SCALE_MULTIPLIER));
 		enemy.y = port.y;
 	}
 
+	var enemyX:Float = 0;
+	var enemyCanAttack:Bool = true;
+
 	override function update(elapsed:Float)
 	{
+		if (FlxG.random.bool(25) && enemyCanAttack)
+		{
+			enemyCanAttack = false;
+			FlxTween.tween(enemy, {x: port.x}, 1, {
+				onComplete: tween -> {
+					FlxTween.tween(enemy, {x: enemyX}, 1, {onComplete: tween -> {
+						FlxTimer.wait(FlxG.random.int(1, 2), () -> {
+							enemyCanAttack = true;
+						});
+					}});
+				}
+			});
+		}
+
 		super.update(elapsed);
 	}
 }
