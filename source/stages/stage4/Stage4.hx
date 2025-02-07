@@ -12,9 +12,11 @@ class Stage4 extends FlxState
 		super.create();
 
 		port.screenCenter();
+		port.x = FlxG.width - port.width * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * 4;
 		add(port);
 
 		enemy.screenCenter();
+		enemy.x -= enemy.width * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 		add(enemy);
 	}
 
