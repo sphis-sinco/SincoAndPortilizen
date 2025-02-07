@@ -39,21 +39,7 @@ class Worldmap extends FlxState
 		character.screenCenter();
 		character.x = 32 + character.width;
 
-		var i = 0;
-		while (i < 3)
-		{
-			// TODO: change these to use MapTile once you figure out the bug
-
-			var level:FlxSprite = new FlxSprite(character.getGraphicMidpoint().x - 12 + (i * 256), character.getGraphicMidpoint().y);
-			level.makeGraphic(24, 24, FlxColor.RED);
-
-			if (character.lowercase_char() == 'sinco' && FlxG.save.data.gameplaystatus.level - 1 > i)
-				level.color = FlxColor.LIME;
-
-			mapGRP.add(level);
-
-			i++;
-		}
+		makeMap();
 
 		add(mapGRP);
 		add(character);
@@ -120,4 +106,22 @@ class Worldmap extends FlxState
 	}
 
 	var canSwap:Bool = true;
+
+	public function makeMap() {
+		var i = 0;
+		while (i < 3)
+		{
+			// TODO: change these to use MapTile once you figure out the bug
+
+			var level:FlxSprite = new FlxSprite(character.getGraphicMidpoint().x - 12 + (i * 256), character.getGraphicMidpoint().y);
+			level.makeGraphic(24, 24, FlxColor.RED);
+
+			if (character.lowercase_char() == 'sinco' && FlxG.save.data.gameplaystatus.level - 1 > i)
+				level.color = FlxColor.LIME;
+
+			mapGRP.add(level);
+
+			i++;
+		}
+	}
 }
