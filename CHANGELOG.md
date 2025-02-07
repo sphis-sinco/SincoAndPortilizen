@@ -1,3 +1,6 @@
+# 0.0.3 - 2/?/2025
+- Added screenshot plugin (you can take a screenshot with F2 unless in debug, you do F1)
+
 # 0.0.2 - 2/6/2025
 - Added post-stage 1 cutscene
 - Added title screen version text

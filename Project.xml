@@ -48,6 +48,17 @@
 	<!--In case you want to use nape with flixel-->
 	<!--<haxelib name="nape-haxe4" />-->
 
+	<!-- _______________________________ mydefines ______________________________ -->
+
+	<define name="DISABLE_SCREENSHOTS" if="html5 || mobile"/>
+
+	<section if="DISABLE_SCREENSHOTS">
+			<echo value="screenshots disabled via DISABLED_SCREENSHOTS" unless="html5 || mobile"/>
+			<echo value="screenshots disabled on html5" if="html5"/>
+			<echo value="screenshots disabled on mobile" if="mobile"/>
+	</section>
+
+
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
 	<!--Remove the legacy health system-->
@@ -96,4 +107,5 @@
 	<icon path=".dev/AppIcon-128.png" size="128"/>
 	<icon path=".dev/AppIcon-256.png" size="256"/>
 	<icon path=".dev/AppIcon-512.png" size="512"/>
+
 </project>
