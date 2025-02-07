@@ -11,7 +11,7 @@ class Continue extends FlxState
 
         FlxG.save.data.gameplaystatus ??= GameplayStatus.returnDefaultGameplayStatus();
         
-        FlxG.switchState(Worldmap.new);
+        FlxG.switchState(() -> new Worldmap());
     }
     
 }
