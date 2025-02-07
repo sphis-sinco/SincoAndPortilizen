@@ -10,12 +10,18 @@ import stages.stage4.Stage4;
 
 class Worldmap extends FlxState
 {
-	var character:MapCharacter = new MapCharacter();
+	var character:MapCharacter;
 	var charWheel:CharacterWheel = new CharacterWheel();
 
 	var current_level:Int = 1;
 
 	var mapGRP:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+
+	override public function new(char:String = "Sinco") {
+		super();
+
+		character = new MapCharacter(char);
+	}
 
 	override function create()
 	{
