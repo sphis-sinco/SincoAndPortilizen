@@ -113,11 +113,6 @@ class Worldmap extends FlxState
 
 	var canSwap:Bool = true;
 
-	var levelFinishedColors:Map<String, FlxColor> = [
-		"port" => FlxColor.PURPLE,
-		"sinco" => FlxColor.LIME
-	];
-
 	public function makeMap() {
 		var i = 0;
 		while (i < 3)
@@ -126,15 +121,6 @@ class Worldmap extends FlxState
 
 			var level:FlxSprite = new FlxSprite(character.getGraphicMidpoint().x - 12 + (i * 256), character.getGraphicMidpoint().y);
 			level.makeGraphic(24, 24, FlxColor.RED);
-
-			if (FlxG.save.data.gameplaystatus.level - 1 > i)
-			{
-				level.color = FlxColor.GREEN;
-
-				try {
-					level.color = levelFinishedColors.get(character.lowercase_char());
-				} catch(e) {}
-			}
 
 			mapGRP.add(level);
 
