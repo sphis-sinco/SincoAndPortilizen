@@ -61,12 +61,14 @@ class Worldmap extends FlxState
 
 		if (FlxG.keys.anyJustReleased([LEFT, RIGHT]) && character.animationname() != 'run')
 		{
+			canSwap = false;
 			character.flipX = FlxG.keys.justReleased.LEFT;
 
 			current_level += (character.flipX) ? -1 : 1;
 			if (current_level > 3)
 			{
 				current_level -= 1;
+				canSwap = true;
 				return;
 			}
 
@@ -74,6 +76,7 @@ class Worldmap extends FlxState
 			FlxTween.tween(character, {x: character.x + ((character.flipX) ? -256 : 256)}, 1, {
 				onComplete: tween ->
 				{
+					canSwap = true;
 					character.animation.play('idle');
 
 					if (current_level < 1)
