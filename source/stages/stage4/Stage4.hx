@@ -64,6 +64,12 @@ class Stage4 extends FlxState
 			enemyCanAttack = false;
 			FlxTween.tween(enemy, {x: port.x}, 1, {
 				onComplete: tween -> {
+
+					if (enemy.overlaps(port))
+					{
+						trace('u ded');
+					}
+
 					FlxTween.tween(enemy, {x: enemyX}, 1, {onComplete: tween -> {
 						FlxTimer.wait(FlxG.random.int(1, 2), () -> {
 							enemyCanAttack = true;
