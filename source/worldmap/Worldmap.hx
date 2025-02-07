@@ -129,7 +129,11 @@ class Worldmap extends FlxState
 			var tileColor:FlxColor = 0x000000;
 
 			if (implementedLevels.get(character.lowercase_char())[i] != false)
+			{
 				tileColor = FlxColor.RED;
+
+				// TODO: implement color change for when a level is finished
+			}
 			
 			level.makeGraphic(24, 24, tileColor);
 
