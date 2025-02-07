@@ -6,8 +6,9 @@ class PortS4 extends FlxSprite
     override public function new() {
         super();
 
-        loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage4Port'), true, 32, 32);
-        animation.add('run', [0,2,5,2], 2);
+        loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage4Port-Redone'), true, 32, 32);
+        animation.add('run', [0,1], 4);
+        animation.add('jump', [2], 4, false);
 
         animation.play('run');
 
