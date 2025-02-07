@@ -35,8 +35,30 @@ class Stage4 extends FlxState
 	var enemyX:Float = 0;
 	var enemyCanAttack:Bool = true;
 
+	var portJumping:Bool = false;
+	var portJumpSpeed:Float = 0.5;
+
 	override function update(elapsed:Float)
 	{
+		if (FlxG.keys.justReleased.SPACE && !portJumping)
+		{
+			portJumping = true;
+
+			var portjumpheight:Float = port.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+
+			port.animation.play('jump');
+			FlxTween.tween(port, {y: port.y - portjumpheight}, portJumpSpeed, {
+				onComplete: tween -> {
+					FlxTween.tween(port, {y: port.y + portjumpheight}, portJumpSpeed, {
+						onComplete: tween -> {
+							portJumping = false;
+							port.animation.play('run');
+						}
+					});
+				}
+			});
+		}
+
 		if (FlxG.random.bool(25) && enemyCanAttack)
 		{
 			enemyCanAttack = false;
