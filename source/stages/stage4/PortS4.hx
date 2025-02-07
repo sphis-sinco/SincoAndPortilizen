@@ -12,7 +12,7 @@ class PortS4 extends FlxSprite
 
         animation.play('run');
 
-        Global.scaleSprite(this);
+        Global.scaleSprite(this, 2);
     }
     
 }

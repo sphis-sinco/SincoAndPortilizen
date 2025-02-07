@@ -9,6 +9,6 @@ class EnemyS4 extends FlxSprite
         animation.add('run', [0,1,2,1], 4);
         animation.play('run');
 
-        Global.scaleSprite(this);
+        Global.scaleSprite(this, 2);
     }
 }
