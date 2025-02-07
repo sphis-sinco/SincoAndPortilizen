@@ -2,6 +2,7 @@ package stages.stage4;
 
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import worldmap.Worldmap;
 
 class Stage4 extends FlxState
 {
@@ -66,7 +67,8 @@ class Stage4 extends FlxState
 				onComplete: tween -> {
 					if (enemy.overlaps(port))
 					{
-						
+						FlxG.camera.flash();
+						FlxG.switchState(() -> new Worldmap());
 					}
 
 					FlxTween.tween(enemy, {x: enemyX}, 1, {onComplete: tween -> {
