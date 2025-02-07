@@ -8,6 +8,7 @@
     - Added "Background" to the Worldmap
     - Worldmap tiles are now dark for levels that are not implemented
     - Worldmap tiles with unimplemented levels dont send you to the Mainmenu when you try and play them anymore
+- Added Stage 4 (Portilizens first level)
 
 # 0.0.1 - 2/2/2025
 CURRENT FEATURES:
