@@ -25,6 +25,9 @@ class Stage4 extends FlxState
 		enemy.screenCenter();
 		enemy.x -= enemy.width * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 		add(enemy);
+
+		port.y = Std.int(FlxG.height - port.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * (Global.DEFAULT_IMAGE_SCALE_MULTIPLIER));
+		enemy.y = port.y;
 	}
 
 	override function update(elapsed:Float)
