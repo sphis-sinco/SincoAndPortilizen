@@ -17,6 +17,11 @@ class Worldmap extends FlxState
 
 	var mapGRP:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 
+	var implementedLevels:Map<String, Array<Bool>> = [
+		"sinco" => [true, false, false, false],
+		"port" => [true, false, false, false]
+	];
+
 	override public function new(char:String = "Sinco") {
 		super();
 
@@ -97,8 +102,6 @@ class Worldmap extends FlxState
 			{
 				case 1:
 					FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1() : new Stage4()));
-				default:
-					FlxG.switchState(() -> new MainMenu());
 			}
 		}
 
