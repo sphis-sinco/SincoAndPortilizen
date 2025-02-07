@@ -100,6 +100,12 @@ class Worldmap extends FlxState
 				FlxG.camera.flash(0xffffff, 1, () -> {
 					canSwap = true;
 				});
+				for (tile in mapGRP)
+				{
+					tile.destroy();
+					mapGRP.remove(tile);
+				}
+				makeMap();
 				character.swapCharacter();
 			});
 		}
