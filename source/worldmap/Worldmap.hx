@@ -120,7 +120,11 @@ class Worldmap extends FlxState
 			// TODO: change these to use MapTile once you figure out the bug
 
 			var level:FlxSprite = new FlxSprite(character.getGraphicMidpoint().x - 12 + (i * 256), character.getGraphicMidpoint().y);
-			level.makeGraphic(24, 24, FlxColor.RED);
+
+			if (implementedLevels.get(character.lowercase_char())[i] == false)
+				level.makeGraphic(24, 24, FlxColor.BLACK);
+			else
+				level.makeGraphic(24, 24, FlxColor.RED);
 
 			mapGRP.add(level);
 
