@@ -68,7 +68,7 @@ class Stage4 extends FlxState
 					if (enemy.overlaps(port))
 					{
 						FlxG.camera.flash();
-						FlxG.switchState(() -> new Worldmap());
+						FlxG.switchState(() -> new Worldmap("Port"));
 					}
 
 					FlxTween.tween(enemy, {x: enemyX}, 1, {onComplete: tween -> {
