@@ -5,6 +5,9 @@
 - Code changes:
     - Modified `Global.setEmeraldAmount()` function
     - Moved every folder that is sap specific to the new sap folder
+    - Moved Debug build and Game version traces to the project xml
+    - Added echo for build/test targets
+    - Added ability to enable and disable annoying errors and warnings
 
 # 0.0.2 - 2/6/2025
 - Added post-stage 1 cutscene
