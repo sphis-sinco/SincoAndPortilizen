@@ -30,6 +30,10 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 
+	<!-- _________________________________ Before _______________________________ -->
+	<echo value="${meta.title} v${meta.version}" />
+	<echo value="DEBUG BUILD: Press [ANY] to start" if="debug"/>
+
 	<!-- _____________________________ Custom Defines ___________________________ -->
 
 	<define name="DISABLE_PLUGINS" if="mobile"/>
@@ -50,8 +54,6 @@
 	</section>
 
 	<!-- _________________________________ Custom _______________________________ -->
-
-	<echo value="DEBUG BUILD: Press [ANY] to start" if="debug"/>
 
 	<!--Place custom nodes like icons here-->
 	<icon path=".dev/AppIcon-16.png" size="16"/>

@@ -14,8 +14,6 @@ class InitState extends FlxState
 {
 	override public function create()
 	{
-		trace('Sinco and Portilizen v${Global.VERSION}');
-
 		// Make errors and warnings less annoying.
 		LogStyle.ERROR.openConsole = false;
 		LogStyle.ERROR.errorSound = null;
