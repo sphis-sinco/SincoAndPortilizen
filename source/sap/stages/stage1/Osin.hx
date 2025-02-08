@@ -1,4 +1,4 @@
-package stages.stage1;
+package sap.stages.stage1;
 
 class Osin extends FlxSprite
 {

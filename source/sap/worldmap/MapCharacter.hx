@@ -1,4 +1,4 @@
-package worldmap;
+package sap.worldmap;
 
 class MapCharacter extends FlxSprite
 {

@@ -1,4 +1,4 @@
-package mainmenu;
+package sap.mainmenu;
 
 class MenuCharacter extends FlxSprite
 {

@@ -1,4 +1,4 @@
-package stages.stage4;
+package sap.stages.stage4;
 
 class PortS4 extends FlxSprite
 {

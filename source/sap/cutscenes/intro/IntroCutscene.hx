@@ -1,4 +1,4 @@
-package cutscenes.intro;
+package sap.cutscenes.intro;
 
 import stages.stage1.Stage1;
 import title.TitleState;

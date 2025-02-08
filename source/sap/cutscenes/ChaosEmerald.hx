@@ -1,4 +1,4 @@
-package cutscenes;
+package sap.cutscenes;
 
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;

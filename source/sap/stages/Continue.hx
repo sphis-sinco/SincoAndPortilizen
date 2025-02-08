@@ -1,4 +1,4 @@
-package stages;
+package sap.stages;
 
 import stages.stage1.Stage1;
 import worldmap.Worldmap;

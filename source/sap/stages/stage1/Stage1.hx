@@ -1,4 +1,4 @@
-package stages.stage1;
+package sap.stages.stage1;
 
 import cutscenes.ChaosEmerald;
 import flixel.math.FlxPoint;

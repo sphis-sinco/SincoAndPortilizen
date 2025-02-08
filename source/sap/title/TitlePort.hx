@@ -1,4 +1,4 @@
-package title;
+package sap.title;
 
 class TitlePort extends FlxSprite
 {

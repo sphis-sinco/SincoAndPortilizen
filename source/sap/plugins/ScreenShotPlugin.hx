@@ -1,4 +1,4 @@
-package plugins;
+package sap.plugins;
 
 // FlxG import was here
 import flixel.input.FlxInput.FlxInputState;

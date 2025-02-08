@@ -1,4 +1,4 @@
-package cutscenes;
+package sap.cutscenes;
 
 typedef PanelCutsceneSettings =
 {

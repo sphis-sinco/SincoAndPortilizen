@@ -1,4 +1,4 @@
-package title;
+package sap.title;
 
 import flixel.effects.FlxFlicker;
 import flixel.text.FlxText;

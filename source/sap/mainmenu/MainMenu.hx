@@ -1,4 +1,4 @@
-package mainmenu;
+package sap.mainmenu;
 
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;

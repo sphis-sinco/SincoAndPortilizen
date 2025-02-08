@@ -1,4 +1,4 @@
-package mainmenu;
+package sap.mainmenu;
 
 import cutscenes.intro.IntroCutscene;
 import stages.Continue;

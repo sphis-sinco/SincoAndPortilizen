@@ -1,4 +1,4 @@
-package savedata;
+package sap.savedata;
 
 class GameplayStatus
 {
