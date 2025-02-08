@@ -1,13 +1,13 @@
 package;
 
-import cutscenes.ChaosEmerald;
-import cutscenes.intro.IntroCutscene;
 import flixel.system.debug.log.LogStyle;
-import mainmenu.MainMenu;
-import stages.stage1.Stage1;
-import stages.stage4.Stage4;
-import title.TitleState;
-import worldmap.Worldmap;
+import sap.cutscenes.ChaosEmerald;
+import sap.cutscenes.intro.IntroCutscene;
+import sap.mainmenu.MainMenu;
+import sap.stages.stage1.Stage1;
+import sap.stages.stage4.Stage4;
+import sap.title.TitleState;
+import sap.worldmap.Worldmap;
 
 // This is initalization stuff + compiler condition flags
 class InitState extends FlxState
