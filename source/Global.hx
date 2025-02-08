@@ -141,7 +141,7 @@ class Global
 	 * @param lvl what you are trying to set the current level to
 	 */
 	public static function setLevel(lvl:Int = 1) {
-		if (FlxG.save.data.gameplaystatus.level < lvl - 1)
+		if (FlxG.save.data.gameplaystatus.level = lvl - 1)
 			FlxG.save.data.gameplaystatus.level = lvl;
 	}
 }
