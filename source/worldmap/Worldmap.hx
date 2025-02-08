@@ -92,6 +92,7 @@ class Worldmap extends FlxState
 		{
 			switch (current_level)
 			{
+				// TODO: implement level unlocking PLEASE
 				case 1:
 					FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1() : new Stage4()));
 			}
