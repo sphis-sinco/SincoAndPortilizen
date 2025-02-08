@@ -6,7 +6,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import mainmenu.MainMenu;
+import sap.mainmenu.MainMenu;
 
 enum abstract TitleStates(Int) from Int to Int
 {

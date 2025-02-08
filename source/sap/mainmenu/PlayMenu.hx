@@ -1,7 +1,7 @@
 package sap.mainmenu;
 
-import cutscenes.intro.IntroCutscene;
-import stages.Continue;
+import sap.cutscenes.intro.IntroCutscene;
+import sap.stages.Continue;
 
 class PlayMenu extends MainMenu
 {

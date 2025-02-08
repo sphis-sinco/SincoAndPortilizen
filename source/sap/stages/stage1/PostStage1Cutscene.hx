@@ -1,7 +1,7 @@
 package sap.stages.stage1;
 
-import cutscenes.PanelCutscene;
-import worldmap.Worldmap;
+import sap.cutscenes.PanelCutscene;
+import sap.worldmap.Worldmap;
 
 class PostStage1Cutscene extends PanelCutscene
 {

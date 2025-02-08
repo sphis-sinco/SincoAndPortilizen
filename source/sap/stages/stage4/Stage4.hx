@@ -1,9 +1,9 @@
 package sap.stages.stage4;
 
-import cutscenes.ChaosEmerald;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import worldmap.Worldmap;
+import sap.cutscenes.ChaosEmerald;
+import sap.worldmap.Worldmap;
 
 class Stage4 extends FlxState
 {

@@ -4,9 +4,9 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import mainmenu.MainMenu;
-import stages.stage1.Stage1;
-import stages.stage4.Stage4;
+import sap.mainmenu.MainMenu;
+import sap.stages.stage1.Stage1;
+import sap.stages.stage4.Stage4;
 
 class Worldmap extends FlxState
 {

@@ -6,7 +6,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.util.typeLimit.NextState;
-import mainmenu.MainMenu;
+import sap.mainmenu.MainMenu;
 
 class ChaosEmeraldObject extends FlxSprite {
 

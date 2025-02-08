@@ -1,15 +1,14 @@
 package sap.stages.stage1;
 
-import cutscenes.ChaosEmerald;
 import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import mainmenu.MainMenu;
-import mainmenu.PlayMenu;
-import worldmap.Worldmap;
+import sap.cutscenes.ChaosEmerald;
+import sap.mainmenu.*;
+import sap.worldmap.Worldmap;
 
 class Stage1 extends FlxState
 {
