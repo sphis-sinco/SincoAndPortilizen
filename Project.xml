@@ -65,8 +65,8 @@
 			<echo value="screenshots disabled via DISABLE_SCREENSHOTS" unless="html5 || mobile || DISABLE_PLUGINS"/>
 
 			<echo value="screenshots disabled via DISABLE_PLUGINS" if="DISABLE_PLUGINS"/>
-			<echo value="screenshots disabled on html5" if="html5"/>
-			<echo value="screenshots disabled on mobile" if="mobile"/>
+			<echo value="screenshots disabled on html5" if="html5" unless="DISABLE_PLUGINS || mobile"/>
+			<echo value="screenshots disabled on mobile" if="mobile" unless="DISABLE_PLUGINS || html5"/>
 	</section>
 
 	<!-- _________________________________ After _______________________________ -->
