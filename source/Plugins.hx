@@ -7,7 +7,7 @@ class Plugins
         #if !DISABLE_SCREENSHOT
         addPlugin(() -> new ScreenShotPlugin());
         #if debug ScreenShotPlugin.screenshotKey = F1; #end
-		#end
+        #end
     }
 
     public static function addPlugin(state:Dynamic)

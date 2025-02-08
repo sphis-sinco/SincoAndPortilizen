@@ -1,4 +1,4 @@
-package screenshotplugin;
+package plugins;
 
 // FlxG import was here
 import flixel.input.FlxInput.FlxInputState;
