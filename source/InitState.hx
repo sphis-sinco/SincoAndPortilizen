@@ -15,10 +15,15 @@ class InitState extends FlxState
 	override public function create()
 	{
 		// Make errors and warnings less annoying.
+		#if DISABLE_ANNOYING_ERRORS
 		LogStyle.ERROR.openConsole = false;
 		LogStyle.ERROR.errorSound = null;
+		#end
+
+		#if DISABLE_ANNOYING_WARNINGS
 		LogStyle.WARNING.openConsole = false;
 		LogStyle.WARNING.errorSound = null;
+		#end
 
 		#if !debug
 		proceed();
