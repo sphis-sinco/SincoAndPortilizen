@@ -16,12 +16,6 @@ class InitState extends FlxState
 	{
 		trace('Sinco and Portilizen v${Global.VERSION}');
 
-		#if !DISABLE_SCREENSHOT
-		flixel.FlxG.plugins.addIfUniqueType(new ScreenShotPlugin());
-		#if debug ScreenShotPlugin.screenshotKey = F1; #end
-		ScreenShotPlugin.enabled = false;
-		#end
-
 		// Make errors and warnings less annoying.
 		LogStyle.ERROR.openConsole = false;
 		LogStyle.ERROR.errorSound = null;
@@ -51,8 +45,10 @@ class InitState extends FlxState
 	}
 	public function proceed()
 	{
+
 		#if !DISABLE_SCREENSHOT
-		ScreenShotPlugin.enabled = true;
+		flixel.FlxG.plugins.addIfUniqueType(new ScreenShotPlugin());
+		#if debug ScreenShotPlugin.screenshotKey = F1; #end
 		#end
 
 		#if CUTSCENE_TESTING
