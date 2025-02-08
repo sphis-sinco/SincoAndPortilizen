@@ -1,5 +1,7 @@
 # 0.0.3 - 2/?/2025
 - Added screenshot plugin (you can take a screenshot with F2 unless in debug, you do F1)
+- Modified `Global.setEmeraldAmount()` function
+- Added stage 4 winning condition (you have to survive the level for a minute)
 
 # 0.0.2 - 2/6/2025
 - Added post-stage 1 cutscene
