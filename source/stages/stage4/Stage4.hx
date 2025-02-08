@@ -1,5 +1,6 @@
 package stages.stage4;
 
+import cutscenes.ChaosEmerald;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import worldmap.Worldmap;
@@ -31,6 +32,12 @@ class Stage4 extends FlxState
 
 		port.y = Std.int(FlxG.height - port.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * (Global.DEFAULT_IMAGE_SCALE_MULTIPLIER));
 		enemy.y = port.y;
+
+		FlxTimer.wait(60, () -> {
+			Global.setLevel(5);
+			Global.setEmeraldAmount(4);
+			FlxG.switchState(() -> new ChaosEmerald(() -> new Worldmap("Port")));
+		});
 	}
 
 	var enemyX:Float = 0;
