@@ -73,9 +73,4 @@
 	<icon path=".dev/AppIcon-256.png" size="256"/>
 	<icon path=".dev/AppIcon-512.png" size="512"/>
 
-	
-	<!-- Run some scripts before and after building (yoinked from funkin LOL) -->
-	<prebuild haxe="source/Prebuild.hx"/>
-	<postbuild haxe="source/Postbuild.hx"/>
-
 </project>
