@@ -46,10 +46,7 @@ class InitState extends FlxState
 	public function proceed()
 	{
 
-		#if !DISABLE_SCREENSHOT
-		flixel.FlxG.plugins.addIfUniqueType(new ScreenShotPlugin());
-		#if debug ScreenShotPlugin.screenshotKey = F1; #end
-		#end
+		Plugins.init();
 
 		#if CUTSCENE_TESTING
 		trace('Moving to Chaos Emerald Cutscene');
