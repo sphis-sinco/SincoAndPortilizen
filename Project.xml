@@ -30,7 +30,7 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 
-	<!-- _____________________________ custom defines ___________________________ -->
+	<!-- _____________________________ Custom Defines ___________________________ -->
 
 	<define name="DISABLE_PLUGINS" if="mobile"/>
 
