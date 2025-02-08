@@ -127,7 +127,7 @@ class Global
 	}
 
 	/**
-	 * If the current emerald count is lower than `emerald` by 1 then the current emerald count gets set to `emerald`
+	 * If the current emerald count is `emerald` - 1 then the current emerald count gets set to `emerald`
 	 * @param emerald what you are trying to set the current emerald count to
 	 */
 	public static function setEmeraldAmount(emerald:Int = 1)
