@@ -5,12 +5,7 @@
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="Sinco and Portilizen" file="SAP" main="Main" version="0.0.2" company="Sinco" />
-
-	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
-		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
 	<app preloader="flixel.system.FlxPreloader" />
-
-	<!--Minimum without FLX_NO_GAMEPAD: 11.8, without FLX_NO_NATIVE_CURSOR: 11.2-->
 	<set name="SWF_VERSION" value="11.8" />
 
 	<!-- ____________________________ Window Settings ___________________________ -->
@@ -18,13 +13,8 @@
 	<!--These window settings apply to all targets-->
 	<window width="640" height="608" fps="60" background="#000000" hardware="true" vsync="false" />
 
-	<!--HTML5-specific-->
 	<window if="html5" resizable="true" />
-
-	<!--Desktop-specific-->
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
-
-	<!--Mobile-specific-->
 	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
@@ -38,18 +28,10 @@
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
-
-	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
 
-	<!--In case you want to use the ui package-->
-	<!--<haxelib name="flixel-ui" />-->
+	<!-- _____________________________ custom defines ___________________________ -->
 
-	<!--In case you want to use nape with flixel-->
-	<!--<haxelib name="nape-haxe4" />-->
-
-	<!-- _______________________________ mydefines ______________________________ -->
-	<!-- Plugin stuff -->
 	<define name="DISABLE_PLUGINS" if="mobile"/>
 
 	<section if="DISABLE_PLUGINS">
@@ -58,7 +40,7 @@
 	</section>
 
 	<define name="DISABLE_SCREENSHOTS" if="html5 || mobile || DISABLE_PLUGINS"/>
-	
+
 	<section if="DISABLE_SCREENSHOTS">
 			<echo value="screenshots disabled via DISABLE_SCREENSHOTS" unless="html5 || mobile || DISABLE_PLUGINS"/>
 
@@ -67,44 +49,18 @@
 			<echo value="screenshots disabled on mobile" if="mobile"/>
 	</section>
 
-
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
-	<!--Remove the legacy health system-->
 	<haxedef name="FLX_NO_HEALTH" />
-	
-	<!--Enable the Flixel core recording system-->
-	<!--<haxedef name="FLX_RECORD" />-->
 
-	<!--Disable the right and middle mouse buttons-->
-	<!--<haxedef name="FLX_NO_MOUSE_ADVANCED" />-->
-
-	<!--Disable the native cursor API on Flash-->
-	<!--<haxedef name="FLX_NO_NATIVE_CURSOR" />-->
-
-	<!--Optimise inputs, be careful you will get null errors if you don't use conditionals in your game-->
 	<haxedef name="FLX_NO_MOUSE" if="mobile" />
 	<haxedef name="FLX_NO_KEYBOARD" if="mobile" />
 	<haxedef name="FLX_NO_TOUCH" if="desktop" />
-	<!--<haxedef name="FLX_NO_GAMEPAD" />-->
 
-	<!--Disable the Flixel core sound tray-->
-	<!--<haxedef name="FLX_NO_SOUND_TRAY" />-->
-
-	<!--Disable the Flixel sound management code-->
-	<!--<haxedef name="FLX_NO_SOUND_SYSTEM" />-->
-
-	<!--Disable the Flixel core focus lost screen-->
-	<!--<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />-->
-
-	<!--Disable the Flixel core debugger. Automatically gets set whenever you compile in release mode!-->
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 
-	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
-	<!-- Haxe 4.3.0+: Enable pretty syntax errors and stuff. -->
-	<!-- pretty (haxeflixel default), indent, classic (haxe compiler default) -->
 	<haxedef name="message.reporting" value="pretty" />
 
 	<!-- _________________________________ Custom _______________________________ -->
