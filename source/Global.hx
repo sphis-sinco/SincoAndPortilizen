@@ -99,31 +99,36 @@ class Global
 	/**
 	 * Plays the main music for menus (22) if its null, and if there is no music playing
 	 */
-	public static function playMenuMusic() {
+	public static function playMenuMusic()
+	{
 		if (FlxG.sound.music != null)
+		{
+			if (!FlxG.sound.music.playing)
 			{
-				if (!FlxG.sound.music.playing)
-					{
-						FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
-					}
-			} else {
 				FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
 			}
+		}
+		else
+		{
+			FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
+		}
 	}
 
 	/**
 	 * Plays a sound effect using the `name` param
 	 * @param name this is the filename/filepath, for example `blipSelect` would return `assets/sounds/blipSelect.wav`
 	 */
-	public static function playSoundEffect(name:String) {
+	public static function playSoundEffect(name:String)
+	{
 		FlxG.sound.play(FileManager.getSoundFile('sounds/$name'));
 	}
 
 	/**
 	 * Plays a random hitHurt sound effect
 	 */
-	public static function hitHurt() {
-		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(0,4)}');
+	public static function hitHurt()
+	{
+		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(0, 4)}');
 	}
 
 	/**
@@ -140,8 +145,25 @@ class Global
 	 * If the current level is lower than `lvl` by 1 then the current level gets set to `lvl`
 	 * @param lvl what you are trying to set the current level to
 	 */
-	public static function setLevel(lvl:Int = 1) {
+	public static function setLevel(lvl:Int = 1)
+	{
 		if (FlxG.save.data.gameplaystatus.level = lvl - 1)
 			FlxG.save.data.gameplaystatus.level = lvl;
+	}
+
+	/**
+	 * Gets the value of a Haxe compiler define.
+	 * Code yoinked from friday night funkin
+	 *
+	 * @param key The name of the define to get the value of.
+	 * @param defaultValue The value to return if the define is not set.
+	 * @return An expression containing the value of the define.
+	 */
+	public static macro function getDefine(key:String, defaultValue:String = null):haxe.macro.Expr
+	{
+		var value = haxe.macro.Context.definedValue(key);
+		if (value == null)
+			value = defaultValue;
+		return macro $v{value};
 	}
 }
