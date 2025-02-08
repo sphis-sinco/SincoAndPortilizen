@@ -4,6 +4,7 @@
     - Added stage 4 winning condition (you have to survive the level for a minute)
 - Code changes:
     - Modified `Global.setEmeraldAmount()` function
+    - Moved every folder that is sap specific to the new sap folder
 
 # 0.0.2 - 2/6/2025
 - Added post-stage 1 cutscene
