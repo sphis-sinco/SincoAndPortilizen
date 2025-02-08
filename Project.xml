@@ -36,7 +36,6 @@
 	<echo value="Building for ${project.target} on a ${project.host} machine" if="buildOrTest" />
 
 	<echo value="${meta.title} v${meta.version}" />
-	<echo value="DEBUG BUILD: Press [ANY] to start" if="debug"/>
 
 	<!-- _____________________________ Custom Defines ___________________________ -->
 
@@ -72,6 +71,7 @@
 	<!-- _________________________________ After _______________________________ -->
 
 	<error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile"/>
+	<echo value="DEBUG BUILD: Press [ANY] to start" if="debug"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
