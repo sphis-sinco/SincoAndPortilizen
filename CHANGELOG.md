@@ -8,6 +8,7 @@
     - Moved Debug build and Game version traces to the project xml
     - Added echo for build/test targets
     - Added ability to enable and disable annoying errors and warnings
+    - Added compiler error for mobile
 
 # 0.0.2 - 2/6/2025
 - Added post-stage 1 cutscene

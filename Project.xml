@@ -37,6 +37,8 @@
 	<echo value="${meta.title} v${meta.version}" />
 	<echo value="DEBUG BUILD: Press [ANY] to start" if="debug"/>
 
+	<error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile"/>
+
 	<!-- _____________________________ Custom Defines ___________________________ -->
 	<define name="DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS"/>
 	<define name="DISABLE_ANNOYING_WARNINGS" unless="ENABLE_ANNOYING_WARNINGS"/>
