@@ -9,6 +9,7 @@
     - Added echo for build/test targets
     - Added ability to enable and disable annoying errors and warnings
     - Added compiler error for mobile
+        - Compiling for mobile doesnt work
 
 # 0.0.2 - 2/6/2025
 - Added post-stage 1 cutscene
