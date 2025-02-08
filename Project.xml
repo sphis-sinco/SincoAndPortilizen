@@ -51,6 +51,8 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
+	<echo value="DEBUG BUILD: Press [ANY] to start" if="debug"/>
+
 	<!--Place custom nodes like icons here-->
 	<icon path=".dev/AppIcon-16.png" size="16"/>
 	<icon path=".dev/AppIcon-32.png" size="32"/>

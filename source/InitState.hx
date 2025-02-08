@@ -24,8 +24,6 @@ class InitState extends FlxState
 
 		#if !debug
 		proceed();
-		#else
-		trace('DEBUG BUILD: Press [ANY] to start');
 		#end
 
 		super.create();
