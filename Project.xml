@@ -49,10 +49,20 @@
 	<!--<haxelib name="nape-haxe4" />-->
 
 	<!-- _______________________________ mydefines ______________________________ -->
-	<define name="DISABLE_SCREENSHOTS" if="html5 || mobile || DISABLE_PLUGINS"/>
+	<!-- Plugin stuff -->
+	<define name="DISABLE_PLUGINS" if="mobile"/>
 
+	<section if="DISABLE_PLUGINS">
+			<echo value="plugins disabled via DISABLE_PLUGINS" unless="mobile"/>
+			<echo value="plugins disabled on mobile" if="mobile"/>
+	</section>
+
+	<define name="DISABLE_SCREENSHOTS" if="html5 || mobile || DISABLE_PLUGINS"/>
+	
 	<section if="DISABLE_SCREENSHOTS">
-			<echo value="screenshots disabled via DISABLE_SCREENSHOTS" unless="html5 || mobile"/>
+			<echo value="screenshots disabled via DISABLE_SCREENSHOTS" unless="html5 || mobile || DISABLE_PLUGINS"/>
+
+			<echo value="screenshots disabled via DISABLE_PLUGINS" if="DISABLE_PLUGINS"/>
 			<echo value="screenshots disabled on html5" if="html5"/>
 			<echo value="screenshots disabled on mobile" if="mobile"/>
 	</section>

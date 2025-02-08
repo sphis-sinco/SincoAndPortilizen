@@ -46,7 +46,9 @@ class InitState extends FlxState
 	public function proceed()
 	{
 
+		#if DISABLE_PLUGINS
 		Plugins.init();
+		#end
 
 		#if CUTSCENE_TESTING
 		trace('Moving to Chaos Emerald Cutscene');
