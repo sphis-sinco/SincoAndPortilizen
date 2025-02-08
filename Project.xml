@@ -31,6 +31,9 @@
 	<haxelib name="flixel-addons" />
 
 	<!-- _________________________________ Before _______________________________ -->
+	<set name="buildOrTest" if="${project.command == build} || ${project.command == test}" />
+	<echo value="Building for ${project.target} on a ${project.host} machine" if="buildOrTest" />
+	
 	<echo value="${meta.title} v${meta.version}" />
 	<echo value="DEBUG BUILD: Press [ANY] to start" if="debug"/>
 
