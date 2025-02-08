@@ -150,20 +150,4 @@ class Global
 		if (FlxG.save.data.gameplaystatus.level = lvl - 1)
 			FlxG.save.data.gameplaystatus.level = lvl;
 	}
-
-	/**
-	 * Gets the value of a Haxe compiler define.
-	 * Code yoinked from friday night funkin
-	 *
-	 * @param key The name of the define to get the value of.
-	 * @param defaultValue The value to return if the define is not set.
-	 * @return An expression containing the value of the define.
-	 */
-	public static macro function getDefine(key:String, defaultValue:String = null):haxe.macro.Expr
-	{
-		var value = haxe.macro.Context.definedValue(key);
-		if (value == null)
-			value = defaultValue;
-		return macro $v{value};
-	}
 }
