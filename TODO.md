@@ -19,7 +19,3 @@
 
 # Misc
 - Settings menu
-- New Version Syntax
-    - Potential Ideas
-        - v`year.month.day` - example: v`2025.2.2`
-        - Seismatic versioning
