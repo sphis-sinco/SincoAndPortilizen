@@ -2,12 +2,9 @@ package sap.stages.stage1;
 
 import flixel.math.FlxPoint;
 import flixel.text.FlxText;
-import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import sap.cutscenes.ChaosEmerald;
-import sap.mainmenu.*;
 import sap.worldmap.Worldmap;
 
 class Stage1 extends FlxState
@@ -162,7 +159,7 @@ class Stage1 extends FlxState
 			{
 				if (sinco.x != sincoPos.x)
 					return;
-			
+
 				sinco.y += 64;
 				sinco.animation.play('jump');
 				Global.playSoundEffect('gameplay/sinco-spin');
@@ -189,11 +186,14 @@ class Stage1 extends FlxState
 			background.animation.pause();
 
 			FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
-				onComplete: _tween -> {
+				onComplete: _tween ->
+				{
 					FlxG.switchState(() -> new Worldmap());
 				},
-				onStart: _tween -> {
-					if (!playedDeathFX) {
+				onStart: _tween ->
+				{
+					if (!playedDeathFX)
+					{
 						Global.playSoundEffect('gameplay/dead');
 						playedDeathFX = true;
 					}
@@ -211,13 +211,16 @@ class Stage1 extends FlxState
 
 			osin.animation.play('hurt');
 			FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
-				onComplete: _tween -> {
+				onComplete: _tween ->
+				{
 					Global.setLevel(2);
 					Global.setEmeraldAmount(1);
 					FlxG.switchState(() -> new ChaosEmerald(() -> new PostStage1Cutscene()));
 				},
-				onStart: _tween -> {
-					if (!playedDeathFX) {
+				onStart: _tween ->
+				{
+					if (!playedDeathFX)
+					{
 						Global.playSoundEffect('gameplay/explosion');
 						playedDeathFX = true;
 					}

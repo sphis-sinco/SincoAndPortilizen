@@ -33,7 +33,8 @@ class Stage4 extends FlxState
 		port.y = Std.int(FlxG.height - port.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * (Global.DEFAULT_IMAGE_SCALE_MULTIPLIER));
 		enemy.y = port.y;
 
-		FlxTimer.wait(60, () -> {
+		FlxTimer.wait(60, () ->
+		{
 			Global.setLevel(5);
 			Global.setEmeraldAmount(4);
 			FlxG.switchState(() -> new ChaosEmerald(() -> new Worldmap("Port")));
@@ -56,9 +57,11 @@ class Stage4 extends FlxState
 
 			port.animation.play('jump');
 			FlxTween.tween(port, {y: port.y - portjumpheight}, portJumpSpeed, {
-				onComplete: tween -> {
+				onComplete: tween ->
+				{
 					FlxTween.tween(port, {y: port.y + portjumpheight}, portJumpSpeed, {
-						onComplete: tween -> {
+						onComplete: tween ->
+						{
 							portJumping = false;
 							port.animation.play('run');
 						}
@@ -71,18 +74,23 @@ class Stage4 extends FlxState
 		{
 			enemyCanAttack = false;
 			FlxTween.tween(enemy, {x: port.x}, 1, {
-				onComplete: tween -> {
+				onComplete: tween ->
+				{
 					if (enemy.overlaps(port))
 					{
 						FlxG.camera.flash();
 						FlxG.switchState(() -> new Worldmap("Port"));
 					}
 
-					FlxTween.tween(enemy, {x: enemyX}, 1, {onComplete: tween -> {
-						FlxTimer.wait(FlxG.random.int(1, 2), () -> {
-							enemyCanAttack = true;
-						});
-					}});
+					FlxTween.tween(enemy, {x: enemyX}, 1, {
+						onComplete: tween ->
+						{
+							FlxTimer.wait(FlxG.random.int(1, 2), () ->
+							{
+								enemyCanAttack = true;
+							});
+						}
+					});
 				}
 			});
 		}

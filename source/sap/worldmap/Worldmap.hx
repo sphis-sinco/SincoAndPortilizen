@@ -17,12 +17,10 @@ class Worldmap extends FlxState
 
 	var mapGRP:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 
-	var implementedLevels:Map<String, Array<Bool>> = [
-		"sinco" => [true, false, false, false],
-		"port" => [true, false, false, false]
-	];
+	var implementedLevels:Map<String, Array<Bool>> = ["sinco" => [true, false, false, false], "port" => [true, false, false, false]];
 
-	override public function new(char:String = "Sinco") {
+	override public function new(char:String = "Sinco")
+	{
 		super();
 
 		character = new MapCharacter(char);
@@ -102,9 +100,11 @@ class Worldmap extends FlxState
 		{
 			canSwap = false;
 			charWheel.animation.play('${character.lowercase_char()}-${character.swappedchar().toLowerCase()}');
-			
-			FlxTimer.wait(2 / 12, () -> {
-				FlxG.camera.flash(0xffffff, 1, () -> {
+
+			FlxTimer.wait(2 / 12, () ->
+			{
+				FlxG.camera.flash(0xffffff, 1, () ->
+				{
 					canSwap = true;
 				});
 				for (tile in mapGRP)
@@ -120,7 +120,8 @@ class Worldmap extends FlxState
 
 	var canSwap:Bool = true;
 
-	public function makeMap() {
+	public function makeMap()
+	{
 		var i = 0;
 		while (i < 3)
 		{
@@ -135,7 +136,7 @@ class Worldmap extends FlxState
 
 				// TODO: implement color change for when a level is finished
 			}
-			
+
 			level.makeGraphic(24, 24, tileColor);
 
 			mapGRP.add(level);

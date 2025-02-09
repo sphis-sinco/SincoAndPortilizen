@@ -19,14 +19,14 @@ class PlayMenu extends MainMenu
 			switch (CUR_SELECTION)
 			{
 				case 0:
-                    FlxG.save.data.gameplaystatus = GameplayStatus.returnDefaultGameplayStatus();
+					FlxG.save.data.gameplaystatus = GameplayStatus.returnDefaultGameplayStatus();
 
-                    FlxG.sound.music.stop();
-                    FlxG.switchState(() -> new IntroCutscene());
+					FlxG.sound.music.stop();
+					FlxG.switchState(() -> new IntroCutscene());
 
 				case 1:
-                    FlxG.sound.music.stop();
-                    FlxG.switchState(() -> new Continue());
+					FlxG.sound.music.stop();
+					FlxG.switchState(() -> new Continue());
 
 				case 2:
 					FlxG.switchState(() -> new MainMenu());

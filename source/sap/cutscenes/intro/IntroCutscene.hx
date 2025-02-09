@@ -16,7 +16,7 @@ class IntroCutscene extends PanelCutscene
 	override function finishedCutscene()
 	{
 		super.finishedCutscene();
-        
+
 		FlxG.switchState(() -> new Worldmap());
 	}
 

@@ -44,9 +44,9 @@ class InitState extends FlxState
 
 		super.update(elapsed);
 	}
+
 	public function proceed()
 	{
-
 		#if DISABLE_PLUGINS
 		Plugins.init();
 		#end

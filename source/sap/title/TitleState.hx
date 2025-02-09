@@ -59,7 +59,7 @@ class TitleState extends FlxState
 		if (CURRENT_STATE == INTRO)
 			Global.playSoundEffect('start-synth');
 
-		pressanyTargY =  FlxG.height - (pressany.height * 2) - (16 * 2);
+		pressanyTargY = FlxG.height - (pressany.height * 2) - (16 * 2);
 
 		versiontext.size = 16;
 		versiontext.setPosition(5, 5);
@@ -83,7 +83,8 @@ class TitleState extends FlxState
 				transitioning = !transitioning;
 				Global.playSoundEffect('blipSelect');
 				FlxG.camera.flash(0xFFFFFF, 2);
-				FlxFlicker.flicker(pressany, 3, 0.04, true, true, _flicker -> {
+				FlxFlicker.flicker(pressany, 3, 0.04, true, true, _flicker ->
+				{
 					FlxG.switchState(() -> new MainMenu());
 				});
 			}
@@ -91,7 +92,7 @@ class TitleState extends FlxState
 
 		super.update(elapsed);
 	}
-	
+
 	public function stateChecks()
 	{
 		switch (CURRENT_STATE)
@@ -126,11 +127,15 @@ class TitleState extends FlxState
 
 			case DONE:
 				Global.playMenuMusic();
-				
-				if (pressany.y != pressanyTargY) pressany.y = pressanyTargY;
-				if (!pressany.visible) pressany.visible = true;
-				if (!titlebg.visible) titlebg.visible = true;
-				if (charring.y != charring.height + 16) charring.y = charring.height + 16;
+
+				if (pressany.y != pressanyTargY)
+					pressany.y = pressanyTargY;
+				if (!pressany.visible)
+					pressany.visible = true;
+				if (!titlebg.visible)
+					titlebg.visible = true;
+				if (charring.y != charring.height + 16)
+					charring.y = charring.height + 16;
 
 				randomBGChar(sinco, 6);
 				randomBGChar(port, 4);
