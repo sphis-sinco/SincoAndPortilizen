@@ -12,6 +12,8 @@ class Stage4 extends FlxState
 
 	var bg:FlxSprite = new FlxSprite();
 
+	public static var DISMx2:Float = Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+
 	override function create()
 	{
 		super.create();
@@ -30,7 +32,7 @@ class Stage4 extends FlxState
 		enemyX = enemy.x;
 		add(enemy);
 
-		port.y = Std.int(FlxG.height - port.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * (Global.DEFAULT_IMAGE_SCALE_MULTIPLIER));
+		port.y = Std.int(FlxG.height - port.height * DISMx2);
 		enemy.y = port.y;
 
 		FlxTimer.wait(60, () ->
@@ -53,48 +55,78 @@ class Stage4 extends FlxState
 		{
 			portJumping = true;
 
-			var portjumpheight:Float = port.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+			var portjumpheight:Float = port.height * DISMx2;
 
 			port.animation.play('jump');
-			FlxTween.tween(port, {y: port.y - portjumpheight}, portJumpSpeed, {
-				onComplete: tween ->
-				{
-					FlxTween.tween(port, {y: port.y + portjumpheight}, portJumpSpeed, {
-						onComplete: tween ->
-						{
-							portJumping = false;
-							port.animation.play('run');
-						}
-					});
-				}
-			});
+			portJump(portjumpheight);
 		}
 
 		if (FlxG.random.bool(25) && enemyCanAttack)
 		{
 			enemyCanAttack = false;
-			FlxTween.tween(enemy, {x: port.x}, 1, {
-				onComplete: tween ->
-				{
-					if (enemy.overlaps(port))
-					{
-						FlxG.camera.flash();
-						FlxG.switchState(() -> new Worldmap("Port"));
-					}
-
-					FlxTween.tween(enemy, {x: enemyX}, 1, {
-						onComplete: tween ->
-						{
-							FlxTimer.wait(FlxG.random.int(1, 2), () ->
-							{
-								enemyCanAttack = true;
-							});
-						}
-					});
-				}
-			});
+			enemyCharge();
 		}
 
 		super.update(elapsed);
+	}
+
+	public function portJump(portjumpheight:Float)
+	{
+		FlxTween.tween(port, {y: port.y - portjumpheight}, portJumpSpeed, {
+			onComplete: tween ->
+			{
+				portFall(portjumpheight);
+			}
+		});
+	}
+
+	public function portFall(portjumpheight:Float)
+	{
+		FlxTween.tween(port, {y: port.y + portjumpheight}, portJumpSpeed, {
+			onComplete: tween ->
+			{
+				portJumping = false;
+				port.animation.play('run');
+			}
+		});
+	}
+
+	public function enemyCharge()
+	{
+		FlxTween.tween(enemy, {x: port.x}, 1, {
+			onComplete: tween ->
+			{
+				enemyChargeComplete();
+			}
+		});
+	}
+
+	public function enemyChargeComplete()
+	{
+		if (enemy.overlaps(port))
+		{
+			FlxG.camera.flash();
+			FlxG.switchState(() -> new Worldmap("Port"));
+		}
+
+		enemyRetreat();
+	}
+
+	public function enemyRetreat()
+	{
+		FlxTween.tween(enemy, {x: enemyX}, 1, {
+			onComplete: enemyRetreatComplete()
+		});
+	}
+
+	public function enemyRetreatComplete():TweenCallback
+	{
+		return tween ->
+		{
+			FlxTimer.wait(FlxG.random.int(1, 2), () ->
+			{
+				enemyCanAttack = true;
+			});
+		}
 	}
 }
