@@ -1,22 +1,9 @@
 package;
 
-import lime.app.Application;
+import sinlib.utilities.Application;
 
 class Global
 {
-	/**
-	 * Basically `Application.current.meta` shortcut
-	 */
-	public static var APPCURMETA(get, never):Map<String, String>;
-
-	/**
-	 * `Application.current.meta` shortcut
-	 * @return Map<String, String>
-	 */
-	static function get_APPCURMETA():Map<String, String>
-	{
-		return Application.current.meta;
-	}
 
 	/**
 	 * Basically `Application.current.meta.get('version')` shortcut
@@ -29,7 +16,7 @@ class Global
 	 */
 	static function get_VERSION():String
 	{
-		var version = APPCURMETA.get('version');
+		var version = Application.VERSION;
 
 		return '${version}';
 	}
@@ -75,7 +62,7 @@ class Global
 	public static function change_saveslot(slotsuffix:Dynamic = 1)
 	{
 		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
-		FlxG.save.bind(SAVE_SLOT, APPCURMETA.get('company'));
+		FlxG.save.bind(SAVE_SLOT, Application.COMPANY);
 
 		GameplayStatus.setupGameplayStatus();
 
