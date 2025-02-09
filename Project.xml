@@ -30,6 +30,8 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 
+	<haxelib name="sinlib" />
+
 	<!-- _________________________________ Before _______________________________ -->
 
 	<set name="buildOrTest" if="${project.command == build} || ${project.command == test}" />
