@@ -1,6 +1,7 @@
 package sap.plugins;
 
 import flixel.input.keyboard.FlxKey;
+import flixel.math.FlxPoint;
 import flixel.tweens.FlxTween;
 import openfl.display.Bitmap;
 import openfl.display.BitmapData;
@@ -57,7 +58,9 @@ class ScreenShotPlugin extends flixel.FlxBasic
 		screenshotSprite = new Sprite();
 		screenshotSprite.alpha = 0;
 		screenshot_container.addChild(screenshotSprite);
-		outlineBitmap = new Bitmap(new BitmapData(Std.int(FlxG.width / 5) + 10, Std.int(FlxG.height / 5) + 10, true, 0xffffffff));
+		var OBBP:FlxPoint = new FlxPoint(FlxG.width / 5 + 10, FlxG.height / 5 + 10);
+		var outlineBitmapBitmap = new BitmapData(Std.int(OBBP.x), Std.int(OBBP.y), true, 0xffffffff);
+		outlineBitmap = new Bitmap(outlineBitmapBitmap);
 		outlineBitmap.x = 5;
 		outlineBitmap.y = 5;
 		screenshotSprite.addChild(outlineBitmap);
