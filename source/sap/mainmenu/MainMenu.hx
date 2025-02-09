@@ -36,7 +36,7 @@ class MainMenu extends FlxState
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));
 		Global.scaleSprite(gridbg, 0);
 		gridbg.screenCenter();
-		gridbg.x += ((port.animation.name == 'blank') ? 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		gridBGAdapt();
 		add(gridbg);
 
 		sinco.screenCenter();
@@ -73,6 +73,14 @@ class MainMenu extends FlxState
 	public static var public_cycle:Int = 0;
 
 	public var cycle:Int = 0;
+
+	public function gridBGAdapt()
+	{
+		if (port.animation.name == 'blank')
+			gridbg.x += 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+		else
+			gridbg.x += -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+	}
 
 	override function update(elapsed:Float)
 	{
@@ -125,7 +133,8 @@ class MainMenu extends FlxState
 		var i = 0;
 		for (text in menutexts.get(mapstring))
 		{
-			var newtext:FlxText = new FlxText(menuselectbox.x, menuselectbox.y - menuselectbox.height + (i * 48), 0, text, 32);
+			var texty:Float = menuselectbox.y - menuselectbox.height + (i * 48);
+			var newtext:FlxText = new FlxText(menuselectbox.x, texty, 0, text, 32);
 			newtext.screenCenter(X);
 
 			newtext.alignment = CENTER;
@@ -140,13 +149,18 @@ class MainMenu extends FlxState
 	{
 		if (menutextsSelection == 'menu')
 		{
-			switch (CUR_SELECTION)
-			{
-				case 0:
-					FlxG.switchState(PlayMenu.new);
-				case 1:
-					FlxG.switchState(TitleState.new);
-			}
+			menuSelection();
+		}
+	}
+
+	public function menuSelection()
+	{
+		switch (CUR_SELECTION)
+		{
+			case 0:
+				FlxG.switchState(PlayMenu.new);
+			case 1:
+				FlxG.switchState(TitleState.new);
 		}
 	}
 
@@ -161,6 +175,6 @@ class MainMenu extends FlxState
 		menucharvis[0] = sinco.animation.name == 'visible';
 		menucharvis[1] = port.animation.name == 'visible';
 
-		gridbg.x += ((port.animation.name == 'blank') ? 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		gridBGAdapt();
 	}
 }
