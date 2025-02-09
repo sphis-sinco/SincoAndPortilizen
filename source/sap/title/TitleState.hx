@@ -78,16 +78,7 @@ class TitleState extends FlxState
 
 		if (CURRENT_STATE == DONE)
 		{
-			if (FlxG.keys.justReleased.ANY && !transitioning)
-			{
-				transitioning = !transitioning;
-				Global.playSoundEffect('blipSelect');
-				FlxG.camera.flash(0xFFFFFF, 2);
-				FlxFlicker.flicker(pressany, 3, 0.04, true, true, _flicker ->
-				{
-					FlxG.switchState(() -> new MainMenu());
-				});
-			}
+			pressAny();
 		}
 
 		super.update(elapsed);
@@ -95,50 +86,89 @@ class TitleState extends FlxState
 
 	public function stateChecks()
 	{
+		stateSwitchStatement();
+	}
+
+	public function stateSwitchStatement()
+	{
 		switch (CURRENT_STATE)
 		{
 			case INTRO:
-				FlxTween.tween(charring, {y: charring.height + 16}, 1.0, {
-					ease: FlxEase.sineOut,
-					onComplete: _tween ->
-					{
-						FlxTimer.wait(1, () ->
-						{
-							FlxG.camera.flash(0xFFFFFF, 4);
-							CURRENT_STATE = FLASH;
-						});
-					}
-				});
+				introState();
 
 			case FLASH:
-				Global.playMenuMusic();
-
-				pressany.y = pressanyTargY;
-				titlebg.visible = true;
-
-				FlxTimer.wait(5, () ->
-				{
-					CURRENT_STATE = DONE;
-					pressany.visible = true;
-					pressany.alpha = 0;
-
-					FlxTween.tween(pressany, {alpha: 1}, 1);
-				});
+				flashState();
 
 			case DONE:
-				Global.playMenuMusic();
+				doneState();
+		}
+	}
 
-				if (pressany.y != pressanyTargY)
-					pressany.y = pressanyTargY;
-				if (!pressany.visible)
-					pressany.visible = true;
-				if (!titlebg.visible)
-					titlebg.visible = true;
-				if (charring.y != charring.height + 16)
-					charring.y = charring.height + 16;
+	public function introState()
+	{
+		FlxTween.tween(charring, {y: charring.height + 16}, 1.0, {
+			ease: FlxEase.sineOut,
+			onComplete: introStateDone()
+		});
+	}
 
-				randomBGChar(sinco, 6);
-				randomBGChar(port, 4);
+	public function introStateDone():TweenCallback
+	{
+		return _tween ->
+		{
+			FlxTimer.wait(1, () ->
+			{
+				FlxG.camera.flash(0xFFFFFF, 4);
+				CURRENT_STATE = FLASH;
+			});
+		}
+	}
+
+	public function flashState()
+	{
+		Global.playMenuMusic();
+
+		pressany.y = pressanyTargY;
+		titlebg.visible = true;
+
+		FlxTimer.wait(5, () ->
+		{
+			CURRENT_STATE = DONE;
+			pressany.visible = true;
+			pressany.alpha = 0;
+
+			FlxTween.tween(pressany, {alpha: 1}, 1);
+		});
+	}
+
+	public function doneState()
+	{
+		Global.playMenuMusic();
+
+		if (pressany.y != pressanyTargY)
+			pressany.y = pressanyTargY;
+		if (!pressany.visible)
+			pressany.visible = true;
+		if (!titlebg.visible)
+			titlebg.visible = true;
+		if (charring.y != charring.height + 16)
+			charring.y = charring.height + 16;
+
+		randomBGChar(sinco, 6);
+		randomBGChar(port, 4);
+	}
+
+	public function pressAny()
+	{
+		if (FlxG.keys.justReleased.ANY && !transitioning)
+		{
+			transitioning = !transitioning;
+			Global.playSoundEffect('blipSelect');
+			FlxG.camera.flash(0xFFFFFF, 2);
+			FlxFlicker.flicker(pressany, 3, 0.04, true, true, _flicker ->
+			{
+				FlxG.switchState(() -> new MainMenu());
+			});
 		}
 	}
 
@@ -152,14 +182,24 @@ class TitleState extends FlxState
 			char.y = FlxG.height - (32 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 			char.x = -(char.width * 2);
 			FlxTween.tween(char, {x: FlxG.width + (char.width * 2)}, 2, {
-				onComplete: _tween ->
-				{
-					FlxTimer.wait(FlxG.random.float(1, 4), () ->
-					{
-						char.visible = false;
-					});
-				}
+				onComplete: charDisappear(char)
 			});
 		}
+	}
+
+	public function charDisappear(char:FlxSprite):TweenCallback
+	{
+		return _tween ->
+		{
+			charDisWait(char);
+		}
+	}
+
+	public function charDisWait(char:FlxSprite)
+	{
+		FlxTimer.wait(FlxG.random.float(1, 4), () ->
+		{
+			char.visible = false;
+		});
 	}
 }
