@@ -12,6 +12,10 @@
                 - Compiling for mobile doesnt work
         - `FileManager_v8` now has been replaced with `Sinlib`'s `FileManager` (basically the same though)
         - Now using 8 tabs instead of like 2 or 4 spaces or smth?
+        - In the code I have this little code style I've started implementing:
+                - Don't leave unused imports in the code
+                - Code shouldnt be more than 4 tabs long unless optimizing wouldn't do much.
+                - 
 
 # 0.0.2 - 2/6/2025
 - Added post-stage 1 cutscene
