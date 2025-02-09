@@ -41,6 +41,8 @@ class ChaosEmerald extends FlxState
 
 	var nextState:Dynamic = () -> new MainMenu();
 
+	var wantedPos:Float = 0;
+
 	override function create()
 	{
 		super.create();
@@ -52,26 +54,10 @@ class ChaosEmerald extends FlxState
 		FlxG.save.data.gameplaystatus.chaos_emeralds = FlxG.random.int(0, 6);
 		#end
 
-		var wantedPos:Float = 0;
-
 		var i = 6;
 		while (i != -1)
 		{
-			var chaos_emerald = new ChaosEmeraldObject(i);
-			chaos_emerald.screenCenter(Y);
-
-			wantedPos = chaos_emerald.y;
-
-			if (chaos_emerald.emerld + 1 < FlxG.save.data.gameplaystatus.chaos_emeralds)
-				chaos_emerald.color = 0xffffff;
-			else
-				chaos_emerald.color = 0x000000;
-
-			chaos_emerald.y = -640;
-			chaos_emerald.x = (64 * (chaos_emerald.emerld + 1)) + 64;
-
-			chaosemerlds.add(chaos_emerald);
-			i--;
+			makeEmerald(i);
 		}
 
 		for (chaos_emerald in chaosemerlds)
@@ -80,38 +66,84 @@ class ChaosEmerald extends FlxState
 			{
 				if (chaos_emerald.emerld == 0)
 					Global.playSoundEffect('gameplay/chaos-emerald-flying');
-				FlxTween.tween(chaos_emerald, {y: wantedPos}, 1.75, {
-					ease: FlxEase.sineInOut,
-					onComplete: _tween ->
-					{
-						FlxTimer.wait(1 + (chaos_emerald.emerld / 100), () ->
-						{
-							if (chaos_emerald.emerld == 0)
-								Global.playSoundEffect('gameplay/chaos-emerald');
-							if (chaos_emerald.emerld + 1 > FlxG.save.data.gameplaystatus.chaos_emeralds)
-							{
-								FlxTween.tween(chaos_emerald, {y: -640}, 2, {
-									ease: FlxEase.sineInOut
-								});
-							}
-							else
-							{
-								FlxTween.tween(chaos_emerald, {color: 0xffffff}, 1);
-							}
-							if (chaos_emerald.emerld == 0)
-							{
-								FlxTimer.wait(2, () ->
-								{
-									FlxG.camera.fade(0x000000, 0.5, false, () ->
-									{
-										FlxG.switchState(nextState);
-									});
-								});
-							}
-						});
-					}
-				});
+				ceTween1(chaos_emerald);
 			});
 		}
+	}
+
+	public function makeEmerald(i:Int)
+	{
+		var chaos_emerald = new ChaosEmeraldObject(i);
+		chaos_emerald.screenCenter(Y);
+
+		wantedPos = chaos_emerald.y;
+
+		if (chaos_emerald.emerld + 1 < FlxG.save.data.gameplaystatus.chaos_emeralds)
+			chaos_emerald.color = 0xffffff;
+		else
+			chaos_emerald.color = 0x000000;
+
+		chaos_emerald.y = -640;
+		chaos_emerald.x = (64 * (chaos_emerald.emerld + 1)) + 64;
+
+		chaosemerlds.add(chaos_emerald);
+		i--;
+	}
+
+	public function ceTween1(chaos_emerald:ChaosEmeraldObject)
+	{
+		FlxTween.tween(chaos_emerald, {y: wantedPos}, 1.75, {
+			ease: FlxEase.sineInOut,
+			onComplete: _tween ->
+			{
+				ceTween2(chaos_emerald);
+			}
+		});
+	}
+
+	public function ceTween2(chaos_emerald:ChaosEmeraldObject)
+	{
+		FlxTimer.wait(1 + (chaos_emerald.emerld / 100), () ->
+		{
+			if (chaos_emerald.emerld == 0)
+				Global.playSoundEffect('gameplay/chaos-emerald');
+
+			endSequence(chaos_emerald);
+		});
+	}
+
+	public function endSequence(chaos_emerald:ChaosEmeraldObject)
+	{
+		if (chaos_emerald.emerld + 1 > FlxG.save.data.gameplaystatus.chaos_emeralds)
+		{
+			chaosEmeraldFly(chaos_emerald);
+		}
+		else
+		{
+			FlxTween.tween(chaos_emerald, {color: 0xffffff}, 1);
+		}
+
+		if (chaos_emerald.emerld == 0)
+		{
+			fadeOut();
+		}
+	}
+
+	public function chaosEmeraldFly(chaos_emerald:ChaosEmeraldObject)
+	{
+		FlxTween.tween(chaos_emerald, {y: -640}, 2, {
+			ease: FlxEase.sineInOut
+		});
+	}
+
+	public function fadeOut()
+	{
+		FlxTimer.wait(2, () ->
+		{
+			FlxG.camera.fade(0x000000, 0.5, false, () ->
+			{
+				FlxG.switchState(nextState);
+			});
+		});
 	}
 }
