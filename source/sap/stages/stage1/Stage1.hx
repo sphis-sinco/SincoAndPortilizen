@@ -76,49 +76,18 @@ class Stage1 extends FlxState
 		sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
 		sincoHealthIndicator.text = 'HP: $SINCO_HEALTH/10';
 
-		if (SINCO_HEALTH >= 1
+		var osinJumpCondition:Bool = (SINCO_HEALTH >= 1
 			&& OSIN_HEALTH >= 1
 			&& FlxG.random.int(0, 200) < 50
 			&& (osin.animation.name != 'jump' && osin.animation.name != 'hurt')
-			&& osin_canjump)
+			&& osin_canjump);
+		if (osinJumpCondition)
 		{
 			osin_canjump = false;
 			osin_warning = true;
 			FlxTimer.wait(FlxG.random.float(0, 2), () ->
 			{
-				osin_warning = false;
-				osin.animation.play('jump');
-				Global.playSoundEffect('gameplay/sinco-jump');
-				FlxTween.tween(osin, {x: sincoPos.x, y: sincoPos.y}, osin_jump_speed, {
-					onComplete: _tween ->
-					{
-						var waitn = .25;
-
-						if (osin.overlaps(sinco))
-						{
-							sincoHealthIndicator.color = 0xff0000;
-							FlxTween.tween(sincoHealthIndicator, {color: 0xffffff}, 1);
-
-							SINCO_HEALTH--;
-							waitn = 0;
-							Global.hitHurt();
-
-							if (SINCO_HEALTH < 1)
-								return;
-						}
-
-						FlxTimer.wait(waitn, () ->
-						{
-							FlxTween.tween(osin, {x: osinPos.x, y: osinPos.y}, osin_jump_speed, {
-								onComplete: _tween ->
-								{
-									osin.animation.play('run');
-									osin_canjump = true;
-								}
-							});
-						});
-					}
-				});
+				osinJump();
 			});
 		}
 
@@ -131,28 +100,7 @@ class Stage1 extends FlxState
 
 				Global.playSoundEffect('gameplay/sinco-jump');
 				sinco.animation.play('jump');
-				FlxTween.tween(sinco, {x: osinPos.x, y: osinPos.y}, sinco_jump_speed, {
-					onComplete: _tween ->
-					{
-						if (sinco.overlaps(osin) && osin.animation.name != 'jump')
-						{
-							osinHealthIndicator.color = 0xff0000;
-							FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
-							OSIN_HEALTH--;
-							osin.animation.play('hurt');
-							Global.hitHurt();
-						}
-
-						FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
-							onComplete: _tween ->
-							{
-								sinco.animation.play('run');
-								if (osin.animation.name == 'hurt')
-									osin.animation.play('run');
-							}
-						});
-					}
-				});
+				sincoJump();
 			}
 
 			if (FlxG.keys.justPressed.RIGHT)
@@ -163,18 +111,7 @@ class Stage1 extends FlxState
 				sinco.y += 64;
 				sinco.animation.play('jump');
 				Global.playSoundEffect('gameplay/sinco-spin');
-				FlxTween.tween(sinco, {x: osinPos.x}, sinco_jump_speed, {
-					onComplete: _tween ->
-					{
-						FlxTween.tween(sinco, {x: sincoPos.x,}, sinco_jump_speed, {
-							onComplete: _tween ->
-							{
-								sinco.animation.play('run');
-								sinco.y -= 64;
-							}
-						});
-					}
-				});
+				sincoDodge();
 			}
 		}
 
@@ -185,20 +122,7 @@ class Stage1 extends FlxState
 			osin.animation.pause();
 			background.animation.pause();
 
-			FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
-				onComplete: _tween ->
-				{
-					FlxG.switchState(() -> new Worldmap());
-				},
-				onStart: _tween ->
-				{
-					if (!playedDeathFX)
-					{
-						Global.playSoundEffect('gameplay/dead');
-						playedDeathFX = true;
-					}
-				}
-			});
+			sincoDefeated();
 		}
 
 		if (OSIN_HEALTH < 1)
@@ -210,23 +134,161 @@ class Stage1 extends FlxState
 			FlxTween.tween(sinco, {x: 1280}, .5);
 
 			osin.animation.play('hurt');
-			FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
-				onComplete: _tween ->
-				{
-					Global.setLevel(2);
-					Global.setEmeraldAmount(1);
-					FlxG.switchState(() -> new ChaosEmerald(() -> new PostStage1Cutscene()));
-				},
-				onStart: _tween ->
-				{
-					if (!playedDeathFX)
-					{
-						Global.playSoundEffect('gameplay/explosion');
-						playedDeathFX = true;
-					}
-				}
-			});
+			osinDefeated();
 		}
+	}
+
+	public function osinJump()
+	{
+		osin_warning = false;
+		osin.animation.play('jump');
+		Global.playSoundEffect('gameplay/sinco-jump');
+		FlxTween.tween(osin, {x: sincoPos.x, y: sincoPos.y}, osin_jump_speed, {
+			onComplete: _tween ->
+			{
+				osinJumpDone();
+			}
+		});
+	}
+
+	public function osinJumpDone()
+	{
+		var waitn = .25;
+
+		if (osin.overlaps(sinco))
+		{
+			osinHitSincoCheck();
+			waitn = 0;
+		}
+
+		FlxTimer.wait(waitn, () ->
+		{
+			osinJumpBack();
+		});
+	}
+
+	public function osinHitSincoCheck()
+	{
+		sincoHealthIndicator.color = 0xff0000;
+		FlxTween.tween(sincoHealthIndicator, {color: 0xffffff}, 1);
+
+		SINCO_HEALTH--;
+		Global.hitHurt();
+
+		if (SINCO_HEALTH < 1)
+			return;
+	}
+
+	public function osinJumpBack()
+	{
+		FlxTween.tween(osin, {x: osinPos.x, y: osinPos.y}, osin_jump_speed, {
+			onComplete: _tween ->
+			{
+				osin.animation.play('run');
+				osin_canjump = true;
+			}
+		});
+	}
+
+	public function sincoJump()
+	{
+		FlxTween.tween(sinco, {x: osinPos.x, y: osinPos.y}, sinco_jump_speed, {
+			onComplete: _tween ->
+			{
+				sincoJumpBack();
+			}
+		});
+	}
+
+	public function sincoJumpBack()
+	{
+		osinHurtCheck();
+
+		FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
+			onComplete: _tween ->
+			{
+				sinco.animation.play('run');
+				if (osin.animation.name == 'hurt')
+					osin.animation.play('run');
+			}
+		});
+	}
+
+	public function osinHurtCheck()
+	{
+		if (sinco.overlaps(osin) && osin.animation.name != 'jump')
+		{
+			osinHealthIndicator.color = 0xff0000;
+			FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
+			OSIN_HEALTH--;
+			osin.animation.play('hurt');
+			Global.hitHurt();
+		}
+	}
+
+	public function sincoDodge()
+	{
+		FlxTween.tween(sinco, {x: osinPos.x}, sinco_jump_speed, {
+			onComplete: _tween ->
+			{
+				sincoDodgeRecoil();
+			}
+		});
+	}
+
+	public function sincoDodgeRecoil()
+	{
+		FlxTween.tween(sinco, {x: sincoPos.x,}, sinco_jump_speed, {
+			onComplete: _tween ->
+			{
+				sinco.animation.play('run');
+				sinco.y -= 64;
+			}
+		});
+	}
+
+	public function sincoDefeated()
+	{
+		FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
+			onComplete: _tween ->
+			{
+				FlxG.switchState(() -> new Worldmap());
+			},
+			onStart: _tween ->
+			{
+				deathSFX();
+			}
+		});
+	}
+
+	public function osinDefeated()
+	{
+		FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
+			onComplete: _tween ->
+			{
+				chaosEmeraldCutsceneTransition();
+			},
+			onStart: _tween ->
+			{
+				deathSFX('explosion');
+			}
+		});
+	}
+
+	public function deathSFX(name:String = 'dead')
+	{
+		if (!playedDeathFX)
+		{
+			Global.playSoundEffect('gameplay/$name');
+			playedDeathFX = true;
+		}
+	}
+
+	public function chaosEmeraldCutsceneTransition()
+	{
+		Global.setLevel(2);
+		Global.setEmeraldAmount(1);
+		FlxG.switchState(() -> new ChaosEmerald(() -> new PostStage1Cutscene()));
 	}
 
 	var playedDeathFX:Bool = false;
