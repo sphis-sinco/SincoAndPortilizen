@@ -20,6 +20,7 @@ import openfl.geom.Matrix;
 import openfl.geom.Rectangle;
 import openfl.utils.ByteArray;
 import sinlib.SLGame;
+import sinlib.utilities.TryCatch;
 
 typedef ScreenshotPluginParams =
 {
@@ -244,15 +245,22 @@ class ScreenshotPlugin extends FlxBasic
 		{
 			changingAlpha = true;
 			// Fade out.
-			FlxTween.tween(previewSprite, {alpha: 0.0, y: 10}, PREVIEW_FADE_OUT_DURATION, {
-				ease: FlxEase.quartInOut,
-				onComplete: tween ->
-				{
-					killPreviewSpr();
-				}
-			});
+			fadeOutPreviewSprite();
 		});
 	}
+
+        function fadeOutPreviewSprite()
+        {
+                TryCatch.tryCatch(() -> {
+                        FlxTween.tween(previewSprite, {alpha: 0.0, y: 10}, PREVIEW_FADE_OUT_DURATION, {
+                                ease: FlxEase.quartInOut,
+                                onComplete: tween ->
+                                {
+                                        killPreviewSpr();
+                                }
+                        });
+                });
+        }
 
 	function killPreviewSpr()
 	{
