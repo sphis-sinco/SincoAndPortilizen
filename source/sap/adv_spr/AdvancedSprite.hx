@@ -1,4 +1,9 @@
-package sap.adv.spr;
+package sap.adv_spr;
+
+typedef AdvancedSpriteParams = {
+        public var X:Null<Float>;
+        public var Y:Null<Float>;
+}
 
 class AdvancedSprite extends FlxSprite
 {
