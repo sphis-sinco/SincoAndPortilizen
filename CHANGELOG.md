@@ -6,10 +6,10 @@
 - Changed Screenshot plugin to now be the FNF Screenshot Plugin (same keybind, its just based of funkin to fix a bug)
 ### Added
 - Added countdown text to Stage 4
-- HMM file
-- Results State
-- Several Compiler Condition Flags
-- Discord RPC
+- Added HMM file
+- Added Results State
+- Added Several Compiler Condition Flags
+- Added Discord RPC
 ### Removed
 - Removed unused data files
 - Removed Chaos Emeralds (Gameplay and code)
