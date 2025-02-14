@@ -29,7 +29,6 @@ class InitState extends FlxState
 		#end
 
                 CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
-                trace(CreditsSubState.creditsJSON);
 
 		if (!SLGame.isDebug) proceed();
 
