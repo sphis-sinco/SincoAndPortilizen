@@ -7,51 +7,58 @@ import sap.mainmenu.MainMenu;
 
 class CreditsSubState extends FlxSubState
 {
-        var overlay:BlankBG = new BlankBG();
+	var overlay:BlankBG = new BlankBG();
 
-        public static var creditsJSON:Array<CreditsEntry>;
-        
-        var creditsText:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
-        var totalSpacing:Int = 0;
+	public static var creditsJSON:Array<CreditsEntry>;
 
-        override function create() {
-                super.create();
+	var creditsText:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
+	var totalSpacing:Int = 0;
 
-                overlay.color = 0x000000;
-                overlay.alpha = 0.5;
-                add(overlay);
+	override function create()
+	{
+		super.create();
 
-                add(creditsText);
+		overlay.color = 0x000000;
+		overlay.alpha = 0.5;
+		add(overlay);
 
-                var cur_y:Float = 10;
-                for (credit in creditsJSON)
-                {
-                        var text:FlxText = new FlxText(0, cur_y, 0, credit.text, Std.int(32 * credit.size));
-                        text.screenCenter(X);
-                        text.color = FlxColor.fromRGB(
-                                credit.color[0],
-                                credit.color[1],
-                                credit.color[2], 
-                                (credit.color[3] != null) ? credit.color[3] : 255
-                                );
+		add(creditsText);
 
-                        creditsText.add(text);
+		var cur_y:Float = 10;
+		for (credit in creditsJSON)
+		{
+			var text:FlxText = new FlxText(0, cur_y, 0, credit.text, Std.int(32 * credit.size));
+			text.screenCenter(X);
+			text.color = FlxColor.fromRGB(credit.color[0], credit.color[1], credit.color[2], (credit.color[3] != null) ? credit.color[3] : 255);
 
-                        cur_y += credit.spacing;
-                        totalSpacing += credit.spacing;
-                }
-        }
+			creditsText.add(text);
 
-        override function update(elapsed:Float) {
-                super.update(elapsed);
+			cur_y += credit.spacing;
+			totalSpacing += credit.spacing;
+		}
+	}
 
-                if (FlxG.keys.justReleased.ESCAPE)
-                {
-                        MainMenu.inCredits = false;
-                        close();
-                }
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
 
-                // TODO: Implement scrolling
-        }
-        
+		if (FlxG.keys.justReleased.ESCAPE)
+		{
+			MainMenu.inCredits = false;
+			close();
+		}
+
+		if (FlxG.keys.anyPressed([UP, DOWN]))
+		{
+			scroll((FlxG.keys.pressed.UP) ? 10 : -10);
+		}
+	}
+
+	public function scroll(Amount:Float)
+	{
+		for (text in creditsText)
+		{
+			text.y += Amount;
+		}
+	}
 }
