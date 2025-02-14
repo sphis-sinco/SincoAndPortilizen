@@ -5,7 +5,7 @@ class GameplayStatus
 	public static function returnDefaultGameplayStatus()
 	{
 		return {
-			level: 1,
+			levels_complete: [],
 		};
 	}
 
@@ -18,6 +18,6 @@ class GameplayStatus
 		FlxG.save.data.gameplaystatus ??= GameplayStatus.returnDefaultGameplayStatus();
 
 		// actual values
-		FlxG.save.data.gameplaystatus.level ??= 1;
+		FlxG.save.data.gameplaystatus.levels_complete ??= [];
 	}
 }

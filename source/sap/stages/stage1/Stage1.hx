@@ -285,7 +285,7 @@ class Stage1 extends FlxState
 
 	public function endCutsceneTransition()
 	{
-		Global.setLevel(2);
+		Global.beatLevel(1);
 		FlxG.switchState(() -> new PostStage1Cutscene());
 	}
 

@@ -1,5 +1,8 @@
 # Prototype
 ## 0.0.4-p - 2/1?/2025
+### Changed
+- Changed system for levels beat
+- Changed savedata `level` to `levels_completed`
 ### Added
 - Added countdown text to Stage 4
 ### Removed

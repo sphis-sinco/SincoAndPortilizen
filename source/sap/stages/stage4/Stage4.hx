@@ -40,7 +40,7 @@ class Stage4 extends FlxState
 
 		FlxTimer.wait(60, () ->
 		{
-			Global.setLevel(5);
+			Global.beatLevel(4);
 			FlxG.switchState(() -> new Worldmap("Port"));
 		});
 

@@ -123,9 +123,9 @@ class Global
 	 * If the current level is lower than `lvl` by 1 then the current level gets set to `lvl`
 	 * @param lvl what you are trying to set the current level to
 	 */
-	public static function setLevel(lvl:Int = 1)
+	public static function beatLevel(lvl:Int = 1)
 	{
-		if (FlxG.save.data.gameplaystatus.level == lvl - 1)
-			FlxG.save.data.gameplaystatus.level = lvl;
+		if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
+                        FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
 	}
 }
