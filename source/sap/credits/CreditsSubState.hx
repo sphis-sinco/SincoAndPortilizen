@@ -12,10 +12,6 @@ class CreditsSubState extends FlxSubState
         
         var creditsText:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 
-        override public function new() {
-                super();
-        }
-
         override function create() {
                 super.create();
 
