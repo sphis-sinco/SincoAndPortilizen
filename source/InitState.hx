@@ -3,6 +3,7 @@ package;
 import flixel.system.debug.log.LogStyle;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
+import sap.results.ResultsMenu;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
@@ -59,6 +60,10 @@ class InitState extends FlxState
 		#elseif WORLDMAP
 		trace('Moving to Worldmap');
 		FlxG.switchState(() -> new Worldmap());
+		return;
+		#elseif RESULTS
+		trace('Moving to Results Menu');
+		FlxG.switchState(() -> new ResultsMenu());
 		return;
 		#end
 
