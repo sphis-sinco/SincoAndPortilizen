@@ -1,6 +1,5 @@
-package;
-
 import openfl.display.Sprite;
+import sinlib.SLGame;
 
 class Main extends Sprite
 {
@@ -9,7 +8,7 @@ class Main extends Sprite
 		super();
 
 		// Set the saveslot to a debug saveslot or a release saveslot
-		Global.change_saveslot(#if debug 'debug' #else 'release' #end);
+		Global.change_saveslot((SLGame.isDebug) ? 'debug' : 'release');
 
 		addChild(new FlxGame(0, 0, InitState));
 	}

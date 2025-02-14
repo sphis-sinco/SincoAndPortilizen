@@ -1,4 +1,4 @@
-package;
+import sinlib.SLGame;
 
 class Plugins
 {
@@ -6,7 +6,7 @@ class Plugins
 	{
 		#if !DISABLE_SCREENSHOT
 		addPlugin(() -> new ScreenShotPlugin());
-		#if debug ScreenShotPlugin.screenshotKey = F1; #end
+		if (SLGame.isDebug) ScreenShotPlugin.screenshotKey = F1;
 		#end
 	}
 

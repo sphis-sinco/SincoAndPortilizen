@@ -7,6 +7,7 @@ import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
 import sap.worldmap.Worldmap;
+import sinlib.SLGame;
 
 // This is initalization stuff + compiler condition flags
 class InitState extends FlxState
@@ -24,22 +25,18 @@ class InitState extends FlxState
 		LogStyle.WARNING.errorSound = null;
 		#end
 
-		#if !debug
-		proceed();
-		#end
+		if (!SLGame.isDebug) proceed();
 
 		super.create();
 	}
 
 	override public function update(elapsed:Float)
 	{
-		#if debug
 		// when on debug builds you have to press something to stop
-		if (FlxG.keys.justReleased.ANY)
+		if (FlxG.keys.justReleased.ANY && SLGame.isDebug)
 		{
 			proceed();
 		}
-		#end
 
 		super.update(elapsed);
 	}

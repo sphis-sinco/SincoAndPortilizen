@@ -1,5 +1,6 @@
 package;
 
+import sinlib.SLGame;
 import sinlib.utilities.Application;
 
 class Global
@@ -32,7 +33,7 @@ class Global
 	 */
 	static function get_DEBUG_BUILD():Bool
 	{
-		return #if debug true #else false #end;
+		return SLGame.isDebug;
 	}
 
 	/**
