@@ -2,6 +2,7 @@ package;
 
 import flixel.system.debug.log.LogStyle;
 import flixel.util.typeLimit.NextState;
+import sap.credits.CreditsSubState;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.results.ResultsMenu;
@@ -26,6 +27,8 @@ class InitState extends FlxState
 		LogStyle.WARNING.openConsole = false;
 		LogStyle.WARNING.errorSound = null;
 		#end
+
+                CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
 
 		if (!SLGame.isDebug) proceed();
 

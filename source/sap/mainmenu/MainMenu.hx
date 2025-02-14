@@ -3,6 +3,7 @@ package sap.mainmenu;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import sap.credits.CreditsSubState;
 import sap.title.TitleState;
 
 class MainMenu extends FlxState
@@ -14,13 +15,15 @@ class MainMenu extends FlxState
 	var menuselectbox:FlxSprite = new FlxSprite();
 
 	var menuboxtexts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
-	var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'leave'], 'play' => ['new', 'continue', 'back']];
+	var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'credits', 'leave'], 'play' => ['new', 'continue', 'back']];
 
 	public var menutextsSelection:String = 'menu';
 
 	public static var menucharvis:Array<Bool> = null;
 
 	var CUR_SELECTION:Int = 0;
+
+	public static var inCredits:Bool = false;
 
 	override public function new(select:String = 'menu')
 	{
@@ -68,8 +71,8 @@ class MainMenu extends FlxState
 		Global.playMenuMusic();
 
 		super.create();
-                
-                Global.changeDiscordRPCPresence('In the main menu', null);
+
+		Global.changeDiscordRPCPresence('In the main menu', null);
 	}
 
 	public static var public_cycle:Int = 0;
@@ -99,23 +102,26 @@ class MainMenu extends FlxState
 			text.color = (CUR_SELECTION == text.ID) ? FlxColor.LIME : FlxColor.WHITE;
 		}
 
-		if (FlxG.keys.justReleased.UP)
+		if (!inCredits)
 		{
-			CUR_SELECTION--;
-			if (CUR_SELECTION < 0)
-				CUR_SELECTION = 0;
-		}
+			if (FlxG.keys.justReleased.UP)
+			{
+				CUR_SELECTION--;
+				if (CUR_SELECTION < 0)
+					CUR_SELECTION = 0;
+			}
 
-		if (FlxG.keys.justReleased.DOWN)
-		{
-			CUR_SELECTION++;
-			if (CUR_SELECTION > menuboxtexts.members.length - 1)
-				CUR_SELECTION = menuboxtexts.members.length - 1;
-		}
+			if (FlxG.keys.justReleased.DOWN)
+			{
+				CUR_SELECTION++;
+				if (CUR_SELECTION > menuboxtexts.members.length - 1)
+					CUR_SELECTION = menuboxtexts.members.length - 1;
+			}
 
-		if (FlxG.keys.justReleased.ENTER)
-		{
-			selectionCheck();
+			if (FlxG.keys.justReleased.ENTER)
+			{
+				selectionCheck();
+			}
 		}
 
 		super.update(elapsed);
@@ -162,6 +168,9 @@ class MainMenu extends FlxState
 			case 0:
 				FlxG.switchState(PlayMenu.new);
 			case 1:
+                                inCredits = true;
+				openSubState(new CreditsSubState());
+			case 2:
 				FlxG.switchState(TitleState.new);
 		}
 	}
