@@ -12,6 +12,7 @@ class CreditsSubState extends FlxSubState
         public static var creditsJSON:Array<CreditsEntry>;
         
         var creditsText:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
+        var totalSpacing:Int = 0;
 
         override function create() {
                 super.create();
@@ -37,6 +38,7 @@ class CreditsSubState extends FlxSubState
                         creditsText.add(text);
 
                         cur_y += credit.spacing;
+                        totalSpacing += credit.spacing;
                 }
         }
 
