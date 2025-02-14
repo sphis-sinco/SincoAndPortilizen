@@ -11,6 +11,7 @@
 - Added Several Build Flags
 - Added Discord RPC
 - Added [Build Flags markdown file](/compiling/BUILD%20FLAGS.md)
+- [Added Credits Menu](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/2)
 ### Removed
 - Removed unused data files
 - Removed Chaos Emeralds (Gameplay and code)
