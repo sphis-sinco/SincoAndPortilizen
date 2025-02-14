@@ -6,8 +6,6 @@ class CreditsSubState extends FlxSubState
 {
         override public function new() {
                 super();
-
-                trace('Inside the CSS');
         }
 
         override function create() {
@@ -19,7 +17,6 @@ class CreditsSubState extends FlxSubState
 
                 if (FlxG.keys.justReleased.ESCAPE)
                 {
-                        trace('Outside the CSS');
                         MainMenu.inCredits = false;
                         close();
                 }
