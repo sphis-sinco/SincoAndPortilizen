@@ -21,9 +21,11 @@ class ResultsMenu extends FlxState
 	public var RANK_GRADE_TEXT:FlxText;
 	public var RANK_PERCENT_TEXT:FlxText;
 
+        public var RESULTS_CHARACTER:ResultsChar;
+
         public var nextState:NextState;
 
-	override public function new(goods:Int = 0, total:Int = 0, nextState:NextState)
+	override public function new(goods:Int = 0, total:Int = 0, nextState:NextState, ?char:String = 'sinco')
 	{
                 this.nextState = nextState;
 
@@ -36,6 +38,9 @@ class ResultsMenu extends FlxState
                 RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
                 RANK_PERCENT_TEXT.alignment = LEFT;
 
+                RESULTS_CHARACTER = new ResultsChar(char);
+                RESULTS_CHARACTER.screenCenter(XY);
+
 		super();
 	}
 
@@ -43,12 +48,16 @@ class ResultsMenu extends FlxState
 	{
 		add(RANK_GRADE_TEXT);
 		add(RANK_PERCENT_TEXT);
+                add(RESULTS_CHARACTER);
 
 		super.create();
 	}
 
 	override public function update(elapsed:Float):Void
 	{
+                if (RESULTS_CHARACTER.animation.name != RANK_CLASS.grade(PERCENT))
+                        RESULTS_CHARACTER.animation.play(RANK_CLASS.grade(PERCENT));
+
 		if (PERCENT < TARGET_PERCENT)
 		{
 			rankBuildUpTick();
