@@ -57,7 +57,7 @@ class InitState extends FlxState
 		#elseif STAGE_ONE
                 switchToState(() -> new Stage1(), 'Stage 1');
 		return;
-		#elseif STAGE_ONE
+		#elseif STAGE_FOUR
                 switchToState(() -> new Stage4(), 'Stage 4');
 		return;
 		#elseif WORLDMAP
