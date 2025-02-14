@@ -287,7 +287,7 @@ class Stage1 extends FlxState
 	public function endCutsceneTransition()
 	{
 		Global.beatLevel(1);
-		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH - 10, 10, () -> new PostStage1Cutscene()));
+		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, 10, () -> new PostStage1Cutscene()));
 	}
 
 	var playedDeathFX:Bool = false;
