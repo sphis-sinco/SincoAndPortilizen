@@ -14,6 +14,7 @@ These do things. Lmao!
 - `CUTSCENE_TESTING`: Does nothing so far.
 - `SKIP_TITLE`: Sends you to the Main Menu instantly instead of the Title Screen
 - `STAGE_ONE`: Sends you to the first stage
+- `STAGE_FOUR`: Sends you to the fourth stage
 - `WORLDMAP`: Sends you to the worldmap as Sinco
 - `RESULTS`: Sends you to the results state as Sinco
 - `BAD_RANK` (executes with `RESULTS`): Sets the rank you will get to the bad rank
