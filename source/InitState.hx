@@ -47,7 +47,7 @@ class InitState extends FlxState
 
 	public function proceed()
 	{
-		#if DISABLE_PLUGINS
+		#if !DISABLE_PLUGINS
 		Plugins.init();
 		#end
 
