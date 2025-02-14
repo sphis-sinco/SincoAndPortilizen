@@ -1,6 +1,5 @@
 package;
 
-import Discord.DiscordClient;
 import sinlib.SLGame;
 import sinlib.utilities.Application;
 

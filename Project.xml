@@ -34,7 +34,7 @@
 
 	<haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS"/>
 
-	<haxelib name="discord_rpc" unless="DISCORDRPC"/>
+	<haxelib name="discord_rpc" if="DISCORDRPC"/>
 
 	<!-- _________________________________ Before _______________________________ -->
 
@@ -74,7 +74,7 @@
 			<echo value="screenshots disabled on mobile" if="mobile" unless="DISABLE_PLUGINS || html5"/>
 	</section>
 
-	<define name="DISCORDRPC" if="windows"/>
+	<define name="DISCORDRPC" if="windows" unless="hl"/>
 
 	<section if="DISCORDRPC">
 			<echo value="discord rpc enabled via DISCORDRPC" unless="windows"/>
