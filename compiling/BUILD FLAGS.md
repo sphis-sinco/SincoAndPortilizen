@@ -22,4 +22,3 @@ These do things. Lmao!
 - `EXCELLENT_RANK` (executes with `RESULTS`): Sets the rank you will get to the excellent rank
 - `PERFECT_RANK` (executes with `RESULTS`): Sets the rank you will get to the perfect rank
 - `PORT_RANK_CHAR` (executes with `RESULTS`): Sends you to the results state as Portilizen
-- `RESULTS`: Sends you to the results state
