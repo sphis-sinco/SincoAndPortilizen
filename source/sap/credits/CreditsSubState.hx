@@ -1,5 +1,7 @@
 package sap.credits;
 
+import sap.mainmenu.MainMenu;
+
 class CreditsSubState extends FlxSubState
 {
         override public function new() {
@@ -18,6 +20,7 @@ class CreditsSubState extends FlxSubState
                 if (FlxG.keys.justReleased.ESCAPE)
                 {
                         trace('Outside the CSS');
+                        MainMenu.inCredits = false;
                         closeSubState();
                 }
         }
