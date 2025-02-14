@@ -170,11 +170,7 @@ class Worldmap extends FlxState
 	{
 		// TODO: change these to use MapTile once you figure out the bug
 
-		var level:AdvancedSprite = new AdvancedSprite({
-                        X: mapTileXPosThing - 12 + (i * 256),
-                        Y: character.getGraphicMidpoint().y,
-                        asset_path: null
-                });
+		var level:AdvancedSprite = new AdvancedSprite(mapTileXPosThing - 12 + (i * 256), character.getGraphicMidpoint().y);
 		var tileColor:FlxColor = FlxColor.BLACK;
 
 		if (implementedLevels.get(character.lowercase_char())[i] != false)

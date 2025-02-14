@@ -13,10 +13,10 @@ class ChaosEmeraldObject extends AdvancedSprite
 
 	override public function new(emerld:Int = 0)
 	{
-		super(FileManager.getJSON(FileManager.getDataFile('sprites/chaosEmerald.json')));
+		super();
 
-		/*loadGraphic(FileManager.getImageFile('gameplay/ChaosEmeralds-Regular'), true, 16, 16);
-		animation.add('all', [0, 1, 2, 3, 4, 5, 6], 0, false);*/
+		loadGraphic(FileManager.getImageFile('gameplay/ChaosEmeralds-Regular'), true, 16, 16);
+		animation.add('all', [0, 1, 2, 3, 4, 5, 6], 0, false);
 		animation.play('all');
 		animation.pause();
 		animation.frameIndex = emerld;
