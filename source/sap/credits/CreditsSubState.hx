@@ -21,7 +21,7 @@ class CreditsSubState extends FlxSubState
                 {
                         trace('Outside the CSS');
                         MainMenu.inCredits = false;
-                        closeSubState();
+                        close();
                 }
         }
         
