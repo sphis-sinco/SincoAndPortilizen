@@ -69,7 +69,7 @@ class InitState extends FlxState
                 #if EXCELLENT_RANK good = 9; #end
                 #if PERFECT_RANK good = 10; #end
 
-                switchToState(() -> new ResultsMenu(good, 10), 'Results Menu');
+                switchToState(() -> new ResultsMenu(good, 10, () -> new MainMenu(), 'sinco'), 'Results Menu');
 		return;
 		#end
 
