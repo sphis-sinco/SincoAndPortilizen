@@ -57,7 +57,7 @@ class CreditsSubState extends FlxSubState
 		}
 	}
 
-        var SCROLL_AMOUNT:Float = 50.0;
+        var SCROLL_AMOUNT:Float = 10.0;
 
 	public function scroll(Amount:Float)
 	{
