@@ -1,5 +1,7 @@
 package sap.credits;
 
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.text.FlxText;
 import sap.mainmenu.MainMenu;
 
 class CreditsSubState extends FlxSubState
@@ -8,6 +10,8 @@ class CreditsSubState extends FlxSubState
 
         public static var creditsJSON:Array<CreditsEntry>;
         
+        var creditsText:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
+
         override public function new() {
                 super();
         }
@@ -18,6 +22,8 @@ class CreditsSubState extends FlxSubState
                 overlay.color = 0x000000;
                 overlay.alpha = 0.5;
                 add(overlay);
+
+                add(creditsText);
         }
 
         override function update(elapsed:Float) {
