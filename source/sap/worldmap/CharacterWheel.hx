@@ -1,6 +1,6 @@
 package sap.worldmap;
 
-class CharacterWheel extends FlxSprite
+class CharacterWheel extends AdvancedSprite
 {
 	override public function new()
 	{

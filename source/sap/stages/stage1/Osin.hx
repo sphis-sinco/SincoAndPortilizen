@@ -1,6 +1,6 @@
 package sap.stages.stage1;
 
-class Osin extends FlxSprite
+class Osin extends AdvancedSprite
 {
 	public function new()
 	{

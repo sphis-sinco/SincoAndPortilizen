@@ -1,6 +1,6 @@
 package sap.stages.stage4;
 
-class PortS4 extends FlxSprite
+class PortS4 extends AdvancedSprite
 {
 	override public function new()
 	{

@@ -10,7 +10,7 @@ class Stage4 extends FlxState
 	var port:PortS4 = new PortS4();
 	var enemy:EnemyS4 = new EnemyS4();
 
-	var bg:FlxSprite = new FlxSprite();
+	var bg:AdvancedSprite = new AdvancedSprite();
 
 	public static var DISMx2:Float = Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 

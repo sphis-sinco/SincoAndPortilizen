@@ -10,7 +10,7 @@ typedef PanelCutsceneSettings =
 
 class PanelCutscene extends FlxState
 {
-	private var panel:FlxSprite = new FlxSprite();
+	private var panel:AdvancedSprite = new AdvancedSprite();
 
 	public var PANEL_FOLDER:String = 'intro/';
 	public var PANEL_PREFIX:String = 'intro-';

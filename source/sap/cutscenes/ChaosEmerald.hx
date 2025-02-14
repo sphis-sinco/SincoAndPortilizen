@@ -7,7 +7,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import sap.mainmenu.MainMenu;
 
-class ChaosEmeraldObject extends FlxSprite
+class ChaosEmeraldObject extends AdvancedSprite
 {
 	public var emerld:Int = 0;
 

@@ -1,6 +1,6 @@
 package sap.mainmenu;
 
-class MenuCharacter extends FlxSprite
+class MenuCharacter extends AdvancedSprite
 {
 	override public function new(?X:Float = 0, ?Y:Float = 0, CHARSUFFIX:String = 'Sinco')
 	{

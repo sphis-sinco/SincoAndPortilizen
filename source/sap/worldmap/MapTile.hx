@@ -1,6 +1,6 @@
 package sap.worldmap;
 
-class MapTile extends FlxSprite
+class MapTile extends AdvancedSprite
 {
 	override public function new()
 	{

@@ -1,6 +1,6 @@
 package sap.title;
 
-class TitlePort extends FlxSprite
+class TitlePort extends AdvancedSprite
 {
 	override public function new()
 	{

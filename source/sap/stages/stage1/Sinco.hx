@@ -1,6 +1,6 @@
 package sap.stages.stage1;
 
-class Sinco extends FlxSprite
+class Sinco extends AdvancedSprite
 {
 	public function new()
 	{
