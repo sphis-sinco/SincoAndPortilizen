@@ -4,6 +4,7 @@ import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
 class Stage1 extends FlxState
@@ -286,7 +287,7 @@ class Stage1 extends FlxState
 	public function endCutsceneTransition()
 	{
 		Global.beatLevel(1);
-		FlxG.switchState(() -> new PostStage1Cutscene());
+		FlxG.switchState(() -> new ResultsMenu(10 - SINCO_HEALTH, 10, () -> new PostStage1Cutscene()));
 	}
 
 	var playedDeathFX:Bool = false;

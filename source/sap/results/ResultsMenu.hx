@@ -3,6 +3,7 @@ package sap.results;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.util.typeLimit.NextState;
 
 class ResultsMenu extends FlxState
 {
@@ -20,8 +21,12 @@ class ResultsMenu extends FlxState
 	public var RANK_GRADE_TEXT:FlxText;
 	public var RANK_PERCENT_TEXT:FlxText;
 
-	override public function new(goods:Int = 0, total:Int = 0)
+        public var nextState:NextState;
+
+	override public function new(goods:Int = 0, total:Int = 0, nextState:NextState)
 	{
+                this.nextState = nextState;
+
 		TARGET_PERCENT = (goods / total) * 100;
 		RANK_CLASS = new Rank((TARGET_PERCENT == null) ? 0 : TARGET_PERCENT);
 
@@ -51,6 +56,11 @@ class ResultsMenu extends FlxState
 		{
 			rankBuildUpComplete();
 		}
+
+                if (FlxG.keys.justReleased.SPACE && REACHED_TARGET_PERCENT)
+                {
+                        FlxG.switchState(nextState);
+                }
 
 		PERCENT_TICK++;
 
