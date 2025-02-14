@@ -3,14 +3,18 @@
 ### Changed
 - Changed system for levels beat
 - Changed savedata `level` to `levels_completed`
+- Changed Screenshot plugin to now be the FNF Screenshot Plugin (same keybind, its just based of funkin to fix a bug)
 ### Added
 - Added countdown text to Stage 4
 - HMM file
+- Results State
+- Several Compiler Condition Flags
 ### Removed
 - Removed unused data files
 - Removed Chaos Emeralds (Gameplay and code)
 ### Fixed
 - Fixed bug where DISABLE_PLUGINS enables plugins
+- Fixed bug where the screenshot [didnt do things](/random-bugs/screenshotplugin-before.png) it [should've been doing](/random-bugs/screenshotplugin-after.png)
 
 ## 0.0.3-p - 2/13/2025
 - Gameplay changes
