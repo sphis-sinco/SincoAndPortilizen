@@ -50,9 +50,11 @@ class CreditsSubState extends FlxSubState
 
 		if (FlxG.keys.anyPressed([UP, DOWN]))
 		{
-			scroll((FlxG.keys.pressed.UP) ? 10 : -10);
+			scroll((FlxG.keys.pressed.UP) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
 		}
 	}
+
+        var SCROLL_AMOUNT:Float = 5.0;
 
 	public function scroll(Amount:Float)
 	{
