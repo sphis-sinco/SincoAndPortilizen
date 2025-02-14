@@ -6,6 +6,7 @@ class Results
 	{
 		return {
 			grade: "F",
+                        rank: "awful"
 		};
 	}
 
@@ -19,5 +20,6 @@ class Results
 
 		// actual values
 		FlxG.save.data.results.grade ??= "F";
+		FlxG.save.data.results.rank ??= "awful";
 	}
 }
