@@ -48,6 +48,10 @@ class InitState extends FlxState
 		#if !DISABLE_PLUGINS
 		Plugins.init();
 		#end
+                
+                #if DISCORDRPC
+		Discord.DiscordClient.initialize();
+                #end
 
 		#if CUTSCENE_TESTING
 		#elseif SKIP_TITLE

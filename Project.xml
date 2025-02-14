@@ -34,6 +34,8 @@
 
 	<haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS"/>
 
+	<haxelib name="discord_rpc" unless="DISCORDRPC"/>
+
 	<!-- _________________________________ Before _______________________________ -->
 
 	<set name="buildOrTest" if="${project.command == build} || ${project.command == test}" />
@@ -70,6 +72,14 @@
 			<echo value="screenshots disabled via DISABLE_PLUGINS" if="DISABLE_PLUGINS"/>
 			<echo value="screenshots disabled on html5" if="html5" unless="DISABLE_PLUGINS || mobile"/>
 			<echo value="screenshots disabled on mobile" if="mobile" unless="DISABLE_PLUGINS || html5"/>
+	</section>
+
+	<define name="DISCORDRPC" if="windows"/>
+
+	<section if="DISCORDRPC">
+			<echo value="discord rpc enabled via DISCORDRPC" unless="windows"/>
+
+			<echo value="discord rpc enabled on windows" if="windows"/>
 	</section>
 
 	<!-- _________________________________ After _______________________________ -->

@@ -1,6 +1,13 @@
 {
   "dependencies": [
     {
+      "name": "discord_rpc",
+      "type": "git",
+      "dir": null,
+      "ref": "master",
+      "url": "https://github.com/Aidan63/linc_discord-rpc"
+    },
+    {
       "name": "flixel",
       "type": "haxelib",
       "version": null
