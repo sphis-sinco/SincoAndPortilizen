@@ -32,6 +32,8 @@
 
 	<haxelib name="sinlib" />
 
+	<haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS"/>
+
 	<!-- _________________________________ Before _______________________________ -->
 
 	<set name="buildOrTest" if="${project.command == build} || ${project.command == test}" />

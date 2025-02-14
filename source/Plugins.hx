@@ -1,12 +1,11 @@
-import sinlib.SLGame;
+import funkin.util.plugins.ScreenshotPlugin;
 
 class Plugins
 {
 	public static function init()
 	{
 		#if !DISABLE_SCREENSHOT
-		addPlugin(() -> new ScreenShotPlugin());
-		if (SLGame.isDebug) ScreenShotPlugin.screenshotKey = F1;
+                ScreenshotPlugin.initialize();
 		#end
 	}
 
