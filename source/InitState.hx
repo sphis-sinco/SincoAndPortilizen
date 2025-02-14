@@ -1,6 +1,7 @@
 package;
 
 import flixel.system.debug.log.LogStyle;
+import flixel.util.typeLimit.NextState;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.results.ResultsMenu;
@@ -51,22 +52,24 @@ class InitState extends FlxState
 		#if CUTSCENE_TESTING
 		#elseif SKIP_TITLE
 		trace('Skipping Title');
-		FlxG.switchState(() -> new MainMenu());
+                switchToState(() -> new MainMenu(), 'MainMenu');
 		return;
-		#elseif GAMEPLAY
-		trace('Moving to Stage 4');
-		FlxG.switchState(() -> new Stage4());
+		#elseif STAGE_ONE
+                switchToState(() -> new Stage1(), 'Stage 1');
 		return;
 		#elseif WORLDMAP
-		trace('Moving to Worldmap');
-		FlxG.switchState(() -> new Worldmap());
+                switchToState(() -> new Worldmap(), 'Worldmap');
 		return;
 		#elseif RESULTS
-		trace('Moving to Results Menu');
-		FlxG.switchState(() -> new ResultsMenu());
+                switchToState(() -> new ResultsMenu(), 'Results Menu');
 		return;
 		#end
 
 		FlxG.switchState(TitleState.new);
 	}
+
+        public function swtichToState(state:NextState, stateName:String) {
+		trace('Moving to $stateName');
+		FlxG.switchState(state);
+        }
 }
