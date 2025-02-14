@@ -5,6 +5,8 @@ import sap.mainmenu.MainMenu;
 class CreditsSubState extends FlxSubState
 {
         var overlay:BlankBG = new BlankBG();
+
+        public static var creditsJSON:Array<CreditsEntry>;
         
         override public function new() {
                 super();
