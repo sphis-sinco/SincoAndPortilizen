@@ -68,7 +68,7 @@ class InitState extends FlxState
 		FlxG.switchState(TitleState.new);
 	}
 
-        public function swtichToState(state:NextState, stateName:String) {
+        public function switchToState(state:NextState, stateName:String) {
 		trace('Moving to $stateName');
 		FlxG.switchState(state);
         }
