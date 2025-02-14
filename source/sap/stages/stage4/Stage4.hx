@@ -19,6 +19,8 @@ class Stage4 extends FlxState
 
 	override function create()
 	{
+                Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
+                
 		super.create();
 
 		bg.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage4BG'));

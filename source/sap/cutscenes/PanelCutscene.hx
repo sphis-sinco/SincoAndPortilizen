@@ -6,6 +6,9 @@ typedef PanelCutsceneSettings =
 
 	var panel_folder:String;
 	var panel_prefix:String;
+
+        var ?rpc_details:String;
+        var ?rpc_state:Null<String>;
 }
 
 class PanelCutscene extends FlxState
@@ -28,10 +31,14 @@ class PanelCutscene extends FlxState
 			cutsceneSettings.panel_prefix = 'intro-';
 		if (cutsceneSettings.max_panels == null)
 			cutsceneSettings.max_panels = 5;
+		if (cutsceneSettings.rpc_details == null)
+			cutsceneSettings.rpc_details = 'In a panel cutscene';
 
 		PANEL_FOLDER = cutsceneSettings.panel_folder;
 		PANEL_PREFIX = cutsceneSettings.panel_prefix;
 		MAX_PANELS = cutsceneSettings.max_panels;
+
+                Global.changeDiscordRPCPresence(cutsceneSettings.rpc_details, cutsceneSettings.rpc_state);
 	}
 
 	override public function create()

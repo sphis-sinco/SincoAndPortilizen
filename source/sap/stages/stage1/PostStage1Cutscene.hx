@@ -10,7 +10,8 @@ class PostStage1Cutscene extends PanelCutscene
 		super({
 			max_panels: 4,
 			panel_prefix: 'ps1-',
-			panel_folder: 'post-stage1/'
+			panel_folder: 'post-stage1/',
+                        rpc_details: "In the post-stage 1 cutscene"
 		});
 	}
 

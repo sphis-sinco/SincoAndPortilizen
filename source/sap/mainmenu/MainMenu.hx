@@ -31,6 +31,8 @@ class MainMenu extends FlxState
 
 	override function create()
 	{
+                Global.changeDiscordRPCPresence('In the main menu', null);
+
 		menucharvis ??= [false, true];
 
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));

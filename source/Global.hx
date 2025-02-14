@@ -1,5 +1,6 @@
 package;
 
+import Discord.DiscordClient;
 import sinlib.SLGame;
 import sinlib.utilities.Application;
 
@@ -127,4 +128,17 @@ class Global
 		if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
                         FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
 	}
+
+        /**
+         * Changes the discord rpc presence details and state
+         * @param details The first row of text
+         * @param state The second row of text
+         */
+        public static function changeDiscordRPCPresence(details:String, state:Null<String>) {
+                #if !DISCORDRPC
+                return;
+                #end
+
+                DiscordClient.changePresence(details, state);
+        }
 }

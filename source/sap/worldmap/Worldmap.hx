@@ -35,6 +35,8 @@ class Worldmap extends FlxState
 	{
 		super.create();
 
+                Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
+
 		var bg = new FlxSprite();
 		bg.makeGraphic(FlxG.width, FlxG.height);
 		add(bg);
@@ -151,6 +153,7 @@ class Worldmap extends FlxState
 		}
 		makeMap();
 		character.swapCharacter();
+                Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
 	}
 
 	var canSwap:Bool = true;

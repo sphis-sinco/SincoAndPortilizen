@@ -29,6 +29,8 @@ class ResultsMenu extends FlxState
 
 	override public function new(goods:Int = 0, total:Int = 0, nextState:NextState, ?char:String = 'sinco')
 	{
+                Global.changeDiscordRPCPresence('Results menu for $char', null);
+
                 this.nextState = nextState;
 
 		TARGET_PERCENT = (goods / total) * 100;
@@ -118,5 +120,7 @@ class ResultsMenu extends FlxState
                 RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
 
 		REACHED_TARGET_PERCENT = true;
+
+                Global.changeDiscordRPCPresence('Results menu for ${RESULTS_CHARACTER.char}', 'Rank: ${RANK_CLASS.RANK}');
 	}
 }

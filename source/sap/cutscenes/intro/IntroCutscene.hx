@@ -9,7 +9,8 @@ class IntroCutscene extends PanelCutscene
 		super({
 			max_panels: 5,
 			panel_prefix: 'intro-',
-			panel_folder: 'intro/'
+			panel_folder: 'intro/',
+                        rpc_details: "In the intro cutscene"
 		});
 	}
 
