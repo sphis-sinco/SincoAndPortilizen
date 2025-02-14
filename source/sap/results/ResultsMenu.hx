@@ -23,6 +23,8 @@ class ResultsMenu extends FlxState
 
         public var RESULTS_CHARACTER:ResultsChar;
 
+        public var RESULTS_BG:BlankBG = new BlankBG();
+
         public var nextState:NextState;
 
 	override public function new(goods:Int = 0, total:Int = 0, nextState:NextState, ?char:String = 'sinco')
@@ -42,11 +44,16 @@ class ResultsMenu extends FlxState
                 RESULTS_CHARACTER = new ResultsChar(char);
                 RESULTS_CHARACTER.screenCenter(XY);
 
+                RESULTS_BG.color = 0x999999;
+                RESULTS_BG.screenCenter(XY);
+
 		super();
 	}
 
 	override public function create():Void
 	{
+                add(RESULTS_BG);
+
 		add(RANK_GRADE_TEXT);
 		add(RANK_PERCENT_TEXT);
 
