@@ -8,7 +8,37 @@
         {
                 "text": "Sinco - Programming",
                 "size": 0.5,
-                "color": [0, 255, 0],
-                "spacing": 100
+                "color": [50, 255, 50],
+                "spacing": 25
+        },
+        {
+                "text": "Djotta Flow - Playtesting and Feedback",
+                "size": 0.5,
+                "color": [50, 50, 255],
+                "spacing": 25
+        },
+        {
+                "text": "Paul leps - Playtesting and Feedback",
+                "size": 0.5,
+                "color": [255, 50, 50],
+                "spacing": 25
+        },
+        {
+                "text": "ComaToast - Code help and Discord RPC help",
+                "size": 0.5,
+                "color": [255, 50, 255],
+                "spacing": 25
+        },
+        {
+                "text": "Open Source Rights",
+                "size": 1,
+                "color": [255, 255, 255],
+                "spacing": 50
+        },
+        {
+                "text": "Friday night Funkin - New Screenshot Plugin",
+                "size": 0.5,
+                "color": [255, 255, 255],
+                "spacing": 25
         }
 ]
