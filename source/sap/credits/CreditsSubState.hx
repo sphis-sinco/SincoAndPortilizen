@@ -25,16 +25,19 @@ class CreditsSubState extends FlxSubState
 		add(creditsText);
 
 		var cur_y:Float = 10;
+                var i:Int = 0;
 		for (credit in creditsJSON)
 		{
 			var text:FlxText = new FlxText(0, cur_y, 0, credit.text, Std.int(32 * credit.size));
 			text.screenCenter(X);
 			text.color = FlxColor.fromRGB(credit.color[0], credit.color[1], credit.color[2], (credit.color[3] != null) ? credit.color[3] : 255);
+                        text.ID = i;
+                        i++;
 
 			creditsText.add(text);
 
 			cur_y += credit.spacing;
-			totalSpacing += credit.spacing;
+			totalSpacing += credit.spacing ;
 		}
 	}
 
@@ -54,13 +57,19 @@ class CreditsSubState extends FlxSubState
 		}
 	}
 
-        var SCROLL_AMOUNT:Float = 5.0;
+        var SCROLL_AMOUNT:Float = 50.0;
 
 	public function scroll(Amount:Float)
 	{
 		for (text in creditsText)
 		{
 			text.y += Amount;
+
+                        if ((text.y < -totalSpacing / 2 || text.y > totalSpacing / 2) && text.ID == 0)
+                        {
+                                text.y -= Amount;
+                                return;
+                        }
 		}
 	}
 }
