@@ -10,8 +10,8 @@ class MainMenu extends FlxState
 	var sinco:MenuCharacter = new MenuCharacter(0, 0, "Sinco");
 	var port:MenuCharacter = new MenuCharacter(0, 0, "Portilizen");
 
-	var gridbg:AdvancedSprite = new AdvancedSprite();
-	var menuselectbox:AdvancedSprite = new AdvancedSprite();
+	var gridbg:FlxSprite = new FlxSprite();
+	var menuselectbox:FlxSprite = new FlxSprite();
 
 	var menuboxtexts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 	var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'leave'], 'play' => ['new', 'continue', 'back']];

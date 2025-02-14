@@ -1,6 +1,6 @@
 package sap.title;
 
-class TitleSinco extends AdvancedSprite
+class TitleSinco extends FlxSprite
 {
 	override public function new()
 	{

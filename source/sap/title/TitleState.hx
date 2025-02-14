@@ -19,9 +19,9 @@ class TitleState extends FlxState
 {
 	public static var CURRENT_STATE:TitleStates = INTRO;
 
-	var charring:AdvancedSprite = new AdvancedSprite();
-	var pressany:AdvancedSprite = new AdvancedSprite();
-	var titlebg:AdvancedSprite = new AdvancedSprite();
+	var charring:FlxSprite = new FlxSprite();
+	var pressany:FlxSprite = new FlxSprite();
+	var titlebg:FlxSprite = new FlxSprite();
 
 	var sinco:TitleSinco = new TitleSinco();
 	var port:TitlePort = new TitlePort();

@@ -1,6 +1,6 @@
 package sap.stages.stage4;
 
-class Tile extends AdvancedSprite
+class Tile extends FlxSprite
 {
 	override public function new()
 	{

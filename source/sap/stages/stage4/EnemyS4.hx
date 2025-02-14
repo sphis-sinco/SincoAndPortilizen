@@ -1,6 +1,6 @@
 package sap.stages.stage4;
 
-class EnemyS4 extends AdvancedSprite
+class EnemyS4 extends FlxSprite
 {
 	override public function new()
 	{

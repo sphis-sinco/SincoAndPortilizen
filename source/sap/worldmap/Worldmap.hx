@@ -35,7 +35,7 @@ class Worldmap extends FlxState
 	{
 		super.create();
 
-		var bg = new AdvancedSprite();
+		var bg = new FlxSprite();
 		bg.makeGraphic(FlxG.width, FlxG.height);
 		add(bg);
 
@@ -170,7 +170,7 @@ class Worldmap extends FlxState
 	{
 		// TODO: change these to use MapTile once you figure out the bug
 
-		var level:AdvancedSprite = new AdvancedSprite(mapTileXPosThing - 12 + (i * 256), character.getGraphicMidpoint().y);
+		var level:FlxSprite = new FlxSprite(mapTileXPosThing - 12 + (i * 256), character.getGraphicMidpoint().y);
 		var tileColor:FlxColor = FlxColor.BLACK;
 
 		if (implementedLevels.get(character.lowercase_char())[i] != false)

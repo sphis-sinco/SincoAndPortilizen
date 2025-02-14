@@ -1,6 +1,6 @@
 package sap.worldmap;
 
-class MapCharacter extends AdvancedSprite
+class MapCharacter extends FlxSprite
 {
 	// This is so I don't have to do this:
 	// char = (char == "Sinco") ? "Port" : "Sinco"

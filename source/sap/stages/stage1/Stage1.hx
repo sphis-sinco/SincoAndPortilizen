@@ -9,7 +9,7 @@ import sap.worldmap.Worldmap;
 
 class Stage1 extends FlxState
 {
-	var background:AdvancedSprite = new AdvancedSprite();
+	var background:FlxSprite = new FlxSprite();
 
 	var sinco:Sinco = new Sinco();
 	var osin:Osin = new Osin();
