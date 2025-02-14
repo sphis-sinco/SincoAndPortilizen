@@ -4,7 +4,6 @@ import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import sap.cutscenes.ChaosEmerald;
 import sap.worldmap.Worldmap;
 
 class Stage1 extends FlxState
@@ -266,7 +265,7 @@ class Stage1 extends FlxState
 		FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
 			{
-				chaosEmeraldCutsceneTransition();
+				endCutsceneTransition();
 			},
 			onStart: _tween ->
 			{
@@ -284,11 +283,10 @@ class Stage1 extends FlxState
 		}
 	}
 
-	public function chaosEmeraldCutsceneTransition()
+	public function endCutsceneTransition()
 	{
 		Global.setLevel(2);
-		Global.setEmeraldAmount(1);
-		FlxG.switchState(() -> new ChaosEmerald(() -> new PostStage1Cutscene()));
+		FlxG.switchState(() -> new PostStage1Cutscene());
 	}
 
 	var playedDeathFX:Bool = false;

@@ -119,16 +119,6 @@ class Global
 	}
 
 	/**
-	 * If the current emerald count is `emerald` - 1 then the current emerald count gets set to `emerald`
-	 * @param emerald what you are trying to set the current emerald count to
-	 */
-	public static function setEmeraldAmount(emerald:Int = 1)
-	{
-		if (FlxG.save.data.gameplaystatus.chaos_emeralds == emerald - 1)
-			FlxG.save.data.gameplaystatus.chaos_emeralds = emerald;
-	}
-
-	/**
 	 * If the current level is lower than `lvl` by 1 then the current level gets set to `lvl`
 	 * @param lvl what you are trying to set the current level to
 	 */

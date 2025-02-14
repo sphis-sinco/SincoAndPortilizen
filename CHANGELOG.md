@@ -3,6 +3,7 @@
 - Code changes:
         - Fixed bug where DISABLE_PLUGINS enables plugins
 - Removed unused data files
+- Removed Chaos Emeralds (Gameplay and code)
 
 ## 0.0.3-p - 2/13/2025
 - Gameplay changes

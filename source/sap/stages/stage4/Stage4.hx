@@ -2,7 +2,6 @@ package sap.stages.stage4;
 
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import sap.cutscenes.ChaosEmerald;
 import sap.worldmap.Worldmap;
 
 class Stage4 extends FlxState
@@ -38,8 +37,7 @@ class Stage4 extends FlxState
 		FlxTimer.wait(60, () ->
 		{
 			Global.setLevel(5);
-			Global.setEmeraldAmount(4);
-			FlxG.switchState(() -> new ChaosEmerald(() -> new Worldmap("Port")));
+			FlxG.switchState(() -> new Worldmap("Port"));
 		});
 	}
 

@@ -1,7 +1,6 @@
 package;
 
 import flixel.system.debug.log.LogStyle;
-import sap.cutscenes.ChaosEmerald;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.stages.stage1.Stage1;
@@ -52,9 +51,6 @@ class InitState extends FlxState
 		#end
 
 		#if CUTSCENE_TESTING
-		trace('Moving to Chaos Emerald Cutscene');
-		FlxG.switchState(() -> new ChaosEmerald());
-		return;
 		#elseif SKIP_TITLE
 		trace('Skipping Title');
 		FlxG.switchState(() -> new MainMenu());
