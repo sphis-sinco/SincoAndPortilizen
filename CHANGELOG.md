@@ -1,7 +1,6 @@
 # Prototype
 ## 0.0.4-p - 2/1?/2025
 - Code changes:
-        - Created AdvancedSprite class
         - Fixed bug where DISABLE_PLUGINS enables plugins
 - Removed unused data files
 
