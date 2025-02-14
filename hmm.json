@@ -1,0 +1,19 @@
+{
+  "dependencies": [
+    {
+      "name": "flixel",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "flixel-addons",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "sinlib",
+      "type": "haxelib",
+      "version": null
+    }
+  ]
+}

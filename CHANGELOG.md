@@ -5,6 +5,7 @@
 - Changed savedata `level` to `levels_completed`
 ### Added
 - Added countdown text to Stage 4
+- HMM file
 ### Removed
 - Removed unused data files
 - Removed Chaos Emeralds (Gameplay and code)
