@@ -8,8 +8,11 @@ import discord_rpc.DiscordRpc;
  */
 class DiscordClient
 {
+        static var startTimestamp:Float = Date.now().getTime();
+
 	public function new()
 	{
+
 		trace("Discord Client starting...");
 		DiscordRpc.start({
 			clientID: "1324111625682288720",
@@ -64,13 +67,6 @@ class DiscordClient
 
 	public static function changePresence(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float)
 	{
-		var startTimestamp:Float = if (hasStartTimestamp) Date.now().getTime() else 0;
-
-		if (endTimestamp > 0)
-		{
-			endTimestamp = startTimestamp + endTimestamp;
-		}
-
 		DiscordRpc.presence({
 			details: details,
 			state: state,
@@ -78,7 +74,7 @@ class DiscordClient
 			largeImageText: Global.VERSION,
 			smallImageKey: smallImageKey,
 			startTimestamp: Std.int(startTimestamp / 1000),
-			endTimestamp: Std.int(endTimestamp / 1000)
+			endTimestamp: Std.int(startTimestamp + Date.now().getTime() / 1000)
 		});
 	}
 }
