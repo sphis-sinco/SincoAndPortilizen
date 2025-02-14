@@ -28,7 +28,7 @@ class ResultsMenu extends FlxState
 		RANK_GRADE_TEXT = new FlxText(10, 10, 0, 'YOU DID...', 64);
 
 		RANK_PERCENT_TEXT = new FlxText(0, 0, 0, '0%', 32);
-		RANK_PERCENT_TEXT.screenCenter(XY);
+                RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
 
 		super();
 	}
@@ -78,7 +78,6 @@ class ResultsMenu extends FlxState
 		FlxG.camera.flash();
 
 		RANK_GRADE_TEXT.text = 'YOU DID ${RANK_CLASS.RANK.toUpperCase()}!';
-                RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
                 RANK_PERCENT_TEXT.color = FlxColor.GRAY;
 
 		REACHED_TARGET_PERCENT = true;
