@@ -136,8 +136,8 @@ class Global
         public static function changeDiscordRPCPresence(details:String, state:Null<String>) {
                 #if !DISCORDRPC
                 return;
-                #end
-
+                #else
                 DiscordClient.changePresence(details, state);
+                #end
         }
 }

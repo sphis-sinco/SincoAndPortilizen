@@ -62,6 +62,7 @@ class InitState extends FlxState
 		return;
 		#elseif RESULTS
                 var good:Int = 0;
+                var char:String = 'sinco';
 
                 #if BAD_RANK good = 1; #end
                 #if GOOD_RANK good = 6; #end
@@ -69,7 +70,9 @@ class InitState extends FlxState
                 #if EXCELLENT_RANK good = 9; #end
                 #if PERFECT_RANK good = 10; #end
 
-                switchToState(() -> new ResultsMenu(good, 10, () -> new MainMenu(), 'sinco'), 'Results Menu');
+                #if PORT_RANK_CHAR char = 'port'; #end
+
+                switchToState(() -> new ResultsMenu(good, 10, () -> new MainMenu(), char), 'Results Menu');
 		return;
 		#end
 
