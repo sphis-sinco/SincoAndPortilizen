@@ -1,7 +1,6 @@
 # Prototype
 ## 0.0.4-p - 2/1?/2025
-- Code changes:
-        - Fixed bug where DISABLE_PLUGINS enables plugins
+- Fixed bug where DISABLE_PLUGINS enables plugins
 - Removed unused data files
 - Removed Chaos Emeralds (Gameplay and code)
 
