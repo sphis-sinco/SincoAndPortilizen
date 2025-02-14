@@ -61,7 +61,15 @@ class InitState extends FlxState
                 switchToState(() -> new Worldmap(), 'Worldmap');
 		return;
 		#elseif RESULTS
-                switchToState(() -> new ResultsMenu(), 'Results Menu');
+                var good:Int = 0;
+
+                #if BAD_RANK good = 1; #end
+                #if GOOD_RANK good = 6; #end
+                #if GREAT_RANK good = 8; #end
+                #if EXCELLENT_RANK good = 9; #end
+                #if PERFECT_RANK good = 10; #end
+
+                switchToState(() -> new ResultsMenu(good, 10), 'Results Menu');
 		return;
 		#end
 
