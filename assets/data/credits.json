@@ -3,12 +3,12 @@
                 "text": "Sinco and Portilizen Credits",
                 "size": 1,
                 "color": [255, 255, 255],
-                "spacing": 400
+                "spacing": 200
         },
         {
                 "text": "Sinco - Programming",
                 "size": 0.5,
                 "color": [0, 255, 0],
-                "spacing": 200
+                "spacing": 100
         }
 ]
