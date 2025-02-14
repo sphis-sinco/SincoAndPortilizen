@@ -10,12 +10,12 @@ class GameplayStatus
 	}
 
 	/**
-	 * This makes sure there are no null value in the savedata gameplaystatus
+	 * This makes sure there are no null values
 	 */
 	public static function setupGameplayStatus()
 	{
 		// just the base thing
-		FlxG.save.data.gameplaystatus ??= GameplayStatus.returnDefaultGameplayStatus();
+		FlxG.save.data.gameplaystatus ??= returnDefaultGameplayStatus();
 
 		// actual values
 		FlxG.save.data.gameplaystatus.levels_complete ??= [];
