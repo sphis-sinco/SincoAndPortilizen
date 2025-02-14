@@ -8,8 +8,9 @@
 - Added countdown text to Stage 4
 - Added HMM file
 - Added Results State
-- Added Several Compiler Condition Flags
+- Added Several Build Flags
 - Added Discord RPC
+- Added [Build Flags markdown file](/compiling/BUILD%20FLAGS.md)
 ### Removed
 - Removed unused data files
 - Removed Chaos Emeralds (Gameplay and code)
