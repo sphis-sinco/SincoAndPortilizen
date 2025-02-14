@@ -48,6 +48,8 @@ class CreditsSubState extends FlxSubState
                         MainMenu.inCredits = false;
                         close();
                 }
+
+                // TODO: Implement scrolling
         }
         
 }
