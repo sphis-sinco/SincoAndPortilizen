@@ -14,11 +14,11 @@ class Stage4 extends FlxState
 
 	public static var DISMx2:Float = Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 
-        var timerText:FlxText = new FlxText(10, 10, 0, "60", 16);
-        var time:Int = 0;
+	var timerText:FlxText = new FlxText(10, 10, 0, "60", 64);
+	var time:Int = 0;
 
 	override function create()
-	{                
+	{
 		super.create();
 
 		bg.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage4BG'));
@@ -44,21 +44,22 @@ class Stage4 extends FlxState
 			FlxG.switchState(() -> new Worldmap("Port"));
 		});
 
-                waitSec();
+		waitSec();
+		timerText.screenCenter();
+		add(timerText);
 
-                add(timerText);
-                
-                Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
+		Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
 	}
 
-        public function waitSec()
-        {
-                FlxTimer.wait(1, () -> {
-                        time++;
-                        timerText.text = Std.string(60 - time);
-                        waitSec();
-                });
-        }
+	public function waitSec()
+	{
+		FlxTimer.wait(1, () ->
+		{
+			time++;
+			timerText.text = Std.string(60 - time);
+			waitSec();
+		});
+	}
 
 	var enemyX:Float = 0;
 	var enemyCanAttack:Bool = true;
