@@ -30,8 +30,6 @@ class TitleState extends FlxState
 
 	override public function create()
 	{
-                Global.changeDiscordRPCPresence('In the title screen', null);
-
 		titlebg.loadGraphic(FileManager.getImageFile('titlescreen/TitleBG'));
 		Global.scaleSprite(titlebg, 2);
 		titlebg.screenCenter(XY);
@@ -70,6 +68,8 @@ class TitleState extends FlxState
 		add(versiontext);
 
 		super.create();
+                
+                Global.changeDiscordRPCPresence('In the title screen', null);
 	}
 
 	var transitioning:Bool = false;

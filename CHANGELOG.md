@@ -9,6 +9,7 @@
 - HMM file
 - Results State
 - Several Compiler Condition Flags
+- Discord RPC
 ### Removed
 - Removed unused data files
 - Removed Chaos Emeralds (Gameplay and code)

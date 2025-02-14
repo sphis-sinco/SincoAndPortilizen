@@ -21,28 +21,32 @@ class PanelCutscene extends FlxState
 	public var MAX_PANELS:Int = 5;
 	public var CUR_PANEL:Int = 1;
 
+        public var cutsceneSettings:PanelCutsceneSettings;
+
 	override public function new(cutsceneSettings:PanelCutsceneSettings)
 	{
 		super();
 
-		if (cutsceneSettings.panel_folder == null)
-			cutsceneSettings.panel_folder = 'intro/';
-		if (cutsceneSettings.panel_prefix == null)
-			cutsceneSettings.panel_prefix = 'intro-';
-		if (cutsceneSettings.max_panels == null)
-			cutsceneSettings.max_panels = 5;
-		if (cutsceneSettings.rpc_details == null)
-			cutsceneSettings.rpc_details = 'In a panel cutscene';
+                this.cutsceneSettings = cutsceneSettings;
 
-		PANEL_FOLDER = cutsceneSettings.panel_folder;
-		PANEL_PREFIX = cutsceneSettings.panel_prefix;
-		MAX_PANELS = cutsceneSettings.max_panels;
-
-                Global.changeDiscordRPCPresence(cutsceneSettings.rpc_details, cutsceneSettings.rpc_state);
+		if (this.cutsceneSettings.panel_folder == null)
+			this.cutsceneSettings.panel_folder = 'intro/';
+		if (this.cutsceneSettings.panel_prefix == null)
+			this.cutsceneSettings.panel_prefix = 'intro-';
+		if (this.cutsceneSettings.max_panels == null)
+			this.cutsceneSettings.max_panels = 5;
+		if (this.cutsceneSettings.rpc_details == null)
+			this.cutsceneSettings.rpc_details = 'In a panel cutscene';
 	}
 
 	override public function create()
 	{
+		PANEL_FOLDER = cutsceneSettings.panel_folder;
+		PANEL_PREFIX = cutsceneSettings.panel_prefix;
+		MAX_PANELS = cutsceneSettings.max_panels;
+                
+                Global.changeDiscordRPCPresence(cutsceneSettings.rpc_details, cutsceneSettings.rpc_state);
+
 		setPanel('${PANEL_PREFIX}panel$CUR_PANEL');
 		panel.antialiasing = true;
 		panel.screenCenter();

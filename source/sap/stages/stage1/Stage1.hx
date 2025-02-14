@@ -22,8 +22,6 @@ class Stage1 extends FlxState
 
 	override function create()
 	{
-                Global.changeDiscordRPCPresence('Stage 1: Osin', null);
-
 		super.create();
 
 		background.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
@@ -56,6 +54,8 @@ class Stage1 extends FlxState
 
 		sincoHealthIndicator.size = 16;
 		add(sincoHealthIndicator);
+                
+                Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 	}
 
 	var sincoPos:FlxPoint;

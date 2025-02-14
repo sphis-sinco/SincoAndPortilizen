@@ -35,8 +35,6 @@ class Worldmap extends FlxState
 	{
 		super.create();
 
-                Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
-
 		var bg = new FlxSprite();
 		bg.makeGraphic(FlxG.width, FlxG.height);
 		add(bg);
@@ -56,6 +54,8 @@ class Worldmap extends FlxState
 		charWheel.animation.play('sinco');
 
 		add(charWheel);
+
+                Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
 	}
 
 	var mapTileXPosThing:Float = 0;
@@ -142,6 +142,8 @@ class Worldmap extends FlxState
 
 	public function swapWaitDone()
 	{
+                Global.changeDiscordRPCPresence('In the worldmap as ${character.swappedchar()}', null);
+
 		FlxG.camera.flash(0xffffff, 1, () ->
 		{
 			canSwap = true;
@@ -153,7 +155,6 @@ class Worldmap extends FlxState
 		}
 		makeMap();
 		character.swapCharacter();
-                Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
 	}
 
 	var canSwap:Bool = true;

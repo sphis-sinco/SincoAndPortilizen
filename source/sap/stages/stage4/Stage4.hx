@@ -18,9 +18,7 @@ class Stage4 extends FlxState
         var time:Int = 0;
 
 	override function create()
-	{
-                Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
-                
+	{                
 		super.create();
 
 		bg.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage4BG'));
@@ -49,6 +47,8 @@ class Stage4 extends FlxState
                 waitSec();
 
                 add(timerText);
+                
+                Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
 	}
 
         public function waitSec()

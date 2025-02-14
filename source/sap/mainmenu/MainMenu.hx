@@ -31,8 +31,6 @@ class MainMenu extends FlxState
 
 	override function create()
 	{
-                Global.changeDiscordRPCPresence('In the main menu', null);
-
 		menucharvis ??= [false, true];
 
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));
@@ -70,6 +68,8 @@ class MainMenu extends FlxState
 		Global.playMenuMusic();
 
 		super.create();
+                
+                Global.changeDiscordRPCPresence('In the main menu', null);
 	}
 
 	public static var public_cycle:Int = 0;
