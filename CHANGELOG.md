@@ -1,8 +1,12 @@
 # Prototype
 ## 0.0.4-p - 2/1?/2025
-- Fixed bug where DISABLE_PLUGINS enables plugins
+### Added
+- Added countdown text to Stage 4
+### Removed
 - Removed unused data files
 - Removed Chaos Emeralds (Gameplay and code)
+### Fixed
+- Fixed bug where DISABLE_PLUGINS enables plugins
 
 ## 0.0.3-p - 2/13/2025
 - Gameplay changes

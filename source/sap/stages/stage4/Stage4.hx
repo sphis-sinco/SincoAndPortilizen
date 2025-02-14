@@ -1,5 +1,6 @@
 package sap.stages.stage4;
 
+import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import sap.worldmap.Worldmap;
@@ -12,6 +13,9 @@ class Stage4 extends FlxState
 	var bg:FlxSprite = new FlxSprite();
 
 	public static var DISMx2:Float = Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+
+        var timerText:FlxText = new FlxText(10, 10, 0, "60", 16);
+        var time:Int = 0;
 
 	override function create()
 	{
@@ -39,7 +43,20 @@ class Stage4 extends FlxState
 			Global.setLevel(5);
 			FlxG.switchState(() -> new Worldmap("Port"));
 		});
+
+                waitSec();
+
+                add(timerText);
 	}
+
+        public function waitSec()
+        {
+                FlxTimer.wait(1, () -> {
+                        time++;
+                        timerText.text = Std.string(60 - time);
+                        waitSec();
+                });
+        }
 
 	var enemyX:Float = 0;
 	var enemyCanAttack:Bool = true;
