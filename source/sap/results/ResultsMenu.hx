@@ -104,6 +104,15 @@ class ResultsMenu extends FlxState
 		if (!REACHED_TARGET_PERCENT) trace('Rank Target Made!'); else return;
 
 		FlxG.camera.flash();
+                switch (RANK_CLASS.RANK)
+                {
+                        default:
+                                RESULTS_BG.color = 0xffd93f;
+                        case 'good' | 'great':
+                                RESULTS_BG.color = 0xad4e1a;
+                        case 'awful' | 'bad':
+                                RESULTS_BG.color = 0xb23f24;
+                }
 
 		RANK_GRADE_TEXT.text = 'YOU DID ${RANK_CLASS.RANK.toUpperCase()}!';
                 RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
