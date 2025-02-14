@@ -34,6 +34,7 @@ class ResultsMenu extends FlxState
 
 		RANK_PERCENT_TEXT = new FlxText(0, 0, 0, '0%', 32);
                 RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
+                RANK_PERCENT_TEXT.alignment = LEFT;
 
 		super();
 	}
@@ -78,7 +79,6 @@ class ResultsMenu extends FlxState
 		if (PERCENT > TARGET_PERCENT) PERCENT = TARGET_PERCENT;
 
 		RANK_PERCENT_TEXT.text = '${FlxMath.roundDecimal(PERCENT, 0)}%';
-		RANK_PERCENT_TEXT.screenCenter(XY);
 	}
         
 	public function rankBuildUpComplete():Void
