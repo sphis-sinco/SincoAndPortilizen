@@ -2,6 +2,7 @@
 ## 0.0.4-p - 2/1?/2025
 - Code changes:
         - Created AdvancedSprite class
+- Removed unused data files
 
 ## 0.0.3-p - 2/13/2025
 - Gameplay changes
