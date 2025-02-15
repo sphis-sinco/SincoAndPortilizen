@@ -111,11 +111,11 @@ class MassMod extends ModBasic
 		switch (ResultsMenu.STATIC_RANK_CLASS.gradeUntranslated(ResultsMenu.STATIC_TARGET_PERCENT))
 		{
 			default:
-				ResultsMenu.STATIC_RESULTS_BG.color = 0xffd93f;
+				ResultsMenu.STATIC_RESULTS_BG.color = 0x3fff5c;
 			case 'good' | 'great':
-				ResultsMenu.STATIC_RESULTS_BG.color = 0xad4e1a;
+				ResultsMenu.STATIC_RESULTS_BG.color = 0x1aada1;
 			case 'awful' | 'bad':
-				ResultsMenu.STATIC_RESULTS_BG.color = 0xb23f24;
+				ResultsMenu.STATIC_RESULTS_BG.color = 0x2456b2;
 		}
 	}
 
