@@ -24,6 +24,7 @@
 
 	<source path="source" />
 	<assets path="assets" />
+	<assets path="cur_lang.txt"/>
 
 	<!-- _________________________________ Before _______________________________ -->
 

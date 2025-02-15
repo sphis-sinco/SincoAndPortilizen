@@ -27,7 +27,7 @@ class FileManager
 			MAYBE there is now a feature flag required to be specified for specific functions to function. 
 			I mean these can be big too but yknow. 1 thing at a time.
 	 */
-	public static var FILE_MANAGER_VERSION:Float = 9.2;
+	public static var FILE_MANAGER_VERSION:Float = 9.3;
 
 	/**
 	 * Returns a path
@@ -38,18 +38,24 @@ class FileManager
 	 */
 	public static function getPath(pathprefix:String, path:String, ?PATH_TYPE:PathTypes = DEFAULT):String
 	{
-		var returnpath:String = '${pathprefix}${PATH_TYPE}${path}';
-                var returnpathAlt:String = '${pathprefix}${PATH_TYPE}${path.split('.')[0]}-${PhraseManager.languageList.asset_suffix}.${path.split('.')[1]}';
+		var ogreturnpath:String = '${pathprefix}${PATH_TYPE}${path}';
+		var returnpath:String = ogreturnpath;
+                var returnpathAlt:String;
 
 		TryCatch.tryCatch(() ->
 		{
-                        if (openfl.utils.Assets.exists(returnpathAlt))
+                        returnpathAlt = '${returnpath.split('.')[0]}-${PhraseManager.languageList.asset_suffix}.${returnpath.split('.')[1]}';
+
+                        if (exists(returnpathAlt))
 			{
                                 // trace(returnpathAlt);
 				returnpath = returnpathAlt;
 			}
 		}, {
-				traceErr: true
+				// traceErr: true,
+                                errFunc: () -> {
+                                        returnpath = ogreturnpath;
+                                }
 		});
 
 		return returnpath;
@@ -190,6 +196,17 @@ class FileManager
 
 		return null;
 	}
+
+        
+        /**
+         * Returns a bool value if `path` exists
+         * @param path the path your checking
+         * @return Bool
+         */
+        public static function exists(path:String):Bool
+        {
+                return openfl.utils.Assets.exists(path);
+        }
 }
 
 /**
