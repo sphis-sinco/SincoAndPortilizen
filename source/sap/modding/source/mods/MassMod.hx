@@ -6,6 +6,7 @@ import sap.credits.CreditsSubState;
 import sap.cutscenes.PanelCutscene;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
+import sap.results.ResultsMenu;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
@@ -71,14 +72,7 @@ class MassMod extends ModBasic
 			Stage1.OSIN_HEALTH = Stage1.OSIN_MAX_HEALTH;
 			Stage1.SINCO_HEALTH = Stage1.SINCO_MAX_HEALTH;
 
-			Stage1.getOsinJumpCondition = function():Bool
-			{
-				return (Stage1.SINCO_HEALTH >= 1
-					&& Stage1.OSIN_HEALTH >= 1
-					&& FlxG.random.int(0, 1) == 1
-					&& (Stage1.osin.animation.name != 'jump' && Stage1.osin.animation.name != 'hurt')
-					&& Stage1.osin_canjump);
-			}
+			Stage1.getOsinJumpCondition = newOsinJumpCondition;
 
 			Stage1.osin.color = FlxColor.YELLOW;
 		}
@@ -87,9 +81,41 @@ class MassMod extends ModBasic
 		{
 			trace('Stage 4!');
 
-                        Stage4.total_time = 120;
-                        Stage4.enemyAttackCondition = function():Bool { return true; }
-                        Stage4.timerText.text = Std.string(Stage4.total_time - Stage4.time);
+			Stage4.total_time = 120;
+			Stage4.enemyAttackCondition = function():Bool
+			{
+				return true;
+			}
+			Stage4.timerText.text = Std.string(Stage4.total_time - Stage4.time);
+		}
+
+		if (Global.getCurrentState() == "ResultsMenu")
+		{
+			trace('Wats da rank?');
+
+			ResultsMenu.rankBGColor = newRankBGColors;
+		}
+	}
+
+	function newOsinJumpCondition():Bool
+	{
+		return (Stage1.SINCO_HEALTH >= 1
+			&& Stage1.OSIN_HEALTH >= 1
+			&& FlxG.random.int(0, 1) == 1
+			&& (Stage1.osin.animation.name != 'jump' && Stage1.osin.animation.name != 'hurt')
+			&& Stage1.osin_canjump);
+	}
+
+	function newRankBGColors()
+	{
+		switch (ResultsMenu.STATIC_RANK_CLASS.gradeUntranslated(ResultsMenu.STATIC_TARGET_PERCENT))
+		{
+			default:
+				ResultsMenu.STATIC_RESULTS_BG.color = 0xffd93f;
+			case 'good' | 'great':
+				ResultsMenu.STATIC_RESULTS_BG.color = 0xad4e1a;
+			case 'awful' | 'bad':
+				ResultsMenu.STATIC_RESULTS_BG.color = 0xb23f24;
 		}
 	}
 
@@ -137,9 +163,4 @@ class MassMod extends ModBasic
 			spacing: 50
 		}
 	];
-
-	override function update(elapsed:Float)
-	{
-		super.update(elapsed);
-	}
 }
