@@ -72,26 +72,26 @@ class ModBasic extends FlxBasic
         /**
 	 * Event
 	 */
-	public function onFocusGained():Void;
+	public function onFocusGained():Void { return; }
 
 	/**
 	 * Event
 	 */
-	public function onFocusLost():Void;
+	public function onFocusLost():Void { return; }
 
 	/**
 	 * Event
 	 */
-	public function onGameResized(width:Int, height:Int):Void;
+	public function onGameResized(width:Int, height:Int):Void { return; }
 
 	/**
 	 * Event
 	 */
-	public function onStateSwitchComplete():Void;
+	public function onStateSwitchComplete():Void { return; }
 
 	/**
 	 * Event
 	 */
-	public function onStateSwitchStart():Void;
+	public function onStateSwitchStart():Void { return; }
 
 }
