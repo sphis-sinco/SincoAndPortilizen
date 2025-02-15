@@ -1,5 +1,5 @@
 # Prototype
-## 0.0.4-p - 2/1?/2025
+## 0.0.4-p - 2/14/2025
 ### Changed
 - Changed system for levels beat
 - Changed savedata `level` to `levels_completed`
@@ -18,6 +18,7 @@
 ### Fixed
 - Fixed bug where DISABLE_PLUGINS enables plugins
 - Fixed bug where the screenshot [didnt do things](/random-bugs/screenshotplugin-before.png) it [should've been doing](/random-bugs/screenshotplugin-after.png)
+- Fixed bug where you couldn't select the level you're on after you swap in the Worldmap
 
 ## 0.0.3-p - 2/13/2025
 - Gameplay changes

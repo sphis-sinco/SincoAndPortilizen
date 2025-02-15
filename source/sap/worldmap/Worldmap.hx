@@ -155,6 +155,7 @@ class Worldmap extends FlxState
 		}
 		makeMap();
 		character.swapCharacter();
+                character.animation.play('idle');
 	}
 
 	var canSwap:Bool = true;
