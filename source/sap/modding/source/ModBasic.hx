@@ -20,12 +20,12 @@ class ModBasic extends FlxBasic
         /**
          * Initalization most likely to go here
          */
-        function create():Void {}
+        public function create():Void {}
 
         /**
          * Run every frame
          * @param elapsed elapsed
          */
-        override function update(elapsed:Float) { super.update(elapsed); }
+        override public function update(elapsed:Float) { super.update(elapsed); }
         
 }
