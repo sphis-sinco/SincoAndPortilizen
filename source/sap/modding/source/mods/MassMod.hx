@@ -3,8 +3,11 @@ package sap.modding.source.mods;
 import flixel.util.FlxColor;
 import sap.credits.CreditsEntry;
 import sap.credits.CreditsSubState;
+import sap.cutscenes.PanelCutscene;
+import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.title.TitleState;
+import sap.worldmap.Worldmap;
 
 class MassMod extends ModBasic
 {
@@ -44,6 +47,12 @@ class MassMod extends ModBasic
 			trace('Menu!');
 			MainMenu.sinco.visible = false;
 			MainMenu.port.visible = false;
+		}
+
+		if (Global.getCurrentState() == "Worldmap")
+		{
+			trace('Worldmap!');
+                        Worldmap.character.swappedchar();
 		}
 	}
 
