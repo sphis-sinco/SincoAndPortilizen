@@ -7,7 +7,7 @@ import sap.credits.CreditsSubState;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.modding.source.ModListManager;
-import sap.modding.source.mods.IntroMod;
+import sap.modding.source.mods.MassMod;
 import sap.results.ResultsMenu;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
@@ -117,9 +117,9 @@ class InitState extends FlxState
 
         public function ModsInit()
         {
-                ModListManager.addMod(new IntroMod());
+                ModListManager.addMod(new MassMod());
                 ModListManager.create();
 
-                IntroMod.instance.toggleEnabled();
+                MassMod.instance.toggleEnabled();
         }
 }

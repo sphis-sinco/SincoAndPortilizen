@@ -1,8 +1,9 @@
 package sap.modding.source.mods;
 
+import sap.mainmenu.MainMenu;
 import sap.title.TitleState;
 
-class IntroMod extends ModBasic
+class MassMod extends ModBasic
 {
 	public static var instance:ModBasic;
 
@@ -31,6 +32,13 @@ class IntroMod extends ModBasic
                 if (Global.getCurrentState() == "TitleState")
                 {
                         trace('Title!');
+                }
+
+                if (Global.getCurrentState() == "MainMenu")
+                {
+                        trace('Menu!');
+                        MainMenu.sinco.visible = false;
+                        MainMenu.port.visible = false;
                 }
         }
 
