@@ -1,5 +1,7 @@
 # Prototype
 ## 0.0.5-p - 2/15/2025
+### Removed
+- Removed "Press any" alpha fade in
 ### Added
 - Added Indicator for when Osin is going to attack (Stage 1)
 - [Added Localization](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/4)
@@ -10,8 +12,11 @@
         - Added `cur_lang.txt` file that can control the language thats set (gets overwritten by build flags)
         - Added BUILD_DIRs for the different languages
 - Added `.bat` files for compiling (one for different languages too!)
+- [Added source code mod support through a plugin-like system](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/5)
+        - Added Mass mod (modifies every state that can be changed)
 ### Changed
 - [Changed the Sound Tray](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3)
+- Changed almost every state's custom functions to be `public static dynamic` functions (Source Code Mod Support)
 
 ## 0.0.4-p - 2/14/2025
 ### Changed

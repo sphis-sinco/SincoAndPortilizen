@@ -55,7 +55,8 @@ class TitleState extends State
 		Global.scaleSprite(pressany, 0);
 		pressany.screenCenter(XY);
 		pressany.visible = false;
-		add(pressany);
+		// pressany.alpha = 0;
+                add(pressany);
 
 		Global.scaleSprite(sinco, 0);
 		sinco.visible = false;
@@ -89,6 +90,9 @@ class TitleState extends State
 
 		if (CURRENT_STATE == DONE)
 		{
+                        if (!pressany.visible)
+                                pressany.visible = true;
+
 			pressAny();
 		}
 
@@ -129,7 +133,6 @@ class TitleState extends State
 		{
 			FlxTimer.wait(1, () ->
 			{
-				FlxG.camera.flash(0xFFFFFF, 4);
 				CURRENT_STATE = FLASH;
 			});
 		}
@@ -137,19 +140,15 @@ class TitleState extends State
 
 	public static dynamic function flashState()
 	{
-		Global.playMenuMusic();
+		if (CURRENT_STATE == FLASH)
+                        FlxG.camera.flash(0xFFFFFF, 4);
+                Global.playMenuMusic();
 
 		pressany.y = pressanyTargY;
 		titlebg.visible = true;
 
-		FlxTimer.wait(5, () ->
-		{
-			CURRENT_STATE = DONE;
-			pressany.visible = true;
-			pressany.alpha = 0;
-
-			FlxTween.tween(pressany, {alpha: 1}, 1);
-		});
+                CURRENT_STATE = DONE;
+                pressany.visible = true;
 	}
 
 	public static dynamic function doneState()
@@ -160,12 +159,10 @@ class TitleState extends State
 			pressany.y = pressanyTargY;
 		if (!pressany.visible)
 			pressany.visible = true;
-                if (pressany.alpha != 1)
-                        FlxTween.tween(pressany, {alpha: 1}, 1);
 
 		if (!titlebg.visible)
 			titlebg.visible = true;
-                
+
 		if (charring.y != charring.height + 16)
 			charring.y = charring.height + 16;
 
