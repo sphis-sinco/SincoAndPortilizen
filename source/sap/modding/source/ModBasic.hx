@@ -32,5 +32,10 @@ class ModBasic extends FlxBasic
          * @param elapsed elapsed
          */
         override public function update(elapsed:Float) { super.update(elapsed); }
+
+        /**
+         * Toggles if the mod is enabled or not
+         */
+        public function toggleEnabled() { this.enabled = !this.enabled; }
         
 }
