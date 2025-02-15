@@ -10,7 +10,11 @@ class State extends FlxState
 
         override function create() {
                 super.create();
+
+                postCreate();
         }
+
+        public function postCreate():Void {}
 
         override function update(elapsed:Float) {
                 ModListManager.update(elapsed);

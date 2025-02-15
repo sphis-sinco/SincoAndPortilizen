@@ -6,12 +6,14 @@ import sap.credits.CreditsSubState;
 import sap.cutscenes.PanelCutscene;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
+import sap.stages.stage1.Stage1;
 import sap.title.TitleState;
 import sap.worldmap.Worldmap;
 
 class MassMod extends ModBasic
 {
 	public static var instance:ModBasic;
+
 	var canModCredits:Bool = false;
 
 	override public function new()
@@ -52,14 +54,41 @@ class MassMod extends ModBasic
 		if (Global.getCurrentState() == "Worldmap")
 		{
 			trace('Worldmap!');
-                        Worldmap.character.swappedchar();
+			Worldmap.character.swappedchar();
+		}
+
+		if (Global.getCurrentState() == "Stage1")
+		{
+			trace('Stage 1!');
+
+			Stage1.OSIN_MAX_HEALTH = 100;
+			Stage1.SINCO_MAX_HEALTH = 5;
+
+			Stage1.OSIN_HEALTH = Stage1.OSIN_MAX_HEALTH;
+			Stage1.SINCO_HEALTH = Stage1.SINCO_MAX_HEALTH;
+
+			Stage1.getOsinJumpCondition = function():Bool
+			{
+				return (Stage1.SINCO_HEALTH >= 1
+					&& Stage1.OSIN_HEALTH >= 1
+					&& FlxG.random.int(0, 1) == 1
+					&& (Stage1.osin.animation.name != 'jump' && Stage1.osin.animation.name != 'hurt')
+					&& Stage1.osin_canjump);
+			}
+
+			Stage1.osin.color = FlxColor.RED;
+		}
+
+		if (Global.getCurrentState() == "Stage4")
+		{
+			trace('Stage 4!');
 		}
 	}
 
 	override function onPostUpdate()
 	{
 		super.onPostUpdate();
-                canModCredits = (CreditsSubState != null);
+		canModCredits = (CreditsSubState != null);
 
 		TryCatch.tryCatch(() ->
 		{
@@ -75,21 +104,31 @@ class MassMod extends ModBasic
 		super.onPreStateCreate(state);
 
 		if (canModCredits)
-                {
-                        trace('Credits Menu!');
+		{
+			trace('Credits Menu!');
 
-                        if (!CreditsSubState.creditsJSON.contains(coolCredits[0]))
-                        {
-                                CreditsSubState.creditsJSON.push(coolCredits[0]);
-                                CreditsSubState.creditsJSON.push(coolCredits[1]);
-                        }
-                }
+			if (!CreditsSubState.creditsJSON.contains(coolCredits[0]))
+			{
+				CreditsSubState.creditsJSON.push(coolCredits[0]);
+				CreditsSubState.creditsJSON.push(coolCredits[1]);
+			}
+		}
 	}
 
-        var coolCredits:Array<CreditsEntry> = [
-                { text: "COOLIO MODDING", size: 2, color: [0,0,0], spacing: 100 },
-                { text: "SINCO", size: 1, color: [0,0,0], spacing: 50 }
-        ];
+	var coolCredits:Array<CreditsEntry> = [
+		{
+			text: "COOLIO MODDING",
+			size: 2,
+			color: [0, 0, 0],
+			spacing: 100
+		},
+		{
+			text: "SINCO",
+			size: 1,
+			color: [0, 0, 0],
+			spacing: 50
+		}
+	];
 
 	override function update(elapsed:Float)
 	{
