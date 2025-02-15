@@ -87,7 +87,7 @@ class ModBasic extends FlxBasic
 	/**
 	 * Event
 	 */
-	public function onPreStateCreate():Void { return; }
+	public function onPreStateCreate(state:FlxState):Void { return; }
 
 	/**
 	 * Event
