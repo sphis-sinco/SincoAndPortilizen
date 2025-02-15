@@ -1,5 +1,7 @@
 # Prototype
 ## 0.0.5-p - 2/15/2025
+### Changed
+- [Changed the Sound Tray](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3)
 
 ## 0.0.4-p - 2/14/2025
 ### Changed
