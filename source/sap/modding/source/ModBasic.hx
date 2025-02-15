@@ -87,6 +87,21 @@ class ModBasic extends FlxBasic
 	/**
 	 * Event
 	 */
+	public function onPreStateCreate():Void { return; }
+
+	/**
+	 * Event
+	 */
+	public function onPreUpdate():Void { return; }
+
+	/**
+	 * Event
+	 */
+	public function onPostUpdate():Void { return; }
+
+	/**
+	 * Event
+	 */
 	public function onStateSwitchComplete():Void { return; }
 
 	/**
