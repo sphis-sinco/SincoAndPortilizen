@@ -8,10 +8,12 @@ import flixel.util.typeLimit.NextState;
 class ResultsMenu extends State
 {
 	public var RANK_CLASS:Rank;
+	public static var STATIC_RANK_CLASS:Rank;
 
 	public var PERCENT:Float = 0.0;
 
 	public var TARGET_PERCENT:Null<Float> = 100.0;
+	public static var STATIC_TARGET_PERCENT:Null<Float> = 100.0;
 
 	public var REACHED_TARGET_PERCENT:Bool = false;
 
@@ -67,6 +69,9 @@ class ResultsMenu extends State
 
 	override public function update(elapsed:Float):Void
 	{
+                STATIC_RANK_CLASS = RANK_CLASS;
+                STATIC_TARGET_PERCENT = TARGET_PERCENT;
+
 		if (RESULTS_CHARACTER.animation.name != RANK_CLASS.grade(PERCENT))
 			RESULTS_CHARACTER.animation.play(RANK_CLASS.grade(PERCENT));
 
@@ -81,20 +86,7 @@ class ResultsMenu extends State
 
 		if (REACHED_TARGET_PERCENT)
 		{
-			var songSuffix:String = RANK_CLASS.gradeUntranslated(TARGET_PERCENT);
-
-			switch (RANK_CLASS.gradeUntranslated(TARGET_PERCENT))
-			{
-				case 'good' | 'great':
-					songSuffix = 'good';
-				case 'awful' | 'bad':
-					songSuffix = 'awful';
-			}
-
-			TryCatch.tryCatch(() ->
-			{
-				Global.playMusic('rank-$songSuffix');
-			});
+			playRankMusic();
 		}
 
 		if (FlxG.keys.justReleased.SPACE && REACHED_TARGET_PERCENT)
@@ -105,6 +97,24 @@ class ResultsMenu extends State
 		PERCENT_TICK++;
 
 		super.update(elapsed);
+	}
+
+	public static dynamic function playRankMusic()
+	{
+		var songSuffix:String = STATIC_RANK_CLASS.gradeUntranslated(STATIC_TARGET_PERCENT);
+
+		switch (STATIC_RANK_CLASS.gradeUntranslated(STATIC_TARGET_PERCENT))
+		{
+			case 'good' | 'great':
+				songSuffix = 'good';
+			case 'awful' | 'bad':
+				songSuffix = 'awful';
+		}
+
+		TryCatch.tryCatch(() ->
+		{
+			Global.playMusic('rank-$songSuffix');
+		});
 	}
 
 	public function rankBuildUpTick():Void
