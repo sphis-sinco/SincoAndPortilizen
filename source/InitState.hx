@@ -119,5 +119,7 @@ class InitState extends FlxState
         {
                 ModListManager.addMod(new IntroMod());
                 ModListManager.create();
+
+                IntroMod.toggleEnabled();
         }
 }
