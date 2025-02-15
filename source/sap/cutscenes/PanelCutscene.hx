@@ -11,7 +11,7 @@ typedef PanelCutsceneSettings =
         var ?rpc_state:Null<String>;
 }
 
-class PanelCutscene extends FlxState
+class PanelCutscene extends State
 {
 	private var panel:FlxSprite = new FlxSprite();
 

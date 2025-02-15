@@ -15,7 +15,7 @@ enum abstract TitleStates(Int) from Int to Int
 	var DONE = 2;
 }
 
-class TitleState extends FlxState
+class TitleState extends State
 {
 	public static var CURRENT_STATE:TitleStates = INTRO;
 

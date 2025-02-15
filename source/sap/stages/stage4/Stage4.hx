@@ -5,7 +5,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import sap.worldmap.Worldmap;
 
-class Stage4 extends FlxState
+class Stage4 extends State
 {
 	var port:PortS4 = new PortS4();
 	var enemy:EnemyS4 = new EnemyS4();

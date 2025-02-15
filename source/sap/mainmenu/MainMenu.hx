@@ -6,7 +6,7 @@ import flixel.util.FlxColor;
 import sap.credits.CreditsSubState;
 import sap.title.TitleState;
 
-class MainMenu extends FlxState
+class MainMenu extends State
 {
 	var sinco:MenuCharacter = new MenuCharacter(0, 0, "Sinco");
 	var port:MenuCharacter = new MenuCharacter(0, 0, "Portilizen");

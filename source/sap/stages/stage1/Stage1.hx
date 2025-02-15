@@ -7,7 +7,7 @@ import flixel.util.FlxTimer;
 import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
-class Stage1 extends FlxState
+class Stage1 extends State
 {
 	var background:FlxSprite = new FlxSprite();
 

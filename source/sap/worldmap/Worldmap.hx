@@ -8,7 +8,7 @@ import sap.mainmenu.MainMenu;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 
-class Worldmap extends FlxState
+class Worldmap extends State
 {
 	var character:MapCharacter;
 	var charWheel:CharacterWheel = new CharacterWheel();

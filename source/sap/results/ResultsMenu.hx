@@ -5,7 +5,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.typeLimit.NextState;
 
-class ResultsMenu extends FlxState
+class ResultsMenu extends State
 {
 	public var RANK_CLASS:Rank;
 
