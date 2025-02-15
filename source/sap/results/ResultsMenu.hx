@@ -85,7 +85,6 @@ class ResultsMenu extends State
 
 			switch (RANK_CLASS.gradeUntranslated(TARGET_PERCENT))
 			{
-				default:
 				case 'good' | 'great':
 					songSuffix = 'good';
 				case 'awful' | 'bad':
