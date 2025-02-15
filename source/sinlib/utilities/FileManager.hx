@@ -26,7 +26,7 @@ class FileManager {
 			MAYBE there is now a feature flag required to be specified for specific functions to function. 
 			I mean these can be big too but yknow. 1 thing at a time.
 	 */
-	public static var FILE_MANAGER_VERSION:Float = 9.1;
+	public static var FILE_MANAGER_VERSION:Float = 9.2;
 
 	/**
 	 * Returns a path
