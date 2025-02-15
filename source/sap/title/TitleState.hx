@@ -19,6 +19,7 @@ class TitleState extends State
 {
 	public static var CURRENT_STATE:TitleStates = INTRO;
 
+	public static var charring_chars:FlxSprite;
 	public static var charring:FlxSprite;
 	public static var pressany:FlxSprite;
 	public static var titlebg:FlxSprite;
@@ -47,6 +48,11 @@ class TitleState extends State
 		titlebg.screenCenter(XY);
 		titlebg.visible = false;
 		add(titlebg);
+
+                charring_chars = new FlxSprite();
+		charring_chars.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing-characters'));
+		Global.scaleSprite(charring_chars, 0);
+		add(charring_chars);
 
 		charring = new FlxSprite();
 		charring.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing'));
@@ -90,6 +96,7 @@ class TitleState extends State
 
 	override public function update(elapsed:Float)
 	{
+                charring_chars.setPosition(charring.x, charring.y);
 		stateChecks();
 
 		if (CURRENT_STATE == DONE)
