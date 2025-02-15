@@ -1,4 +1,3 @@
-import langhaxe.LanguageManager;
 import openfl.display.Sprite;
 import sinlib.SLGame;
 
@@ -16,7 +15,7 @@ class Main extends Sprite
                 #end
 
                 LanguageManager.LANGUAGE = SaveManager.getLanguage();
-                trace(LanguageManager.LANGUAGE);
+                PhraseManager.init();
                 
 		addChild(new FlxGame(0, 0, InitState));
 	}
