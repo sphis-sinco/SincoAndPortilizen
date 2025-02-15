@@ -54,8 +54,8 @@ class Stage1 extends FlxState
 
 		sincoHealthIndicator.size = 16;
 		add(sincoHealthIndicator);
-                
-                Global.changeDiscordRPCPresence('Stage 1: Osin', null);
+
+		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 	}
 
 	var sincoPos:FlxPoint;
@@ -86,16 +86,10 @@ class Stage1 extends FlxState
 		if (osinJumpCondition)
 		{
 			osin_canjump = false;
-                        FlxTimer.wait(FlxG.random.float(0, 2), () -> {
-                                osin.animation.play('jump');
-                                osin_warning = true;
-                                trace('Osin rising');
-                                FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0.5, 1), {
-                                        onComplete: _tween -> {
-                                                osinJump();
-                                        }
-                                });
-                        });
+			FlxTimer.wait(FlxG.random.float(0, 2), () ->
+			{
+				osinWarning();
+			});
 		}
 
 		if (OSIN_HEALTH >= 1)
@@ -143,6 +137,18 @@ class Stage1 extends FlxState
 			osin.animation.play('hurt');
 			osinDefeated();
 		}
+	}
+
+	public function osinWarning()
+	{
+		osin.animation.play('jump');
+		osin_warning = true;
+		FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0.5, 1), {
+			onComplete: _tween ->
+			{
+				osinJump();
+			}
+		});
 	}
 
 	public function osinJump()
