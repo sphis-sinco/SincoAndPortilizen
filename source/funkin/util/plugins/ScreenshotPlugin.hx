@@ -175,8 +175,9 @@ class ScreenshotPlugin extends FlxBasic
 
 	var previewSprite:Null<Sprite> = null;
 
-        dynamic function onHover(e:MouseEvent) {}
-        dynamic function onHoverOut(e:MouseEvent) {}
+	dynamic function onHover(e:MouseEvent) {}
+
+	dynamic function onHoverOut(e:MouseEvent) {}
 
 	function showFancyPreview(bitmap:Bitmap):Void
 	{
@@ -249,27 +250,31 @@ class ScreenshotPlugin extends FlxBasic
 		});
 	}
 
-        function fadeOutPreviewSprite()
-        {
-                TryCatch.tryCatch(() -> {
-                        FlxTween.tween(previewSprite, {alpha: 0.0, y: 10}, PREVIEW_FADE_OUT_DURATION, {
-                                ease: FlxEase.quartInOut,
-                                onComplete: tween ->
-                                {
-                                        killPreviewSpr();
-                                }
-                        });
-                });
-        }
+	function fadeOutPreviewSprite()
+	{
+		TryCatch.tryCatch(() ->
+		{
+			FlxTween.tween(previewSprite, {alpha: 0.0, y: 10}, PREVIEW_FADE_OUT_DURATION, {
+				ease: FlxEase.quartInOut,
+				onComplete: tween ->
+				{
+					killPreviewSpr();
+				}
+			});
+		});
+	}
 
 	function killPreviewSpr()
 	{
-		previewSprite.removeEventListener(MouseEvent.MOUSE_DOWN, openScreenshotsFolder);
-		previewSprite.removeEventListener(MouseEvent.MOUSE_OVER, onHover);
-		previewSprite.removeEventListener(MouseEvent.MOUSE_OUT, onHoverOut);
+		TryCatch.tryCatch(() ->
+		{
+			previewSprite.removeEventListener(MouseEvent.MOUSE_DOWN, openScreenshotsFolder);
+			previewSprite.removeEventListener(MouseEvent.MOUSE_OVER, onHover);
+			previewSprite.removeEventListener(MouseEvent.MOUSE_OUT, onHoverOut);
 
-		FlxG.stage.removeChild(previewSprite);
-		previewSprite = null;
+			FlxG.stage.removeChild(previewSprite);
+			previewSprite = null;
+		});
 	}
 
 	function openScreenshotsFolder(e:MouseEvent):Void
