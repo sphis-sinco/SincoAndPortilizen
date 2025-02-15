@@ -174,7 +174,7 @@ class FlxSoundTray extends Sprite
 			}
 			else
 			{
-				_bars[i].alpha = 0.5;
+				_bars[i].alpha = 0;
 			}
 		}
 	}
