@@ -8,6 +8,11 @@ class ModBasic extends FlxBasic
         public var enabled:Bool = false;
 
         /**
+         * This tells if `create()` has been run
+         */
+        public var has_run_create:Bool = false;
+
+        /**
          * New ModBasic.
          * @param enabled Should the mod already be enabled
          */
@@ -20,7 +25,7 @@ class ModBasic extends FlxBasic
         /**
          * Initalization most likely to go here
          */
-        public function create():Void {}
+        public function create():Void { has_run_create = true; }
 
         /**
          * Run every frame
