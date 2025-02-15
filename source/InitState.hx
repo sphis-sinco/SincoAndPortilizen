@@ -117,7 +117,7 @@ class InitState extends FlxState
 
         public function ModsInit()
         {
-                ModListManager.addMod(new MassMod());
+                #if MASS_MOD ModListManager.addMod(new MassMod()); #end
                 ModListManager.create();
 
                 MassMod.instance.toggleEnabled();
