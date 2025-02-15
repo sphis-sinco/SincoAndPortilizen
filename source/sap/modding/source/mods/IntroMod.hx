@@ -28,7 +28,7 @@ class IntroMod extends ModBasic
         override function onStateSwitchComplete() {
                 super.onStateSwitchComplete();
 
-                if (FlxG.state == new TitleState())
+                if (Global.getCurrentState() == "TitleState")
                 {
                         trace('Title!');
                 }

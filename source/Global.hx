@@ -139,4 +139,12 @@ class Global
                 DiscordClient.changePresence(details, state);
                 #end
         }
+
+        /**
+         * Returns the current state
+         * @return String
+         */
+        public static function getCurrentState():String {
+                return Type.getClassName(Type.getClass(FlxG.state)).split(".").pop();
+        }
 }
