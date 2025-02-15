@@ -18,6 +18,11 @@
       "version": null
     },
     {
+      "name": "langhaxe",
+      "type": "haxelib",
+      "version": null
+    },
+    {
       "name": "sinlib",
       "type": "haxelib",
       "version": null

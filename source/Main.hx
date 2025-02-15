@@ -1,3 +1,4 @@
+import langhaxe.LanguageManager;
 import openfl.display.Sprite;
 import sinlib.SLGame;
 
@@ -14,6 +15,9 @@ class Main extends Sprite
 		Discord.DiscordClient.initialize();
                 #end
 
+                LanguageManager.LANGUAGE = SaveManager.getLanguage();
+                trace(LanguageManager.LANGUAGE);
+                
 		addChild(new FlxGame(0, 0, InitState));
 	}
 }
