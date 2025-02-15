@@ -1,5 +1,7 @@
 # Prototype
 ## 0.0.5-p - 2/15/2025
+### Added
+- Added Indicator for when Osin is going to attack (Stage 1)
 ### Changed
 - [Changed the Sound Tray](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3)
 
