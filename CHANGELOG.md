@@ -7,7 +7,9 @@
         - Added Spanish Translation (Google Translate)
         - Added Portuguese Translation (by Djotta Flow)
         - Added Localized Character Ring Asset (for both languages)
-        - `cur_lang.txt` file that can control the language thats set (gets overwritten by build flags)
+        - Added `cur_lang.txt` file that can control the language thats set (gets overwritten by build flags)
+        - Added BUILD_DIRs for the different languages
+- Added `.bat` files for compiling (one for different languages too!)
 ### Changed
 - [Changed the Sound Tray](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3)
 

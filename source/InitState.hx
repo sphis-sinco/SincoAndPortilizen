@@ -107,6 +107,8 @@ class InitState extends FlxState
                 #if SPANISH_LANGUAGE LanguageManager.LANGUAGE = 'spanish'; #end
                 #if PORTUGUESE_LANGUAGE LanguageManager.LANGUAGE = 'portuguese'; #end
 
+                #if FORCED_ENGLISH_LANGUAGE LanguageManager.LANGUAGE = 'english'; #end
+
                 PhraseManager.init();
         }
 }
