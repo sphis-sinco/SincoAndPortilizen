@@ -6,6 +6,7 @@
         - Added Build flags for Localization
         - Added Spanish Translation (Google Translate)
         - Added Portuguese Translation (by Djotta Flow)
+        - Added Localized Character Ring Asset (for both languages)
 ### Changed
 - [Changed the Sound Tray](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3)
 
