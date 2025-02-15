@@ -34,7 +34,7 @@ class ResultsMenu extends FlxState
 		TARGET_PERCENT = (goods / total) * 100;
 		RANK_CLASS = new Rank((TARGET_PERCENT == null) ? 0 : TARGET_PERCENT);
 
-		RANK_GRADE_TEXT = new FlxText(10, 10, FlxG.width, PhraseManager.getPhrase('YOU DID') + '...', 64);
+		RANK_GRADE_TEXT = new FlxText(10, 10, FlxG.width, PhraseManager.getPhrase('you-did') + '...', 64);
 
 		RANK_PERCENT_TEXT = new FlxText(0, 0, 0, '0%', 32);
                 RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
@@ -116,7 +116,7 @@ class ResultsMenu extends FlxState
                                 RESULTS_BG.color = 0xb23f24;
                 }
 
-		RANK_GRADE_TEXT.text = '${PhraseManager.getPhrase('YOU DID')} ${RANK_CLASS.RANK.toUpperCase()}!';
+		RANK_GRADE_TEXT.text = '${PhraseManager.getPhrase('you-did')} ${RANK_CLASS.RANK.toUpperCase()}!';
                 RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
 
 		REACHED_TARGET_PERCENT = true;
