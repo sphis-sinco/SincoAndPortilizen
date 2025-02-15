@@ -96,27 +96,6 @@ class FlxSoundTray extends Sprite
 		{
                         var color:FlxColor = FlxColor.WHITE;
 
-                        switch (i)
-                        {
-                                case 9, 10:
-                                        color = FlxColor.GREEN;
-
-                                case 7, 8:
-                                        color = FlxColor.LIME;
-
-                                case 5, 6:
-                                        color = FlxColor.YELLOW;
-
-                                case 3, 4:
-                                        color = FlxColor.ORANGE;
-                        
-                                case 0, 1, 2:
-                                        color = FlxColor.RED;
-
-                                default:
-                                        color = FlxColor.WHITE;
-                        }
-
 			tmp = new Bitmap(new BitmapData(4, i + 1, false, color));
 			tmp.x = bx;
 			tmp.y = by;
