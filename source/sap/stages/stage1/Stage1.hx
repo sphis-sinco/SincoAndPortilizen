@@ -86,11 +86,15 @@ class Stage1 extends FlxState
 		if (osinJumpCondition)
 		{
 			osin_canjump = false;
-			osin_warning = true;
-			FlxTimer.wait(FlxG.random.float(0, 2), () ->
-			{
-				osinJump();
-			});
+                        FlxTimer.wait(FlxG.random.float(0, 2), () -> {
+                                osin.animation.play('jump');
+                                osin_warning = true;
+                                FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0, 2), {
+                                        onComplete: _tween -> {
+                                                osinJump();
+                                        }
+                                });
+                        });
 		}
 
 		if (OSIN_HEALTH >= 1)
