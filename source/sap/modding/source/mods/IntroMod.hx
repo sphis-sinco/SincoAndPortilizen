@@ -7,6 +7,7 @@ class IntroMod extends ModBasic
         }       
 
         override function create() {
+                trace('Intro mod');
                 super.create();
         }
 
