@@ -110,10 +110,7 @@ class FlxSoundTray extends Sprite
 
 		y = -height;
 		visible = false;
-
-                // TODO: Figure out how to do this without getting the error below:
-                // ! flixel.FlxSprite should be openfl.display.DisplayObject
-                // ! For function argument 'child'
+                
                 current_volume_bar.x = bx;
                 current_volume_bar.y = 14 + offset;
                 addChild(current_volume_bar);
