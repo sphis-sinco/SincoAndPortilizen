@@ -20,7 +20,6 @@ import openfl.geom.Matrix;
 import openfl.geom.Rectangle;
 import openfl.utils.ByteArray;
 import sinlib.SLGame;
-import sinlib.utilities.TryCatch;
 
 typedef ScreenshotPluginParams =
 {
