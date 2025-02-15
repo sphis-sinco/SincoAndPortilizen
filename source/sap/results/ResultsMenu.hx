@@ -26,6 +26,7 @@ class ResultsMenu extends State
 	public var RESULTS_CHARACTER:ResultsChar;
 
 	public var RESULTS_BG:BlankBG;
+	public static var STATIC_RESULTS_BG:BlankBG;
 
 	public var nextState:NextState;
 
@@ -71,6 +72,7 @@ class ResultsMenu extends State
 	{
                 STATIC_RANK_CLASS = RANK_CLASS;
                 STATIC_TARGET_PERCENT = TARGET_PERCENT;
+                STATIC_RESULTS_BG = RESULTS_BG;
 
 		if (RESULTS_CHARACTER.animation.name != RANK_CLASS.grade(PERCENT))
 			RESULTS_CHARACTER.animation.play(RANK_CLASS.grade(PERCENT));
@@ -139,15 +141,8 @@ class ResultsMenu extends State
 			return;
 
 		FlxG.camera.flash();
-		switch (RANK_CLASS.gradeUntranslated(TARGET_PERCENT))
-		{
-			default:
-				RESULTS_BG.color = 0xffd93f;
-			case 'good' | 'great':
-				RESULTS_BG.color = 0xad4e1a;
-			case 'awful' | 'bad':
-				RESULTS_BG.color = 0xb23f24;
-		}
+		rankBGColor();
+                RESULTS_BG.color = STATIC_RESULTS_BG.color;
 
 		RANK_GRADE_TEXT.text = '${PhraseManager.getPhrase('you-did')} ${RANK_CLASS.RANK.toUpperCase()}!';
 		RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
@@ -155,4 +150,17 @@ class ResultsMenu extends State
 
 		REACHED_TARGET_PERCENT = true;
 	}
+
+        public static dynamic function rankBGColor()
+        {
+                switch (STATIC_RANK_CLASS.gradeUntranslated(STATIC_TARGET_PERCENT))
+		{
+			default:
+				STATIC_RESULTS_BG.color = 0xffd93f;
+			case 'good' | 'great':
+				STATIC_RESULTS_BG.color = 0xad4e1a;
+			case 'awful' | 'bad':
+				STATIC_RESULTS_BG.color = 0xb23f24;
+		}
+        }
 }
