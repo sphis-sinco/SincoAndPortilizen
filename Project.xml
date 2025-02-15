@@ -25,17 +25,6 @@
 	<source path="source" />
 	<assets path="assets" />
 
-	<!-- _______________________________ Libraries ______________________________ -->
-
-	<haxelib name="flixel" />
-	<haxelib name="flixel-addons" />
-
-	<haxelib name="sinlib" />
-
-	<haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS"/>
-
-	<haxelib name="discord_rpc" if="DISCORDRPC"/>
-
 	<!-- _________________________________ Before _______________________________ -->
 
 	<set name="buildOrTest" if="${project.command == build} || ${project.command == test}" />
@@ -81,6 +70,17 @@
 
 			<echo value="discord rpc enabled on windows" if="windows"/>
 	</section>
+
+	<!-- _______________________________ Libraries ______________________________ -->
+
+	<haxelib name="flixel" />
+	<haxelib name="flixel-addons" />
+
+	<haxelib name="sinlib" />
+
+	<haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS"/>
+
+	<haxelib name="discord_rpc" if="DISCORDRPC"/>
 
 	<!-- _________________________________ After _______________________________ -->
 
