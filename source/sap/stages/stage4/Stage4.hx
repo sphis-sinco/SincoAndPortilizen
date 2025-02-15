@@ -10,7 +10,7 @@ class Stage4 extends State
 	public static var port:PortS4;
 	public static var enemy:EnemyS4;
 
-	public static var bg:FlxSprite = new FlxSprite();
+	public static var bg:FlxSprite;
 
 	public static var DISMx2:Float = Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 
@@ -25,6 +25,7 @@ class Stage4 extends State
 		port = new PortS4();
 		enemy = new EnemyS4();
 
+                bg = new FlxSprite();
 		bg.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage4BG'));
 		Global.scaleSprite(bg);
 		bg.screenCenter();

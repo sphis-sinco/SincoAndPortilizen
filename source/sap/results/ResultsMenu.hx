@@ -23,7 +23,7 @@ class ResultsMenu extends State
 
         public var RESULTS_CHARACTER:ResultsChar;
 
-        public var RESULTS_BG:BlankBG = new BlankBG();
+        public var RESULTS_BG:BlankBG;
 
         public var nextState:NextState;
 
@@ -44,6 +44,7 @@ class ResultsMenu extends State
                 RESULTS_CHARACTER = new ResultsChar(char);
                 RESULTS_CHARACTER.screenCenter(XY);
 
+                RESULTS_BG = new BlankBG();
                 RESULTS_BG.color = 0x999999;
                 RESULTS_BG.screenCenter(XY);
 

@@ -15,7 +15,7 @@ class Worldmap extends State
 
 	public static var current_level:Int = 1;
 
-	public static var mapGRP:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+	public static var mapGRP:FlxTypedGroup<FlxSprite>;
 
 	public static var implementedLevels(get, never):Map<String, Array<Bool>>;
 
@@ -30,6 +30,7 @@ class Worldmap extends State
 
                 charWheel = new CharacterWheel();
 		character = new MapCharacter(char);
+                mapGRP = new FlxTypedGroup<FlxSprite>();
 	}
 
 	override function create()

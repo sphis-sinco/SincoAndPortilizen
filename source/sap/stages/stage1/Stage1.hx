@@ -9,7 +9,7 @@ import sap.worldmap.Worldmap;
 
 class Stage1 extends State
 {
-	public static var background:FlxSprite = new FlxSprite();
+	public static var background:FlxSprite;
 
 	public static var sinco:Sinco;
 	public static var osin:Osin;
@@ -33,6 +33,7 @@ class Stage1 extends State
                 osinHealthIndicator = new FlxText();
                 sincoHealthIndicator = new FlxText();
 
+                background = new FlxSprite();
 		background.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
 
 		background.animation.add('animation', [0, 1], 16);

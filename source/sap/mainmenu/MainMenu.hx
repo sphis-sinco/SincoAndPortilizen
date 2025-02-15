@@ -11,10 +11,10 @@ class MainMenu extends State
 	public static var sinco:MenuCharacter;
 	public static var port:MenuCharacter;
 
-	public static var gridbg:FlxSprite = new FlxSprite();
-	public static var menuselectbox:FlxSprite = new FlxSprite();
+	public static var gridbg:FlxSprite;
+	public static var menuselectbox:FlxSprite;
 
-	public static var menuboxtexts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
+	public static var menuboxtexts:FlxTypedGroup<FlxText>;
 	public static var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'credits', 'leave'], 'play' => ['new', 'continue', 'back']];
 
 	public var menutextsSelection:String = 'menu';
@@ -40,6 +40,7 @@ class MainMenu extends State
 	{
 		menucharvis ??= [false, true];
 
+                gridbg = new FlxSprite();
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));
 		Global.scaleSprite(gridbg, 0);
 		gridbg.screenCenter();
@@ -61,13 +62,14 @@ class MainMenu extends State
 		add(port);
 		port.animation.play('visible');
 
+                menuselectbox = new FlxSprite();
 		menuselectbox.makeGraphic(64, 64, FlxColor.BLACK);
 		Global.scaleSprite(menuselectbox, 0);
 		menuselectbox.screenCenter();
 		add(menuselectbox);
 
+                menuboxtexts = new FlxTypedGroup<FlxText>();
 		set_menuboxtexts(menutextsSelection);
-
 		add(menuboxtexts);
 
 		cycle = public_cycle;

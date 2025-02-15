@@ -19,44 +19,48 @@ class TitleState extends State
 {
 	public static var CURRENT_STATE:TitleStates = INTRO;
 
-	public static var charring:FlxSprite = new FlxSprite();
-	public static var pressany:FlxSprite = new FlxSprite();
-	public static var titlebg:FlxSprite = new FlxSprite();
+	public static var charring:FlxSprite;
+	public static var pressany:FlxSprite;
+	public static var titlebg:FlxSprite;
 
 	public static var sinco:TitleSinco;
 	public static var port:TitlePort;
 
 	public static var versiontext:FlxText;
 
-        public static dynamic function get_versiontext():String
-        {
-                return 'v${Global.VERSION}';
-        }
+	public static dynamic function get_versiontext():String
+	{
+		return 'v${Global.VERSION}';
+	}
 
 	override public function create()
 	{
-                sinco = new TitleSinco();
-                port = new TitlePort();
-                versiontext = new FlxText();
+		sinco = new TitleSinco();
+		port = new TitlePort();
+		versiontext = new FlxText();
 
+                transitioning = false;
+
+		titlebg = new FlxSprite();
 		titlebg.loadGraphic(FileManager.getImageFile('titlescreen/TitleBG'));
 		Global.scaleSprite(titlebg, 2);
 		titlebg.screenCenter(XY);
 		titlebg.visible = false;
 		add(titlebg);
 
+		charring = new FlxSprite();
 		charring.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing'));
 		Global.scaleSprite(charring, 0);
 		charring.screenCenter(X);
 		charring.y = -(charring.height * 2);
 		add(charring);
 
+		pressany = new FlxSprite();
 		pressany.loadGraphic(FileManager.getImageFile('titlescreen/PressAnyToPlay'));
 		Global.scaleSprite(pressany, 0);
 		pressany.screenCenter(XY);
 		pressany.visible = false;
-		// pressany.alpha = 0;
-                add(pressany);
+		add(pressany);
 
 		Global.scaleSprite(sinco, 0);
 		sinco.visible = false;
@@ -66,9 +70,6 @@ class TitleState extends State
 		port.visible = false;
 		add(port);
 
-		if (CURRENT_STATE == INTRO)
-			Global.playSoundEffect('start-synth');
-
 		pressanyTargY = FlxG.height - (pressany.height * 2) - (16 * 2);
 
 		versiontext.size = 16;
@@ -77,9 +78,12 @@ class TitleState extends State
 		versiontext.color = FlxColor.BLACK;
 		add(versiontext);
 
+		if (CURRENT_STATE == INTRO)
+			Global.playSoundEffect('start-synth');
+
 		super.create();
-                
-                Global.changeDiscordRPCPresence('In the title screen', null);
+
+		Global.changeDiscordRPCPresence('In the title screen', null);
 	}
 
 	public static var transitioning:Bool = false;
@@ -90,8 +94,8 @@ class TitleState extends State
 
 		if (CURRENT_STATE == DONE)
 		{
-                        if (!pressany.visible)
-                                pressany.visible = true;
+			if (!pressany.visible)
+				pressany.visible = true;
 
 			pressAny();
 		}
@@ -141,14 +145,14 @@ class TitleState extends State
 	public static dynamic function flashState()
 	{
 		if (CURRENT_STATE == FLASH)
-                        FlxG.camera.flash(0xFFFFFF, 4);
-                Global.playMenuMusic();
+			FlxG.camera.flash(0xFFFFFF, 4);
+		Global.playMenuMusic();
 
 		pressany.y = pressanyTargY;
 		titlebg.visible = true;
 
-                CURRENT_STATE = DONE;
-                pressany.visible = true;
+		CURRENT_STATE = DONE;
+		pressany.visible = true;
 	}
 
 	public static dynamic function doneState()

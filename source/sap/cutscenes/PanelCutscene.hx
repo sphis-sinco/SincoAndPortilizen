@@ -13,7 +13,7 @@ typedef PanelCutsceneSettings =
 
 class PanelCutscene extends State
 {
-	private var panel:FlxSprite = new FlxSprite();
+	private var panel:FlxSprite;
 
 	public var PANEL_FOLDER:String = 'intro/';
 	public var PANEL_PREFIX:String = 'intro-';
@@ -47,6 +47,7 @@ class PanelCutscene extends State
                 
                 Global.changeDiscordRPCPresence(cutsceneSettings.rpc_details, cutsceneSettings.rpc_state);
 
+                panel = new FlxSprite();
 		setPanel('${PANEL_PREFIX}panel$CUR_PANEL');
 		panel.antialiasing = true;
 		panel.screenCenter();
