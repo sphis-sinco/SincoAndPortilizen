@@ -71,12 +71,12 @@ class Stage1 extends FlxState
 		super.update(elapsed);
 
 		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
-		osinHealthIndicator.text = '${PhraseManager.getPhrase('HP')}: $OSIN_HEALTH/10';
+		osinHealthIndicator.text = '${PhraseManager.getPhrase('HP', 'HP')}: $OSIN_HEALTH/10';
 		if (osin_warning)
 			osinHealthIndicator.text += '\n${PhraseManager.getPhrase('DODGE')}';
 
 		sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
-		sincoHealthIndicator.text = '${PhraseManager.getPhrase('HP')}: $SINCO_HEALTH/10';
+		sincoHealthIndicator.text = '${PhraseManager.getPhrase('HP', 'HP')}: $SINCO_HEALTH/10';
 
 		var osinJumpCondition:Bool = (SINCO_HEALTH >= 1
 			&& OSIN_HEALTH >= 1

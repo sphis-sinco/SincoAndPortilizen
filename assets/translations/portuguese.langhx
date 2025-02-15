@@ -1,0 +1,21 @@
+{
+        "name": "Português",
+        "asset_suffix": "pt",
+        "phrases": {
+          "hp": "HP",
+          "dodge": "DESVIE",
+          "rank-perfect": "perfeito",
+          "rank-excellent": "excelente",
+          "rank-great": "ótimo",
+          "rank-good": "bom",
+          "rank-bad": "ruim",
+          "rank-awful": "horrível",
+          "you-did": "VOCÊ FOI",
+          "menu-play": "jogar",
+          "menu-credits": "créditos",
+          "menu-leave": "sair",
+          "play-new": "novo",
+          "play-continue": "continuar",
+          "play-back": "voltar"
+        }
+}

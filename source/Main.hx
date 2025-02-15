@@ -15,6 +15,10 @@ class Main extends Sprite
                 #end
 
                 LanguageManager.LANGUAGE = SaveManager.getLanguage();
+
+                #if SPANISH_LANGUAGE LanguageManager.LANGUAGE = 'spanish'; #end
+                #if PORTUGUESE_LANGUAGE LanguageManager.LANGUAGE = 'portuguese'; #end
+
                 PhraseManager.init();
                 
 		addChild(new FlxGame(0, 0, InitState));
