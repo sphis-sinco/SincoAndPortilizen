@@ -16,7 +16,7 @@
         - Added Mass mod (modifies every state that can be changed)
 ### Changed
 - [Changed the Sound Tray](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3)
-- Changed almost every state's custom functions to be `public static dynamic` functions (Source Code Mod Support)
+- [Changed almost every state's custom functions to be `public static dynamic` functions (Source Code Mod Support)](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/5)
 
 ## 0.0.4-p - 2/14/2025
 ### Changed
