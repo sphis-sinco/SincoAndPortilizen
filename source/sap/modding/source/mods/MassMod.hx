@@ -7,6 +7,7 @@ import sap.cutscenes.PanelCutscene;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.stages.stage1.Stage1;
+import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
 import sap.worldmap.Worldmap;
 
@@ -82,6 +83,10 @@ class MassMod extends ModBasic
 		if (Global.getCurrentState() == "Stage4")
 		{
 			trace('Stage 4!');
+
+                        Stage4.total_time = 120;
+                        Stage4.enemyAttackCondition = function():Bool { return true; }
+                        Stage4.timerText.text = Std.string(Stage4.total_time - Stage4.time);
 		}
 	}
 
