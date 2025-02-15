@@ -8,18 +8,18 @@ import sap.mainmenu.MainMenu;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 
-class Worldmap extends FlxState
+class Worldmap extends State
 {
-	var character:MapCharacter;
-	var charWheel:CharacterWheel = new CharacterWheel();
+	public static var character:MapCharacter;
+	public static var charWheel:CharacterWheel;
 
-	var current_level:Int = 1;
+	public static var current_level:Int = 1;
 
-	var mapGRP:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+	public static var mapGRP:FlxTypedGroup<FlxSprite>;
 
-	var implementedLevels(get, never):Map<String, Array<Bool>>;
+	public static var implementedLevels(get, never):Map<String, Array<Bool>>;
 
-	function get_implementedLevels():Map<String, Array<Bool>>
+	static function get_implementedLevels():Map<String, Array<Bool>>
 	{
 		return ["sinco" => [true, false, false, false], "port" => [true, false, false, false]];
 	}
@@ -28,7 +28,9 @@ class Worldmap extends FlxState
 	{
 		super();
 
+                charWheel = new CharacterWheel();
 		character = new MapCharacter(char);
+                mapGRP = new FlxTypedGroup<FlxSprite>();
 	}
 
 	override function create()
@@ -58,7 +60,7 @@ class Worldmap extends FlxState
                 Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
 	}
 
-	var mapTileXPosThing:Float = 0;
+	public static var mapTileXPosThing:Float = 0;
 
 	override function update(elapsed:Float)
 	{
@@ -80,7 +82,7 @@ class Worldmap extends FlxState
 		}
 	}
 
-	public function characterMove()
+	public dynamic function characterMove()
 	{
 		canSwap = false;
 		character.flipX = FlxG.keys.justReleased.LEFT;
@@ -99,7 +101,7 @@ class Worldmap extends FlxState
 		});
 	}
 
-	public function characterMoveDone():TweenCallback
+	public dynamic function characterMoveDone():TweenCallback
 	{
 		return tween ->
 		{
@@ -114,7 +116,7 @@ class Worldmap extends FlxState
 		}
 	}
 
-	public function playLevel()
+	public dynamic function playLevel()
 	{
 		switch (current_level)
 		{
@@ -124,12 +126,12 @@ class Worldmap extends FlxState
 		}
 	}
 
-	public function level1()
+	public dynamic function level1()
 	{
 		FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1() : new Stage4()));
 	}
 
-	public function swap()
+	public dynamic function swap()
 	{
 		canSwap = false;
 		charWheel.animation.play('${character.lowercase_char()}-${character.swappedchar().toLowerCase()}');
@@ -140,7 +142,7 @@ class Worldmap extends FlxState
 		});
 	}
 
-	public function swapWaitDone()
+	public dynamic function swapWaitDone()
 	{
                 Global.changeDiscordRPCPresence('In the worldmap as ${character.swappedchar()}', null);
 
@@ -158,9 +160,9 @@ class Worldmap extends FlxState
                 character.animation.play('idle');
 	}
 
-	var canSwap:Bool = true;
+	public static var canSwap:Bool = true;
 
-	public function makeMap()
+	public dynamic function makeMap()
 	{
 		var i = 0;
 		while (i < 3)
@@ -171,7 +173,7 @@ class Worldmap extends FlxState
 		}
 	}
 
-	public function makeNewTile(i:Int)
+	public dynamic function makeNewTile(i:Int)
 	{
 		// TODO: change these to use MapTile once you figure out the bug
 

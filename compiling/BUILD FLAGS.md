@@ -25,6 +25,9 @@ These do things. Lmao!
 - `PORT_RANK_CHAR` (executes with `RESULTS`): Sends you to the results state as Portilizen
 
 ## Language Flags
-- `FORCED_ENGLISH_LANGUAGE`: Forces your language to English.
-- `SPANISH_LANGUAGE`: Sets your language to (Google-translated) Spanish.
-- `PORTUGUESE_LANGUAGE`: Sets your language to Portuguese.
+- `FORCED_ENGLISH_LANGUAGE`: Forces your language to English
+- `SPANISH_LANGUAGE`: Sets your language to (Google-translated) Spanish
+- `PORTUGUESE_LANGUAGE`: Sets your language to Portuguese
+
+## Modding Flags
+- `MASS_MOD`: Enables the mass mod
