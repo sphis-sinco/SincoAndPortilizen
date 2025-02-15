@@ -8,11 +8,11 @@ class State extends FlxState
                 super();
         }
 
-        override dynamic function create() {
+        override function create() {
                 super.create();
         }
 
-        override dynamic function update(elapsed:Float) {
+        override function update(elapsed:Float) {
                 ModListManager.update(elapsed);
                 super.update(elapsed);
         }

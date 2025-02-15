@@ -28,12 +28,12 @@ class TitleState extends State
 
 	var versiontext:FlxText = new FlxText();
 
-        public dynamic function get_versiontext():String
+        public function get_versiontext():String
         {
                 return 'v${Global.VERSION}';
         }
 
-	override public dynamic function create()
+	override public function create()
 	{
 		titlebg.loadGraphic(FileManager.getImageFile('titlescreen/TitleBG'));
 		Global.scaleSprite(titlebg, 2);
@@ -79,7 +79,7 @@ class TitleState extends State
 
 	var transitioning:Bool = false;
 
-	override public dynamic function update(elapsed:Float)
+	override public function update(elapsed:Float)
 	{
 		stateChecks();
 
@@ -91,12 +91,12 @@ class TitleState extends State
 		super.update(elapsed);
 	}
 
-	public dynamic function stateChecks()
+	public function stateChecks()
 	{
 		stateSwitchStatement();
 	}
 
-	public dynamic function stateSwitchStatement()
+	public function stateSwitchStatement()
 	{
 		switch (CURRENT_STATE)
 		{
@@ -111,7 +111,7 @@ class TitleState extends State
 		}
 	}
 
-	public dynamic function introState()
+	public function introState()
 	{
 		FlxTween.tween(charring, {y: charring.height + 16}, 1.0, {
 			ease: FlxEase.sineOut,
@@ -119,7 +119,7 @@ class TitleState extends State
 		});
 	}
 
-	public dynamic function introStateDone():TweenCallback
+	public function introStateDone():TweenCallback
 	{
 		return _tween ->
 		{
@@ -131,7 +131,7 @@ class TitleState extends State
 		}
 	}
 
-	public dynamic function flashState()
+	public function flashState()
 	{
 		Global.playMenuMusic();
 
@@ -148,7 +148,7 @@ class TitleState extends State
 		});
 	}
 
-	public dynamic function doneState()
+	public function doneState()
 	{
 		Global.playMenuMusic();
 
@@ -165,7 +165,7 @@ class TitleState extends State
 		randomBGChar(port, 4);
 	}
 
-	public dynamic function pressAny()
+	public function pressAny()
 	{
 		if (FlxG.keys.justReleased.ANY && !transitioning)
 		{
@@ -181,7 +181,7 @@ class TitleState extends State
 
 	var pressanyTargY:Float = 0;
 
-	public dynamic function randomBGChar(char:FlxSprite, chance:Float)
+	public function randomBGChar(char:FlxSprite, chance:Float)
 	{
 		if (FlxG.random.bool(chance) && !char.visible)
 		{
@@ -194,7 +194,7 @@ class TitleState extends State
 		}
 	}
 
-	public dynamic function charDisappear(char:FlxSprite):TweenCallback
+	public function charDisappear(char:FlxSprite):TweenCallback
 	{
 		return _tween ->
 		{
@@ -202,7 +202,7 @@ class TitleState extends State
 		}
 	}
 
-	public dynamic function charDisWait(char:FlxSprite)
+	public function charDisWait(char:FlxSprite)
 	{
 		FlxTimer.wait(FlxG.random.float(1, 4), () ->
 		{
