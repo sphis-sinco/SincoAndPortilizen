@@ -28,7 +28,7 @@ class TitleState extends State
 
 	var versiontext:FlxText = new FlxText();
 
-        public function get_versiontext():String
+        public static dynamic function get_versiontext():String
         {
                 return 'v${Global.VERSION}';
         }
