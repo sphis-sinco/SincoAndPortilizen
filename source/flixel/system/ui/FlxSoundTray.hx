@@ -110,7 +110,7 @@ class FlxSoundTray extends Sprite
                                 case 3, 4:
                                         color = FlxColor.ORANGE;
                         
-                                case 1, 2:
+                                case 0, 1, 2:
                                         color = FlxColor.RED;
 
                                 default:
