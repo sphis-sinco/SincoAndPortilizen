@@ -35,7 +35,13 @@ class ModBasic extends FlxBasic
 
         /**
          * Toggles if the mod is enabled or not
+         * 
+         * If the mod hasn't run create then it is run
          */
-        public function toggleEnabled() { this.enabled = !this.enabled; }
+        public function toggleEnabled() {
+                this.enabled = !this.enabled; 
+
+                if (!has_run_create) create();
+        }
         
 }
