@@ -8,14 +8,14 @@ import sap.title.TitleState;
 
 class MainMenu extends State
 {
-	var sinco:MenuCharacter = new MenuCharacter(0, 0, "Sinco");
-	var port:MenuCharacter = new MenuCharacter(0, 0, "Portilizen");
+	public static var sinco:MenuCharacter = new MenuCharacter(0, 0, "Sinco");
+	public static var port:MenuCharacter = new MenuCharacter(0, 0, "Portilizen");
 
-	var gridbg:FlxSprite = new FlxSprite();
-	var menuselectbox:FlxSprite = new FlxSprite();
+	public static var gridbg:FlxSprite = new FlxSprite();
+	public static var menuselectbox:FlxSprite = new FlxSprite();
 
-	var menuboxtexts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
-	var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'credits', 'leave'], 'play' => ['new', 'continue', 'back']];
+	public static var menuboxtexts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
+	public static var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'credits', 'leave'], 'play' => ['new', 'continue', 'back']];
 
 	public var menutextsSelection:String = 'menu';
 
@@ -63,10 +63,10 @@ class MainMenu extends State
 
 		add(menuboxtexts);
 
-		this.cycle = public_cycle;
+		cycle = public_cycle;
 
-		this.sinco.animation.play((menucharvis[0]) ? 'visible' : 'blank');
-		this.port.animation.play((menucharvis[1]) ? 'visible' : 'blank');
+		sinco.animation.play((menucharvis[0]) ? 'visible' : 'blank');
+		port.animation.play((menucharvis[1]) ? 'visible' : 'blank');
 
 		Global.playMenuMusic();
 
