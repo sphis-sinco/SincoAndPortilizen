@@ -6,6 +6,8 @@ import lime.utils.Assets;
 import sap.credits.CreditsSubState;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
+import sap.modding.source.ModListManager;
+import sap.modding.source.mods.IntroMod;
 import sap.results.ResultsMenu;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
@@ -32,6 +34,7 @@ class InitState extends FlxState
 		#end
 
                 LanguageInit();
+                ModsInit();
 
                 CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
 
@@ -110,5 +113,11 @@ class InitState extends FlxState
                 #if FORCED_ENGLISH_LANGUAGE LanguageManager.LANGUAGE = 'english'; #end
 
                 PhraseManager.init();
+        }
+
+        public function ModsInit()
+        {
+                ModListManager.addMod(new IntroMod());
+                ModListManager.create();
         }
 }
