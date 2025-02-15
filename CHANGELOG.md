@@ -8,7 +8,7 @@
         - Added Build flags for Localization
         - Added Spanish Translation (Google Translate)
         - Added Portuguese Translation (by Djotta Flow)
-        - Added Localized Character Ring Asset (for both languages)
+        - Added Localized Assets for images with text (for both languages)
         - Added `cur_lang.txt` file that can control the language thats set (gets overwritten by build flags)
         - Added BUILD_DIRs for the different languages
 - [Added `.bat` files for compiling (one for different languages too!)](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/4)
