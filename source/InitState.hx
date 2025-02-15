@@ -54,7 +54,7 @@ class InitState extends FlxState
 		super.update(elapsed);
 	}
 
-	public function proceed()
+	public static dynamic function proceed()
 	{
 		#if !DISABLE_PLUGINS
 		Plugins.init();
@@ -93,7 +93,7 @@ class InitState extends FlxState
 		FlxG.switchState(TitleState.new);
 	}
 
-        public function switchToState(state:NextState, stateName:String) {
+        public static function switchToState(state:NextState, stateName:String) {
 		trace('Moving to $stateName');
 		FlxG.switchState(state);
         }
