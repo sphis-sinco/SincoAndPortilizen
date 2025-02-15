@@ -89,7 +89,8 @@ class Stage1 extends FlxState
                         FlxTimer.wait(FlxG.random.float(0, 2), () -> {
                                 osin.animation.play('jump');
                                 osin_warning = true;
-                                FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0, 2), {
+                                trace('Osin rising');
+                                FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0.5, 1), {
                                         onComplete: _tween -> {
                                                 osinJump();
                                         }
