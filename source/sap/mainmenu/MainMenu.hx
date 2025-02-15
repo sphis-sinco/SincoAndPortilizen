@@ -78,7 +78,6 @@ class MainMenu extends State
 		port.animation.play((menucharvis[1]) ? 'visible' : 'blank');
 
 		gridBGAdapt();
-		Global.playMenuMusic();
 
 		super.create();
 
@@ -99,6 +98,8 @@ class MainMenu extends State
 
 	override function update(elapsed:Float)
 	{
+		Global.playMenuMusic();
+                
 		cycle++;
 		public_cycle = cycle;
 

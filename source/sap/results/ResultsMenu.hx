@@ -10,7 +10,7 @@ class ResultsMenu extends State
 	public var RANK_CLASS:Rank;
 
 	public var PERCENT:Float = 0.0;
-        
+
 	public var TARGET_PERCENT:Null<Float> = 100.0;
 
 	public var REACHED_TARGET_PERCENT:Bool = false;
@@ -21,15 +21,15 @@ class ResultsMenu extends State
 	public var RANK_GRADE_TEXT:FlxText;
 	public var RANK_PERCENT_TEXT:FlxText;
 
-        public var RESULTS_CHARACTER:ResultsChar;
+	public var RESULTS_CHARACTER:ResultsChar;
 
-        public var RESULTS_BG:BlankBG;
+	public var RESULTS_BG:BlankBG;
 
-        public var nextState:NextState;
+	public var nextState:NextState;
 
 	override public function new(goods:Int = 0, total:Int = 0, nextState:NextState, ?char:String = 'sinco')
 	{
-                this.nextState = nextState;
+		this.nextState = nextState;
 
 		TARGET_PERCENT = (goods / total) * 100;
 		RANK_CLASS = new Rank((TARGET_PERCENT == null) ? 0 : TARGET_PERCENT);
@@ -37,38 +37,38 @@ class ResultsMenu extends State
 		RANK_GRADE_TEXT = new FlxText(10, 10, FlxG.width, PhraseManager.getPhrase('you-did') + '...', 64);
 
 		RANK_PERCENT_TEXT = new FlxText(0, 0, 0, '0%', 32);
-                RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
-                RANK_PERCENT_TEXT.color = FlxColor.GRAY;
-                RANK_PERCENT_TEXT.alignment = LEFT;
+		RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
+		RANK_PERCENT_TEXT.color = FlxColor.GRAY;
+		RANK_PERCENT_TEXT.alignment = LEFT;
 
-                RESULTS_CHARACTER = new ResultsChar(char);
-                RESULTS_CHARACTER.screenCenter(XY);
+		RESULTS_CHARACTER = new ResultsChar(char);
+		RESULTS_CHARACTER.screenCenter(XY);
 
-                RESULTS_BG = new BlankBG();
-                RESULTS_BG.color = 0x999999;
-                RESULTS_BG.screenCenter(XY);
+		RESULTS_BG = new BlankBG();
+		RESULTS_BG.color = 0x999999;
+		RESULTS_BG.screenCenter(XY);
 
-		super();                
+		super();
 	}
 
 	override public function create():Void
 	{
-                add(RESULTS_BG);
+		add(RESULTS_BG);
 
 		add(RANK_GRADE_TEXT);
 		add(RANK_PERCENT_TEXT);
 
-                add(RESULTS_CHARACTER);
+		add(RESULTS_CHARACTER);
 
 		super.create();
 
-                Global.changeDiscordRPCPresence('Results menu for ${RESULTS_CHARACTER.char}', null);
+		Global.changeDiscordRPCPresence('Results menu for ${RESULTS_CHARACTER.char}', null);
 	}
 
 	override public function update(elapsed:Float):Void
 	{
-                if (RESULTS_CHARACTER.animation.name != RANK_CLASS.grade(PERCENT))
-                        RESULTS_CHARACTER.animation.play(RANK_CLASS.grade(PERCENT));
+		if (RESULTS_CHARACTER.animation.name != RANK_CLASS.grade(PERCENT))
+			RESULTS_CHARACTER.animation.play(RANK_CLASS.grade(PERCENT));
 
 		if (PERCENT < TARGET_PERCENT)
 		{
@@ -79,16 +79,35 @@ class ResultsMenu extends State
 			rankBuildUpComplete();
 		}
 
-                if (FlxG.keys.justReleased.SPACE && REACHED_TARGET_PERCENT)
-                {
-                        FlxG.switchState(nextState);
-                }
+		if (REACHED_TARGET_PERCENT)
+		{
+			var songSuffix:String = RANK_CLASS.gradeUntranslated(TARGET_PERCENT);
+
+			switch (RANK_CLASS.gradeUntranslated(TARGET_PERCENT))
+			{
+				default:
+				case 'good' | 'great':
+					songSuffix = 'good';
+				case 'awful' | 'bad':
+					songSuffix = 'awful';
+			}
+
+			TryCatch.tryCatch(() ->
+			{
+				Global.playMusic('rank-$songSuffix');
+			});
+		}
+
+		if (FlxG.keys.justReleased.SPACE && REACHED_TARGET_PERCENT)
+		{
+			FlxG.switchState(nextState);
+		}
 
 		PERCENT_TICK++;
 
 		super.update(elapsed);
 	}
-        
+
 	public function rankBuildUpTick():Void
 	{
 		if (PERCENT_TICK == PERCENT_TICK_GOAL)
@@ -97,39 +116,34 @@ class ResultsMenu extends State
 			PERCENT += (PERCENT < 1) ? 1 : (PERCENT / TARGET_PERCENT) * 50;
 		}
 
-		if (PERCENT > TARGET_PERCENT) PERCENT = TARGET_PERCENT;
+		if (PERCENT > TARGET_PERCENT)
+			PERCENT = TARGET_PERCENT;
 
 		RANK_PERCENT_TEXT.text = '${FlxMath.roundDecimal(PERCENT, 0)}%';
 	}
-        
+
 	public function rankBuildUpComplete():Void
 	{
-		if (!REACHED_TARGET_PERCENT) trace('Rank Target Made!'); else return;
-                var songSuffix:String = RANK_CLASS.gradeUntranslated(TARGET_PERCENT);
+		if (!REACHED_TARGET_PERCENT)
+			trace('Rank Target Made!');
+		else
+			return;
 
 		FlxG.camera.flash();
-                switch (RANK_CLASS.gradeUntranslated(TARGET_PERCENT))
-                {
-                        default:
-                                RESULTS_BG.color = 0xffd93f;
-                        case 'good' | 'great':
-                                RESULTS_BG.color = 0xad4e1a;
-                                songSuffix = 'good';
-                        case 'awful' | 'bad':
-                                RESULTS_BG.color = 0xb23f24;
-                                songSuffix = 'awful';
-                }
+		switch (RANK_CLASS.gradeUntranslated(TARGET_PERCENT))
+		{
+			default:
+				RESULTS_BG.color = 0xffd93f;
+			case 'good' | 'great':
+				RESULTS_BG.color = 0xad4e1a;
+			case 'awful' | 'bad':
+				RESULTS_BG.color = 0xb23f24;
+		}
 
 		RANK_GRADE_TEXT.text = '${PhraseManager.getPhrase('you-did')} ${RANK_CLASS.RANK.toUpperCase()}!';
-                RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
+		RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
+		Global.changeDiscordRPCPresence('Results menu for ${RESULTS_CHARACTER.char}', 'Rank: ${RANK_CLASS.RANK}');
 
 		REACHED_TARGET_PERCENT = true;
-
-                Global.changeDiscordRPCPresence('Results menu for ${RESULTS_CHARACTER.char}', 'Rank: ${RANK_CLASS.RANK}');
-
-                TryCatch.tryCatch(() -> {
-                        if (FlxG.sound.music.playing) FlxG.sound.music.stop();
-                });
-                FlxG.sound.playMusic(FileManager.getSoundFile('music/rank-$songSuffix'));
 	}
 }
