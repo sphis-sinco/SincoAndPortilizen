@@ -25,6 +25,15 @@ class IntroMod extends ModBasic
 		super.create();
 	}
 
+        override function onStateSwitchComplete() {
+                super.onStateSwitchComplete();
+
+                if (FlxG.state == new TitleState())
+                {
+                        trace('Title!');
+                }
+        }
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
