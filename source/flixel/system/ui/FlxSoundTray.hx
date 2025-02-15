@@ -54,6 +54,8 @@ class FlxSoundTray extends Sprite
 	/**Whether or not changing the volume should make noise.**/
 	public var silent:Bool = false;
 
+        public var offset:Int = 8;
+
 	/**
 	 * Sets up the "sound tray", the little volume meter that pops down sometimes.
 	 */
@@ -65,7 +67,7 @@ class FlxSoundTray extends Sprite
 		visible = false;
 		scaleX = _defaultScale;
 		scaleY = _defaultScale;
-		var tmp:Bitmap = new Bitmap(new BitmapData(_width, 30, true, 0xC50E0E0E));
+		var tmp:Bitmap = new Bitmap(new BitmapData(_width, 30 + offset, true, 0xC50E0E0E));
 		screenCenter();
 		addChild(tmp);
 
@@ -87,10 +89,10 @@ class FlxSoundTray extends Sprite
 		text.defaultTextFormat = dtf;
 		addChild(text);
 		text.text = "VOLUME";
-		text.y = 16;
+		text.y = 16 + offset;
 
 		var bx:Int = 10;
-		var by:Int = 14;
+		var by:Int = 14 + Std.int(offset / 2);
 		_bars = new Array();
 
 		for (i in 0...10)
@@ -113,7 +115,7 @@ class FlxSoundTray extends Sprite
                 // ! flixel.FlxSprite should be openfl.display.DisplayObject
                 // ! For function argument 'child'
                 current_volume_bar.x = bx;
-                current_volume_bar.y = 14;
+                current_volume_bar.y = 14 + offset;
                 addChild(current_volume_bar);
 	}
 
@@ -189,7 +191,6 @@ class FlxSoundTray extends Sprite
 		}
 
                 current_volume_bar.x = 3 + (6 * globalVolume);
-                current_volume_bar.y = 16;
 
                 current_volume_bar.visible = globalVolume > 0;
 	}
