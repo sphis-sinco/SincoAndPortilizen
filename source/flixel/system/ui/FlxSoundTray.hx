@@ -11,6 +11,7 @@ import openfl.display.Sprite;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.text.TextFormatAlign;
+import openfl.utils.Assets;
 #if flash
 import openfl.text.AntiAliasType;
 import openfl.text.GridFitType;
@@ -111,9 +112,12 @@ class FlxSoundTray extends Sprite
                 // TODO: Figure out how to do this without getting the error below:
                 // ! flixel.FlxSprite should be openfl.display.DisplayObject
                 // ! For function argument 'child'
-                var current_volume_bar:Bitmap = new Bitmap(new BitmapData(bx + (6 * 10), by, Assets.getBitmapData(FileManager.getImageFile('ui/soundtray/current_volume_bar'))));
+                current_volume_bar.x = bx;
+                current_volume_bar.y = 14;
                 addChild(current_volume_bar);
 	}
+
+        var current_volume_bar:Bitmap = new Bitmap(Assets.getBitmapData(FileManager.getImageFile('ui/soundtray/current_volume_bar')));
 
 	/**
 	 * This function updates the soundtray object.
@@ -183,6 +187,11 @@ class FlxSoundTray extends Sprite
 				_bars[i].alpha = 0;
 			}
 		}
+
+                current_volume_bar.x = 3 + (6 * globalVolume);
+                current_volume_bar.y = 16;
+
+                current_volume_bar.visible = globalVolume > 0;
 	}
 
 	public function screenCenter():Void
