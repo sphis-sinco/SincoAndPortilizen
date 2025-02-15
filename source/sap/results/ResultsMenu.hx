@@ -105,16 +105,19 @@ class ResultsMenu extends State
 	public function rankBuildUpComplete():Void
 	{
 		if (!REACHED_TARGET_PERCENT) trace('Rank Target Made!'); else return;
+                var songSuffix:String = RANK_CLASS.gradeUntranslated(TARGET_PERCENT);
 
 		FlxG.camera.flash();
-                switch (RANK_CLASS.RANK)
+                switch (RANK_CLASS.gradeUntranslated(TARGET_PERCENT))
                 {
                         default:
                                 RESULTS_BG.color = 0xffd93f;
                         case 'good' | 'great':
                                 RESULTS_BG.color = 0xad4e1a;
+                                songSuffix = 'good';
                         case 'awful' | 'bad':
                                 RESULTS_BG.color = 0xb23f24;
+                                songSuffix = 'awful';
                 }
 
 		RANK_GRADE_TEXT.text = '${PhraseManager.getPhrase('you-did')} ${RANK_CLASS.RANK.toUpperCase()}!';
@@ -123,5 +126,10 @@ class ResultsMenu extends State
 		REACHED_TARGET_PERCENT = true;
 
                 Global.changeDiscordRPCPresence('Results menu for ${RESULTS_CHARACTER.char}', 'Rank: ${RANK_CLASS.RANK}');
+
+                TryCatch.tryCatch(() -> {
+                        if (FlxG.sound.music.playing) FlxG.sound.music.stop();
+                });
+                FlxG.sound.playMusic(FileManager.getSoundFile('music/rank-$songSuffix'));
 	}
 }
