@@ -77,7 +77,7 @@ class MassMod extends ModBasic
 					&& Stage1.osin_canjump);
 			}
 
-			Stage1.osin.color = FlxColor.RED;
+			Stage1.osin.color = FlxColor.YELLOW;
 		}
 
 		if (Global.getCurrentState() == "Stage4")
