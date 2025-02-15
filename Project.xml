@@ -77,6 +77,7 @@
 	<haxelib name="flixel-addons" />
 
 	<haxelib name="sinlib" />
+	<haxelib name="langhaxe" />
 
 	<haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS"/>
 

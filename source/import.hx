@@ -1,7 +1,10 @@
 import flixel.*;
+import langhaxe.*;
+import langhaxe.LangHaxe;
 import sap.*;
 import sap.plugins.*;
 import sap.savedata.*;
+import sinlib.utilities.*;
 import sinlib.utilities.FileManager;
 
 #if DISCORDRPC

@@ -8,6 +8,7 @@ class SaveManager
 	public static function setupSave()
 	{
 		// just the base thing
+		FlxG.save.data.language ??= getDefaultSave().language;
 		FlxG.save.data.results ??= getDefaultSave().results;
 		FlxG.save.data.gameplaystatus ??= getDefaultSave().gameplaystatus;
 
@@ -20,9 +21,15 @@ class SaveManager
 	public static function getDefaultSave()
 	{
 		return {
+                        language: "english",
 			results: Results.returnDefaultResults(),
 			gameplaystatus: GameplayStatus.returnDefaultGameplayStatus()
 		}
+	}
+
+	public static function getLanguage()
+	{
+		return FlxG.save.data.language;
 	}
 
 	public static function getResults()

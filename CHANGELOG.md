@@ -2,6 +2,10 @@
 ## 0.0.5-p - 2/15/2025
 ### Added
 - Added Indicator for when Osin is going to attack (Stage 1)
+- Added Localization
+        - Added Build flags for Localization
+        - Added Spanish Translation (Google Translate)
+        - Added Portuguese Translation (by Djotta Flow)
 ### Changed
 - [Changed the Sound Tray](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3)
 

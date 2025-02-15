@@ -54,8 +54,8 @@ class Stage1 extends FlxState
 
 		sincoHealthIndicator.size = 16;
 		add(sincoHealthIndicator);
-                
-                Global.changeDiscordRPCPresence('Stage 1: Osin', null);
+
+		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 	}
 
 	var sincoPos:FlxPoint;
@@ -71,12 +71,12 @@ class Stage1 extends FlxState
 		super.update(elapsed);
 
 		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
-		osinHealthIndicator.text = 'HP: $OSIN_HEALTH/10';
+		osinHealthIndicator.text = '${PhraseManager.getPhrase('HP', 'HP')}: $OSIN_HEALTH/10';
 		if (osin_warning)
-			osinHealthIndicator.text += '\nDODGE';
+			osinHealthIndicator.text += '\n${PhraseManager.getPhrase('DODGE')}';
 
 		sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
-		sincoHealthIndicator.text = 'HP: $SINCO_HEALTH/10';
+		sincoHealthIndicator.text = '${PhraseManager.getPhrase('HP', 'HP')}: $SINCO_HEALTH/10';
 
 		var osinJumpCondition:Bool = (SINCO_HEALTH >= 1
 			&& OSIN_HEALTH >= 1
@@ -86,16 +86,10 @@ class Stage1 extends FlxState
 		if (osinJumpCondition)
 		{
 			osin_canjump = false;
-                        FlxTimer.wait(FlxG.random.float(0, 2), () -> {
-                                osin.animation.play('jump');
-                                osin_warning = true;
-                                trace('Osin rising');
-                                FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0.5, 1), {
-                                        onComplete: _tween -> {
-                                                osinJump();
-                                        }
-                                });
-                        });
+			FlxTimer.wait(FlxG.random.float(0, 2), () ->
+			{
+				osinWarning();
+			});
 		}
 
 		if (OSIN_HEALTH >= 1)
@@ -143,6 +137,18 @@ class Stage1 extends FlxState
 			osin.animation.play('hurt');
 			osinDefeated();
 		}
+	}
+
+	public function osinWarning()
+	{
+		osin.animation.play('jump');
+		osin_warning = true;
+		FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0.5, 1), {
+			onComplete: _tween ->
+			{
+				osinJump();
+			}
+		});
 	}
 
 	public function osinJump()

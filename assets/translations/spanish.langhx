@@ -1,0 +1,21 @@
+{
+        "name": "Spanish",
+        "asset_suffix": "es",
+        "phrases": {
+          "hp": "SALUD",
+          "dodge": "ESQUIVAR",
+          "rank-perfect": "perfecto",
+          "rank-excellent": "excelente",
+          "rank-great": "un gran trabajo",
+          "rank-good": "Bueno",
+          "rank-bad": "malo",
+          "rank-awful": "horrible",
+          "you-did": "LO HICISTE",
+          "menu-play": "jugar",
+          "menu-credits": "créditos",
+          "menu-leave": "dejar",
+          "play-new": "nuevo",
+          "play-continue": "continuar",
+          "play-back": "atrás"
+        }
+}
