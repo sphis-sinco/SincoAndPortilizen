@@ -1,4 +1,6 @@
 import flixel.*;
+import langhaxe.*;
+import langhaxe.LangHaxe;
 import sap.*;
 import sap.plugins.*;
 import sap.savedata.*;
