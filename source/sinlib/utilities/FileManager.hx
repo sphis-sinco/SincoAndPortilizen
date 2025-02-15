@@ -7,7 +7,8 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 
-class FileManager {
+class FileManager
+{
 	public static var SOUND_EXT:String = 'wav';
 
 	/**
@@ -35,8 +36,24 @@ class FileManager {
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static dynamic function getPath(pathprefix:String, path:String, ?PATH_TYPE:PathTypes = DEFAULT):String
-		return '${pathprefix}${PATH_TYPE}${path}';
+	public static function getPath(pathprefix:String, path:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	{
+		var returnpath:String = '${pathprefix}${PATH_TYPE}${path}';
+                var returnpathAlt:String = '${pathprefix}${PATH_TYPE}${path.split('.')[0]}-${PhraseManager.languageList.asset_suffix}.${path.split('.')[1]}';
+
+		TryCatch.tryCatch(() ->
+		{
+                        if (openfl.utils.Assets.exists(returnpathAlt))
+			{
+                                // trace(returnpathAlt);
+				returnpath = returnpathAlt;
+			}
+		}, {
+				traceErr: true
+		});
+
+		return returnpath;
+	}
 
 	/**
 	 * Returns an `assets/$file`
@@ -59,7 +76,8 @@ class FileManager {
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getScriptFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String {
+	public static function getScriptFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	{
 		var finalPath:Dynamic = 'scripts/$file.$SCRIPT_EXT';
 
 		#if SCRIPT_FILES_IN_DATA_FOLDER
@@ -78,7 +96,8 @@ class FileManager {
 	/**
 	 * Dummy function for if not `SCRIPT_FILES`
 	 */
-	public static function getScriptFile(?file:String = "", ?PATH_TYPE:PathTypes = DEFAULT):String {
+	public static function getScriptFile(?file:String = "", ?PATH_TYPE:PathTypes = DEFAULT):String
+	{
 		return "";
 	}
 	#end
@@ -115,7 +134,8 @@ class FileManager {
 	 * @param path File path
 	 * @param content File content
 	 */
-	public static function writeToPath(path:String, content:String) {
+	public static function writeToPath(path:String, content:String)
+	{
 		#if sys
 		if (path.length > 0)
 			File.saveContent(path, content);
@@ -130,10 +150,14 @@ class FileManager {
 	 * Read a file using `lime.utils.Assets` and a try catch function
 	 * @param path the path of the file your trying to read
 	 */
-	public static function readFile(path:String) {
-		try {
+	public static function readFile(path:String)
+	{
+		try
+		{
 			return Assets.getText(path);
-		} catch (e) {
+		}
+		catch (e)
+		{
 			#if sys
 			trace(e);
 			Sys.exit(0);
@@ -149,7 +173,8 @@ class FileManager {
 	 * Reads a file that SHOULD BE A JSON, using `readFile`
 	 * @param path the path of the json your trying to get
 	 */
-	public static function getJSON(path:String) {
+	public static function getJSON(path:String)
+	{
 		return Json.parse(readFile(path));
 	}
 
@@ -157,7 +182,8 @@ class FileManager {
 	 * Reads a directory if `sys` via `FileSystem.readDirectory`
 	 * @param dir This is the directory being read
 	 */
-	public static function readDirectory(dir:String) {
+	public static function readDirectory(dir:String)
+	{
 		#if sys
 		return FileSystem.readDirectory(dir);
 		#end
@@ -169,6 +195,7 @@ class FileManager {
 /**
  * This would hold Asset folders, for example `assets/default` or `assets/gameplay`
  */
-enum abstract PathTypes(String) from String to String {
+enum abstract PathTypes(String) from String to String
+{
 	public var DEFAULT:String = "";
 }

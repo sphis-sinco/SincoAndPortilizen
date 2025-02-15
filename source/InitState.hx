@@ -31,20 +31,6 @@ class InitState extends FlxState
 		LogStyle.WARNING.errorSound = null;
 		#end
 
-                FileManager.getPath = function(pathprefix:String, path:String, ?PATH_TYPE:PathTypes = DEFAULT):String {
-                        var returnpath:String = '${pathprefix}${PATH_TYPE}${path}';
-
-                        TryCatch.tryCatch(() -> function(_):String {
-                                returnpath = '${pathprefix}${PATH_TYPE}${path.split('.')[0]}${PhraseManager.languageList.asset_suffix}${path.split('.')[1]}';
-                                if (Assets.exists(returnpath)) return returnpath;
-
-                                throw 0;
-                                return null;
-                        });
-                        
-                        return returnpath;
-                }
-
                 CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
 
 		if (!SLGame.isDebug) proceed();
