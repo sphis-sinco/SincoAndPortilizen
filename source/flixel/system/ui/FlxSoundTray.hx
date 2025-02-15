@@ -107,6 +107,9 @@ class FlxSoundTray extends Sprite
 
 		y = -height;
 		visible = false;
+
+                var current_volume_bar:FlxSprite = new FlxSprite(bx + (6 * 10), by).loadGraphic(FileManager.getImageFile('ui/soundtray/current_volume_bar'));
+                addChild(current_volume_bar);
 	}
 
 	/**
