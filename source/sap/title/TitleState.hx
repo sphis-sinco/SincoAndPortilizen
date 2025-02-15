@@ -160,8 +160,12 @@ class TitleState extends State
 			pressany.y = pressanyTargY;
 		if (!pressany.visible)
 			pressany.visible = true;
+                if (pressany.alpha != 1)
+                        FlxTween.tween(pressany, {alpha: 1}, 1);
+
 		if (!titlebg.visible)
 			titlebg.visible = true;
+                
 		if (charring.y != charring.height + 16)
 			charring.y = charring.height + 16;
 
