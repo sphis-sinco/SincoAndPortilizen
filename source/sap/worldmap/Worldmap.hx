@@ -13,7 +13,7 @@ class Worldmap extends State
 	public static var character:MapCharacter;
 	public static var charWheel:CharacterWheel;
 
-	var current_level:Int = 1;
+	public static var current_level:Int = 1;
 
 	public static var mapGRP:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 
@@ -59,7 +59,7 @@ class Worldmap extends State
                 Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
 	}
 
-	var mapTileXPosThing:Float = 0;
+	public static var mapTileXPosThing:Float = 0;
 
 	override function update(elapsed:Float)
 	{
@@ -159,7 +159,7 @@ class Worldmap extends State
                 character.animation.play('idle');
 	}
 
-	var canSwap:Bool = true;
+	public static var canSwap:Bool = true;
 
 	public dynamic function makeMap()
 	{

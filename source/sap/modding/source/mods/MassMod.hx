@@ -10,6 +10,7 @@ import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
 import sap.worldmap.Worldmap;
+import sinlib.SLGame;
 
 class MassMod extends ModBasic
 {
@@ -30,8 +31,10 @@ class MassMod extends ModBasic
 
 		TitleState.get_versiontext = function():String
 		{
-			return 'v6969';
+			return 'v.mass mod6969';
 		}
+
+		Global.change_saveslot((SLGame.isDebug) ? 'debug_massmod' : 'release_massmod');
 
 		super.create();
 	}

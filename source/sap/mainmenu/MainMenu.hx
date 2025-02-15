@@ -19,9 +19,13 @@ class MainMenu extends State
 
 	public var menutextsSelection:String = 'menu';
 
+	public static var public_menutextsSelection:String = 'menu';
+
 	public static var menucharvis:Array<Bool> = null;
 
-	var CUR_SELECTION:Int = 0;
+	public var CUR_SELECTION:Int = 0;
+
+	public static var PUBLIC_CUR_SELECTION:Int = 0;
 
 	public static var inCredits:Bool = false;
 
@@ -40,8 +44,8 @@ class MainMenu extends State
 		Global.scaleSprite(gridbg, 0);
 		gridbg.screenCenter();
 
-                sinco = new MenuCharacter(0, 0, "Sinco");
-                port = new MenuCharacter(0, 0, "Portilizen");
+		sinco = new MenuCharacter(0, 0, "Sinco");
+		port = new MenuCharacter(0, 0, "Portilizen");
 
 		sinco.screenCenter();
 		port.screenCenter();
@@ -83,7 +87,7 @@ class MainMenu extends State
 
 	public var cycle:Int = 0;
 
-	public function gridBGAdapt()
+	public static dynamic function gridBGAdapt()
 	{
 		if (port.animation.name == 'blank')
 			gridbg.x += 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
@@ -96,8 +100,12 @@ class MainMenu extends State
 		cycle++;
 		public_cycle = cycle;
 
+		public_menutextsSelection = menutextsSelection;
+		PUBLIC_CUR_SELECTION = CUR_SELECTION;
+
 		if (cycle % 100 == 0)
 		{
+			cycle = 0;
 			cycleUpdate();
 		}
 
@@ -108,19 +116,8 @@ class MainMenu extends State
 
 		if (!inCredits)
 		{
-			if (FlxG.keys.justReleased.UP)
-			{
-				CUR_SELECTION--;
-				if (CUR_SELECTION < 0)
-					CUR_SELECTION = 0;
-			}
-
-			if (FlxG.keys.justReleased.DOWN)
-			{
-				CUR_SELECTION++;
-				if (CUR_SELECTION > menuboxtexts.members.length - 1)
-					CUR_SELECTION = menuboxtexts.members.length - 1;
-			}
+			controls();
+                        CUR_SELECTION = PUBLIC_CUR_SELECTION;
 
 			if (FlxG.keys.justReleased.ENTER)
 			{
@@ -131,7 +128,24 @@ class MainMenu extends State
 		super.update(elapsed);
 	}
 
-	public function set_menuboxtexts(mapstring:String)
+	public static dynamic function controls()
+	{
+		if (FlxG.keys.justReleased.UP)
+		{
+			PUBLIC_CUR_SELECTION--;
+			if (PUBLIC_CUR_SELECTION < 0)
+				PUBLIC_CUR_SELECTION = 0;
+		}
+
+		if (FlxG.keys.justReleased.DOWN)
+		{
+			PUBLIC_CUR_SELECTION++;
+			if (PUBLIC_CUR_SELECTION > menuboxtexts.members.length - 1)
+				PUBLIC_CUR_SELECTION = menuboxtexts.members.length - 1;
+		}
+	}
+
+	public static dynamic function set_menuboxtexts(mapstring:String)
 	{
 		if (menuboxtexts.members.length > 0)
 		{
@@ -157,33 +171,35 @@ class MainMenu extends State
 		}
 	}
 
+	public static var CREDITS_SELECTION:Int = 1;
+
 	public function selectionCheck()
 	{
-		if (menutextsSelection == 'menu')
+		if (public_menutextsSelection == 'menu')
 		{
+			if (PUBLIC_CUR_SELECTION == CREDITS_SELECTION)
+			{
+				inCredits = true;
+				openSubState(new CreditsSubState());
+			}
+
 			menuSelection();
 		}
 	}
 
-	public function menuSelection()
+	public static dynamic function menuSelection()
 	{
-		switch (CUR_SELECTION)
+		switch (PUBLIC_CUR_SELECTION)
 		{
 			case 0:
 				FlxG.switchState(PlayMenu.new);
-			case 1:
-                                inCredits = true;
-				openSubState(new CreditsSubState());
 			case 2:
 				FlxG.switchState(TitleState.new);
 		}
 	}
 
-	public function cycleUpdate()
+	public static dynamic function cycleUpdate()
 	{
-		if (cycle % 100 == 0)
-			cycle = 0;
-
 		sinco.animation.play((sinco.animation.name == 'blank') ? 'visible' : 'blank');
 		port.animation.play((port.animation.name == 'blank') ? 'visible' : 'blank');
 
