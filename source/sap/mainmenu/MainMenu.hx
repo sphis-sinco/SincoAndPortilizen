@@ -8,8 +8,8 @@ import sap.title.TitleState;
 
 class MainMenu extends State
 {
-	public static var sinco:MenuCharacter = new MenuCharacter(0, 0, "Sinco");
-	public static var port:MenuCharacter = new MenuCharacter(0, 0, "Portilizen");
+	public static var sinco:MenuCharacter;
+	public static var port:MenuCharacter;
 
 	public static var gridbg:FlxSprite = new FlxSprite();
 	public static var menuselectbox:FlxSprite = new FlxSprite();
@@ -39,14 +39,17 @@ class MainMenu extends State
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));
 		Global.scaleSprite(gridbg, 0);
 		gridbg.screenCenter();
-		gridBGAdapt();
-		add(gridbg);
+
+                sinco = new MenuCharacter(0, 0, "Sinco");
+                port = new MenuCharacter(0, 0, "Portilizen");
 
 		sinco.screenCenter();
 		port.screenCenter();
 
 		sinco.x -= sinco.width * 2;
 		port.x += port.width * 2;
+
+		add(gridbg);
 
 		add(sinco);
 
@@ -68,6 +71,7 @@ class MainMenu extends State
 		sinco.animation.play((menucharvis[0]) ? 'visible' : 'blank');
 		port.animation.play((menucharvis[1]) ? 'visible' : 'blank');
 
+		gridBGAdapt();
 		Global.playMenuMusic();
 
 		super.create();
