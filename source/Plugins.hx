@@ -2,7 +2,7 @@ import funkin.util.plugins.ScreenshotPlugin;
 
 class Plugins
 {
-	public static function init()
+	public static dynamic function init()
 	{
 		#if !DISABLE_SCREENSHOT
                 ScreenshotPlugin.initialize();

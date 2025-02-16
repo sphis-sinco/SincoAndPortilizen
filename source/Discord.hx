@@ -8,6 +8,8 @@ import discord_rpc.DiscordRpc;
  */
 class DiscordClient
 {
+        public static var CLIENT_ID:Dynamic = 1324111625682288720;
+
         static var startTimestamp:Float = Date.now().getTime();
 
 	public function new()
@@ -15,7 +17,7 @@ class DiscordClient
 
 		trace("Discord Client starting...");
 		DiscordRpc.start({
-			clientID: "1324111625682288720",
+			clientID: Std.string(CLIENT_ID),
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected

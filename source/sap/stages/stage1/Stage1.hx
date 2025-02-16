@@ -7,23 +7,33 @@ import flixel.util.FlxTimer;
 import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
-class Stage1 extends FlxState
+class Stage1 extends State
 {
-	var background:FlxSprite = new FlxSprite();
+	public static var background:FlxSprite;
 
-	var sinco:Sinco = new Sinco();
-	var osin:Osin = new Osin();
+	public static var sinco:Sinco;
+	public static var osin:Osin;
 
-	var OSIN_HEALTH:Int = 10;
-	var SINCO_HEALTH:Int = 10;
+	public static var OSIN_HEALTH:Int = 10;
+	public static var SINCO_HEALTH:Int = 10;
 
-	var osinHealthIndicator:FlxText = new FlxText();
-	var sincoHealthIndicator:FlxText = new FlxText();
+	public static var OSIN_MAX_HEALTH:Int = 10;
+	public static var SINCO_MAX_HEALTH:Int = 10;
+
+	public static var osinHealthIndicator:FlxText;
+	public static var sincoHealthIndicator:FlxText;
 
 	override function create()
 	{
 		super.create();
 
+		sinco = new Sinco();
+		osin = new Osin();
+
+                osinHealthIndicator = new FlxText();
+                sincoHealthIndicator = new FlxText();
+
+                background = new FlxSprite();
 		background.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
 
 		background.animation.add('animation', [0, 1], 16);
@@ -54,69 +64,103 @@ class Stage1 extends FlxState
 
 		sincoHealthIndicator.size = 16;
 		add(sincoHealthIndicator);
-                
-                Global.changeDiscordRPCPresence('Stage 1: Osin', null);
+
+		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 	}
 
-	var sincoPos:FlxPoint;
-	var osinPos:FlxPoint;
-	var sinco_jump_speed:Float = 0.25;
-	var osin_jump_speed:Float = 0.3;
+        override function postCreate() {
+                super.postCreate();
 
-	var osin_canjump:Bool = true;
-	var osin_warning:Bool = false;
+                SINCO_HEALTH = SINCO_MAX_HEALTH;
+                OSIN_HEALTH = OSIN_MAX_HEALTH;
+        }
+
+	public static var sincoPos:FlxPoint;
+	public static var osinPos:FlxPoint;
+	public static var sinco_jump_speed:Float = 0.25;
+	public static var osin_jump_speed:Float = 0.3;
+
+	public static var osin_canjump:Bool = true;
+	public static var osin_warning:Bool = false;
+
+	public static dynamic function getOsinJumpCondition()
+	{
+		return (SINCO_HEALTH >= 1
+			&& OSIN_HEALTH >= 1
+			&& FlxG.random.int(0, 200) < 50
+			&& (osin.animation.name != 'jump' && osin.animation.name != 'hurt')
+			&& osin_canjump);
+	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
-		osinHealthIndicator.text = 'HP: $OSIN_HEALTH/10';
-		if (osin_warning)
-			osinHealthIndicator.text += '\nDODGE';
+		updateHealthIndicators();
 
-		sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
-		sincoHealthIndicator.text = 'HP: $SINCO_HEALTH/10';
+		var osinJumpCondition:Bool = getOsinJumpCondition();
 
-		var osinJumpCondition:Bool = (SINCO_HEALTH >= 1
-			&& OSIN_HEALTH >= 1
-			&& FlxG.random.int(0, 200) < 50
-			&& (osin.animation.name != 'jump' && osin.animation.name != 'hurt')
-			&& osin_canjump);
 		if (osinJumpCondition)
 		{
-			osin_canjump = false;
-			osin_warning = true;
-			FlxTimer.wait(FlxG.random.float(0, 2), () ->
-			{
-				osinJump();
-			});
+			osinJumpWait();
 		}
 
 		if (OSIN_HEALTH >= 1)
 		{
-			if (FlxG.keys.justPressed.SPACE)
-			{
-				if (sinco.x != sincoPos.x)
-					return;
-
-				Global.playSoundEffect('gameplay/sinco-jump');
-				sinco.animation.play('jump');
-				sincoJump();
-			}
-
-			if (FlxG.keys.justPressed.RIGHT)
-			{
-				if (sinco.x != sincoPos.x)
-					return;
-
-				sinco.y += 64;
-				sinco.animation.play('jump');
-				Global.playSoundEffect('gameplay/sinco-spin');
-				sincoDodge();
-			}
+			playerControls();
 		}
 
+		sincoDeathCheck();
+
+		osinDeathCheck();
+	}
+
+	public static dynamic function updateHealthIndicators()
+	{
+		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
+		osinHealthIndicator.text = '${PhraseManager.getPhrase('hp', 'HP')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
+		if (osin_warning)
+			osinHealthIndicator.text += '\n${PhraseManager.getPhrase('dodge')}';
+
+		sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
+		sincoHealthIndicator.text = '${PhraseManager.getPhrase('hp', 'HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH';
+	}
+
+	public static dynamic function osinJumpWait()
+	{
+		osin_canjump = false;
+		FlxTimer.wait(FlxG.random.float(0, 2), () ->
+		{
+			osinWarning();
+		});
+	}
+
+	public static dynamic function playerControls()
+	{
+		if (FlxG.keys.justPressed.SPACE)
+		{
+			if (sinco.x != sincoPos.x)
+				return;
+
+			Global.playSoundEffect('gameplay/sinco-jump');
+			sinco.animation.play('jump');
+			sincoJump();
+		}
+
+		if (FlxG.keys.justPressed.RIGHT)
+		{
+			if (sinco.x != sincoPos.x)
+				return;
+
+			sinco.y += 64;
+			sinco.animation.play('jump');
+			Global.playSoundEffect('gameplay/sinco-spin');
+			sincoDodge();
+		}
+	}
+
+	public static dynamic function sincoDeathCheck()
+	{
 		if (SINCO_HEALTH < 1)
 		{
 			sinco.animation.play('ded');
@@ -126,7 +170,10 @@ class Stage1 extends FlxState
 
 			sincoDefeated();
 		}
+	}
 
+	public static dynamic function osinDeathCheck()
+	{
 		if (OSIN_HEALTH < 1)
 		{
 			osin_canjump = false;
@@ -140,7 +187,19 @@ class Stage1 extends FlxState
 		}
 	}
 
-	public function osinJump()
+	public static dynamic function osinWarning()
+	{
+		osin.animation.play('jump');
+		osin_warning = true;
+		FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0.5, 1), {
+			onComplete: _tween ->
+			{
+				osinJump();
+			}
+		});
+	}
+
+	public static dynamic function osinJump()
 	{
 		osin_warning = false;
 		osin.animation.play('jump');
@@ -153,7 +212,7 @@ class Stage1 extends FlxState
 		});
 	}
 
-	public function osinJumpDone()
+	public static dynamic function osinJumpDone()
 	{
 		var waitn = .25;
 
@@ -169,7 +228,7 @@ class Stage1 extends FlxState
 		});
 	}
 
-	public function osinHitSincoCheck()
+	public static dynamic function osinHitSincoCheck()
 	{
 		sincoHealthIndicator.color = 0xff0000;
 		FlxTween.tween(sincoHealthIndicator, {color: 0xffffff}, 1);
@@ -181,7 +240,7 @@ class Stage1 extends FlxState
 			return;
 	}
 
-	public function osinJumpBack()
+	public static dynamic function osinJumpBack()
 	{
 		FlxTween.tween(osin, {x: osinPos.x, y: osinPos.y}, osin_jump_speed, {
 			onComplete: _tween ->
@@ -192,7 +251,7 @@ class Stage1 extends FlxState
 		});
 	}
 
-	public function sincoJump()
+	public static dynamic function sincoJump()
 	{
 		FlxTween.tween(sinco, {x: osinPos.x, y: osinPos.y}, sinco_jump_speed, {
 			onComplete: _tween ->
@@ -202,7 +261,7 @@ class Stage1 extends FlxState
 		});
 	}
 
-	public function sincoJumpBack()
+	public static dynamic function sincoJumpBack()
 	{
 		osinHurtCheck();
 
@@ -216,7 +275,7 @@ class Stage1 extends FlxState
 		});
 	}
 
-	public function osinHurtCheck()
+	public static dynamic function osinHurtCheck()
 	{
 		if (sinco.overlaps(osin) && osin.animation.name != 'jump')
 		{
@@ -228,7 +287,7 @@ class Stage1 extends FlxState
 		}
 	}
 
-	public function sincoDodge()
+	public static dynamic function sincoDodge()
 	{
 		FlxTween.tween(sinco, {x: osinPos.x}, sinco_jump_speed, {
 			onComplete: _tween ->
@@ -238,7 +297,7 @@ class Stage1 extends FlxState
 		});
 	}
 
-	public function sincoDodgeRecoil()
+	public static dynamic function sincoDodgeRecoil()
 	{
 		FlxTween.tween(sinco, {x: sincoPos.x,}, sinco_jump_speed, {
 			onComplete: _tween ->
@@ -249,7 +308,7 @@ class Stage1 extends FlxState
 		});
 	}
 
-	public function sincoDefeated()
+	public static dynamic function sincoDefeated()
 	{
 		FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
@@ -263,7 +322,7 @@ class Stage1 extends FlxState
 		});
 	}
 
-	public function osinDefeated()
+	public static dynamic function osinDefeated()
 	{
 		FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
@@ -277,7 +336,7 @@ class Stage1 extends FlxState
 		});
 	}
 
-	public function deathSFX(name:String = 'dead')
+	public static dynamic function deathSFX(name:String = 'dead')
 	{
 		if (!playedDeathFX)
 		{
@@ -286,11 +345,11 @@ class Stage1 extends FlxState
 		}
 	}
 
-	public function endCutsceneTransition()
+	public static dynamic function endCutsceneTransition()
 	{
 		Global.beatLevel(1);
 		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, 10, () -> new PostStage1Cutscene()));
 	}
 
-	var playedDeathFX:Bool = false;
+	public static var playedDeathFX:Bool = false;
 }

@@ -2,7 +2,7 @@ package sap.stages;
 
 import sap.worldmap.Worldmap;
 
-class Continue extends FlxState
+class Continue extends State
 {
 	override function create()
 	{

@@ -1,4 +1,5 @@
 import openfl.display.Sprite;
+import sinlib.SLGame;
 
 class Main extends Sprite
 {
@@ -13,6 +14,7 @@ class Main extends Sprite
 		Discord.DiscordClient.initialize();
                 #end
 
+                
 		addChild(new FlxGame(0, 0, InitState));
 	}
 }
