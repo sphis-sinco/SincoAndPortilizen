@@ -11,7 +11,7 @@
         - Added Localized Assets for images with text (for both languages)
         - Added `cur_lang.txt` file that can control the language thats set (gets overwritten by build flags)
         - Added BUILD_DIRs for the different languages
-- [Added `.bat` files for compiling (some for different languages too!)](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/4)
+- [Added `.bat` files for compiling (one for different languages too!)](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/4)
 - [Added source code mod support through a plugin-like system](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/5)
         - Added Mass mod (modifies every state that can be changed)
 ### Changed
