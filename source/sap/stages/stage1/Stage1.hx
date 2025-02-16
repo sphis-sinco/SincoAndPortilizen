@@ -118,12 +118,12 @@ class Stage1 extends State
 	public static dynamic function updateHealthIndicators()
 	{
 		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
-		osinHealthIndicator.text = '${PhraseManager.getPhrase('hp', 'HP')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
+		osinHealthIndicator.text = 'HP: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
 		if (osin_warning)
-			osinHealthIndicator.text += '\n${PhraseManager.getPhrase('dodge')}';
+			osinHealthIndicator.text += '\nDODGE';
 
 		sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
-		sincoHealthIndicator.text = '${PhraseManager.getPhrase('hp', 'HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH';
+		sincoHealthIndicator.text = 'HP: $SINCO_HEALTH/$SINCO_MAX_HEALTH';
 	}
 
 	public static dynamic function osinJumpWait()

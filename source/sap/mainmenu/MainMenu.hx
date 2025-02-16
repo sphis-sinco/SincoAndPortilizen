@@ -163,7 +163,7 @@ class MainMenu extends State
 		for (text in menutexts.get(mapstring))
 		{
 			var texty:Float = menuselectbox.y - menuselectbox.height + (i * 48);
-			var newtext:FlxText = new FlxText(menuselectbox.x, texty, 0, PhraseManager.getPhrase('$mapstring-$text', text), 32);
+			var newtext:FlxText = new FlxText(menuselectbox.x, texty, 0, text, 32);
 			newtext.screenCenter(X);
 
 			newtext.alignment = CENTER;

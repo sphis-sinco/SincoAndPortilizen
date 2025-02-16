@@ -1,4 +1,10 @@
 # Prototype
+## 0.0.6-p - 2/15/2025
+### Fixed
+- Fixed game crashing on start on windows
+### Removed
+- Translations
+
 ## 0.0.5-p - 2/15/2025
 ### Removed
 - Removed "Press any" alpha fade in

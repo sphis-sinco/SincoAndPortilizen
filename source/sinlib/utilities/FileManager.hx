@@ -40,23 +40,6 @@ class FileManager
 	{
 		var ogreturnpath:String = '${pathprefix}${PATH_TYPE}${path}';
 		var returnpath:String = ogreturnpath;
-                var returnpathAlt:String;
-
-		TryCatch.tryCatch(() ->
-		{
-                        returnpathAlt = '${returnpath.split('.')[0]}-${PhraseManager.languageList.asset_suffix}.${returnpath.split('.')[1]}';
-
-                        if (exists(returnpathAlt))
-			{
-                                // trace(returnpathAlt);
-				returnpath = returnpathAlt;
-			}
-		}, {
-				// traceErr: true,
-                                errFunc: () -> {
-                                        returnpath = ogreturnpath;
-                                }
-		});
 
 		return returnpath;
 	}

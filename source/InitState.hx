@@ -32,8 +32,6 @@ class InitState extends FlxState
 		LogStyle.WARNING.openConsole = false;
 		LogStyle.WARNING.errorSound = null;
 		#end
-
-                LanguageInit();
                 ModsInit();
 
                 CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
@@ -96,23 +94,6 @@ class InitState extends FlxState
         public static function switchToState(state:NextState, stateName:String) {
 		trace('Moving to $stateName');
 		FlxG.switchState(state);
-        }
-
-        public function LanguageInit()
-        {
-                LanguageManager.LANGUAGE = SaveManager.getLanguage();
-
-                if (FileManager.exists(FileManager.getPath('', 'cur_lang.txt')))
-                {
-                        LanguageManager.LANGUAGE = FileManager.readFile(FileManager.getPath('', 'cur_lang.txt'));
-                }
-
-                #if SPANISH_LANGUAGE LanguageManager.LANGUAGE = 'spanish'; #end
-                #if PORTUGUESE_LANGUAGE LanguageManager.LANGUAGE = 'portuguese'; #end
-
-                #if FORCED_ENGLISH_LANGUAGE LanguageManager.LANGUAGE = 'english'; #end
-
-                PhraseManager.init();
         }
 
         public function ModsInit()

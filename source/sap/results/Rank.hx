@@ -11,7 +11,7 @@ class Rank
 
 	public function grade(percent:Float = 0.0):String
 	{
-		return PhraseManager.getPhrase('rank-${gradeUntranslated(percent)}', gradeUntranslated(percent));
+		return gradeUntranslated(percent);
 	}
 
 	public function gradeUntranslated(percent:Float = 0.0):String
