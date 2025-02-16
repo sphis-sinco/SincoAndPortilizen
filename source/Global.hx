@@ -1,6 +1,5 @@
 package;
 
-import sinlib.SLGame;
 import sinlib.utilities.Application;
 
 class Global
