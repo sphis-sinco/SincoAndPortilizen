@@ -16,26 +16,21 @@ class PlayMenu extends MainMenu
 
 		if (menutextsSelection == 'play')
 		{
-			playSelectionCheck();
-		}
-	}
+			switch (CUR_SELECTION)
+			{
+				case 0:
+					FlxG.save.data.gameplaystatus = GameplayStatus.returnDefaultGameplayStatus();
 
-	public static dynamic function playSelectionCheck()
-	{
-		switch (MainMenu.PUBLIC_CUR_SELECTION)
-		{
-			case 0:
-				FlxG.save.data.gameplaystatus = GameplayStatus.returnDefaultGameplayStatus();
+					FlxG.sound.music.stop();
+					FlxG.switchState(() -> new IntroCutscene());
 
-				FlxG.sound.music.stop();
-				FlxG.switchState(() -> new IntroCutscene());
+				case 1:
+					FlxG.sound.music.stop();
+					FlxG.switchState(() -> new Continue());
 
-			case 1:
-				FlxG.sound.music.stop();
-				FlxG.switchState(() -> new Continue());
-
-			case 2:
-				FlxG.switchState(() -> new MainMenu());
+				case 2:
+					FlxG.switchState(() -> new MainMenu());
+			}
 		}
 	}
 }

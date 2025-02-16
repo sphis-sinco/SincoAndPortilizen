@@ -1,6 +1,7 @@
 package;
 
 import sinlib.SLGame;
+import sinlib.utilities.Application;
 
 class Global
 {
@@ -87,24 +88,16 @@ class Global
 	 */
 	public static function playMenuMusic()
 	{
-		playMusic('22');
-	}
-
-	/**
-	 * Plays music
-	 */
-	public static function playMusic(filename:String, ?volume:Float = 1.0, ?loop:Bool = false)
-	{
 		if (FlxG.sound.music != null)
 		{
 			if (!FlxG.sound.music.playing)
 			{
-				FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
+				FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
 			}
 		}
 		else
 		{
-			FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
+			FlxG.sound.playMusic(FileManager.getSoundFile('music/22'), 1.0, true);
 		}
 	}
 
@@ -146,13 +139,5 @@ class Global
                 #else
                 DiscordClient.changePresence(details, state);
                 #end
-        }
-
-        /**
-         * Returns the current state
-         * @return String
-         */
-        public static function getCurrentState():String {
-                return Type.getClassName(Type.getClass(FlxG.state)).split(".").pop();
         }
 }

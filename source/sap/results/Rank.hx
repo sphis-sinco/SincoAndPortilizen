@@ -2,7 +2,7 @@ package sap.results;
 
 class Rank
 {
-	public var RANK:String = '';
+	public var RANK:String = 'perfect';
 
 	public function new(percent:Float = 0.0)
 	{
@@ -10,11 +10,6 @@ class Rank
 	}
 
 	public function grade(percent:Float = 0.0):String
-	{
-		return PhraseManager.getPhrase('rank-${gradeUntranslated(percent)}', gradeUntranslated(percent));
-	}
-
-	public function gradeUntranslated(percent:Float = 0.0):String
 	{
 		if (percent == 100) return 'perfect';
 		if (percent >= 90) return 'excellent';

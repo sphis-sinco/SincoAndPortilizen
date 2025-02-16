@@ -15,53 +15,33 @@ enum abstract TitleStates(Int) from Int to Int
 	var DONE = 2;
 }
 
-class TitleState extends State
+class TitleState extends FlxState
 {
 	public static var CURRENT_STATE:TitleStates = INTRO;
 
-	public static var charring_chars:FlxSprite;
-	public static var charring:FlxSprite;
-	public static var pressany:FlxSprite;
-	public static var titlebg:FlxSprite;
+	var charring:FlxSprite = new FlxSprite();
+	var pressany:FlxSprite = new FlxSprite();
+	var titlebg:FlxSprite = new FlxSprite();
 
-	public static var sinco:TitleSinco;
-	public static var port:TitlePort;
+	var sinco:TitleSinco = new TitleSinco();
+	var port:TitlePort = new TitlePort();
 
-	public static var versiontext:FlxText;
-
-	public static dynamic function get_versiontext():String
-	{
-		return 'v${Global.VERSION}';
-	}
+	var versiontext:FlxText = new FlxText();
 
 	override public function create()
 	{
-		sinco = new TitleSinco();
-		port = new TitlePort();
-		versiontext = new FlxText();
-
-                transitioning = false;
-
-		titlebg = new FlxSprite();
 		titlebg.loadGraphic(FileManager.getImageFile('titlescreen/TitleBG'));
 		Global.scaleSprite(titlebg, 2);
 		titlebg.screenCenter(XY);
 		titlebg.visible = false;
 		add(titlebg);
 
-                charring_chars = new FlxSprite();
-		charring_chars.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing-characters'));
-		Global.scaleSprite(charring_chars, 0);
-		add(charring_chars);
-
-		charring = new FlxSprite();
 		charring.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing'));
 		Global.scaleSprite(charring, 0);
 		charring.screenCenter(X);
 		charring.y = -(charring.height * 2);
 		add(charring);
 
-		pressany = new FlxSprite();
 		pressany.loadGraphic(FileManager.getImageFile('titlescreen/PressAnyToPlay'));
 		Global.scaleSprite(pressany, 0);
 		pressany.screenCenter(XY);
@@ -76,46 +56,42 @@ class TitleState extends State
 		port.visible = false;
 		add(port);
 
+		if (CURRENT_STATE == INTRO)
+			Global.playSoundEffect('start-synth');
+
 		pressanyTargY = FlxG.height - (pressany.height * 2) - (16 * 2);
 
 		versiontext.size = 16;
 		versiontext.setPosition(5, 5);
-		versiontext.text = get_versiontext();
+		versiontext.text = 'v${Global.VERSION}';
 		versiontext.color = FlxColor.BLACK;
 		add(versiontext);
 
-		if (CURRENT_STATE == INTRO)
-			Global.playSoundEffect('start-synth');
-
 		super.create();
-
-		Global.changeDiscordRPCPresence('In the title screen', null);
+                
+                Global.changeDiscordRPCPresence('In the title screen', null);
 	}
 
-	public static var transitioning:Bool = false;
+	var transitioning:Bool = false;
 
 	override public function update(elapsed:Float)
 	{
-                charring_chars.setPosition(charring.x, charring.y);
 		stateChecks();
 
 		if (CURRENT_STATE == DONE)
 		{
-			if (!pressany.visible)
-				pressany.visible = true;
-
 			pressAny();
 		}
 
 		super.update(elapsed);
 	}
 
-	public static dynamic function stateChecks()
+	public function stateChecks()
 	{
 		stateSwitchStatement();
 	}
 
-	public static dynamic function stateSwitchStatement()
+	public function stateSwitchStatement()
 	{
 		switch (CURRENT_STATE)
 		{
@@ -130,7 +106,7 @@ class TitleState extends State
 		}
 	}
 
-	public static dynamic function introState()
+	public function introState()
 	{
 		FlxTween.tween(charring, {y: charring.height + 16}, 1.0, {
 			ease: FlxEase.sineOut,
@@ -138,31 +114,36 @@ class TitleState extends State
 		});
 	}
 
-	public static dynamic function introStateDone():TweenCallback
+	public function introStateDone():TweenCallback
 	{
 		return _tween ->
 		{
 			FlxTimer.wait(1, () ->
 			{
+				FlxG.camera.flash(0xFFFFFF, 4);
 				CURRENT_STATE = FLASH;
 			});
 		}
 	}
 
-	public static dynamic function flashState()
+	public function flashState()
 	{
-		if (CURRENT_STATE == FLASH)
-			FlxG.camera.flash(0xFFFFFF, 4);
 		Global.playMenuMusic();
 
 		pressany.y = pressanyTargY;
 		titlebg.visible = true;
 
-		CURRENT_STATE = DONE;
-		pressany.visible = true;
+		FlxTimer.wait(5, () ->
+		{
+			CURRENT_STATE = DONE;
+			pressany.visible = true;
+			pressany.alpha = 0;
+
+			FlxTween.tween(pressany, {alpha: 1}, 1);
+		});
 	}
 
-	public static dynamic function doneState()
+	public function doneState()
 	{
 		Global.playMenuMusic();
 
@@ -170,10 +151,8 @@ class TitleState extends State
 			pressany.y = pressanyTargY;
 		if (!pressany.visible)
 			pressany.visible = true;
-
 		if (!titlebg.visible)
 			titlebg.visible = true;
-
 		if (charring.y != charring.height + 16)
 			charring.y = charring.height + 16;
 
@@ -181,7 +160,7 @@ class TitleState extends State
 		randomBGChar(port, 4);
 	}
 
-	public static dynamic function pressAny()
+	public function pressAny()
 	{
 		if (FlxG.keys.justReleased.ANY && !transitioning)
 		{
@@ -195,9 +174,9 @@ class TitleState extends State
 		}
 	}
 
-	public static var pressanyTargY:Float = 0;
+	var pressanyTargY:Float = 0;
 
-	public static dynamic function randomBGChar(char:FlxSprite, chance:Float)
+	public function randomBGChar(char:FlxSprite, chance:Float)
 	{
 		if (FlxG.random.bool(chance) && !char.visible)
 		{
@@ -210,7 +189,7 @@ class TitleState extends State
 		}
 	}
 
-	public static dynamic function charDisappear(char:FlxSprite):TweenCallback
+	public function charDisappear(char:FlxSprite):TweenCallback
 	{
 		return _tween ->
 		{
@@ -218,7 +197,7 @@ class TitleState extends State
 		}
 	}
 
-	public static dynamic function charDisWait(char:FlxSprite)
+	public function charDisWait(char:FlxSprite)
 	{
 		FlxTimer.wait(FlxG.random.float(1, 4), () ->
 		{

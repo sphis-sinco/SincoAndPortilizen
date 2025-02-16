@@ -5,27 +5,22 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import sap.worldmap.Worldmap;
 
-class Stage4 extends State
+class Stage4 extends FlxState
 {
-	public static var port:PortS4;
-	public static var enemy:EnemyS4;
+	var port:PortS4 = new PortS4();
+	var enemy:EnemyS4 = new EnemyS4();
 
-	public static var bg:FlxSprite;
+	var bg:FlxSprite = new FlxSprite();
 
 	public static var DISMx2:Float = Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 
-	public static var timerText:FlxText;
-	public static var time:Int = 0;
-	public static var total_time:Int = 60;
+	var timerText:FlxText = new FlxText(10, 10, 0, "60", 64);
+	var time:Int = 0;
 
 	override function create()
 	{
 		super.create();
 
-		port = new PortS4();
-		enemy = new EnemyS4();
-
-                bg = new FlxSprite();
 		bg.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage4BG'));
 		Global.scaleSprite(bg);
 		bg.screenCenter();
@@ -43,50 +38,48 @@ class Stage4 extends State
 		port.y = Std.int(FlxG.height - port.height * DISMx2);
 		enemy.y = port.y;
 
-		FlxTimer.wait(total_time, () ->
+		FlxTimer.wait(60, () ->
 		{
-			levelComplete();
+			Global.beatLevel(4);
+			FlxG.switchState(() -> new Worldmap("Port"));
 		});
 
-                timerText = new FlxText(10, 10, 0, "60", 64);
+		waitSec();
 		timerText.screenCenter();
 		add(timerText);
-		waitSec();
 
 		Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
 	}
 
-	public static dynamic function levelComplete()
+	public function waitSec()
 	{
-		Global.beatLevel(4);
-		FlxG.switchState(() -> new Worldmap("Port"));
-	}
-
-	public static dynamic function waitSec()
-	{
-                timerText.text = Std.string(total_time - time);
-		
-                FlxTimer.wait(1, () ->
+		FlxTimer.wait(1, () ->
 		{
 			time++;
+			timerText.text = Std.string(60 - time);
 			waitSec();
 		});
 	}
 
-	public static var enemyX:Float = 0;
-	public static var enemyCanAttack:Bool = true;
+	var enemyX:Float = 0;
+	var enemyCanAttack:Bool = true;
 
-	public static var portJumping:Bool = false;
-	public static var portJumpSpeed:Float = 0.5;
+	var portJumping:Bool = false;
+	var portJumpSpeed:Float = 0.5;
 
 	override function update(elapsed:Float)
 	{
 		if (FlxG.keys.justReleased.SPACE && !portJumping)
 		{
-			portPreJump();
+			portJumping = true;
+
+			var portjumpheight:Float = port.height * DISMx2;
+
+			port.animation.play('jump');
+			portJump(portjumpheight);
 		}
 
-		if (enemyAttackCondition())
+		if (FlxG.random.bool(25) && enemyCanAttack)
 		{
 			enemyCanAttack = false;
 			enemyCharge();
@@ -95,22 +88,7 @@ class Stage4 extends State
 		super.update(elapsed);
 	}
 
-	public static dynamic function enemyAttackCondition():Bool
-	{
-		return (FlxG.random.bool(25) && enemyCanAttack);
-	}
-
-	public static dynamic function portPreJump()
-	{
-		portJumping = true;
-
-		var portjumpheight:Float = port.height * DISMx2;
-
-		port.animation.play('jump');
-		portJump(portjumpheight);
-	}
-
-	public static dynamic function portJump(portjumpheight:Float)
+	public function portJump(portjumpheight:Float)
 	{
 		FlxTween.tween(port, {y: port.y - portjumpheight}, portJumpSpeed, {
 			onComplete: tween ->
@@ -120,7 +98,7 @@ class Stage4 extends State
 		});
 	}
 
-	public static dynamic function portFall(portjumpheight:Float)
+	public function portFall(portjumpheight:Float)
 	{
 		FlxTween.tween(port, {y: port.y + portjumpheight}, portJumpSpeed, {
 			onComplete: tween ->
@@ -131,7 +109,7 @@ class Stage4 extends State
 		});
 	}
 
-	public static dynamic function enemyCharge()
+	public function enemyCharge()
 	{
 		FlxTween.tween(enemy, {x: port.x}, 1, {
 			onComplete: tween ->
@@ -141,7 +119,7 @@ class Stage4 extends State
 		});
 	}
 
-	public static dynamic function enemyChargeComplete()
+	public function enemyChargeComplete()
 	{
 		if (enemy.overlaps(port))
 		{
@@ -152,14 +130,14 @@ class Stage4 extends State
 		enemyRetreat();
 	}
 
-	public static dynamic function enemyRetreat()
+	public function enemyRetreat()
 	{
 		FlxTween.tween(enemy, {x: enemyX}, 1, {
 			onComplete: enemyRetreatComplete()
 		});
 	}
 
-	public static dynamic function enemyRetreatComplete():TweenCallback
+	public function enemyRetreatComplete():TweenCallback
 	{
 		return tween ->
 		{

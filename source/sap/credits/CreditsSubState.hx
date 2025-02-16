@@ -7,23 +7,21 @@ import sap.mainmenu.MainMenu;
 
 class CreditsSubState extends FlxSubState
 {
-	public static var overlay:BlankBG;
+	var overlay:BlankBG = new BlankBG();
 
 	public static var creditsJSON:Array<CreditsEntry>;
 
-	public static var creditsText:FlxTypedGroup<FlxText>;
-	public static var totalSpacing:Int = 0;
+	var creditsText:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
+	var totalSpacing:Int = 0;
 
 	override function create()
 	{
 		super.create();
 
-                overlay = new BlankBG();
 		overlay.color = 0x000000;
 		overlay.alpha = 0.5;
 		add(overlay);
 
-                creditsText = new FlxTypedGroup<FlxText>();
 		add(creditsText);
 
 		var cur_y:Float = 10;
@@ -59,9 +57,9 @@ class CreditsSubState extends FlxSubState
 		}
 	}
 
-        public static var SCROLL_AMOUNT:Float = 10.0;
+        var SCROLL_AMOUNT:Float = 10.0;
 
-	public dynamic function scroll(Amount:Float)
+	public function scroll(Amount:Float)
 	{
 		for (text in creditsText)
 		{
