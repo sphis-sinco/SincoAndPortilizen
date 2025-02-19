@@ -1,3 +1,5 @@
+# Haxe project compiler (using lime)
+
 import subprocess
 
 running = True
