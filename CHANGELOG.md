@@ -1,9 +1,16 @@
 # Prototype
 ## 0.0.7-p - 2/19/2025
+### Changed
+- The following custom BUILD_DIR conditions no longer depend on being a release build for their directory to take place unless specified by `DEFAULT_DIRECTORY`
+        - MASS_MOD
+        - FORCED_ENGLISH_LANGUAGE
+        - SPANISH_LANGUAGE
+        - PORTUGUESE_LANGUAGE
 ### Fixed
 - Fixed Djotta flow credits exitting screen bounds
 ### Added
 - Readded Translations (they are back and now they work on windows!)
+- Added new Build directories
 
 ## 0.0.6-p - 2/18/2025
 This update fixes crashes on 0.0.5-p with no additional content.

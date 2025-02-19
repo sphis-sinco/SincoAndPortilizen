@@ -22,29 +22,35 @@
 	<set name="BUILD_DIR" value="export/debug" if="debug"/>
 	<set name="BUILD_DIR" value="export/release" unless="debug"/>
 
-	<set name="BUILD_DIR" value="export/release/mass_mod" if="MASS_MOD" unless="debug"/>
-        
-	<set name="BUILD_DIR" value="export/release/forced_english" if="FORCED_ENGLISH_LANGUAGE" unless="debug"/>
-	<set name="BUILD_DIR" value="export/release/spanish" if="SPANISH_LANGUAGE" unless="debug"/>
-	<set name="BUILD_DIR" value="export/release/portuguese" if="PORTUGUESE_LANGUAGE" unless="debug"/>
+        <section unless="DEFAULT_DIRECTORY">
+                <set name="BUILD_DIR" value="${BUILD_DIR}/CNGLA_TRACES" if="CNGLA_TRACES" />
+
+                <set name="BUILD_DIR" value="${BUILD_DIR}/mass_mod" if="MASS_MOD" />
+
+                <set name="BUILD_DIR" value="${BUILD_DIR}/forced_english"
+                        if="FORCED_ENGLISH_LANGUAGE" />
+                <set name="BUILD_DIR" value="${BUILD_DIR}/spanish" if="SPANISH_LANGUAGE" />
+                <set name="BUILD_DIR" value="${BUILD_DIR}/portuguese" if="PORTUGUESE_LANGUAGE" />
+        </section>
 
 	<source path="source" />
 	<assets path="assets" />
 	<assets path="cur_lang.txt"/>
 
-	<!-- _________________________________ Before _______________________________ -->
+        <!-- _________________________________ Before _______________________________ -->
 
 	<set name="buildOrTest" if="${project.command == build} || ${project.command == test}" />
 	<echo value="Building for ${project.target} on a ${project.host} machine" if="buildOrTest" />
 
 	<echo value="${meta.title} v${meta.version}" />
+        <echo value="${BUILD_DIR}" />
 
-	<!-- _____________________________ Custom Defines ___________________________ -->
+        <!-- _____________________________ Custom Defines ___________________________ -->
 
 	<define name="DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS"/>
 	<define name="DISABLE_ANNOYING_WARNINGS" unless="ENABLE_ANNOYING_WARNINGS"/>
 
-	<!-- Annoying Errors and warnings-->
+        <!-- Annoying Errors and warnings-->
 	<section>
 		<echo value="annoying errors enabled via ENABLE_ANNOYING_ERRORS" if="ENABLE_ANNOYING_ERRORS"/>
 		<echo value="annoying warnings enabled via ENABLE_ANNOYING_WARNINGS" if="ENABLE_ANNOYING_WARNINGS"/>
@@ -78,7 +84,7 @@
 			<echo value="discord rpc enabled on windows" if="windows"/>
 	</section>
 
-	<!-- _______________________________ Libraries ______________________________ -->
+        <!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
@@ -89,14 +95,14 @@
 
 	<haxelib name="discord_rpc" if="DISCORDRPC"/>
 
-	<!-- _________________________________ After _______________________________ -->
+        <!-- _________________________________ After _______________________________ -->
 
 	<error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile"/>
 	<echo value="DEBUG BUILD: Press [ANY] to start" if="debug"/>
 
 	<echo value="discord rpc disabled" unless="windows || DISCORDRPC"/>
 
-	<!-- ______________________________ Haxedefines _____________________________ -->
+        <!-- ______________________________ Haxedefines _____________________________ -->
 
 	<haxedef name="FLX_NO_HEALTH" />
 
@@ -110,9 +116,9 @@
 
 	<haxedef name="message.reporting" value="pretty" />
 
-	<!-- _________________________________ Icons _______________________________ -->
+        <!-- _________________________________ Icons _______________________________ -->
 
-	<!--Place custom nodes like icons here-->
+        <!--Place custom nodes like icons here-->
 	<icon path=".dev/AppIcon-16.png" size="16"/>
 	<icon path=".dev/AppIcon-32.png" size="32"/>
 	<icon path=".dev/AppIcon-64.png" size="64"/>

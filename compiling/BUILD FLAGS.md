@@ -7,6 +7,7 @@ These do things. Lmao!
 - `DISABLE_SCREENSHOT`: Disables screenshots (mind blown)
 - `SCRIPT_FILES`: Enables the `getScriptFile` function for `FileManager.hx`
 - `DISABLE_LOCALIZED_ASSETS`: Disables asset localization attempts for `FileManager.hx`
+- `DEFAULT_DIRECTORY`: Disables custom build directories besides the original ones
 
 ## QOL Flags
 - `DISABLE_ANNOYING_ERRORS`: Makes errors less annoying
