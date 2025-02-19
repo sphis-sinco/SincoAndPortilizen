@@ -1,5 +1,6 @@
 package;
 
+import sap.localization.LocalizationManager;
 import sinlib.SLGame;
 
 class Global
@@ -154,5 +155,14 @@ class Global
          */
         public static function getCurrentState():String {
                 return Type.getClassName(Type.getClass(FlxG.state)).split(".").pop();
+        }
+
+        /**
+         * Returns a key value from `LocalizationManager.TEXT_CONTENT`
+         * @param phrase the key you are trying to read
+         * @return String
+         */
+        public static function getLocalizedPhrase(phrase:String):String {
+                return LocalizationManager.TEXT_CONTENT.get(phrase);
         }
 }

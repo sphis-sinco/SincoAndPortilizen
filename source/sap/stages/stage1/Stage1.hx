@@ -4,6 +4,7 @@ import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import sap.localization.LocalizationManager;
 import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
@@ -118,12 +119,12 @@ class Stage1 extends State
 	public static dynamic function updateHealthIndicators()
 	{
 		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
-		osinHealthIndicator.text = 'HP: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
+		osinHealthIndicator.text = '${Global.getLocalizedPhrase('hp')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
 		if (osin_warning)
-			osinHealthIndicator.text += '\nDODGE';
+			osinHealthIndicator.text += '\n${Global.getLocalizedPhrase('dodge')}';
 
 		sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
-		sincoHealthIndicator.text = 'HP: $SINCO_HEALTH/$SINCO_MAX_HEALTH';
+		sincoHealthIndicator.text = '${Global.getLocalizedPhrase('hp')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH';
 	}
 
 	public static dynamic function osinJumpWait()
