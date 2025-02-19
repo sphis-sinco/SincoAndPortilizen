@@ -1,9 +1,11 @@
 # Prototype
-## 0.0.6-p - 2/15/2025
+## 0.0.6-p - 2/18/2025
+This update fixes crashes on 0.0.5-p with no additional content.
+
 ### Fixed
-- Fixed game crashing on start on windows
+- [Fixed game crashing on launch](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/6)
 ### Removed
-- Translations
+- Translations (cause of [crash](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/6))
 
 ## 0.0.5-p - 2/15/2025
 ### Removed
