@@ -5,6 +5,7 @@ import flixel.util.typeLimit.NextState;
 import lime.utils.Assets;
 import sap.credits.CreditsSubState;
 import sap.cutscenes.intro.IntroCutscene;
+import sap.localization.LocalizationManager;
 import sap.mainmenu.MainMenu;
 import sap.modding.source.ModListManager;
 import sap.modding.source.mods.MassMod;
@@ -32,6 +33,8 @@ class InitState extends FlxState
 		LogStyle.WARNING.openConsole = false;
 		LogStyle.WARNING.errorSound = null;
 		#end
+
+                LanguageInit();
                 ModsInit();
 
                 CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
@@ -102,5 +105,22 @@ class InitState extends FlxState
                 ModListManager.create();
 
                 #if MASS_MOD MassMod.instance.toggleEnabled(); #end
+        }
+
+        public function LanguageInit()
+        {
+                LocalizationManager.LANGUAGE = 'english';
+
+                if (FileManager.exists(FileManager.getPath('', 'cur_lang.txt')))
+                {
+                        LocalizationManager.LANGUAGE = FileManager.readFile(FileManager.getPath('', 'cur_lang.txt'));
+                }
+
+                #if SPANISH_LANGUAGE LocalizationManager.LANGUAGE = 'spanish'; #end
+                #if PORTUGUESE_LANGUAGE LocalizationManager.LANGUAGE = 'portuguese'; #end
+
+                #if FORCED_ENGLISH LocalizationManager.LANGUAGE = 'english'; #end
+
+                LocalizationManager.swapLanguage();
         }
 }
