@@ -3,7 +3,7 @@
 ### Fixed
 - Fixed Djotta flow credits exitting screen bounds
 ### Added
-- Readded Translations (they are back!)
+- Readded Translations (they are back and now they work on windows!)
 
 ## 0.0.6-p - 2/18/2025
 This update fixes crashes on 0.0.5-p with no additional content.
