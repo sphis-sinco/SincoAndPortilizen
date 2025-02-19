@@ -18,29 +18,29 @@ class CreditsSubState extends FlxSubState
 	{
 		super.create();
 
-                overlay = new BlankBG();
+		overlay = new BlankBG();
 		overlay.color = 0x000000;
 		overlay.alpha = 0.5;
 		add(overlay);
 
-                creditsText = new FlxTypedGroup<FlxText>();
+		creditsText = new FlxTypedGroup<FlxText>();
 		add(creditsText);
 
 		var cur_y:Float = 10;
-                var i:Int = 0;
+		var i:Int = 0;
 		for (credit in creditsJSON)
 		{
 			var text:FlxText = new FlxText(0, cur_y, 0, credit.text, Std.int(32 * credit.size));
 			text.alignment = CENTER;
-                        text.screenCenter(X);
+			text.screenCenter(X);
 			text.color = FlxColor.fromRGB(credit.color[0], credit.color[1], credit.color[2], (credit.color[3] != null) ? credit.color[3] : 255);
-                        text.ID = i;
-                        i++;
+			text.ID = i;
+			i++;
 
 			creditsText.add(text);
 
 			cur_y += credit.spacing;
-			totalSpacing += credit.spacing ;
+			totalSpacing += credit.spacing;
 		}
 	}
 
@@ -60,7 +60,7 @@ class CreditsSubState extends FlxSubState
 		}
 	}
 
-        public static var SCROLL_AMOUNT:Float = 10.0;
+	public static var SCROLL_AMOUNT:Float = 10.0;
 
 	public dynamic function scroll(Amount:Float)
 	{
@@ -68,11 +68,11 @@ class CreditsSubState extends FlxSubState
 		{
 			text.y += Amount;
 
-                        if ((text.y < -totalSpacing / 2 || text.y > totalSpacing / 2) && text.ID == 0)
-                        {
-                                text.y -= Amount;
-                                return;
-                        }
+			if ((text.y < -totalSpacing / 2 || text.y > totalSpacing / 2) && text.ID == 0)
+			{
+				text.y -= Amount;
+				return;
+			}
 		}
 	}
 }

@@ -5,7 +5,6 @@ import sinlib.SLGame;
 
 class Global
 {
-
 	/**
 	 * Basically `Application.current.meta.get('version')` shortcut
 	 */
@@ -65,7 +64,7 @@ class Global
 		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
 		FlxG.save.bind(SAVE_SLOT, Application.COMPANY);
 
-                SaveManager.setupSave();
+		SaveManager.setupSave();
 		trace('Switched save slot to "$SAVE_SLOT"');
 	}
 
@@ -133,36 +132,39 @@ class Global
 	public static function beatLevel(lvl:Int = 1)
 	{
 		if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
-                        FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
+			FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
 	}
 
-        /**
-         * Changes the discord rpc presence details and state
-         * @param details The first row of text
-         * @param state The second row of text
-         */
-        public static function changeDiscordRPCPresence(details:String, state:Null<String>) {
-                #if !DISCORDRPC
-                return;
-                #else
-                DiscordClient.changePresence(details, state);
-                #end
-        }
+	/**
+	 * Changes the discord rpc presence details and state
+	 * @param details The first row of text
+	 * @param state The second row of text
+	 */
+	public static function changeDiscordRPCPresence(details:String, state:Null<String>)
+	{
+		#if !DISCORDRPC
+		return;
+		#else
+		DiscordClient.changePresence(details, state);
+		#end
+	}
 
-        /**
-         * Returns the current state
-         * @return String
-         */
-        public static function getCurrentState():String {
-                return Type.getClassName(Type.getClass(FlxG.state)).split(".").pop();
-        }
+	/**
+	 * Returns the current state
+	 * @return String
+	 */
+	public static function getCurrentState():String
+	{
+		return Type.getClassName(Type.getClass(FlxG.state)).split(".").pop();
+	}
 
-        /**
-         * Returns a key value from `LocalizationManager.TEXT_CONTENT`
-         * @param phrase the key you are trying to read
-         * @return String
-         */
-        public static function getLocalizedPhrase(phrase:String):String {
-                return LocalizationManager.TEXT_CONTENT.get(phrase);
-        }
+	/**
+	 * Returns a key value from `LocalizationManager.TEXT_CONTENT`
+	 * @param phrase the key you are trying to read
+	 * @return String
+	 */
+	public static function getLocalizedPhrase(phrase:String):String
+	{
+		return LocalizationManager.TEXT_CONTENT.get(phrase);
+	}
 }

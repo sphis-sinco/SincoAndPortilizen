@@ -1,4 +1,5 @@
 package;
+
 #if DISCORDRPC
 import Sys.sleep;
 import discord_rpc.DiscordRpc;
@@ -8,13 +9,12 @@ import discord_rpc.DiscordRpc;
  */
 class DiscordClient
 {
-        public static var CLIENT_ID:String = "1324111625682288720";
+	public static var CLIENT_ID:String = "1324111625682288720";
 
-        static var startTimestamp:Float = Date.now().getTime();
+	static var startTimestamp:Float = Date.now().getTime();
 
 	public function new()
 	{
-
 		trace("Discord Client starting...");
 		DiscordRpc.start({
 			clientID: CLIENT_ID,

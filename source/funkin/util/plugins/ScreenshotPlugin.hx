@@ -180,7 +180,8 @@ class ScreenshotPlugin extends FlxBasic
 
 	function showFancyPreview(bitmap:Bitmap):Void
 	{
-                if (previewSprite != null) return;
+		if (previewSprite != null)
+			return;
 
 		// so that it doesnt change the alpha when tweening in/out
 		var changingAlpha:Bool = false;

@@ -25,7 +25,7 @@ class Stage4 extends State
 		port = new PortS4();
 		enemy = new EnemyS4();
 
-                bg = new FlxSprite();
+		bg = new FlxSprite();
 		bg.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage4BG'));
 		Global.scaleSprite(bg);
 		bg.screenCenter();
@@ -48,7 +48,7 @@ class Stage4 extends State
 			levelComplete();
 		});
 
-                timerText = new FlxText(10, 10, 0, "60", 64);
+		timerText = new FlxText(10, 10, 0, "60", 64);
 		timerText.screenCenter();
 		add(timerText);
 		waitSec();
@@ -64,9 +64,9 @@ class Stage4 extends State
 
 	public static dynamic function waitSec()
 	{
-                timerText.text = Std.string(total_time - time);
-		
-                FlxTimer.wait(1, () ->
+		timerText.text = Std.string(total_time - time);
+
+		FlxTimer.wait(1, () ->
 		{
 			time++;
 			waitSec();

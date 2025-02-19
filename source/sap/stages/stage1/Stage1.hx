@@ -31,10 +31,10 @@ class Stage1 extends State
 		sinco = new Sinco();
 		osin = new Osin();
 
-                osinHealthIndicator = new FlxText();
-                sincoHealthIndicator = new FlxText();
+		osinHealthIndicator = new FlxText();
+		sincoHealthIndicator = new FlxText();
 
-                background = new FlxSprite();
+		background = new FlxSprite();
 		background.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
 
 		background.animation.add('animation', [0, 1], 16);
@@ -69,12 +69,13 @@ class Stage1 extends State
 		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 	}
 
-        override function postCreate() {
-                super.postCreate();
+	override function postCreate()
+	{
+		super.postCreate();
 
-                SINCO_HEALTH = SINCO_MAX_HEALTH;
-                OSIN_HEALTH = OSIN_MAX_HEALTH;
-        }
+		SINCO_HEALTH = SINCO_MAX_HEALTH;
+		OSIN_HEALTH = OSIN_MAX_HEALTH;
+	}
 
 	public static var sincoPos:FlxPoint;
 	public static var osinPos:FlxPoint;

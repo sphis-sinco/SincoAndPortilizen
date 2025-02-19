@@ -16,11 +16,16 @@ class Rank
 
 	public function gradeUntranslated(percent:Float = 0.0):String
 	{
-		if (percent == 100) return 'perfect';
-		if (percent >= 90) return 'excellent';
-		if (percent >= 80) return 'great';
-		if (percent >= 60) return 'good';
-		if (percent >= 10) return 'bad';
+		if (percent == 100)
+			return 'perfect';
+		if (percent >= 90)
+			return 'excellent';
+		if (percent >= 80)
+			return 'great';
+		if (percent >= 60)
+			return 'good';
+		if (percent >= 10)
+			return 'bad';
 
 		return 'awful';
 	}

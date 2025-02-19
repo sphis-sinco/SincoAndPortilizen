@@ -33,8 +33,8 @@ class LocalizationManager
 
 		if (TEXT_CONTENT == default_text_content && LANGUAGE != 'english')
 		{
-                        LANGUAGE = 'english';
-                        ASSET_SUFFIX = '';
+			LANGUAGE = 'english';
+			ASSET_SUFFIX = '';
 			trace('Failed to swap to language: $LANGUAGE');
 		}
 		else

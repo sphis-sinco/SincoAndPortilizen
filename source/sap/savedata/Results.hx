@@ -6,7 +6,7 @@ class Results
 	{
 		return {
 			grade: "F",
-                        rank: "awful"
+			rank: "awful"
 		};
 	}
 

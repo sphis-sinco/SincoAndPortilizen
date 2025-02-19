@@ -40,7 +40,7 @@ class MainMenu extends State
 	{
 		menucharvis ??= [false, true];
 
-                gridbg = new FlxSprite();
+		gridbg = new FlxSprite();
 		gridbg.loadGraphic(FileManager.getImageFile('mainmenu/MainMenuGrid'));
 		Global.scaleSprite(gridbg, 0);
 		gridbg.screenCenter();
@@ -62,13 +62,13 @@ class MainMenu extends State
 		add(port);
 		port.animation.play('visible');
 
-                menuselectbox = new FlxSprite();
+		menuselectbox = new FlxSprite();
 		menuselectbox.makeGraphic(64, 64, FlxColor.BLACK);
 		Global.scaleSprite(menuselectbox, 0);
 		menuselectbox.screenCenter();
 		add(menuselectbox);
 
-                menuboxtexts = new FlxTypedGroup<FlxText>();
+		menuboxtexts = new FlxTypedGroup<FlxText>();
 		set_menuboxtexts(menutextsSelection);
 		add(menuboxtexts);
 
@@ -99,7 +99,7 @@ class MainMenu extends State
 	override function update(elapsed:Float)
 	{
 		Global.playMenuMusic();
-                
+
 		cycle++;
 		public_cycle = cycle;
 
@@ -120,7 +120,7 @@ class MainMenu extends State
 		if (!inCredits)
 		{
 			controls();
-                        CUR_SELECTION = PUBLIC_CUR_SELECTION;
+			CUR_SELECTION = PUBLIC_CUR_SELECTION;
 
 			if (FlxG.keys.justReleased.ENTER)
 			{

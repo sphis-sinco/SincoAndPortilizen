@@ -34,9 +34,10 @@ class InitState extends FlxState
 		LogStyle.WARNING.errorSound = null;
 		#end
 
-                CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
+		CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
 
-		if (!SLGame.isDebug) proceed();
+		if (!SLGame.isDebug)
+			proceed();
 
 		super.create();
 	}
@@ -61,63 +62,64 @@ class InitState extends FlxState
 		#if CUTSCENE_TESTING
 		#elseif SKIP_TITLE
 		trace('Skipping Title');
-                switchToState(() -> new MainMenu(), 'MainMenu');
+		switchToState(() -> new MainMenu(), 'MainMenu');
 		return;
 		#elseif STAGE_ONE
-                switchToState(() -> new Stage1(), 'Stage 1');
+		switchToState(() -> new Stage1(), 'Stage 1');
 		return;
 		#elseif STAGE_FOUR
-                switchToState(() -> new Stage4(), 'Stage 4');
+		switchToState(() -> new Stage4(), 'Stage 4');
 		return;
 		#elseif WORLDMAP
-                switchToState(() -> new Worldmap(), 'Worldmap');
+		switchToState(() -> new Worldmap(), 'Worldmap');
 		return;
 		#elseif RESULTS
-                var good:Int = 0;
-                var char:String = 'sinco';
+		var good:Int = 0;
+		var char:String = 'sinco';
 
-                #if BAD_RANK good = 1; #end
-                #if GOOD_RANK good = 6; #end
-                #if GREAT_RANK good = 8; #end
-                #if EXCELLENT_RANK good = 9; #end
-                #if PERFECT_RANK good = 10; #end
+		#if BAD_RANK good = 1; #end
+		#if GOOD_RANK good = 6; #end
+		#if GREAT_RANK good = 8; #end
+		#if EXCELLENT_RANK good = 9; #end
+		#if PERFECT_RANK good = 10; #end
 
-                #if PORT_RANK_CHAR char = 'port'; #end
+		#if PORT_RANK_CHAR char = 'port'; #end
 
-                switchToState(() -> new ResultsMenu(good, 10, () -> new MainMenu(), char), 'Results Menu');
+		switchToState(() -> new ResultsMenu(good, 10, () -> new MainMenu(), char), 'Results Menu');
 		return;
 		#end
 
 		FlxG.switchState(TitleState.new);
 	}
 
-        public static function switchToState(state:NextState, stateName:String) {
+	public static function switchToState(state:NextState, stateName:String)
+	{
 		trace('Moving to $stateName');
 		FlxG.switchState(state);
-        }
+	}
 
-        public static function ModsInit()
-        {
-                #if MASS_MOD ModListManager.addMod(new MassMod()); #end
-                ModListManager.create();
+	public static function ModsInit()
+	{
+		#if MASS_MOD ModListManager.addMod(new MassMod()); #end
+		ModListManager.create();
 
-                #if MASS_MOD MassMod.instance.toggleEnabled(); #end
-        }
+		#if MASS_MOD MassMod.instance.toggleEnabled(); #end
+	}
 
-        public static dynamic function LanguageInit()
-        {
-                LocalizationManager.LANGUAGE = 'english';
+	public static dynamic function LanguageInit()
+	{
+		LocalizationManager.LANGUAGE = 'english';
 
-                if (FileManager.exists(FileManager.getPath('', 'cur_lang.txt')))
-                {
-                        LocalizationManager.LANGUAGE = FileManager.readFile(FileManager.getPath('', 'cur_lang.txt'));
-                }
+		if (FileManager.exists(FileManager.getPath('', 'cur_lang.txt')))
+		{
+			LocalizationManager.LANGUAGE = FileManager.readFile(FileManager.getPath('', 'cur_lang.txt'));
+		}
 
-                #if SPANISH_LANGUAGE LocalizationManager.LANGUAGE = 'spanish'; #end
-                #if PORTUGUESE_LANGUAGE LocalizationManager.LANGUAGE = 'portuguese'; #end
+		#if SPANISH_LANGUAGE LocalizationManager.LANGUAGE = 'spanish'; #end
+		#if PORTUGUESE_LANGUAGE LocalizationManager.LANGUAGE = 'portuguese'; #end
 
-                #if FORCED_ENGLISH LocalizationManager.LANGUAGE = 'english'; #end
+		#if FORCED_ENGLISH LocalizationManager.LANGUAGE = 'english'; #end
 
-                LocalizationManager.swapLanguage();
-        }
+		LocalizationManager.swapLanguage();
+	}
 }

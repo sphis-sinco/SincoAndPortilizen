@@ -5,7 +5,7 @@ class Plugins
 	public static dynamic function init()
 	{
 		#if !DISABLE_SCREENSHOT
-                ScreenshotPlugin.initialize();
+		ScreenshotPlugin.initialize();
 		#end
 	}
 

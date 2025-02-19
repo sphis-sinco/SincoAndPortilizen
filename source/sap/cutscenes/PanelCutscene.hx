@@ -7,8 +7,8 @@ typedef PanelCutsceneSettings =
 	var panel_folder:String;
 	var panel_prefix:String;
 
-        var ?rpc_details:String;
-        var ?rpc_state:Null<String>;
+	var ?rpc_details:String;
+	var ?rpc_state:Null<String>;
 }
 
 class PanelCutscene extends State
@@ -21,13 +21,13 @@ class PanelCutscene extends State
 	public var MAX_PANELS:Int = 5;
 	public var CUR_PANEL:Int = 1;
 
-        public var cutsceneSettings:PanelCutsceneSettings;
+	public var cutsceneSettings:PanelCutsceneSettings;
 
 	override public function new(cutsceneSettings:PanelCutsceneSettings)
 	{
 		super();
 
-                this.cutsceneSettings = cutsceneSettings;
+		this.cutsceneSettings = cutsceneSettings;
 
 		if (this.cutsceneSettings.panel_folder == null)
 			this.cutsceneSettings.panel_folder = 'intro/';
@@ -44,10 +44,10 @@ class PanelCutscene extends State
 		PANEL_FOLDER = cutsceneSettings.panel_folder;
 		PANEL_PREFIX = cutsceneSettings.panel_prefix;
 		MAX_PANELS = cutsceneSettings.max_panels;
-                
-                Global.changeDiscordRPCPresence(cutsceneSettings.rpc_details, cutsceneSettings.rpc_state);
 
-                panel = new FlxSprite();
+		Global.changeDiscordRPCPresence(cutsceneSettings.rpc_details, cutsceneSettings.rpc_state);
+
+		panel = new FlxSprite();
 		setPanel('${PANEL_PREFIX}panel$CUR_PANEL');
 		panel.antialiasing = true;
 		panel.screenCenter();

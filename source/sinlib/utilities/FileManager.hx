@@ -28,9 +28,10 @@ class FileManager
 			MAYBE there is now a feature flag required to be specified for specific functions to function. 
 			I mean these can be big too but yknow. 1 thing at a time.
 	 */
-	public static var FILE_MANAGER_VERSION:Float = 9.5;
+	public static var FILE_MANAGER_VERSION:Float = 9.6;
 
-        public static var UNLOCALIZED_ASSETS:Array<String> = [];
+	public static var UNLOCALIZED_ASSETS:Array<String> = [];
+
 	/**
 	 * Returns a path
 	 * @param pathprefix Prefix which most likely is `assets/`
@@ -43,21 +44,26 @@ class FileManager
 		var ogreturnpath:String = '${pathprefix}${PATH_TYPE}${path}';
 		var returnpath:String = ogreturnpath;
 
-                #if !DISABLE_LOCALIZED_ASSETS
-                var asset_suffix:String = LocalizationManager.ASSET_SUFFIX;
-                var localizedreturnpath:String = '${ogreturnpath.split('.')[0]}${(asset_suffix.length > 0) ? '-${LocalizationManager.ASSET_SUFFIX}' : ''}.${ogreturnpath.split('.')[1]}';
+		#if !DISABLE_LOCALIZED_ASSETS
+		var asset_suffix:String = LocalizationManager.ASSET_SUFFIX;
+		var localizedreturnpath:String = '${ogreturnpath.split('.')[0]}${(asset_suffix.length > 0) ? '-${LocalizationManager.ASSET_SUFFIX}' : ''}.${ogreturnpath.split('.')[1]}';
 
-                if (localizedreturnpath == returnpath) return returnpath;
+		if (localizedreturnpath == returnpath)
+			return returnpath;
 
-                if (exists(localizedreturnpath)) {
-                        return localizedreturnpath;
-                } else {
-                        if (UNLOCALIZED_ASSETS.contains(localizedreturnpath)) return returnpath;
+		if (exists(localizedreturnpath))
+		{
+			return localizedreturnpath;
+		}
+		else
+		{
+			if (UNLOCALIZED_ASSETS.contains(localizedreturnpath))
+				return returnpath;
 
-                        #if CNGLA_TRACES trace('Could not get localized asset: ${localizedreturnpath}'); #end
-                        UNLOCALIZED_ASSETS.push(localizedreturnpath);
-                }
-                #end
+			#if CNGLA_TRACES trace('Could not get localized asset: ${localizedreturnpath}'); #end
+			UNLOCALIZED_ASSETS.push(localizedreturnpath);
+		}
+		#end
 
 		return returnpath;
 	}
@@ -198,16 +204,15 @@ class FileManager
 		return null;
 	}
 
-        
-        /**
-         * Returns a bool value if `path` exists
-         * @param path the path your checking
-         * @return Bool
-         */
-        public static function exists(path:String):Bool
-        {
-                return openfl.utils.Assets.exists(path);
-        }
+	/**
+	 * Returns a bool value if `path` exists
+	 * @param path the path your checking
+	 * @return Bool
+	 */
+	public static function exists(path:String):Bool
+	{
+		return openfl.utils.Assets.exists(path);
+	}
 }
 
 /**

@@ -12,8 +12,7 @@ class SaveManager
 		FlxG.save.data.results ??= getDefaultSave().results;
 		FlxG.save.data.gameplaystatus ??= getDefaultSave().gameplaystatus;
 
-
-                // run these functions to make sure no null vals
+		// run these functions to make sure no null vals
 		Results.setupResults();
 		GameplayStatus.setupGameplayStatus();
 	}
@@ -21,7 +20,7 @@ class SaveManager
 	public static dynamic function getDefaultSave()
 	{
 		return {
-                        language: "english",
+			language: "english",
 			results: Results.returnDefaultResults(),
 			gameplaystatus: GameplayStatus.returnDefaultGameplayStatus()
 		}

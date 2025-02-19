@@ -22,8 +22,7 @@ class ModBasic extends FlxBasic
 
 		this.enabled = enabled;
 
-
-                // ! Event signals ! \\
+		// ! Event signals ! \\
 		FlxG.signals.focusGained.add(onFocusGained);
 		FlxG.signals.focusLost.add(onFocusLost);
 
@@ -68,45 +67,69 @@ class ModBasic extends FlxBasic
 			create();
 	}
 
-        // ! Event functions ! \\
-        /**
-	 * Event
-	 */
-	public function onFocusGained():Void { return; }
+	// ! Event functions ! \\
 
 	/**
 	 * Event
 	 */
-	public function onFocusLost():Void { return; }
+	public function onFocusGained():Void
+	{
+		return;
+	}
 
 	/**
 	 * Event
 	 */
-	public function onGameResized(width:Int, height:Int):Void { return; }
+	public function onFocusLost():Void
+	{
+		return;
+	}
 
 	/**
 	 * Event
 	 */
-	public function onPreStateCreate(state:FlxState):Void { return; }
+	public function onGameResized(width:Int, height:Int):Void
+	{
+		return;
+	}
 
 	/**
 	 * Event
 	 */
-	public function onPreUpdate():Void { return; }
+	public function onPreStateCreate(state:FlxState):Void
+	{
+		return;
+	}
 
 	/**
 	 * Event
 	 */
-	public function onPostUpdate():Void { return; }
+	public function onPreUpdate():Void
+	{
+		return;
+	}
 
 	/**
 	 * Event
 	 */
-	public function onStateSwitchComplete():Void { return; }
+	public function onPostUpdate():Void
+	{
+		return;
+	}
 
 	/**
 	 * Event
 	 */
-	public function onStateSwitchStart():Void { return; }
+	public function onStateSwitchComplete():Void
+	{
+		return;
+	}
 
+	/**
+	 * Event
+	 */
+	public function onStateSwitchStart():Void
+	{
+		return;
+	}
 }

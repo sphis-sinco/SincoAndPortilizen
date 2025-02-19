@@ -20,7 +20,8 @@ class ModListManager
 	{
 		for (mod in modList)
 		{
-			if (mod.enabled) mod.create();
+			if (mod.enabled)
+				mod.create();
 		}
 	}
 
@@ -32,7 +33,8 @@ class ModListManager
 	{
 		for (mod in modList)
 		{
-			if (mod.enabled) mod.update(elapsed);
+			if (mod.enabled)
+				mod.update(elapsed);
 		}
 	}
 }

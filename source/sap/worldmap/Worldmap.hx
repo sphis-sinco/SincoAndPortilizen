@@ -28,9 +28,9 @@ class Worldmap extends State
 	{
 		super();
 
-                charWheel = new CharacterWheel();
+		charWheel = new CharacterWheel();
 		character = new MapCharacter(char);
-                mapGRP = new FlxTypedGroup<FlxSprite>();
+		mapGRP = new FlxTypedGroup<FlxSprite>();
 	}
 
 	override function create()
@@ -57,7 +57,7 @@ class Worldmap extends State
 
 		add(charWheel);
 
-                Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
+		Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
 	}
 
 	public static var mapTileXPosThing:Float = 0;
@@ -144,7 +144,7 @@ class Worldmap extends State
 
 	public dynamic function swapWaitDone()
 	{
-                Global.changeDiscordRPCPresence('In the worldmap as ${character.swappedchar()}', null);
+		Global.changeDiscordRPCPresence('In the worldmap as ${character.swappedchar()}', null);
 
 		FlxG.camera.flash(0xffffff, 1, () ->
 		{
@@ -157,7 +157,7 @@ class Worldmap extends State
 		}
 		makeMap();
 		character.swapCharacter();
-                character.animation.play('idle');
+		character.animation.play('idle');
 	}
 
 	public static var canSwap:Bool = true;

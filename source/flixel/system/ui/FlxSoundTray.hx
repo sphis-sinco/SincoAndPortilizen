@@ -54,7 +54,7 @@ class FlxSoundTray extends Sprite
 	/**Whether or not changing the volume should make noise.**/
 	public var silent:Bool = false;
 
-        public var offset:Int = 8;
+	public var offset:Int = 8;
 
 	/**
 	 * Sets up the "sound tray", the little volume meter that pops down sometimes.
@@ -97,7 +97,7 @@ class FlxSoundTray extends Sprite
 
 		for (i in 0...10)
 		{
-                        var color:FlxColor = FlxColor.WHITE;
+			var color:FlxColor = FlxColor.WHITE;
 
 			tmp = new Bitmap(new BitmapData(4, i + 1, false, color));
 			tmp.x = bx;
@@ -110,13 +110,13 @@ class FlxSoundTray extends Sprite
 
 		y = -height;
 		visible = false;
-                
-                current_volume_bar.x = bx;
-                current_volume_bar.y = 14 + offset;
-                addChild(current_volume_bar);
+
+		current_volume_bar.x = bx;
+		current_volume_bar.y = 14 + offset;
+		addChild(current_volume_bar);
 	}
 
-        var current_volume_bar:Bitmap = new Bitmap(Assets.getBitmapData(FileManager.getImageFile('ui/soundtray/current_volume_bar')));
+	var current_volume_bar:Bitmap = new Bitmap(Assets.getBitmapData(FileManager.getImageFile('ui/soundtray/current_volume_bar')));
 
 	/**
 	 * This function updates the soundtray object.
@@ -187,9 +187,9 @@ class FlxSoundTray extends Sprite
 			}
 		}
 
-                current_volume_bar.x = 3 + (6 * globalVolume);
+		current_volume_bar.x = 3 + (6 * globalVolume);
 
-                current_volume_bar.visible = globalVolume > 0;
+		current_volume_bar.visible = globalVolume > 0;
 	}
 
 	public function screenCenter():Void

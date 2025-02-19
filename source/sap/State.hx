@@ -4,20 +4,23 @@ import sap.modding.source.ModListManager;
 
 class State extends FlxState
 {
-        override public function new() {
-                super();
-        }
+	override public function new()
+	{
+		super();
+	}
 
-        override function create() {
-                super.create();
+	override function create()
+	{
+		super.create();
 
-                postCreate();
-        }
+		postCreate();
+	}
 
-        public function postCreate():Void {}
+	public function postCreate():Void {}
 
-        override function update(elapsed:Float) {
-                ModListManager.update(elapsed);
-                super.update(elapsed);
-        }
+	override function update(elapsed:Float)
+	{
+		ModListManager.update(elapsed);
+		super.update(elapsed);
+	}
 }

@@ -40,7 +40,7 @@ class TitleState extends State
 		port = new TitlePort();
 		versiontext = new FlxText();
 
-                transitioning = false;
+		transitioning = false;
 
 		titlebg = new FlxSprite();
 		titlebg.loadGraphic(FileManager.getImageFile('titlescreen/TitleBG'));
@@ -49,7 +49,7 @@ class TitleState extends State
 		titlebg.visible = false;
 		add(titlebg);
 
-                charring_chars = new FlxSprite();
+		charring_chars = new FlxSprite();
 		charring_chars.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing-characters'));
 		Global.scaleSprite(charring_chars, 0);
 		add(charring_chars);
@@ -96,7 +96,7 @@ class TitleState extends State
 
 	override public function update(elapsed:Float)
 	{
-                charring_chars.setPosition(charring.x, charring.y);
+		charring_chars.setPosition(charring.x, charring.y);
 		stateChecks();
 
 		if (CURRENT_STATE == DONE)
