@@ -41,10 +41,12 @@ class FileManager
 	{
 		var ogreturnpath:String = '${pathprefix}${PATH_TYPE}${path}';
 		var returnpath:String = ogreturnpath;
-                var altreturnpath:String = '${ogreturnpath.split('.')[0]}-${LocalizationManager.ASSET_SUFFIX}.${ogreturnpath.split('.')[1]}';
+                var localizedreturnpath:String = '${ogreturnpath.split('.')[0]}-${LocalizationManager.ASSET_SUFFIX}.${ogreturnpath.split('.')[1]}';
 
-                if (exists(altreturnpath))
-                        return altreturnpath;
+                if (exists(localizedreturnpath))
+                        return localizedreturnpath;
+                else
+                        trace('Could not get localized asset: ${localizedreturnpath}');
 
 		return returnpath;
 	}
