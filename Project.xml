@@ -94,6 +94,8 @@
 	<error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile"/>
 	<echo value="DEBUG BUILD: Press [ANY] to start" if="debug"/>
 
+	<echo value="discord rpc disabled" unless="windows || DISCORDRPC"/>
+
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
 	<haxedef name="FLX_NO_HEALTH" />
