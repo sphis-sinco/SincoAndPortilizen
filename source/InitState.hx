@@ -34,9 +34,6 @@ class InitState extends FlxState
 		LogStyle.WARNING.errorSound = null;
 		#end
 
-                LanguageInit();
-                ModsInit();
-
                 CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
 
 		if (!SLGame.isDebug) proceed();
@@ -99,7 +96,7 @@ class InitState extends FlxState
 		FlxG.switchState(state);
         }
 
-        public function ModsInit()
+        public static function ModsInit()
         {
                 #if MASS_MOD ModListManager.addMod(new MassMod()); #end
                 ModListManager.create();
@@ -107,7 +104,7 @@ class InitState extends FlxState
                 #if MASS_MOD MassMod.instance.toggleEnabled(); #end
         }
 
-        public function LanguageInit()
+        public static dynamic function LanguageInit()
         {
                 LocalizationManager.LANGUAGE = 'english';
 

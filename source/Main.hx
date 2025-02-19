@@ -7,6 +7,9 @@ class Main extends Sprite
 	{
 		super();
 
+                InitState.ModsInit();
+                InitState.LanguageInit();
+
 		// Set the saveslot to a debug saveslot or a release saveslot
 		Global.change_saveslot((SLGame.isDebug) ? 'debug' : 'release');
                 
