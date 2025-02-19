@@ -28,7 +28,7 @@ class FileManager
 			MAYBE there is now a feature flag required to be specified for specific functions to function. 
 			I mean these can be big too but yknow. 1 thing at a time.
 	 */
-	public static var FILE_MANAGER_VERSION:Float = 9.4;
+	public static var FILE_MANAGER_VERSION:Float = 9.5;
 
         public static var UNLOCALIZED_ASSETS:Array<String> = [];
 	/**
@@ -44,7 +44,10 @@ class FileManager
 		var returnpath:String = ogreturnpath;
 
                 #if !DISABLE_LOCALIZED_ASSETS
-                var localizedreturnpath:String = '${ogreturnpath.split('.')[0]}-${LocalizationManager.ASSET_SUFFIX}.${ogreturnpath.split('.')[1]}';
+                var asset_suffix:String = LocalizationManager.ASSET_SUFFIX;
+                var localizedreturnpath:String = '${ogreturnpath.split('.')[0]}${(asset_suffix.length > 0) ? '-${LocalizationManager.ASSET_SUFFIX}' : ''}.${ogreturnpath.split('.')[1]}';
+
+                if (localizedreturnpath == returnpath) return returnpath;
 
                 if (exists(localizedreturnpath)) {
                         return localizedreturnpath;
