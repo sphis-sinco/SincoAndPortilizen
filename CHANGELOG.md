@@ -1,5 +1,9 @@
 # Prototype
 ## 0.0.7-p - 2/19/2025
+### Fixed
+- Fixed Djotta flow credits exitting screen bounds
+### Added
+- Readded Translations (they are back!)
 
 ## 0.0.6-p - 2/18/2025
 This update fixes crashes on 0.0.5-p with no additional content.
