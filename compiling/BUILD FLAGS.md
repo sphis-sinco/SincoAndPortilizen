@@ -5,6 +5,8 @@ These do things. Lmao!
 - `DISABLE_PLUGINS`: Disables plugins (mind blown)
 - `DISCORDRPC`: Enables Discord RPC if your not on windows, only works for C++ target platforms otherwise you just get a compiler error
 - `DISABLE_SCREENSHOT`: Disables screenshots (mind blown)
+- `SCRIPT_FILES`: Enables the `getScriptFile` function for `FileManager.hx`
+- `DISABLE_LOCALIZED_ASSETS`: Disables asset localization attempts for `FileManager.hx`
 
 ## QOL Flags
 - `DISABLE_ANNOYING_ERRORS`: Makes errors less annoying
