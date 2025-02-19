@@ -1,11 +1,12 @@
 # Prototype
 ## 0.0.7-p - 2/19/2025
 ### Changed
-- The following custom BUILD_DIR conditions no longer depend on being a release build for their directory to take place unless specified by `DEFAULT_DIRECTORY`
+- Changed the following custom BUILD_DIR conditions to no longer depend on being a release build for their directory to take place unless specified by `DEFAULT_DIRECTORY`
         - MASS_MOD
         - FORCED_ENGLISH_LANGUAGE
         - SPANISH_LANGUAGE
         - PORTUGUESE_LANGUAGE
+- Changed it so credits alignment is now center
 ### Fixed
 - Fixed Djotta flow credits exitting screen bounds
 ### Added

@@ -31,7 +31,8 @@ class CreditsSubState extends FlxSubState
 		for (credit in creditsJSON)
 		{
 			var text:FlxText = new FlxText(0, cur_y, 0, credit.text, Std.int(32 * credit.size));
-			text.screenCenter(X);
+			text.alignment = CENTER;
+                        text.screenCenter(X);
 			text.color = FlxColor.fromRGB(credit.color[0], credit.color[1], credit.color[2], (credit.color[3] != null) ? credit.color[3] : 255);
                         text.ID = i;
                         i++;
