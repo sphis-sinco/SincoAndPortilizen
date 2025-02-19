@@ -51,7 +51,7 @@ class FileManager
                 } else {
                         if (UNLOCALIZED_ASSETS.contains(localizedreturnpath)) return returnpath;
 
-                        trace('Could not get localized asset: ${localizedreturnpath}');
+                        #if CNGLA_TRACES trace('Could not get localized asset: ${localizedreturnpath}'); #end
                         UNLOCALIZED_ASSETS.push(localizedreturnpath);
                 }
                 #end

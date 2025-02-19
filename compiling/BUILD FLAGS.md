@@ -27,6 +27,7 @@ These do things. Lmao!
 - `PORT_RANK_CHAR` (executes with `RESULTS`): Sends you to the results state as Portilizen
 
 ## Language Flags
+- `CNGLA_TRACES`: Allows the console to print out what localized assets it could not get
 - `FORCED_ENGLISH_LANGUAGE`: Forces your language to English
 - `SPANISH_LANGUAGE`: Sets your language to (Google-translated) Spanish
 - `PORTUGUESE_LANGUAGE`: Sets your language to Portuguese
