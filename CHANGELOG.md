@@ -11,6 +11,7 @@
 - Fixed Djotta flow credits exitting screen bounds
 ### Added
 - Readded Translations (they are back and now they work on windows!)
+        - Added Translations for Credits
 - Added new Build directories
 
 ## 0.0.6-p - 2/18/2025
