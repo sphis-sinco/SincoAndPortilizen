@@ -2,6 +2,7 @@ package sinlib.utilities;
 
 import haxe.Json;
 import lime.utils.Assets;
+import sap.localization.LocalizationManager;
 #if sys
 import sys.FileSystem;
 import sys.io.File;
@@ -40,6 +41,10 @@ class FileManager
 	{
 		var ogreturnpath:String = '${pathprefix}${PATH_TYPE}${path}';
 		var returnpath:String = ogreturnpath;
+                var altreturnpath:String = '${ogreturnpath.split('.')[0]}-${LocalizationManager.ASSET_SUFFIX}.${ogreturnpath.split('.')[1]}';
+
+                if (exists(altreturnpath))
+                        return altreturnpath;
 
 		return returnpath;
 	}
