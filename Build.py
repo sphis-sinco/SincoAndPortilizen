@@ -1,4 +1,3 @@
-from queue import Full
 import subprocess
 
 running = True
