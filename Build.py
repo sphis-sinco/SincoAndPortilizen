@@ -1,4 +1,5 @@
 # Haxe project compiler (using lime)
+# Made by sphis_Sinco
 
 import subprocess
 
