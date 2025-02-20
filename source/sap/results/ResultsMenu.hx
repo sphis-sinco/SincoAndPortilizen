@@ -45,8 +45,8 @@ class ResultsMenu extends State
 		RANK_PERCENT_TEXT = new FlxText(0, 0, 0, '0%', 32);
 		RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
 		RANK_PERCENT_TEXT.color = 0x000000;
-                RANK_PERCENT_TEXT.alpha = 0.8;
-		RANK_PERCENT_TEXT.alignment = LEFT;
+                RANK_PERCENT_TEXT.alpha = 0.5;
+		RANK_PERCENT_TEXT.alignment =LEFT;
 
 		RESULTS_CHARACTER = new ResultsChar(char);
 		RESULTS_CHARACTER.screenCenter(XY);
