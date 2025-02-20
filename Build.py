@@ -37,13 +37,21 @@ def runSubP():
         # Execute a simple bash command
         result = subprocess.run(compile_args, capture_output=True, text=True)
 
+        value = ""
+
         # Check if the command was successful
         if result.returncode == 0:
                 # Print the output of the command
+                value=result.stdout
                 print(result.stdout)
         else:
                 # Print the error message
+                value=result.stderr
                 print(result.stderr)
+
+        
+        output.delete(1.0, END)
+        output.insert(END, value)
 
 tkinter_ui = tkinter.Tk()
 tkinter_ui.title('Haxe project compiler (using lime)')
@@ -82,5 +90,10 @@ run.pack(pady=10)
 # exit button
 exit = tkinter.Button(tkinter_ui, text='Exit', width=25, command=tkinter_ui.destroy)
 exit.pack(pady=10)
+
+# terminal outputs  
+output = Text(tkinter_ui, height=10, width=64)
+output.pack(pady=10)
+output.insert(END, 'TRACE LOGS WILL GO HERE')
 
 tkinter_ui.mainloop()
