@@ -7,6 +7,7 @@
         - SPANISH_LANGUAGE
         - PORTUGUESE_LANGUAGE
 - Changed it so credits alignment is now center
+- Changed Results percent text to be opaque
 ### Fixed
 - Fixed Djotta flow credits exitting screen bounds
 ### Added
