@@ -1,5 +1,7 @@
 # Prototype
 ## 0.0.7-p - 2/19/2025
+This update adds a `Build.py` file that helps with compiling :)
+
 ### Changed
 - Changed the following custom BUILD_DIR conditions to no longer depend on being a release build for their directory to take place unless specified by `DEFAULT_DIRECTORY`
         - MASS_MOD
