@@ -3,43 +3,34 @@
 
 import subprocess
 
-running = True
+from tkinter import *
+from tkinter import ttk
+import tkinter
+
 dashD_not_required = ['debug' 'watch']
+target_platforms = ['hl', 'windows']
 
-while running:
-        compile_args = ['lime', 'test']
-        exit_or_compile = input('Would you like to exit (E) or compile (C)?\n> ')
+def runSubP():
+        compile_args = ['lime', 'test', combo_box.get()]
 
-        if (exit_or_compile.lower() != 'c'):
-                running = False
-                break
-        else:
-                target_platform = input('What is your target platform?\n> ')
-                
-                if (target_platform == ''):
-                        target_platform = 'hl'
+        build_flags_array = custom_build_flags.get('1.0', 'end-1c').split('.')
 
-                compile_args.append(target_platform)
+        i = 0
+        while i < build_flags_array.__len__():
 
-                build_flags = input('What are your build flags (seperate with a .)?\n> ')
-                build_flags_array = build_flags.split('.')
+                prefix = '-D'
+                item = build_flags_array[i]
 
-                i = 0
-                while i < build_flags_array.__len__():
+                if not item == '':
+                        # this doesnt work for some reason.
+                        if dashD_not_required.__contains__(item) == True:
+                                prefix = '-'
+                                print(item)
 
-                        prefix = '-D'
-                        item = build_flags_array[i]
+                        compile_args.append(f'{prefix}{item}')
+                i = i + 1
 
-                        if not item == '':
-                                # this doesnt work for some reason.
-                                if dashD_not_required.__contains__(item) == True:
-                                        prefix = '-'
-                                        print(item)
-
-                                compile_args.append(f'{prefix}{item}')
-                        i = i + 1
-
-                print(f'Building for {target_platform} with the build flags: {build_flags_array}')
+        print(f'Building for {combo_box.get()} with the build flags: {build_flags_array}')
         
         print(compile_args.__str__())
 
@@ -53,3 +44,43 @@ while running:
         else:
                 # Print the error message
                 print(result.stderr)
+
+tkinter_ui = tkinter.Tk()
+tkinter_ui.title('Haxe project compiler (using lime)')
+tkinter_ui.geometry('640x608')
+
+project_text = Label(tkinter_ui, text='Haxe project compiler (using lime)\nMade by sphis_Sinco')
+project_text.pack(pady=10)
+
+def select(event):
+    selected_item = combo_box.get()
+    target_platform_text.config(text='Selected target platform: ' + selected_item)
+
+# Create a label
+target_platform_text = tkinter.Label(tkinter_ui, text='Selected target platform: '+target_platforms[0])
+target_platform_text.pack(pady=10)
+
+# Create a Combobox widget
+combo_box = ttk.Combobox(tkinter_ui, values=target_platforms)
+combo_box.pack(pady=5)
+
+# Set default value
+combo_box.set(target_platforms[0])
+
+# Bind event to selection
+combo_box.bind('<<ComboboxSelected>>', select)
+
+# cbf
+custom_build_flags = Text(tkinter_ui, height=10, width=64)
+custom_build_flags.pack()
+custom_build_flags.insert(END, 'Seperate your build flags with a .')
+
+# compile button
+run = tkinter.Button(tkinter_ui, text='Compile', width=25, command=runSubP)
+run.pack(pady=10)
+
+# exit button
+exit = tkinter.Button(tkinter_ui, text='Exit', width=25, command=tkinter_ui.destroy)
+exit.pack(pady=10)
+
+tkinter_ui.mainloop()
