@@ -14,7 +14,6 @@ These do things. Lmao!
 - `DISABLE_ANNOYING_WARNINGS`: Makes warnings less annoying
 
 ## Start State Flags
-- `CUTSCENE_TESTING`: Does nothing so far.
 - `SKIP_TITLE`: Sends you to the Main Menu instantly instead of the Title Screen
 - `STAGE_ONE`: Sends you to the first stage
 - `STAGE_FOUR`: Sends you to the fourth stage
@@ -26,6 +25,7 @@ These do things. Lmao!
 - `EXCELLENT_RANK` (executes with `RESULTS`): Sets the rank you will get to the excellent rank
 - `PERFECT_RANK` (executes with `RESULTS`): Sets the rank you will get to the perfect rank
 - `PORT_RANK_CHAR` (executes with `RESULTS`): Sends you to the results state as Portilizen
+- `SETTINGS_MENU`: Sends you to the Settings Menu instantly
 
 ## Language Flags
 - `CNGLA_TRACES`: Allows the console to print out what localized assets it could not get

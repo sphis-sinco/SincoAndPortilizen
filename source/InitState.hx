@@ -10,6 +10,7 @@ import sap.mainmenu.MainMenu;
 import sap.modding.source.ModListManager;
 import sap.modding.source.mods.MassMod;
 import sap.results.ResultsMenu;
+import sap.settings.SettingsMenu;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
@@ -86,6 +87,9 @@ class InitState extends FlxState
 		#if PORT_RANK_CHAR char = 'port'; #end
 
 		switchToState(() -> new ResultsMenu(good, 10, () -> new MainMenu(), char), 'Results Menu');
+		return;
+                #elseif SETTINGS_MENU
+		switchToState(() -> new SettingsMenu(), 'Settings Menu');
 		return;
 		#end
 
