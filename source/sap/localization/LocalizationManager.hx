@@ -3,6 +3,11 @@ package sap.localization;
 class LocalizationManager
 {
 	public static var LANGUAGE:String = 'english';
+	public static var LANGUAGE_SWAP_LIST:Map<String, String> = [
+                'english' => 'spanish',
+                'spanish' => 'portuguese',
+                'portuguese' => 'english'
+        ];
 	public static var ASSET_SUFFIX:String = '';
 
 	public static var TEXT_CONTENT:Map<String, String> = [];
@@ -26,9 +31,9 @@ class LocalizationManager
 		"play-back" => "back"
 	];
 
-	public static dynamic function swapLanguage()
+	public static dynamic function changeLanguage()
 	{
-		trace('Trying to swap to languge: $LANGUAGE');
+		trace('Trying to change to languge: $LANGUAGE');
 
 		TEXT_CONTENT = returnLanguageTEXT_CONTENT();
 
@@ -36,11 +41,11 @@ class LocalizationManager
 		{
 			LANGUAGE = 'english';
 			ASSET_SUFFIX = '';
-			trace('Failed to swap to language: $LANGUAGE');
+			trace('Failed to change to language: $LANGUAGE');
 		}
 		else
 		{
-			trace('Succeeded to swap to language: $LANGUAGE');
+			trace('Succeeded to change to language: $LANGUAGE');
 		}
 	}
 
@@ -94,4 +99,10 @@ class LocalizationManager
 		ASSET_SUFFIX = '';
 		return default_text_content;
 	}
+
+        public static dynamic function swapLanguage()
+        {
+                LANGUAGE = LANGUAGE_SWAP_LIST.get(LANGUAGE);
+                changeLanguage();
+        }
 }

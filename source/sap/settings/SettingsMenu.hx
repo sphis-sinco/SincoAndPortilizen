@@ -6,14 +6,17 @@ import sap.localization.LocalizationManager;
 
 class SettingsMenu extends FlxState
 {
-	public static var saveValues:Map<String, Any> = ["language" => LocalizationManager.LANGUAGE];
+	public static var saveValues:Map<String, Any> = [];
 
 	public static var settingsTexts:FlxTypedGroup<FlxText>;
 
         public static var CURRENT_SELECTION:Int = 0;
+        public static var SELECTED_SETTING:String = "";
 
 	override function create()
 	{
+                saveValuesUpdate();
+                
 		settingsTexts = new FlxTypedGroup<FlxText>();
 		add(settingsTexts);
 
@@ -21,6 +24,11 @@ class SettingsMenu extends FlxState
 
 		super.create();
 	}
+
+        public static function saveValuesUpdate() {
+                saveValues.set('language', LocalizationManager.LANGUAGE);
+        }
+        
 
 	override function update(elapsed:Float)
 	{
@@ -36,10 +44,26 @@ class SettingsMenu extends FlxState
                         createSettingsText();
                 }
 
+                if (FlxG.keys.justReleased.ENTER) {
+                        updateSettings();
+                }
+
 		super.update(elapsed);
 	}
 
-        public function createSettingsText()
+        public static dynamic function updateSettings() {
+                switch (SELECTED_SETTING)
+                {
+                        case 'language':
+                                LocalizationManager.swapLanguage();
+                }
+
+                saveValuesUpdate();
+                createSettingsText();
+        }
+        
+
+        public static function createSettingsText()
         {
                 TryCatch.tryCatch(() -> {
                         for (i in 0...settingsTexts.members.length) {
@@ -58,6 +82,8 @@ class SettingsMenu extends FlxState
                         keyText.screenCenter(X);
                         keyText.ID = i;
                         keyText.color = (i == CURRENT_SELECTION) ? 0xFFFF00 : 0xFFFFFF;
+
+                        if (i == CURRENT_SELECTION) SELECTED_SETTING = key;
 
                         settingsTexts.add(keyText);
 
