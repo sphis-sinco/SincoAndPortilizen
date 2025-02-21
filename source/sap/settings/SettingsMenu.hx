@@ -10,6 +10,8 @@ class SettingsMenu extends FlxState
 
 	public static var settingsTexts:FlxTypedGroup<FlxText>;
 
+        public static var CURRENT_SELECTION:Int = 0;
+
 	override function create()
 	{
 		settingsTexts = new FlxTypedGroup<FlxText>();
@@ -22,7 +24,17 @@ class SettingsMenu extends FlxState
 
 	override function update(elapsed:Float)
 	{
-                if (FlxG.keys.justReleased.ANY) createSettingsText();
+                if (FlxG.keys.justReleased.LEFT) {
+                        CURRENT_SELECTION--;
+                        if (CURRENT_SELECTION < 0) CURRENT_SELECTION = 0;
+                        createSettingsText();
+                }
+
+                if (FlxG.keys.justReleased.RIGHT) {
+                        CURRENT_SELECTION++;
+                        if (CURRENT_SELECTION >= settingsTexts.members.length - 1) CURRENT_SELECTION = settingsTexts.members.length - 1;
+                        createSettingsText();
+                }
 
 		super.update(elapsed);
 	}
@@ -45,6 +57,7 @@ class SettingsMenu extends FlxState
                         var keyText:FlxText = new FlxText(0, 10, 0, '$keystring: $keyvalue', 16);
                         keyText.screenCenter(X);
                         keyText.ID = i;
+                        keyText.color = (i == CURRENT_SELECTION) ? 0xFFFF00 : 0xFFFFFF;
 
                         settingsTexts.add(keyText);
 
