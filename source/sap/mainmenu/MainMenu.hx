@@ -4,6 +4,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import sap.credits.CreditsSubState;
+import sap.settings.SettingsMenu;
 import sap.title.TitleState;
 
 class MainMenu extends State
@@ -15,7 +16,7 @@ class MainMenu extends State
 	public static var menuselectbox:FlxSprite;
 
 	public static var menuboxtexts:FlxTypedGroup<FlxText>;
-	public static var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'credits', 'leave'], 'play' => ['new', 'continue', 'back']];
+	public static var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'credits', 'settings', 'leave'], 'play' => ['new', 'continue', 'back']];
 
 	public var menutextsSelection:String = 'menu';
 
@@ -196,7 +197,9 @@ class MainMenu extends State
 		{
 			case 0:
 				FlxG.switchState(PlayMenu.new);
-			case 2:
+                        case 2:
+                                FlxG.switchState(SettingsMenu.new);
+			case 3:
 				FlxG.switchState(TitleState.new);
 		}
 	}
