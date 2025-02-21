@@ -15,6 +15,27 @@ class SettingsMenu extends FlxState
 		settingsTexts = new FlxTypedGroup<FlxText>();
 		add(settingsTexts);
 
+                createSettingsText();
+
+		super.create();
+	}
+
+	override function update(elapsed:Float)
+	{
+                if (FlxG.keys.justReleased.ANY) createSettingsText();
+
+		super.update(elapsed);
+	}
+
+        public function createSettingsText()
+        {
+                TryCatch.tryCatch(() -> {
+                        for (i in 0...settingsTexts.members.length) {
+                                settingsTexts.members[i].kill();
+                                settingsTexts.remove(settingsTexts.members[0]);
+                        }
+                });
+
                 var i:Int = 0;
                 for (key in saveValues.keys())
                 {
@@ -29,12 +50,5 @@ class SettingsMenu extends FlxState
 
                         i++;
                 }
-
-		super.create();
-	}
-
-	override function update(elapsed:Float)
-	{
-		super.update(elapsed);
-	}
+        }
 }
