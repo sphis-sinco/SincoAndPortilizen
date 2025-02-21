@@ -3,6 +3,7 @@ package sap.settings;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import sap.localization.LocalizationManager;
+import sap.mainmenu.MainMenu;
 
 class SettingsMenu extends FlxState
 {
@@ -46,6 +47,10 @@ class SettingsMenu extends FlxState
 
                 if (FlxG.keys.justReleased.ENTER) {
                         updateSettings();
+                }
+
+                if (FlxG.keys.justReleased.ESCAPE) {
+                        FlxG.switchState(() -> new MainMenu());
                 }
 
 		super.update(elapsed);
