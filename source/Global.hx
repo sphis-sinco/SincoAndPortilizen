@@ -163,8 +163,12 @@ class Global
 	 * @param phrase the key you are trying to read
 	 * @return String
 	 */
-	public static function getLocalizedPhrase(phrase:String):String
+	public static function getLocalizedPhrase(phrase:String, ?fallback:String):String
 	{
-		return LocalizationManager.TEXT_CONTENT.get(phrase);
+                var returnPhrase =  LocalizationManager.TEXT_CONTENT.get(phrase);
+
+                if (returnPhrase == null) returnPhrase = (fallback == null) ? phrase : fallback;
+
+		return returnPhrase;
 	}
 }
