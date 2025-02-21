@@ -20,6 +20,7 @@ class LocalizationManager
 		"menu-play" => "play",
 		"menu-credits" => "credits",
 		"menu-leave" => "leave",
+		"menu-settings" => "settings",
 		"play-new" => "new",
 		"play-continue" => "continue",
 		"play-back" => "back"
@@ -61,6 +62,7 @@ class LocalizationManager
 				"menu-play" => "jugar",
 				"menu-credits" => "créditos",
 				"menu-leave" => "dejar",
+                                "menu-settings" => "ajustes",
 				"play-new" => "nuevo",
 				"play-continue" => "continuar",
 				"play-back" => "atrás"
