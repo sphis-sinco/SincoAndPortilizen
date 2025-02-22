@@ -4,6 +4,7 @@
 - Settings menu
 - Language Setting
 - Volume Setting
+- Window resolution Setting (neko, windows, linux and mac)
 ### Removed
 - Translations folder
 
