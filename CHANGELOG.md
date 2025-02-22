@@ -3,6 +3,7 @@
 ### Added
 - Added Results menu on death for stage 1
 ### Fixed
+- Fixed HTML5 crashing when beating a level
 - Fixed bug where in stage 1 the Results menu wouldn't adapt to the players max health.
 - Fixed bug where in stage 1 and 4 the opponent wont attack once replaying the level ([#8](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/8))
 - Fixed bug where in stage 4 there is no results screen ([#9](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/9))

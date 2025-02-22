@@ -133,6 +133,8 @@ class Global
 	 */
 	public static function beatLevel(lvl:Int = 1)
 	{
+                #if html5 return; #end
+
 		if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
 			FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
 	}
