@@ -1,7 +1,8 @@
 # Alpha
 ## 0.1.0a - 2/??/2025
 ### Fixed
-- Fixed bug where in stage 4 the timer stays the same as it last was
+- Fixed bug where in stage 4 there is no results screen ([#9](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/9))
+- Fixed bug where in stage 4 the timer stays the same as it last was ([#7](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/7))
 ### Changed
 - Changed Company name in `project.xml` to `SAPTeam`
 

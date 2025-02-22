@@ -3,6 +3,7 @@ package sap.stages.stage4;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
 class Stage4 extends State
@@ -60,7 +61,7 @@ class Stage4 extends State
 	public static dynamic function levelComplete()
 	{
 		Global.beatLevel(4);
-		FlxG.switchState(() -> new Worldmap("Port"));
+		moveToResultsMenu();
 	}
 
 	public static dynamic function waitSec()
@@ -147,11 +148,15 @@ class Stage4 extends State
 		if (enemy.overlaps(port))
 		{
 			FlxG.camera.flash();
-			FlxG.switchState(() -> new Worldmap("Port"));
+                        moveToResultsMenu();
 		}
 
 		enemyRetreat();
 	}
+
+        public static dynamic function moveToResultsMenu() {
+                FlxG.switchState(() -> new ResultsMenu(time, StageGlobal.STAGE4_START_TIMER, () -> new Worldmap("Port"), "port"));
+        }
 
 	public static dynamic function enemyRetreat()
 	{
