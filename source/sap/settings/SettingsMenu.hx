@@ -8,7 +8,7 @@ import sap.mainmenu.MainMenu;
 class SettingsMenu extends FlxState
 {
 	public static var saveValues:Map<String, Any> = [];
-
+	public static var saveValue_length:Int = 0;
 	public static var settingsTexts:FlxTypedGroup<FlxText>;
 
         public static var CURRENT_SELECTION:Int = 0;
@@ -29,20 +29,22 @@ class SettingsMenu extends FlxState
         public static function saveValuesUpdate() {
                 saveValues.set('language', LocalizationManager.LANGUAGE);
                 saveValues.set('volume', FlxG.sound.volume);
+
+                saveValue_length = 2;
         }
         
 
 	override function update(elapsed:Float)
 	{
-                if (FlxG.keys.justReleased.LEFT) {
+                if (FlxG.keys.justReleased.UP) {
                         CURRENT_SELECTION--;
                         if (CURRENT_SELECTION < 0) CURRENT_SELECTION = 0;
                         createSettingsText();
                 }
 
-                if (FlxG.keys.justReleased.RIGHT) {
+                if (FlxG.keys.justReleased.DOWN) {
                         CURRENT_SELECTION++;
-                        if (CURRENT_SELECTION >= settingsTexts.members.length - 1) CURRENT_SELECTION = settingsTexts.members.length - 1;
+                        if (CURRENT_SELECTION == saveValue_length) CURRENT_SELECTION--;
                         createSettingsText();
                 }
 
@@ -63,9 +65,9 @@ class SettingsMenu extends FlxState
                         case 'language':
                                 LocalizationManager.swapLanguage();
                         case 'volume':
-                                FlxG.sound.volume += 0.1;
-                                if (FlxG.sound.volume > 1)
-                                        FlxG.sound.volume = 0.0;
+                                FlxG.sound.changeVolume(0.1);
+                                if (FlxG.sound.volume == 1)
+                                        FlxG.sound.changeVolume(-1);
                 }
 
                 saveValuesUpdate();
@@ -92,6 +94,7 @@ class SettingsMenu extends FlxState
                         keyText.screenCenter(X);
                         keyText.ID = i;
                         keyText.color = (i == CURRENT_SELECTION) ? 0xFFFF00 : 0xFFFFFF;
+                        keyText.y += i * keyText.size;
 
                         if (i == CURRENT_SELECTION) SELECTED_SETTING = key;
 
