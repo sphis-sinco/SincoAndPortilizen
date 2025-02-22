@@ -98,6 +98,8 @@ class SettingsMenu extends FlxSubState
 			case 'language':
 				LocalizationManager.swapLanguage();
 				MainMenu.set_menuboxtexts(MainMenu.public_menutextsSelection);
+
+                                FileManager.writeToPath('cur_lang.txt', LocalizationManager.LANGUAGE);
 			case 'volume':
 				FlxG.sound.changeVolume(0.1);
 				if (FlxG.sound.volume == 1)
