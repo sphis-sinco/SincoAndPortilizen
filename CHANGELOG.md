@@ -2,6 +2,10 @@
 ## 0.0.8-p - 2/21/2025
 ### Added
 - Settings menu
+- Language Setting
+- Volume Setting
+### Removed
+- Translations folder
 
 ## 0.0.7-p - 2/19/2025
 This update adds a `Build.py` file that helps with compiling :)

@@ -35,6 +35,10 @@ class InitState extends FlxState
 		LogStyle.WARNING.errorSound = null;
 		#end
 
+                FlxG.sound.volumeUpKeys = [];
+                FlxG.sound.volumeDownKeys = [];
+                FlxG.sound.muteKeys = [];
+
 		CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
 
 		if (!SLGame.isDebug)
