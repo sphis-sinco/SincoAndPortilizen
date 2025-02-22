@@ -7,6 +7,7 @@ import sap.cutscenes.PanelCutscene;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.results.ResultsMenu;
+import sap.stages.StageGlobal;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
@@ -37,6 +38,8 @@ class MassMod extends ModBasic
 
 		Global.change_saveslot((SLGame.isDebug) ? 'debug_massmod' : 'release_massmod');
 
+                StageGlobal.STAGE4_START_TIMER = 120;
+                
 		super.create();
 	}
 
@@ -80,13 +83,11 @@ class MassMod extends ModBasic
 		if (Global.getCurrentState() == "Stage4")
 		{
 			trace('Stage 4!');
-
-			Stage4.total_time = 120;
+                        
 			Stage4.enemyAttackCondition = function():Bool
 			{
 				return true;
 			}
-			Stage4.timerText.text = Std.string(Stage4.total_time - Stage4.time);
 		}
 
 		if (Global.getCurrentState() == "ResultsMenu")

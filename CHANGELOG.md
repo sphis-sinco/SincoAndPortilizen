@@ -1,5 +1,7 @@
 # Alpha
 ## 0.1.0a - 2/??/2025
+### Fixed
+- Fixed bug where in stage 4 the timer stays the same as it last was
 ### Changed
 - Changed Company name in `project.xml` to `SAPTeam`
 

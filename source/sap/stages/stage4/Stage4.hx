@@ -16,7 +16,6 @@ class Stage4 extends State
 
 	public static var timerText:FlxText;
 	public static var time:Int = 0;
-	public static var total_time:Int = 60;
 
 	override function create()
 	{
@@ -43,7 +42,9 @@ class Stage4 extends State
 		port.y = Std.int(FlxG.height - port.height * DISMx2);
 		enemy.y = port.y;
 
-		FlxTimer.wait(total_time, () ->
+
+                time = 0;
+		FlxTimer.wait(StageGlobal.STAGE4_START_TIMER, () ->
 		{
 			levelComplete();
 		});
@@ -64,7 +65,7 @@ class Stage4 extends State
 
 	public static dynamic function waitSec()
 	{
-		timerText.text = Std.string(total_time - time);
+		timerText.text = Std.string(StageGlobal.STAGE4_START_TIMER - time);
 
 		FlxTimer.wait(1, () ->
 		{

@@ -1,7 +1,7 @@
 package sap.mainmenu;
 
 import sap.cutscenes.intro.IntroCutscene;
-import sap.stages.Continue;
+import sap.worldmap.Worldmap;
 
 class PlayMenu extends MainMenu
 {
@@ -32,7 +32,7 @@ class PlayMenu extends MainMenu
 
 			case 1:
 				FlxG.sound.music.stop();
-				FlxG.switchState(() -> new Continue());
+				FlxG.switchState(() -> new Worldmap());
 
 			case 2:
 				FlxG.switchState(() -> new MainMenu());
