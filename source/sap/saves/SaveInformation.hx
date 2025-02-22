@@ -1,7 +1,25 @@
 package sap.saves;
 
-typedef SaveInformation = {
-        language: "english",
-        results: Results.returnDefaultResults(),
-        gameplaystatus: GameplayStatus.returnDefaultGameplayStatus()
+class SaveInformation {
+        public var language:String = "english";
+        
+        public var results:Results = {
+                grade: "F",
+                rank: "awful"
+        };
+
+        public var gameplaystatus:GameplayStatus = {
+                levels_complete: []
+        };
+
+        public function new() {}
+}
+
+typedef GameplayStatus = {
+        public var levels_complete:Array<Int>;
+}
+
+typedef Results = {
+        public var grade:String;
+        public var rank:String;
 }

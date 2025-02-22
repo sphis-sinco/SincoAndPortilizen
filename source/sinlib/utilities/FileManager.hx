@@ -28,7 +28,7 @@ class FileManager
 			MAYBE there is now a feature flag required to be specified for specific functions to function. 
 			I mean these can be big too but yknow. 1 thing at a time.
 	 */
-	public static var FILE_MANAGER_VERSION:Float = 9.6;
+	public static var FILE_MANAGER_VERSION:Float = 9.7;
 
 	public static var UNLOCALIZED_ASSETS:Array<String> = [];
 
@@ -150,10 +150,10 @@ class FileManager
 	public static function writeToPath(path:String, content:String)
 	{
 		#if sys
-		if (path.length > 0)
-			File.saveContent(path, content);
-		else
-			throw 'A path is required.';
+		if (path.length == 0) throw 'Path length should be more than one';
+		if (!exists(path)) throw 'File needs to exist.';
+
+                File.saveContent(path, content);
 		#else
 		trace('NOT SYS!');
 		#end
@@ -186,7 +186,7 @@ class FileManager
 	 * Reads a file that SHOULD BE A JSON, using `readFile`
 	 * @param path the path of the json your trying to get
 	 */
-	public static function getJSON(path:String)
+	public static function getJSON(path:String):Any
 	{
 		return Json.parse(readFile(path));
 	}

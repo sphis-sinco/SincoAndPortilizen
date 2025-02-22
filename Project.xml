@@ -94,7 +94,6 @@
 	<haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS"/>
 
 	<haxelib name="discord_rpc" if="DISCORDRPC"/>
-
         <!-- _________________________________ After _______________________________ -->
 
 	<error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile"/>

@@ -30,6 +30,7 @@ class LocalizationManager
 		"play-continue" => "continue",
 		"play-back" => "back",
 		"settings-language" => "language",
+		"settings-volume" => "volume",
 		"settings-volume" => "volume"
 	];
 

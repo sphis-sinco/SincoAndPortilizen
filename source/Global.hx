@@ -1,6 +1,7 @@
 package;
 
 import sap.localization.LocalizationManager;
+import sap.saves.SaveManager;
 import sinlib.SLGame;
 
 using StringTools;
@@ -63,10 +64,38 @@ class Global
 	 */
 	public static function change_saveslot(slotsuffix:Dynamic = 1)
 	{
-		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
-                FileManager.writeToPath('save.json', "{}");
+		SAVE_SLOT = '$slotsuffix';
 
-		trace('Switched save slot to "$SAVE_SLOT"');
+		trace(SaveManager.save_data.language);
+
+		if (SaveManager.save_data == null)
+		{
+			trace('Reseting save infromation');
+			SaveManager.resetSaveData();
+		}
+
+		trace(SaveManager.save_data.language);
+
+		TryCatch.tryCatch(() ->
+		{
+			if (FileManager.getJSON('save.json') == null)
+			{
+				trace('Reseting save file');
+				SaveManager.saveSettings();
+			}
+		}, {
+				traceErr: true
+		});
+
+		TryCatch.tryCatch(() ->
+		{
+			trace('Loading save infromation');
+			SaveManager.loadPrefs();
+		}, {
+				traceErr: true
+		});
+
+		trace(SaveManager.save_data.language);
 	}
 
 	/**
@@ -132,8 +161,8 @@ class Global
 	 */
 	public static function beatLevel(lvl:Int = 1)
 	{
-		// if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
-			// FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
+		if (!SaveManager.save_data.gameplaystatus.levels_complete.contains(lvl))
+			SaveManager.save_data.gameplaystatus.levels_complete.push(lvl);
 	}
 
 	/**
@@ -166,10 +195,11 @@ class Global
 	 */
 	public static function getLocalizedPhrase(phrase:String, ?fallback:String):String
 	{
-                var phrase_that_works:String = phrase.toLowerCase().replace(' ', '-');
+		var phrase_that_works:String = phrase.toLowerCase().replace(' ', '-');
 
-                var returnPhrase =  LocalizationManager.TEXT_CONTENT.get(phrase_that_works);
-                if (returnPhrase == null) returnPhrase = (fallback == null) ? phrase_that_works : fallback;
+		var returnPhrase = LocalizationManager.TEXT_CONTENT.get(phrase_that_works);
+		if (returnPhrase == null)
+			returnPhrase = (fallback == null) ? phrase_that_works : fallback;
 
 		return returnPhrase;
 	}
