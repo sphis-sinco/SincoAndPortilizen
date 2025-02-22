@@ -30,7 +30,8 @@ class LocalizationManager
 		"play-continue" => "continue",
 		"play-back" => "back",
 		"settings-language" => "language",
-		"settings-volume" => "volume"
+		"settings-volume" => "volume",
+		"settings-window-resolution" => "window resolution"
 	];
 
 	public static dynamic function changeLanguage()
@@ -74,7 +75,8 @@ class LocalizationManager
 				"play-continue" => "continuar",
 				"play-back" => "atrás",
                                 "settings-language" => "idioma",
-                                "settings-volume" => "volumen"
+                                "settings-volume" => "volumen",
+                                "settings-window-resolution" => "resolución de ventana"
 			];
 		}
 
@@ -99,7 +101,8 @@ class LocalizationManager
 				"play-continue" => "continuar",
 				"play-back" => "voltar",
                                 "settings-language" => "linguagem",
-                                "settings-volume" => "volume"
+                                "settings-volume" => "volume",
+                                "settings-window-resolution" => "resolução da janela"
 			];
 		}
 

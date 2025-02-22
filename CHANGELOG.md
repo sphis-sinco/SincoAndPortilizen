@@ -1,5 +1,5 @@
 # Prototype
-## 0.0.8-p - 2/21/2025
+## 0.0.8-p - 2/22/2025
 ### Added
 - Settings menu
 - Language Setting
