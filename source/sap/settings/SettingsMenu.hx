@@ -28,7 +28,7 @@ class SettingsMenu extends FlxState
 
         public static function saveValuesUpdate() {
                 saveValues.set('language', LocalizationManager.LANGUAGE);
-                saveValues.set('volume', FlxG.sound.volume);
+                saveValues.set('volume', FlxG.sound.volume * 100);
 
                 saveValue_length = 2;
         }
