@@ -8,8 +8,6 @@ class Continue extends State
 	{
 		super.create();
 
-		FlxG.save.data.gameplaystatus ??= GameplayStatus.returnDefaultGameplayStatus();
-
 		FlxG.switchState(() -> new Worldmap());
 	}
 }
