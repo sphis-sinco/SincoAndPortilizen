@@ -28,7 +28,9 @@ class LocalizationManager
 		"menu-settings" => "settings",
 		"play-new" => "new",
 		"play-continue" => "continue",
-		"play-back" => "back"
+		"play-back" => "back",
+		"settings-language" => "language",
+		"settings-volume" => "volume"
 	];
 
 	public static dynamic function changeLanguage()
@@ -70,7 +72,9 @@ class LocalizationManager
                                 "menu-settings" => "ajustes",
 				"play-new" => "nuevo",
 				"play-continue" => "continuar",
-				"play-back" => "atrás"
+				"play-back" => "atrás",
+                                "settings-language" => "idioma",
+                                "settings-volume" => "volumen"
 			];
 		}
 
@@ -90,9 +94,12 @@ class LocalizationManager
 				"menu-play" => "jogar",
 				"menu-credits" => "créditos",
 				"menu-leave" => "sair",
+                                "menu-settings" => "configurações",
 				"play-new" => "novo",
 				"play-continue" => "continuar",
-				"play-back" => "voltar"
+				"play-back" => "voltar",
+                                "settings-language" => "linguagem",
+                                "settings-volume" => "volume"
 			];
 		}
 

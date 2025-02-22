@@ -50,7 +50,7 @@ class CreditsSubState extends FlxSubState
 
 		if (FlxG.keys.justReleased.ESCAPE)
 		{
-			MainMenu.inCredits = false;
+			MainMenu.inSubstate = false;
 			close();
 		}
 

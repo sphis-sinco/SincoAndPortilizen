@@ -28,7 +28,7 @@ class MainMenu extends State
 
 	public static var PUBLIC_CUR_SELECTION:Int = 0;
 
-	public static var inCredits:Bool = false;
+	public static var inSubstate:Bool = false;
 
 	override public function new(select:String = 'menu')
 	{
@@ -118,7 +118,7 @@ class MainMenu extends State
 			text.color = (CUR_SELECTION == text.ID) ? FlxColor.LIME : FlxColor.WHITE;
 		}
 
-		if (!inCredits)
+		if (!inSubstate)
 		{
 			controls();
 			CUR_SELECTION = PUBLIC_CUR_SELECTION;
@@ -151,14 +151,13 @@ class MainMenu extends State
 
 	public static dynamic function set_menuboxtexts(mapstring:String)
 	{
-		if (menuboxtexts.members.length > 0)
-		{
-			for (text in menuboxtexts)
-			{
-				text.destroy();
-				menuboxtexts.remove(text);
-			}
-		}
+                TryCatch.tryCatch(() -> {
+                        for (text in menuboxtexts)
+                                {
+                                        text.kill();
+                                        menuboxtexts.remove(text);
+                                }
+                });
 
 		var i = 0;
 		for (text in menutexts.get(mapstring))
@@ -176,6 +175,7 @@ class MainMenu extends State
 	}
 
 	public static var CREDITS_SELECTION:Int = 1;
+	public static var SETTINGS_SELECTION:Int = 2;
 
 	public function selectionCheck()
 	{
@@ -183,10 +183,16 @@ class MainMenu extends State
 		{
 			if (PUBLIC_CUR_SELECTION == CREDITS_SELECTION)
 			{
-				inCredits = true;
+				inSubstate = true;
 				openSubState(new CreditsSubState());
 			}
 
+			if (PUBLIC_CUR_SELECTION == SETTINGS_SELECTION)
+                        {
+                                inSubstate = true;
+                                openSubState(new SettingsMenu());
+                        }
+        
 			menuSelection();
 		}
 	}
@@ -197,8 +203,6 @@ class MainMenu extends State
 		{
 			case 0:
 				FlxG.switchState(PlayMenu.new);
-                        case 2:
-                                FlxG.switchState(SettingsMenu.new);
 			case 3:
 				FlxG.switchState(TitleState.new);
 		}

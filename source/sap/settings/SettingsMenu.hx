@@ -5,17 +5,27 @@ import flixel.text.FlxText;
 import sap.localization.LocalizationManager;
 import sap.mainmenu.MainMenu;
 
-class SettingsMenu extends FlxState
+class SettingsMenu extends FlxSubState
 {
+	static var SECTION:String = "randomuniqueID10983p18290381902389018290381923y812u893h1792ehju91n2dinkm2wbdhu1i209judhu9wf";
+
 	public static var saveValues:Map<String, Any> = [];
 	public static var saveValue_length:Int = 0;
 	public static var settingsTexts:FlxTypedGroup<FlxText>;
 
         public static var CURRENT_SELECTION:Int = 0;
         public static var SELECTED_SETTING:String = "";
+	
+        public static var overlay:BlankBG;
 
 	override function create()
 	{
+                
+		overlay = new BlankBG();
+		overlay.color = 0x000000;
+		overlay.alpha = 0.5;
+		add(overlay);
+
                 saveValuesUpdate();
                 
 		settingsTexts = new FlxTypedGroup<FlxText>();
@@ -27,6 +37,7 @@ class SettingsMenu extends FlxState
 	}
 
         public static function saveValuesUpdate() {
+                saveValues.set('GENERAL', SECTION);
                 saveValues.set('language', LocalizationManager.LANGUAGE);
                 saveValues.set('volume', FlxG.sound.volume * 100);
 
@@ -53,7 +64,8 @@ class SettingsMenu extends FlxState
                 }
 
                 if (FlxG.keys.justReleased.ESCAPE) {
-                        FlxG.switchState(() -> new MainMenu());
+			MainMenu.inSubstate = false;
+			close();
                 }
 
 		super.update(elapsed);
@@ -64,6 +76,7 @@ class SettingsMenu extends FlxState
                 {
                         case 'language':
                                 LocalizationManager.swapLanguage();
+                                MainMenu.set_menuboxtexts(MainMenu.public_menutextsSelection);
                         case 'volume':
                                 FlxG.sound.changeVolume(0.1);
                                 if (FlxG.sound.volume == 1)

@@ -92,9 +92,6 @@ class InitState extends FlxState
 
 		switchToState(() -> new ResultsMenu(good, 10, () -> new MainMenu(), char), 'Results Menu');
 		return;
-                #elseif SETTINGS_MENU
-		switchToState(() -> new SettingsMenu(), 'Settings Menu');
-		return;
 		#end
 
 		FlxG.switchState(TitleState.new);
