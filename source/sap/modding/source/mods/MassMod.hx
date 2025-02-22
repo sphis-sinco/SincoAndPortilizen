@@ -7,7 +7,7 @@ import sap.cutscenes.PanelCutscene;
 import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.results.ResultsMenu;
-import sap.stages.StageGlobal;
+import sap.stages.StageGlobals;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
@@ -38,7 +38,10 @@ class MassMod extends ModBasic
 
 		Global.change_saveslot((SLGame.isDebug) ? 'debug_massmod' : 'release_massmod');
 
-                StageGlobal.STAGE4_START_TIMER = 120;
+                StageGlobals.STAGE4_START_TIMER = 120;
+
+                StageGlobals.STAGE1_OPPONENT_MAX_HEALTH = 100;
+                StageGlobals.STAGE1_PLAYER_MAX_HEALTH = 5;
                 
 		super.create();
 	}
@@ -68,12 +71,6 @@ class MassMod extends ModBasic
 		if (Global.getCurrentState() == "Stage1")
 		{
 			trace('Stage 1!');
-
-			Stage1.OSIN_MAX_HEALTH = 100;
-			Stage1.SINCO_MAX_HEALTH = 5;
-
-			Stage1.OSIN_HEALTH = Stage1.OSIN_MAX_HEALTH;
-			Stage1.SINCO_HEALTH = Stage1.SINCO_MAX_HEALTH;
 
 			Stage1.getOsinJumpCondition = newOsinJumpCondition;
 

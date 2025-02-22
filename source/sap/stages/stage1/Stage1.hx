@@ -75,6 +75,9 @@ class Stage1 extends State
 	{
 		super.postCreate();
 
+		SINCO_MAX_HEALTH = StageGlobals.STAGE1_PLAYER_MAX_HEALTH;
+		OSIN_MAX_HEALTH = StageGlobals.STAGE1_OPPONENT_MAX_HEALTH;
+
 		SINCO_HEALTH = SINCO_MAX_HEALTH;
 		OSIN_HEALTH = OSIN_MAX_HEALTH;
 	}
@@ -317,7 +320,7 @@ class Stage1 extends State
 		FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
 			{
-				FlxG.switchState(() -> new Worldmap());
+                                FlxG.switchState(() -> new ResultsMenu(OSIN_HEALTH, OSIN_MAX_HEALTH, () -> new Worldmap()));
 			},
 			onStart: _tween ->
 			{
@@ -352,7 +355,7 @@ class Stage1 extends State
 	public static dynamic function endCutsceneTransition()
 	{
 		Global.beatLevel(1);
-		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, 10, () -> new PostStage1Cutscene()));
+		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, () -> new PostStage1Cutscene()));
 	}
 
 	public static var playedDeathFX:Bool = false;

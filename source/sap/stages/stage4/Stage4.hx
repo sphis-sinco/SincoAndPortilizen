@@ -45,7 +45,7 @@ class Stage4 extends State
 
 
                 time = 0;
-		FlxTimer.wait(StageGlobal.STAGE4_START_TIMER, () ->
+		FlxTimer.wait(StageGlobals.STAGE4_START_TIMER, () ->
 		{
 			levelComplete();
 		});
@@ -68,7 +68,7 @@ class Stage4 extends State
 
 	public static dynamic function waitSec()
 	{
-		timerText.text = Std.string(StageGlobal.STAGE4_START_TIMER - time);
+		timerText.text = Std.string(StageGlobals.STAGE4_START_TIMER - time);
 
 		FlxTimer.wait(1, () ->
 		{
@@ -157,7 +157,7 @@ class Stage4 extends State
 	}
 
         public static dynamic function moveToResultsMenu() {
-                FlxG.switchState(() -> new ResultsMenu(time, StageGlobal.STAGE4_START_TIMER, () -> new Worldmap("Port"), "port"));
+                FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE4_START_TIMER, () -> new Worldmap("Port"), "port"));
         }
 
 	public static dynamic function enemyRetreat()
