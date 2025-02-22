@@ -1,3 +1,8 @@
+# Alpha
+## 0.1.0a - 2/??/2025
+### Changed
+- Changed Company name in `project.xml` to `SAPTeam`
+
 # Prototype
 ## 0.0.8-p - 2/22/2025
 ### Added
