@@ -320,7 +320,7 @@ class Stage1 extends State
 		FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
 			{
-                                FlxG.switchState(() -> new ResultsMenu(OSIN_HEALTH, OSIN_MAX_HEALTH, () -> new Worldmap()));
+                                FlxG.switchState(() -> new ResultsMenu((OSIN_MAX_HEALTH - OSIN_HEALTH), OSIN_MAX_HEALTH, () -> new Worldmap()));
 			},
 			onStart: _tween ->
 			{
