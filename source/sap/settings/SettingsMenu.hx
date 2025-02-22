@@ -90,8 +90,7 @@ class SettingsMenu extends FlxState
                         var keystring:String = Global.getLocalizedPhrase('settings-$key', key);
                         var keyvalue:Dynamic = saveValues.get(key);
 
-                        var keyText:FlxText = new FlxText(0, 10, 0, '$keystring: $keyvalue', 16);
-                        keyText.screenCenter(X);
+                        var keyText:FlxText = new FlxText(10, 10, 0, '$keystring: $keyvalue', 16);
                         keyText.ID = i;
                         keyText.color = (i == CURRENT_SELECTION) ? 0xFFFF00 : 0xFFFFFF;
                         keyText.y += i * keyText.size;
