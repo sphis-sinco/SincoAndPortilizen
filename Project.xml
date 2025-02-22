@@ -35,7 +35,7 @@
 
 	<source path="source" />
 	<assets path="assets"/>
-	<assets path="save.json"/>
+	<assets path="cur_lang.txt"/>
 
         <!-- _________________________________ Before _______________________________ -->
 

@@ -64,8 +64,9 @@ class Global
 	public static function change_saveslot(slotsuffix:Dynamic = 1)
 	{
 		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
-                FileManager.writeToPath('save.json', "{}");
+		FlxG.save.bind(SAVE_SLOT, Application.COMPANY);
 
+		SaveManager.setupSave();
 		trace('Switched save slot to "$SAVE_SLOT"');
 	}
 
@@ -132,8 +133,8 @@ class Global
 	 */
 	public static function beatLevel(lvl:Int = 1)
 	{
-		// if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
-			// FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
+		if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
+			FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
 	}
 
 	/**
