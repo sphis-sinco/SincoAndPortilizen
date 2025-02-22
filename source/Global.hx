@@ -3,6 +3,8 @@ package;
 import sap.localization.LocalizationManager;
 import sinlib.SLGame;
 
+using StringTools;
+
 class Global
 {
 	/**
@@ -165,9 +167,10 @@ class Global
 	 */
 	public static function getLocalizedPhrase(phrase:String, ?fallback:String):String
 	{
-                var returnPhrase =  LocalizationManager.TEXT_CONTENT.get(phrase);
+                var phrase_that_works:String = phrase.toLowerCase().replace(' ', '-');
 
-                if (returnPhrase == null) returnPhrase = (fallback == null) ? phrase : fallback;
+                var returnPhrase =  LocalizationManager.TEXT_CONTENT.get(phrase_that_works);
+                if (returnPhrase == null) returnPhrase = (fallback == null) ? phrase_that_works : fallback;
 
 		return returnPhrase;
 	}

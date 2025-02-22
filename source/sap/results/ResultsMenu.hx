@@ -40,7 +40,7 @@ class ResultsMenu extends State
 		TARGET_PERCENT = (goods / total) * 100;
 		RANK_CLASS = new Rank((TARGET_PERCENT == null) ? 0 : TARGET_PERCENT);
 
-		RANK_GRADE_TEXT = new FlxText(10, 10, FlxG.width, '${Global.getLocalizedPhrase('you-did')}...', 64);
+		RANK_GRADE_TEXT = new FlxText(10, 10, FlxG.width, '${Global.getLocalizedPhrase('YOU DID')}...', 64);
 
 		RANK_PERCENT_TEXT = new FlxText(0, 0, 0, '0%', 32);
 		RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
@@ -148,7 +148,7 @@ class ResultsMenu extends State
 		rankBGColor();
 		RESULTS_BG.color = STATIC_RESULTS_BG.color;
 
-		RANK_GRADE_TEXT.text = '${Global.getLocalizedPhrase('you-did')} ${RANK_CLASS.RANK.toUpperCase()}!';
+		RANK_GRADE_TEXT.text = '${Global.getLocalizedPhrase('YOU DID')} ${RANK_CLASS.RANK.toUpperCase()}!';
 		RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
 		Global.changeDiscordRPCPresence('Results menu for ${RESULTS_CHARACTER.char}', 'Rank: ${RANK_CLASS.RANK}');
 
