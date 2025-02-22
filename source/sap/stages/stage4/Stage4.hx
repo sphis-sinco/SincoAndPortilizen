@@ -56,6 +56,8 @@ class Stage4 extends State
 		waitSec();
 
 		Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
+
+                enemyCanAttack = true;
 	}
 
 	public static dynamic function levelComplete()

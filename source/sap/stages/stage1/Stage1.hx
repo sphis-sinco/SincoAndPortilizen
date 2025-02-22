@@ -67,6 +67,8 @@ class Stage1 extends State
 		add(sincoHealthIndicator);
 
 		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
+
+                osin_canjump = true;
 	}
 
 	override function postCreate()
