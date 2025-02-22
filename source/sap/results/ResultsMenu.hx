@@ -97,6 +97,7 @@ class ResultsMenu extends State
 
 		if (FlxG.keys.justReleased.SPACE && REACHED_TARGET_PERCENT)
 		{
+                        FlxG.sound.music.stop();
 			FlxG.switchState(nextState);
 		}
 

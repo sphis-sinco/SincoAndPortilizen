@@ -9,6 +9,7 @@
 - Fixed bug where in stage 4 there is no results screen ([#9](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/9))
 - Fixed bug where in stage 4 the timer stays the same as it last was ([#7](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/7))
 ### Changed
+- Changed Results menu so the music stops when you leave
 - Changed Company name in `project.xml` to `SAPTeam`
 
 # Prototype
