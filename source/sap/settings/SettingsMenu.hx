@@ -7,8 +7,6 @@ import sap.mainmenu.MainMenu;
 
 class SettingsMenu extends FlxSubState
 {
-	public static var SECTION:String = "this_is_a_section";
-
 	public static var saveValues:Map<String, Any> = [];
 	public static var saveValue_length:Int = 0;
 	public static var settingsTexts:FlxTypedGroup<FlxText>;
@@ -37,12 +35,8 @@ class SettingsMenu extends FlxSubState
 	}
 
         public static function saveValuesUpdate() {
-                saveValues.set('GENERAL', SECTION);
-
                 saveValues.set('language', LocalizationManager.LANGUAGE);
                 saveValues.set('volume', FlxG.sound.volume * 100);
-
-                saveValues.set('VIDEO SETTINGS', SECTION);
 
                 saveValue_length = 2;
         }
@@ -101,18 +95,16 @@ class SettingsMenu extends FlxSubState
                 });
 
                 var i:Int = 0;
+                var cur_y:Float = 10;
                 for (key in saveValues.keys())
                 {
                         var keystring:String = Global.getLocalizedPhrase('settings-$key', key);
                         var keyvalue:Dynamic = saveValues.get(key);
 
-                        var keyText:FlxText = new FlxText(10, 10, 0, '$keystring: $keyvalue', 16);
-                        if (keyvalue == SECTION)
-                                keyText.size = keyText.size * 2;
-                        
+                        var keyText:FlxText = new FlxText(10, cur_y, 0, '$keystring: $keyvalue', 16);
                         keyText.ID = i;
                         keyText.color = (i == CURRENT_SELECTION) ? 0xFFFF00 : 0xFFFFFF;
-                        keyText.y += i * keyText.size;
+                        cur_y += (i * keyText.size) + 16;
 
                         if (i == CURRENT_SELECTION) SELECTED_SETTING = key;
 
