@@ -7,7 +7,7 @@ import sap.mainmenu.MainMenu;
 
 class SettingsMenu extends FlxSubState
 {
-	static var SECTION:String = "randomuniqueID10983p18290381902389018290381923y812u893h1792ehju91n2dinkm2wbdhu1i209judhu9wf";
+	public static var SECTION:String = "this_is_a_section";
 
 	public static var saveValues:Map<String, Any> = [];
 	public static var saveValue_length:Int = 0;
@@ -38,8 +38,11 @@ class SettingsMenu extends FlxSubState
 
         public static function saveValuesUpdate() {
                 saveValues.set('GENERAL', SECTION);
+
                 saveValues.set('language', LocalizationManager.LANGUAGE);
                 saveValues.set('volume', FlxG.sound.volume * 100);
+
+                saveValues.set('VIDEO SETTINGS', SECTION);
 
                 saveValue_length = 2;
         }
@@ -104,6 +107,9 @@ class SettingsMenu extends FlxSubState
                         var keyvalue:Dynamic = saveValues.get(key);
 
                         var keyText:FlxText = new FlxText(10, 10, 0, '$keystring: $keyvalue', 16);
+                        if (keyvalue == SECTION)
+                                keyText.size = keyText.size * 2;
+                        
                         keyText.ID = i;
                         keyText.color = (i == CURRENT_SELECTION) ? 0xFFFF00 : 0xFFFFFF;
                         keyText.y += i * keyText.size;
