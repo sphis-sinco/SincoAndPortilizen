@@ -108,6 +108,8 @@ class ScreenshotPlugin extends FlxBasic
 
 	public function hasPressedScreenshot():Bool
 	{
+                #if html5 return false; #end
+
 		return FlxG.keys.anyJustReleased(_hotkeys);
 	}
 

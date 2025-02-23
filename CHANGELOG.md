@@ -1,6 +1,7 @@
 # Alpha
 ## 0.1.1a - 2/22/2025
 ### Fixed
+- Fixed crash on web when trying to take a screenshot ([#16][#16_link])
 - Fixed when returning to the world map from a portilizen level the character wheel is on the sinco selection ([#11][#11_link])
 - Fixed no sound in stage 4 ([#12][#12_link])
 - Fixed volume being at 100% on desktop is 99.99...% on web ([#10][#10_link])
@@ -133,14 +134,15 @@ CURRENT FEATURES:
 - World map
 - Stage 1 (Sinco)
 
-[#12_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/12
-[#11_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/11
-[#10_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/10
-[#9_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/9
-[#8_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/8
-[#7_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/7
-[#6_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/6
-[#5_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/5
-[#4_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/4
-[#3_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3
 [#2_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/2
+[#3_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3
+[#4_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/4
+[#5_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/5
+[#6_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/6
+[#7_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/7
+[#8_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/8
+[#9_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/9
+[#10_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/10
+[#11_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/11
+[#12_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/12
+[#16_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/16
