@@ -1,4 +1,6 @@
 # Alpha
+## 0.2.0a - 2/??/2025
+
 ## 0.1.1a - 2/22/2025
 ### Fixed
 - Fixed crash on web when trying to take a screenshot ([#16][#16_link])
