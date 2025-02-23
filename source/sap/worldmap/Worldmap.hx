@@ -53,7 +53,7 @@ class Worldmap extends State
 		charWheel.screenCenter(X);
 		charWheel.y = charWheel.height + 16;
 
-		charWheel.animation.play('sinco');
+		charWheel.animation.play('${character.lowercase_char()}');
 
 		add(charWheel);
 

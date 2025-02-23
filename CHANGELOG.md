@@ -1,6 +1,7 @@
 # Alpha
 ## 0.1.1a - 2/22/2025
 ### Fixed
+- Fixed when returning to the world map from a portilizen level the character wheel is on the sinco selection ([#11][#11_link])
 - Fixed no sound in stage 4 ([#12][#12_link])
 - Fixed volume being at 100% on desktop is 99.99...% on web ([#10][#10_link])
 
@@ -133,6 +134,7 @@ CURRENT FEATURES:
 - Stage 1 (Sinco)
 
 [#12_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/12
+[#11_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/11
 [#10_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/10
 [#9_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/9
 [#8_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/8
