@@ -10,7 +10,8 @@ import sap.worldmap.Worldmap;
 
 class Stage1 extends State
 {
-	public static var background:FlxSprite;
+	public static var background:SparrowSprite;
+	public static var track:FlxSprite;
 
 	public static var sinco:Sinco;
 	public static var osin:Osin;
@@ -34,15 +35,21 @@ class Stage1 extends State
 		osinHealthIndicator = new FlxText();
 		sincoHealthIndicator = new FlxText();
 
-		background = new FlxSprite();
-		background.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
+                background = new SparrowSprite('gameplay/sinco stages/StageOneBackground');
+                add(background);
 
-		background.animation.add('animation', [0, 1], 16);
-		background.animation.play('animation');
+                background.addAnimationByPrefix('idle', 'actualstagebg', 24);
+                background.playAnimation('idle');
 
-		Global.scaleSprite(background, 1);
-		background.screenCenter();
-		add(background);
+		track = new FlxSprite();
+		track.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
+
+		track.animation.add('animation', [0, 1], 16);
+		track.animation.play('animation');
+
+		Global.scaleSprite(track, 1);
+		track.screenCenter();
+		add(track);
 
 		osin.screenCenter();
 		osin.y += osin.height * 2;
@@ -173,7 +180,7 @@ class Stage1 extends State
 			sinco.animation.play('ded');
 
 			osin.animation.pause();
-			background.animation.pause();
+			track.animation.pause();
 
 			sincoDefeated();
 		}
@@ -186,7 +193,7 @@ class Stage1 extends State
 			osin_canjump = false;
 			osin_warning = false;
 
-			background.animation.pause();
+			track.animation.pause();
 			FlxTween.tween(sinco, {x: 1280}, .5);
 
 			osin.animation.play('hurt');
