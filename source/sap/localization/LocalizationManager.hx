@@ -42,14 +42,16 @@ class LocalizationManager
 
 		if (TEXT_CONTENT == default_text_content && LANGUAGE != 'english')
 		{
-			LANGUAGE = 'english';
 			ASSET_SUFFIX = '';
 			trace('Failed to change to language: $LANGUAGE');
+			LANGUAGE = 'english';
 		}
 		else
 		{
 			trace('Succeeded to change to language: $LANGUAGE');
 		}
+
+                FileManager.LOCALIZED_ASSET_SUFFIX = ASSET_SUFFIX;
 	}
 
 	public static dynamic function returnLanguageTEXT_CONTENT():Map<String, String>

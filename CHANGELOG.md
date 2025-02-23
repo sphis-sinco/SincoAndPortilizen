@@ -1,5 +1,7 @@
 # Alpha
 ## 0.2.0a - 2/??/2025
+### Fixed
+- Fixed internal bug where it would say "`Failed to change to language: english`" but `LANGUAGE` is supposed to be another language
 ### Added
 - Added custom Stage 1 background created by @iampauleps
 

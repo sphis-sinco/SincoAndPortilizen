@@ -38,6 +38,8 @@ class InitState extends FlxState
                 FlxG.sound.volumeUpKeys = [];
                 FlxG.sound.volumeDownKeys = [];
                 FlxG.sound.muteKeys = [];
+                
+                FileManager.FILE_MANAGER_VERSION_SUFFIX = '-SincoAndPortilizen';
 
 		CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
 

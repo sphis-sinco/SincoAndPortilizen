@@ -2,7 +2,6 @@ package sinlib.utilities;
 
 import haxe.Json;
 import lime.utils.Assets;
-import sap.localization.LocalizationManager;
 #if sys
 import sys.FileSystem;
 import sys.io.File;
@@ -28,9 +27,21 @@ class FileManager
 			MAYBE there is now a feature flag required to be specified for specific functions to function. 
 			I mean these can be big too but yknow. 1 thing at a time.
 	 */
-	public static var FILE_MANAGER_VERSION:Float = 9.6;
+	public static var FILE_MANAGER_VERSION:Float = 9.8;
+
+	/**
+	 * This would be used because a project modifies the file for their own purposes
+	 */
+	public static var FILE_MANAGER_VERSION_SUFFIX:String = '';
+
+        public static function getVersion()
+        {
+                return FILE_MANAGER_VERSION + FILE_MANAGER_VERSION_SUFFIX;
+        }
 
 	public static var UNLOCALIZED_ASSETS:Array<String> = [];
+
+	public static var LOCALIZED_ASSET_SUFFIX:String = '';
 
 	/**
 	 * Returns a path
@@ -45,8 +56,8 @@ class FileManager
 		var returnpath:String = ogreturnpath;
 
 		#if !DISABLE_LOCALIZED_ASSETS
-		var asset_suffix:String = LocalizationManager.ASSET_SUFFIX;
-		var localizedreturnpath:String = '${ogreturnpath.split('.')[0]}${(asset_suffix.length > 0) ? '-${LocalizationManager.ASSET_SUFFIX}' : ''}.${ogreturnpath.split('.')[1]}';
+		var asset_suffix:String = LOCALIZED_ASSET_SUFFIX;
+		var localizedreturnpath:String = '${ogreturnpath.split('.')[0]}${(asset_suffix.length > 0) ? '-${LOCALIZED_ASSET_SUFFIX}' : ''}.${ogreturnpath.split('.')[1]}';
 
 		if (localizedreturnpath == returnpath)
 			return returnpath;
