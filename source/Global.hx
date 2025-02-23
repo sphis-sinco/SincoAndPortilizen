@@ -1,6 +1,5 @@
 package;
 
-import openfl.filters.BitmapFilter;
 import sap.localization.LocalizationManager;
 import sinlib.SLGame;
 
@@ -177,36 +176,4 @@ class Global
 
 		return returnPhrase;
 	}
-
-        public static var SHADERS:Array<BitmapFilter> = [];
-        public static var ENABLED_SHADERS:Array<String> = [];
-
-        public static function add_shader(new_shader:BitmapFilter, shader_name:String)
-        {
-                SHADERS.push(new_shader);
-                ENABLED_SHADERS.push(shader_name);
-                updateShaders();
-        }
-
-        public static function remove_shader(shader_name:String)
-        {
-                for (i in 0...SHADERS.length) {
-                        if (i != ENABLED_SHADERS.indexOf(shader_name)) continue;
-
-                        SHADERS.remove(SHADERS[i]);
-                        break;
-                }
-                
-                ENABLED_SHADERS.remove(shader_name);
-                updateShaders();
-        }
-
-        private static function updateShaders()
-        {
-                FlxG.camera.filters = Global.SHADERS;
-		FlxG.game.setFilters(Global.SHADERS);
-		
-		FlxG.game.filtersEnabled = true;
-                FlxG.camera.filtersEnabled = false;
-        }
 }

@@ -1,7 +1,5 @@
 # Alpha
 ## 0.2.0a - 2/??/2025
-### Added
-- Added grayscale shader
 
 ## 0.1.1a - 2/22/2025
 ### Fixed
