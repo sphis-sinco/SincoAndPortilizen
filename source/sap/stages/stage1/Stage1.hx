@@ -41,6 +41,8 @@ class Stage1 extends State
                 background.addAnimationByPrefix('idle', 'actualstagebg', 24);
                 background.playAnimation('idle');
 
+                background.screenCenter();
+
 		track = new FlxSprite();
 		track.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
 
