@@ -3,8 +3,10 @@ package sap.settings;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
+import openfl.filters.BitmapFilter;
 import sap.localization.LocalizationManager;
 import sap.mainmenu.MainMenu;
+import sap.shaders.GrayscaleShader;
 
 class SettingsMenu extends FlxSubState
 {
@@ -23,7 +25,7 @@ class SettingsMenu extends FlxSubState
 
 	override function create()
 	{
-                new_windowres = '${FlxG.width}x${FlxG.height}';
+		new_windowres = '${FlxG.width}x${FlxG.height}';
 
 		overlay = new BlankBG();
 		overlay.color = 0x000000;
@@ -43,7 +45,7 @@ class SettingsMenu extends FlxSubState
 	public static function saveValuesUpdate()
 	{
 		saveValues_array = [];
-                saveValue_length = 0;
+		saveValue_length = 0;
 
 		newSaveValue('language', LocalizationManager.LANGUAGE);
 		newSaveValue('volume', FlxMath.roundDecimal(FlxG.sound.volume * 100, 0));
@@ -51,6 +53,8 @@ class SettingsMenu extends FlxSubState
 		#if desktop
 		newSaveValue('window resolution', new_windowres);
 		#end
+
+		newSaveValue('grayscale filter', Global.ENABLED_SHADERS.contains('grayscale'));
 	}
 
 	public static function newSaveValue(name:String, value:Any)
@@ -100,17 +104,31 @@ class SettingsMenu extends FlxSubState
 				LocalizationManager.swapLanguage();
 				MainMenu.set_menuboxtexts(MainMenu.public_menutextsSelection);
 
-                                FileManager.writeToPath('cur_lang.txt', LocalizationManager.LANGUAGE);
+				FileManager.writeToPath('cur_lang.txt', LocalizationManager.LANGUAGE);
 			case 'volume':
 				FlxG.sound.changeVolume(0.1);
 				if (FlxG.sound.volume == 1)
 					FlxG.sound.changeVolume(-1);
 			case 'window resolution':
 				window_res();
+			case 'grayscale filter':
+				toggleShader('grayscale', new GrayscaleShader());
 		}
 
 		saveValuesUpdate();
 		createSettingsText();
+	}
+
+	public static function toggleShader(shader:String, shader_class:BitmapFilter)
+	{
+		if (Global.ENABLED_SHADERS.contains(shader))
+		{
+			Global.remove_shader(shader);
+		}
+		else
+		{
+			Global.add_shader(shader_class, shader);
+		}
 	}
 
 	static function window_res()
@@ -120,16 +138,16 @@ class SettingsMenu extends FlxSubState
 		{
 			case '1280x1216':
 				FlxG.resizeWindow(320, 304);
-                                new_windowres = '320x304';
-                        case '320x304':
-                                FlxG.resizeWindow(160, 152);
-                                new_windowres = '160x152';
-                        case '160x152':
-                                FlxG.resizeWindow(640, 608);
-                                new_windowres = '640x608';
-                        default:
-                                FlxG.resizeWindow(1280, 1216);
-                                new_windowres = '1280x1216';
+				new_windowres = '320x304';
+			case '320x304':
+				FlxG.resizeWindow(160, 152);
+				new_windowres = '160x152';
+			case '160x152':
+				FlxG.resizeWindow(640, 608);
+				new_windowres = '640x608';
+			default:
+				FlxG.resizeWindow(1280, 1216);
+				new_windowres = '1280x1216';
 		}
 	}
 

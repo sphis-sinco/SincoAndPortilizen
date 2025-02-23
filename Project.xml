@@ -7,6 +7,13 @@
 	<app title="Sinco and Portilizen" file="SAP" main="Main" version="0.2.0a" company="SAPTeam" />
 	<app preloader="flixel.system.FlxPreloader" />
 	<set name="SWF_VERSION" value="11.8" />
+		
+	<!--Enable OpenFL next -->
+	<set name="next" />
+	
+	<!--Enable webgl -->
+	<set name="webgl" if="html5" />
+	<haxedef name="webgl" if="html5" />
 
 	<!-- ____________________________ Window Settings ___________________________ -->
 
