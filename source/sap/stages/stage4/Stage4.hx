@@ -116,6 +116,7 @@ class Stage4 extends State
 
 	public static dynamic function portJump(portjumpheight:Float)
 	{
+                Global.playSoundEffect('portilizen-jump-stage4');
 		FlxTween.tween(port, {y: port.y - portjumpheight}, portJumpSpeed, {
 			onComplete: tween ->
 			{

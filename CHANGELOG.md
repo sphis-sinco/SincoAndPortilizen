@@ -1,5 +1,8 @@
 # Alpha
 ## 0.1.1a - 2/22/2025
+### Fixed
+- Fixed no sound in stage 4 ([#12][#12_link])
+- Fixed volume being at 100% on desktop is 99.99...% on web ([#10][#10_link])
 
 ## 0.1.0a - 2/22/2025
 ### Added
@@ -7,9 +10,9 @@
 ### Fixed
 - Fixed HTML5 crashing when beating a level
 - Fixed bug where in stage 1 the Results menu wouldn't adapt to the players max health.
-- Fixed bug where in stage 1 and 4 the opponent wont attack once replaying the level ([#8](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/8))
-- Fixed bug where in stage 4 there is no results screen ([#9](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/9))
-- Fixed bug where in stage 4 the timer stays the same as it last was ([#7](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/7))
+- Fixed bug where in stage 1 and 4 the opponent wont attack once replaying the level ([#8][#8_link])
+- Fixed bug where in stage 4 there is no results screen ([#9][#9_link])
+- Fixed bug where in stage 4 the timer stays the same as it last was ([#7][#7_link])
 ### Changed
 - Changed Results menu so the music stops when you leave
 - Changed Company name in `project.xml` to `SAPTeam`
@@ -46,28 +49,28 @@ This update adds a `Build.py` file that helps with compiling :)
 This update fixes crashes on 0.0.5-p with no additional content.
 
 ### Fixed
-- [Fixed game crashing on launch](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/6)
+- [Fixed game crashing on launch][#6_link]
 ### Removed
-- Translations (cause of [crash](https://github.com/sphis-Sinco/SincoAndPortilizen/issues/6))
+- Translations (cause of [crash][#6_link])
 
 ## 0.0.5-p - 2/15/2025
 ### Removed
 - Removed "Press any" alpha fade in
 ### Added
 - Added Indicator for when Osin is going to attack (Stage 1)
-- [Added Localization](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/4)
+- [Added Localization][#4_link]
         - Added Build flags for Localization
         - Added Spanish Translation (Google Translate)
         - Added Portuguese Translation (by Djotta Flow)
         - Added Localized Assets for images with text (for both languages)
         - Added `cur_lang.txt` file that can control the language thats set (gets overwritten by build flags)
         - Added BUILD_DIRs for the different languages
-- [Added `.bat` files for compiling (some for different languages too!)](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/4)
-- [Added source code mod support through a plugin-like system](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/5)
+- [Added `.bat` files for compiling (some for different languages too!)][#4_link]
+- [Added source code mod support through a plugin-like system][#5_link]
         - Added Mass mod (modifies every state that can be changed)
 ### Changed
-- [Changed the Sound Tray](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3)
-- [Changed almost every state's custom functions to be `public static dynamic` functions (Source Code Mod Support)](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/5)
+- [Changed the Sound Tray][#3_link]
+- [Changed almost every state's custom functions to be `public static dynamic` functions (Source Code Mod Support)][#5_link]
 
 ## 0.0.4-p - 2/14/2025
 ### Changed
@@ -81,7 +84,7 @@ This update fixes crashes on 0.0.5-p with no additional content.
 - Added Several Build Flags
 - Added Discord RPC
 - Added [Build Flags markdown file](/compiling/BUILD%20FLAGS.md)
-- [Added Credits Menu](https://github.com/sphis-Sinco/SincoAndPortilizen/pull/2)
+- [Added Credits Menu][#2_link]
 ### Removed
 - Removed unused data files
 - Removed Chaos Emeralds (Gameplay and code)
@@ -128,3 +131,14 @@ CURRENT FEATURES:
 - Intro Cutscene
 - World map
 - Stage 1 (Sinco)
+
+[#12_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/12
+[#10_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/10
+[#9_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/9
+[#8_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/8
+[#7_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/7
+[#6_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/6
+[#5_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/5
+[#4_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/4
+[#3_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3
+[#2_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/2

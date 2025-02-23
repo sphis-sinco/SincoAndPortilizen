@@ -1,6 +1,7 @@
 package sap.settings;
 
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import sap.localization.LocalizationManager;
 import sap.mainmenu.MainMenu;
@@ -45,7 +46,7 @@ class SettingsMenu extends FlxSubState
                 saveValue_length = 0;
 
 		newSaveValue('language', LocalizationManager.LANGUAGE);
-		newSaveValue('volume', FlxG.sound.volume * 100);
+		newSaveValue('volume', FlxMath.roundDecimal(FlxG.sound.volume * 100, 0));
 
 		#if desktop
 		newSaveValue('window resolution', new_windowres);
