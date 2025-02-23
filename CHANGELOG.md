@@ -1,5 +1,5 @@
 # Alpha
-## 0.1.0a - 2/??/2025
+## 0.1.0a - 2/22/2025
 ### Added
 - Added Results menu on death for stage 1
 ### Fixed
