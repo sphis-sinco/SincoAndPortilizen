@@ -8,7 +8,7 @@ import sap.localization.LocalizationManager;
 import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
-class Stage1 extends State
+class Stage1 extends PausableState
 {
 	public static var background:SparrowSprite;
 	public static var track:FlxSprite;
@@ -35,13 +35,13 @@ class Stage1 extends State
 		osinHealthIndicator = new FlxText();
 		sincoHealthIndicator = new FlxText();
 
-                background = new SparrowSprite('gameplay/sinco stages/StageOneBackground');
-                add(background);
+		background = new SparrowSprite('gameplay/sinco stages/StageOneBackground');
+		add(background);
 
-                background.addAnimationByPrefix('idle', 'actualstagebg', 24);
-                background.playAnimation('idle');
+		background.addAnimationByPrefix('idle', 'actualstagebg', 24);
+		background.playAnimation('idle');
 
-                background.screenCenter();
+		background.screenCenter();
 
 		track = new FlxSprite();
 		track.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
@@ -77,7 +77,7 @@ class Stage1 extends State
 
 		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 
-                osin_canjump = true;
+		osin_canjump = true;
 	}
 
 	override function postCreate()
@@ -114,21 +114,24 @@ class Stage1 extends State
 
 		updateHealthIndicators();
 
-		var osinJumpCondition:Bool = getOsinJumpCondition();
-
-		if (osinJumpCondition)
+		if (!paused)
 		{
-			osinJumpWait();
+			var osinJumpCondition:Bool = getOsinJumpCondition();
+
+			if (osinJumpCondition)
+			{
+				osinJumpWait();
+			}
+
+			if (OSIN_HEALTH >= 1)
+			{
+				playerControls();
+			}
+
+			sincoDeathCheck();
+
+			osinDeathCheck();
 		}
-
-		if (OSIN_HEALTH >= 1)
-		{
-			playerControls();
-		}
-
-		sincoDeathCheck();
-
-		osinDeathCheck();
 	}
 
 	public static dynamic function updateHealthIndicators()
@@ -329,7 +332,7 @@ class Stage1 extends State
 		FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
 			{
-                                FlxG.switchState(() -> new ResultsMenu((OSIN_MAX_HEALTH - OSIN_HEALTH), OSIN_MAX_HEALTH, () -> new Worldmap()));
+				FlxG.switchState(() -> new ResultsMenu((OSIN_MAX_HEALTH - OSIN_HEALTH), OSIN_MAX_HEALTH, () -> new Worldmap()));
 			},
 			onStart: _tween ->
 			{

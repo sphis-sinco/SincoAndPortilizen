@@ -6,7 +6,7 @@ import flixel.util.FlxTimer;
 import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
-class Stage4 extends State
+class Stage4 extends PausableState
 {
 	public static var port:PortS4;
 	public static var enemy:EnemyS4;
@@ -43,8 +43,7 @@ class Stage4 extends State
 		port.y = Std.int(FlxG.height - port.height * DISMx2);
 		enemy.y = port.y;
 
-
-                time = 0;
+		time = 0;
 		FlxTimer.wait(StageGlobals.STAGE4_START_TIMER, () ->
 		{
 			levelComplete();
@@ -57,7 +56,7 @@ class Stage4 extends State
 
 		Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
 
-                enemyCanAttack = true;
+		enemyCanAttack = true;
 	}
 
 	public static dynamic function levelComplete()
@@ -85,15 +84,18 @@ class Stage4 extends State
 
 	override function update(elapsed:Float)
 	{
-		if (FlxG.keys.justReleased.SPACE && !portJumping)
+		if (!paused)
 		{
-			portPreJump();
-		}
+			if (FlxG.keys.justReleased.SPACE && !portJumping)
+			{
+				portPreJump();
+			}
 
-		if (enemyAttackCondition())
-		{
-			enemyCanAttack = false;
-			enemyCharge();
+			if (enemyAttackCondition())
+			{
+				enemyCanAttack = false;
+				enemyCharge();
+			}
 		}
 
 		super.update(elapsed);
@@ -116,7 +118,7 @@ class Stage4 extends State
 
 	public static dynamic function portJump(portjumpheight:Float)
 	{
-                Global.playSoundEffect('portilizen-jump-stage4');
+		Global.playSoundEffect('portilizen-jump-stage4');
 		FlxTween.tween(port, {y: port.y - portjumpheight}, portJumpSpeed, {
 			onComplete: tween ->
 			{
@@ -151,15 +153,16 @@ class Stage4 extends State
 		if (enemy.overlaps(port))
 		{
 			FlxG.camera.flash();
-                        moveToResultsMenu();
+			moveToResultsMenu();
 		}
 
 		enemyRetreat();
 	}
 
-        public static dynamic function moveToResultsMenu() {
-                FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE4_START_TIMER, () -> new Worldmap("Port"), "port"));
-        }
+	public static dynamic function moveToResultsMenu()
+	{
+		FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE4_START_TIMER, () -> new Worldmap("Port"), "port"));
+	}
 
 	public static dynamic function enemyRetreat()
 	{
