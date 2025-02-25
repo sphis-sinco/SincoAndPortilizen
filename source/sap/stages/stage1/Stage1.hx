@@ -8,7 +8,7 @@ import sap.localization.LocalizationManager;
 import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
-class Stage1 extends PausableState
+class Stage1 extends State
 {
 	public static var background:SparrowSprite;
 	public static var track:FlxSprite;

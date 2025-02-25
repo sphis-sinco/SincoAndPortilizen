@@ -6,7 +6,7 @@ import flixel.util.FlxTimer;
 import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
-class Stage4 extends PausableState
+class Stage4 extends State
 {
 	public static var port:PortS4;
 	public static var enemy:EnemyS4;
