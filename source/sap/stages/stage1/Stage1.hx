@@ -113,9 +113,6 @@ class Stage1 extends State
 		super.update(elapsed);
 
 		updateHealthIndicators();
-
-		if (!paused)
-		{
 			var osinJumpCondition:Bool = getOsinJumpCondition();
 
 			if (osinJumpCondition)
@@ -131,7 +128,6 @@ class Stage1 extends State
 			sincoDeathCheck();
 
 			osinDeathCheck();
-		}
 	}
 
 	public static dynamic function updateHealthIndicators()

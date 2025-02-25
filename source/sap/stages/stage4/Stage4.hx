@@ -84,18 +84,15 @@ class Stage4 extends State
 
 	override function update(elapsed:Float)
 	{
-		if (!paused)
+		if (FlxG.keys.justReleased.SPACE && !portJumping)
 		{
-			if (FlxG.keys.justReleased.SPACE && !portJumping)
-			{
-				portPreJump();
-			}
+			portPreJump();
+		}
 
-			if (enemyAttackCondition())
-			{
-				enemyCanAttack = false;
-				enemyCharge();
-			}
+		if (enemyAttackCondition())
+		{
+			enemyCanAttack = false;
+			enemyCharge();
 		}
 
 		super.update(elapsed);
