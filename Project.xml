@@ -47,6 +47,8 @@
 
         <!-- _____________________________ Custom Defines ___________________________ -->
 
+        <define name="SCRIPT_FILES"/>
+
 	<define name="DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS"/>
 	<define name="DISABLE_ANNOYING_WARNINGS" unless="ENABLE_ANNOYING_WARNINGS"/>
 

@@ -41,6 +41,8 @@ class InitState extends FlxState
 		if (!SLGame.isDebug)
 			proceed();
 
+                FileManager.SCRIPT_EXT = 'hx';
+
 		super.create();
 	}
 

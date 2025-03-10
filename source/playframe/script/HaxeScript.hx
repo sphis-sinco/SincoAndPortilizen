@@ -1,6 +1,5 @@
 package playframe.script;
 
-
 typedef HaxeModScript =
 {
 	var daPath:String;
@@ -10,13 +9,14 @@ typedef HaxeModScript =
 class HaxeScript
 {
 	public var daScript:HaxeModScript;
-    public var fileName:String = "";
-    public var mod:String = null;
+	public var fileName:String = "";
+	public var mod:String = null;
+
 	public static var haxeExts:Array<String> = ['hx', 'hscript'];
 
-	public function new()
-	{
-	}
+	public static var modsEnabled:Bool = true;
+
+	public function new() {}
 
 	public static function newFromPath(path):HaxeScript
 	{
@@ -35,7 +35,7 @@ class HaxeScript
 	public static function create(filePath:String):HaxeScript
 	{
 		var path = filePath;
-		if (FileSystem.exists(path))
+		if (FileSystem.exists(path) && modsEnabled)
 		{
 			return new HScript();
 		}
@@ -69,8 +69,5 @@ class HaxeScript
 		throw new Exception("Not Implemented!!");
 	}
 
-	public function destroy()
-	{
-		
-	}
+	public function destroy() {}
 }

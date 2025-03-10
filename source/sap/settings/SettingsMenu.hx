@@ -1,6 +1,7 @@
 package sap.settings;
 
 import sap.mainmenu.MainMenu;
+import sap.title.TitleState;
 
 class SettingsMenu extends FlxSubState
 {
@@ -47,6 +48,8 @@ class SettingsMenu extends FlxSubState
 		#if desktop
 		newSaveValue('window resolution', new_windowres);
 		#end
+
+		newSaveValue('mods', HaxeScript.modsEnabled);
 	}
 
 	public static function newSaveValue(name:String, value:Any)
@@ -103,6 +106,15 @@ class SettingsMenu extends FlxSubState
 					FlxG.sound.changeVolume(-1);
 			case 'window resolution':
 				window_res();
+
+                        case 'mods':
+                                HaxeScript.modsEnabled = !HaxeScript.modsEnabled;
+                                FlxG.camera.fade(FlxColor.BLACK, 1, false, () -> {
+                                        FlxG.resetGame();
+                                        MainMenu.inSubstate = false;
+                                        TitleState.CURRENT_STATE = INTRO;
+                                        FlxG.camera.fade(FlxColor.BLACK, 1, true);
+                                }, );
 		}
 
 		saveValuesUpdate();
