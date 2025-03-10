@@ -66,15 +66,6 @@ class MassMod extends ModBasic
 			Worldmap.character.swappedchar();
 		}
 
-		if (Global.getCurrentState() == "Stage1")
-		{
-			trace('Stage 1!');
-
-			Stage1.getOsinJumpCondition = newOsinJumpCondition;
-
-			Stage1.osin.color = FlxColor.YELLOW;
-		}
-
 		if (Global.getCurrentState() == "Stage4")
 		{
 			trace('Stage 4!');
@@ -91,15 +82,6 @@ class MassMod extends ModBasic
 
 			ResultsMenu.rankBGColor = newRankBGColors;
 		}
-	}
-
-	function newOsinJumpCondition():Bool
-	{
-		return (Stage1.SINCO_HEALTH >= 1
-			&& Stage1.OSIN_HEALTH >= 1
-			&& FlxG.random.int(0, 1) == 1
-			&& (Stage1.osin.animation.name != 'jump' && Stage1.osin.animation.name != 'hurt')
-			&& Stage1.osin_canjump);
 	}
 
 	function newRankBGColors()

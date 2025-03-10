@@ -86,6 +86,8 @@ class ScriptSupport {
 		script.setVariable("FileManager", FileManager);
 		script.setVariable("FlxAtlasFrames", FlxAtlasFrames);
 
+		script.setVariable("Global", Global);
+
 		script.mod = mod;
 	}
 
