@@ -1,5 +1,5 @@
 # Alpha
-## 0.2.0a - 2/??/2025
+## 0.2.0a - 3/??/2025
 ### Fixed
 - Fixed internal bug where it would say "`Failed to change to language: english`" but `LANGUAGE` is supposed to be another language
 ### Added
