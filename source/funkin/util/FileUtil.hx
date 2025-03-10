@@ -1,13 +1,7 @@
 package funkin.util;
 
-import haxe.io.Path;
 import haxe.zip.Entry;
 import lime.ui.FileDialog;
-import lime.utils.Bytes;
-import openfl.events.Event;
-import openfl.events.IOErrorEvent;
-import openfl.net.FileFilter;
-import openfl.net.FileReference;
 
 /**
  * Utilities for reading and writing files on various platforms.

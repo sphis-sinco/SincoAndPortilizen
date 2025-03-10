@@ -1,7 +1,5 @@
 package sap;
 
-import flixel.graphics.frames.FlxAtlasFrames;
-
 class SparrowSprite extends FlxSprite
 {
         override public function new(Imagepath:String = '', ?X:Float = 0, ?Y:Float = 0) {

@@ -1,25 +1,8 @@
 package funkin.util.plugins;
 
-import flixel.FlxBasic;
-import flixel.FlxCamera;
-import flixel.FlxG;
-import flixel.FlxState;
 import flixel.graphics.FlxGraphic;
-import flixel.input.keyboard.FlxKey;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
-import flixel.util.FlxSignal;
-import flixel.util.FlxTimer;
-import openfl.display.Bitmap;
-import openfl.display.BitmapData;
-import openfl.display.PNGEncoderOptions;
-import openfl.display.Sprite;
-import openfl.events.MouseEvent;
-import openfl.geom.Matrix;
-import openfl.geom.Rectangle;
+import flixel.util.FlxSignal.FlxTypedSignal;
 import openfl.utils.ByteArray;
-import sinlib.SLGame;
 
 typedef ScreenshotPluginParams =
 {

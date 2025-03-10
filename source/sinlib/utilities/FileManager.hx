@@ -1,12 +1,5 @@
 package sinlib.utilities;
 
-import haxe.Json;
-import lime.utils.Assets;
-#if sys
-import sys.FileSystem;
-import sys.io.File;
-#end
-
 class FileManager
 {
 	public static var SOUND_EXT:String = 'wav';

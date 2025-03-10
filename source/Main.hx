@@ -1,5 +1,3 @@
-import openfl.display.Sprite;
-import sinlib.SLGame;
 
 class Main extends Sprite
 {

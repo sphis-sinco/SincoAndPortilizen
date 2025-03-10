@@ -1,8 +1,5 @@
 package sap.results;
 
-import flixel.math.FlxMath;
-import flixel.text.FlxText;
-import flixel.util.FlxColor;
 import flixel.util.typeLimit.NextState;
 
 class ResultsMenu extends State

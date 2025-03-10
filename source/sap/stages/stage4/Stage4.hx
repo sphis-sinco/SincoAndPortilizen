@@ -1,8 +1,5 @@
 package sap.stages.stage4;
 
-import flixel.text.FlxText;
-import flixel.tweens.FlxTween;
-import flixel.util.FlxTimer;
 import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 

@@ -1,9 +1,5 @@
 package sap.settings;
 
-import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.math.FlxMath;
-import flixel.text.FlxText;
-import sap.localization.LocalizationManager;
 import sap.mainmenu.MainMenu;
 
 class SettingsMenu extends FlxSubState

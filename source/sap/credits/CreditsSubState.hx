@@ -1,8 +1,5 @@
 package sap.credits;
 
-import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.text.FlxText;
-import flixel.util.FlxColor;
 import sap.mainmenu.MainMenu;
 
 class CreditsSubState extends FlxSubState

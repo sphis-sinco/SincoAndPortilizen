@@ -1,8 +1,5 @@
 package sap.mainmenu;
 
-import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.text.FlxText;
-import flixel.util.FlxColor;
 import sap.credits.CreditsSubState;
 import sap.settings.SettingsMenu;
 import sap.title.TitleState;

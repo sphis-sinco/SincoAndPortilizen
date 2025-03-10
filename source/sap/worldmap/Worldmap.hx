@@ -1,9 +1,5 @@
 package sap.worldmap;
 
-import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
 import sap.mainmenu.MainMenu;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;

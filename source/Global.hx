@@ -1,9 +1,5 @@
 package;
 
-import sap.localization.LocalizationManager;
-import sinlib.SLGame;
-
-using StringTools;
 
 class Global
 {

@@ -1,11 +1,6 @@
 package sap.title;
 
 import flixel.effects.FlxFlicker;
-import flixel.text.FlxText;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
 import sap.mainmenu.MainMenu;
 
 enum abstract TitleStates(Int) from Int to Int

@@ -2,10 +2,8 @@ package;
 
 import flixel.system.debug.log.LogStyle;
 import flixel.util.typeLimit.NextState;
-import lime.utils.Assets;
 import sap.credits.CreditsSubState;
 import sap.cutscenes.intro.IntroCutscene;
-import sap.localization.LocalizationManager;
 import sap.mainmenu.MainMenu;
 import sap.modding.source.ModListManager;
 import sap.modding.source.mods.MassMod;
@@ -15,9 +13,6 @@ import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
 import sap.worldmap.Worldmap;
-import sinlib.SLGame;
-
-using StringTools;
 
 // This is initalization stuff + compiler condition flags
 class InitState extends FlxState
