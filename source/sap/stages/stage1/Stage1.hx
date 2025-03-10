@@ -19,6 +19,40 @@ class Stage1 extends State
 
 	public static var osinHealthIndicator:FlxText;
 	public static var sincoHealthIndicator:FlxText;
+        
+        public var script:HaxeScript;
+
+        override public function new() {
+                super();
+
+                var scriptPath:String = FileManager.getScriptFile('gameplay/Stage1');
+
+		TryCatch.tryCatch(() ->
+		{
+			script = HaxeScript.create(scriptPath);
+			script.loadFile(scriptPath);
+			ScriptSupport.setScriptDefaultVars(script, '', '');
+
+			script.setVariable('background', background);
+			script.setVariable('track', track);
+
+			script.setVariable('sinco', sinco);
+			script.setVariable('osin', osin);
+
+			script.setVariable('OSIN_HEALTH', OSIN_HEALTH);
+			script.setVariable('SINCO_HEALTH', SINCO_HEALTH);
+
+			script.setVariable('OSIN_MAX_HEALTH', OSIN_MAX_HEALTH);
+			script.setVariable('SINCO_MAX_HEALTH', SINCO_MAX_HEALTH);
+
+			script.setVariable('osinHealthIndicator', osinHealthIndicator);
+			script.setVariable('sincoHealthIndicator', sincoHealthIndicator);
+
+			script.executeFunc("preCreate");
+			script.executeFunc("create");
+			script.executeFunc("postCreate");
+		});
+        }
 
 	override function create()
 	{
@@ -105,6 +139,12 @@ class Stage1 extends State
 
 	override function update(elapsed:Float)
 	{
+                TryCatch.tryCatch(() ->
+		{
+			if (script != null)
+                                script.executeFunc("update", [elapsed]);
+		});
+
 		super.update(elapsed);
 
 		updateHealthIndicators();

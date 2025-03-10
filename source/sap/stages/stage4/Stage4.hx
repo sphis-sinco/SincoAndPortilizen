@@ -14,6 +14,34 @@ class Stage4 extends State
 
 	public static var timerText:FlxText;
 	public static var time:Int = 0;
+        
+        public var script:HaxeScript;
+
+        override public function new() {
+                super();
+
+                var scriptPath:String = FileManager.getScriptFile('gameplay/Stage4');
+
+		TryCatch.tryCatch(() ->
+		{
+			script = HaxeScript.create(scriptPath);
+			script.loadFile(scriptPath);
+			ScriptSupport.setScriptDefaultVars(script, '', '');
+
+			script.setVariable('port', port);
+			script.setVariable('enemy', enemy);
+
+			script.setVariable('bg', bg);
+			script.setVariable('DISMx2', DISMx2);
+
+			script.setVariable('timerText', timerText);
+			script.setVariable('time', time);
+
+			script.executeFunc("preCreate");
+			script.executeFunc("create");
+			script.executeFunc("postCreate");
+		});
+        }
 
 	override function create()
 	{

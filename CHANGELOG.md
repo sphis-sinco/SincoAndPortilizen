@@ -4,6 +4,15 @@
 - Fixed internal bug where it would say "`Failed to change to language: english`" but `LANGUAGE` is supposed to be another language
 ### Added
 - Added custom Stage 1 background created by @iampauleps
+- Added mod support (`scripts/`) for:
+        - MainMenu (`menus/MainMenu`)
+        - WorldMap (`gameplay/Worldmap`)
+        - TitleState (`menus/TitleState`)
+        - Stage1 (`gameplay/MainMenu`)
+        - Stage4 (`gameplay/MainMenu`)
+        - Credits (`submenus/Credits`)
+        - Settings (`submenus/Settings`)
+        - Results (`gamplay/Results`)
 
 ## 0.1.1a - 2/22/2025
 ### Fixed

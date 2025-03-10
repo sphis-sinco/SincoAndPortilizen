@@ -16,6 +16,8 @@ class HaxeScript
 
 	public static var modsEnabled:Bool = true;
 
+	public static var scriptPaths:Array<String> = [];
+
 	public function new() {}
 
 	public static function newFromPath(path):HaxeScript
@@ -35,6 +37,11 @@ class HaxeScript
 	public static function create(filePath:String):HaxeScript
 	{
 		var path = filePath;
+		if (!scriptPaths.contains(filePath))
+		{
+			trace('Attempt at new HaxeScript: $filePath');
+                        scriptPaths.push(filePath);
+		}
 		if (FileSystem.exists(path) && modsEnabled)
 		{
 			return new HScript();

@@ -18,6 +18,36 @@ class SettingsMenu extends FlxSubState
 
 	public static var overlay:BlankBG;
 
+        public var script:HaxeScript;
+
+        override public function new() {
+                super();
+
+                var scriptPath:String = FileManager.getScriptFile('submenus/Settings');
+
+		TryCatch.tryCatch(() ->
+		{
+			script = HaxeScript.create(scriptPath);
+			script.loadFile(scriptPath);
+			ScriptSupport.setScriptDefaultVars(script, '', '');
+
+			script.setVariable('new_windowres', new_windowres);
+
+			script.setVariable('saveValues', saveValues);
+			script.setVariable('saveValues_array', saveValues_array);
+			script.setVariable('saveValue_length', saveValue_length);
+
+			script.setVariable('settingsTexts', settingsTexts);
+
+                        script.setVariable('CURRENT_SELECTION', CURRENT_SELECTION);
+                        script.setVariable('SELECTED_SETTING', SELECTED_SETTING);
+
+                        script.setVariable('overlay', overlay);
+
+			script.executeFunc("create");
+		});
+        }
+
 	override function create()
 	{
                 new_windowres = '${FlxG.width}x${FlxG.height}';

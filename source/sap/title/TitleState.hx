@@ -29,6 +29,35 @@ class TitleState extends State
 		return 'v${Global.VERSION}';
 	}
 
+        public var script:HaxeScript;
+
+        override public function new() {
+                super();
+
+                var scriptPath:String = FileManager.getScriptFile('menus/TitleState');
+
+		TryCatch.tryCatch(() ->
+		{
+			script = HaxeScript.create(scriptPath);
+			script.loadFile(scriptPath);
+			ScriptSupport.setScriptDefaultVars(script, '', '');
+
+			script.setVariable('CURRENT_STATE', CURRENT_STATE);
+
+			script.setVariable('charring_chars', charring_chars);
+			script.setVariable('charring', charring);
+			script.setVariable('pressany', pressany);
+			script.setVariable('titlebg', titlebg);
+
+			script.setVariable('sinco', sinco);
+			script.setVariable('port', port);
+
+			script.setVariable('versiontext', versiontext);
+
+			script.executeFunc("create");
+		});
+        }
+
 	override public function create()
 	{
 		sinco = new TitleSinco();
@@ -91,6 +120,12 @@ class TitleState extends State
 
 	override public function update(elapsed:Float)
 	{
+                TryCatch.tryCatch(() ->
+		{
+			if (script != null)
+                                script.executeFunc("update", [elapsed]);
+		});
+                
 		charring_chars.setPosition(charring.x, charring.y);
 		stateChecks();
 

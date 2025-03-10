@@ -89,7 +89,8 @@ class HScript extends HaxeScript
 		var lineNumber = Std.string(posInfo.lineNumber);
 		var methodName = posInfo.methodName;
 		var className = posInfo.className;
-		trace('$fileName:$methodName:$lineNumber: $text');
+                /*:$methodName:$lineNumber*/
+		trace('$fileName: $text');
 
 		return;
 	}

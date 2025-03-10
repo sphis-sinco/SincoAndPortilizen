@@ -27,7 +27,7 @@ class MainMenu extends State
 
 	public static var inSubstate:Bool = false;
 
-        public var menuScript:HaxeScript;
+        public var script:HaxeScript;
 
 	override public function new(select:String = 'menu')
 	{
@@ -39,24 +39,24 @@ class MainMenu extends State
 
 		TryCatch.tryCatch(() ->
 		{
-			menuScript = HaxeScript.create(scriptPath);
-			menuScript.loadFile(scriptPath);
-			ScriptSupport.setScriptDefaultVars(menuScript, '', '');
+			script = HaxeScript.create(scriptPath);
+			script.loadFile(scriptPath);
+			ScriptSupport.setScriptDefaultVars(script, '', '');
 
-			menuScript.setVariable('sinco', sinco);
-			menuScript.setVariable('port', port);
+			script.setVariable('sinco', sinco);
+			script.setVariable('port', port);
 
-			menuScript.setVariable('gridbg', gridbg);
-			menuScript.setVariable('menuselectbox', menuselectbox);
+			script.setVariable('gridbg', gridbg);
+			script.setVariable('menuselectbox', menuselectbox);
 
-			menuScript.setVariable('menuboxtexts', menuboxtexts);
-			menuScript.setVariable('menutexts', menutexts);
+			script.setVariable('menuboxtexts', menuboxtexts);
+			script.setVariable('menutexts', menutexts);
 
-			menuScript.setVariable('menutextsSelection', menutextsSelection);
+			script.setVariable('menutextsSelection', menutextsSelection);
 
-			menuScript.setVariable('CUR_SELECTION', CUR_SELECTION);
+			script.setVariable('CUR_SELECTION', CUR_SELECTION);
 
-			menuScript.executeFunc("create");
+			script.executeFunc("create");
 		});
 	}
 
@@ -124,8 +124,8 @@ class MainMenu extends State
 	{
                 TryCatch.tryCatch(() ->
 		{
-			if (menuScript != null)
-                                menuScript.executeFunc("update", [elapsed]);
+			if (script != null)
+                                script.executeFunc("update", [elapsed]);
 		});
 
 		Global.playMenuMusic();

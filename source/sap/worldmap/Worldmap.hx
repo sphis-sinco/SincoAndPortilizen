@@ -20,6 +20,8 @@ class Worldmap extends State
 		return ["sinco" => [true, false, false, false], "port" => [true, false, false, false]];
 	}
 
+        public var script:HaxeScript;
+
 	override public function new(char:String = "Sinco")
 	{
 		super();
@@ -27,6 +29,26 @@ class Worldmap extends State
 		charWheel = new CharacterWheel();
 		character = new MapCharacter(char);
 		mapGRP = new FlxTypedGroup<FlxSprite>();
+
+                var scriptPath:String = FileManager.getScriptFile('gameplay/Worldmap');
+
+		TryCatch.tryCatch(() ->
+		{
+			script = HaxeScript.create(scriptPath);
+			script.loadFile(scriptPath);
+			ScriptSupport.setScriptDefaultVars(script, '', '');
+
+			script.setVariable('character', character);
+			script.setVariable('charWheel', charWheel);
+
+			script.setVariable('current_level', current_level);
+
+			script.setVariable('mapGRP', mapGRP);
+
+			script.setVariable('implementedLevels', implementedLevels);
+
+			script.executeFunc("create");
+		});
 	}
 
 	override function create()
@@ -60,6 +82,12 @@ class Worldmap extends State
 
 	override function update(elapsed:Float)
 	{
+                TryCatch.tryCatch(() ->
+		{
+			if (script != null)
+                                script.executeFunc("update", [elapsed]);
+		});
+
 		super.update(elapsed);
 
 		if (FlxG.keys.anyJustReleased([LEFT, RIGHT]) && character.animationname() != 'run')
