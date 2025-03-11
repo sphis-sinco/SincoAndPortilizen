@@ -85,6 +85,18 @@ class Stage4 extends State
 	override function create()
 	{
 		super.create();
+
+                
+                
+                var tutorial:FlxSprite = new FlxSprite();
+                tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Dodge'));
+                tutorial.screenCenter();
+                tutorial.y -= tutorial.height * 2;
+                add(tutorial);
+
+                FlxTimer.wait(1, () -> {
+                        FlxTween.tween(tutorial, {alpha: 0}, 1);
+                });
 	}
 
 	override function update(elapsed:Float)
