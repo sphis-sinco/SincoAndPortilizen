@@ -1,5 +1,7 @@
 # Alpha
 ## 0.2.0a - 3/??/2025
+### Changed
+- Stage 1 and Stage 4 are now a mix of soft-coded and hard-coded.
 ### Fixed
 - Fixed internal bug where it would say "`Failed to change to language: english`" but `LANGUAGE` is supposed to be another language
 ### Added
