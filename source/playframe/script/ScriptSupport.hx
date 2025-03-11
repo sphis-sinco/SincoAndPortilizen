@@ -1,6 +1,7 @@
 package playframe.script;
 
-class ScriptSupport {
+class ScriptSupport
+{
 	public static function setScriptDefaultVars(script:HaxeScript, mod:String, settings:Dynamic)
 	{
 		var superVar = {};
@@ -42,7 +43,7 @@ class ScriptSupport {
 				}
 			}
 		});
-		
+
 		script.setVariable("trace", function(text)
 		{
 			try
@@ -67,13 +68,14 @@ class ScriptSupport {
 		{
 			curState.insert(pos, obj);
 		});
+
 		script.setVariable("FlxSprite", FlxSprite);
 		script.setVariable("FlxG", FlxG);
 		script.setVariable("FlxState", FlxState);
 		script.setVariable("Std", Std);
 		script.setVariable("Math", Math);
 		script.setVariable("FlxMath", FlxMath);
-		script.setVariable("ScriptSupport", ScriptSupport); //?
+		script.setVariable("ScriptSupport", ScriptSupport); // ?
 		script.setVariable("StringTools", StringTools);
 		script.setVariable("FlxSound", FlxSound);
 		script.setVariable("FlxEase", FlxEase);
@@ -86,17 +88,22 @@ class ScriptSupport {
 		script.setVariable("FileManager", FileManager);
 		script.setVariable("FlxAtlasFrames", FlxAtlasFrames);
 
-                script.setVariable('FlxPoint', new FlxPoint());
-                script.setVariable('SparrowSprite', SparrowSprite);
-                script.setVariable('PostStage1Cutscene', PostStage1Cutscene);
+		script.setVariable('FlxPoint', new FlxPoint());
+		script.setVariable('SparrowSprite', SparrowSprite);
+		script.setVariable('PostStage1Cutscene', PostStage1Cutscene);
 
-                script.setVariable('FileManager', FileManager);
+		script.setVariable('FileManager', FileManager);
 
 		script.setVariable('ResultsMenu', ResultsMenu);
 		script.setVariable('StageGlobals', StageGlobals);
 		script.setVariable('Worldmap', Worldmap);
 
 		script.setVariable("Global", Global);
+
+		script.setVariable("switchState", function(nextState:NextState)
+		{
+			FlxG.switchState(nextState);
+		});
 
 		script.mod = mod;
 	}
