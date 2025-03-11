@@ -105,8 +105,27 @@ class ScriptSupport
 			FlxG.switchState(nextState);
 		});
 
+		script.setVariable("switchScript", function(scriptPath:String) {
+                        switchScript(scriptPath);
+                });
+
 		script.mod = mod;
 	}
+
+        private static function switchScript(scriptPath:String)
+        {
+                TryCatch.tryCatch(() ->
+		{
+			var script:HaxeScript = HaxeScript.create(scriptPath);
+			script.loadFile(scriptPath);
+			setScriptDefaultVars(script, '', '');
+
+                        // preCreate and postCreate are just in case things
+			script.executeFunc("preCreate");
+			script.executeFunc("create");
+			script.executeFunc("postCreate");
+		});
+        }
 
 	public static function getExprFromPath(path:String, critical:Bool = false):hscript.Expr
 	{
