@@ -66,16 +66,6 @@ class MassMod extends ModBasic
 			Worldmap.character.swappedchar();
 		}
 
-		if (Global.getCurrentState() == "Stage4")
-		{
-			trace('Stage 4!');
-                        
-			Stage4.enemyAttackCondition = function():Bool
-			{
-				return true;
-			}
-		}
-
 		if (Global.getCurrentState() == "ResultsMenu")
 		{
 			trace('Wats da rank?');
