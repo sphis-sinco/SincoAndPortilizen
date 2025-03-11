@@ -1,8 +1,5 @@
 package sap.stages.stage1;
 
-import sap.results.ResultsMenu;
-import sap.worldmap.Worldmap;
-
 class Stage1 extends State
 {
 	public var script:HaxeScript;
@@ -18,6 +15,8 @@ class Stage1 extends State
 			script = HaxeScript.create(scriptPath);
 			script.loadFile(scriptPath);
 			ScriptSupport.setScriptDefaultVars(script, '', '');
+                        
+                        script.setVariable('PostStage1Cutscene', PostStage1Cutscene);
 
                         var background:SparrowSprite;
                         var track:FlxSprite;
@@ -99,6 +98,24 @@ class Stage1 extends State
 	}
         
         override function create() {
+                
+                var tutorial1:FlxSprite = new FlxSprite();
+                tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Right-Dodge'));
+                tutorial1.screenCenter();
+                tutorial1.y -= tutorial1.height;
+                add(tutorial1);
+
+                var tutorial2:FlxSprite = new FlxSprite();
+                tutorial2.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Attack'));
+                tutorial2.screenCenter();
+                tutorial2.y += tutorial2.height;
+                add(tutorial2);
+
+                FlxTimer.wait(1, () -> {
+                        FlxTween.tween(tutorial1, {alpha: 0}, 1);
+                        FlxTween.tween(tutorial2, {alpha: 0}, 1);
+                });
+
                 super.create();
         }
 

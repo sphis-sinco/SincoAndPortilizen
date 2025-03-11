@@ -1,8 +1,5 @@
 package sap.stages.stage4;
 
-import sap.results.ResultsMenu;
-import sap.worldmap.Worldmap;
-
 class Stage4 extends State
 {
         public var script:HaxeScript;

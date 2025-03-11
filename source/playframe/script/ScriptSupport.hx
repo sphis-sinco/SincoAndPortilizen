@@ -90,7 +90,6 @@ class ScriptSupport
 
 		script.setVariable('FlxPoint', new FlxPoint());
 		script.setVariable('SparrowSprite', SparrowSprite);
-		script.setVariable('PostStage1Cutscene', PostStage1Cutscene);
 
 		script.setVariable('FileManager', FileManager);
 

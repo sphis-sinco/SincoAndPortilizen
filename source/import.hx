@@ -12,6 +12,7 @@ import flixel.tweens.FlxTween.TweenCallback;
 import flixel.tweens.misc.ColorTween;
 import flixel.ui.FlxBar;
 import flixel.util.*;
+import flixel.util.typeLimit.NextState;
 import haxe.*;
 import haxe.io.Path;
 import haxe.iterators.*;
@@ -29,14 +30,16 @@ import playframe.script.*;
 import sap.*;
 import sap.localization.LocalizationManager;
 import sap.plugins.*;
+import sap.results.ResultsMenu;
 import sap.savedata.*;
+import sap.stages.StageGlobals;
+import sap.worldmap.Worldmap;
 import sinlib.*;
 import sinlib.utilities.*;
 import sys.FileSystem;
 import sys.io.File;
 
 using StringTools;
-
 #if DISCORDRPC
 import Discord.DiscordClient;
 #end

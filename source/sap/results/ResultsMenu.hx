@@ -1,7 +1,5 @@
 package sap.results;
 
-import flixel.util.typeLimit.NextState;
-
 class ResultsMenu extends State
 {
 	public var RANK_CLASS:Rank;
