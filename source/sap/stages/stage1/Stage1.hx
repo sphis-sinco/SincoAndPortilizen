@@ -19,15 +19,6 @@ class Stage1 extends State
 			script.loadFile(scriptPath);
 			ScriptSupport.setScriptDefaultVars(script, '', '');
 
-                        script.setVariable('FlxPoint', new FlxPoint());
-                        script.setVariable('SparrowSprite', SparrowSprite);
-                        script.setVariable('ResultsMenu', ResultsMenu);
-                        script.setVariable('StageGlobals', StageGlobals);
-                        script.setVariable('PostStage1Cutscene', PostStage1Cutscene);
-
-                        script.setVariable('Worldmap', Worldmap);
-                        script.setVariable('FileManager', FileManager);
-
                         var background:SparrowSprite;
                         var track:FlxSprite;
                         var OSIN_HEALTH:Int = 10;

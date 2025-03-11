@@ -86,6 +86,16 @@ class ScriptSupport {
 		script.setVariable("FileManager", FileManager);
 		script.setVariable("FlxAtlasFrames", FlxAtlasFrames);
 
+                script.setVariable('FlxPoint', new FlxPoint());
+                script.setVariable('SparrowSprite', SparrowSprite);
+                script.setVariable('PostStage1Cutscene', PostStage1Cutscene);
+
+                script.setVariable('FileManager', FileManager);
+
+		script.setVariable('ResultsMenu', ResultsMenu);
+		script.setVariable('StageGlobals', StageGlobals);
+		script.setVariable('Worldmap', Worldmap);
+
 		script.setVariable("Global", Global);
 
 		script.mod = mod;

@@ -20,10 +20,6 @@ class Stage4 extends State
 			script.loadFile(scriptPath);
 			ScriptSupport.setScriptDefaultVars(script, '', '');
 
-			script.setVariable('ResultsMenu', ResultsMenu);
-			script.setVariable('StageGlobals', StageGlobals);
-			script.setVariable('Worldmap', Worldmap);
-
 			var port:PortS4;
 			var enemy:EnemyS4;
 			var bg:FlxSprite;
