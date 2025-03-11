@@ -23,9 +23,9 @@ class Stage1 extends State
                         script.setVariable('SparrowSprite', SparrowSprite);
                         script.setVariable('ResultsMenu', ResultsMenu);
                         script.setVariable('StageGlobals', StageGlobals);
-                        script.setVariable('Osin', Osin);
+                        script.setVariable('osin', new Osin());
                         script.setVariable('PostStage1Cutscene', PostStage1Cutscene);
-                        script.setVariable('Sinco', Sinco);
+                        script.setVariable('sinco', new Sinco());
                         script.setVariable('Worldmap', Worldmap);
                         script.setVariable('FileManager', FileManager);
 

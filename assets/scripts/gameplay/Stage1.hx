@@ -1,7 +1,5 @@
 var background:SparrowSprite;
 var track:FlxSprite;
-var sinco:Sinco;
-var osin:Osin;
 var OSIN_HEALTH:Int = 10;
 var SINCO_HEALTH:Int = 10;
 var OSIN_MAX_HEALTH:Int = 10;
@@ -11,9 +9,6 @@ var sincoHealthIndicator:FlxText;
 
 function create()
 {
-	sinco = new Sinco();
-	osin = new Osin();
-
 	osinHealthIndicator = new FlxText();
 	sincoHealthIndicator = new FlxText();
 
