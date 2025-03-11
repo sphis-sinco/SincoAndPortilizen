@@ -1,7 +1,7 @@
 # Alpha
 ## 0.2.0a - 3/??/2025
 ### Changed
-- Stage 1 and Stage 4 are now a mix of soft-coded and hard-coded.
+- [Stage 1 and Stage 4 are now a mix of soft-coded and hard-coded.](#18_link)
 ### Fixed
 - Fixed internal bug where it would say "`Failed to change to language: english`" but `LANGUAGE` is supposed to be another language
 ### Added
@@ -163,3 +163,4 @@ CURRENT FEATURES:
 [#11_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/11
 [#12_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/12
 [#16_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/16
+[#18_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/18
