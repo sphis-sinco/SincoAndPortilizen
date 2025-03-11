@@ -1,57 +1,7 @@
-var background:SparrowSprite;
-var track:FlxSprite;
-var OSIN_HEALTH:Int = 10;
-var SINCO_HEALTH:Int = 10;
-var OSIN_MAX_HEALTH:Int = 10;
-var SINCO_MAX_HEALTH:Int = 10;
-var osinHealthIndicator:FlxText;
-var sincoHealthIndicator:FlxText;
+var playedDeathFX:Bool = false;
 
 function create()
 {
-	osinHealthIndicator = new FlxText();
-	sincoHealthIndicator = new FlxText();
-
-	background = new SparrowSprite('gameplay/sinco stages/StageOneBackground');
-	add(background);
-
-	background.addAnimationByPrefix('idle', 'actualstagebg', 24);
-	background.playAnimation('idle');
-
-	background.screenCenter();
-
-	track = new FlxSprite();
-	track.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
-
-	track.animation.add('animation', [0, 1], 16);
-	track.animation.play('animation');
-
-	Global.scaleSprite(track, 1);
-	track.screenCenter();
-	add(track);
-
-	osin.screenCenter();
-	osin.y += osin.height * 2;
-	osin.x += osin.width * 4;
-	add(osin);
-
-	sinco.screenCenter();
-	sinco.y += sinco.height * 4;
-	sinco.x -= sinco.width * 4;
-	add(sinco);
-
-	sincoPos = new FlxPoint(0, 0);
-	sincoPos.set(sinco.x, sinco.y);
-
-	osinPos = new FlxPoint(0, 0);
-	osinPos.set(osin.x, osin.y);
-
-	osinHealthIndicator.size = 16;
-	add(osinHealthIndicator);
-
-	sincoHealthIndicator.size = 16;
-	add(sincoHealthIndicator);
-
 	Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 
 	osin_canjump = true;
@@ -66,8 +16,6 @@ function postCreate()
 	OSIN_HEALTH = OSIN_MAX_HEALTH;
 }
 
-var sincoPos:FlxPoint;
-var osinPos:FlxPoint;
 var sinco_jump_speed:Float = 0.25;
 var osin_jump_speed:Float = 0.3;
 var osin_canjump:Bool = true;
@@ -105,13 +53,16 @@ function update(elapsed:Float)
 
 function updateHealthIndicators()
 {
+        var sincoHealthString:String = SINCO_HEALTH + '/' + SINCO_MAX_HEALTH;
+        var osinHealthString:String = OSIN_HEALTH + '/' + OSIN_MAX_HEALTH;
+
 	osinHealthIndicator.setPosition(osin.x, osin.y - 64);
-	osinHealthIndicator.text = Global.getLocalizedPhrase('HP')+': $OSIN_HEALTH/$OSIN_MAX_HEALTH';
+	osinHealthIndicator.text = Global.getLocalizedPhrase('HP')+': '+osinHealthString;
 	if (osin_warning)
 		osinHealthIndicator.text += '\n'+Global.getLocalizedPhrase('DODGE');
 
 	sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
-	sincoHealthIndicator.text = Global.getLocalizedPhrase('HP')+': $SINCO_HEALTH/$SINCO_MAX_HEALTH';
+	sincoHealthIndicator.text = Global.getLocalizedPhrase('HP')+': '+sincoHealthString;
 }
 
 function osinJumpWait()
@@ -328,7 +279,7 @@ function deathSFX(name:String = 'dead')
 {
 	if (!playedDeathFX)
 	{
-		Global.playSoundEffect('gameplay/$name');
+		Global.playSoundEffect('gameplay/'+name);
 		playedDeathFX = true;
 	}
 }
@@ -338,5 +289,3 @@ function endCutsceneTransition()
 	Global.beatLevel(1);
 	FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, () -> new PostStage1Cutscene()));
 }
-
-var playedDeathFX:Bool = false;
