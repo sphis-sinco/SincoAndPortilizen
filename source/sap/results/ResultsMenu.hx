@@ -28,8 +28,6 @@ class ResultsMenu extends State
 
 	public var nextState:NextState;
 
-        public var script:HaxeScript;
-
 	override public function new(goods:Int = 0, total:Int = 0, nextState:NextState, ?char:String = 'sinco')
 	{
 		this.nextState = nextState;
@@ -51,39 +49,6 @@ class ResultsMenu extends State
 		RESULTS_BG = new BlankBG();
 		RESULTS_BG.color = 0x999999;
 		RESULTS_BG.screenCenter(XY);
-
-                var scriptPath:String = FileManager.getScriptFile('gameplay/Results');
-
-		TryCatch.tryCatch(() ->
-		{
-			script = HaxeScript.create(scriptPath);
-			script.loadFile(scriptPath);
-			ScriptSupport.setScriptDefaultVars(script, '', '');
-
-			script.setVariable('RANK_CLASS', RANK_CLASS);
-
-			script.setVariable('PERCENT', PERCENT);
-
-			script.setVariable('TARGET_PERCENT', TARGET_PERCENT);
-
-			script.setVariable('REACHED_TARGET_PERCENT', REACHED_TARGET_PERCENT);
-
-			script.setVariable('PERCENT_TICK', PERCENT_TICK);
-
-                        script.setVariable('PERCENT_TICK_GOAL', PERCENT_TICK_GOAL);
-
-                        script.setVariable('RANK_GRADE_TEXT', RANK_GRADE_TEXT);
-                        script.setVariable('RANK_PERCENT_TEXT', RANK_PERCENT_TEXT);
-
-                        script.setVariable('RESULTS_CHARACTER', RESULTS_CHARACTER);
-
-                        script.setVariable('RESULTS_BG', RESULTS_BG);
-
-                        script.setVariable('nextState', nextState);
-
-			script.executeFunc("create");
-		});
-
 
 		super();
 	}

@@ -11,30 +11,6 @@ class CreditsSubState extends FlxSubState
 	public static var creditsText:FlxTypedGroup<FlxText>;
 	public static var totalSpacing:Int = 0;
 
-        public var script:HaxeScript;
-
-        override public function new() {
-                super();
-
-                var scriptPath:String = FileManager.getScriptFile('submenus/Credits');
-
-		TryCatch.tryCatch(() ->
-		{
-			script = HaxeScript.create(scriptPath);
-			script.loadFile(scriptPath);
-			ScriptSupport.setScriptDefaultVars(script, '', '');
-
-			script.setVariable('overlay', overlay);
-
-			script.setVariable('creditsJSON', creditsJSON);
-
-			script.setVariable('creditsText', creditsText);
-			script.setVariable('totalSpacing', totalSpacing);
-
-			script.executeFunc("create");
-		});
-        }
-
 	override function create()
 	{
 		super.create();

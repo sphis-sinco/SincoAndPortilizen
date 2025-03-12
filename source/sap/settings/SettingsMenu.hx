@@ -1,7 +1,6 @@
 package sap.settings;
 
 import sap.mainmenu.MainMenu;
-import sap.title.TitleState;
 
 class SettingsMenu extends FlxSubState
 {
@@ -17,36 +16,6 @@ class SettingsMenu extends FlxSubState
 	public static var SELECTED_SETTING:String = "";
 
 	public static var overlay:BlankBG;
-
-        public var script:HaxeScript;
-
-        override public function new() {
-                super();
-
-                var scriptPath:String = FileManager.getScriptFile('submenus/Settings');
-
-		TryCatch.tryCatch(() ->
-		{
-			script = HaxeScript.create(scriptPath);
-			script.loadFile(scriptPath);
-			ScriptSupport.setScriptDefaultVars(script, '', '');
-
-			script.setVariable('new_windowres', new_windowres);
-
-			script.setVariable('saveValues', saveValues);
-			script.setVariable('saveValues_array', saveValues_array);
-			script.setVariable('saveValue_length', saveValue_length);
-
-			script.setVariable('settingsTexts', settingsTexts);
-
-                        script.setVariable('CURRENT_SELECTION', CURRENT_SELECTION);
-                        script.setVariable('SELECTED_SETTING', SELECTED_SETTING);
-
-                        script.setVariable('overlay', overlay);
-
-			script.executeFunc("create");
-		});
-        }
 
 	override function create()
 	{
@@ -78,8 +47,6 @@ class SettingsMenu extends FlxSubState
 		#if desktop
 		newSaveValue('window resolution', new_windowres);
 		#end
-
-		newSaveValue('mods', HaxeScript.modsEnabled);
 	}
 
 	public static function newSaveValue(name:String, value:Any)
@@ -136,15 +103,6 @@ class SettingsMenu extends FlxSubState
 					FlxG.sound.changeVolume(-1);
 			case 'window resolution':
 				window_res();
-
-                        case 'mods':
-                                HaxeScript.modsEnabled = !HaxeScript.modsEnabled;
-                                FlxG.camera.fade(FlxColor.BLACK, 1, false, () -> {
-                                        FlxG.resetGame();
-                                        MainMenu.inSubstate = false;
-                                        TitleState.CURRENT_STATE = INTRO;
-                                        FlxG.camera.fade(FlxColor.BLACK, 1, true);
-                                }, );
 		}
 
 		saveValuesUpdate();

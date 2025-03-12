@@ -1,5 +1,9 @@
 # Alpha
 ## 0.2.1a - 3/13/2025
+### Nerd stuff
+- Reverted most shit to 0.1.1a
+### Removed
+- Removed HScript modding
 ### Fixed
 - Fixed hitHurt sounds trying to play a hitHurt-0 sound that doesn't exist.
 

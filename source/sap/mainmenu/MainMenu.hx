@@ -27,37 +27,11 @@ class MainMenu extends State
 
 	public static var inSubstate:Bool = false;
 
-        public var script:HaxeScript;
-
 	override public function new(select:String = 'menu')
 	{
 		super();
 
 		menutextsSelection = select;
-
-                var scriptPath:String = FileManager.getScriptFile('menus/MainMenu');
-
-		TryCatch.tryCatch(() ->
-		{
-			script = HaxeScript.create(scriptPath);
-			script.loadFile(scriptPath);
-			ScriptSupport.setScriptDefaultVars(script, '', '');
-
-			script.setVariable('sinco', sinco);
-			script.setVariable('port', port);
-
-			script.setVariable('gridbg', gridbg);
-			script.setVariable('menuselectbox', menuselectbox);
-
-			script.setVariable('menuboxtexts', menuboxtexts);
-			script.setVariable('menutexts', menutexts);
-
-			script.setVariable('menutextsSelection', menutextsSelection);
-
-			script.setVariable('CUR_SELECTION', CUR_SELECTION);
-
-			script.executeFunc("create");
-		});
 	}
 
 	override function create()
@@ -122,12 +96,6 @@ class MainMenu extends State
 
 	override function update(elapsed:Float)
 	{
-                TryCatch.tryCatch(() ->
-		{
-			if (script != null)
-                                script.executeFunc("update", [elapsed]);
-		});
-
 		Global.playMenuMusic();
 
 		cycle++;

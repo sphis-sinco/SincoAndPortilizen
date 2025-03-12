@@ -1,5 +1,6 @@
 package sap.modding.source.mods;
 
+import flixel.util.FlxColor;
 import sap.credits.CreditsEntry;
 import sap.credits.CreditsSubState;
 import sap.cutscenes.PanelCutscene;
@@ -11,6 +12,7 @@ import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
 import sap.worldmap.Worldmap;
+import sinlib.SLGame;
 
 class MassMod extends ModBasic
 {
@@ -66,12 +68,40 @@ class MassMod extends ModBasic
 			Worldmap.character.swappedchar();
 		}
 
+		if (Global.getCurrentState() == "Stage1")
+		{
+			trace('Stage 1!');
+
+			Stage1.getOsinJumpCondition = newOsinJumpCondition;
+
+			Stage1.osin.color = FlxColor.YELLOW;
+		}
+
+		if (Global.getCurrentState() == "Stage4")
+		{
+			trace('Stage 4!');
+                        
+			Stage4.enemyAttackCondition = function():Bool
+			{
+				return true;
+			}
+		}
+
 		if (Global.getCurrentState() == "ResultsMenu")
 		{
 			trace('Wats da rank?');
 
 			ResultsMenu.rankBGColor = newRankBGColors;
 		}
+	}
+
+	function newOsinJumpCondition():Bool
+	{
+		return (Stage1.SINCO_HEALTH >= 1
+			&& Stage1.OSIN_HEALTH >= 1
+			&& FlxG.random.int(0, 1) == 1
+			&& (Stage1.osin.animation.name != 'jump' && Stage1.osin.animation.name != 'hurt')
+			&& Stage1.osin_canjump);
 	}
 
 	function newRankBGColors()

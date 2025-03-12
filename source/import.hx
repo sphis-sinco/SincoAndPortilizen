@@ -36,8 +36,6 @@ import sap.stages.StageGlobals;
 import sap.worldmap.Worldmap;
 import sinlib.*;
 import sinlib.utilities.*;
-import sys.FileSystem;
-import sys.io.File;
 
 using StringTools;
 #if DISCORDRPC
