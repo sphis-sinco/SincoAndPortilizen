@@ -1,8 +1,9 @@
 # Alpha
-## 0.2.1a - 3/13/2025
+## 0.2.1a - 3/12/2025
 ### Nerd stuff
 - ScriptSupport's switchScript function is now a public static function
 - FileManager's SCRIPT_EXT variable is now initalized in `Main.hx`
+- There are now additional functions in ScriptSupport supposed to help with adding new languages
 ### Fixed
 - Fixed hitHurt sounds trying to play a hitHurt-0 sound that doesn't exist.
 
