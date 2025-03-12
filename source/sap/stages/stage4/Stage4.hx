@@ -94,7 +94,7 @@ class Stage4 extends State
                 tutorial.y -= tutorial.height * 2;
                 add(tutorial);
 
-                FlxTimer.wait(1, () -> {
+                FlxTimer.wait(3, () -> {
                         FlxTween.tween(tutorial, {alpha: 0}, 1);
                 });
 	}

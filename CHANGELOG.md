@@ -1,7 +1,7 @@
 # Alpha
 ## 0.2.0a - 3/??/2025
 ### Changed
-- [Stage 1 and Stage 4 are now a mix of soft-coded and hard-coded.](#18_link)
+- Changed it so that now [Stage 1 and Stage 4 are now a mix of soft-coded and hard-coded.](#18_link)
 ### Fixed
 - Fixed internal bug where it would say "`Failed to change to language: english`" but `LANGUAGE` is supposed to be another language
 ### Added
@@ -15,6 +15,7 @@
         - Credits (`submenus/Credits`)
         - Settings (`submenus/Settings`)
         - Results (`gamplay/Results`)
+- Added [tutorial elements to stage 1 and 4](#14_link)
 
 ## 0.1.1a - 2/22/2025
 ### Fixed
@@ -162,5 +163,6 @@ CURRENT FEATURES:
 [#10_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/10
 [#11_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/11
 [#12_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/12
+[#14_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/14
 [#16_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/16
 [#18_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/18
