@@ -27,10 +27,10 @@ class FileManager
 	 */
 	public static var FILE_MANAGER_VERSION_SUFFIX:String = '';
 
-        public static function getVersion()
-        {
-                return FILE_MANAGER_VERSION + FILE_MANAGER_VERSION_SUFFIX;
-        }
+	public static function getVersion()
+	{
+		return FILE_MANAGER_VERSION + FILE_MANAGER_VERSION_SUFFIX;
+	}
 
 	public static var UNLOCALIZED_ASSETS:Array<String> = [];
 
@@ -64,12 +64,16 @@ class FileManager
 			if (UNLOCALIZED_ASSETS.contains(localizedreturnpath))
 				return returnpath;
 
-			#if CNGLA_TRACES trace('Could not get localized asset: ${localizedreturnpath}'); #end
+			#if CNGLA_TRACES trace('Could not get localized asset: $localizedreturnpath'); #end
 			UNLOCALIZED_ASSETS.push(localizedreturnpath);
 		}
 		#end
 
-		return returnpath;
+		if (exists(returnpath))
+			return returnpath;
+
+		trace('Could not get asset: $returnpath');
+		return '';
 	}
 
 	/**
