@@ -2,6 +2,7 @@ package sap.worldmap;
 
 import sap.mainmenu.MainMenu;
 import sap.stages.stage1.Stage1;
+import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
 
 class Worldmap extends State
@@ -17,7 +18,7 @@ class Worldmap extends State
 
 	static function get_implementedLevels():Map<String, Array<Bool>>
 	{
-		return ["sinco" => [true, false, false, false], "port" => [true, false, false, false]];
+		return ["sinco" => [true, true, false, false], "port" => [true, false, false, false]];
 	}
 
 	override public function new(char:String = "Sinco")
@@ -119,12 +120,19 @@ class Worldmap extends State
 			// TODO: implement level unlocking PLEASE
 			case 1:
 				level1();
+                        case 2:
+                                level2();
 		}
 	}
 
 	public dynamic function level1()
 	{
 		FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1() : new Stage4()));
+	}
+
+	public dynamic function level2()
+	{
+		FlxG.switchState(() -> (new Stage2()));
 	}
 
 	public dynamic function swap()

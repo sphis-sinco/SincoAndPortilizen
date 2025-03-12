@@ -16,6 +16,7 @@ These do things. Lmao!
 ## Start State Flags
 - `SKIP_TITLE`: Sends you to the Main Menu instantly instead of the Title Screen
 - `STAGE_ONE`: Sends you to the first stage
+- `STAGE_TWO`: Sends you to the second stage
 - `STAGE_FOUR`: Sends you to the fourth stage
 - `WORLDMAP`: Sends you to the worldmap as Sinco
 - `RESULTS`: Sends you to the results state as Sinco
