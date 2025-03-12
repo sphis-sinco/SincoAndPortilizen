@@ -39,8 +39,6 @@ class InitState extends FlxState
 		if (!SLGame.isDebug)
 			proceed();
 
-                FileManager.SCRIPT_EXT = 'hx';
-
 		super.create();
 	}
 
@@ -121,6 +119,11 @@ class InitState extends FlxState
 		#if PORTUGUESE_LANGUAGE LocalizationManager.LANGUAGE = 'portuguese'; #end
 
 		#if FORCED_ENGLISH LocalizationManager.LANGUAGE = 'english'; #end
+
+                TryCatch.tryCatch(() ->
+		{
+                        ScriptSupport.switchScript(FileManager.getScriptFile('Languages'));
+		});
 
 		LocalizationManager.changeLanguage();
 	}
