@@ -1,7 +1,6 @@
 export/
 .haxelib/
 dump/
-assets/scripts/Languages.hx
 
 .DS_Store
 RECOVER_**.fla

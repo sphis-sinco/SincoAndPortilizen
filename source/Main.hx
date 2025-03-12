@@ -5,7 +5,6 @@ class Main extends Sprite
 	{
 		super();
 
-                FileManager.SCRIPT_EXT = 'hx';
 		InitState.ModsInit();
 		InitState.LanguageInit();
 

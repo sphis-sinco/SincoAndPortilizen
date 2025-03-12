@@ -2,9 +2,6 @@ package playframe.script;
 
 class ScriptSupport
 {
-	public static var custom_language_content:Map<String, Map<String, String>> = [];
-	public static var custom_language_assetsuffixes:Map<String, String> = [];
-
 	public static function setScriptDefaultVars(script:HaxeScript, mod:String, settings:Dynamic)
 	{
 		var superVar = {};
@@ -103,52 +100,31 @@ class ScriptSupport
 		script.setVariable("Global", Global);
 
 		/**script.setVariable("switchState", function(nextState:NextState)
-			{
-				FlxG.switchState(nextState);
+		{
+			FlxG.switchState(nextState);
 		});**/
 
-		script.setVariable("switchScript", function(scriptPath:String)
-		{
-			switchScript(scriptPath);
-		});
-
-		script.setVariable("createLanguageContent", function(languageName:String, asset_suffix:String, content:Map<String, String>)
-		{
-                        trace('createLanguageContent($languageName, $asset_suffix, [content not shown])');
-			custom_language_content.set(languageName, content);
-                        custom_language_assetsuffixes.set(languageName, asset_suffix);
-		});
-
-		script.setVariable("createLanguageSwap", function(oldLanguage:String, newLanguage:String)
-		{
-                        trace('createLanguageSwap($oldLanguage, $newLanguage)');
-			LocalizationManager.LANGUAGE_SWAP_LIST.set(oldLanguage, newLanguage);
-		});
-
-		script.setVariable("switchLanguage", function(languageName:String)
-		{
-                        trace('switchLanguage($languageName)');
-			LocalizationManager.LANGUAGE = languageName;
-                        LocalizationManager.swapLanguage();
-		});
+		script.setVariable("switchScript", function(scriptPath:String) {
+                        switchScript(scriptPath);
+                });
 
 		script.mod = mod;
 	}
 
-	public static function switchScript(scriptPath:String)
-	{
-		TryCatch.tryCatch(() ->
+        private static function switchScript(scriptPath:String)
+        {
+                TryCatch.tryCatch(() ->
 		{
 			var script:HaxeScript = HaxeScript.create(scriptPath);
 			script.loadFile(scriptPath);
 			setScriptDefaultVars(script, '', '');
 
-			// preCreate and postCreate are just in case things
+                        // preCreate and postCreate are just in case things
 			script.executeFunc("preCreate");
 			script.executeFunc("create");
 			script.executeFunc("postCreate");
 		});
-	}
+        }
 
 	public static function getExprFromPath(path:String, critical:Bool = false):hscript.Expr
 	{

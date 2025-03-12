@@ -108,11 +108,6 @@ class LocalizationManager
 			];
 		}
 
-                TryCatch.tryCatch(() -> {
-                        ASSET_SUFFIX = ScriptSupport.custom_language_assetsuffixes.get(LANGUAGE);
-                        return ScriptSupport.custom_language_content.get(LANGUAGE);
-                });
-
 		ASSET_SUFFIX = '';
 		return default_text_content;
 	}
