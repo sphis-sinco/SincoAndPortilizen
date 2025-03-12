@@ -1,5 +1,5 @@
 # Alpha
-## 0.2.1a - 3/13/2025
+## 0.2.1a - 3/12/2025
 ### Nerd stuff
 - Reverted most shit to 0.1.1a
 ### Removed
