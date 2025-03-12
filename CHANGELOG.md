@@ -1,5 +1,5 @@
 # Alpha
-## 0.2.0a - 3/??/2025
+## 0.2.0a - 3/12/2025
 ### Changed
 - Changed it so that now [Stage 1 and Stage 4 are now a mix of soft-coded and hard-coded.](#18_link)
 ### Fixed
