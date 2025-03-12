@@ -7,12 +7,10 @@ import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.modding.source.ModListManager;
 import sap.modding.source.mods.MassMod;
-import sap.results.ResultsMenu;
 import sap.settings.SettingsMenu;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
-import sap.worldmap.Worldmap;
 
 // This is initalization stuff + compiler condition flags
 class InitState extends FlxState
