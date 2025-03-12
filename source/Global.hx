@@ -120,7 +120,7 @@ class Global
 	 */
 	public static function hitHurt()
 	{
-		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(1, 4)}');
+		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(0, 4)}');
 	}
 
 	/**
