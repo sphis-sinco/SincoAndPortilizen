@@ -1,0 +1,28 @@
+// used in every script
+function create():Void
+{
+        createLanguageContent('deez', 'd', [
+		"hp" => "HEALTH POINTS",
+		"dodge" => "DODGE MF",
+		"rank-perfect" => "noice",
+		"rank-excellent" => "excel",
+		"rank-great" => "igh",
+		"rank-good" => "ok",
+		"rank-bad" => "meh",
+		"rank-awful" => "terrible",
+		"you-did" => "YOU HAVE DONE",
+		"menu-play" => "start",
+		"menu-credits" => "creators",
+		"menu-leave" => "gtfo",
+		"menu-settings" => "config",
+		"play-new" => "scrap all",
+		"play-continue" => "keep all",
+		"play-back" => "gtfo2",
+		"settings-language" => "lang",
+		"settings-volume" => "vol",
+		"settings-window-resolution" => "res"
+	]);
+        createLanguageSwap('portuguese','deez');
+        switchLanguage('deez');
+        trace('AAAAAAAAAAAAAAAAAAA');
+}
