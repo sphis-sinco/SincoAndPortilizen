@@ -120,6 +120,11 @@ class InitState extends FlxState
 
 		#if FORCED_ENGLISH LocalizationManager.LANGUAGE = 'english'; #end
 
+                TryCatch.tryCatch(() ->
+		{
+                        ScriptSupport.switchScript(FileManager.getScriptFile('Languages'));
+		});
+
 		LocalizationManager.changeLanguage();
 	}
 }

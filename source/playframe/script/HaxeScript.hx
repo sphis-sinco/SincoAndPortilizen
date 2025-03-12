@@ -34,7 +34,7 @@ class HaxeScript
 		}
 	}
 
-	public static function create(filePath:String)
+	public static function create(filePath:String):HaxeScript
 	{
 		var path = filePath;
 		if (!scriptPaths.contains(filePath))
@@ -42,13 +42,11 @@ class HaxeScript
 			trace('Attempt at new HaxeScript: $filePath');
                         scriptPaths.push(filePath);
 		}
-                
 		if (FileSystem.exists(path) && modsEnabled)
 		{
 			return new HScript();
 		}
-
-                return null;
+		return null;
 	}
 
 	public function executeFunc(funcName:String, ?args:Array<Any>):Dynamic
