@@ -99,10 +99,10 @@ class ScriptSupport
 
 		script.setVariable("Global", Global);
 
-		script.setVariable("switchState", function(nextState:NextState)
+		/**script.setVariable("switchState", function(nextState:NextState)
 		{
 			FlxG.switchState(nextState);
-		});
+		});**/
 
 		script.setVariable("switchScript", function(scriptPath:String) {
                         switchScript(scriptPath);
