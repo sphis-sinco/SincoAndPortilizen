@@ -38,12 +38,12 @@ class Stage4 extends State
 		enemyX = enemy.x;
 		add(enemy);
 
-		port.y = Std.int(FlxG.height - port.height * StageGlobal.DISMx2);
+		port.y = Std.int(FlxG.height - port.height * StageGlobals.DISMx2);
 		enemy.y = port.y;
 
 
                 time = 0;
-		FlxTimer.wait(StageGlobals.STAGE4_START_TIMER, () ->
+		FlxTimer.wait(StageGlobalss.STAGE4_START_TIMER, () ->
 		{
 			levelComplete();
 		});
@@ -80,7 +80,7 @@ class Stage4 extends State
 
 	public static dynamic function waitSec()
 	{
-		timerText.text = Std.string(StageGlobals.STAGE4_START_TIMER - time);
+		timerText.text = Std.string(StageGlobalss.STAGE4_START_TIMER - time);
 
 		FlxTimer.wait(1, () ->
 		{
@@ -120,7 +120,7 @@ class Stage4 extends State
 	{
 		portJumping = true;
 
-		var portjumpheight:Float = port.height * StageGlobal.DISMx2;
+		var portjumpheight:Float = port.height * StageGlobalss.DISMx2;
 
 		port.animation.play('jump');
 		portJump(portjumpheight);
