@@ -21,6 +21,7 @@ class SaveManager
 		GameplayStatus.setupGameplayStatus();
 
                 SettingsMenu.window_res(getSettings().window_res);
+                SettingsMenu.new_windowres = getSettings().window_res;
 	}
 
 	public static dynamic function getDefaultSave()
