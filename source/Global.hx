@@ -64,6 +64,8 @@ class Global
 
 		SaveManager.setupSave();
 		trace('Switched save slot to "$SAVE_SLOT"');
+
+                trace(FlxG.save.data);
 	}
 
 	/**
