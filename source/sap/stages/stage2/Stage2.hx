@@ -18,6 +18,9 @@ class Stage2 extends State
 
                 sinco.x += 4 * 8;
                 sinco.y += 4 * 24;
+
+                var rock:Stage2Rock = new Stage2Rock();
+                add(rock);
         }
 
         override function update(elapsed:Float) {
