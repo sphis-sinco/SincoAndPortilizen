@@ -118,6 +118,10 @@ class InitState extends FlxState
 	{
 		LocalizationManager.LANGUAGE = 'english';
 
+                TryCatch.tryCatch(() -> {
+                        LocalizationManager.LANGUAGE = SaveManager.getLanguage();
+                });
+
 		if (FileManager.exists(FileManager.getPath('', 'cur_lang.txt')))
 		{
 			LocalizationManager.LANGUAGE = FileManager.readFile(FileManager.getPath('', 'cur_lang.txt'));

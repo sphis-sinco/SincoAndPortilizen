@@ -1,5 +1,7 @@
 package sap.savedata;
 
+import sap.settings.SettingsMenu;
+
 class SaveManager
 {
 	/**
@@ -9,18 +11,23 @@ class SaveManager
 	{
 		// just the base thing
 		FlxG.save.data.language ??= getDefaultSave().language;
+		FlxG.save.data.settings ??= getDefaultSave().settings;
 		FlxG.save.data.results ??= getDefaultSave().results;
 		FlxG.save.data.gameplaystatus ??= getDefaultSave().gameplaystatus;
 
 		// run these functions to make sure no null vals
+		Settings.setupSettings();
 		Results.setupResults();
 		GameplayStatus.setupGameplayStatus();
+
+                SettingsMenu.window_res(getSettings().window_res);
 	}
 
 	public static dynamic function getDefaultSave()
 	{
 		return {
 			language: "english",
+                        settings: Settings.returnDefaultSettings(),
 			results: Results.returnDefaultResults(),
 			gameplaystatus: GameplayStatus.returnDefaultGameplayStatus()
 		}
@@ -39,5 +46,10 @@ class SaveManager
 	public static dynamic function getGameplaystatus()
 	{
 		return FlxG.save.data.gameplaystatus;
+	}
+
+	public static dynamic function getSettings()
+	{
+		return FlxG.save.data.settings;
 	}
 }

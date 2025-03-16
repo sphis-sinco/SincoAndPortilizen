@@ -81,6 +81,8 @@ class SettingsMenu extends FlxSubState
 
 		if (FlxG.keys.justReleased.ESCAPE)
 		{
+                        FlxG.save.data.settings.window_res = saveValues.get('window resolution');
+
 			MainMenu.inSubstate = false;
 			close();
 		}
@@ -102,16 +104,15 @@ class SettingsMenu extends FlxSubState
 				if (FlxG.sound.volume == 1)
 					FlxG.sound.changeVolume(-1);
 			case 'window resolution':
-				window_res();
+				window_res(saveValues.get(SELECTED_SETTING));
 		}
 
 		saveValuesUpdate();
 		createSettingsText();
 	}
 
-	static function window_res()
+	public static function window_res(res:String)
 	{
-		var res:String = saveValues.get(SELECTED_SETTING);
 		switch (res)
 		{
 			case '1280x1216':
