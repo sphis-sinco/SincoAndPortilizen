@@ -1,5 +1,6 @@
 # Alpha
 ## 0.3.0a - 3/??/2025
+- Added window resolution change on startup
 - Added save for the window resolution before leaving the settings menu
 - Added a settings save data value
 - Updated all sinco assets to `sinco-consi-1` (the new sinco design, hair hasn't been updated tho lol)
