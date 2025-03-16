@@ -1,5 +1,5 @@
 # Alpha
-## 0.3.0a - 3/1?/2025
+## 0.3.0a - 3/??/2025
 ### Changed
 - Updated all sinco assets to `sinco-consi-1` (the new sinco design, hair hasn't been updated tho lol)
 
