@@ -11,7 +11,7 @@ class MedalBox extends FlxSprite
         override public function new() {
                 super();
 
-                setPosition(10, 10);
+                setPosition(40, 40);
 
                 jsonData = FileManager.getJSON(FileManager.getDataFile('medal-sprite.json'));
                 trace(jsonData);
