@@ -14,6 +14,7 @@ class SaveManager
 		FlxG.save.data.settings ??= getDefaultSave().settings;
 		FlxG.save.data.results ??= getDefaultSave().results;
 		FlxG.save.data.gameplaystatus ??= getDefaultSave().gameplaystatus;
+		FlxG.save.data.medals ??= getDefaultSave().medals;
 
 		// run these functions to make sure no null vals
 		Settings.setupSettings();
@@ -22,6 +23,8 @@ class SaveManager
 
                 SettingsMenu.window_res(getSettings().window_res);
                 SettingsMenu.new_windowres = getSettings().window_res;
+
+                MedalData.unlocked_medals = FlxG.save.data.medals;
 	}
 
 	public static dynamic function getDefaultSave()
@@ -30,7 +33,9 @@ class SaveManager
 			language: "english",
                         settings: Settings.returnDefaultSettings(),
 			results: Results.returnDefaultResults(),
-			gameplaystatus: GameplayStatus.returnDefaultGameplayStatus()
+			gameplaystatus: GameplayStatus.returnDefaultGameplayStatus(),
+                        medals: []
+
 		}
 	}
 

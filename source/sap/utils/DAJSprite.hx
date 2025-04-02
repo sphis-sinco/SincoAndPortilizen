@@ -9,7 +9,7 @@ class DAJSprite extends FlxSprite
         public final HORIZONTAL_POSITION:Float = 20;
         public final VERTICAL_POSITION:Float = (Global.getCurrentState() == 'TitleState') ? 60 : 20;
 
-        var assetFolder:String = '';
+        public var assetFolder:String = '';
 
         override public function new(file:String, assetFolder:String) {
                 super();

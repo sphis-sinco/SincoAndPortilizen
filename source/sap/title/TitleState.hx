@@ -132,6 +132,7 @@ class TitleState extends State
 
 	public static dynamic function introState()
 	{
+                MedalData.unlockMedal('Welcome');
 
 		FlxTween.tween(charring, {y: charring.height + 16}, 1.0, {
 			ease: FlxEase.sineOut,

@@ -13,7 +13,14 @@ class Medal extends FlxTypedGroup<FlxObject>
                 add(medalBox);
                 final medalboxmid:FlxPoint = medalBox.getMidpoint();
 
-                medalIcon = new FlxSprite().loadGraphic(FileManager.getImageFile('medals/awards/${medal}'));
+                var path:String = FileManager.getImageFile('${medalBox.assetFolder}/awards/${medal}');
+
+                if (!FileManager.exists(path))
+                {
+                        path.replace(medal, 'award');
+                }
+
+                medalIcon = new FlxSprite().loadGraphic(path);
                 add(medalIcon);
                 Global.scaleSprite(medalIcon, -2);
 
