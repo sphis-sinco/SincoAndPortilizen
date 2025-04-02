@@ -1,6 +1,6 @@
-package sap.medals;
+package sap.utils;
 
-typedef MedalBoxJSON = {
+typedef DynamicAnimationJSON = {
 	var animation_order:Array<String>;
 	var animation_data:Array<AnimData>;
 }

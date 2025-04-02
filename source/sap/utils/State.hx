@@ -1,4 +1,4 @@
-package sap;
+package sap.utils;
 
 import sap.modding.source.ModListManager;
 

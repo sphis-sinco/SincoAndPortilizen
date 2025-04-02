@@ -1,11 +1,9 @@
 package sap.medals;
 
-import sap.medals.MedalBoxJSON.AnimData;
-import sap.title.TitleState;
 
 class MedalBox extends FlxSprite
 {
-        var jsonData:MedalBoxJSON;
+        var jsonData:DynamicAnimationJSON;
 
         var curAnimIndx:Int = 0;
 
