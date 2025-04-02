@@ -51,7 +51,7 @@ class MedalBox extends FlxSprite
 
                 trace(name);
 
-                Global.scaleSprite(this);
+                Global.scaleSprite(this, -2);
         }
 
         override function update(elapsed:Float) {
