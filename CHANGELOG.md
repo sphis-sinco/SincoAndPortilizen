@@ -1,5 +1,6 @@
 # Alpha
 ## 0.3.0a - 4/??/2025
+- Fixed bug where stage 4 would crash because when jumping ([#19](#19_link))
 - Fixed window resolution option not being accurate to the actual resolution (This was due to the missing window resolution save value)
 - Added window resolution change on startup
 - Added save for the window resolution before leaving the settings menu
@@ -181,3 +182,4 @@ CURRENT FEATURES:
 [#14_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/14
 [#16_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/16
 [#18_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/18
+[#19_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/19
