@@ -90,9 +90,6 @@ class TitleState extends State
 		super.create();
 
 		Global.changeDiscordRPCPresence('In the title screen', null);
-                
-                var mb:Medal = new Medal();
-                add(mb);
 	}
 
 	public static var transitioning:Bool = false;
