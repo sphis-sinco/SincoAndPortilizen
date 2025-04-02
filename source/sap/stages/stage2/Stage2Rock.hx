@@ -18,6 +18,8 @@ class Stage2Rock extends FlxSprite
 
                 FlxG.watch.addQuick('Rock frames array', framesArray);
 
+                animation.frameIndex = FlxG.random.int(0, framesArray[framesArray.length]);
+
                 Global.scaleSprite(this);
         }
         
