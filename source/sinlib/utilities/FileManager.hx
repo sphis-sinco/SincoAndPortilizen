@@ -194,7 +194,7 @@ class FileManager
 	 * Reads a file that SHOULD BE A JSON, using `readFile`
 	 * @param path the path of the json your trying to get
 	 */
-	public static function getJSON(path:String)
+	public static function getJSON(path:String):Dynamic
 	{
 		return Json.parse(readFile(path));
 	}
