@@ -7,7 +7,6 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import sap.mainmenu.MainMenu;
-import sap.medals.MedalBox;
 
 enum abstract TitleStates(Int) from Int to Int
 {
@@ -92,7 +91,7 @@ class TitleState extends State
 
 		Global.changeDiscordRPCPresence('In the title screen', null);
                 
-                var mb:MedalBox = new MedalBox();
+                var mb:Medal = new Medal();
                 add(mb);
 	}
 

@@ -28,6 +28,7 @@ import openfl.system.System;
 import openfl.text.*;
 import sap.*;
 import sap.localization.LocalizationManager;
+import sap.medals.*;
 import sap.plugins.*;
 import sap.results.ResultsMenu;
 import sap.savedata.*;
