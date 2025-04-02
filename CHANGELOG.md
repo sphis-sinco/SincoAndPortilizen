@@ -1,10 +1,10 @@
 # Alpha
-## 0.3.0a - 3/??/2025
+## 0.3.0a - 4/??/2025
 - Fixed window resolution option not being accurate to the actual resolution (This was due to the missing window resolution save value)
 - Added window resolution change on startup
 - Added save for the window resolution before leaving the settings menu
 - Added a settings save data value
-- Updated all sinco assets to `sinco-consi-1` (the new sinco design, hair hasn't been updated tho lol)
+- Updated all sinco assets
 
 ## 0.2.1a - 3/12/2025
 ### Nerd stuff
