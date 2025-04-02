@@ -371,6 +371,13 @@ class Stage1 extends State
 
 	public static dynamic function endCutsceneTransition()
 	{
+                MedalData.unlockMedal('Faker clash');
+
+                if (SINCO_HEALTH == SINCO_MAX_HEALTH)
+                {
+                        MedalData.unlockMedal('The original stands on top');
+                }
+
 		Global.beatLevel(1);
 		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, () -> new PostStage1Cutscene()));
 	}
