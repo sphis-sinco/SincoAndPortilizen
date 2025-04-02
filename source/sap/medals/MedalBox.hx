@@ -1,6 +1,7 @@
 package sap.medals;
 
 import sap.medals.MedalBoxJSON.AnimData;
+import sap.title.TitleState;
 
 class MedalBox extends FlxSprite
 {
@@ -11,7 +12,7 @@ class MedalBox extends FlxSprite
         override public function new() {
                 super();
 
-                setPosition(40, 40);
+                setPosition(20, (Global.getCurrentState() == 'TitleState') ? 60 : 20);
 
                 jsonData = FileManager.getJSON(FileManager.getDataFile('medal-sprite.json'));
                 trace(jsonData);
