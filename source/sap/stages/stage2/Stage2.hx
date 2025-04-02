@@ -20,7 +20,10 @@ class Stage2 extends State
                 sinco.y += 4 * 24;
 
                 var rock:Stage2Rock = new Stage2Rock();
+                rock.setPosition(FlxG.width - rock.width, -rock.height);
                 add(rock);
+
+                FlxTween.tween(rock, {x: rock.width, y: (bg.graphic.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER) / 2}, 4, { onUpdate: tween -> {}, onComplete: tween -> {}});
         }
 
         override function update(elapsed:Float) {
