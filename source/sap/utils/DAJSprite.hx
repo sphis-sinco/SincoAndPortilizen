@@ -11,7 +11,7 @@ class DAJSprite extends FlxSprite
 
         public var assetFolder:String = '';
 
-        override public function new(file:String, assetFolder:String) {
+        override public function new(file:String, assetFolder:String):Void {
                 super();
 
                 this.assetFolder = assetFolder;
@@ -24,7 +24,7 @@ class DAJSprite extends FlxSprite
                 loadAnim(0);
         }
 
-        public function loadAnim(index:Int)
+        public function loadAnim(index:Int):Void
         {
                 curAnimIndx = index;
 
@@ -59,7 +59,7 @@ class DAJSprite extends FlxSprite
                 Global.scaleSprite(this, -2);
         }
 
-        override function update(elapsed:Float) {
+        override function update(elapsed:Float):Void {
                 super.update(elapsed);
 
                 if (animation.finished && curAnimIndx != jsonData.animation_order.length - 1)
