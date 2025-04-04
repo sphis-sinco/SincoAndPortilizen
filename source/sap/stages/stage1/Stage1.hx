@@ -112,7 +112,7 @@ class Stage1 extends State
 		return (SINCO_HEALTH >= 1
 			&& OSIN_HEALTH >= 1
 			&& FlxG.random.int(0, 200) < 50
-			&& (osin.animation.name != JUMP_KEYWORD && osin.animation.name != 'hurt')
+			&& (osin.animation.name != StageGlobals.JUMP_KEYWORD && osin.animation.name != 'hurt')
 			&& osin_canjump);
 	}
 
@@ -171,7 +171,7 @@ class Stage1 extends State
 			}
 
 			Global.playSoundEffect('gameplay/sinco-jump');
-			sinco.animation.play(JUMP_KEYWORD);
+			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
 			sincoJump();
 		}
 
@@ -183,7 +183,7 @@ class Stage1 extends State
 			}
 
 			sinco.y += 64;
-			sinco.animation.play(JUMP_KEYWORD);
+			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
 			Global.playSoundEffect('gameplay/sinco-spin');
 			sincoDodge();
 		}
@@ -219,7 +219,7 @@ class Stage1 extends State
 
 	public static dynamic function osinWarning():Void
 	{
-		osin.animation.play(JUMP_KEYWORD);
+		osin.animation.play(StageGlobals.JUMP_KEYWORD);
 		osin_warning = true;
 		FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0.5, 1), {
 			onComplete: _tween ->
@@ -232,7 +232,7 @@ class Stage1 extends State
 	public static dynamic function osinJump():Void
 	{
 		osin_warning = false;
-		osin.animation.play(JUMP_KEYWORD);
+		osin.animation.play(StageGlobals.JUMP_KEYWORD);
 		Global.playSoundEffect('gameplay/sinco-jump');
 		FlxTween.tween(osin, {x: sincoPos.x, y: sincoPos.y}, osin_jump_speed, {
 			onComplete: _tween ->
@@ -309,11 +309,9 @@ class Stage1 extends State
 		});
 	}
 
-	static final JUMP_KEYWORD:String = 'jump';
-
 	public static dynamic function osinHurtCheck():Void
 	{
-		if (sinco.overlaps(osin) && osin.animation.name != JUMP_KEYWORD)
+		if (sinco.overlaps(osin) && osin.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
 			osinHealthIndicator.color = 0xff0000;
 			FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);

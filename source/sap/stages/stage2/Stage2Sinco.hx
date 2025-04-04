@@ -15,5 +15,4 @@ class Stage2Sinco extends FlxSprite
 
                 Global.scaleSprite(this);
         }
-        
 }
