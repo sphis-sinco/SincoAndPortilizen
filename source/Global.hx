@@ -85,10 +85,20 @@ class Global
 	/**
 	 * Plays the main music for menus (22) if its null, and if there is no music playing
 	 */
-	public static function playMenuMusic():Void
+	public static function playMenuMusic(?posinfo:PosInfos):Void
 	{
-		playMusic('22');
+		playMusic('22', posinfo);
 	}
+
+        /**
+         * Turns PosInfo data into a string readable for debugging purposes
+         * @param posinfo 
+         * @return String
+         */
+        public static function posInfoString(?posinfo:PosInfos):String
+        {
+                return '${posinfo.fileName}/${posinfo.methodName}():${posinfo.lineNumber}';
+        }
 
 	/**
 	 * Plays music
@@ -96,17 +106,23 @@ class Global
 	public static function playMusic(filename:String, ?volume:Float = 1.0, ?loop:Bool = false, ?posinfo:PosInfos):Void
 	{
 		final file:Array<String> = filename.split('/');
-		trace('Trying to play music track: ${file[file.length]} (volume: ${volume * 100}, ${(loop) ? 'looping' : 'not looping'})', posinfo);
+
+		final musicinfo:String = '(volume: ${volume * 100}, ${(loop) ? 'looping' : 'not looping'})';
+		final originator:String = '| ${posInfoString(posinfo)}';
+
+		final tracelog:String = 'Trying to play music track: ${file[file.length - 1]} ${musicinfo} ${originator}';
 
 		if (FlxG.sound.music != null)
 		{
 			if (!FlxG.sound.music.playing)
 			{
+				trace(tracelog);
 				FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
 			}
 		}
 		else
 		{
+			trace(tracelog);
 			FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
 		}
 	}
@@ -118,29 +134,30 @@ class Global
 	public static function playSoundEffect(name:String, ?posinfo:PosInfos):Void
 	{
 		final file:Array<String> = name.split('/');
-		trace('Trying to play sound effect: ${file[file.length]}', posinfo);
+		trace('Trying to play sound effect: ${file[file.length - 1]} | ${posInfoString(posinfo)}');
+
 		FlxG.sound.play(FileManager.getSoundFile('sounds/$name'));
 	}
 
 	/**
 	 * Plays a random hitHurt sound effect
 	 */
-	public static function hitHurt():Void
+	public static function hitHurt(?posinfo:PosInfos):Void
 	{
-		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(1, 4)}');
+		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(1, 4)}', posinfo);
 	}
 
 	/**
 	 * If the current level is lower than `lvl` by 1 then the current level gets set to `lvl`
 	 * @param lvl what you are trying to set the current level to
 	 */
-	public static function beatLevel(lvl:Int = 1):Void
+	public static function beatLevel(lvl:Int = 1, ?posinfo:PosInfos):Void
 	{
 		#if html5 return; #end
 
 		if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
 		{
-			trace('New level complete: ${lvl}');
+			trace('New level complete: ${lvl} | ${posInfoString(posinfo)}');
 			FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
 		}
 	}
@@ -150,12 +167,13 @@ class Global
 	 * @param details The first row of text
 	 * @param state The second row of text
 	 */
-	public static function changeDiscordRPCPresence(details:String, state:Null<String>):Void
+	public static function changeDiscordRPCPresence(details:String, state:Null<String>, ?posinfo:PosInfos):Void
 	{
 		#if !DISCORDRPC
 		return;
 		#else
-		trace('Discord presence is being changed (details: ${details}, state: ${state}).') DiscordClient.changePresence(details, state);
+		trace('Discord presence is being changed (details: ${details}, state: ${state}) | ${posInfoString(posinfo)}');
+                DiscordClient.changePresence(details, state);
 		#end
 	}
 
