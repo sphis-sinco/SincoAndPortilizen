@@ -5,8 +5,10 @@ class StageGlobals
         public static var STAGE1_PLAYER_MAX_HEALTH:Int = 10;
         public static var STAGE1_OPPONENT_MAX_HEALTH:Int = 10;
 
-        public static var STAGE2_PLAYER_START_Y:Float = 384;
-        public static var STAGE2_PLAYER_JUMP_Y_OFFSET:Float = 120;
+        public static var STAGE2_PLAYER_START_Y:Int = 384;
+        public static var STAGE2_PLAYER_JUMP_Y_OFFSET:Float = 240;
+        public static var STAGE2_PLAYER_JUMP_SPEED:Float = 0.5;
+        public static var STAGE2_MAX_ROCKS:Int = 2;
 
         public static var STAGE4_START_TIMER:Int = 60;
 
