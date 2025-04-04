@@ -2,7 +2,7 @@ package sap.title;
 
 class TitleSinco extends FlxSprite
 {
-	override public function new()
+	override public function new():Void
 	{
 		super(0, 0);
 		loadGraphic(FileManager.getImageFile('titlescreen/TitleSinco'), true, 8, 8);

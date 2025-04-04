@@ -34,7 +34,7 @@ class TitleState extends State
 		return 'v${Global.VERSION}';
 	}
 
-	override public function create()
+	override public function create():Void
 	{
 		sinco = new TitleSinco();
 		port = new TitlePort();
@@ -94,7 +94,7 @@ class TitleState extends State
 
 	public static var transitioning:Bool = false;
 
-	override public function update(elapsed:Float)
+	override public function update(elapsed:Float):Void
 	{
 		charring_chars.setPosition(charring.x, charring.y);
 		stateChecks();
@@ -110,12 +110,12 @@ class TitleState extends State
 		super.update(elapsed);
 	}
 
-	public static dynamic function stateChecks()
+	public static dynamic function stateChecks():Void
 	{
 		stateSwitchStatement();
 	}
 
-	public static dynamic function stateSwitchStatement()
+	public static dynamic function stateSwitchStatement():Void
 	{
 		switch (CURRENT_STATE)
 		{
@@ -130,7 +130,7 @@ class TitleState extends State
 		}
 	}
 
-	public static dynamic function introState()
+	public static dynamic function introState():Void
 	{
                 MedalData.unlockMedal('Welcome');
 
@@ -151,7 +151,7 @@ class TitleState extends State
 		}
 	}
 
-	public static dynamic function flashState()
+	public static dynamic function flashState():Void
 	{
 		if (CURRENT_STATE == FLASH)
 			FlxG.camera.flash(0xFFFFFF, 4);
@@ -164,7 +164,7 @@ class TitleState extends State
 		pressany.visible = true;
 	}
 
-	public static dynamic function doneState()
+	public static dynamic function doneState():Void
 	{
 		Global.playMenuMusic();
 
@@ -183,7 +183,7 @@ class TitleState extends State
 		randomBGChar(port, 4);
 	}
 
-	public static dynamic function pressAny()
+	public static dynamic function pressAny():Void
 	{
 		if (FlxG.keys.justReleased.ANY && !transitioning)
 		{
@@ -199,7 +199,7 @@ class TitleState extends State
 
 	public static var pressanyTargY:Float = 0;
 
-	public static dynamic function randomBGChar(char:FlxSprite, chance:Float)
+	public static dynamic function randomBGChar(char:FlxSprite, chance:Float):Void
 	{
 		if (FlxG.random.bool(chance) && !char.visible)
 		{
@@ -220,7 +220,7 @@ class TitleState extends State
 		}
 	}
 
-	public static dynamic function charDisWait(char:FlxSprite)
+	public static dynamic function charDisWait(char:FlxSprite):Void
 	{
 		FlxTimer.wait(FlxG.random.float(1, 4), () ->
 		{

@@ -2,7 +2,7 @@ package sap.title;
 
 class TitlePort extends FlxSprite
 {
-	override public function new()
+	override public function new():Void
 	{
 		super(0, 0);
 		loadGraphic(FileManager.getImageFile('titlescreen/TitlePort'), true, 8, 8);
