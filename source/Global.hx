@@ -13,7 +13,7 @@ class Global
 	 */
 	static function get_VERSION():String
 	{
-		var version = Application.VERSION;
+		var version:String = Application.VERSION;
 
 		trace('Version: ${version}');
 		return '${version}';
@@ -93,21 +93,32 @@ class Global
 	/**
 	 * Plays music
 	 */
-	public static function playMusic(filename:String, ?volume:Float = 1.0, ?loop:Bool = false):Void
+	public static function playMusic(filename:String, ?volume:Float = 1.0, ?loop:Bool = false, ?posinfo:PosInfos):Void
 	{
 		final file:Array<String> = filename.split('/');
-		trace('Trying to play music track: ${file[file.length]} (volume: ${volume * 100}, ${(loop) ? 'looping' : 'not looping'})');
-		FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
+		trace('Trying to play music track: ${file[file.length]} (volume: ${volume * 100}, ${(loop) ? 'looping' : 'not looping'})', posinfo);
+
+		if (FlxG.sound.music != null)
+		{
+			if (!FlxG.sound.music.playing)
+			{
+				FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
+			}
+		}
+		else
+		{
+			FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
+		}
 	}
 
 	/**
 	 * Plays a sound effect using the `name` param
 	 * @param name this is the filename/filepath, for example `blipSelect` would return `assets/sounds/blipSelect.wav`
 	 */
-	public static function playSoundEffect(name:String):Void
+	public static function playSoundEffect(name:String, ?posinfo:PosInfos):Void
 	{
 		final file:Array<String> = name.split('/');
-		trace('Trying to play sound effect: ${file[file.length]}');
+		trace('Trying to play sound effect: ${file[file.length]}', posinfo);
 		FlxG.sound.play(FileManager.getSoundFile('sounds/$name'));
 	}
 
@@ -166,7 +177,7 @@ class Global
 	{
 		var phrase_that_works:String = phrase.toLowerCase().replace(' ', '-');
 
-		var returnPhrase = LocalizationManager.TEXT_CONTENT.get(phrase_that_works);
+		var returnPhrase:String = LocalizationManager.TEXT_CONTENT.get(phrase_that_works);
 		if (returnPhrase == null)
 		{
 			returnPhrase = (fallback == null) ? phrase_that_works : fallback;
