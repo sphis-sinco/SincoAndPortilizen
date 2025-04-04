@@ -13,7 +13,7 @@ class DiscordClient
 
 	static var startTimestamp:Float = Date.now().getTime();
 
-	public function new()
+	public function new():Void
 	{
 		trace("Discord Client starting...");
 		DiscordRpc.start({
@@ -33,12 +33,13 @@ class DiscordClient
 		DiscordRpc.shutdown();
 	}
 
-	public static function shutdown()
+	public static function shutdown():Void
 	{
+                trace('Shutting down...');
 		DiscordRpc.shutdown();
 	}
 
-	static function onReady()
+	static function onReady():Void
 	{
 		DiscordRpc.presence({
 			details: "Starting the Game..",
@@ -48,17 +49,17 @@ class DiscordClient
 		});
 	}
 
-	static function onError(_code:Int, _message:String)
+	static function onError(_code:Int, _message:String):Void
 	{
 		trace('Error! $_code : $_message');
 	}
 
-	static function onDisconnected(_code:Int, _message:String)
+	static function onDisconnected(_code:Int, _message:String):Void
 	{
 		trace('Disconnected! $_code : $_message');
 	}
 
-	public static function initialize()
+	public static function initialize():Void
 	{
 		var DiscordDaemon = sys.thread.Thread.create(() ->
 		{
@@ -67,7 +68,7 @@ class DiscordClient
 		trace("Discord Client initialized");
 	}
 
-	public static function changePresence(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float)
+	public static function changePresence(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float):Void
 	{
 		DiscordRpc.presence({
 			details: details,

@@ -50,15 +50,6 @@
 	<define name="DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS"/>
 	<define name="DISABLE_ANNOYING_WARNINGS" unless="ENABLE_ANNOYING_WARNINGS"/>
 
-        <!-- Annoying Errors and warnings-->
-	<section>
-		<echo value="annoying errors enabled via ENABLE_ANNOYING_ERRORS" if="ENABLE_ANNOYING_ERRORS"/>
-		<echo value="annoying warnings enabled via ENABLE_ANNOYING_WARNINGS" if="ENABLE_ANNOYING_WARNINGS"/>
-		
-		<echo value="annoying errors disabled via DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS"/>
-		<echo value="annoying warnings disabled via DISABLE_ANNOYING_WARNINGS" unless="ENABLE_ANNOYING_WARNINGS"/>
-	</section>
-
 	<define name="DISABLE_PLUGINS" if="mobile"/>
 
 	<section if="DISABLE_PLUGINS">
@@ -98,7 +89,6 @@
         <!-- _________________________________ After _______________________________ -->
 
 	<error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile"/>
-	<echo value="DEBUG BUILD: Press [ANY] to start" if="debug"/>
 
 	<echo value="discord rpc disabled" unless="windows || DISCORDRPC"/>
 
