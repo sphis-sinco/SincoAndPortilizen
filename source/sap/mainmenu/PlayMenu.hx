@@ -5,12 +5,12 @@ import sap.worldmap.Worldmap;
 
 class PlayMenu extends MainMenu
 {
-	override public function new()
+	override public function new():Void
 	{
 		super('play');
 	}
 
-	override function selectionCheck()
+	override function selectionCheck():Void
 	{
 		super.selectionCheck();
 
@@ -20,7 +20,7 @@ class PlayMenu extends MainMenu
 		}
 	}
 
-	public static dynamic function playSelectionCheck()
+	public static dynamic function playSelectionCheck():Void
 	{
 		switch (MainMenu.PUBLIC_CUR_SELECTION)
 		{

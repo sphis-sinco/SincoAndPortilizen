@@ -27,14 +27,14 @@ class MainMenu extends State
 
 	public static var inSubstate:Bool = false;
 
-	override public function new(select:String = 'menu')
+	override public function new(select:String = 'menu'):Void
 	{
 		super();
 
 		menutextsSelection = select;
 	}
 
-	override function create()
+	override function create():Void
 	{
 		menucharvis ??= [false, true];
 
@@ -86,15 +86,19 @@ class MainMenu extends State
 
 	public var cycle:Int = 0;
 
-	public static dynamic function gridBGAdapt()
+	public static dynamic function gridBGAdapt():Void
 	{
 		if (port.animation.name == 'blank')
+                {
 			gridbg.x += 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+                }
 		else
+                {
 			gridbg.x += -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+                }
 	}
 
-	override function update(elapsed:Float)
+	override function update(elapsed:Float):Void
 	{
 		Global.playMenuMusic();
 
@@ -129,24 +133,30 @@ class MainMenu extends State
 		super.update(elapsed);
 	}
 
-	public static dynamic function controls()
+	public static dynamic function controls():Void
 	{
 		if (FlxG.keys.justReleased.UP)
 		{
 			PUBLIC_CUR_SELECTION--;
 			if (PUBLIC_CUR_SELECTION < 0)
+                        {
+                                trace('Prevent underflow');
 				PUBLIC_CUR_SELECTION = 0;
+                        }
 		}
 
 		if (FlxG.keys.justReleased.DOWN)
 		{
 			PUBLIC_CUR_SELECTION++;
 			if (PUBLIC_CUR_SELECTION > menuboxtexts.members.length - 1)
+                        {
+                                trace('Prevent overflow');
 				PUBLIC_CUR_SELECTION = menuboxtexts.members.length - 1;
+                        }
 		}
 	}
 
-	public static dynamic function set_menuboxtexts(mapstring:String)
+	public static dynamic function set_menuboxtexts(mapstring:String):Void
 	{
                 TryCatch.tryCatch(() -> {
                         for (text in menuboxtexts)
@@ -174,7 +184,7 @@ class MainMenu extends State
 	public static var CREDITS_SELECTION:Int = 1;
 	public static var SETTINGS_SELECTION:Int = 2;
 
-	public function selectionCheck()
+	public function selectionCheck():Void
 	{
 		if (public_menutextsSelection == 'menu')
 		{
@@ -194,7 +204,7 @@ class MainMenu extends State
 		}
 	}
 
-	public static dynamic function menuSelection()
+	public static dynamic function menuSelection():Void
 	{
 		switch (PUBLIC_CUR_SELECTION)
 		{
@@ -205,7 +215,7 @@ class MainMenu extends State
 		}
 	}
 
-	public static dynamic function cycleUpdate()
+	public static dynamic function cycleUpdate():Void
 	{
 		sinco.animation.play((sinco.animation.name == 'blank') ? 'visible' : 'blank');
 		port.animation.play((port.animation.name == 'blank') ? 'visible' : 'blank');

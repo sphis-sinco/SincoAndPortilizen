@@ -6,7 +6,7 @@ class Medal extends FlxTypedGroup<FlxObject>
         
         var medalIcon:FlxSprite;
         
-        override public function new(medal:String = 'award') {
+        override public function new(medal:String = 'award'):Void {
                 super();
 
                 medalBox = new MedalBox();

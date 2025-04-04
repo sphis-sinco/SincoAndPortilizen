@@ -40,8 +40,8 @@ class ResultsMenu extends State
 		RANK_PERCENT_TEXT = new FlxText(0, 0, 0, '0%', 32);
 		RANK_PERCENT_TEXT.setPosition(10, RANK_GRADE_TEXT.y + RANK_GRADE_TEXT.height + 8);
 		RANK_PERCENT_TEXT.color = 0x000000;
-                RANK_PERCENT_TEXT.alpha = 0.5;
-		RANK_PERCENT_TEXT.alignment =LEFT;
+		RANK_PERCENT_TEXT.alpha = 0.5;
+		RANK_PERCENT_TEXT.alignment = LEFT;
 
 		RESULTS_CHARACTER = new ResultsChar(char);
 		RESULTS_CHARACTER.screenCenter(XY);
@@ -74,7 +74,9 @@ class ResultsMenu extends State
 		STATIC_RESULTS_BG = RESULTS_BG;
 
 		if (RESULTS_CHARACTER.animation.name != RANK_CLASS.grade(PERCENT))
+		{
 			RESULTS_CHARACTER.animation.play(RANK_CLASS.grade(PERCENT));
+		}
 
 		if (PERCENT < TARGET_PERCENT)
 		{
@@ -92,7 +94,7 @@ class ResultsMenu extends State
 
 		if (FlxG.keys.justReleased.SPACE && REACHED_TARGET_PERCENT)
 		{
-                        FlxG.sound.music.stop();
+			FlxG.sound.music.stop();
 			FlxG.switchState(nextState);
 		}
 
@@ -128,7 +130,9 @@ class ResultsMenu extends State
 		}
 
 		if (PERCENT > TARGET_PERCENT)
+		{
 			PERCENT = TARGET_PERCENT;
+		}
 
 		RANK_PERCENT_TEXT.text = '${FlxMath.roundDecimal(PERCENT, 0)}%';
 	}
@@ -136,9 +140,13 @@ class ResultsMenu extends State
 	public function rankBuildUpComplete():Void
 	{
 		if (!REACHED_TARGET_PERCENT)
+		{
 			trace('Rank Target Made!');
+		}
 		else
+		{
 			return;
+		}
 
 		FlxG.camera.flash();
 		rankBGColor();

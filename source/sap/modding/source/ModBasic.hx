@@ -64,7 +64,9 @@ class ModBasic extends FlxBasic
 		this.enabled = !this.enabled;
 
 		if (!has_run_create)
+		{
 			create();
+		}
 	}
 
 	// ! Event functions ! \\

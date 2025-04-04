@@ -34,7 +34,7 @@ class LocalizationManager
 		"settings-window-resolution" => "window resolution"
 	];
 
-	public static dynamic function changeLanguage()
+	public static dynamic function changeLanguage():Void
 	{
 		trace('Trying to change to languge: $LANGUAGE');
 
@@ -112,7 +112,7 @@ class LocalizationManager
 		return default_text_content;
 	}
 
-        public static dynamic function swapLanguage()
+        public static dynamic function swapLanguage():Void
         {
                 LANGUAGE = LANGUAGE_SWAP_LIST.get(LANGUAGE);
                 changeLanguage();

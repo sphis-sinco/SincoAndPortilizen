@@ -11,7 +11,7 @@ class CreditsSubState extends FlxSubState
 	public static var creditsText:FlxTypedGroup<FlxText>;
 	public static var totalSpacing:Int = 0;
 
-	override function create()
+	override function create():Void
 	{
 		super.create();
                 
@@ -43,7 +43,7 @@ class CreditsSubState extends FlxSubState
 		}
 	}
 
-	override function update(elapsed:Float)
+	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 
@@ -61,7 +61,7 @@ class CreditsSubState extends FlxSubState
 
 	public static var SCROLL_AMOUNT:Float = 10.0;
 
-	public dynamic function scroll(Amount:Float)
+	public dynamic function scroll(Amount:Float):Void
 	{
 		for (text in creditsText)
 		{

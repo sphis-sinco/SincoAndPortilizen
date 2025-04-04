@@ -4,7 +4,7 @@ import sap.worldmap.Worldmap;
 
 class IntroCutscene extends PanelCutscene
 {
-	override public function new()
+	override public function new():Void
 	{
 		super({
 			max_panels: 5,
@@ -14,14 +14,14 @@ class IntroCutscene extends PanelCutscene
 		});
 	}
 
-	override function finishedCutscene()
+	override function finishedCutscene():Void
 	{
 		super.finishedCutscene();
 
 		FlxG.switchState(() -> new Worldmap());
 	}
 
-	override function panelEvents(panel:Int)
+	override function panelEvents(panel:Int):Void
 	{
 		super.panelEvents(panel);
 

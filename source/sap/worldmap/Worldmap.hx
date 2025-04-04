@@ -34,7 +34,7 @@ class Worldmap extends State
 	{
 		super.create();
 
-		var bg = new FlxSprite();
+		var bg:FlxSprite = new FlxSprite();
 		bg.makeGraphic(FlxG.width, FlxG.height);
 		add(bg);
 
@@ -168,7 +168,7 @@ class Worldmap extends State
 
 	public dynamic function makeMap():Void
 	{
-		var i = 0;
+		var i:Int = 0;
 		while (i < 3)
 		{
 			makeNewTile(i);

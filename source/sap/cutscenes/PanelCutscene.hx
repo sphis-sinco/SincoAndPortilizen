@@ -23,23 +23,31 @@ class PanelCutscene extends State
 
 	public var cutsceneSettings:PanelCutsceneSettings;
 
-	override public function new(cutsceneSettings:PanelCutsceneSettings)
+	override public function new(cutsceneSettings:PanelCutsceneSettings):Void
 	{
 		super();
 
 		this.cutsceneSettings = cutsceneSettings;
 
 		if (this.cutsceneSettings.panel_folder == null)
+		{
 			this.cutsceneSettings.panel_folder = 'intro/';
+		}
 		if (this.cutsceneSettings.panel_prefix == null)
+		{
 			this.cutsceneSettings.panel_prefix = 'intro-';
+		}
 		if (this.cutsceneSettings.max_panels == null)
+		{
 			this.cutsceneSettings.max_panels = 5;
+		}
 		if (this.cutsceneSettings.rpc_details == null)
+		{
 			this.cutsceneSettings.rpc_details = 'In a panel cutscene';
+		}
 	}
 
-	override public function create()
+	override public function create():Void
 	{
 		PANEL_FOLDER = cutsceneSettings.panel_folder;
 		PANEL_PREFIX = cutsceneSettings.panel_prefix;
@@ -58,7 +66,7 @@ class PanelCutscene extends State
 		super.create();
 	}
 
-	override public function update(elapsed:Float)
+	override public function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justReleased.SPACE)
 		{
@@ -75,12 +83,12 @@ class PanelCutscene extends State
 		super.update(elapsed);
 	}
 
-	private function setPanel(panelpath:String = 'panel1')
+	private function setPanel(panelpath:String = 'panel1'):Void
 	{
 		panel.loadGraphic(FileManager.getImageFile('cutscenes/$PANEL_FOLDER$panelpath'));
 	}
 
-	public function finishedCutscene() {}
+	public function finishedCutscene():Void {}
 
-	public function panelEvents(panel:Int) {}
+	public function panelEvents(panel:Int):Void {}
 }

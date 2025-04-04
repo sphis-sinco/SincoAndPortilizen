@@ -62,7 +62,9 @@ class SettingsMenu extends FlxSubState
 		{
 			CURRENT_SELECTION--;
 			if (CURRENT_SELECTION < 0)
+			{
 				CURRENT_SELECTION = 0;
+			}
 			createSettingsText();
 		}
 
@@ -70,7 +72,9 @@ class SettingsMenu extends FlxSubState
 		{
 			CURRENT_SELECTION++;
 			if (CURRENT_SELECTION == saveValue_length)
+			{
 				CURRENT_SELECTION--;
+			}
 			createSettingsText();
 		}
 
@@ -102,7 +106,9 @@ class SettingsMenu extends FlxSubState
 			case 'volume':
 				FlxG.sound.changeVolume(0.1);
 				if (FlxG.sound.volume == 1)
+				{
 					FlxG.sound.changeVolume(-1);
+				}
 			case 'window resolution':
 				window_res(saveValues.get(SELECTED_SETTING), true);
 		}
@@ -130,9 +136,11 @@ class SettingsMenu extends FlxSubState
 					FlxG.resizeWindow(1280, 1216);
 					new_windowres = '1280x1216';
 			}
-		} else {
-                        FlxG.resizeWindow(Std.parseInt(res.split('x')[0]), Std.parseInt(res.split('x')[1]));
-                }
+		}
+		else
+		{
+			FlxG.resizeWindow(Std.parseInt(res.split('x')[0]), Std.parseInt(res.split('x')[1]));
+		}
 	}
 
 	public static function createSettingsText():Void
@@ -159,7 +167,9 @@ class SettingsMenu extends FlxSubState
 			cur_y = cur_y + (i + 1 * keyText.size);
 
 			if (i == CURRENT_SELECTION)
+			{
 				SELECTED_SETTING = key;
+			}
 
 			settingsTexts.add(keyText);
 

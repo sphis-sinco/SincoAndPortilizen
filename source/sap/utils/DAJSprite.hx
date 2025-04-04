@@ -68,7 +68,6 @@ class DAJSprite extends FlxSprite
                         loadAnim(curAnimIndx);
                 }
         }
-        
 
         public function getAnimIndex(name:String):Int
         {
@@ -81,7 +80,6 @@ class DAJSprite extends FlxSprite
 
                 return 0;
         }
-        
 
         public function getAnimData(name:String):AnimData
         {

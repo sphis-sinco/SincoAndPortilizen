@@ -4,7 +4,6 @@ import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import sap.localization.LocalizationManager;
 import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
@@ -68,7 +67,7 @@ class Stage1 extends State
 
 		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 
-                osin_canjump = true;
+		osin_canjump = true;
 	}
 
 	override function postCreate():Void
@@ -81,22 +80,23 @@ class Stage1 extends State
 		SINCO_HEALTH = SINCO_MAX_HEALTH;
 		OSIN_HEALTH = OSIN_MAX_HEALTH;
 
-                var tutorial1:FlxSprite = new FlxSprite();
-                tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Right-Dodge'));
-                tutorial1.screenCenter();
-                tutorial1.y -= tutorial1.height;
-                add(tutorial1);
+		var tutorial1:FlxSprite = new FlxSprite();
+		tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Right-Dodge'));
+		tutorial1.screenCenter();
+		tutorial1.y -= tutorial1.height;
+		add(tutorial1);
 
-                var tutorial2:FlxSprite = new FlxSprite();
-                tutorial2.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Attack'));
-                tutorial2.screenCenter();
-                tutorial2.y += tutorial2.height;
-                add(tutorial2);
+		var tutorial2:FlxSprite = new FlxSprite();
+		tutorial2.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Attack'));
+		tutorial2.screenCenter();
+		tutorial2.y += tutorial2.height;
+		add(tutorial2);
 
-                FlxTimer.wait(3, () -> {
-                        FlxTween.tween(tutorial1, {alpha: 0}, 1);
-                        FlxTween.tween(tutorial2, {alpha: 0}, 1);
-                });
+		FlxTimer.wait(3, () ->
+		{
+			FlxTween.tween(tutorial1, {alpha: 0}, 1);
+			FlxTween.tween(tutorial2, {alpha: 0}, 1);
+		});
 	}
 
 	public static var sincoPos:FlxPoint;
@@ -112,7 +112,7 @@ class Stage1 extends State
 		return (SINCO_HEALTH >= 1
 			&& OSIN_HEALTH >= 1
 			&& FlxG.random.int(0, 200) < 50
-			&& (osin.animation.name != 'jump' && osin.animation.name != 'hurt')
+			&& (osin.animation.name != JUMP_KEYWORD && osin.animation.name != 'hurt')
 			&& osin_canjump);
 	}
 
@@ -144,7 +144,9 @@ class Stage1 extends State
 		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
 		osinHealthIndicator.text = '${Global.getLocalizedPhrase('HP')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
 		if (osin_warning)
+		{
 			osinHealthIndicator.text += '\n${Global.getLocalizedPhrase('DODGE')}';
+		}
 
 		sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
 		sincoHealthIndicator.text = '${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH';
@@ -164,20 +166,24 @@ class Stage1 extends State
 		if (FlxG.keys.justPressed.SPACE)
 		{
 			if (sinco.x != sincoPos.x)
+			{
 				return;
+			}
 
 			Global.playSoundEffect('gameplay/sinco-jump');
-			sinco.animation.play('jump');
+			sinco.animation.play(JUMP_KEYWORD);
 			sincoJump();
 		}
 
 		if (FlxG.keys.justPressed.RIGHT)
 		{
 			if (sinco.x != sincoPos.x)
+			{
 				return;
+			}
 
 			sinco.y += 64;
-			sinco.animation.play('jump');
+			sinco.animation.play(JUMP_KEYWORD);
 			Global.playSoundEffect('gameplay/sinco-spin');
 			sincoDodge();
 		}
@@ -213,7 +219,7 @@ class Stage1 extends State
 
 	public static dynamic function osinWarning():Void
 	{
-		osin.animation.play('jump');
+		osin.animation.play(JUMP_KEYWORD);
 		osin_warning = true;
 		FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0.5, 1), {
 			onComplete: _tween ->
@@ -226,7 +232,7 @@ class Stage1 extends State
 	public static dynamic function osinJump():Void
 	{
 		osin_warning = false;
-		osin.animation.play('jump');
+		osin.animation.play(JUMP_KEYWORD);
 		Global.playSoundEffect('gameplay/sinco-jump');
 		FlxTween.tween(osin, {x: sincoPos.x, y: sincoPos.y}, osin_jump_speed, {
 			onComplete: _tween ->
@@ -238,7 +244,7 @@ class Stage1 extends State
 
 	public static dynamic function osinJumpDone():Void
 	{
-		var waitn = .25;
+		var waitn:Float = 0.25;
 
 		if (osin.overlaps(sinco))
 		{
@@ -261,7 +267,9 @@ class Stage1 extends State
 		Global.hitHurt();
 
 		if (SINCO_HEALTH < 1)
+		{
 			return;
+		}
 	}
 
 	public static dynamic function osinJumpBack():Void
@@ -294,14 +302,18 @@ class Stage1 extends State
 			{
 				sinco.animation.play('run');
 				if (osin.animation.name == 'hurt')
+				{
 					osin.animation.play('run');
+				}
 			}
 		});
 	}
 
+	static final JUMP_KEYWORD:String = 'jump';
+
 	public static dynamic function osinHurtCheck():Void
 	{
-		if (sinco.overlaps(osin) && osin.animation.name != 'jump')
+		if (sinco.overlaps(osin) && osin.animation.name != JUMP_KEYWORD)
 		{
 			osinHealthIndicator.color = 0xff0000;
 			FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
@@ -323,7 +335,7 @@ class Stage1 extends State
 
 	public static dynamic function sincoDodgeRecoil():Void
 	{
-		FlxTween.tween(sinco, {x: sincoPos.x,}, sinco_jump_speed, {
+		FlxTween.tween(sinco, {x: sincoPos.x}, sinco_jump_speed, {
 			onComplete: _tween ->
 			{
 				sinco.animation.play('run');
@@ -337,7 +349,7 @@ class Stage1 extends State
 		FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
 			{
-                                FlxG.switchState(() -> new ResultsMenu((OSIN_MAX_HEALTH - OSIN_HEALTH), OSIN_MAX_HEALTH, () -> new Worldmap()));
+				FlxG.switchState(() -> new ResultsMenu((OSIN_MAX_HEALTH - OSIN_HEALTH), OSIN_MAX_HEALTH, () -> new Worldmap()));
 			},
 			onStart: _tween ->
 			{
@@ -371,12 +383,12 @@ class Stage1 extends State
 
 	public static dynamic function endCutsceneTransition():Void
 	{
-                MedalData.unlockMedal('Faker clash');
+		MedalData.unlockMedal('Faker clash');
 
-                if (SINCO_HEALTH == SINCO_MAX_HEALTH)
-                {
-                        MedalData.unlockMedal('The original stands on top');
-                }
+		if (SINCO_HEALTH == SINCO_MAX_HEALTH)
+		{
+			MedalData.unlockMedal('The original stands on top');
+		}
 
 		Global.beatLevel(1);
 		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, () -> new PostStage1Cutscene()));

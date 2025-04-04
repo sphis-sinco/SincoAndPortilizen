@@ -2,7 +2,7 @@ package sap.mainmenu;
 
 class MenuCharacter extends FlxSprite
 {
-	override public function new(?X:Float = 0, ?Y:Float = 0, CHARSUFFIX:String = 'Sinco')
+	override public function new(?X:Float = 0, ?Y:Float = 0, CHARSUFFIX:String = 'Sinco'):Void
 	{
 		super(X, Y);
 		loadGraphic(FileManager.getImageFile('mainmenu/MainMenu$CHARSUFFIX'), true, 80, 96);

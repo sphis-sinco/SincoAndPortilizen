@@ -41,8 +41,7 @@ class Stage4 extends State
 		port.y = Std.int(FlxG.height - port.height * StageGlobals.DISMx2);
 		enemy.y = port.y;
 
-
-                time = 0;
+		time = 0;
 		FlxTimer.wait(StageGlobals.STAGE4_START_TIMER, () ->
 		{
 			levelComplete();
@@ -55,22 +54,24 @@ class Stage4 extends State
 
 		Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
 
-                enemyCanAttack = true;
+		enemyCanAttack = true;
 	}
 
-        override function postCreate():Void {
-                super.postCreate();
+	override function postCreate():Void
+	{
+		super.postCreate();
 
-                var tutorial:FlxSprite = new FlxSprite();
-                tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Dodge'));
-                tutorial.screenCenter();
-                tutorial.y -= tutorial.height * 2;
-                add(tutorial);
+		var tutorial:FlxSprite = new FlxSprite();
+		tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Dodge'));
+		tutorial.screenCenter();
+		tutorial.y -= tutorial.height * 2;
+		add(tutorial);
 
-                FlxTimer.wait(3, () -> {
-                        FlxTween.tween(tutorial, {alpha: 0}, 1);
-                });
-        }
+		FlxTimer.wait(3, () ->
+		{
+			FlxTween.tween(tutorial, {alpha: 0}, 1);
+		});
+	}
 
 	public static dynamic function levelComplete():Void
 	{
@@ -128,7 +129,7 @@ class Stage4 extends State
 
 	public static dynamic function portJump(portjumpheight:Float):Void
 	{
-                Global.playSoundEffect('gameplay/portilizen-jump-stage4');
+		Global.playSoundEffect('gameplay/portilizen-jump-stage4');
 		FlxTween.tween(port, {y: port.y - portjumpheight}, portJumpSpeed, {
 			onComplete: tween ->
 			{
@@ -163,16 +164,17 @@ class Stage4 extends State
 		if (enemy.overlaps(port))
 		{
 			FlxG.camera.flash();
-                        moveToResultsMenu();
+			moveToResultsMenu();
 		}
 
 		enemyRetreat();
 	}
 
-        public static dynamic function moveToResultsMenu():Void {
-                MedalData.unlockMedal('Dimensions reached');
-                FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE4_START_TIMER, () -> new Worldmap("Port"), "port"));
-        }
+	public static dynamic function moveToResultsMenu():Void
+	{
+		MedalData.unlockMedal('Dimensions reached');
+		FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE4_START_TIMER, () -> new Worldmap("Port"), "port"));
+	}
 
 	public static dynamic function enemyRetreat():Void
 	{

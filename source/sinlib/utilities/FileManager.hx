@@ -27,7 +27,7 @@ class FileManager
 	 */
 	public static var FILE_MANAGER_VERSION_SUFFIX:String = '';
 
-	public static function getVersion()
+	public static function getVersion():String
 	{
 		return FILE_MANAGER_VERSION + FILE_MANAGER_VERSION_SUFFIX;
 	}
@@ -50,10 +50,13 @@ class FileManager
 
 		#if !DISABLE_LOCALIZED_ASSETS
 		var asset_suffix:String = LOCALIZED_ASSET_SUFFIX;
-		var localizedreturnpath:String = '${ogreturnpath.split('.')[0]}${(asset_suffix.length > 0) ? '-${LOCALIZED_ASSET_SUFFIX}' : ''}.${ogreturnpath.split('.')[1]}';
+		final suffix:String = (asset_suffix.length > 0) ? '-${LOCALIZED_ASSET_SUFFIX}' : '';
+		var localizedreturnpath:String = '${ogreturnpath.split('.')[0]}${suffix}.${ogreturnpath.split('.')[1]}';
 
 		if (localizedreturnpath == returnpath)
+		{
 			return returnpath;
+		}
 
 		if (exists(localizedreturnpath))
 		{
@@ -62,7 +65,9 @@ class FileManager
 		else
 		{
 			if (UNLOCALIZED_ASSETS.contains(localizedreturnpath))
+			{
 				return returnpath;
+			}
 
 			#if CNGLA_TRACES trace('Could not get localized asset: $localizedreturnpath'); #end
 			UNLOCALIZED_ASSETS.push(localizedreturnpath);
@@ -70,7 +75,9 @@ class FileManager
 		#end
 
 		if (exists(returnpath))
+		{
 			return returnpath;
+		}
 
 		trace('Could not get asset: $returnpath');
 		return '';
@@ -83,7 +90,9 @@ class FileManager
 	 * @return String
 	 */
 	public static function getAssetFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	{
 		return getPath('assets/', '$file', PATH_TYPE); // 'assets/default/$file
+	}
 
 	#if SCRIPT_FILES
 	/**
@@ -148,20 +157,26 @@ class FileManager
 	 * @return String
 	 */
 	public static function getSoundFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	{
 		return getAssetFile('$file.$SOUND_EXT', PATH_TYPE);
+	}
 
 	/**
 	 * Writes to a file or path using `sys`
 	 * @param path File path
 	 * @param content File content
 	 */
-	public static function writeToPath(path:String, content:String)
+	public static function writeToPath(path:String, content:String):Void
 	{
 		#if sys
 		if (path.length > 0)
+		{
 			File.saveContent(path, content);
+		}
 		else
+		{
 			throw 'A path is required.';
+		}
 		#else
 		trace('NOT SYS!');
 		#end
@@ -171,7 +186,7 @@ class FileManager
 	 * Read a file using `lime.utils.Assets` and a try catch function
 	 * @param path the path of the file your trying to read
 	 */
-	public static function readFile(path:String)
+	public static function readFile(path:String):String
 	{
 		try
 		{
@@ -203,7 +218,7 @@ class FileManager
 	 * Reads a directory if `sys` via `FileSystem.readDirectory`
 	 * @param dir This is the directory being read
 	 */
-	public static function readDirectory(dir:String)
+	public static function readDirectory(dir:String):Array<String>
 	{
 		#if sys
 		return FileSystem.readDirectory(dir);

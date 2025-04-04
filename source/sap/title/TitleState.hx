@@ -10,9 +10,9 @@ import sap.mainmenu.MainMenu;
 
 enum abstract TitleStates(Int) from Int to Int
 {
-	var INTRO = 0;
-	var FLASH = 1;
-	var DONE = 2;
+	public var INTRO = 0;
+	public var FLASH = 1;
+	public var DONE = 2;
 }
 
 class TitleState extends State
@@ -85,7 +85,9 @@ class TitleState extends State
 		add(versiontext);
 
 		if (CURRENT_STATE == INTRO)
+		{
 			Global.playSoundEffect('start-synth');
+		}
 
 		super.create();
 
@@ -102,7 +104,9 @@ class TitleState extends State
 		if (CURRENT_STATE == DONE)
 		{
 			if (!pressany.visible)
+			{
 				pressany.visible = true;
+			}
 
 			pressAny();
 		}
@@ -132,7 +136,7 @@ class TitleState extends State
 
 	public static dynamic function introState():Void
 	{
-                MedalData.unlockMedal('Welcome');
+		MedalData.unlockMedal('Welcome');
 
 		FlxTween.tween(charring, {y: charring.height + 16}, 1.0, {
 			ease: FlxEase.sineOut,
@@ -154,7 +158,9 @@ class TitleState extends State
 	public static dynamic function flashState():Void
 	{
 		if (CURRENT_STATE == FLASH)
+		{
 			FlxG.camera.flash(0xFFFFFF, 4);
+		}
 		Global.playMenuMusic();
 
 		pressany.y = pressanyTargY;
@@ -169,15 +175,23 @@ class TitleState extends State
 		Global.playMenuMusic();
 
 		if (pressany.y != pressanyTargY)
+		{
 			pressany.y = pressanyTargY;
+		}
 		if (!pressany.visible)
+		{
 			pressany.visible = true;
+		}
 
 		if (!titlebg.visible)
+		{
 			titlebg.visible = true;
+		}
 
 		if (charring.y != charring.height + 16)
+		{
 			charring.y = charring.height + 16;
+		}
 
 		randomBGChar(sinco, 6);
 		randomBGChar(port, 4);
