@@ -6,7 +6,7 @@ class MapCharacter extends FlxSprite
 	// char = (char == "Sinco") ? "Port" : "Sinco"
 	public var characterList:Map<String, String> = ["Sinco" => "Port", "Port" => "Sinco"];
 
-	override public function new(curchar:String = 'Sinco')
+	override public function new(curchar:String = 'Sinco'):Void
 	{
 		super();
 
@@ -17,7 +17,7 @@ class MapCharacter extends FlxSprite
 
 	public var char:String = 'Sinco';
 
-	public function swapCharacter()
+	public function swapCharacter():Void
 	{
 		char = characterList.get(char);
 
@@ -29,17 +29,17 @@ class MapCharacter extends FlxSprite
 		Global.scaleSprite(this);
 	}
 
-	public function lowercase_char()
+	public function lowercase_char():String
 	{
 		return char.toLowerCase();
 	}
 
-	public function animationname()
+	public function animationname():String
 	{
 		return animation.name;
 	}
 
-	public function swappedchar()
+	public function swappedchar():String
 	{
 		return characterList.get(char);
 	}

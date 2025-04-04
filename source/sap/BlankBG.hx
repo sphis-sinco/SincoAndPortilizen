@@ -2,7 +2,7 @@ package sap;
 
 class BlankBG extends FlxSprite
 {
-	override public function new()
+	override public function new():Void
 	{
 		super();
 

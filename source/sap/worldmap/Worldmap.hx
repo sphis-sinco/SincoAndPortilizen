@@ -21,7 +21,7 @@ class Worldmap extends State
 		return ["sinco" => [true, true, false, false], "port" => [true, false, false, false]];
 	}
 
-	override public function new(char:String = "Sinco")
+	override public function new(char:String = "Sinco"):Void
 	{
 		super();
 
@@ -30,7 +30,7 @@ class Worldmap extends State
 		mapGRP = new FlxTypedGroup<FlxSprite>();
 	}
 
-	override function create()
+	override function create():Void
 	{
 		super.create();
 
@@ -59,7 +59,7 @@ class Worldmap extends State
 
 	public static var mapTileXPosThing:Float = 0;
 
-	override function update(elapsed:Float)
+	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 
@@ -79,7 +79,7 @@ class Worldmap extends State
 		}
 	}
 
-	public dynamic function characterMove()
+	public dynamic function characterMove():Void
 	{
 		canSwap = false;
 		character.flipX = FlxG.keys.justReleased.LEFT;
@@ -113,29 +113,29 @@ class Worldmap extends State
 		}
 	}
 
-	public dynamic function playLevel()
+	public dynamic function playLevel():Void
 	{
 		switch (current_level)
 		{
 			// TODO: implement level unlocking PLEASE
 			case 1:
 				level1();
-                        case 2:
-                                level2();
+			case 2:
+				level2();
 		}
 	}
 
-	public dynamic function level1()
+	public dynamic function level1():Void
 	{
 		FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1() : new Stage4()));
 	}
 
-	public dynamic function level2()
+	public dynamic function level2():Void
 	{
 		FlxG.switchState(() -> (new Stage2()));
 	}
 
-	public dynamic function swap()
+	public dynamic function swap():Void
 	{
 		canSwap = false;
 		charWheel.animation.play('${character.lowercase_char()}-${character.swappedchar().toLowerCase()}');
@@ -146,7 +146,7 @@ class Worldmap extends State
 		});
 	}
 
-	public dynamic function swapWaitDone()
+	public dynamic function swapWaitDone():Void
 	{
 		Global.changeDiscordRPCPresence('In the worldmap as ${character.swappedchar()}', null);
 
@@ -166,7 +166,7 @@ class Worldmap extends State
 
 	public static var canSwap:Bool = true;
 
-	public dynamic function makeMap()
+	public dynamic function makeMap():Void
 	{
 		var i = 0;
 		while (i < 3)
@@ -177,18 +177,30 @@ class Worldmap extends State
 		}
 	}
 
-	public dynamic function makeNewTile(i:Int)
+	public dynamic function makeNewTile(i:Int):Void
 	{
 		// TODO: change these to use MapTile once you figure out the bug
+                // ?: What bug? lol.
 
 		var level:FlxSprite = new FlxSprite(mapTileXPosThing - 12 + (i * 256), character.getGraphicMidpoint().y);
 		var tileColor:FlxColor = FlxColor.BLACK;
 
 		if (implementedLevels.get(character.lowercase_char())[i] != false)
 		{
+			var addition:Int = 0;
+
+			if (character.lowercase_char() == 'port')
+			{
+				addition = 3;
+			}
+
 			tileColor = FlxColor.RED;
 
-			// TODO: implement color change for when a level is finished
+			// * TODO (DONE): implement color change for when a level is finished
+			if (SaveManager.getGameplaystatus().levels_complete.contains((i + 1) + addition))
+			{
+				tileColor = FlxColor.LIME;
+			}
 		}
 
 		level.makeGraphic(24, 24, tileColor);
