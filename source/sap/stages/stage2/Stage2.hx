@@ -42,7 +42,7 @@ class Stage2 extends State
                         rock.setPosition(FlxG.width - rock.width, -rock.height);
                         rockGroup.add(rock);
 
-                        FlxTween.tween(rock, {x: rock.width, y: (bg.graphic.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER) / 2}, FlxG.random.float(2, 4), {
+                        FlxTween.tween(rock, {x: rock.width, y: (bg.graphic.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER) / 2}, FlxG.random.float(2, 6), {
                                 onUpdate: tween -> {},
                                 onComplete: tween ->
                                 {
