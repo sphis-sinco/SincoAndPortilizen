@@ -28,7 +28,7 @@ class ResultsMenu extends State
 
 	public var nextState:NextState;
 
-	override public function new(goods:Int = 0, total:Int = 0, nextState:NextState, ?char:String = 'sinco')
+	override public function new(goods:Int = 0, total:Int = 0, nextState:NextState, ?char:String = 'sinco'):Void
 	{
 		this.nextState = nextState;
 
@@ -101,7 +101,7 @@ class ResultsMenu extends State
 		super.update(elapsed);
 	}
 
-	public static dynamic function playRankMusic()
+	public static dynamic function playRankMusic():Void
 	{
 		var songSuffix:String = STATIC_RANK_CLASS.gradeUntranslated(STATIC_TARGET_PERCENT);
 
@@ -151,7 +151,7 @@ class ResultsMenu extends State
 		REACHED_TARGET_PERCENT = true;
 	}
 
-	public static dynamic function rankBGColor()
+	public static dynamic function rankBGColor():Void
 	{
 		switch (STATIC_RANK_CLASS.gradeUntranslated(STATIC_TARGET_PERCENT))
 		{

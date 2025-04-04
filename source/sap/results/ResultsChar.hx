@@ -4,7 +4,7 @@ class ResultsChar extends FlxSprite
 {
 	public var char:String = 'sinco';
 
-	override public function new(char:String = 'sinco')
+	override public function new(char:String = 'sinco'):Void
 	{
 		super();
 

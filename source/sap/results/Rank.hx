@@ -4,7 +4,7 @@ class Rank
 {
 	public var RANK:String = '';
 
-	public function new(percent:Float = 0.0)
+	public function new(percent:Float = 0.0):Void
 	{
 		RANK = grade(percent);
 	}

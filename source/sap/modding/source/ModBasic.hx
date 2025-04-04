@@ -16,7 +16,7 @@ class ModBasic extends FlxBasic
 	 * New ModBasic.
 	 * @param enabled Should the mod already be enabled
 	 */
-	override public function new(?enabled:Bool = false)
+	override public function new(?enabled:Bool = false):Void
 	{
 		super();
 
@@ -49,7 +49,7 @@ class ModBasic extends FlxBasic
 	 * Run every frame
 	 * @param elapsed elapsed
 	 */
-	override public function update(elapsed:Float)
+	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 	}
@@ -59,7 +59,7 @@ class ModBasic extends FlxBasic
 	 * 
 	 * If the mod hasn't run create then it is run
 	 */
-	public function toggleEnabled()
+	public function toggleEnabled():Void
 	{
 		this.enabled = !this.enabled;
 

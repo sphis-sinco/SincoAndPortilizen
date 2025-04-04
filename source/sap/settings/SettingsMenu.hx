@@ -17,7 +17,7 @@ class SettingsMenu extends FlxSubState
 
 	public static var overlay:BlankBG;
 
-	override function create()
+	override function create():Void
 	{
 		new_windowres = '${FlxG.width}x${FlxG.height}';
 
@@ -36,7 +36,7 @@ class SettingsMenu extends FlxSubState
 		super.create();
 	}
 
-	public static function saveValuesUpdate()
+	public static function saveValuesUpdate():Void
 	{
 		saveValues_array = [];
 		saveValue_length = 0;
@@ -49,14 +49,14 @@ class SettingsMenu extends FlxSubState
 		#end
 	}
 
-	public static function newSaveValue(name:String, value:Any)
+	public static function newSaveValue(name:String, value:Any):Void
 	{
 		saveValues.set(name, value);
 		saveValues_array.push(name);
 		saveValue_length++;
 	}
 
-	override function update(elapsed:Float)
+	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justReleased.UP)
 		{
@@ -90,7 +90,7 @@ class SettingsMenu extends FlxSubState
 		super.update(elapsed);
 	}
 
-	public static dynamic function updateSettings()
+	public static dynamic function updateSettings():Void
 	{
 		switch (SELECTED_SETTING)
 		{
@@ -111,7 +111,7 @@ class SettingsMenu extends FlxSubState
 		createSettingsText();
 	}
 
-	public static function window_res(res:String, change:Bool = false)
+	public static function window_res(res:String, change:Bool = false):Void
 	{
 		if (change)
 		{
@@ -135,7 +135,7 @@ class SettingsMenu extends FlxSubState
                 }
 	}
 
-	public static function createSettingsText()
+	public static function createSettingsText():Void
 	{
 		TryCatch.tryCatch(() ->
 		{

@@ -20,20 +20,20 @@ class MassMod extends ModBasic
 
 	var canModCredits:Bool = false;
 
-	override public function new()
+	override public function new():Void
 	{
 		super(false);
 
 		instance = this;
 	}
 
-	override function create()
+	override function create():Void
 	{
 		trace('Mass mod');
 
 		TitleState.get_versiontext = function():String
 		{
-			return 'v.mass mod6969';
+			return 'v.mass mod6969.1';
 		}
 
 		Global.change_saveslot((SLGame.isDebug) ? 'debug_massmod' : 'release_massmod');
@@ -46,7 +46,7 @@ class MassMod extends ModBasic
 		super.create();
 	}
 
-	override function onStateSwitchComplete()
+	override function onStateSwitchComplete():Void
 	{
 		super.onStateSwitchComplete();
 
@@ -104,7 +104,7 @@ class MassMod extends ModBasic
 			&& Stage1.osin_canjump);
 	}
 
-	function newRankBGColors()
+	function newRankBGColors():Void
 	{
 		switch (ResultsMenu.STATIC_RANK_CLASS.gradeUntranslated(ResultsMenu.STATIC_TARGET_PERCENT))
 		{
@@ -117,7 +117,7 @@ class MassMod extends ModBasic
 		}
 	}
 
-	override function onPostUpdate()
+	override function onPostUpdate():Void
 	{
 		super.onPostUpdate();
 		canModCredits = (CreditsSubState != null);
@@ -131,7 +131,7 @@ class MassMod extends ModBasic
 		});
 	}
 
-	override function onPreStateCreate(state:FlxState)
+	override function onPreStateCreate(state:FlxState):Void
 	{
 		super.onPreStateCreate(state);
 

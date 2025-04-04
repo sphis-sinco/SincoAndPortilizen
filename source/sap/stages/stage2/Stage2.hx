@@ -4,7 +4,7 @@ class Stage2 extends State
 {
         public static var sinco:Stage2Sinco;
 
-        override function create() {
+        override function create():Void {
                 super.create();
 
                 var bg:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage2Background'));
@@ -26,7 +26,7 @@ class Stage2 extends State
                 FlxTween.tween(rock, {x: rock.width, y: (bg.graphic.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER) / 2}, 4, { onUpdate: tween -> {}, onComplete: tween -> {}});
         }
 
-        override function update(elapsed:Float) {
+        override function update(elapsed:Float):Void {
                 super.update(elapsed);
         }
         

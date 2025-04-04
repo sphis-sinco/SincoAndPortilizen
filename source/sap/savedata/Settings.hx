@@ -2,7 +2,7 @@ package sap.savedata;
 
 class Settings
 {
-	public static function returnDefaultSettings()
+	public static function returnDefaultSettings():Dynamic
 	{
 		return {
                         window_res: "640x608"
@@ -12,7 +12,7 @@ class Settings
 	/**
 	 * This makes sure there are no null values
 	 */
-	public static function setupSettings()
+	public static function setupSettings():Void
 	{
 		// just the base thing
 		FlxG.save.data.settings ??= returnDefaultSettings();

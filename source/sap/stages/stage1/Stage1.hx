@@ -24,7 +24,7 @@ class Stage1 extends State
 	public static var osinHealthIndicator:FlxText;
 	public static var sincoHealthIndicator:FlxText;
 
-	override function create()
+	override function create():Void
 	{
 		super.create();
 
@@ -71,7 +71,7 @@ class Stage1 extends State
                 osin_canjump = true;
 	}
 
-	override function postCreate()
+	override function postCreate():Void
 	{
 		super.postCreate();
 
@@ -107,7 +107,7 @@ class Stage1 extends State
 	public static var osin_canjump:Bool = true;
 	public static var osin_warning:Bool = false;
 
-	public static dynamic function getOsinJumpCondition()
+	public static dynamic function getOsinJumpCondition():Bool
 	{
 		return (SINCO_HEALTH >= 1
 			&& OSIN_HEALTH >= 1
@@ -116,7 +116,7 @@ class Stage1 extends State
 			&& osin_canjump);
 	}
 
-	override function update(elapsed:Float)
+	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 
@@ -139,7 +139,7 @@ class Stage1 extends State
 		osinDeathCheck();
 	}
 
-	public static dynamic function updateHealthIndicators()
+	public static dynamic function updateHealthIndicators():Void
 	{
 		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
 		osinHealthIndicator.text = '${Global.getLocalizedPhrase('HP')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
@@ -150,7 +150,7 @@ class Stage1 extends State
 		sincoHealthIndicator.text = '${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH';
 	}
 
-	public static dynamic function osinJumpWait()
+	public static dynamic function osinJumpWait():Void
 	{
 		osin_canjump = false;
 		FlxTimer.wait(FlxG.random.float(0, 2), () ->
@@ -159,7 +159,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function playerControls()
+	public static dynamic function playerControls():Void
 	{
 		if (FlxG.keys.justPressed.SPACE)
 		{
@@ -183,7 +183,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function sincoDeathCheck()
+	public static dynamic function sincoDeathCheck():Void
 	{
 		if (SINCO_HEALTH < 1)
 		{
@@ -196,7 +196,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function osinDeathCheck()
+	public static dynamic function osinDeathCheck():Void
 	{
 		if (OSIN_HEALTH < 1)
 		{
@@ -211,7 +211,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function osinWarning()
+	public static dynamic function osinWarning():Void
 	{
 		osin.animation.play('jump');
 		osin_warning = true;
@@ -223,7 +223,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinJump()
+	public static dynamic function osinJump():Void
 	{
 		osin_warning = false;
 		osin.animation.play('jump');
@@ -236,7 +236,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinJumpDone()
+	public static dynamic function osinJumpDone():Void
 	{
 		var waitn = .25;
 
@@ -252,7 +252,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinHitSincoCheck()
+	public static dynamic function osinHitSincoCheck():Void
 	{
 		sincoHealthIndicator.color = 0xff0000;
 		FlxTween.tween(sincoHealthIndicator, {color: 0xffffff}, 1);
@@ -264,7 +264,7 @@ class Stage1 extends State
 			return;
 	}
 
-	public static dynamic function osinJumpBack()
+	public static dynamic function osinJumpBack():Void
 	{
 		FlxTween.tween(osin, {x: osinPos.x, y: osinPos.y}, osin_jump_speed, {
 			onComplete: _tween ->
@@ -275,7 +275,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function sincoJump()
+	public static dynamic function sincoJump():Void
 	{
 		FlxTween.tween(sinco, {x: osinPos.x, y: osinPos.y}, sinco_jump_speed, {
 			onComplete: _tween ->
@@ -285,7 +285,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function sincoJumpBack()
+	public static dynamic function sincoJumpBack():Void
 	{
 		osinHurtCheck();
 
@@ -299,7 +299,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinHurtCheck()
+	public static dynamic function osinHurtCheck():Void
 	{
 		if (sinco.overlaps(osin) && osin.animation.name != 'jump')
 		{
@@ -311,7 +311,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function sincoDodge()
+	public static dynamic function sincoDodge():Void
 	{
 		FlxTween.tween(sinco, {x: osinPos.x}, sinco_jump_speed, {
 			onComplete: _tween ->
@@ -321,7 +321,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function sincoDodgeRecoil()
+	public static dynamic function sincoDodgeRecoil():Void
 	{
 		FlxTween.tween(sinco, {x: sincoPos.x,}, sinco_jump_speed, {
 			onComplete: _tween ->
@@ -332,7 +332,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function sincoDefeated()
+	public static dynamic function sincoDefeated():Void
 	{
 		FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
@@ -346,7 +346,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinDefeated()
+	public static dynamic function osinDefeated():Void
 	{
 		FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
@@ -360,7 +360,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function deathSFX(name:String = 'dead')
+	public static dynamic function deathSFX(name:String = 'dead'):Void
 	{
 		if (!playedDeathFX)
 		{
@@ -369,7 +369,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function endCutsceneTransition()
+	public static dynamic function endCutsceneTransition():Void
 	{
                 MedalData.unlockMedal('Faker clash');
 

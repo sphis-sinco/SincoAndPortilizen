@@ -2,7 +2,7 @@ package sap.stages.stage1;
 
 class Osin extends FlxSprite
 {
-	public function new()
+	public function new():Void
 	{
 		super();
 

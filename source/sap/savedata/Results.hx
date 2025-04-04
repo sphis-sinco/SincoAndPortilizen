@@ -2,7 +2,7 @@ package sap.savedata;
 
 class Results
 {
-	public static function returnDefaultResults()
+	public static function returnDefaultResults():Dynamic
 	{
 		return {
 			grade: "F",
@@ -13,7 +13,7 @@ class Results
 	/**
 	 * This makes sure there are no null values
 	 */
-	public static function setupResults()
+	public static function setupResults():Void
 	{
 		// just the base thing
 		FlxG.save.data.results ??= returnDefaultResults();

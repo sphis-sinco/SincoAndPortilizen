@@ -16,7 +16,7 @@ class Stage4 extends State
 	public static var timerText:FlxText;
 	public static var time:Int = 0;
 
-	override function create()
+	override function create():Void
 	{
 		super.create();
 
@@ -58,7 +58,7 @@ class Stage4 extends State
                 enemyCanAttack = true;
 	}
 
-        override function postCreate() {
+        override function postCreate():Void {
                 super.postCreate();
 
                 var tutorial:FlxSprite = new FlxSprite();
@@ -72,13 +72,13 @@ class Stage4 extends State
                 });
         }
 
-	public static dynamic function levelComplete()
+	public static dynamic function levelComplete():Void
 	{
 		Global.beatLevel(4);
 		moveToResultsMenu();
 	}
 
-	public static dynamic function waitSec()
+	public static dynamic function waitSec():Void
 	{
 		timerText.text = Std.string(StageGlobals.STAGE4_START_TIMER - time);
 
@@ -95,7 +95,7 @@ class Stage4 extends State
 	public static var portJumping:Bool = false;
 	public static var portJumpSpeed:Float = 0.5;
 
-	override function update(elapsed:Float)
+	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justReleased.SPACE && !portJumping)
 		{
@@ -116,7 +116,7 @@ class Stage4 extends State
 		return (FlxG.random.bool(25) && enemyCanAttack);
 	}
 
-	public static dynamic function portPreJump()
+	public static dynamic function portPreJump():Void
 	{
 		portJumping = true;
 
@@ -126,7 +126,7 @@ class Stage4 extends State
 		portJump(portjumpheight);
 	}
 
-	public static dynamic function portJump(portjumpheight:Float)
+	public static dynamic function portJump(portjumpheight:Float):Void
 	{
                 Global.playSoundEffect('gameplay/portilizen-jump-stage4');
 		FlxTween.tween(port, {y: port.y - portjumpheight}, portJumpSpeed, {
@@ -137,7 +137,7 @@ class Stage4 extends State
 		});
 	}
 
-	public static dynamic function portFall(portjumpheight:Float)
+	public static dynamic function portFall(portjumpheight:Float):Void
 	{
 		FlxTween.tween(port, {y: port.y + portjumpheight}, portJumpSpeed, {
 			onComplete: tween ->
@@ -148,7 +148,7 @@ class Stage4 extends State
 		});
 	}
 
-	public static dynamic function enemyCharge()
+	public static dynamic function enemyCharge():Void
 	{
 		FlxTween.tween(enemy, {x: port.x}, 1, {
 			onComplete: tween ->
@@ -158,7 +158,7 @@ class Stage4 extends State
 		});
 	}
 
-	public static dynamic function enemyChargeComplete()
+	public static dynamic function enemyChargeComplete():Void
 	{
 		if (enemy.overlaps(port))
 		{
@@ -169,12 +169,12 @@ class Stage4 extends State
 		enemyRetreat();
 	}
 
-        public static dynamic function moveToResultsMenu() {
+        public static dynamic function moveToResultsMenu():Void {
                 MedalData.unlockMedal('Dimensions reached');
                 FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE4_START_TIMER, () -> new Worldmap("Port"), "port"));
         }
 
-	public static dynamic function enemyRetreat()
+	public static dynamic function enemyRetreat():Void
 	{
 		FlxTween.tween(enemy, {x: enemyX}, 1, {
 			onComplete: enemyRetreatComplete()

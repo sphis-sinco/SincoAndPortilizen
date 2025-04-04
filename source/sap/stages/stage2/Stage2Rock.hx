@@ -3,7 +3,7 @@ package sap.stages.stage2;
 class Stage2Rock extends FlxSprite
 {
 
-        override public function new() {
+        override public function new():Void {
                 super();
 
                 loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage2Rocks'), true, 32, 32);

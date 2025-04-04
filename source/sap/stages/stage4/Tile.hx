@@ -2,7 +2,7 @@ package sap.stages.stage4;
 
 class Tile extends FlxSprite
 {
-	override public function new()
+	override public function new():Void
 	{
 		super();
 

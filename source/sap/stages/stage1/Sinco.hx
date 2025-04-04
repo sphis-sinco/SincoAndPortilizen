@@ -2,7 +2,7 @@ package sap.stages.stage1;
 
 class Sinco extends FlxSprite
 {
-	public function new()
+	public function new():Void
 	{
 		super();
 

@@ -2,7 +2,7 @@ package sap.savedata;
 
 class GameplayStatus
 {
-	public static function returnDefaultGameplayStatus()
+	public static function returnDefaultGameplayStatus():Dynamic
 	{
 		return {
 			levels_complete: [],
@@ -12,7 +12,7 @@ class GameplayStatus
 	/**
 	 * This makes sure there are no null values
 	 */
-	public static function setupGameplayStatus()
+	public static function setupGameplayStatus():Void
 	{
 		// just the base thing
 		FlxG.save.data.gameplaystatus ??= returnDefaultGameplayStatus();
