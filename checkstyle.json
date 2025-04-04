@@ -37,10 +37,6 @@
       "type": "AvoidIdentifier"
     },
     {
-      "props": {},
-      "type": "AvoidStarImport"
-    },
-    {
       "props": {
         "severity": "IGNORE"
       },
@@ -67,14 +63,6 @@
     {
       "props": {},
       "type": "CommentedOutCode"
-    },
-    {
-      "props": {
-        "policy": "aligned",
-        "allowSingleline": true,
-        "severity": "INFO"
-      },
-      "type": "ConditionalCompilation"
     },
     {
       "props": {

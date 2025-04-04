@@ -3,12 +3,10 @@ package;
 import flixel.system.debug.log.LogStyle;
 import flixel.util.typeLimit.NextState;
 import sap.credits.CreditsSubState;
-import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.modding.source.ModListManager;
 import sap.modding.source.mods.MassMod;
 import sap.results.ResultsMenu;
-import sap.settings.SettingsMenu;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
@@ -37,7 +35,6 @@ class InitState extends FlxState
                 FlxG.sound.volumeDownKeys = [];
                 FlxG.sound.muteKeys = [];
                 trace('Disabled volume keys');
-                
                 FileManager.FILE_MANAGER_VERSION_SUFFIX = '-SincoAndPortilizen';
                 trace('FILE_MANAGER_VERSION_SUFFIX: ${FileManager.FILE_MANAGER_VERSION_SUFFIX}');
 

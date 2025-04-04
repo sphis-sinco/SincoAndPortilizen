@@ -61,7 +61,7 @@ class DiscordClient
 
 	public static function initialize():Void
 	{
-		var DiscordDaemon = sys.thread.Thread.create(() ->
+		var DiscordDaemon:sys.thread.Thread = sys.thread.Thread.create(() ->
 		{
 			new DiscordClient();
 		});

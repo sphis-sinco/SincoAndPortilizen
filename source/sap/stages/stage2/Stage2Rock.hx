@@ -22,5 +22,4 @@ class Stage2Rock extends FlxSprite
 
                 Global.scaleSprite(this);
         }
-        
 }

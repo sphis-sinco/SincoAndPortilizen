@@ -1,3 +1,5 @@
+package;
+
 import funkin.util.plugins.ScreenshotPlugin;
 
 class Plugins

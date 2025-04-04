@@ -185,7 +185,7 @@ class Worldmap extends State
 		var level:FlxSprite = new FlxSprite(mapTileXPosThing - 12 + (i * 256), character.getGraphicMidpoint().y);
 		var tileColor:FlxColor = FlxColor.BLACK;
 
-		if (implementedLevels.get(character.lowercase_char())[i] != false)
+		if (implementedLevels.get(character.lowercase_char())[i])
 		{
 			var addition:Int = 0;
 

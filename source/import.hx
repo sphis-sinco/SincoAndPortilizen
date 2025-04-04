@@ -1,3 +1,5 @@
+package;
+
 import flixel.*;
 import flixel.addons.display.FlxBackdrop;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -48,4 +50,3 @@ import sys.io.File;
 #if DISCORDRPC
 import Discord.DiscordClient;
 #end
-

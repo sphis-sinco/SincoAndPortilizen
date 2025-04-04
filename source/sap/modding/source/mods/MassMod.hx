@@ -3,8 +3,6 @@ package sap.modding.source.mods;
 import flixel.util.FlxColor;
 import sap.credits.CreditsEntry;
 import sap.credits.CreditsSubState;
-import sap.cutscenes.PanelCutscene;
-import sap.cutscenes.intro.IntroCutscene;
 import sap.mainmenu.MainMenu;
 import sap.results.ResultsMenu;
 import sap.stages.StageGlobals;
@@ -42,7 +40,6 @@ class MassMod extends ModBasic
 
                 StageGlobals.STAGE1_OPPONENT_MAX_HEALTH = 100;
                 StageGlobals.STAGE1_PLAYER_MAX_HEALTH = 5;
-                
 		super.create();
 	}
 
@@ -80,7 +77,6 @@ class MassMod extends ModBasic
 		if (Global.getCurrentState() == "Stage4")
 		{
 			trace('Stage 4!');
-                        
 			Stage4.enemyAttackCondition = function():Bool
 			{
 				return true;
