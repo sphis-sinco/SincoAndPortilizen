@@ -18,7 +18,7 @@ class Worldmap extends State
 
 	static function get_implementedLevels():Map<String, Array<Bool>>
 	{
-		return ["sinco" => [true, true, false, false], "port" => [true, false, false, false]];
+		return ["sinco" => [true, false, false], "port" => [true, false, false]];
 	}
 
 	override public function new(char:String = "Sinco"):Void
@@ -196,7 +196,7 @@ class Worldmap extends State
 
 			tileColor = FlxColor.RED;
 
-			// * TODO (DONE): implement color change for when a level is finished
+			// * TODO (DONE?): implement color change for when a level is finished
 			if (SaveManager.getGameplaystatus().levels_complete.contains((i + 1) + addition))
 			{
 				tileColor = FlxColor.LIME;

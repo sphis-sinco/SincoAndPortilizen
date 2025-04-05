@@ -1,5 +1,5 @@
 # Alpha
-## 0.3.0a - 4/??/2025
+## 0.2.2a - 4/5/2025
 - Updated osin assets
 - Fixed bug where stage 4 would crash because when jumping ([#19](#19_link))
 - Fixed window resolution option not being accurate to the actual resolution (This was due to the missing window resolution save value)
