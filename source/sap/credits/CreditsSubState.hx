@@ -15,8 +15,6 @@ class CreditsSubState extends FlxSubState
 	{
 		super.create();
                 
-                add(MedalData.unlockMedal('Huh, someone cares'));
-
 		overlay = new BlankBG();
 		overlay.color = 0x000000;
 		overlay.alpha = 0.5;
@@ -41,6 +39,8 @@ class CreditsSubState extends FlxSubState
 			cur_y += credit.spacing;
 			totalSpacing += credit.spacing;
 		}
+                
+                add(MedalData.unlockMedal('Huh, someone cares'));
 	}
 
 	override function update(elapsed:Float):Void
