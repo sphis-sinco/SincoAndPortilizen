@@ -80,6 +80,7 @@ class InitState extends FlxState
 	public static dynamic function proceed():Void
 	{
                 trace('Proceeding');
+                SaveManager.setupSave();
 
 		#if !DISABLE_PLUGINS
 		Plugins.init();
