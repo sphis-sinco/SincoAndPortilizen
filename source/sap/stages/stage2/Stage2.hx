@@ -48,6 +48,7 @@ class Stage2 extends State
                                         onUpdate: tween -> {},
                                         onComplete: tween ->
                                         {
+                                                rock.blowUpSFX();
                                                 destroyRock(rock);
                                         }
                                 });
