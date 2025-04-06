@@ -147,7 +147,7 @@ class ResultsMenu extends State
 	{
 		if (!REACHED_TARGET_PERCENT)
 		{
-			trace('Rank Target Made!');
+			trace('Rank Target (${TARGET_PERCENT}%) Made!');
 		}
 		else
 		{
