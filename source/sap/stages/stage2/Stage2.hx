@@ -66,6 +66,8 @@ class Stage2 extends State
 		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH, () -> new Worldmap("Sinco"), "sinco"));
 	}
 
+	static var decrease:Float = 0;
+
 	public static dynamic function spawnRocks(amount:Int = 1):Void
 	{
 		var index:Int = 0;
@@ -82,6 +84,9 @@ class Stage2 extends State
 				FlxTween.tween(rock, {x: rock.width, y: positioncalc}, FlxG.random.float(2, 6), {
 					onComplete: tween ->
 					{
+						bg.y += StageGlobals.STAGE2_BG_POSITION_DECREASE;
+						sinco.y += StageGlobals.STAGE2_BG_POSITION_DECREASE;
+						decrease += StageGlobals.STAGE2_BG_POSITION_DECREASE;
 						rockHitTempoCity();
 						rock.blowUpSFX();
 						destroyRock(rock);
@@ -97,31 +102,47 @@ class Stage2 extends State
 	{
 		TEMPO_CITY_HEALTH--;
 		FlxG.camera.flash(FlxColor.WHITE, .1);
-		if (sinco.y == StageGlobals.STAGE2_PLAYER_START_Y)
+		if (sinco.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
 			sinco.animation.play('fail');
-			FlxTimer.wait(.5, function()
+			FlxTimer.wait(1, function()
 			{
-				sinco.animation.play('idle');
+				if (sinco.animation.name != StageGlobals.JUMP_KEYWORD)
+				{
+					sinco.animation.play('idle');
+				}
 			});
 		}
 
 		if (TEMPO_CITY_HEALTH == 0)
 		{
-			moveToResultsMenu();
+			FlxTween.tween(bg, {y: FlxG.height * 2}, .2);
+			FlxTween.tween(sinco, {y: FlxG.height * 2 + start_y}, .2, {
+				onComplete: _tween ->
+				{
+					FlxTimer.wait(1, function()
+					{
+						moveToResultsMenu();
+					});
+				}
+			});
 		}
 	}
 
 	public static dynamic function destroyRock(rock:Stage2Rock):Void
 	{
-		if (rockGroup.members.length < max_rocks)
+		if (TEMPO_CITY_HEALTH != 0)
 		{
-			spawnRocks(FlxG.random.int(1, 2));
+			if (rockGroup.members.length < max_rocks)
+			{
+				spawnRocks(FlxG.random.int(1, 2));
+			}
+			else
+			{
+				spawnRocks(1);
+			}
 		}
-		else
-		{
-			spawnRocks(1);
-		}
+
 		rock.destroy();
 		rockGroup.members.remove(rock);
 	}
@@ -150,7 +171,7 @@ class Stage2 extends State
 
 	public static dynamic function unjump():Void
 	{
-		FlxTween.tween(sinco, {y: start_y}, jump_speed, {
+		FlxTween.tween(sinco, {y: (start_y + decrease)}, jump_speed + ((StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH - TEMPO_CITY_HEALTH) / 100), {
 			onComplete: _tween ->
 			{
 				sinco.animation.play('idle');
@@ -173,16 +194,17 @@ class Stage2 extends State
 			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
 			Global.playSoundEffect('gameplay/sinco-jump');
 
-			FlxTween.tween(sinco, {y: start_y - jump_y_offset}, jump_speed, {
-				onUpdate: _tween ->
-				{
-					destroyRockCheck();
-				},
-				onComplete: _tween ->
-				{
-					unjump();
-				}
-			});
+			FlxTween.tween(sinco, {y: (start_y + decrease) - (jump_y_offset + (decrease / 1.5))},
+				jump_speed + ((StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH - TEMPO_CITY_HEALTH) / 100), {
+					onUpdate: _tween ->
+					{
+						destroyRockCheck();
+					},
+					onComplete: _tween ->
+					{
+						unjump();
+					}
+				});
 		}
 	}
 }
