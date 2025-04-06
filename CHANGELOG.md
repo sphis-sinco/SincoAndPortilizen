@@ -1,5 +1,6 @@
 # Alpha
 ## 0.3.0a - 4/14/2025
+- The player now starts on the last level selected in the worldmap
 - Added back custom Stage 1 background created by @iampauleps
 - Added Medals
 - Added stage 2
