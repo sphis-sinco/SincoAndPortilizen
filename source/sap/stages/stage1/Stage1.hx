@@ -33,6 +33,14 @@ class Stage1 extends State
 		osinHealthIndicator = new FlxText();
 		sincoHealthIndicator = new FlxText();
 
+		var backgroundBack = new SparrowSprite('gameplay/sinco stages/StageOneBackground');
+
+		backgroundBack.addAnimationByPrefix('actualstagebg', 'actualstagebg', 24);
+		backgroundBack.animation.play('actualstagebg');
+
+		backgroundBack.screenCenter();
+		add(backgroundBack);
+
 		background = new FlxSprite();
 		background.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
 

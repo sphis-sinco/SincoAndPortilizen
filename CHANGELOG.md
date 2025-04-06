@@ -1,5 +1,6 @@
 # Alpha
 ## 0.3.0a - 4/14/2025
+- Added back custom Stage 1 background created by @iampauleps
 - Added Medals
 - Added stage 2
 - Fixed portilizen map being sincos map after swapping
