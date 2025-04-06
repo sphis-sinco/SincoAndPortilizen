@@ -194,7 +194,7 @@ class Stage2 extends State
 			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
 			Global.playSoundEffect('gameplay/sinco-jump');
 
-			FlxTween.tween(sinco, {y: (start_y + decrease) - (jump_y_offset + (decrease / 1.5))},
+			FlxTween.tween(sinco, {y: (start_y + decrease) - (jump_y_offset + (decrease / 1.45))},
 				jump_speed + ((StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH - TEMPO_CITY_HEALTH) / 100), {
 					onUpdate: _tween ->
 					{
