@@ -18,50 +18,64 @@ class InitState extends FlxState
 {
 	override public function create():Void
 	{
+		InitState.ModsInit();
+		InitState.LanguageInit();
+
+		// Set the saveslot to a debug saveslot or a release saveslot
+		Global.change_saveslot((SLGame.isDebug) ? 'debug' : 'release');
+
+		#if DISCORDRPC
+		Discord.DiscordClient.initialize();
+		#end
+
 		// Make errors and warnings less annoying.
 		#if DISABLE_ANNOYING_ERRORS
 		LogStyle.ERROR.openConsole = false;
 		LogStyle.ERROR.errorSound = null;
-                trace('Disabled annoying errors');
+		trace('Disabled annoying errors');
 		#end
 
 		#if DISABLE_ANNOYING_WARNINGS
 		LogStyle.WARNING.openConsole = false;
 		LogStyle.WARNING.errorSound = null;
-                trace('Disabled annoying warnings');
+		trace('Disabled annoying warnings');
 		#end
 
-                FlxG.sound.volumeUpKeys = [];
-                FlxG.sound.volumeDownKeys = [];
-                FlxG.sound.muteKeys = [];
-                trace('Disabled volume keys');
-                FileManager.FILE_MANAGER_VERSION_SUFFIX = '-SincoAndPortilizen';
-                trace('FILE_MANAGER_VERSION_SUFFIX: "${FileManager.FILE_MANAGER_VERSION_SUFFIX}"');
+		FlxG.sound.volumeUpKeys = [];
+		FlxG.sound.volumeDownKeys = [];
+		FlxG.sound.muteKeys = [];
+		trace('Disabled volume keys');
+		FileManager.FILE_MANAGER_VERSION_SUFFIX = '-SincoAndPortilizen';
+		trace('FILE_MANAGER_VERSION_SUFFIX: "${FileManager.FILE_MANAGER_VERSION_SUFFIX}"');
 
-		TryCatch.tryCatch(() -> {
-                        CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
-                }, {
-                        errFunc: () -> {
-                                trace('Error while loading credits JSON');
-                                CreditsSubState.creditsJSON = [
-                                        {
-                                                "text": "Credits could not load",
-                                                "size": 10,
-                                                "color": [255, 255, 255],
-                                                "spacing": 500
-                                        }
-                                ];
-                        }
-                });
-                trace('Loaded credits JSON');
+		TryCatch.tryCatch(() ->
+		{
+			CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
+		}, {
+				errFunc: () ->
+				{
+					trace('Error while loading credits JSON');
+					CreditsSubState.creditsJSON = [
+						{
+							"text": "Credits could not load",
+							"size": 10,
+							"color": [255, 255, 255],
+							"spacing": 500
+						}
+					];
+				}
+		});
+		trace('Loaded credits JSON');
 
 		if (!SLGame.isDebug)
-                {
-                        trace('Game is not a debug build, auto-proceed');
+		{
+			trace('Game is not a debug build, auto-proceed');
 			proceed();
-                } else {
-                        trace('Game is a debug build');
-                }
+		}
+		else
+		{
+			trace('Game is a debug build');
+		}
 
 		super.create();
 	}
@@ -79,12 +93,12 @@ class InitState extends FlxState
 
 	public static dynamic function proceed():Void
 	{
-                trace('Proceeding');
-                SaveManager.setupSave();
+		trace('Proceeding');
+		SaveManager.setupSave();
 
 		#if !DISABLE_PLUGINS
 		Plugins.init();
-                trace('Initalizing plugins');
+		trace('Initalizing plugins');
 		#end
 
 		#if CUTSCENE_TESTING
@@ -120,7 +134,7 @@ class InitState extends FlxState
 		return;
 		#end
 
-                trace('Starting game regularly');
+		trace('Starting game regularly');
 		FlxG.switchState(TitleState.new);
 	}
 
@@ -133,27 +147,29 @@ class InitState extends FlxState
 	public static function ModsInit():Void
 	{
 		#if MASS_MOD
-                trace('MassMod added');
-                ModListManager.addMod(new MassMod());
-                #end
+		trace('MassMod added');
+		ModListManager.addMod(new MassMod());
+		#end
 		ModListManager.create();
 
 		#if MASS_MOD
-                MassMod.instance.toggleEnabled();
-                #end
+		MassMod.instance.toggleEnabled();
+		#end
 	}
 
 	public static dynamic function LanguageInit():Void
 	{
 		LocalizationManager.LANGUAGE = 'english';
 
-                TryCatch.tryCatch(() -> {
-                        LocalizationManager.LANGUAGE = SaveManager.getLanguage();
-                }, {
-                        errFunc: () -> {
-                                trace('Error while setting LANGUAGE to saved language');
-                        }
-                });
+		TryCatch.tryCatch(() ->
+		{
+			LocalizationManager.LANGUAGE = SaveManager.getLanguage();
+		}, {
+				errFunc: () ->
+				{
+					trace('Error while setting LANGUAGE to saved language');
+				}
+		});
 
 		if (FileManager.exists(FileManager.getPath('', 'cur_lang.txt')))
 		{
@@ -161,18 +177,18 @@ class InitState extends FlxState
 		}
 
 		#if SPANISH_LANGUAGE
-                trace('Spanish language is being forced.');
-                LocalizationManager.LANGUAGE = 'spanish';
-                #end
+		trace('Spanish language is being forced.');
+		LocalizationManager.LANGUAGE = 'spanish';
+		#end
 		#if PORTUGUESE_LANGUAGE
-                trace('Portuguese language is being forced.');
-                LocalizationManager.LANGUAGE = 'portuguese';
-                #end
+		trace('Portuguese language is being forced.');
+		LocalizationManager.LANGUAGE = 'portuguese';
+		#end
 
 		#if FORCED_ENGLISH
-                trace('English language is being forced.');
-                LocalizationManager.LANGUAGE = 'english';
-                #end
+		trace('English language is being forced.');
+		LocalizationManager.LANGUAGE = 'english';
+		#end
 
 		LocalizationManager.changeLanguage();
 	}
