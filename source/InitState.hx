@@ -81,8 +81,6 @@ class InitState extends FlxState
 	{
                 trace('Proceeding');
 
-                SaveManager.setupSave();
-
 		#if !DISABLE_PLUGINS
 		Plugins.init();
                 trace('Initalizing plugins');
