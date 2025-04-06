@@ -36,19 +36,19 @@ class LocalizationManager
 
 	public static dynamic function changeLanguage():Void
 	{
-		trace('Trying to change to languge: $LANGUAGE');
+		trace('Trying to change to languge: "$LANGUAGE"');
 
 		TEXT_CONTENT = returnLanguageTEXT_CONTENT();
 
 		if (TEXT_CONTENT == default_text_content && LANGUAGE != 'english')
 		{
 			ASSET_SUFFIX = '';
-			trace('Failed to change to language: $LANGUAGE');
+			trace('Failed to change to language: "$LANGUAGE"');
 			LANGUAGE = 'english';
 		}
 		else
 		{
-			trace('Succeeded to change to language: $LANGUAGE');
+			trace('Succeeded to change to language: "$LANGUAGE"');
 		}
 
                 FileManager.LOCALIZED_ASSET_SUFFIX = ASSET_SUFFIX;
