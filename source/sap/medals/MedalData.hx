@@ -6,7 +6,7 @@ class MedalData
 
 	public static function unlockMedal(medal:String = 'award'):Medal
 	{
-		var medalClass:Medal = new Medal(medal, unlocked_medals.contains(medal));
+		var medalClass:Medal = new Medal(medal.replace(' ', '-').toLowerCase(), unlocked_medals.contains(medal));
 
 		trace('New medal: ${medal}');
 

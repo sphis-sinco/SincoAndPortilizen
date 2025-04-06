@@ -2,46 +2,59 @@ package sap.medals;
 
 class Medal extends FlxTypedGroup<FlxObject>
 {
-        var medalBox:MedalBox;
-        
-        var medalIcon:FlxSprite;
+	var medalBox:MedalBox;
 
-        public var waitTime:Float = 2;
-        public var fadeWaitTime:Float = 1;
-        
-        override public function new(medal:String = 'award', earnedAlready:Bool = false):Void {
-                super();
+	var medalIcon:FlxSprite;
 
-                medalBox = new MedalBox();
-                add(medalBox);
-                final medalboxmid:FlxPoint = medalBox.getMidpoint();
+	public var waitTime:Float = 2;
+	public var fadeWaitTime:Float = 1;
 
-                var path:String = FileManager.getImageFile('${medalBox.assetFolder}/awards/${medal}');
+	override public function new(medal:String = 'award', earnedAlready:Bool = false):Void
+	{
+		super();
 
-                if (!FileManager.exists(path))
-                {
-                        path.replace(medal, 'award');
-                }
+		medalBox = new MedalBox();
+		add(medalBox);
+		final medalboxmid:FlxPoint = medalBox.getMidpoint();
 
-                medalIcon = new FlxSprite().loadGraphic(path);
-                add(medalIcon);
-                Global.scaleSprite(medalIcon, -2);
+		var path:String = FileManager.getImageFile('${medalBox.assetFolder}/awards/${medal}');
 
-                final offset:Float = 2*4;
-                medalIcon.setPosition(medalBox.HORIZONTAL_POSITION + offset, medalBox.VERTICAL_POSITION + offset);
+		if (!FileManager.exists(path))
+		{
+			trace('${medal} does not have an icon');
+                        path = FileManager.getImageFile('${medalBox.assetFolder}/awards/award');
+		}
 
-                if (earnedAlready)
-                {
-                        medalBox.destroy();
-                        medalIcon.destroy();
-                        this.destroy();
-                }
+		trace(path);
 
-                FlxTimer.wait(waitTime, () -> {
-                        FlxTween.tween(medalBox, {alpha: 0}, fadeWaitTime, {onComplete: tween -> { medalBox.destroy(); }});
-                        FlxTween.tween(medalIcon, {alpha: 0}, fadeWaitTime, {onComplete: tween -> { medalIcon.destroy(); }});
-                        FlxTimer.wait(fadeWaitTime, () -> { this.destroy(); });
-                });
-        }
-        
+		medalIcon = new FlxSprite().loadGraphic(path);
+		add(medalIcon);
+		Global.scaleSprite(medalIcon, -2);
+
+		final offset:Float = 2 * 4;
+		medalIcon.setPosition(medalBox.HORIZONTAL_POSITION + offset, medalBox.VERTICAL_POSITION + offset);
+
+		if (earnedAlready)
+		{
+			medalBox.destroy();
+			medalIcon.destroy();
+			this.destroy();
+		}
+
+		FlxTimer.wait(waitTime, () ->
+		{
+			FlxTween.tween(medalBox, {alpha: 0}, fadeWaitTime, {onComplete: tween ->
+			{
+				medalBox.destroy();
+			}});
+			FlxTween.tween(medalIcon, {alpha: 0}, fadeWaitTime, {onComplete: tween ->
+			{
+				medalIcon.destroy();
+			}});
+			FlxTimer.wait(fadeWaitTime, () ->
+			{
+				this.destroy();
+			});
+		});
+	}
 }
