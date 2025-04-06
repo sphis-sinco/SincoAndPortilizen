@@ -57,14 +57,6 @@ class Stage2 extends State
 
 	public static dynamic function moveToResultsMenu():Void
 	{
-		if (time == StageGlobals.STAGE2_START_TIMER)
-		{
-			MedalData.unlockMedal('Protector');
-			if (TEMPO_CITY_HEALTH == StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH)
-			{
-				MedalData.unlockMedal('True Protector');
-			}
-		}
 		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH, () -> new Worldmap("Sinco"), "sinco"));
 	}
 

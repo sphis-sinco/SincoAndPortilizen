@@ -161,7 +161,6 @@ class Stage4 extends State
 
 	public static dynamic function moveToResultsMenu():Void
 	{
-		MedalData.unlockMedal('Dimensions reached');
 		FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE4_START_TIMER, () -> new Worldmap("Port"), "port"));
 	}
 

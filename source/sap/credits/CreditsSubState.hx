@@ -15,7 +15,7 @@ class CreditsSubState extends FlxSubState
 	{
 		super.create();
                 
-                MedalData.unlockMedal('Huh, someone cares');
+                add(MedalData.unlockMedal('Huh, someone cares'));
 
 		overlay = new BlankBG();
 		overlay.color = 0x000000;

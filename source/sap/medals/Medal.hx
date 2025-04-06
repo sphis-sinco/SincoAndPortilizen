@@ -5,8 +5,11 @@ class Medal extends FlxTypedGroup<FlxObject>
         var medalBox:MedalBox;
         
         var medalIcon:FlxSprite;
+
+        public var waitTime:Float = 2;
+        public var fadeWaitTime:Float = 1;
         
-        override public function new(medal:String = 'award'):Void {
+        override public function new(medal:String = 'award', earnedAlready:Bool = false):Void {
                 super();
 
                 medalBox = new MedalBox();
@@ -27,10 +30,17 @@ class Medal extends FlxTypedGroup<FlxObject>
                 final offset:Float = 2*4;
                 medalIcon.setPosition(medalBox.HORIZONTAL_POSITION + offset, medalBox.VERTICAL_POSITION + offset);
 
-                FlxTimer.wait(2, () -> {
-                        FlxTween.tween(medalBox, {alpha: 0}, 1, {onComplete: tween -> { medalBox.destroy(); }});
-                        FlxTween.tween(medalIcon, {alpha: 0}, 1, {onComplete: tween -> { medalIcon.destroy(); }});
-                        FlxTimer.wait(1, () -> { this.destroy(); });
+                if (earnedAlready)
+                {
+                        medalBox.destroy();
+                        medalIcon.destroy();
+                        this.destroy();
+                }
+
+                FlxTimer.wait(waitTime, () -> {
+                        FlxTween.tween(medalBox, {alpha: 0}, fadeWaitTime, {onComplete: tween -> { medalBox.destroy(); }});
+                        FlxTween.tween(medalIcon, {alpha: 0}, fadeWaitTime, {onComplete: tween -> { medalIcon.destroy(); }});
+                        FlxTimer.wait(fadeWaitTime, () -> { this.destroy(); });
                 });
         }
         

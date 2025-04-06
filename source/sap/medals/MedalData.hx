@@ -6,18 +6,20 @@ class MedalData
 
 	public static function unlockMedal(medal:String = 'award'):Medal
 	{
-		if (unlocked_medals.contains(medal))
-		{
-			return null;
-		}
-
-		unlocked_medals.push(medal);
-
-		FlxG.save.data.medals = unlocked_medals;
-
-		var medalClass:Medal = new Medal(medal);
+		var medalClass:Medal = new Medal(medal, unlocked_medals.contains(medal));
 
 		trace('New medal: ${medal}');
+
+		if (FlxG.save.data.medals.contains(medal))
+		{
+			trace('MEDAL IS ALREADY EARNED');
+		}
+		else
+		{
+			unlocked_medals.push(medal);
+			FlxG.save.data.medals = unlocked_medals;
+		}
+
 		return medalClass;
 	}
 }

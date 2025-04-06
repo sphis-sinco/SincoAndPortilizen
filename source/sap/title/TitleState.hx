@@ -92,6 +92,7 @@ class TitleState extends State
 		super.create();
 
 		Global.changeDiscordRPCPresence('In the title screen', null);
+                add(MedalData.unlockMedal('Welcome'));
 	}
 
 	public static var transitioning:Bool = false;
@@ -136,8 +137,6 @@ class TitleState extends State
 
 	public static dynamic function introState():Void
 	{
-		MedalData.unlockMedal('Welcome');
-
 		FlxTween.tween(charring, {y: charring.height + 16}, 1.0, {
 			ease: FlxEase.sineOut,
 			onComplete: introStateDone()

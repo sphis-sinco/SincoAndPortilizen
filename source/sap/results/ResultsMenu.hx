@@ -1,7 +1,13 @@
 package sap.results;
 
+import sap.stages.stage1.Stage1;
+import sap.stages.stage2.Stage2;
+import sap.stages.stage4.Stage4;
+
 class ResultsMenu extends State
 {
+	public static var resultsInstance:ResultsMenu;
+
 	public var RANK_CLASS:Rank;
 
 	public static var STATIC_RANK_CLASS:Rank;
@@ -33,13 +39,13 @@ class ResultsMenu extends State
 		this.nextState = nextState;
 
 		TARGET_PERCENT = (goods / total) * 100;
-                if (TARGET_PERCENT < 0)
-                {
-                        TARGET_PERCENT = -TARGET_PERCENT;
-                }
+		if (TARGET_PERCENT < 0)
+		{
+			TARGET_PERCENT = -TARGET_PERCENT;
+		}
 		RANK_CLASS = new Rank((TARGET_PERCENT == null) ? 0 : TARGET_PERCENT);
 
-                trace('${TARGET_PERCENT}%');
+		trace('${TARGET_PERCENT}%');
 
 		RANK_GRADE_TEXT = new FlxText(10, 10, FlxG.width, '${Global.getLocalizedPhrase('YOU DID')}...', 64);
 
@@ -71,6 +77,29 @@ class ResultsMenu extends State
 		super.create();
 
 		Global.changeDiscordRPCPresence('Results menu for ${RESULTS_CHARACTER.char}', null);
+		resultsInstance = this;
+
+		if (Stage1.OSIN_HEALTH == 0)
+		{
+			add(MedalData.unlockMedal('Faker clash'));
+
+			if (Stage1.SINCO_HEALTH == Stage1.SINCO_MAX_HEALTH)
+			{
+				add(MedalData.unlockMedal('The original stands on top'));
+			}
+		}
+		else if (Stage2.time == StageGlobals.STAGE2_START_TIMER)
+		{
+			add(MedalData.unlockMedal('Protector'));
+			if (Stage2.TEMPO_CITY_HEALTH == StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH)
+			{
+				add(MedalData.unlockMedal('True Protector'));
+			}
+		}
+		else if (Stage4.time == StageGlobals.STAGE4_START_TIMER)
+		{
+			add(MedalData.unlockMedal('Dimensions reached'));
+		}
 	}
 
 	override public function update(elapsed:Float):Void
