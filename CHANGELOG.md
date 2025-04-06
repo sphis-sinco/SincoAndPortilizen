@@ -1,5 +1,6 @@
 # Alpha
 ## 0.3.0a - 4/14/2025
+- Fixed portilizen map being sincos map after swapping
 - Fixed negative percentages on Results Menu
 - Updated osin assets
 - Fixed bug where stage 4 would crash because when jumping ([#19](#19_link))
