@@ -36,7 +36,7 @@ class InitState extends FlxState
                 FlxG.sound.muteKeys = [];
                 trace('Disabled volume keys');
                 FileManager.FILE_MANAGER_VERSION_SUFFIX = '-SincoAndPortilizen';
-                trace('FILE_MANAGER_VERSION_SUFFIX: ${FileManager.FILE_MANAGER_VERSION_SUFFIX}');
+                trace('FILE_MANAGER_VERSION_SUFFIX: "${FileManager.FILE_MANAGER_VERSION_SUFFIX}"');
 
 		TryCatch.tryCatch(() -> {
                         CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
