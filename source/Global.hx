@@ -110,7 +110,7 @@ class Global
 		final musicinfo:String = '(volume: ${volume * 100}, ${(loop) ? 'looping' : 'not looping'})';
 		final originator:String = '| ${posInfoString(posinfo)}';
 
-		final tracelog:String = 'Trying to play music track: ${file[file.length - 1]} ${musicinfo} ${originator}';
+		final tracelog:String = 'Trying to play music track: "${file[file.length - 1]}" ${musicinfo} ${originator}';
 
 		if (FlxG.sound.music != null)
 		{
@@ -134,7 +134,7 @@ class Global
 	public static function playSoundEffect(name:String, ?posinfo:PosInfos):Void
 	{
 		final file:Array<String> = name.split('/');
-		trace('Trying to play sound effect: ${file[file.length - 1]} | ${posInfoString(posinfo)}');
+		trace('Trying to play sound effect: "${file[file.length - 1]}" | ${posInfoString(posinfo)}');
 
 		FlxG.sound.play(FileManager.getSoundFile('sounds/$name'));
 	}
