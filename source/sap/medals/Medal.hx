@@ -9,7 +9,7 @@ class Medal extends FlxTypedGroup<FlxObject>
 	public var waitTime:Float = 2;
 	public var fadeWaitTime:Float = 1;
 
-	override public function new(medal:String = 'award', earnedAlready:Bool = false):Void
+	override public function new(medal:String = 'award', earnedAlready:Bool = false, y_offset:Float):Void
 	{
 		super();
 
@@ -21,11 +21,10 @@ class Medal extends FlxTypedGroup<FlxObject>
 
 		if (!FileManager.exists(path))
 		{
-			trace('${medal} does not have an icon');
+			// trace('${medal} does not have an icon');
                         path = FileManager.getImageFile('${medalBox.assetFolder}/awards/award');
 		}
-
-		trace(path);
+		// trace(path);
 
 		medalIcon = new FlxSprite().loadGraphic(path);
 		add(medalIcon);
@@ -34,11 +33,15 @@ class Medal extends FlxTypedGroup<FlxObject>
 		final offset:Float = 2 * 4;
 		medalIcon.setPosition(medalBox.HORIZONTAL_POSITION + offset, medalBox.VERTICAL_POSITION + offset);
 
+                medalBox.y += y_offset;
+                medalIcon.y += y_offset;
+
 		if (earnedAlready)
 		{
 			medalBox.destroy();
 			medalIcon.destroy();
 			this.destroy();
+                        MedalData.cur_y_offset -= 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 		}
 
 		FlxTimer.wait(waitTime, () ->
@@ -54,6 +57,7 @@ class Medal extends FlxTypedGroup<FlxObject>
 			FlxTimer.wait(fadeWaitTime, () ->
 			{
 				this.destroy();
+                                MedalData.cur_y_offset -= 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 			});
 		});
 	}

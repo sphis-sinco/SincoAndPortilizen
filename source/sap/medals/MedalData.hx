@@ -4,9 +4,12 @@ class MedalData
 {
 	public static var unlocked_medals:Array<String> = [];
 
+        public static var cur_y_offset:Float = 0;
+
 	public static function unlockMedal(medal:String = 'award'):Medal
 	{
-		var medalClass:Medal = new Medal(medal.replace(' ', '-').toLowerCase(), unlocked_medals.contains(medal));
+		var medalClass:Medal = new Medal(medal.replace(' ', '-').toLowerCase(), unlocked_medals.contains(medal), cur_y_offset);
+                cur_y_offset += 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 
 		trace('New medal: ${medal}');
 

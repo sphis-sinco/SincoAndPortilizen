@@ -48,8 +48,6 @@ class Stage2 extends State
 
 		Global.changeDiscordRPCPresence('Stage 2: Tierra', null);
 
-                
-
 		var tutorial:FlxSprite = new FlxSprite();
 		tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Attack'));
 		tutorial.screenCenter();
@@ -60,6 +58,8 @@ class Stage2 extends State
 		{
 			FlxTween.tween(tutorial, {alpha: 0}, 1);
 		});
+
+                decrease = 0;
 	}
 
 	public static dynamic function levelComplete():Void

@@ -6,7 +6,7 @@ class DAJSprite extends FlxSprite
 
         var curAnimIndx:Int = 0;
 
-        public final HORIZONTAL_POSITION:Float = 20;
+        public final HORIZONTAL_POSITION:Float =  (Global.getCurrentState() == 'ResultsMenu') ? FlxG.width - 60 : 20;
         public final VERTICAL_POSITION:Float = (Global.getCurrentState() == 'TitleState') ? 60 : 20;
 
         public var assetFolder:String = '';
@@ -19,7 +19,7 @@ class DAJSprite extends FlxSprite
                 setPosition(HORIZONTAL_POSITION, VERTICAL_POSITION);
 
                 jsonData = FileManager.getJSON(FileManager.getDataFile('${file}.json'));
-                trace(jsonData);
+                // trace(jsonData);
 
                 loadAnim(0);
         }
@@ -54,7 +54,7 @@ class DAJSprite extends FlxSprite
                         animation.play('Animation');
                 }
 
-                trace(name);
+                // trace(name);
 
                 Global.scaleSprite(this, -2);
         }
