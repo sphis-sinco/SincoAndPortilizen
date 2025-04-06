@@ -111,6 +111,7 @@ class Stage2 extends State
 		if (FlxG.keys.justReleased.SPACE && sinco.animation.name == 'idle')
 		{
 			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
+                        Global.playSoundEffect('gameplay/sinco-jump');
 
 			FlxTween.tween(sinco, {y: start_y - jump_y_offset}, jump_speed, {
                                 onUpdate: _tween -> {
