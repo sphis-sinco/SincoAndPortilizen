@@ -159,9 +159,9 @@ class Worldmap extends State
 			tile.destroy();
 			mapGRP.remove(tile);
 		}
-		makeMap();
 		character.swapCharacter();
 		character.animation.play('idle');
+		makeMap();
 	}
 
 	public static var canSwap:Bool = true;
