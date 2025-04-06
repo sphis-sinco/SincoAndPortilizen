@@ -10,7 +10,7 @@ class StageGlobals
 	public static var STAGE2_PLAYER_JUMP_SPEED:Float = 0.5;
 	public static var STAGE2_MAX_ROCKS:Int = 2;
 	public static var STAGE2_START_TIMER:Int = 60;
-	public static var STAGE2_TEMPO_CITY_MAX_HEALTH:Int = 10;
+	public static var STAGE2_TEMPO_CITY_MAX_HEALTH:Int = 5;
 
 	public static var STAGE4_START_TIMER:Int = 60;
 
