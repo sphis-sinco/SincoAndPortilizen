@@ -47,6 +47,19 @@ class Stage2 extends State
 		StageGlobals.waitSec(StageGlobals.STAGE2_START_TIMER, time, timerText);
 
 		Global.changeDiscordRPCPresence('Stage 2: Tierra', null);
+
+                
+
+		var tutorial:FlxSprite = new FlxSprite();
+		tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Attack'));
+		tutorial.screenCenter();
+		tutorial.y += tutorial.height;
+		add(tutorial);
+
+		FlxTimer.wait(3, () ->
+		{
+			FlxTween.tween(tutorial, {alpha: 0}, 1);
+		});
 	}
 
 	public static dynamic function levelComplete():Void
