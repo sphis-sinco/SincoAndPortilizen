@@ -50,7 +50,7 @@ class Stage4 extends State
 		timerText = new FlxText(10, 10, 0, "60", 64);
 		timerText.screenCenter();
 		add(timerText);
-		waitSec();
+		StageGlobals.waitSec(StageGlobals.STAGE4_START_TIMER, time, timerText);
 
 		Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
 
@@ -77,17 +77,6 @@ class Stage4 extends State
 	{
 		Global.beatLevel(4);
 		moveToResultsMenu();
-	}
-
-	public static dynamic function waitSec():Void
-	{
-		timerText.text = Std.string(StageGlobals.STAGE4_START_TIMER - time);
-
-		FlxTimer.wait(1, () ->
-		{
-			time++;
-			waitSec();
-		});
 	}
 
 	public static var enemyX:Float = 0;

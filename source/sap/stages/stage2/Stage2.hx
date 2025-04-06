@@ -8,6 +8,9 @@ class Stage2 extends State
 
 	public static var rockGroup:FlxTypedGroup<Stage2Rock>;
 
+	public static var timerText:FlxText;
+	public static var time:Int = 0;
+
 	override function create():Void
 	{
 		super.create();
@@ -30,6 +33,28 @@ class Stage2 extends State
 		add(rockGroup);
 
 		spawnRocks(1);
+
+		time = 0;
+		FlxTimer.wait(StageGlobals.STAGE2_START_TIMER, () ->
+		{
+			levelComplete();
+		});
+
+		timerText = new FlxText(10, 10, 0, "60", 64);
+		add(timerText);
+		StageGlobals.waitSec(StageGlobals.STAGE2_START_TIMER, time, timerText);
+	}
+
+	public static dynamic function levelComplete():Void
+	{
+		Global.beatLevel(2);
+		moveToResultsMenu();
+	}
+
+	public static dynamic function moveToResultsMenu():Void
+	{
+		MedalData.unlockMedal('Protector');
+		FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE2_START_TIMER, () -> new Worldmap("Sinco"), "Sinco"));
 	}
 
 	public static dynamic function spawnRocks(amount:Int = 1):Void
@@ -92,7 +117,7 @@ class Stage2 extends State
 		{
 			if (rock.pixelsOverlapPoint(sinco.getPosition()))
 			{
-                                FlxTween.cancelTweensOf(rock);
+				FlxTween.cancelTweensOf(rock);
 
 				FlxTween.tween(rock, {x: rock.x + FlxG.random.float(-20, 20), y: 0 - rock.height * 5}, .5, {
 					onComplete: _tween ->
