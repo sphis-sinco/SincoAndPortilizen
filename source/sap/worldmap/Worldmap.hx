@@ -18,7 +18,7 @@ class Worldmap extends State
 
 	static function get_implementedLevels():Map<String, Array<Bool>>
 	{
-		return ["sinco" => [true, false, false], "port" => [true, false, false]];
+		return ["sinco" => [true, true, false], "port" => [true, false, false]];
 	}
 
 	override public function new(char:String = "Sinco"):Void

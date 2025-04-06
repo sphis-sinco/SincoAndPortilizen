@@ -11,6 +11,8 @@ class Stage2 extends State
 	public static var timerText:FlxText;
 	public static var time:Int = 0;
 
+	public static var TEMPO_CITY_HEALTH:Int = StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH;
+
 	override function create():Void
 	{
 		super.create();
@@ -54,7 +56,11 @@ class Stage2 extends State
 	public static dynamic function moveToResultsMenu():Void
 	{
 		MedalData.unlockMedal('Protector');
-		FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE2_START_TIMER, () -> new Worldmap("Sinco"), "sinco"));
+		if (TEMPO_CITY_HEALTH == StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH)
+		{
+			MedalData.unlockMedal('True Protector');
+		}
+		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH, () -> new Worldmap("Sinco"), "sinco"));
 	}
 
 	public static dynamic function spawnRocks(amount:Int = 1):Void
@@ -86,14 +92,20 @@ class Stage2 extends State
 
 	public static dynamic function rockHitTempoCity():Void
 	{
+		TEMPO_CITY_HEALTH--;
 		FlxG.camera.flash(FlxColor.WHITE, .1);
 		if (sinco.y == StageGlobals.STAGE2_PLAYER_START_Y)
 		{
 			sinco.animation.play('fail');
-			FlxTimer.wait(.3, function()
+			FlxTimer.wait(.5, function()
 			{
 				sinco.animation.play('idle');
 			});
+		}
+
+		if (TEMPO_CITY_HEALTH == 0)
+		{
+			moveToResultsMenu();
 		}
 	}
 
