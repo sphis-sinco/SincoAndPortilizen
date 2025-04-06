@@ -33,6 +33,10 @@ class ResultsMenu extends State
 		this.nextState = nextState;
 
 		TARGET_PERCENT = (goods / total) * 100;
+                if (TARGET_PERCENT < 0)
+                {
+                        TARGET_PERCENT = -TARGET_PERCENT;
+                }
 		RANK_CLASS = new Rank((TARGET_PERCENT == null) ? 0 : TARGET_PERCENT);
 
                 trace(TARGET_PERCENT);

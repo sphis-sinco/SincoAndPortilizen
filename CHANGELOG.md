@@ -1,5 +1,6 @@
 # Alpha
 ## 0.3.0a - 4/14/2025
+- Fixed negative percentages on Results Menu
 - Updated osin assets
 - Fixed bug where stage 4 would crash because when jumping ([#19](#19_link))
 - Fixed window resolution option not being accurate to the actual resolution (This was due to the missing window resolution save value)
