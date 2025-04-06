@@ -54,7 +54,7 @@ class Stage2 extends State
 	public static dynamic function moveToResultsMenu():Void
 	{
 		MedalData.unlockMedal('Protector');
-		FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE2_START_TIMER, () -> new Worldmap("Sinco"), "Sinco"));
+		FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE2_START_TIMER, () -> new Worldmap("Sinco"), "sinco"));
 	}
 
 	public static dynamic function spawnRocks(amount:Int = 1):Void
