@@ -8,7 +8,7 @@ class MedalData
 
 	public static function unlockMedal(medal:String = 'award'):Medal
 	{
-		var medalClass:Medal = new Medal(medal.replace(' ', '-').toLowerCase(), unlocked_medals.contains(medal), cur_y_offset);
+		var medalClass:Medal = new Medal(medal.replace(' ', '-').replace(',', '').toLowerCase(), unlocked_medals.contains(medal), cur_y_offset);
                 cur_y_offset += 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 
 		trace('New medal: ${medal}');
