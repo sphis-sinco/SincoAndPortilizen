@@ -1,14 +1,12 @@
 package sap.stages.stage2;
 
-import flixel.group.FlxSpriteGroup;
-
 class Stage2 extends State
 {
 	public static var bg:FlxSprite;
 
 	public static var sinco:Stage2Sinco;
 
-	public static var rockGroup:FlxSpriteGroup;
+	public static var rockGroup:FlxTypedGroup<Stage2Rock>;
 
 	override function create():Void
 	{
@@ -28,7 +26,7 @@ class Stage2 extends State
 
 		trace(sinco.y);
 
-		rockGroup = new FlxSpriteGroup();
+		rockGroup = new FlxTypedGroup<Stage2Rock>();
 		add(rockGroup);
 
 		spawnRocks(1);
@@ -59,7 +57,7 @@ class Stage2 extends State
 		}
 	}
 
-	public static dynamic function destroyRock(rock:FlxSprite):Void
+	public static dynamic function destroyRock(rock:Stage2Rock):Void
 	{
 		if (rockGroup.members.length < max_rocks)
 		{
@@ -84,7 +82,7 @@ class Stage2 extends State
                                                 destroyRock(rock);
                                         },
                                         onStart: _tween -> {
-                                                Global.playSoundEffect('gameplay/blow-up');
+                                                rock.blowUpSFX();
                                         }
                                 });
 			}

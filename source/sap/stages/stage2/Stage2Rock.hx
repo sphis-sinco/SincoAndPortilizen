@@ -3,6 +3,8 @@ package sap.stages.stage2;
 class Stage2Rock extends FlxSprite
 {
 
+        public var playedBlowUp:Bool = false;
+
         override public function new():Void {
                 super();
 
@@ -21,5 +23,13 @@ class Stage2Rock extends FlxSprite
                 animation.frameIndex = FlxG.random.int(0, framesArray[framesArray.length - 1]);
 
                 Global.scaleSprite(this);
+        }
+
+        public function blowUpSFX():Void
+        {
+                if (playedBlowUp) return;
+
+                Global.playSoundEffect('gameplay/blow-up');
+                playedBlowUp = true;
         }
 }
