@@ -88,7 +88,7 @@ class ResultsMenu extends State
 				add(MedalData.unlockMedal('The original stands on top'));
 			}
 		}
-		else if (Stage2.time == StageGlobals.STAGE2_START_TIMER)
+		else if (Stage2.time == 0)
 		{
 			add(MedalData.unlockMedal('Protector'));
 			if (Stage2.TEMPO_CITY_HEALTH == StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH)
