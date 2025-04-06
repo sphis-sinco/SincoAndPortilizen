@@ -82,6 +82,9 @@ class Stage2 extends State
 				FlxTween.tween(rock, {x: rock.x + FlxG.random.float(-20, 20), y: 0 - rock.height * 5}, .5, {
                                         onComplete: _tween -> {
                                                 destroyRock(rock);
+                                        },
+                                        onStart: _tween -> {
+                                                Global.playSoundEffect('gameplay/blow-up');
                                         }
                                 });
 			}
