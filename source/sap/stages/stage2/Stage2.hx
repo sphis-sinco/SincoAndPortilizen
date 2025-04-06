@@ -51,7 +51,6 @@ class Stage2 extends State
 		var tutorial:FlxSprite = new FlxSprite();
 		tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Attack'));
 		tutorial.screenCenter();
-		tutorial.y += tutorial.height;
 		add(tutorial);
 
 		FlxTimer.wait(3, () ->

@@ -55,6 +55,7 @@ class Worldmap extends State
 		add(charWheel);
 
 		Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
+                current_level = 1;
 	}
 
 	public static var mapTileXPosThing:Float = 0;
