@@ -40,21 +40,35 @@ class Stage2 extends State
 		{
 			var rock:Stage2Rock = new Stage2Rock();
 			rock.setPosition(FlxG.width + (rock.width * 2), -(rock.height * 2));
-			if (rockGroup.members.length < max_rocks) {
-                                rockGroup.add(rock);
+			if (rockGroup.members.length < max_rocks)
+			{
+				rockGroup.add(rock);
 
-                                final positioncalc:Float = (bg.graphic.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER) / 2;
-                                FlxTween.tween(rock, {x: rock.width, y: positioncalc}, FlxG.random.float(2, 6), {
-                                        onUpdate: tween -> {},
-                                        onComplete: tween ->
-                                        {
-                                                rock.blowUpSFX();
-                                                destroyRock(rock);
-                                        }
-                                });
-                        }
+				final positioncalc:Float = (bg.graphic.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER) / 2;
+				FlxTween.tween(rock, {x: rock.width, y: positioncalc}, FlxG.random.float(2, 6), {
+					onComplete: tween ->
+					{
+						rockHitTempoCity();
+						rock.blowUpSFX();
+						destroyRock(rock);
+					}
+				});
+			}
 
 			index++;
+		}
+	}
+
+	public static dynamic function rockHitTempoCity():Void
+	{
+		FlxG.camera.flash(FlxColor.WHITE, .1);
+		if (sinco.y == StageGlobals.STAGE2_PLAYER_START_Y)
+		{
+			sinco.animation.play('fail');
+			FlxTimer.wait(.3, function()
+			{
+				sinco.animation.play('idle');
+			});
 		}
 	}
 
@@ -78,14 +92,18 @@ class Stage2 extends State
 		{
 			if (rock.pixelsOverlapPoint(sinco.getPosition()))
 			{
+                                FlxTween.cancelTweensOf(rock);
+
 				FlxTween.tween(rock, {x: rock.x + FlxG.random.float(-20, 20), y: 0 - rock.height * 5}, .5, {
-                                        onComplete: _tween -> {
-                                                destroyRock(rock);
-                                        },
-                                        onStart: _tween -> {
-                                                rock.blowUpSFX();
-                                        }
-                                });
+					onComplete: _tween ->
+					{
+						destroyRock(rock);
+					},
+					onStart: _tween ->
+					{
+						rock.blowUpSFX();
+					}
+				});
 			}
 		}
 	}
@@ -110,15 +128,16 @@ class Stage2 extends State
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justReleased.SPACE && sinco.animation.name == 'idle')
+		if (FlxG.keys.justReleased.SPACE && sinco.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
 			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
-                        Global.playSoundEffect('gameplay/sinco-jump');
+			Global.playSoundEffect('gameplay/sinco-jump');
 
 			FlxTween.tween(sinco, {y: start_y - jump_y_offset}, jump_speed, {
-                                onUpdate: _tween -> {
+				onUpdate: _tween ->
+				{
 					destroyRockCheck();
-                                },
+				},
 				onComplete: _tween ->
 				{
 					unjump();
