@@ -29,7 +29,7 @@ class Stage2 extends State
 		sinco.x += 4 * 8;
 		sinco.y += 4 * 24;
 
-		trace(sinco.y);
+		trace('Sinco y: '+sinco.y);
 
 		rockGroup = new FlxTypedGroup<Stage2Rock>();
 		add(rockGroup);
