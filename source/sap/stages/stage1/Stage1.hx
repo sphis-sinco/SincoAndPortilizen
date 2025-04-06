@@ -86,7 +86,7 @@ class Stage1 extends State
 		OSIN_MAX_HEALTH = StageGlobals.STAGE1_OPPONENT_MAX_HEALTH;
 
 		SINCO_HEALTH = SINCO_MAX_HEALTH;
-		OSIN_HEALTH = 1;
+		OSIN_HEALTH = OSIN_MAX_HEALTH;
 
 		var tutorial1:FlxSprite = new FlxSprite();
 		tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Right-Dodge'));
