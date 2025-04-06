@@ -45,6 +45,8 @@ class Stage2 extends State
 		timerText = new FlxText(10, 10, 0, "60", 64);
 		add(timerText);
 		StageGlobals.waitSec(StageGlobals.STAGE2_START_TIMER, time, timerText);
+
+		Global.changeDiscordRPCPresence('Stage 2: Tierra', null);
 	}
 
 	public static dynamic function levelComplete():Void
