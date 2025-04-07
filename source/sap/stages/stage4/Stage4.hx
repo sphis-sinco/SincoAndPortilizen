@@ -92,6 +92,11 @@ class Stage4 extends State
 			portPreJump();
 		}
 
+		if (FlxG.keys.justPressed.R)
+		{
+			FlxG.switchState(() -> new Stage4());
+			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
+		}
 		if (enemyAttackCondition())
 		{
 			enemyCanAttack = false;

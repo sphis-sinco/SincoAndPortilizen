@@ -29,7 +29,7 @@ class Stage2 extends State
 		sinco.x += 4 * 8;
 		sinco.y += 4 * 24;
 
-		trace('Sinco y: '+sinco.y);
+		trace('Sinco y: ' + sinco.y);
 
 		rockGroup = new FlxTypedGroup<Stage2Rock>();
 		add(rockGroup);
@@ -58,7 +58,7 @@ class Stage2 extends State
 			FlxTween.tween(tutorial, {alpha: 0}, 1);
 		});
 
-                decrease = 0;
+		decrease = 0;
 	}
 
 	public static dynamic function levelComplete():Void
@@ -211,6 +211,12 @@ class Stage2 extends State
 						unjump();
 					}
 				});
+		}
+
+		if (FlxG.keys.justPressed.R)
+		{
+			FlxG.switchState(() -> new Stage2());
+			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
 	}
 }
