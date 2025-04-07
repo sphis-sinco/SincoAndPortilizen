@@ -34,7 +34,7 @@
         </section>
 
 	<source path="source" />
-	<assets path="assets"/>
+	<assets path="assets" exclude="assets/data/medal-sprite.json"/>
 	<assets path="cur_lang.txt"/>
 
         <!-- _________________________________ Before _______________________________ -->
