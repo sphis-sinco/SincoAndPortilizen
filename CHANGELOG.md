@@ -1,20 +1,22 @@
 # Alpha
 ## 0.3.0a - 4/14/2025
-- Fixed stage 1 bug where you can dodge and jump at the same time
+### Added
 - Added reset buttons to Stages 1, 2, and 4
-- The player now starts on the last level selected in the worldmap
 - Added back custom Stage 1 background created by @iampauleps
-- Added Medals
-- Added stage 2
-- Fixed portilizen map being sincos map after swapping
-- Fixed negative percentages on Results Menu
-- Updated osin assets
-- Fixed bug where stage 4 would crash because when jumping ([#19](#19_link))
-- Fixed window resolution option not being accurate to the actual resolution (This was due to the missing window resolution save value)
+- Added Stage 2
 - Added window resolution change on startup
 - Added save for the window resolution before leaving the settings menu
 - Added a settings save data value
+### Changed
+- The player now starts on the last level selected in the worldmap
 - Updated all sinco assets
+- Updated osin assets
+### Fixed
+- Fixed stage 1 bug where you can dodge and jump at the same time
+- Fixed portilizen map being sincos map after swapping
+- Fixed negative percentages on Results Menu
+- Fixed bug where stage 4 would crash because when jumping ([#19](#19_link))
+- Fixed window resolution option not being accurate to the actual resolution (This was due to the missing window resolution save value)
 
 ## 0.2.1a - 3/12/2025
 ### Nerd stuff

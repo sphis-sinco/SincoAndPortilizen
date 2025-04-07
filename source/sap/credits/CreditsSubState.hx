@@ -40,7 +40,7 @@ class CreditsSubState extends FlxSubState
 			totalSpacing += credit.spacing;
 		}
                 
-                add(MedalData.unlockMedal('Huh, someone cares'));
+                // add(MedalData.unlockMedal('Huh, someone cares'));
 	}
 
 	override function update(elapsed:Float):Void
