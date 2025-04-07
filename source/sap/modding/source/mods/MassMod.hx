@@ -36,10 +36,7 @@ class MassMod extends ModBasic
 
 		Global.change_saveslot((SLGame.isDebug) ? 'debug_massmod' : 'release_massmod');
 
-                StageGlobals.STAGE4_START_TIMER = 120;
-
-                StageGlobals.STAGE1_OPPONENT_MAX_HEALTH = 100;
-                StageGlobals.STAGE1_PLAYER_MAX_HEALTH = 5;
+		StageGlobals.STAGE4_START_TIMER = 120;
 		super.create();
 	}
 
@@ -72,6 +69,9 @@ class MassMod extends ModBasic
 			Stage1.getOsinJumpCondition = newOsinJumpCondition;
 
 			Stage1.osin.color = FlxColor.YELLOW;
+
+			Stage1.OSIN_MAX_HEALTH = 100;
+			Stage1.SINCO_MAX_HEALTH = 5;
 		}
 
 		if (Global.getCurrentState() == "Stage4")

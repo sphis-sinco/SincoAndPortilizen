@@ -178,7 +178,7 @@ class Worldmap extends State
 
 	public dynamic function level1():Void
 	{
-		FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1() : new Stage4()));
+		FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1(DIFFICULTY) : new Stage4()));
 	}
 
 	public dynamic function level2():Void

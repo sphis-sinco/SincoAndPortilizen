@@ -23,6 +23,16 @@ class Stage1 extends State
 	public static var osinHealthIndicator:FlxText;
 	public static var sincoHealthIndicator:FlxText;
 
+        public static var DIFFICULTY:String = '';
+        public static var diffJson:Stage1DifficultyJson;
+
+        override public function new(difficulty:String):Void {
+                super();
+
+                DIFFICULTY = difficulty;
+                diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage1/${difficulty}.json'));
+        }
+
 	override function create():Void
 	{
 		super.create();
@@ -82,8 +92,8 @@ class Stage1 extends State
 	{
 		super.postCreate();
 
-		SINCO_MAX_HEALTH = StageGlobals.STAGE1_PLAYER_MAX_HEALTH;
-		OSIN_MAX_HEALTH = StageGlobals.STAGE1_OPPONENT_MAX_HEALTH;
+		SINCO_MAX_HEALTH = diffJson.player_max_health;
+		OSIN_MAX_HEALTH = diffJson.opponent_max_health;
 
 		SINCO_HEALTH = SINCO_MAX_HEALTH;
 		OSIN_HEALTH = OSIN_MAX_HEALTH;
@@ -197,7 +207,7 @@ class Stage1 extends State
 
 		if (FlxG.keys.justPressed.R)
 		{
-			FlxG.switchState(() -> new Stage1());
+			FlxG.switchState(() -> new Stage1(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
 	}
