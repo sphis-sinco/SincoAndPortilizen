@@ -9,6 +9,7 @@
 - Added save for the window resolution before leaving the settings menu
 - Added a settings save data value
 ### Changed
+- Main menu sinco and portilizen are now moves more to the left and right respectively
 - Main menu option box is now bigger
 - Level data is now controlled by json
 - The player now starts on the last level selected in the worldmap

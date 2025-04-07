@@ -49,8 +49,8 @@ class MainMenu extends State
 		sinco.screenCenter();
 		port.screenCenter();
 
-		sinco.x -= sinco.width * 2;
-		port.x += port.width * 2;
+		sinco.x -= sinco.width * 2.5;
+		port.x += port.width * 2.5;
 
 		add(gridbg);
 
