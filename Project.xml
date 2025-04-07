@@ -37,6 +37,13 @@
 	<assets path="assets"/>
 	<assets path="cur_lang.txt"/>
 
+        <!-- English (US) -->
+        <language name="en-US" />
+        <!-- Standard spanish -->
+        <language name="es" />
+        <!-- Portuguese (Brazil) -->
+        <language name="pt-BR" />
+
         <!-- _________________________________ Before _______________________________ -->
 
 	<set name="buildOrTest" if="${project.command == build} || ${project.command == test}" />
