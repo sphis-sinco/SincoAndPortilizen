@@ -1,0 +1,9 @@
+{
+        "player_start_y": 384,
+	"player_jump_y_offset" : 240,
+	"player_jump_speed" : 0.75,
+	"max_rocks": 4,
+	"start_timer": 90,
+	"tempo_city_max_health": 2,
+	"bg_position_decrease" : 100
+}
