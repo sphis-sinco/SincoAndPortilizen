@@ -11,7 +11,28 @@ class Stage2 extends State
 	public static var timerText:FlxText;
 	public static var time:Int = 0;
 
-	public static var TEMPO_CITY_HEALTH:Int = StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH;
+	public static var TEMPO_CITY_HEALTH:Int = 5;
+
+        public static var DIFFICULTY:String = '';
+        public static var diffJson:Stage2DifficultyJson;
+
+	static var jump_speed:Float;
+	static var start_y:Float;
+	static var jump_y_offset:Float;
+
+	static var max_rocks:Int;
+
+        override public function new(difficulty:String):Void {
+                super();
+
+                DIFFICULTY = difficulty;
+                diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage2/${difficulty}.json'));
+
+                jump_speed = diffJson.player_jump_speed;
+                start_y = diffJson.player_start_y;
+                jump_y_offset = diffJson.player_jump_y_offset;
+                max_rocks = diffJson.max_rocks;
+        }
 
 	override function create():Void
 	{
@@ -37,14 +58,14 @@ class Stage2 extends State
 		spawnRocks(1);
 
 		time = 0;
-		FlxTimer.wait(StageGlobals.STAGE2_START_TIMER, () ->
+		FlxTimer.wait(diffJson.start_timer, () ->
 		{
 			levelComplete();
 		});
 
 		timerText = new FlxText(10, 10, 0, "60", 64);
 		add(timerText);
-		StageGlobals.waitSec(StageGlobals.STAGE2_START_TIMER, time, timerText);
+		StageGlobals.waitSec(diffJson.start_timer, time, timerText);
 
 		Global.changeDiscordRPCPresence('Stage 2: Tierra', null);
 
@@ -69,7 +90,7 @@ class Stage2 extends State
 
 	public static dynamic function moveToResultsMenu():Void
 	{
-		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH, () -> new Worldmap("Sinco"), "sinco"));
+		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new Worldmap("Sinco"), "sinco"));
 	}
 
 	static var decrease:Float = 0;
@@ -90,9 +111,9 @@ class Stage2 extends State
 				FlxTween.tween(rock, {x: rock.width, y: positioncalc}, FlxG.random.float(2, 6), {
 					onComplete: tween ->
 					{
-						bg.y += StageGlobals.STAGE2_BG_POSITION_DECREASE;
-						sinco.y += StageGlobals.STAGE2_BG_POSITION_DECREASE;
-						decrease += StageGlobals.STAGE2_BG_POSITION_DECREASE;
+						bg.y += diffJson.bg_position_decrease;
+						sinco.y += diffJson.bg_position_decrease;
+						decrease += diffJson.bg_position_decrease;
 						rockHitTempoCity();
 						rock.blowUpSFX();
 						destroyRock(rock);
@@ -177,19 +198,13 @@ class Stage2 extends State
 
 	public static dynamic function unjump():Void
 	{
-		FlxTween.tween(sinco, {y: (start_y + decrease)}, jump_speed + ((StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH - TEMPO_CITY_HEALTH) / 100), {
+		FlxTween.tween(sinco, {y: (start_y + decrease)}, jump_speed + ((diffJson.tempo_city_max_health - TEMPO_CITY_HEALTH) / 100), {
 			onComplete: _tween ->
 			{
 				sinco.animation.play('idle');
 			}
 		});
 	}
-
-	static final jump_speed:Float = StageGlobals.STAGE2_PLAYER_JUMP_SPEED;
-	static final start_y:Float = StageGlobals.STAGE2_PLAYER_START_Y;
-	static final jump_y_offset:Float = StageGlobals.STAGE2_PLAYER_JUMP_Y_OFFSET;
-
-	static final max_rocks:Float = StageGlobals.STAGE2_MAX_ROCKS;
 
 	override function update(elapsed:Float):Void
 	{
@@ -201,7 +216,7 @@ class Stage2 extends State
 			Global.playSoundEffect('gameplay/sinco-jump');
 
 			FlxTween.tween(sinco, {y: (start_y + decrease) - (jump_y_offset + (decrease / 1.45))},
-				jump_speed + ((StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH - TEMPO_CITY_HEALTH) / 100), {
+				jump_speed + ((diffJson.tempo_city_max_health - TEMPO_CITY_HEALTH) / 100), {
 					onUpdate: _tween ->
 					{
 						destroyRockCheck();
@@ -215,7 +230,7 @@ class Stage2 extends State
 
 		if (FlxG.keys.justPressed.R)
 		{
-			FlxG.switchState(() -> new Stage2());
+			FlxG.switchState(() -> new Stage2(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
 	}

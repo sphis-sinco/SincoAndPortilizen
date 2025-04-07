@@ -183,7 +183,7 @@ class Worldmap extends State
 
 	public dynamic function level2():Void
 	{
-		FlxG.switchState(() -> (new Stage2()));
+		FlxG.switchState(() -> (new Stage2(DIFFICULTY)));
 	}
 
 	public dynamic function swap():Void

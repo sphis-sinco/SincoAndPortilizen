@@ -91,7 +91,7 @@ class ResultsMenu extends State
 		else if (Stage2.time == 0)
 		{
 			// add(MedalData.unlockMedal('Protector'));
-			if (Stage2.TEMPO_CITY_HEALTH == StageGlobals.STAGE2_TEMPO_CITY_MAX_HEALTH)
+			if (Stage2.TEMPO_CITY_HEALTH == Stage2.diffJson.tempo_city_max_health)
 			{
 				// add(MedalData.unlockMedal('True Protector'));
 			}

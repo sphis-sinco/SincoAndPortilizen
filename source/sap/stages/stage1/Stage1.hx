@@ -31,6 +31,9 @@ class Stage1 extends State
 
                 DIFFICULTY = difficulty;
                 diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage1/${difficulty}.json'));
+
+		SINCO_MAX_HEALTH = diffJson.player_max_health;
+		OSIN_MAX_HEALTH = diffJson.opponent_max_health;
         }
 
 	override function create():Void
@@ -91,9 +94,6 @@ class Stage1 extends State
 	override function postCreate():Void
 	{
 		super.postCreate();
-
-		SINCO_MAX_HEALTH = diffJson.player_max_health;
-		OSIN_MAX_HEALTH = diffJson.opponent_max_health;
 
 		SINCO_HEALTH = SINCO_MAX_HEALTH;
 		OSIN_HEALTH = OSIN_MAX_HEALTH;
