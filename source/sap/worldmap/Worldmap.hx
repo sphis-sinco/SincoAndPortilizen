@@ -21,8 +21,8 @@ class Worldmap extends State
 		return ["sinco" => [true, true, false], "port" => [true, false, false]];
 	}
 
-        public static var DIFFICULTY:String = 'normal';
-        public static var difficultySprite:SparrowSprite;
+	public static var DIFFICULTY:String = StageGlobals.NORMAL_DIFF;
+	public static var difficultySprite:SparrowSprite;
 
 	override public function new(char:String = "Sinco"):Void
 	{
@@ -31,7 +31,7 @@ class Worldmap extends State
 		charWheel = new CharacterWheel();
 		character = new MapCharacter(char);
 		mapGRP = new FlxTypedGroup<FlxSprite>();
-                difficultySprite = new SparrowSprite('levelselect/difficulties', 0,0);
+		difficultySprite = new SparrowSprite('levelselect/difficulties', 0, 0);
 	}
 
 	override function create():Void
@@ -60,10 +60,20 @@ class Worldmap extends State
 
 		Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
 
-                if (current_level > 1)
-                {
-                        character.x += 256 * (current_level - 1);
-                }
+		if (current_level > 1)
+		{
+			character.x += 256 * (current_level - 1);
+		}
+
+		difficultySprite.addAnimationByPrefix('easy', 'easy', 24);
+		difficultySprite.addAnimationByPrefix('normal', 'normal', 24);
+		difficultySprite.addAnimationByPrefix('hard', 'hard', 24);
+		difficultySprite.addAnimationByPrefix('extreme', 'extreme', 24);
+
+		difficultySprite.screenCenter();
+		Global.scaleSprite(difficultySprite);
+		difficultySprite.y += (difficultySprite.height * StageGlobals.DISMx2);
+		add(difficultySprite);
 	}
 
 	public static var mapTileXPosThing:Float = 0;
@@ -72,9 +82,19 @@ class Worldmap extends State
 	{
 		super.update(elapsed);
 
+		if (difficultySprite.animation.name != DIFFICULTY.toLowerCase())
+		{
+			difficultySprite.playAnimation(DIFFICULTY);
+		}
+
 		if (FlxG.keys.anyJustReleased([LEFT, RIGHT]) && character.animationname() != 'run')
 		{
 			characterMove();
+		}
+
+		if (FlxG.keys.anyJustReleased([UP, DOWN]))
+		{
+			difficultyChange();
 		}
 
 		if (FlxG.keys.justReleased.ENTER && character.animationname() == 'idle')
@@ -85,6 +105,28 @@ class Worldmap extends State
 		if (FlxG.keys.justReleased.SPACE && canSwap)
 		{
 			swap();
+		}
+	}
+
+	public dynamic function difficultyChange():Void
+	{
+		var down:Bool = !FlxG.keys.justReleased.UP;
+
+		if (DIFFICULTY == StageGlobals.EASY_DIFF)
+		{
+			DIFFICULTY = (down) ? StageGlobals.EXTREME_DIFF : StageGlobals.NORMAL_DIFF;
+		}
+		else if (DIFFICULTY == StageGlobals.NORMAL_DIFF)
+		{
+			DIFFICULTY = (down) ? StageGlobals.EASY_DIFF : StageGlobals.HARD_DIFF;
+		}
+		else if (DIFFICULTY == StageGlobals.HARD_DIFF)
+		{
+			DIFFICULTY = (down) ? StageGlobals.NORMAL_DIFF : StageGlobals.EXTREME_DIFF;
+		}
+		else if (DIFFICULTY == StageGlobals.EXTREME_DIFF)
+		{
+			DIFFICULTY = (down) ? StageGlobals.HARD_DIFF : StageGlobals.EASY_DIFF;
 		}
 	}
 
@@ -189,7 +231,7 @@ class Worldmap extends State
 	public dynamic function makeNewTile(i:Int):Void
 	{
 		// TODO: change these to use MapTile once you figure out the bug
-                // ?: What bug? lol.
+		// ?: What bug? lol.
 
 		var level:FlxSprite = new FlxSprite(mapTileXPosThing - 12 + (i * 256), character.getGraphicMidpoint().y);
 		var tileColor:FlxColor = FlxColor.BLACK;
