@@ -1,5 +1,7 @@
 # Alpha
 ## 0.3.0a - 4/14/2025
+- Fixed stage 1 bug where you can dodge and jump at the same time
+- Added reset buttons to Stages 1, 2, and 4
 - The player now starts on the last level selected in the worldmap
 - Added back custom Stage 1 background created by @iampauleps
 - Added Medals

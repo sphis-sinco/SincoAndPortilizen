@@ -182,8 +182,7 @@ class Stage1 extends State
 			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
 			sincoJump();
 		}
-
-		if (FlxG.keys.justPressed.RIGHT)
+		else if (FlxG.keys.justPressed.RIGHT)
 		{
 			if (sinco.x != sincoPos.x)
 			{
@@ -199,7 +198,7 @@ class Stage1 extends State
 		if (FlxG.keys.justPressed.R)
 		{
 			FlxG.switchState(() -> new Stage1());
-                        FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
+			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
 	}
 
