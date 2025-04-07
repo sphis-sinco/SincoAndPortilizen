@@ -195,6 +195,12 @@ class Stage1 extends State
 			Global.playSoundEffect('gameplay/sinco-spin');
 			sincoDodge();
 		}
+
+		if (FlxG.keys.justPressed.R)
+		{
+			FlxG.switchState(() -> new Stage1());
+                        FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
+		}
 	}
 
 	public static dynamic function sincoDeathCheck():Void
