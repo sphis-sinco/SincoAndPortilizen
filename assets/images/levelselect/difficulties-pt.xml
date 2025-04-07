@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="spritesheet.png">
+	<SubTexture name="easy0000" x="0" y="0" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="easy0001" x="0" y="0" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="normal0000" x="62" y="0" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="normal0001" x="62" y="0" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="hard0000" x="124" y="0" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="hard0001" x="124" y="0" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="extreme0000" x="0" y="14" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="extreme0001" x="0" y="14" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="extreme0002" x="0" y="14" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="extreme0003" x="0" y="14" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="extreme0004" x="62" y="14" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+	<SubTexture name="extreme0005" x="62" y="14" width="62" height="14" frameX="-1" frameY="-1" frameWidth="64" frameHeight="16" />
+</TextureAtlas>
