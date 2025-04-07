@@ -9,11 +9,13 @@
 - Added save for the window resolution before leaving the settings menu
 - Added a settings save data value
 ### Changed
+- Main menu option box is now bigger
 - Level data is now controlled by json
 - The player now starts on the last level selected in the worldmap
 - Updated all sinco assets
 - Updated osin assets
 ### Fixed
+- Fixed Main Menu option texts being able to escape the bounds of the box
 - Fixed stage 1 bug where you can dodge and jump at the same time
 - Fixed portilizen map being sincos map after swapping
 - Fixed negative percentages on Results Menu

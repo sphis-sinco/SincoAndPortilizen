@@ -61,7 +61,7 @@ class MainMenu extends State
 		port.animation.play('visible');
 
 		menuselectbox = new FlxSprite();
-		menuselectbox.makeGraphic(64, 64, FlxColor.BLACK);
+		menuselectbox.makeGraphic(80, 64, FlxColor.BLACK);
 		Global.scaleSprite(menuselectbox, 0);
 		menuselectbox.screenCenter();
 		add(menuselectbox);
