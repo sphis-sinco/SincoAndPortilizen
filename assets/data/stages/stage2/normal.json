@@ -1,0 +1,9 @@
+{
+        "player_start_y": 384,
+	"PLAYER_JUMP_Y_OFFSET" : 240,
+	"PLAYER_JUMP_SPEED" : 0.5,
+	"MAX_ROCKS": 2,
+	"START_TIMER": 60,
+	"TEMPO_CITY_MAX_HEALTH": 5,
+	"BG_POSITION_DECREASE" : 50
+}
