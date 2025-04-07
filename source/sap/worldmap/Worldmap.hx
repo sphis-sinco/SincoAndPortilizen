@@ -21,6 +21,9 @@ class Worldmap extends State
 		return ["sinco" => [true, true, false], "port" => [true, false, false]];
 	}
 
+        public static var DIFFICULTY:String = 'normal';
+        public static var difficultySprite:SparrowSprite;
+
 	override public function new(char:String = "Sinco"):Void
 	{
 		super();
@@ -28,6 +31,7 @@ class Worldmap extends State
 		charWheel = new CharacterWheel();
 		character = new MapCharacter(char);
 		mapGRP = new FlxTypedGroup<FlxSprite>();
+                difficultySprite = new SparrowSprite('levelselect/difficulties', 0,0);
 	}
 
 	override function create():Void
