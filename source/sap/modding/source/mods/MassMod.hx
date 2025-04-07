@@ -36,7 +36,7 @@ class MassMod extends ModBasic
 
 		Global.change_saveslot((SLGame.isDebug) ? 'debug_massmod' : 'release_massmod');
 
-		StageGlobals.STAGE4_START_TIMER = 120;
+		Stage4.start_timer = 240;
 		super.create();
 	}
 
@@ -76,6 +76,7 @@ class MassMod extends ModBasic
 
 		if (Global.getCurrentState() == "Stage4")
 		{
+			Stage4.start_timer = 240;
 			trace('Stage 4!');
 			Stage4.enemyAttackCondition = function():Bool
 			{

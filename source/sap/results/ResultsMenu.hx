@@ -98,7 +98,7 @@ class ResultsMenu extends State
 					// add(MedalData.unlockMedal('True Protector'));
 				}
 			}
-			else if (Stage4.time == StageGlobals.STAGE4_START_TIMER)
+			else if (Stage4.time == Stage4.start_timer)
 			{
 				// add(MedalData.unlockMedal('Dimensions reached'));
 			}

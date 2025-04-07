@@ -16,6 +16,21 @@ class Stage4 extends State
 	public static var timerText:FlxText;
 	public static var time:Int = 0;
 
+	public static var DIFFICULTY:String = '';
+	public static var diffJson:Stage4DifficultyJson;
+
+	public static var start_timer:Int = 60;
+
+	override public function new(difficulty:String):Void
+	{
+		super();
+
+		DIFFICULTY = difficulty;
+		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage4/${difficulty}.json'));
+
+		start_timer = diffJson.start_timer;
+	}
+
 	override function create():Void
 	{
 		super.create();
@@ -42,7 +57,7 @@ class Stage4 extends State
 		enemy.y = port.y;
 
 		time = 0;
-		FlxTimer.wait(StageGlobals.STAGE4_START_TIMER, () ->
+		FlxTimer.wait(start_timer, () ->
 		{
 			levelComplete();
 		});
@@ -50,7 +65,7 @@ class Stage4 extends State
 		timerText = new FlxText(10, 10, 0, "60", 64);
 		timerText.screenCenter();
 		add(timerText);
-		StageGlobals.waitSec(StageGlobals.STAGE4_START_TIMER, time, timerText);
+		StageGlobals.waitSec(start_timer, time, timerText);
 
 		Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
 
@@ -94,7 +109,7 @@ class Stage4 extends State
 
 		if (FlxG.keys.justPressed.R)
 		{
-			FlxG.switchState(() -> new Stage4());
+			FlxG.switchState(() -> new Stage4(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
 		if (enemyAttackCondition())
@@ -166,7 +181,7 @@ class Stage4 extends State
 
 	public static dynamic function moveToResultsMenu():Void
 	{
-		FlxG.switchState(() -> new ResultsMenu(time, StageGlobals.STAGE4_START_TIMER, () -> new Worldmap("Port"), "port"));
+		FlxG.switchState(() -> new ResultsMenu(time, start_timer, () -> new Worldmap("Port"), "port"));
 	}
 
 	public static dynamic function enemyRetreat():Void

@@ -2,8 +2,6 @@ package sap.stages;
 
 class StageGlobals
 {
-	public static var STAGE4_START_TIMER:Int = 60;
-
 	public static final DISMx2:Float = Global.DEFAULT_IMAGE_SCALE_MULTIPLIER * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 
 	public static final JUMP_KEYWORD:String = 'jump';
