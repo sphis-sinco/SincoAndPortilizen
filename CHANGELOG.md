@@ -1,6 +1,7 @@
 # Alpha
 ## 0.3.0a - 4/14/2025
 ### Added
+- Added difficulties: Easy, Normal, Hard, and Extreme
 - Added reset buttons to Stages 1, 2, and 4
 - Added back custom Stage 1 background created by @iampauleps
 - Added Stage 2
@@ -8,6 +9,7 @@
 - Added save for the window resolution before leaving the settings menu
 - Added a settings save data value
 ### Changed
+- Level data is now controlled by json
 - The player now starts on the last level selected in the worldmap
 - Updated all sinco assets
 - Updated osin assets
