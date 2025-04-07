@@ -1,5 +1,5 @@
 # Alpha
-## 0.3.0a - 4/14/2025
+## 0.3.0a (Destination 2 - Tierra) - 4/14/2025
 ### Added
 - Added difficulties: Easy, Normal, Hard, and Extreme
 - Added reset buttons to Stages 1, 2, and 4
@@ -28,7 +28,7 @@
 ### Fixed
 - Fixed hitHurt sounds trying to play a hitHurt-0 sound that doesn't exist.
 
-## 0.2.0a - 3/12/2025
+## 0.2.0a (Pitstop 1 - Scripting) - 3/12/2025
 ### Changed
 - Changed it so that now [Stage 1 and Stage 4 are now a mix of soft-coded and hard-coded.](#18_link)
 ### Fixed
@@ -53,7 +53,7 @@
 - Fixed no sound in stage 4 ([#12][#12_link])
 - Fixed volume being at 100% on desktop is 99.99...% on web ([#10][#10_link])
 
-## 0.1.0a - 2/22/2025
+## 0.1.0a (Destination 1 - Osin & Dimension String)  - 2/22/2025
 ### Added
 - Added Results menu on death for stage 1
 ### Fixed
