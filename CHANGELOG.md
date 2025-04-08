@@ -1,4 +1,8 @@
 # Alpha
+## 0.3.1a - 4/8/2025
+### Fixed
+- Fixed web bug where pressing continue crashes the game
+
 ## 0.3.0a (Destination 2 - Tierra) - 4/8/2025
 ### Added
 - Added Spanish and Portuguese translations for the tutorial objects
