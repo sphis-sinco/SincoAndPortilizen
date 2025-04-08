@@ -1,5 +1,5 @@
 # Alpha
-## 0.3.0a (Destination 2 - Tierra) - 4/14/2025
+## 0.3.0a (Destination 2 - Tierra) - 4/8/2025
 ### Added
 - Added difficulties: Easy, Normal, Hard, and Extreme
 - Added reset buttons to Stages 1, 2, and 4
