@@ -90,15 +90,15 @@ class Global
 		playMusic('22', posinfo);
 	}
 
-        /**
-         * Turns PosInfo data into a string readable for debugging purposes
-         * @param posinfo 
-         * @return String
-         */
-        public static function posInfoString(?posinfo:PosInfos):String
-        {
-                return '${posinfo.fileName}/${posinfo.methodName}():${posinfo.lineNumber}';
-        }
+	/**
+	 * Turns PosInfo data into a string readable for debugging purposes
+	 * @param posinfo 
+	 * @return String
+	 */
+	public static function posInfoString(?posinfo:PosInfos):String
+	{
+		return '${posinfo.fileName}/${posinfo.methodName}():${posinfo.lineNumber}';
+	}
 
 	/**
 	 * Plays music
@@ -153,11 +153,21 @@ class Global
 	 */
 	public static function beatLevel(lvl:Int = 1, ?posinfo:PosInfos):Void
 	{
-		#if html5 return; #end
+		final newLvlTrace:String = 'New level complete: ${lvl} | ${posInfoString(posinfo)}';
+
+		#if html5
+		if (!WebSave.LEVELS_COMPLETE.contains(lvl))
+		{
+			trace(newLvlTrace);
+			WebSave.LEVELS_COMPLETE.push(lvl);
+		}
+
+		return;
+		#end
 
 		if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
 		{
-			trace('New level complete: ${lvl} | ${posInfoString(posinfo)}');
+			trace(newLvlTrace);
 			FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
 		}
 	}
@@ -173,7 +183,7 @@ class Global
 		return;
 		#else
 		trace('Discord presence is being changed (details: ${details}, state: ${state}) | ${posInfoString(posinfo)}');
-                DiscordClient.changePresence(details, state);
+		DiscordClient.changePresence(details, state);
 		#end
 	}
 
