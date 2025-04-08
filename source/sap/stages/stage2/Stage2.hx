@@ -1,5 +1,7 @@
 package sap.stages.stage2;
 
+import sap.stages.stage2.PostStage2Cutscene;
+
 class Stage2 extends State
 {
 	public static var bg:FlxSprite;
@@ -13,8 +15,8 @@ class Stage2 extends State
 
 	public static var TEMPO_CITY_HEALTH:Int = 5;
 
-        public static var DIFFICULTY:String = '';
-        public static var diffJson:Stage2DifficultyJson;
+	public static var DIFFICULTY:String = '';
+	public static var diffJson:Stage2DifficultyJson;
 
 	static var jump_speed:Float;
 	static var start_y:Float;
@@ -22,17 +24,18 @@ class Stage2 extends State
 
 	static var max_rocks:Int;
 
-        override public function new(difficulty:String):Void {
-                super();
+	override public function new(difficulty:String):Void
+	{
+		super();
 
-                DIFFICULTY = difficulty;
-                diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage2/${difficulty}.json'));
+		DIFFICULTY = difficulty;
+		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage2/${difficulty}.json'));
 
-                jump_speed = diffJson.player_jump_speed;
-                start_y = diffJson.player_start_y;
-                jump_y_offset = diffJson.player_jump_y_offset;
-                max_rocks = diffJson.max_rocks;
-        }
+		jump_speed = diffJson.player_jump_speed;
+		start_y = diffJson.player_start_y;
+		jump_y_offset = diffJson.player_jump_y_offset;
+		max_rocks = diffJson.max_rocks;
+	}
 
 	override function create():Void
 	{
@@ -85,7 +88,13 @@ class Stage2 extends State
 	public static dynamic function levelComplete():Void
 	{
 		Global.beatLevel(2);
-		moveToResultsMenu();
+		cutsceneResults();
+	}
+
+
+	public static dynamic function cutsceneResults():Void
+	{
+		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new PostStage2Cutscene(), "sinco"));
 	}
 
 	public static dynamic function moveToResultsMenu():Void

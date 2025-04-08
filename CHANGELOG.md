@@ -1,6 +1,7 @@
 # Alpha
 ## 0.3.1a - 4/8/2025
 ### Added
+- Added Post-Stage 2 panel Cutscene
 - Added spanish, and portuguese translation to the intro cutscene and post-stage1 cutscene
 ### Fixed
 - Fixed typos in the 3rd intro cutscene panel
