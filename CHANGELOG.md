@@ -1,6 +1,9 @@
 # Alpha
 ## 0.3.1a - 4/8/2025
+### Added
+- Added spanish, and portuguese translation to the intro cutscene and post-stage1 cutscene
 ### Fixed
+- Fixed typos in the 3rd intro cutscene panel
 - Fixed web bug where pressing continue crashes the game
 
 ## 0.3.0a (Destination 2 - Tierra) - 4/8/2025
