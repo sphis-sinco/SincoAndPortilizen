@@ -1,6 +1,7 @@
 # Alpha
 ## 0.3.0a (Destination 2 - Tierra) - 4/8/2025
 ### Added
+- Added Spanish and Portuguese translations for the tutorial objects
 - Added difficulties: Easy, Normal, Hard, and Extreme
 - Added reset buttons to Stages 1, 2, and 4
 - Added back custom Stage 1 background created by @iampauleps
