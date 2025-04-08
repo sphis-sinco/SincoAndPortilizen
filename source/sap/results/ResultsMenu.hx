@@ -45,6 +45,7 @@ class ResultsMenu extends State
 		}
 		RANK_CLASS = new Rank((TARGET_PERCENT == null) ? 0 : TARGET_PERCENT);
 
+                trace('${goods}/${total}');
 		trace('${TARGET_PERCENT}%');
 
 		RANK_GRADE_TEXT = new FlxText(10, 10, FlxG.width, '${Global.getLocalizedPhrase('YOU DID')}...', 64);

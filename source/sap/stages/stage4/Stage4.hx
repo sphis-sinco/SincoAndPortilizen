@@ -181,7 +181,9 @@ class Stage4 extends State
 
 	public static dynamic function moveToResultsMenu():Void
 	{
-		FlxG.switchState(() -> new ResultsMenu(time, start_timer, () -> new Worldmap("Port"), "port"));
+                final good = Std.parseInt(timerText.text);
+                trace(good);
+		FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new Worldmap("Port"), "port"));
 	}
 
 	public static dynamic function enemyRetreat():Void
