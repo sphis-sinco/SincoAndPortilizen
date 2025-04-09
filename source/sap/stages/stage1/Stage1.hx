@@ -21,6 +21,8 @@ class Stage1 extends State
 	public static var OSIN_MAX_HEALTH:Int = 10;
 	public static var SINCO_MAX_HEALTH:Int = 10;
 
+        public static var PLAYER_COMBO:Int = 0;
+
 	public static var osinHealthIndicator:FlxText;
 	public static var sincoHealthIndicator:FlxText;
 
@@ -286,7 +288,7 @@ class Stage1 extends State
 
 		if (osin.overlaps(sinco))
 		{
-			osinHitSincoCheck();
+			osinHitSinco();
 			waitn = 0;
 		}
 
@@ -296,8 +298,11 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinHitSincoCheck():Void
+	public static dynamic function osinHitSinco():Void
 	{
+                // Loss combo :(
+                PLAYER_COMBO = 0;
+
 		sincoHealthIndicator.color = 0xff0000;
 		FlxTween.tween(sincoHealthIndicator, {color: 0xffffff}, 1);
 
@@ -351,6 +356,7 @@ class Stage1 extends State
 	{
 		if (sinco.overlaps(osin) && osin.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
+                        PLAYER_COMBO++;
 			osinHealthIndicator.color = 0xff0000;
 			FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
 			OSIN_HEALTH--;
