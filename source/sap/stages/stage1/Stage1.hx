@@ -33,6 +33,8 @@ class Stage1 extends State
 	public static var INFO_TEXTFIELD:FlxText;
 	public static var INFO_TEXT:String;
 
+	public static var PROGRESS_BAR:FlxBar;
+
 	override public function new(difficulty:String):Void
 	{
 		super();
@@ -101,6 +103,15 @@ class Stage1 extends State
 		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 
 		osin_canjump = true;
+
+		PROGRESS_BAR = new FlxBar(0, 0, RIGHT_TO_LEFT, Std.int(FlxG.width / 2), 16, this, 'health', 0, 100, true);
+		add(PROGRESS_BAR);
+		PROGRESS_BAR.screenCenter(X);
+		PROGRESS_BAR.y = FlxG.height - PROGRESS_BAR.height - 64;
+		PROGRESS_BAR.createFilledBar(Random.dominantColor(sinco), Random.dominantColor(osin), true, FlxColor.BLACK, 4);
+
+		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, PROGRESS_BAR.width, INFO_TEXT, 16);
+		add(INFO_TEXTFIELD);
 	}
 
 	override function postCreate():Void
@@ -172,6 +183,8 @@ class Stage1 extends State
 	public static dynamic function updateHealthIndicators():Void
 	{
 		INFO_TEXT = 'Sinco: ${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH || Osin: ${Global.getLocalizedPhrase('HP')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
+		PROGRESS_BAR.percent = (OSIN_HEALTH / OSIN_MAX_HEALTH) * 100;
+		INFO_TEXTFIELD.text = INFO_TEXT;
 	}
 
 	public static dynamic function osinJumpWait():Void
