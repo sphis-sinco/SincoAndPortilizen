@@ -7,17 +7,18 @@
 ### Added
 - Added crash keybind for states using the [`State.hx`](source/sap/utils/State.hx) file
 - Added the Friday Night Funkin AnsiTrace file
-- Added the Friday Night Funkin Crash Handler ([Crash logs](random/crash.log) now get generated)
+- Added the Friday Night Funkin Crash Handler
+  - [Crash logs](random/crash.log) now get generated
 - Added EXCESS_TRACES build flag to limit the traces (so far only removes the SFX and Music traces)
-- There is now a combo sprite that appears for when a combo occors
-- The combo resets when osin attacks sinco
-- Sinco's combo pose plays when you have an attack combo of 10, 20, and 30 but can be changed by the [`combo_poses`](assets/data/stages/stage1/combo_poses.txt) text file
-- Sinco now has a custom combo pose
 - Added combos to Stage 1
-- The stage 4 easy difficulty now has a 12.5% chance of attack from the opponent
-- The stage 4 hard difficulty now has a 50% chance of attack from the opponent
-- The stage 4 extreme difficulty now has a 95% chance of attack from the opponent
+  - Sinco now has a custom combo pose
+  - Sinco's combo pose plays when you have an attack combo of 10, 20, and 30 but can be changed by the [`combo_poses`](assets/data/stages/stage1/combo_poses.txt) text file
+  - The combo resets when osin attacks sinco
+  - There is now a combo sprite that appears for when a combo occors
 - Added `attack_percentage` field to Stage 4 difficulty json files
+  - Extreme difficulty now has a 95% chance of attack
+  - Hard difficulty now has a 50% chance of attack
+  - Easy difficulty now has a 12.5% chance of attack
 - Added `-debug` text at the end of the version strings added when in debug builds
 
 ## 0.3.1a - 4/8/2025
