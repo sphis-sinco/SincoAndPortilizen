@@ -21,7 +21,10 @@ class Stage1 extends State
 	public static var OSIN_MAX_HEALTH:Int = 10;
 	public static var SINCO_MAX_HEALTH:Int = 10;
 
-        public static var PLAYER_COMBO:Int = 0;
+	public static var PLAYER_COMBO:Int = 0;
+
+	// Controls what combos will give sinco the combo animation
+	public static var PLAYER_COMBO_ANIMATEDS:Array<Int> = [10, 20, 30];
 
 	public static var osinHealthIndicator:FlxText;
 	public static var sincoHealthIndicator:FlxText;
@@ -34,7 +37,7 @@ class Stage1 extends State
 		super();
 
 		DIFFICULTY = difficulty;
-		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage1/${difficulty}.json'));
+		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage1/${'extreme'}.json'));
 
 		SINCO_MAX_HEALTH = diffJson.player_max_health;
 		OSIN_MAX_HEALTH = diffJson.opponent_max_health;
@@ -300,8 +303,8 @@ class Stage1 extends State
 
 	public static dynamic function osinHitSinco():Void
 	{
-                // Loss combo :(
-                PLAYER_COMBO = 0;
+		// Loss combo :(
+		PLAYER_COMBO = 0;
 
 		sincoHealthIndicator.color = 0xff0000;
 		FlxTween.tween(sincoHealthIndicator, {color: 0xffffff}, 1);
@@ -340,6 +343,11 @@ class Stage1 extends State
 	{
 		osinHurtCheck();
 
+		if (PLAYER_COMBO_ANIMATEDS.contains(PLAYER_COMBO))
+		{
+			sinco.animation.play('combo');
+		}
+
 		FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
 			onComplete: _tween ->
 			{
@@ -356,7 +364,8 @@ class Stage1 extends State
 	{
 		if (sinco.overlaps(osin) && osin.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
-                        PLAYER_COMBO++;
+			PLAYER_COMBO++;
+
 			osinHealthIndicator.color = 0xff0000;
 			FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
 			OSIN_HEALTH--;
