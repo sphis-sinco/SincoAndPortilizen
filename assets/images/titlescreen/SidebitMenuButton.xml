@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="SidebitMenuButton.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Ring spin0000" x="4" y="4" width="75" height="83" frameX="-1" frameY="-2" frameWidth="81" frameHeight="86"/>
+	<SubTexture name="Ring spin0001" x="4" y="4" width="75" height="83" frameX="-1" frameY="-2" frameWidth="81" frameHeight="86"/>
+	<SubTexture name="Ring spin0002" x="87" y="4" width="77" height="82" frameX="0" frameY="-3" frameWidth="81" frameHeight="86"/>
+	<SubTexture name="Ring spin0003" x="87" y="4" width="77" height="82" frameX="0" frameY="-3" frameWidth="81" frameHeight="86"/>
+	<SubTexture name="Ring spin0004" x="172" y="4" width="75" height="83" frameX="-6" frameY="-3" frameWidth="81" frameHeight="86"/>
+	<SubTexture name="Ring spin0005" x="172" y="4" width="75" height="83" frameX="-6" frameY="-3" frameWidth="81" frameHeight="86"/>
+	<SubTexture name="Ring spin0006" x="4" y="95" width="63" height="83" frameX="-15" frameY="-3" frameWidth="81" frameHeight="86"/>
+	<SubTexture name="Ring spin0007" x="4" y="95" width="63" height="83" frameX="-15" frameY="-3" frameWidth="81" frameHeight="86"/>
+	<SubTexture name="Ring spin0008" x="75" y="95" width="67" height="86" frameX="-10" frameY="0" frameWidth="81" frameHeight="86"/>
+	<SubTexture name="Ring spin0009" x="75" y="95" width="67" height="86" frameX="-10" frameY="0" frameWidth="81" frameHeight="86"/>
+</TextureAtlas>
