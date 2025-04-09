@@ -34,7 +34,7 @@ class TitleState extends State
 		return 'v${Global.VERSION}';
 	}
 
-        public static var SIDEBIT_MENU_BUTTON:SparrowSprite;
+	public static var SIDEBIT_MENU_BUTTON:SparrowSprite;
 
 	override public function create():Void
 	{
@@ -78,7 +78,7 @@ class TitleState extends State
 		MINI_PORTILIZEN.visible = false;
 		add(MINI_PORTILIZEN);
 
-		PRESS_ANY_HINTTargY = FlxG.height - (PRESS_ANY_HINT.height * 2) - (16 * 2);
+		PRESS_ANY_HINT_TARGET_VERTICAL_POSITION = FlxG.height - (PRESS_ANY_HINT.height * 2) - (16 * 2);
 
 		versiontext.size = 16;
 		versiontext.setPosition(5, 5);
@@ -86,10 +86,11 @@ class TitleState extends State
 		versiontext.color = FlxColor.BLACK;
 		add(versiontext);
 
-                SIDEBIT_MENU_BUTTON = new SparrowSprite(FileManager.getImageFile('titlescreen/SidebitMenuButton'));
-                SIDEBIT_MENU_BUTTON.setPosition(560, 515);
-                SIDEBIT_MENU_BUTTON.addAnimationByPrefix('loopAnim', 'Ring spin', 24);
-                add(SIDEBIT_MENU_BUTTON);
+		SIDEBIT_MENU_BUTTON = new SparrowSprite(FileManager.getImageFile('titlescreen/SidebitMenuButton'));
+		SIDEBIT_MENU_BUTTON.setPosition(560, 515);
+		SIDEBIT_MENU_BUTTON.addAnimationByPrefix('loopAnim', 'Ring spin', 24);
+		add(SIDEBIT_MENU_BUTTON);
+		SIDEBIT_MENU_BUTTON.visible = false;
 
 		if (CURRENT_STATE == INTRO)
 		{
@@ -99,7 +100,7 @@ class TitleState extends State
 		super.create();
 
 		Global.changeDiscordRPCPresence('In the title screen', null);
-                // add(MedalData.unlockMedal('Welcome'));
+		// add(MedalData.unlockMedal('Welcome'));
 	}
 
 	public static var transitioning:Bool = false;
@@ -111,6 +112,14 @@ class TitleState extends State
 
 		if (CURRENT_STATE == DONE)
 		{
+			if (FlxG.mouse.overlaps(SIDEBIT_MENU_BUTTON))
+			{
+				if (FlxG.mouse.justReleased)
+				{
+					trace('Head to sidebit menu');
+				}
+			}
+
 			if (!PRESS_ANY_HINT.visible)
 			{
 				PRESS_ANY_HINT.visible = true;
@@ -169,24 +178,29 @@ class TitleState extends State
 		}
 		Global.playMenuMusic();
 
-		PRESS_ANY_HINT.y = PRESS_ANY_HINTTargY;
+		PRESS_ANY_HINT.y = PRESS_ANY_HINT_TARGET_VERTICAL_POSITION;
 		VOID_BACKGROUND.visible = true;
 
 		CURRENT_STATE = DONE;
 		PRESS_ANY_HINT.visible = true;
+		SIDEBIT_MENU_BUTTON.visible = true;
 	}
 
 	public static dynamic function doneState():Void
 	{
 		Global.playMenuMusic();
 
-		if (PRESS_ANY_HINT.y != PRESS_ANY_HINTTargY)
+		if (PRESS_ANY_HINT.y != PRESS_ANY_HINT_TARGET_VERTICAL_POSITION)
 		{
-			PRESS_ANY_HINT.y = PRESS_ANY_HINTTargY;
+			PRESS_ANY_HINT.y = PRESS_ANY_HINT_TARGET_VERTICAL_POSITION;
 		}
 		if (!PRESS_ANY_HINT.visible)
 		{
 			PRESS_ANY_HINT.visible = true;
+		}
+		if (!SIDEBIT_MENU_BUTTON.visible)
+		{
+			SIDEBIT_MENU_BUTTON.visible = true;
 		}
 
 		if (!VOID_BACKGROUND.visible)
@@ -217,7 +231,7 @@ class TitleState extends State
 		}
 	}
 
-	public static var PRESS_ANY_HINTTargY:Float = 0;
+	public static var PRESS_ANY_HINT_TARGET_VERTICAL_POSITION:Float = 0;
 
 	public static dynamic function randomBGChar(char:FlxSprite, chance:Float):Void
 	{
