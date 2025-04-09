@@ -5,6 +5,7 @@
 ### Changed
 - Stage 1 UI is now updated and overhauled to be a health bar with text below it
 ### Added
+- Added EXCESS_TRACES build flag to limit the traces (so far only removes the SFX and Music traces)
 - Added combos to Stage 1
         - Sinco now has a custom combo pose
         - Sinco's combo pose plays when you have an attack combo of 10, 20, and 30 but can be changed by the [`combo_poses`](assets/data/stages/stage1/combo_poses.txt) text file
