@@ -1,5 +1,8 @@
 # Alpha
 ## 0.3.2a - 4/9/2025
+### Changed
+- Stage 1 UI is now updated and overhauled to be a health bar with text below it
+
 ### Added
 - Added combos to Stage 1
         - Sinco now has a custom combo pose
