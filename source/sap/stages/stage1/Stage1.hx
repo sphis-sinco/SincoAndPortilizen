@@ -27,11 +27,11 @@ class Stage1 extends State
 	// Controls what combos will give sinco the combo animation
 	public static var PLAYER_COMBO_ANIMATEDS:Array<Int> = [10, 20, 30];
 
-	public static var osinHealthIndicator:FlxText;
-	public static var sincoHealthIndicator:FlxText;
-
 	public static var DIFFICULTY:String = '';
 	public static var diffJson:Stage1DifficultyJson;
+
+	public static var INFO_TEXTFIELD:FlxText;
+	public static var INFO_TEXT:String;
 
 	override public function new(difficulty:String):Void
 	{
@@ -50,9 +50,6 @@ class Stage1 extends State
 
 		sinco = new Sinco();
 		osin = new Osin();
-
-		osinHealthIndicator = new FlxText();
-		sincoHealthIndicator = new FlxText();
 
 		var backgroundBack = new SparrowSprite('gameplay/sinco stages/StageOneBackground');
 
@@ -100,12 +97,6 @@ class Stage1 extends State
 
 		osinPos = new FlxPoint(0, 0);
 		osinPos.set(osin.x, osin.y);
-
-		osinHealthIndicator.size = 16;
-		add(osinHealthIndicator);
-
-		sincoHealthIndicator.size = 16;
-		add(sincoHealthIndicator);
 
 		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 
@@ -180,15 +171,7 @@ class Stage1 extends State
 
 	public static dynamic function updateHealthIndicators():Void
 	{
-		osinHealthIndicator.setPosition(osin.x, osin.y - 64);
-		osinHealthIndicator.text = '${Global.getLocalizedPhrase('HP')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
-		if (osin_warning)
-		{
-			osinHealthIndicator.text += '\n${Global.getLocalizedPhrase('DODGE')}';
-		}
-
-		sincoHealthIndicator.setPosition(sinco.x, sinco.y + 64);
-		sincoHealthIndicator.text = '${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH';
+		INFO_TEXT = 'Sinco: ${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH || Osin: ${Global.getLocalizedPhrase('HP')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
 	}
 
 	public static dynamic function osinJumpWait():Void
@@ -307,9 +290,6 @@ class Stage1 extends State
 		// Loss combo :(
 		PLAYER_COMBO = 0;
 
-		sincoHealthIndicator.color = 0xff0000;
-		FlxTween.tween(sincoHealthIndicator, {color: 0xffffff}, 1);
-
 		SINCO_HEALTH--;
 		Global.hitHurt();
 
@@ -347,10 +327,12 @@ class Stage1 extends State
 		if (PLAYER_COMBO_ANIMATEDS.contains(PLAYER_COMBO) && !PLAYED_COMBO_ANIMATION)
 		{
 			sinco.animation.play('combo');
-                        PLAYED_COMBO_ANIMATION = true;
-		} else {
-                        PLAYED_COMBO_ANIMATION = false;
-                }
+			PLAYED_COMBO_ANIMATION = true;
+		}
+		else
+		{
+			PLAYED_COMBO_ANIMATION = false;
+		}
 
 		FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
 			onComplete: _tween ->
@@ -369,10 +351,8 @@ class Stage1 extends State
 		if (sinco.overlaps(osin) && osin.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
 			PLAYER_COMBO++;
-                        PLAYED_COMBO_ANIMATION = false;
+			PLAYED_COMBO_ANIMATION = false;
 
-			osinHealthIndicator.color = 0xff0000;
-			FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
 			OSIN_HEALTH--;
 			osin.animation.play('hurt');
 			Global.hitHurt();
