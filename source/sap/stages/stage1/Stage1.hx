@@ -78,7 +78,7 @@ class Stage1 extends State
 
 		var rim:DropShadowShader = new DropShadowShader();
 		rim.setAdjustColor(-66, -10, 24, -23);
-		rim.color = 0xFF782C8D;
+		rim.color = 0xFF373234;
 		rim.antialiasAmt = 0;
 		rim.distance = 5;
 
