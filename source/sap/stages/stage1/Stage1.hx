@@ -112,6 +112,11 @@ class Stage1 extends State
 
 		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, PROGRESS_BAR.width, INFO_TEXT, 16);
 		add(INFO_TEXTFIELD);
+
+		COMBO_SPRITE = new Combo();
+		add(COMBO_SPRITE);
+		COMBO_SPRITE.visible = false;
+		COMBO_SPRITE.screenCenter();
 	}
 
 	override function postCreate():Void
@@ -139,6 +144,8 @@ class Stage1 extends State
 			FlxTween.tween(tutorial2, {alpha: 0}, 1);
 		});
 	}
+
+	public static var COMBO_SPRITE:Combo;
 
 	public static var SINCO_POINT:FlxPoint;
 	public static var OSIN_POINT:FlxPoint;
@@ -335,6 +342,18 @@ class Stage1 extends State
 		{
 			sinco.animation.play('combo');
 			PLAYED_COMBO_ANIMATION = true;
+
+			COMBO_SPRITE.visible = true;
+			COMBO_SPRITE.scale.set(1.5 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, 1.5 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+			COMBO_SPRITE.alpha = 1;
+			FlxTween.tween(COMBO_SPRITE,
+				{alpha: 0, 'scale.x': 1 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, 'scale.y': 1 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER}, 1, {
+					onComplete: tween ->
+					{
+						COMBO_SPRITE.visible = false;
+					},
+					ease: FlxEase.bounceInOut
+				});
 		}
 		else
 		{
