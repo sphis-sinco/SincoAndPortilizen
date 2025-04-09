@@ -19,13 +19,13 @@ class TitleState extends State
 {
 	public static var CURRENT_STATE:TitleStates = INTRO;
 
-	public static var charring_chars:FlxSprite;
-	public static var charring:FlxSprite;
-	public static var pressany:FlxSprite;
-	public static var titlebg:FlxSprite;
+	public static var CHARACTER_RING_CHARACTERS:FlxSprite;
+	public static var CHARACTER_RING:FlxSprite;
+	public static var PRESS_ANY_HINT:FlxSprite;
+	public static var VOID_BACKGROUND:FlxSprite;
 
-	public static var sinco:TitleSinco;
-	public static var port:TitlePort;
+	public static var MINI_SINCO:TitleSinco;
+	public static var MINI_PORTILIZEN:TitlePort;
 
 	public static var versiontext:FlxText;
 
@@ -34,51 +34,51 @@ class TitleState extends State
 		return 'v${Global.VERSION}';
 	}
 
-        public static var sidebitBtn:SparrowSprite;
+        public static var SIDEBIT_MENU_BUTTON:SparrowSprite;
 
 	override public function create():Void
 	{
-		sinco = new TitleSinco();
-		port = new TitlePort();
+		MINI_SINCO = new TitleSinco();
+		MINI_PORTILIZEN = new TitlePort();
 		versiontext = new FlxText();
 
 		transitioning = false;
 
-		titlebg = new FlxSprite();
-		titlebg.loadGraphic(FileManager.getImageFile('titlescreen/TitleBG'));
-		Global.scaleSprite(titlebg, 2);
-		titlebg.screenCenter(XY);
-		titlebg.visible = false;
-		add(titlebg);
+		VOID_BACKGROUND = new FlxSprite();
+		VOID_BACKGROUND.loadGraphic(FileManager.getImageFile('titlescreen/TitleBG'));
+		Global.scaleSprite(VOID_BACKGROUND, 2);
+		VOID_BACKGROUND.screenCenter(XY);
+		VOID_BACKGROUND.visible = false;
+		add(VOID_BACKGROUND);
 
-		charring_chars = new FlxSprite();
-		charring_chars.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing-characters'));
-		Global.scaleSprite(charring_chars, 0);
-		add(charring_chars);
+		CHARACTER_RING_CHARACTERS = new FlxSprite();
+		CHARACTER_RING_CHARACTERS.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing-characters'));
+		Global.scaleSprite(CHARACTER_RING_CHARACTERS, 0);
+		add(CHARACTER_RING_CHARACTERS);
 
-		charring = new FlxSprite();
-		charring.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing'));
-		Global.scaleSprite(charring, 0);
-		charring.screenCenter(X);
-		charring.y = -(charring.height * 2);
-		add(charring);
+		CHARACTER_RING = new FlxSprite();
+		CHARACTER_RING.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing'));
+		Global.scaleSprite(CHARACTER_RING, 0);
+		CHARACTER_RING.screenCenter(X);
+		CHARACTER_RING.y = -(CHARACTER_RING.height * 2);
+		add(CHARACTER_RING);
 
-		pressany = new FlxSprite();
-		pressany.loadGraphic(FileManager.getImageFile('titlescreen/PressAnyToPlay'));
-		Global.scaleSprite(pressany, 0);
-		pressany.screenCenter(XY);
-		pressany.visible = false;
-		add(pressany);
+		PRESS_ANY_HINT = new FlxSprite();
+		PRESS_ANY_HINT.loadGraphic(FileManager.getImageFile('titlescreen/PressAnyToPlay'));
+		Global.scaleSprite(PRESS_ANY_HINT, 0);
+		PRESS_ANY_HINT.screenCenter(XY);
+		PRESS_ANY_HINT.visible = false;
+		add(PRESS_ANY_HINT);
 
-		Global.scaleSprite(sinco, 0);
-		sinco.visible = false;
-		add(sinco);
+		Global.scaleSprite(MINI_SINCO, 0);
+		MINI_SINCO.visible = false;
+		add(MINI_SINCO);
 
-		Global.scaleSprite(port, 0);
-		port.visible = false;
-		add(port);
+		Global.scaleSprite(MINI_PORTILIZEN, 0);
+		MINI_PORTILIZEN.visible = false;
+		add(MINI_PORTILIZEN);
 
-		pressanyTargY = FlxG.height - (pressany.height * 2) - (16 * 2);
+		PRESS_ANY_HINTTargY = FlxG.height - (PRESS_ANY_HINT.height * 2) - (16 * 2);
 
 		versiontext.size = 16;
 		versiontext.setPosition(5, 5);
@@ -86,10 +86,10 @@ class TitleState extends State
 		versiontext.color = FlxColor.BLACK;
 		add(versiontext);
 
-                sidebitBtn = new SparrowSprite(FileManager.getImageFile('titlescreen/SidebitMenuButton'));
-                sidebitBtn.setPosition(560, 515);
-                sidebitBtn.addAnimationByPrefix('loopAnim', 'Ring spin', 24);
-                add(sidebitBtn);
+                SIDEBIT_MENU_BUTTON = new SparrowSprite(FileManager.getImageFile('titlescreen/SidebitMenuButton'));
+                SIDEBIT_MENU_BUTTON.setPosition(560, 515);
+                SIDEBIT_MENU_BUTTON.addAnimationByPrefix('loopAnim', 'Ring spin', 24);
+                add(SIDEBIT_MENU_BUTTON);
 
 		if (CURRENT_STATE == INTRO)
 		{
@@ -106,14 +106,14 @@ class TitleState extends State
 
 	override public function update(elapsed:Float):Void
 	{
-		charring_chars.setPosition(charring.x, charring.y);
+		CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
 		stateChecks();
 
 		if (CURRENT_STATE == DONE)
 		{
-			if (!pressany.visible)
+			if (!PRESS_ANY_HINT.visible)
 			{
-				pressany.visible = true;
+				PRESS_ANY_HINT.visible = true;
 			}
 
 			pressAny();
@@ -144,7 +144,7 @@ class TitleState extends State
 
 	public static dynamic function introState():Void
 	{
-		FlxTween.tween(charring, {y: charring.height + 16}, 1.0, {
+		FlxTween.tween(CHARACTER_RING, {y: CHARACTER_RING.height + 16}, 1.0, {
 			ease: FlxEase.sineOut,
 			onComplete: introStateDone()
 		});
@@ -169,38 +169,38 @@ class TitleState extends State
 		}
 		Global.playMenuMusic();
 
-		pressany.y = pressanyTargY;
-		titlebg.visible = true;
+		PRESS_ANY_HINT.y = PRESS_ANY_HINTTargY;
+		VOID_BACKGROUND.visible = true;
 
 		CURRENT_STATE = DONE;
-		pressany.visible = true;
+		PRESS_ANY_HINT.visible = true;
 	}
 
 	public static dynamic function doneState():Void
 	{
 		Global.playMenuMusic();
 
-		if (pressany.y != pressanyTargY)
+		if (PRESS_ANY_HINT.y != PRESS_ANY_HINTTargY)
 		{
-			pressany.y = pressanyTargY;
+			PRESS_ANY_HINT.y = PRESS_ANY_HINTTargY;
 		}
-		if (!pressany.visible)
+		if (!PRESS_ANY_HINT.visible)
 		{
-			pressany.visible = true;
-		}
-
-		if (!titlebg.visible)
-		{
-			titlebg.visible = true;
+			PRESS_ANY_HINT.visible = true;
 		}
 
-		if (charring.y != charring.height + 16)
+		if (!VOID_BACKGROUND.visible)
 		{
-			charring.y = charring.height + 16;
+			VOID_BACKGROUND.visible = true;
 		}
 
-		randomBGChar(sinco, 6);
-		randomBGChar(port, 4);
+		if (CHARACTER_RING.y != CHARACTER_RING.height + 16)
+		{
+			CHARACTER_RING.y = CHARACTER_RING.height + 16;
+		}
+
+		randomBGChar(MINI_SINCO, 6);
+		randomBGChar(MINI_PORTILIZEN, 4);
 	}
 
 	public static dynamic function pressAny():Void
@@ -210,14 +210,14 @@ class TitleState extends State
 			transitioning = !transitioning;
 			Global.playSoundEffect('blipSelect');
 			FlxG.camera.flash(0xFFFFFF, 2);
-			FlxFlicker.flicker(pressany, 3, 0.04, true, true, _flicker ->
+			FlxFlicker.flicker(PRESS_ANY_HINT, 3, 0.04, true, true, _flicker ->
 			{
 				FlxG.switchState(() -> new MainMenu());
 			});
 		}
 	}
 
-	public static var pressanyTargY:Float = 0;
+	public static var PRESS_ANY_HINTTargY:Float = 0;
 
 	public static dynamic function randomBGChar(char:FlxSprite, chance:Float):Void
 	{
