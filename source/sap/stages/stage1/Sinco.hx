@@ -10,6 +10,7 @@ class Sinco extends FlxSprite
 		animation.add('run', [0, 1, 2, 3], 24);
 		animation.add('jump', [4], 0, false);
 		animation.add('ded', [5], 0, false);
+		animation.add('combo', [6], 0, false);
 		animation.play('run');
 
 		Global.scaleSprite(this, 0);
