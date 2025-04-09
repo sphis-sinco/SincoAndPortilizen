@@ -1,6 +1,10 @@
 # Alpha
 ## [Unreleased] - 4/?/2025
 ### Added
+- Added combos to Stage 1
+        - Sinco now has a custom combo pose
+        - Sinco's combo pose plays when you have an attack combo of 10, 20, and 30
+        - The combo resets when osin attacks sinco
 - Added `attack_percentage` field to Stage 4 difficulty json files
         - Extreme difficulty now has a 95% chance of attack
         - Hard difficulty now has a 50% chance of attack
