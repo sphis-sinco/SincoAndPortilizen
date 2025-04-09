@@ -15,10 +15,10 @@ class Global
 	{
 		var version:String = Application.VERSION;
 
-                if (SLGame.isDebug)
-                {
-                        version += '-debug';
-                }
+		if (SLGame.isDebug)
+		{
+			version += '-debug';
+		}
 
 		trace('Version: ${version}');
 		return '${version}';
@@ -121,13 +121,13 @@ class Global
 		{
 			if (!FlxG.sound.music.playing)
 			{
-				trace(tracelog);
+				#if EXCESS_TRACES trace(tracelog); #end
 				FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
 			}
 		}
 		else
 		{
-			trace(tracelog);
+			#if EXCESS_TRACES trace(tracelog); #end
 			FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
 		}
 	}
@@ -138,8 +138,10 @@ class Global
 	 */
 	public static function playSoundEffect(name:String, ?posinfo:PosInfos):Void
 	{
+		#if EXCESS_TRACES
 		final file:Array<String> = name.split('/');
 		trace('Trying to play sound effect: "${file[file.length - 1]}" | ${posInfoString(posinfo)}');
+		#end
 
 		FlxG.sound.play(FileManager.getSoundFile('sounds/$name'));
 	}

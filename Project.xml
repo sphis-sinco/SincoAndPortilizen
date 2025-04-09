@@ -53,6 +53,8 @@
 	<echo value="${meta.title} v${meta.version}-debug" if="debug" />
         <echo value="${BUILD_DIR}" />
 
+        <echo value="EXCESS_TRACES" if="EXCESS_TRACES"/>
+
         <!-- _____________________________ Custom Defines ___________________________ -->
 
 	<define name="DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS"/>
