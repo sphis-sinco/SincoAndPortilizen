@@ -27,7 +27,9 @@ class Global
 			version += '-debug';
 		}
 
+                #if EXCESS_TRACES
 		trace('Version: ${version}');
+                #end
 		return '${version}';
 	}
 

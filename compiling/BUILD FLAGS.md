@@ -8,6 +8,7 @@ These do things. Lmao!
 - `SCRIPT_FILES`: Enables the `getScriptFile` function for `FileManager.hx`
 - `DISABLE_LOCALIZED_ASSETS`: Disables asset localization attempts for `FileManager.hx`
 - `DEFAULT_DIRECTORY`: Disables custom build directories besides the original ones
+- `EXCESS_TRACES`: Adds in traces that are unimportant
 
 ## QOL Flags
 - `DISABLE_ANNOYING_ERRORS`: Makes errors less annoying

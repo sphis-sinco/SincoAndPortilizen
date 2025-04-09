@@ -32,21 +32,27 @@ class InitState extends FlxState
 		#if DISABLE_ANNOYING_ERRORS
 		LogStyle.ERROR.openConsole = false;
 		LogStyle.ERROR.errorSound = null;
-		trace('Disabled annoying errors');
 		#end
 
 		#if DISABLE_ANNOYING_WARNINGS
 		LogStyle.WARNING.openConsole = false;
 		LogStyle.WARNING.errorSound = null;
-		trace('Disabled annoying warnings');
 		#end
 
 		FlxG.sound.volumeUpKeys = [];
 		FlxG.sound.volumeDownKeys = [];
 		FlxG.sound.muteKeys = [];
-		trace('Disabled volume keys');
 		FileManager.FILE_MANAGER_VERSION_SUFFIX = '-SincoAndPortilizen';
+                #if EXCESS_TRACES
+                #if DISABLE_ANNOYING_ERRORS
+		trace('Disabled annoying errors');
+                #end
+                #if DISABLE_ANNOYING_WARNINGS
+		trace('Disabled annoying warnings');
+                #end
+		trace('Disabled volume keys');
 		trace('FILE_MANAGER_VERSION_SUFFIX: "${FileManager.FILE_MANAGER_VERSION_SUFFIX}"');
+                #end
 
 		TryCatch.tryCatch(() ->
 		{
@@ -65,16 +71,22 @@ class InitState extends FlxState
 					];
 				}
 		});
-		trace('Loaded credits JSON');
+		#if EXCESS_TRACES
+                trace('Loaded credits JSON');
+                #end
 
 		if (!SLGame.isDebug)
 		{
+                        #if EXCESS_TRACES
 			trace('Game is not a debug build, auto-proceed');
+                        #end
 			proceed();
 		}
 		else
 		{
+                        #if EXCESS_TRACES
 			trace('Game is a debug build');
+                        #end
 		}
 
 		super.create();
@@ -98,7 +110,7 @@ class InitState extends FlxState
                 #if EXTREME_DIFFICULTY
                 difficulty = 'extreme';
                 #end
-
+                
 		trace('Proceeding');
 		SaveManager.setupSave();
 

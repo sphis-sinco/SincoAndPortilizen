@@ -1,6 +1,8 @@
 # Alpha
 ## 0.4.0 (Pitstop 2 - Sidebit 1) - 4/??/2025
 ### Changed
+- Several InitState traces are not apart of `EXCESS_TRACES`
+- [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
 - New button on the title screen leading to the Sidebit select menu
