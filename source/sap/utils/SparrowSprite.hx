@@ -11,6 +11,7 @@ class SparrowSprite extends FlxSprite
         public function addAnimationByPrefix(name:String, prefix:String, frameRate = 30.0, looped = true, flipX = false, flipY = false):Void
         {
                 animation.addByPrefix(name, prefix, frameRate, looped, flipX, flipY);
+                playAnimation(name);
         }
 
         public function playAnimation(animName:String, force = false, reversed = false, frame = 0):Void

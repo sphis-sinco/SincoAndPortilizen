@@ -34,6 +34,8 @@ class TitleState extends State
 		return 'v${Global.VERSION}';
 	}
 
+        public static var sidebitBtn:SparrowSprite;
+
 	override public function create():Void
 	{
 		sinco = new TitleSinco();
@@ -83,6 +85,11 @@ class TitleState extends State
 		versiontext.text = get_versiontext();
 		versiontext.color = FlxColor.BLACK;
 		add(versiontext);
+
+                sidebitBtn = new SparrowSprite(FileManager.getImageFile('titlescreen/SidebitMenuButton'));
+                sidebitBtn.setPosition(560, 515);
+                sidebitBtn.addAnimationByPrefix('loopAnim', 'Ring spin', 24);
+                add(sidebitBtn);
 
 		if (CURRENT_STATE == INTRO)
 		{
