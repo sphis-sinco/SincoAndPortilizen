@@ -233,10 +233,9 @@ class TitleState extends State
 			HEADING_TO_MAINMENU = true;
 			Global.playSoundEffect('blipSelect');
 			FlxG.camera.flash(0xFFFFFF, 2);
-			FlxFlicker.flicker(PRESS_ANY_HINT, 3, 0.04, true, true, _flicker ->
-			{
-				FlxG.switchState(() -> new MainMenu());
-			});
+                        FlxTween.tween(SIDEBIT_MENU_BUTTON, {y: FlxG.height * 2}, 1, {
+                                ease: FlxEase.sineInOut
+                        });
 		}
 	}
 
