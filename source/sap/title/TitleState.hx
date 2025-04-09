@@ -84,7 +84,7 @@ class TitleState extends State
 		VERSION_TEXT.setPosition(5, 5);
 		VERSION_TEXT.text = get_VERSION_TEXT();
 		VERSION_TEXT.color = FlxColor.BLACK;
-                VERSION_TEXT.visible = false;
+		VERSION_TEXT.visible = false;
 		add(VERSION_TEXT);
 
 		SIDEBIT_MENU_BUTTON = new SparrowSprite('titlescreen/SidebitMenuButton');
@@ -115,10 +115,10 @@ class TitleState extends State
 		{
 			if (FlxG.mouse.overlaps(SIDEBIT_MENU_BUTTON))
 			{
-                                
 				if (FlxG.mouse.justReleased)
 				{
-                                        if (HEADING_TO_MAINMENU) return;
+					if (HEADING_TO_MAINMENU)
+						return;
 
 					trace('Head to sidebit menu');
 				}
@@ -232,10 +232,13 @@ class TitleState extends State
 		{
 			HEADING_TO_MAINMENU = true;
 			Global.playSoundEffect('blipSelect');
-			FlxG.camera.flash(0xFFFFFF, 2);
-                        FlxTween.tween(SIDEBIT_MENU_BUTTON, {y: FlxG.height * 2}, 1, {
-                                ease: FlxEase.sineInOut
-                        });
+			FlxG.camera.flash(0xFFFFFF, 2, function()
+			{
+				FlxG.switchState(() -> new MainMenu());
+			});
+			FlxTween.tween(SIDEBIT_MENU_BUTTON, {y: FlxG.height * 2}, 1, {
+				ease: FlxEase.sineInOut
+			});
 		}
 	}
 
