@@ -37,7 +37,7 @@ class Stage1 extends State
 		super();
 
 		DIFFICULTY = difficulty;
-		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage1/${'extreme'}.json'));
+		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage1/${difficulty}.json'));
 
 		SINCO_MAX_HEALTH = diffJson.player_max_health;
 		OSIN_MAX_HEALTH = diffJson.opponent_max_health;
