@@ -98,7 +98,7 @@ class MassMod extends ModBasic
 			&& Stage1.OSIN_HEALTH >= 1
 			&& FlxG.random.int(0, 1) == 1
 			&& (Stage1.osin.animation.name != 'jump' && Stage1.osin.animation.name != 'hurt')
-			&& Stage1.osin_canjump);
+			&& Stage1.OSIN_CAN_ATTACK);
 	}
 
 	function newRankBGColors():Void

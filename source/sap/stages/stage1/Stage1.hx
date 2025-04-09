@@ -10,7 +10,7 @@ import sap.worldmap.Worldmap;
 
 class Stage1 extends State
 {
-	public static var background:FlxSprite;
+	public static var RACE_TRACK:FlxSprite;
 
 	public static var sinco:Sinco;
 	public static var osin:Osin;
@@ -53,23 +53,23 @@ class Stage1 extends State
 		sinco = new Sinco();
 		osin = new Osin();
 
-		var backgroundBack = new SparrowSprite('gameplay/sinco stages/StageOneBackground');
+		var sparrowBG = new SparrowSprite('gameplay/sinco stages/StageOneBackground');
 
-		backgroundBack.addAnimationByPrefix('actualstagebg', 'actualstagebg', 24);
-		backgroundBack.animation.play('actualstagebg');
+		sparrowBG.addAnimationByPrefix('actualstagebg', 'actualstagebg', 24);
+		sparrowBG.animation.play('actualstagebg');
 
-		backgroundBack.screenCenter();
-		add(backgroundBack);
+		sparrowBG.screenCenter();
+		add(sparrowBG);
 
-		background = new FlxSprite();
-		background.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
+		RACE_TRACK = new FlxSprite();
+		RACE_TRACK.loadGraphic(FileManager.getImageFile('gameplay/sinco stages/Stage1BG'), true, 128, 128);
 
-		background.animation.add('animation', [0, 1], 16);
-		background.animation.play('animation');
+		RACE_TRACK.animation.add('animation', [0, 1], 16);
+		RACE_TRACK.animation.play('animation');
 
-		Global.scaleSprite(background, 1);
-		background.screenCenter();
-		add(background);
+		Global.scaleSprite(RACE_TRACK, 1);
+		RACE_TRACK.screenCenter();
+		add(RACE_TRACK);
 
 		osin.screenCenter();
 		osin.y += osin.height * 2;
@@ -94,15 +94,15 @@ class Stage1 extends State
 
 		// sinco.shader = rim;
 
-		sincoPos = new FlxPoint(0, 0);
-		sincoPos.set(sinco.x, sinco.y);
+		SINCO_POINT = new FlxPoint(0, 0);
+		SINCO_POINT.set(sinco.x, sinco.y);
 
-		osinPos = new FlxPoint(0, 0);
-		osinPos.set(osin.x, osin.y);
+		OSIN_POINT = new FlxPoint(0, 0);
+		OSIN_POINT.set(osin.x, osin.y);
 
 		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
 
-		osin_canjump = true;
+		OSIN_CAN_ATTACK = true;
 
 		PROGRESS_BAR = new FlxBar(0, 0, RIGHT_TO_LEFT, Std.int(FlxG.width / 2), 16, this, 'health', 0, 100, true);
 		add(PROGRESS_BAR);
@@ -140,13 +140,12 @@ class Stage1 extends State
 		});
 	}
 
-	public static var sincoPos:FlxPoint;
-	public static var osinPos:FlxPoint;
-	public static var sinco_jump_speed:Float = 0.25;
-	public static var osin_jump_speed:Float = 0.3;
+	public static var SINCO_POINT:FlxPoint;
+	public static var OSIN_POINT:FlxPoint;
+	public static var SINCO_JUMP_SPEED:Float = 0.25;
+	public static var OSIN_JUMP_SPEED:Float = 0.3;
 
-	public static var osin_canjump:Bool = true;
-	public static var osin_warning:Bool = false;
+	public static var OSIN_CAN_ATTACK:Bool = true;
 
 	public static dynamic function getOsinJumpCondition():Bool
 	{
@@ -154,7 +153,7 @@ class Stage1 extends State
 			&& OSIN_HEALTH >= 1
 			&& FlxG.random.int(0, 200) < 50
 			&& (osin.animation.name != StageGlobals.JUMP_KEYWORD && osin.animation.name != 'hurt')
-			&& osin_canjump);
+			&& OSIN_CAN_ATTACK);
 	}
 
 	override function update(elapsed:Float):Void
@@ -163,9 +162,7 @@ class Stage1 extends State
 
 		updateHealthIndicators();
 
-		var osinJumpCondition:Bool = getOsinJumpCondition();
-
-		if (osinJumpCondition)
+		if (getOsinJumpCondition())
 		{
 			osinJumpWait();
 		}
@@ -189,7 +186,7 @@ class Stage1 extends State
 
 	public static dynamic function osinJumpWait():Void
 	{
-		osin_canjump = false;
+		OSIN_CAN_ATTACK = false;
 		FlxTimer.wait(FlxG.random.float(0, 2), () ->
 		{
 			osinWarning();
@@ -200,7 +197,7 @@ class Stage1 extends State
 	{
 		if (FlxG.keys.justPressed.SPACE)
 		{
-			if (sinco.x != sincoPos.x)
+			if (sinco.x != SINCO_POINT.x)
 			{
 				return;
 			}
@@ -211,7 +208,7 @@ class Stage1 extends State
 		}
 		else if (FlxG.keys.justPressed.RIGHT)
 		{
-			if (sinco.x != sincoPos.x)
+			if (sinco.x != SINCO_POINT.x)
 			{
 				return;
 			}
@@ -236,7 +233,7 @@ class Stage1 extends State
 			sinco.animation.play('ded');
 
 			osin.animation.pause();
-			background.animation.pause();
+			RACE_TRACK.animation.pause();
 
 			sincoDefeated();
 		}
@@ -246,10 +243,9 @@ class Stage1 extends State
 	{
 		if (OSIN_HEALTH < 1)
 		{
-			osin_canjump = false;
-			osin_warning = false;
+			OSIN_CAN_ATTACK = false;
 
-			background.animation.pause();
+			RACE_TRACK.animation.pause();
 			FlxTween.tween(sinco, {x: 1280}, .5);
 
 			osin.animation.play('hurt');
@@ -260,8 +256,7 @@ class Stage1 extends State
 	public static dynamic function osinWarning():Void
 	{
 		osin.animation.play(StageGlobals.JUMP_KEYWORD);
-		osin_warning = true;
-		FlxTween.tween(osin, {y: osinPos.y - 150}, FlxG.random.float(0.5, 1), {
+		FlxTween.tween(osin, {y: OSIN_POINT.y - 150}, FlxG.random.float(0.5, 1), {
 			onComplete: _tween ->
 			{
 				osinJump();
@@ -271,10 +266,9 @@ class Stage1 extends State
 
 	public static dynamic function osinJump():Void
 	{
-		osin_warning = false;
 		osin.animation.play(StageGlobals.JUMP_KEYWORD);
 		Global.playSoundEffect('gameplay/sinco-jump');
-		FlxTween.tween(osin, {x: sincoPos.x, y: sincoPos.y}, osin_jump_speed, {
+		FlxTween.tween(osin, {x: SINCO_POINT.x, y: SINCO_POINT.y}, OSIN_JUMP_SPEED, {
 			onComplete: _tween ->
 			{
 				osinJumpDone();
@@ -314,18 +308,18 @@ class Stage1 extends State
 
 	public static dynamic function osinJumpBack():Void
 	{
-		FlxTween.tween(osin, {x: osinPos.x, y: osinPos.y}, osin_jump_speed, {
+		FlxTween.tween(osin, {x: OSIN_POINT.x, y: OSIN_POINT.y}, OSIN_JUMP_SPEED, {
 			onComplete: _tween ->
 			{
 				osin.animation.play('run');
-				osin_canjump = true;
+				OSIN_CAN_ATTACK = true;
 			}
 		});
 	}
 
 	public static dynamic function sincoJump():Void
 	{
-		FlxTween.tween(sinco, {x: osinPos.x, y: osinPos.y}, sinco_jump_speed, {
+		FlxTween.tween(sinco, {x: OSIN_POINT.x, y: OSIN_POINT.y}, SINCO_JUMP_SPEED, {
 			onComplete: _tween ->
 			{
 				sincoJumpBack();
@@ -347,7 +341,7 @@ class Stage1 extends State
 			PLAYED_COMBO_ANIMATION = false;
 		}
 
-		FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
+		FlxTween.tween(sinco, {x: SINCO_POINT.x, y: SINCO_POINT.y}, SINCO_JUMP_SPEED, {
 			onComplete: _tween ->
 			{
 				sinco.animation.play('run');
@@ -374,7 +368,7 @@ class Stage1 extends State
 
 	public static dynamic function sincoDodge():Void
 	{
-		FlxTween.tween(sinco, {x: osinPos.x}, sinco_jump_speed, {
+		FlxTween.tween(sinco, {x: OSIN_POINT.x}, SINCO_JUMP_SPEED, {
 			onComplete: _tween ->
 			{
 				sincoDodgeRecoil();
@@ -384,7 +378,7 @@ class Stage1 extends State
 
 	public static dynamic function sincoDodgeRecoil():Void
 	{
-		FlxTween.tween(sinco, {x: sincoPos.x}, sinco_jump_speed, {
+		FlxTween.tween(sinco, {x: SINCO_POINT.x}, SINCO_JUMP_SPEED, {
 			onComplete: _tween ->
 			{
 				sinco.animation.play('run');
@@ -423,10 +417,10 @@ class Stage1 extends State
 
 	public static dynamic function deathSFX(name:String = 'dead'):Void
 	{
-		if (!playedDeathFX)
+		if (!PLAYED_DEATH_SFX)
 		{
 			Global.playSoundEffect('gameplay/$name');
-			playedDeathFX = true;
+			PLAYED_DEATH_SFX = true;
 		}
 	}
 
@@ -436,5 +430,5 @@ class Stage1 extends State
 		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, () -> new PostStage1Cutscene()));
 	}
 
-	public static var playedDeathFX:Bool = false;
+	public static var PLAYED_DEATH_SFX:Bool = false;
 }
