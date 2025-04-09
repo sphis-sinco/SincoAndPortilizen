@@ -21,7 +21,18 @@ class SettingsMenu extends FlxSubState
 
 	override function create():Void
 	{
-		new_windowres = '${FlxG.width}x${FlxG.height}';
+		if (new_windowres == null)
+		{
+			if (SaveManager.getSettings().window_res != null)
+			{
+				new_windowres = SaveManager.getSettings().window_res;
+
+				return;
+			}
+
+                        trace('new_windowres is null + saved window_res is null');
+			new_windowres = '${FlxG.width}x${FlxG.height}';
+		}
 
 		overlay = new BlankBG();
 		overlay.color = 0x000000;
