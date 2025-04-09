@@ -12,7 +12,7 @@ class AnsiTrace
 	 */
 	public static function trace(v:Dynamic, ?info:haxe.PosInfos)
 	{
-		TRACE_LIST.push('${Global.posInfoString(info).replace('/', '.').replace('source/', '')}: ${v}');
+		TRACE_LIST.push('${Global.posInfoString(info).replace('/', '.').replace('source.', '')}: ${v}');
 
 		#if (NO_FEATURE_LOG_TRACE)
 		return;
