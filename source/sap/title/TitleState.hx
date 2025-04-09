@@ -86,7 +86,7 @@ class TitleState extends State
 		versiontext.color = FlxColor.BLACK;
 		add(versiontext);
 
-		SIDEBIT_MENU_BUTTON = new SparrowSprite(FileManager.getImageFile('titlescreen/SidebitMenuButton'));
+		SIDEBIT_MENU_BUTTON = new SparrowSprite('titlescreen/SidebitMenuButton');
 		SIDEBIT_MENU_BUTTON.setPosition(560, 515);
 		SIDEBIT_MENU_BUTTON.addAnimationByPrefix('loopAnim', 'Ring spin', 24);
 		add(SIDEBIT_MENU_BUTTON);
