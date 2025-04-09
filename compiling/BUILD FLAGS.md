@@ -18,6 +18,7 @@ These do things. Lmao!
 - `STAGE_ONE`: Sends you to the first stage
 - `STAGE_TWO`: Sends you to the second stage
 - `STAGE_FOUR`: Sends you to the fourth stage
+- `EXTREME_DIFFICULTY` (executes with a `STAGE_` command): Sets the difficulty to extreme
 - `WORLDMAP`: Sends you to the worldmap as Sinco
 - `RESULTS`: Sends you to the results state as Sinco
 - `BAD_RANK` (executes with `RESULTS`): Sets the rank you will get to the bad rank

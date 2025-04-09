@@ -93,6 +93,12 @@ class InitState extends FlxState
 
 	public static dynamic function proceed():Void
 	{
+                var difficulty:String = 'normal';
+
+                #if EXTREME_DIFFICULTY
+                difficulty = 'extreme';
+                #end
+
 		trace('Proceeding');
 		SaveManager.setupSave();
 
@@ -107,13 +113,13 @@ class InitState extends FlxState
 		switchToState(() -> new MainMenu(), 'MainMenu');
 		return;
 		#elseif STAGE_ONE
-		switchToState(() -> new Stage1('normal'), 'Stage 1');
+		switchToState(() -> new Stage1(difficulty), 'Stage 1');
 		return;
 		#elseif STAGE_TWO
-		switchToState(() -> new Stage2('normal'), 'Stage 2');
+		switchToState(() -> new Stage2(difficulty), 'Stage 2');
 		return;
 		#elseif STAGE_FOUR
-		switchToState(() -> new Stage4('normal'), 'Stage 4');
+		switchToState(() -> new Stage4(difficulty), 'Stage 4');
 		return;
 		#elseif WORLDMAP
 		switchToState(() -> new Worldmap(), 'Worldmap');
