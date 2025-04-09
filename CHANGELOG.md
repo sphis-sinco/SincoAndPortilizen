@@ -5,6 +5,10 @@
 ### Changed
 - Stage 1 UI is now updated and overhauled to be a health bar with text below it
 ### Added
+- Added crash keybind for states using the [`State.hx`](source/sap/utils/State.hx) file
+- Added the Friday Night Funkin AnsiTrace file
+- Added the Friday Night Funkin Crash Handler
+        - [Crash logs](random/crash.log) now get generated
 - Added EXCESS_TRACES build flag to limit the traces (so far only removes the SFX and Music traces)
 - Added combos to Stage 1
         - Sinco now has a custom combo pose
@@ -169,7 +173,7 @@ This update fixes crashes on 0.0.5-p with no additional content.
 - Removed Chaos Emeralds (Gameplay and code)
 ### Fixed
 - Fixed bug where DISABLE_PLUGINS enables plugins
-- Fixed bug where the screenshot [didnt do things](/random-bugs/screenshotplugin-before.png) it [should've been doing](/random-bugs/screenshotplugin-after.png)
+- Fixed bug where the screenshot [didnt do things](/random/screenshotplugin-before.png) it [should've been doing](/random/screenshotplugin-after.png)
 - Fixed bug where you couldn't select the level you're on after you swap in the Worldmap
 
 ## 0.0.3-p - 2/13/2025

@@ -6,6 +6,8 @@ class State extends FlxState
 {
 	override public function new():Void
 	{
+                trace('Crashable state');
+
 		super();
 	}
 
@@ -22,5 +24,10 @@ class State extends FlxState
 	{
 		ModListManager.update(elapsed);
 		super.update(elapsed);
+
+                if (FlxG.keys.pressed.CONTROL && FlxG.keys.pressed.ALT && FlxG.keys.pressed.SHIFT && FlxG.keys.justPressed.L)
+                {
+                        throw 'Ctrl+Alt+Shift+L';
+                }
 	}
 }

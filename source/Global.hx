@@ -2,6 +2,13 @@ package;
 
 class Global
 {
+	public static var GENERATED_BY(get, never):String;
+
+	static function get_GENERATED_BY():String
+	{
+		return 'Sinco and Portilizen v${VERSION}';
+	}
+
 	/**
 	 * Basically `Application.current.meta.get('version')` shortcut
 	 */
