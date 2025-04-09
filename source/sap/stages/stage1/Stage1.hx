@@ -25,7 +25,7 @@ class Stage1 extends State
 	public static var PLAYED_COMBO_ANIMATION:Bool = false;
 
 	// Controls what combos will give sinco the combo animation
-	public static var PLAYER_COMBO_ANIMATEDS:Array<Dynamic> = [10, 20, 30];
+	public static var PLAYER_COMBO_ANIMATEDS:Array<Int> = [10, 20, 30];
 
 	public static var DIFFICULTY:String = '';
 	public static var diffJson:Stage1DifficultyJson;
@@ -49,7 +49,37 @@ class Stage1 extends State
 
 		if (FileManager.exists(combo_poses_filepath))
 		{
-			PLAYER_COMBO_ANIMATEDS = FileManager.readFile(combo_poses_filepath).split('\n');
+			var string_combo_array:Array<String> = FileManager.readFile(combo_poses_filepath).split('\n');
+			var integer_combo_array:Array<Int> = [];
+
+			if (string_combo_array.length < 1)
+				return;
+
+			trace('Combo poses file exists, replacing PLAYER_COMBO_ANIMATEDS...');
+			for (string in string_combo_array)
+			{
+				trace('Text combo: ${string}');
+				final int_string = Std.parseInt(string);
+				if (!integer_combo_array.contains(int_string))
+					integer_combo_array.push(int_string);
+			}
+
+			final og_combo_animateds:Array<Int> = PLAYER_COMBO_ANIMATEDS;
+			PLAYER_COMBO_ANIMATEDS = integer_combo_array;
+
+                        var compareSign:String = '=';
+
+			if (PLAYER_COMBO_ANIMATEDS.length > og_combo_animateds.length)
+			{
+				compareSign = '>';
+			}
+			else if (PLAYER_COMBO_ANIMATEDS.length < og_combo_animateds.length)
+			{
+				compareSign = '<';
+			}
+
+			final lengthCompare:String = 'Current length: ${PLAYER_COMBO_ANIMATEDS.length} ${compareSign} Original length: ${og_combo_animateds.length}';
+			trace('PLAYER_COMBO_ANIMATEDS replaced (${lengthCompare})');
 		}
 	}
 
@@ -347,7 +377,7 @@ class Stage1 extends State
 	{
 		osinHurtCheck();
 
-		if (PLAYER_COMBO_ANIMATEDS.contains(Std.string(PLAYER_COMBO)) && !PLAYED_COMBO_ANIMATION)
+		if (PLAYER_COMBO_ANIMATEDS.contains(PLAYER_COMBO) && !PLAYED_COMBO_ANIMATION)
 		{
 			sinco.animation.play('combo');
 			PLAYED_COMBO_ANIMATION = true;
