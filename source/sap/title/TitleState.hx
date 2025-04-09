@@ -42,7 +42,7 @@ class TitleState extends State
 		MINI_PORTILIZEN = new TitlePort();
 		VERSION_TEXT = new FlxText();
 
-		transitioning = false;
+		HEADING_TO_MAINMENU = false;
 
 		VOID_BACKGROUND = new FlxSprite();
 		VOID_BACKGROUND.loadGraphic(FileManager.getImageFile('titlescreen/TitleBG'));
@@ -104,7 +104,7 @@ class TitleState extends State
 		// add(MedalData.unlockMedal('Welcome'));
 	}
 
-	public static var transitioning:Bool = false;
+	public static var HEADING_TO_MAINMENU:Bool = false;
 
 	override public function update(elapsed:Float):Void
 	{
@@ -115,8 +115,11 @@ class TitleState extends State
 		{
 			if (FlxG.mouse.overlaps(SIDEBIT_MENU_BUTTON))
 			{
+                                
 				if (FlxG.mouse.justReleased)
 				{
+                                        if (HEADING_TO_MAINMENU) return;
+
 					trace('Head to sidebit menu');
 				}
 			}
@@ -225,9 +228,9 @@ class TitleState extends State
 
 	public static dynamic function pressAny():Void
 	{
-		if (FlxG.keys.justReleased.ANY && !transitioning)
+		if (FlxG.keys.justReleased.ANY && !HEADING_TO_MAINMENU)
 		{
-			transitioning = !transitioning;
+			HEADING_TO_MAINMENU = true;
 			Global.playSoundEffect('blipSelect');
 			FlxG.camera.flash(0xFFFFFF, 2);
 			FlxFlicker.flicker(PRESS_ANY_HINT, 3, 0.04, true, true, _flicker ->
