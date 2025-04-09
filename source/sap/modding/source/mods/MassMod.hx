@@ -29,7 +29,7 @@ class MassMod extends ModBasic
 	{
 		trace('Mass mod');
 
-		TitleState.get_versiontext = function():String
+		TitleState.get_VERSION_TEXT = function():String
 		{
 			return 'v.mass mod6969.1';
 		}

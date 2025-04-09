@@ -27,9 +27,9 @@ class TitleState extends State
 	public static var MINI_SINCO:TitleSinco;
 	public static var MINI_PORTILIZEN:TitlePort;
 
-	public static var versiontext:FlxText;
+	public static var VERSION_TEXT:FlxText;
 
-	public static dynamic function get_versiontext():String
+	public static dynamic function get_VERSION_TEXT():String
 	{
 		return 'v${Global.VERSION}';
 	}
@@ -40,7 +40,7 @@ class TitleState extends State
 	{
 		MINI_SINCO = new TitleSinco();
 		MINI_PORTILIZEN = new TitlePort();
-		versiontext = new FlxText();
+		VERSION_TEXT = new FlxText();
 
 		transitioning = false;
 
@@ -80,11 +80,12 @@ class TitleState extends State
 
 		PRESS_ANY_HINT_TARGET_VERTICAL_POSITION = FlxG.height - (PRESS_ANY_HINT.height * 2) - (16 * 2);
 
-		versiontext.size = 16;
-		versiontext.setPosition(5, 5);
-		versiontext.text = get_versiontext();
-		versiontext.color = FlxColor.BLACK;
-		add(versiontext);
+		VERSION_TEXT.size = 16;
+		VERSION_TEXT.setPosition(5, 5);
+		VERSION_TEXT.text = get_VERSION_TEXT();
+		VERSION_TEXT.color = FlxColor.BLACK;
+                VERSION_TEXT.visible = false;
+		add(VERSION_TEXT);
 
 		SIDEBIT_MENU_BUTTON = new SparrowSprite('titlescreen/SidebitMenuButton');
 		SIDEBIT_MENU_BUTTON.setPosition(560, 515);
@@ -184,6 +185,7 @@ class TitleState extends State
 		CURRENT_STATE = DONE;
 		PRESS_ANY_HINT.visible = true;
 		SIDEBIT_MENU_BUTTON.visible = true;
+		VERSION_TEXT.visible = true;
 	}
 
 	public static dynamic function doneState():Void
@@ -201,6 +203,10 @@ class TitleState extends State
 		if (!SIDEBIT_MENU_BUTTON.visible)
 		{
 			SIDEBIT_MENU_BUTTON.visible = true;
+		}
+		if (!VERSION_TEXT.visible)
+		{
+			VERSION_TEXT.visible = true;
 		}
 
 		if (!VOID_BACKGROUND.visible)
