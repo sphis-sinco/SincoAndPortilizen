@@ -1,4 +1,6 @@
 # Alpha
+<!-- A patch content update? How peculiar... normally this would be v0.4.0a but versioning has changed, like right now, LOL -->
+<!-- If there ain't a new level or MAJOR content update then its a "patch" update, otherwise a minor-->
 ## 0.3.2a - 4/9/2025
 ### Changed
 - Stage 1 UI is now updated and overhauled to be a health bar with text below it
