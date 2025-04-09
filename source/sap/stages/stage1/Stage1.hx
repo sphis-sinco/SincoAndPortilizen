@@ -25,7 +25,7 @@ class Stage1 extends State
 	public static var PLAYED_COMBO_ANIMATION:Bool = false;
 
 	// Controls what combos will give sinco the combo animation
-	public static var PLAYER_COMBO_ANIMATEDS:Array<Int> = [10, 20, 30];
+	public static var PLAYER_COMBO_ANIMATEDS:Array<Dynamic> = [10, 20, 30];
 
 	public static var DIFFICULTY:String = '';
 	public static var diffJson:Stage1DifficultyJson;
@@ -44,6 +44,13 @@ class Stage1 extends State
 
 		SINCO_MAX_HEALTH = diffJson.player_max_health;
 		OSIN_MAX_HEALTH = diffJson.opponent_max_health;
+
+		final combo_poses_filepath:String = FileManager.getDataFile('stages/stage1/combo_poses.txt');
+
+		if (FileManager.exists(combo_poses_filepath))
+		{
+			PLAYER_COMBO_ANIMATEDS = FileManager.readFile(combo_poses_filepath).split('\n');
+		}
 	}
 
 	override function create():Void
@@ -118,7 +125,7 @@ class Stage1 extends State
 		COMBO_SPRITE.visible = false;
 		COMBO_SPRITE.screenCenter();
 
-                PLAYER_COMBO = 0;
+		PLAYER_COMBO = 0;
 	}
 
 	override function postCreate():Void
@@ -340,7 +347,7 @@ class Stage1 extends State
 	{
 		osinHurtCheck();
 
-		if (PLAYER_COMBO_ANIMATEDS.contains(PLAYER_COMBO) && !PLAYED_COMBO_ANIMATION)
+		if (PLAYER_COMBO_ANIMATEDS.contains(Std.string(PLAYER_COMBO)) && !PLAYED_COMBO_ANIMATION)
 		{
 			sinco.animation.play('combo');
 			PLAYED_COMBO_ANIMATION = true;
