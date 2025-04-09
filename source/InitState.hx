@@ -43,16 +43,16 @@ class InitState extends FlxState
 		FlxG.sound.volumeDownKeys = [];
 		FlxG.sound.muteKeys = [];
 		FileManager.FILE_MANAGER_VERSION_SUFFIX = '-SincoAndPortilizen';
-                #if EXCESS_TRACES
-                #if DISABLE_ANNOYING_ERRORS
+		#if EXCESS_TRACES
+		#if DISABLE_ANNOYING_ERRORS
 		trace('Disabled annoying errors');
-                #end
-                #if DISABLE_ANNOYING_WARNINGS
+		#end
+		#if DISABLE_ANNOYING_WARNINGS
 		trace('Disabled annoying warnings');
-                #end
+		#end
 		trace('Disabled volume keys');
 		trace('FILE_MANAGER_VERSION_SUFFIX: "${FileManager.FILE_MANAGER_VERSION_SUFFIX}"');
-                #end
+		#end
 
 		TryCatch.tryCatch(() ->
 		{
@@ -72,21 +72,21 @@ class InitState extends FlxState
 				}
 		});
 		#if EXCESS_TRACES
-                trace('Loaded credits JSON');
-                #end
+		trace('Loaded credits JSON');
+		#end
 
 		if (!SLGame.isDebug)
 		{
-                        #if EXCESS_TRACES
+			#if EXCESS_TRACES
 			trace('Game is not a debug build, auto-proceed');
-                        #end
+			#end
 			proceed();
 		}
 		else
 		{
-                        #if EXCESS_TRACES
+			#if EXCESS_TRACES
 			trace('Game is a debug build');
-                        #end
+			#end
 		}
 
 		super.create();
@@ -105,12 +105,18 @@ class InitState extends FlxState
 
 	public static dynamic function proceed():Void
 	{
-                var difficulty:String = 'normal';
+		var difficulty:String = 'normal';
 
-                #if EXTREME_DIFFICULTY
-                difficulty = 'extreme';
-                #end
-                
+		#if EASY_DIFFICULTY
+		difficulty = 'easy';
+		#end
+		#if HARD_DIFFICULTY
+		difficulty = 'hard';
+		#end
+		#if EXTREME_DIFFICULTY
+		difficulty = 'extreme';
+		#end
+
 		trace('Proceeding');
 		SaveManager.setupSave();
 
