@@ -1,5 +1,5 @@
 # Alpha
-## [Unreleased] - 4/?/2025
+## 0.3.2a - 4/?/2025
 ### Added
 - Added combos to Stage 1
         - Sinco now has a custom combo pose
