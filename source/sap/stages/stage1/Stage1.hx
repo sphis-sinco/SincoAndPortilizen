@@ -4,6 +4,7 @@ import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import funkin.graphics.shaders.DropShadowShader;
 import sap.results.ResultsMenu;
 import sap.worldmap.Worldmap;
 
@@ -23,18 +24,19 @@ class Stage1 extends State
 	public static var osinHealthIndicator:FlxText;
 	public static var sincoHealthIndicator:FlxText;
 
-        public static var DIFFICULTY:String = '';
-        public static var diffJson:Stage1DifficultyJson;
+	public static var DIFFICULTY:String = '';
+	public static var diffJson:Stage1DifficultyJson;
 
-        override public function new(difficulty:String):Void {
-                super();
+	override public function new(difficulty:String):Void
+	{
+		super();
 
-                DIFFICULTY = difficulty;
-                diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage1/${difficulty}.json'));
+		DIFFICULTY = difficulty;
+		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage1/${difficulty}.json'));
 
 		SINCO_MAX_HEALTH = diffJson.player_max_health;
 		OSIN_MAX_HEALTH = diffJson.opponent_max_health;
-        }
+	}
 
 	override function create():Void
 	{
@@ -73,6 +75,19 @@ class Stage1 extends State
 		sinco.y += sinco.height * 4;
 		sinco.x -= sinco.width * 4;
 		add(sinco);
+
+		var rim:DropShadowShader = new DropShadowShader();
+		rim.setAdjustColor(-66, -10, 24, -23);
+		rim.color = 0xFF782C8D;
+		rim.antialiasAmt = 0;
+		rim.distance = 5;
+
+		rim.angle = 90;
+		rim.maskThreshold = 1;
+		rim.useAltMask = true;
+		rim.loadAltMask(FileManager.getImageFile('gameplay/sinco stages/Stage1Sinco-ShaderMask'));
+
+		sinco.shader = rim;
 
 		sincoPos = new FlxPoint(0, 0);
 		sincoPos.set(sinco.x, sinco.y);
