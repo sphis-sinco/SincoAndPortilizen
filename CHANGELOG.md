@@ -1,10 +1,13 @@
 # Alpha
 ## 0.4.0 (Pitstop 2 - Sidebit 1) - 4/??/2025
 ### Changed
+- The crash handler trace for loop is now in the `AnsiTrace` file as a `neatTraceList` function
+- In the settings menu, if a save has a null value, the value will not display
 - Several InitState traces are not apart of `EXCESS_TRACES`
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
+- (SYS ONLY) New settings menu option to download latest traces
 - New button on the title screen leading to the Sidebit select menu
 
 <!-- A patch content update? How peculiar... normally this would be v0.4.0a but versioning has changed, like right now, LOL -->

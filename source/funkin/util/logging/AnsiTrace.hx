@@ -5,6 +5,18 @@ class AnsiTrace
 	public static var TRACE_LIST:Array<String> = [];
 	public static var MAX_TRACES:Int = 30;
 
+	public static function neatTraceList():String
+	{
+		var neat_list:String = '';
+
+		for (Trace in TRACE_LIST)
+		{
+			neat_list += '${Trace}\n';
+		}
+
+		return neat_list;
+	}
+
 	/**
 	 * Output a message to the log.
 	 * Called when using `trace()`, and modified from the default to support ANSI colors.

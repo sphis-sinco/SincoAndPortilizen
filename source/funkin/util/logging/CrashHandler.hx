@@ -145,10 +145,7 @@ class CrashHandler
 
 		fullContents += 'Last ${AnsiTrace.MAX_TRACES} traces:\n\n';
 
-		for (Trace in AnsiTrace.TRACE_LIST)
-		{
-			fullContents += '${Trace}\n';
-		}
+		fullContents += '${AnsiTrace.neatTraceList()}';
 
 		fullContents += '\n${spacing}\n\n';
 

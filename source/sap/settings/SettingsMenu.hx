@@ -1,5 +1,7 @@
 package sap.settings;
 
+import funkin.util.logging.AnsiTrace;
+import funkin.util.logging.CrashHandler;
 import sap.mainmenu.MainMenu;
 
 class SettingsMenu extends FlxSubState
@@ -46,6 +48,12 @@ class SettingsMenu extends FlxSubState
 
 		#if desktop
 		newSaveValue('window resolution', new_windowres);
+		#end
+
+		#if debug
+		#if sys
+		newSaveValue('download latest traces', null);
+		#end
 		#end
 	}
 
@@ -111,6 +119,13 @@ class SettingsMenu extends FlxSubState
 				}
 			case 'window resolution':
 				window_res(saveValues.get(SELECTED_SETTING), true);
+			#if sys
+			case 'download latest traces':
+				final timestamp:String = funkin.util.DateUtil.generateTimestamp();
+				trace('Downloading latest traces (${timestamp})');
+				funkin.util.FileUtil.createDirIfNotExists('trace_downloads');
+				sys.io.File.saveContent('trace_downloads/download-${timestamp}.log', AnsiTrace.neatTraceList());
+			#end
 		}
 
 		saveValuesUpdate();
@@ -161,7 +176,7 @@ class SettingsMenu extends FlxSubState
 			var keystring:String = Global.getLocalizedPhrase('settings-$key', key);
 			var keyvalue:Dynamic = saveValues.get(key);
 
-			var keyText:FlxText = new FlxText(10, cur_y, 0, '$keystring: $keyvalue', 16);
+			var keyText:FlxText = new FlxText(10, cur_y, 0, '$keystring${(keyvalue != null) ? ': $keyvalue' : ''}', 16);
 			keyText.ID = i;
 			keyText.color = (i == CURRENT_SELECTION) ? 0xFFFF00 : 0xFFFFFF;
 			cur_y = cur_y + (i + 1 * keyText.size);
