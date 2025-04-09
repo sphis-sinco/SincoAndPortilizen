@@ -23,6 +23,7 @@ class Stage2 extends State
 	static var jump_y_offset:Float;
 
 	static var max_rocks:Int;
+	static var rock_speed_divider:Float;
 
 	override public function new(difficulty:String):Void
 	{
@@ -34,7 +35,17 @@ class Stage2 extends State
 		jump_speed = diffJson.player_jump_speed;
 		start_y = diffJson.player_start_y;
 		jump_y_offset = diffJson.player_jump_y_offset;
-		max_rocks = diffJson.max_rocks;
+		max_rocks = 2;
+		rock_speed_divider = diffJson.rock_speed_divider;
+
+		TryCatch.tryCatch(function()
+		{
+			for (rock in rockGroup.members)
+			{
+				rock.destroy();
+				rockGroup.members.remove(rock);
+			}
+		});
 	}
 
 	override function create():Void
@@ -91,7 +102,6 @@ class Stage2 extends State
 		cutsceneResults();
 	}
 
-
 	public static dynamic function cutsceneResults():Void
 	{
 		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new PostStage2Cutscene(), "sinco"));
@@ -117,7 +127,7 @@ class Stage2 extends State
 				rockGroup.add(rock);
 
 				final positioncalc:Float = (bg.graphic.height * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER) / 2;
-				FlxTween.tween(rock, {x: rock.width, y: positioncalc}, FlxG.random.float(2, 6), {
+				FlxTween.tween(rock, {x: rock.width, y: positioncalc + (bg.y - 228)}, FlxG.random.float(2, 6) / 2, {
 					onComplete: tween ->
 					{
 						bg.y += diffJson.bg_position_decrease;
@@ -137,18 +147,6 @@ class Stage2 extends State
 	public static dynamic function rockHitTempoCity():Void
 	{
 		TEMPO_CITY_HEALTH--;
-		FlxG.camera.flash(FlxColor.WHITE, .1);
-		if (sinco.animation.name != StageGlobals.JUMP_KEYWORD)
-		{
-			sinco.animation.play('fail');
-			FlxTimer.wait(1, function()
-			{
-				if (sinco.animation.name != StageGlobals.JUMP_KEYWORD)
-				{
-					sinco.animation.play('idle');
-				}
-			});
-		}
 
 		if (TEMPO_CITY_HEALTH == 0)
 		{
@@ -163,12 +161,27 @@ class Stage2 extends State
 				}
 			});
 		}
+
+		FlxG.camera.flash(FlxColor.WHITE, .1);
+
+		if (sinco.animation.name != StageGlobals.JUMP_KEYWORD)
+		{
+			sinco.animation.play('fail');
+			FlxTimer.wait(1, function()
+			{
+				if (sinco.animation.name != StageGlobals.JUMP_KEYWORD)
+				{
+					sinco.animation.play('idle');
+				}
+			});
+		}
 	}
 
 	public static dynamic function destroyRock(rock:Stage2Rock):Void
 	{
-		if (TEMPO_CITY_HEALTH != 0)
+		if (TEMPO_CITY_HEALTH > 0)
 		{
+                        trace('Spawning new rock');
 			if (rockGroup.members.length < max_rocks)
 			{
 				spawnRocks(FlxG.random.int(1, 2));
@@ -190,11 +203,11 @@ class Stage2 extends State
 			if (rock.pixelsOverlapPoint(sinco.getPosition()))
 			{
 				FlxTween.cancelTweensOf(rock);
-
-				FlxTween.tween(rock, {x: rock.x + FlxG.random.float(-20, 20), y: 0 - rock.height * 5}, .5, {
+				FlxTween.tween(rock, {x: rock.x + FlxG.random.float(-20, 20), y: -500}, .5, {
 					onComplete: _tween ->
 					{
 						destroyRock(rock);
+						trace('Destroy rock because collided with sinco');
 					},
 					onStart: _tween ->
 					{
@@ -210,7 +223,14 @@ class Stage2 extends State
 		FlxTween.tween(sinco, {y: (start_y + decrease)}, jump_speed + ((diffJson.tempo_city_max_health - TEMPO_CITY_HEALTH) / 100), {
 			onComplete: _tween ->
 			{
-				sinco.animation.play('idle');
+				if (sinco.y != start_y + decrease)
+				{
+					unjump();
+				}
+				else
+				{
+					sinco.animation.play('idle');
+				}
 			}
 		});
 	}

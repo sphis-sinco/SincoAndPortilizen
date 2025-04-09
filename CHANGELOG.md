@@ -2,9 +2,16 @@
 <!-- A patch content update? How peculiar... normally this would be v0.4.0a but versioning has changed, like right now, LOL -->
 <!-- If there ain't a new level or MAJOR content update then its a "patch" update, otherwise a minor-->
 ## 0.3.2a - 4/9/2025
+### Removed
+- Removed `max_rocks` stage 2 difficulty json field
+### Fixed
+- Fixed bug in stage 2 where sinco would float on air
+- Fixed bug in stage 2 where you could get 200% thanks to negative values
+- Fixed bug in stage 2 where you hit the first rock and it wouldnt spawn extra rocks(?)
 ### Changed
 - Stage 1 UI is now updated and overhauled to be a health bar with text below it
 ### Added
+- Added `rock_speed_divider` field to Stage 2 difficulty json files (replaces `max_rocks` field)
 - Added crash keybind for states using the [`State.hx`](source/sap/utils/State.hx) file
 - Added the Friday Night Funkin AnsiTrace file
 - Added the Friday Night Funkin Crash Handler

@@ -6,7 +6,7 @@ class State extends FlxState
 {
 	override public function new():Void
 	{
-                trace('Crashable state');
+                // trace('Crashable state');
 
 		super();
 	}
