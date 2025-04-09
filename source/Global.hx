@@ -15,6 +15,11 @@ class Global
 	{
 		var version:String = Application.VERSION;
 
+                if (SLGame.isDebug)
+                {
+                        version += '-debug';
+                }
+
 		trace('Version: ${version}');
 		return '${version}';
 	}

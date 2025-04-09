@@ -1,4 +1,8 @@
 # Alpha
+## [Unreleased] - 4/?/2025
+### Added
+- Added `-debug` text at the end of the version strings added when in debug builds
+
 ## 0.3.1a - 4/8/2025
 ### Added
 - Added Post-Stage 2 panel Cutscene
