@@ -1,4 +1,4 @@
-package sap;
+package sap.stages;
 
 class Combo extends FlxSprite
 {
