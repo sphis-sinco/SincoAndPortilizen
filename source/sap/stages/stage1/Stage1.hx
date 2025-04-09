@@ -117,6 +117,8 @@ class Stage1 extends State
 		add(COMBO_SPRITE);
 		COMBO_SPRITE.visible = false;
 		COMBO_SPRITE.screenCenter();
+
+                PLAYER_COMBO = 0;
 	}
 
 	override function postCreate():Void
