@@ -87,7 +87,7 @@ class Stage1 extends State
 		rim.useAltMask = true;
 		rim.loadAltMask(FileManager.getImageFile('gameplay/sinco stages/Stage1Sinco-ShaderMask'));
 
-		sinco.shader = rim;
+		// sinco.shader = rim;
 
 		sincoPos = new FlxPoint(0, 0);
 		sincoPos.set(sinco.x, sinco.y);
