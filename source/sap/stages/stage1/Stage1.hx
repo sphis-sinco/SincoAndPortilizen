@@ -22,6 +22,7 @@ class Stage1 extends State
 	public static var SINCO_MAX_HEALTH:Int = 10;
 
 	public static var PLAYER_COMBO:Int = 0;
+	public static var PLAYED_COMBO_ANIMATION:Bool = false;
 
 	// Controls what combos will give sinco the combo animation
 	public static var PLAYER_COMBO_ANIMATEDS:Array<Int> = [10, 20, 30];
@@ -343,10 +344,13 @@ class Stage1 extends State
 	{
 		osinHurtCheck();
 
-		if (PLAYER_COMBO_ANIMATEDS.contains(PLAYER_COMBO))
+		if (PLAYER_COMBO_ANIMATEDS.contains(PLAYER_COMBO) && !PLAYED_COMBO_ANIMATION)
 		{
 			sinco.animation.play('combo');
-		}
+                        PLAYED_COMBO_ANIMATION = true;
+		} else {
+                        PLAYED_COMBO_ANIMATION = false;
+                }
 
 		FlxTween.tween(sinco, {x: sincoPos.x, y: sincoPos.y}, sinco_jump_speed, {
 			onComplete: _tween ->
@@ -365,6 +369,7 @@ class Stage1 extends State
 		if (sinco.overlaps(osin) && osin.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
 			PLAYER_COMBO++;
+                        PLAYED_COMBO_ANIMATION = false;
 
 			osinHealthIndicator.color = 0xff0000;
 			FlxTween.tween(osinHealthIndicator, {color: 0xffffff}, 1);
