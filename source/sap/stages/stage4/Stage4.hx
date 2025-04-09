@@ -123,7 +123,9 @@ class Stage4 extends State
 
 	public static dynamic function enemyAttackCondition():Bool
 	{
-		return (FlxG.random.bool(25) && enemyCanAttack);
+                final percent:Float = (diffJson.attack_percentage != null) ? diffJson.attack_percentage : 25;
+
+		return (FlxG.random.bool(percent) && enemyCanAttack);
 	}
 
 	public static dynamic function portPreJump():Void
@@ -181,8 +183,8 @@ class Stage4 extends State
 
 	public static dynamic function moveToResultsMenu():Void
 	{
-                final good = Std.parseInt(timerText.text);
-                trace(good);
+		final good = Std.parseInt(timerText.text);
+		trace(good);
 		FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new Worldmap("Port"), "port"));
 	}
 

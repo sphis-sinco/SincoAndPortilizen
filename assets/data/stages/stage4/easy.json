@@ -1,3 +1,4 @@
 {
-        "start_timer": 30
+        "start_timer": 30,
+        "attack_percentage": 12.5
 }

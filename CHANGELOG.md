@@ -1,6 +1,10 @@
 # Alpha
 ## [Unreleased] - 4/?/2025
 ### Added
+- Added `attack_percentage` field to Stage 4 difficulty json files
+        - Extreme difficulty now has a 95% chance of attack
+        - Hard difficulty now has a 50% chance of attack
+        - Easy difficulty now has a 12.5% chance of attack
 - Added `-debug` text at the end of the version strings added when in debug builds
 
 ## 0.3.1a - 4/8/2025
