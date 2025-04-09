@@ -1,4 +1,6 @@
 # Alpha
+## 0.4.0 (Pitstop 2 - Sidebit 1) - 4/??/2025
+
 <!-- A patch content update? How peculiar... normally this would be v0.4.0a but versioning has changed, like right now, LOL -->
 <!-- If there ain't a new level or MAJOR content update then its a "patch" update, otherwise a minor-->
 ## 0.3.2a - 4/9/2025
