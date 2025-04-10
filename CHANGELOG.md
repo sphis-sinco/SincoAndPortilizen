@@ -13,6 +13,7 @@
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
 - Portilizen now has a gameover created by @iampauleps
+- (source) `GIF_PORT_GAMEOVER` build flag
 - (source) FlxGif library
 - (source) Adjust Color Shader
 - (Desktop and sys only) New settings menu option to download latest traces
