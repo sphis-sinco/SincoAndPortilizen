@@ -12,7 +12,7 @@
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
-- Portilizen now has a gameover created by @iampauleps
+<!-- - Portilizen now has a gameover created by @iampauleps -->
 - (source) `GIF_PORT_GAMEOVER` build flag
 - (source) FlxGif library
 - (source) Adjust Color Shader
