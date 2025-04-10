@@ -6,6 +6,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import funkin.graphics.shaders.AdjustColorShader;
 import sap.mainmenu.MainMenu;
 
 enum abstract TitleStates(Int) from Int to Int
@@ -36,10 +37,20 @@ class TitleState extends State
 
 	public static var SIDEBIT_MENU_BUTTON:SparrowSprite;
 
+        public static var COLOR_SHADER:AdjustColorShader;
+
 	override public function create():Void
 	{
+                COLOR_SHADER = new AdjustColorShader();
+		COLOR_SHADER.hue = 5;
+		COLOR_SHADER.saturation = 20;
+
 		MINI_SINCO = new TitleSinco();
+                MINI_SINCO.shader = COLOR_SHADER;
+                
 		MINI_PORTILIZEN = new TitlePort();
+                MINI_PORTILIZEN.shader = COLOR_SHADER;
+
 		VERSION_TEXT = new FlxText();
 
 		HEADING_TO_MAINMENU = false;
