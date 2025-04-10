@@ -30,6 +30,7 @@ These do things. Lmao!
 - `EXCELLENT_RANK` (executes with `RESULTS`): Sets the rank you will get to the excellent rank
 - `PERFECT_RANK` (executes with `RESULTS`): Sets the rank you will get to the perfect rank
 - `PORT_RANK_CHAR` (executes with `RESULTS`): Sends you to the results state as Portilizen
+- `GIF_PORT_GAMEOVER`: Sends you to the experimental `PaulPortGameOver` state
 
 ## Language Flags
 - `CNGLA_TRACES`: Allows the console to print out what localized assets it could not get

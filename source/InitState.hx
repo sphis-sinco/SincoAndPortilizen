@@ -156,6 +156,9 @@ class InitState extends FlxState
 
 		switchToState(() -> new ResultsMenu(good, 10, () -> new MainMenu(), char), 'Results Menu');
 		return;
+                #elseif GIF_PORT_GAMEOVER
+		switchToState(() -> new sap.stages.PaulPortGameOver(), 'PaulPortGameOver');
+		return;
 		#end
 
 		trace('Starting game regularly');
