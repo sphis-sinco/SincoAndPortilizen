@@ -3,7 +3,7 @@
 ### Fixed
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 ### Changed
-- In the title state the characters in the character sing fade in via a shader
+- In the title state the characters in the character sing fade in via shaders
 - `Combo.hx` now is in the `sap.stages` folder
 - The title screen version text no longer is visible during the intro sequence
 - The crash handler trace for loop is now in the `AnsiTrace` file as a `neatTraceList` function
@@ -12,7 +12,9 @@
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
-- Adjust Color Shader
+- Portilizen now has a gameover created by @iampauleps
+- (source) FlxGif library
+- (source) Adjust Color Shader
 - (Desktop and sys only) New settings menu option to download latest traces
 - New button on the title screen leading to the Sidebit select menu
 
