@@ -37,20 +37,15 @@ class TitleState extends State
 
 	public static var SIDEBIT_MENU_BUTTON:SparrowSprite;
 
-        public static var COLOR_SHADER:AdjustColorShader;
+        public static var CHARACTER_RING_CHARS_SHADER:AdjustColorShader;
 
 	override public function create():Void
 	{
-                COLOR_SHADER = new AdjustColorShader();
-		COLOR_SHADER.hue = 5;
-		COLOR_SHADER.saturation = 20;
+                CHARACTER_RING_CHARS_SHADER = new AdjustColorShader();
+                CHARACTER_RING_CHARS_SHADER.brightness = -255;
 
 		MINI_SINCO = new TitleSinco();
-                MINI_SINCO.shader = COLOR_SHADER;
-                
 		MINI_PORTILIZEN = new TitlePort();
-                MINI_PORTILIZEN.shader = COLOR_SHADER;
-
 		VERSION_TEXT = new FlxText();
 
 		HEADING_TO_MAINMENU = false;
@@ -66,6 +61,7 @@ class TitleState extends State
 		CHARACTER_RING_CHARACTERS.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing-characters'));
 		Global.scaleSprite(CHARACTER_RING_CHARACTERS, 0);
 		add(CHARACTER_RING_CHARACTERS);
+                CHARACTER_RING_CHARACTERS.shader = CHARACTER_RING_CHARS_SHADER;
 
 		CHARACTER_RING = new FlxSprite();
 		CHARACTER_RING.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing'));
@@ -168,6 +164,11 @@ class TitleState extends State
 
 	public static dynamic function introState():Void
 	{
+                FlxTween.tween(CHARACTER_RING_CHARS_SHADER, {brightness: 0}, .75, {
+                        ease: FlxEase.smoothStepOut,
+                        startDelay: .25
+                });
+
 		FlxTween.tween(CHARACTER_RING, {y: CHARACTER_RING.height + 16}, 1.0, {
 			ease: FlxEase.sineOut,
 			onComplete: introStateDone()
