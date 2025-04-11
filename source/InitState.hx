@@ -2,11 +2,13 @@ package;
 
 import flixel.system.debug.log.LogStyle;
 import flixel.util.typeLimit.NextState;
+import openfl.utils.AssetCache;
 import sap.credits.CreditsSubState;
 import sap.mainmenu.MainMenu;
 import sap.modding.source.ModListManager;
 import sap.modding.source.mods.MassMod;
 import sap.results.ResultsMenu;
+import sap.stages.PaulPortGameOver;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
@@ -74,6 +76,10 @@ class InitState extends FlxState
 		#if EXCESS_TRACES
 		trace('Loaded credits JSON');
 		#end
+
+                Timer.measure(function() {
+                        PaulPortGameOver.init();
+                });
 
 		if (!SLGame.isDebug)
 		{
