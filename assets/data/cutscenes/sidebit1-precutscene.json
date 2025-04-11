@@ -1,0 +1,19 @@
+{
+        "assetPath": "sidebit1/pre-sidebit1",
+
+        "parts": 4,
+
+        "symbol names": [
+                "animation piece 1",
+                "animation piece 2",
+                "animation piece 3",
+                "animation piece 4"
+        ],
+
+        "offsets": [
+                [-70, 150],
+                [-120, 200],
+                [-70, 30],
+                [-105, -195]
+        ]
+}
