@@ -12,7 +12,7 @@ class SparrowCutscene extends State
 	{
 		super();
 
-		CUTSCENE_JSON = FileManager.getJSON(FileManager.getDataFile('cutscenes/${cutsceneJsonPath}'));
+		CUTSCENE_JSON = FileManager.getJSON(FileManager.getDataFile('cutscenes/${cutsceneJsonPath}.json'));
 
 		if (CUTSCENE_JSON.type.toLowerCase() == 'sparrow')
 		{
