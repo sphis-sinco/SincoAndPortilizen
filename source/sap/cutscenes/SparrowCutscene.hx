@@ -4,62 +4,97 @@ import sap.title.TitleState;
 
 class SparrowCutscene extends State
 {
-	public var cutscene_sprite:SparrowSprite;
+	public var CUTSCENE_SPRITE:SparrowSprite;
 
-	override public function new(filePath:String)
+	public var CUTSCENE_JSON:CutsceneJson;
+
+	override public function new(cutsceneJsonPath:String)
 	{
 		super();
 
-		cutscene_sprite = new SparrowSprite('cutscenes/${filePath}');
+		CUTSCENE_JSON = FileManager.getJSON(FileManager.getDataFile('cutscenes/${cutsceneJsonPath}'));
+
+		if (CUTSCENE_JSON.type.toLowerCase() == 'sparrow')
+		{
+			if (CUTSCENE_JSON.assetPath == null)
+				throw 'Missing cutscene json field: "assetPath"';
+			if (CUTSCENE_JSON.symbol_names == null)
+				throw 'Missing cutscene json field: "symbol_names"';
+			if (CUTSCENE_JSON.offsets == null)
+				throw 'Missing cutscene json field: "offsets"';
+			if (CUTSCENE_JSON.parts == null)
+				throw 'Missing cutscene json field: "parts"';
+		}
+		else
+		{
+			throw 'Cutscene json field "type" should be "sparrow"';
+		}
+
+		CUTSCENE_SPRITE = new SparrowSprite('cutscenes/${CUTSCENE_JSON.assetPath}');
+		CUTSCENE_PART = 0;
+
+		var part:Int = 1;
+		for (symbol in CUTSCENE_JSON.symbol_names)
+		{
+			CUTSCENE_SPRITE.addAnimationByPrefix('part${part}', symbol, 24, false);
+
+			part++;
+		}
 	}
 
 	override function create()
 	{
 		super.create();
 
-		add(cutscene_sprite);
-		cutscene_sprite.animation.onFinish.add(animName ->
+		add(CUTSCENE_SPRITE);
+		CUTSCENE_SPRITE.animation.onFinish.add(animName ->
 		{
+			CUTSCENE_PART++;
 			cutsceneEvent(animName);
 
 			if (SLGame.isDebug)
 			{
 				trace('Automatic cutscene pause');
-				cutscene_sprite.animation.paused = true;
+				CUTSCENE_SPRITE.animation.paused = true;
 			}
 		});
 	}
 
 	final MOVEMENT_SPEED:Float = 5;
 
+	public var CUTSCENE_PART:Int = 0;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (cutscene_sprite.animation.paused)
+		if (CUTSCENE_SPRITE.animation.paused)
 		{
 			if (FlxG.keys.anyJustReleased([LEFT, RIGHT]))
-				cutscene_sprite.x += (FlxG.keys.justReleased.LEFT) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
+				CUTSCENE_SPRITE.x += (FlxG.keys.justReleased.LEFT) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
 			if (FlxG.keys.anyJustReleased([UP, DOWN]))
-				cutscene_sprite.y += (FlxG.keys.justReleased.UP) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
+				CUTSCENE_SPRITE.y += (FlxG.keys.justReleased.UP) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
 			if (FlxG.keys.anyJustReleased([LEFT, RIGHT, UP, DOWN]))
-				trace('Cutscene sprite position: ${cutscene_sprite.getPosition()}');
+				trace('Cutscene sprite position: ${CUTSCENE_SPRITE.getPosition()}');
 		}
 
 		if (FlxG.keys.justReleased.SPACE && SLGame.isDebug)
 		{
-			cutscene_sprite.animation.paused = !cutscene_sprite.animation.paused;
+			CUTSCENE_SPRITE.animation.paused = !CUTSCENE_SPRITE.animation.paused;
 		}
 	}
 
 	public function cutsceneEvent(animation:String):Void
 	{
 		trace(animation);
+
+		CUTSCENE_SPRITE.playAnimation('part${CUTSCENE_PART + 1}');
+		changeCutscenePosition(CUTSCENE_JSON.offsets[CUTSCENE_PART][0], CUTSCENE_JSON.offsets[CUTSCENE_PART][1]);
 	}
 
 	public function changeCutscenePosition(X:Float, Y:Float)
 	{
-		trace('New cutscene position (anim: ${cutscene_sprite.animation.name}): (${X} | ${Y})');
-		cutscene_sprite.setPosition(X, Y);
+		trace('New cutscene position (anim: ${CUTSCENE_SPRITE.animation.name}): (${X} | ${Y})');
+		CUTSCENE_SPRITE.setPosition(X, Y);
 	}
 }
