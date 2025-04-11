@@ -26,12 +26,6 @@ class Sidebit1IntroCutscene extends State
 		cutscene_sprite.playAnimation('part1');
 		cutscene_sprite.animation.onFinish.add(animName ->
 		{
-                        if (SLGame.isDebug)
-                        {
-                                trace('Automatic cutscene pause');
-                                cutscene_sprite.animation.paused = true;
-                        }
-
 			switch (cutscene_sprite.animation.name)
 			{
 				case 'part1':
@@ -47,6 +41,12 @@ class Sidebit1IntroCutscene extends State
 					cutscene_sprite.playAnimation('part4');
 				case 'part4':
 					FlxG.switchState(TitleState.new);
+			}
+
+			if (SLGame.isDebug)
+			{
+				trace('Automatic cutscene pause');
+				cutscene_sprite.animation.paused = true;
 			}
 		});
 	}
