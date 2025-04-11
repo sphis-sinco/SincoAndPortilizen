@@ -44,6 +44,7 @@ class Medal extends FlxTypedGroup<FlxObject>
                         MedalData.cur_y_offset -= 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 		}
 
+                Global.playSoundEffect('medal');
 		FlxTimer.wait(waitTime, () ->
 		{
 			FlxTween.tween(medalBox, {alpha: 0}, fadeWaitTime, {onComplete: tween ->
