@@ -2,243 +2,243 @@
 <TextureAtlas imagePath="pre-sidebit1.png">
 	<!-- Created with Adobe Animate version 21.0.6.41649 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="animation piece 10000" x="4" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10001" x="4" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10002" x="857" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10003" x="857" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10004" x="1710" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10005" x="2563" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10006" x="2563" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10007" x="2563" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10008" x="3416" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10009" x="3416" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10010" x="3416" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10011" x="3416" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10012" x="4269" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10013" x="4269" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10014" x="4269" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10015" x="4269" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10016" x="5122" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10017" x="5122" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10018" x="5122" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10019" x="5975" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10020" x="6828" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10021" x="6828" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10022" x="6828" y="4" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10023" x="4" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10024" x="4" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10025" x="4" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10026" x="4" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10027" x="857" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10028" x="857" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10029" x="857" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10030" x="857" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10031" x="1710" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10032" x="1710" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10033" x="1710" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10034" x="2563" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10035" x="3416" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10036" x="3416" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10037" x="3416" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10038" x="4269" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10039" x="4269" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10040" x="4269" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10041" x="4269" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10042" x="5122" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10043" x="5122" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10044" x="5122" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10045" x="5122" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10046" x="5975" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10047" x="5975" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10048" x="5975" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10049" x="5975" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10050" x="6828" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10051" x="6828" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10052" x="6828" y="475" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10053" x="4" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10054" x="857" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10055" x="857" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10056" x="857" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10057" x="1710" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10058" x="1710" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10059" x="1710" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10060" x="1710" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10061" x="2563" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10062" x="2563" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10063" x="2563" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10064" x="2563" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10065" x="3416" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10066" x="3416" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10067" x="3416" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10068" x="4269" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10069" x="5122" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10070" x="5122" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10071" x="5122" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10072" x="5975" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10073" x="5975" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10074" x="5975" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10075" x="5975" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10076" x="6828" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10077" x="6828" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10078" x="6828" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10079" x="6828" y="946" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10080" x="4" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10081" x="4" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10082" x="4" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10083" x="857" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10084" x="1710" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10085" x="1710" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10086" x="1710" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10087" x="2563" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10088" x="2563" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10089" x="2563" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10090" x="2563" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10091" x="3416" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10092" x="3416" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10093" x="3416" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10094" x="3416" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10095" x="4269" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10096" x="4269" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10097" x="4269" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10098" x="4269" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10099" x="5122" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10100" x="5122" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10101" x="5122" y="1417" width="845" height="463" frameX="-6" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10102" x="5975" y="1417" width="851" height="463" frameX="0" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10103" x="5975" y="1417" width="851" height="463" frameX="0" frameY="-47" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10104" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10105" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10106" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10107" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10108" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10109" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10110" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10111" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10112" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10113" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10114" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10115" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10116" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10117" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10118" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10119" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10120" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 10121" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="0" frameWidth="851" frameHeight="510"/>
-	<SubTexture name="animation piece 20000" x="4" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20001" x="4" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20002" x="944" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20003" x="944" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20004" x="1884" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20005" x="1884" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20006" x="2824" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20007" x="2824" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20008" x="2824" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20009" x="3764" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20010" x="4704" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20011" x="5644" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20012" x="6584" y="1935" width="932" height="463"/>
-	<SubTexture name="animation piece 20013" x="4" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20014" x="944" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20015" x="1884" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20016" x="2824" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20017" x="3764" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20018" x="944" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20019" x="1884" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20020" x="2824" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20021" x="3764" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20022" x="944" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20023" x="1884" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20024" x="2824" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20025" x="3764" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20026" x="944" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20027" x="1884" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20028" x="2824" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20029" x="3764" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20030" x="944" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20031" x="1884" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20032" x="2824" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20033" x="3764" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20034" x="944" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20035" x="1884" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 20036" x="2824" y="2406" width="932" height="463"/>
-	<SubTexture name="animation piece 30000" x="4704" y="2406" width="769" height="648" frameX="-81" frameY="0" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30001" x="5481" y="2406" width="903" height="640" frameX="-13" frameY="-244" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30002" x="6392" y="2406" width="921" height="659" frameX="0" frameY="-399" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30003" x="4" y="3073" width="874" height="627" frameX="-14" frameY="-538" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30004" x="886" y="3073" width="796" height="641" frameX="-53" frameY="-590" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30005" x="1690" y="3073" width="719" height="714" frameX="-94" frameY="-631" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30006" x="2417" y="3073" width="666" height="754" frameX="-123" frameY="-654" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30007" x="3091" y="3073" width="647" height="771" frameX="-134" frameY="-658" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30008" x="3746" y="3073" width="663" height="632" frameX="-167" frameY="-658" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30009" x="4417" y="3073" width="650" height="541" frameX="-149" frameY="-651" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30010" x="5075" y="3073" width="602" height="454" frameX="-187" frameY="-655" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30011" x="5685" y="3073" width="534" height="460" frameX="-259" frameY="-563" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30012" x="6227" y="3073" width="475" height="484" frameX="-307" frameY="-435" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30013" x="6710" y="3073" width="427" height="458" frameX="-326" frameY="-346" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30014" x="7145" y="3073" width="370" height="453" frameX="-346" frameY="-288" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30015" x="7523" y="3073" width="322" height="426" frameX="-356" frameY="-252" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30016" x="4" y="3852" width="298" height="389" frameX="-367" frameY="-230" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30017" x="310" y="3852" width="296" height="360" frameX="-380" frameY="-217" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30018" x="614" y="3852" width="304" height="329" frameX="-396" frameY="-209" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30019" x="926" y="3852" width="304" height="311" frameX="-412" frameY="-192" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30020" x="1238" y="3852" width="302" height="297" frameX="-425" frameY="-177" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30021" x="1548" y="3852" width="298" height="287" frameX="-435" frameY="-166" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30022" x="1854" y="3852" width="294" height="281" frameX="-442" frameY="-159" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 30023" x="2156" y="3852" width="293" height="278" frameX="-444" frameY="-157" frameWidth="921" frameHeight="1429"/>
-	<SubTexture name="animation piece 40000" x="2457" y="3852" width="648" height="669" frameX="-177" frameY="-234" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40001" x="2457" y="3852" width="648" height="669" frameX="-177" frameY="-234" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40002" x="3113" y="3852" width="697" height="744" frameX="-128" frameY="-159" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40003" x="3113" y="3852" width="697" height="744" frameX="-128" frameY="-159" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40004" x="3113" y="3852" width="697" height="744" frameX="-128" frameY="-159" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40005" x="3113" y="3852" width="697" height="744" frameX="-128" frameY="-159" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40006" x="3818" y="3852" width="469" height="520" frameX="-406" frameY="-354" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40007" x="4295" y="3852" width="619" height="557" frameX="-406" frameY="-354" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40008" x="4922" y="3852" width="590" height="853" frameX="-91" frameY="0" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40009" x="4922" y="3852" width="590" height="853" frameX="-91" frameY="0" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40010" x="5520" y="3852" width="772" height="368" frameX="0" frameY="-230" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40011" x="5520" y="3852" width="772" height="368" frameX="0" frameY="-230" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40012" x="6300" y="3852" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40013" x="6967" y="3852" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40014" x="4" y="4713" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40015" x="670" y="4713" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40016" x="1336" y="4713" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40017" x="2003" y="4713" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40018" x="2670" y="4713" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40019" x="3336" y="4713" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40020" x="4002" y="4713" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40021" x="4669" y="4713" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40022" x="5336" y="4713" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40023" x="6002" y="4713" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40024" x="6668" y="4713" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40025" x="7335" y="4713" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40026" x="4" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40027" x="670" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40028" x="1336" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40029" x="2003" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40030" x="2670" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40031" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40032" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40033" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40034" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40035" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40036" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40037" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40038" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40039" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40040" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40041" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40042" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40043" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40044" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40045" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40046" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40047" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40048" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40049" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40050" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40051" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40052" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40053" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40054" x="4002" y="5184" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
-	<SubTexture name="animation piece 40055" x="3336" y="5184" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 10000" x="4" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10001" x="4" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10002" x="857" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10003" x="857" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10004" x="1710" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10005" x="2563" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10006" x="2563" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10007" x="2563" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10008" x="3416" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10009" x="3416" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10010" x="3416" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10011" x="3416" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10012" x="4269" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10013" x="4269" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10014" x="4269" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10015" x="4269" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10016" x="5122" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10017" x="5122" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10018" x="5122" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10019" x="5975" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10020" x="6828" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10021" x="6828" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10022" x="6828" y="4" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10023" x="4" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10024" x="4" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10025" x="4" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10026" x="4" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10027" x="857" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10028" x="857" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10029" x="857" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10030" x="857" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10031" x="1710" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10032" x="1710" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10033" x="1710" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10034" x="2563" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10035" x="3416" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10036" x="3416" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10037" x="3416" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10038" x="4269" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10039" x="4269" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10040" x="4269" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10041" x="4269" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10042" x="5122" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10043" x="5122" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10044" x="5122" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10045" x="5122" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10046" x="5975" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10047" x="5975" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10048" x="5975" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10049" x="5975" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10050" x="6828" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10051" x="6828" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10052" x="6828" y="475" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10053" x="4" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10054" x="857" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10055" x="857" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10056" x="857" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10057" x="1710" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10058" x="1710" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10059" x="1710" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10060" x="1710" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10061" x="2563" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10062" x="2563" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10063" x="2563" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10064" x="2563" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10065" x="3416" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10066" x="3416" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10067" x="3416" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10068" x="4269" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10069" x="5122" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10070" x="5122" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10071" x="5122" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10072" x="5975" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10073" x="5975" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10074" x="5975" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10075" x="5975" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10076" x="6828" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10077" x="6828" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10078" x="6828" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10079" x="6828" y="946" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10080" x="4" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10081" x="4" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10082" x="4" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10083" x="857" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10084" x="1710" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10085" x="1710" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10086" x="1710" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10087" x="2563" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10088" x="2563" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10089" x="2563" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10090" x="2563" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10091" x="3416" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10092" x="3416" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10093" x="3416" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10094" x="3416" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10095" x="4269" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10096" x="4269" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10097" x="4269" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10098" x="4269" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10099" x="5122" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10100" x="5122" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10101" x="5122" y="1417" width="845" height="463" frameX="-6" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10102" x="5975" y="1417" width="851" height="463" frameX="0" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10103" x="5975" y="1417" width="851" height="463" frameX="0" frameY="-97" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10104" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="-50" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10105" x="4" y="1935" width="845" height="560" frameX="-6" frameY="0" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10106" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="-50" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10107" x="4" y="1935" width="845" height="560" frameX="-6" frameY="0" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10108" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="-50" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10109" x="4" y="1935" width="845" height="560" frameX="-6" frameY="0" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10110" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="-50" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10111" x="4" y="1935" width="845" height="560" frameX="-6" frameY="0" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10112" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="-50" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10113" x="4" y="1935" width="845" height="560" frameX="-6" frameY="0" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10114" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="-50" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10115" x="4" y="1935" width="845" height="560" frameX="-6" frameY="0" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10116" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="-50" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10117" x="4" y="1935" width="845" height="560" frameX="-6" frameY="0" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10118" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="-50" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10119" x="4" y="1935" width="845" height="560" frameX="-6" frameY="0" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10120" x="6834" y="1417" width="845" height="510" frameX="-6" frameY="-50" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 10121" x="4" y="1935" width="845" height="560" frameX="-6" frameY="0" frameWidth="851" frameHeight="560"/>
+	<SubTexture name="animation piece 20000" x="857" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20001" x="857" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20002" x="1797" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20003" x="1797" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20004" x="2737" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20005" x="2737" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20006" x="3677" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20007" x="3677" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20008" x="3677" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20009" x="4617" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20010" x="5557" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20011" x="6497" y="1935" width="932" height="463"/>
+	<SubTexture name="animation piece 20012" x="4" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20013" x="944" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20014" x="1884" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20015" x="2824" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20016" x="3764" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20017" x="4704" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20018" x="1884" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20019" x="2824" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20020" x="3764" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20021" x="4704" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20022" x="1884" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20023" x="2824" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20024" x="3764" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20025" x="4704" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20026" x="1884" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20027" x="2824" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20028" x="3764" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20029" x="4704" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20030" x="1884" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20031" x="2824" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20032" x="3764" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20033" x="4704" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20034" x="1884" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20035" x="2824" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 20036" x="3764" y="2503" width="932" height="463"/>
+	<SubTexture name="animation piece 30000" x="5644" y="2503" width="769" height="648" frameX="-81" frameY="0" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30001" x="6421" y="2503" width="903" height="640" frameX="-13" frameY="-244" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30002" x="4" y="3159" width="921" height="659" frameX="0" frameY="-399" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30003" x="933" y="3159" width="874" height="627" frameX="-14" frameY="-538" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30004" x="1815" y="3159" width="796" height="641" frameX="-53" frameY="-590" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30005" x="2619" y="3159" width="719" height="714" frameX="-94" frameY="-631" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30006" x="3346" y="3159" width="666" height="754" frameX="-123" frameY="-654" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30007" x="4020" y="3159" width="647" height="771" frameX="-134" frameY="-658" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30008" x="4675" y="3159" width="663" height="632" frameX="-167" frameY="-658" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30009" x="5346" y="3159" width="650" height="541" frameX="-149" frameY="-651" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30010" x="6004" y="3159" width="602" height="454" frameX="-187" frameY="-655" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30011" x="6614" y="3159" width="534" height="460" frameX="-259" frameY="-563" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30012" x="7156" y="3159" width="475" height="484" frameX="-307" frameY="-435" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30013" x="4" y="3938" width="427" height="458" frameX="-326" frameY="-346" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30014" x="439" y="3938" width="370" height="453" frameX="-346" frameY="-288" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30015" x="817" y="3938" width="322" height="426" frameX="-356" frameY="-252" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30016" x="1147" y="3938" width="298" height="389" frameX="-367" frameY="-230" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30017" x="1453" y="3938" width="296" height="360" frameX="-380" frameY="-217" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30018" x="1757" y="3938" width="304" height="329" frameX="-396" frameY="-209" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30019" x="2069" y="3938" width="304" height="311" frameX="-412" frameY="-192" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30020" x="2381" y="3938" width="302" height="297" frameX="-425" frameY="-177" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30021" x="2691" y="3938" width="298" height="287" frameX="-435" frameY="-166" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30022" x="2997" y="3938" width="294" height="281" frameX="-442" frameY="-159" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 30023" x="3299" y="3938" width="293" height="278" frameX="-444" frameY="-157" frameWidth="921" frameHeight="1429"/>
+	<SubTexture name="animation piece 40000" x="3600" y="3938" width="648" height="669" frameX="-177" frameY="-234" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40001" x="3600" y="3938" width="648" height="669" frameX="-177" frameY="-234" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40002" x="4256" y="3938" width="697" height="744" frameX="-128" frameY="-159" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40003" x="4256" y="3938" width="697" height="744" frameX="-128" frameY="-159" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40004" x="4256" y="3938" width="697" height="744" frameX="-128" frameY="-159" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40005" x="4256" y="3938" width="697" height="744" frameX="-128" frameY="-159" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40006" x="4961" y="3938" width="469" height="520" frameX="-406" frameY="-354" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40007" x="5438" y="3938" width="619" height="557" frameX="-406" frameY="-354" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40008" x="6065" y="3938" width="590" height="853" frameX="-91" frameY="0" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40009" x="6065" y="3938" width="590" height="853" frameX="-91" frameY="0" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40010" x="6663" y="3938" width="772" height="368" frameX="0" frameY="-230" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40011" x="6663" y="3938" width="772" height="368" frameX="0" frameY="-230" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40012" x="4" y="4799" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40013" x="671" y="4799" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40014" x="1338" y="4799" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40015" x="2004" y="4799" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40016" x="2670" y="4799" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40017" x="3337" y="4799" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40018" x="4004" y="4799" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40019" x="4670" y="4799" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40020" x="5336" y="4799" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40021" x="6003" y="4799" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40022" x="6670" y="4799" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40023" x="7336" y="4799" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40024" x="4" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40025" x="671" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40026" x="1338" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40027" x="2004" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40028" x="2670" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40029" x="3337" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40030" x="4004" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40031" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40032" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40033" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40034" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40035" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40036" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40037" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40038" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40039" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40040" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40041" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40042" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40043" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40044" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40045" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40046" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40047" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40048" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40049" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40050" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40051" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40052" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40053" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40054" x="5336" y="5270" width="659" height="463" frameX="-56" frameY="-195" frameWidth="1025" frameHeight="911"/>
+	<SubTexture name="animation piece 40055" x="4670" y="5270" width="658" height="463" frameX="-57" frameY="-195" frameWidth="1025" frameHeight="911"/>
 </TextureAtlas>
