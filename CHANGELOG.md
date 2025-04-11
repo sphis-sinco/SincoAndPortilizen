@@ -19,7 +19,6 @@
 - Medal unlock sound effect
 - 7 unlockable medals
 - (source) `InitState` now tracks how long functions are taking via `haxe.Timer`
-<!-- - Portilizen now has a gameover created by @iampauleps -->
 - (source) `GIF_PORT_GAMEOVER` build flag
 - (source) FlxGif library
 - (source) Adjust Color Shader
