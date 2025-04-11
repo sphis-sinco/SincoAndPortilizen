@@ -3,6 +3,7 @@
 ### Fixed
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 ### Changed
+- Re-enabled medals
 - In the title state the characters in the character sing fade in via shaders
 - `Combo.hx` now is in the `sap.stages` folder
 - The title screen version text no longer is visible during the intro sequence
@@ -12,6 +13,7 @@
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
+- Medals
 - (source) `InitState` now tracks how long functions are taking via `haxe.Timer`
 <!-- - Portilizen now has a gameover created by @iampauleps -->
 - (source) `GIF_PORT_GAMEOVER` build flag

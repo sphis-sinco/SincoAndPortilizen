@@ -21,7 +21,7 @@ class Medal extends FlxTypedGroup<FlxObject>
 
 		if (!FileManager.exists(path))
 		{
-			// trace('${medal} does not have an icon');
+			trace('${medal} does not have an icon');
                         path = FileManager.getImageFile('${medalBox.assetFolder}/awards/award');
 		}
 		// trace(path);

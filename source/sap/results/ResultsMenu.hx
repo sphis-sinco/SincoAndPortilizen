@@ -89,24 +89,24 @@ class ResultsMenu extends State
 		{
 			if (Stage1.OSIN_HEALTH == 0)
 			{
-				// add(MedalData.unlockMedal('Faker clash'));
+				add(MedalData.unlockMedal('Faker clash'));
 
 				if (Stage1.SINCO_HEALTH == Stage1.SINCO_MAX_HEALTH)
 				{
-					// add(MedalData.unlockMedal('The original stands on top'));
+					add(MedalData.unlockMedal('The original stands on top'));
 				}
 			}
 			else if (Stage2.time == 0)
 			{
-				// add(MedalData.unlockMedal('Protector'));
+				add(MedalData.unlockMedal('Protector'));
 				if (Stage2.TEMPO_CITY_HEALTH == Stage2.diffJson.tempo_city_max_health)
 				{
-					// add(MedalData.unlockMedal('True Protector'));
+					add(MedalData.unlockMedal('True Protector'));
 				}
 			}
 			else if (Stage4.time == Stage4.start_timer)
 			{
-				// add(MedalData.unlockMedal('Dimensions reached'));
+				add(MedalData.unlockMedal('Dimensions reached'));
 			}
 		}
 	}
