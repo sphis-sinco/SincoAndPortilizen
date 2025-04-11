@@ -90,6 +90,9 @@ class SparrowCutscene extends State
 	{
 		trace(animation);
 
+                if (CUTSCENE_PART + 1 > CUTSCENE_JSON.parts)
+                        return;
+
 		CUTSCENE_SPRITE.playAnimation('part${CUTSCENE_PART + 1}');
 		changeCutscenePosition(CUTSCENE_JSON.offsets[CUTSCENE_PART][0], CUTSCENE_JSON.offsets[CUTSCENE_PART][1]);
 	}
