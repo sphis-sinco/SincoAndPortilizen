@@ -29,12 +29,10 @@ class Sidebit1IntroCutscene extends State
 			switch (cutscene_sprite.animation.name)
 			{
 				case 'part1':
-					cutscene_sprite.x -= 25;
-					cutscene_sprite.y += 50;
+					cutscene_sprite.setPosition(-120, 200);
 					cutscene_sprite.playAnimation('part2');
 				case 'part2':
-					cutscene_sprite.x = cutscene_sprite.x;
-					cutscene_sprite.y = 0;
+					cutscene_sprite.setPosition(-255, 30);
 					cutscene_sprite.playAnimation('part3');
 				case 'part3':
 					cutscene_sprite.setPosition(-105, -195);
