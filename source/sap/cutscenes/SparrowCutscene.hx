@@ -59,7 +59,7 @@ class SparrowCutscene extends State
 				CUTSCENE_SPRITE.animation.paused = true;
 			}
 		});
-                CUTSCENE_SPRITE.playAnimation('part1');
+                cutsceneEvent('part1');
 	}
 
 	final MOVEMENT_SPEED:Float = 5;
