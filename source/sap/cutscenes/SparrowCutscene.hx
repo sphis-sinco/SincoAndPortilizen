@@ -57,8 +57,8 @@ class SparrowCutscene extends State
 			{
                                 #if EXCESS_TRACES
 				trace('Automatic cutscene pause');
-                                #end
 				CUTSCENE_SPRITE.animation.paused = true;
+                                #end
 			}
 		});
                 cutsceneEvent('part1');
