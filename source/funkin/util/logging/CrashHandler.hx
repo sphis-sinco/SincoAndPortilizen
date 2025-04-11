@@ -151,6 +151,8 @@ class CrashHandler
 
 		fullContents += message;
 
+                trace(message);
+
 		fullContents += '\n';
 
 		return fullContents;
