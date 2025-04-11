@@ -40,6 +40,8 @@ class SparrowCutscene extends State
 
 			part++;
 		}
+
+                CUTSCENE_SPRITE.playAnimation('part1');
 	}
 
 	override function create()
