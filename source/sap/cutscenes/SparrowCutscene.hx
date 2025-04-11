@@ -55,7 +55,9 @@ class SparrowCutscene extends State
 
 			if (SLGame.isDebug)
 			{
+                                #if EXCESS_TRACES
 				trace('Automatic cutscene pause');
+                                #end
 				CUTSCENE_SPRITE.animation.paused = true;
 			}
 		});
@@ -76,7 +78,9 @@ class SparrowCutscene extends State
 				CUTSCENE_SPRITE.x += (FlxG.keys.justReleased.LEFT) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
 			if (FlxG.keys.anyJustReleased([UP, DOWN]))
 				CUTSCENE_SPRITE.y += (FlxG.keys.justReleased.UP) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
-			if (FlxG.keys.anyJustReleased([LEFT, RIGHT, UP, DOWN]))
+			
+                        // ! I dub this NOT, an excess trace conditional ! \\
+                        if (FlxG.keys.anyJustReleased([LEFT, RIGHT, UP, DOWN]))
 				trace('Cutscene sprite position: ${CUTSCENE_SPRITE.getPosition()}');
 		}
 
@@ -88,7 +92,9 @@ class SparrowCutscene extends State
 
 	public function cutsceneEvent(animation:String):Void
 	{
+                #if EXCESS_TRACES
 		trace(animation);
+                #end
 
                 if (CUTSCENE_PART + 1 > CUTSCENE_JSON.parts)
                         return;
@@ -99,7 +105,9 @@ class SparrowCutscene extends State
 
 	public function changeCutscenePosition(X:Float, Y:Float)
 	{
+                #if EXCESS_TRACES
 		trace('New cutscene position (anim: ${CUTSCENE_SPRITE.animation.name}): (${X} | ${Y})');
+                #end
 		CUTSCENE_SPRITE.setPosition(X, Y);
 	}
 }
