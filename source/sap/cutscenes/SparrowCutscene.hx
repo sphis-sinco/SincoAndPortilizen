@@ -41,7 +41,6 @@ class SparrowCutscene extends State
 			part++;
 		}
 
-                CUTSCENE_SPRITE.playAnimation('part1');
 	}
 
 	override function create()
@@ -60,6 +59,7 @@ class SparrowCutscene extends State
 				CUTSCENE_SPRITE.animation.paused = true;
 			}
 		});
+                CUTSCENE_SPRITE.playAnimation('part1');
 	}
 
 	final MOVEMENT_SPEED:Float = 5;
