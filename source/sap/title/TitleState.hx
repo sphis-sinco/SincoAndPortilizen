@@ -42,7 +42,6 @@ class TitleState extends State
 	override public function create():Void
 	{
                 CHARACTER_RING_CHARS_SHADER = new AdjustColorShader();
-                CHARACTER_RING_CHARS_SHADER.brightness = -255;
 
 		MINI_SINCO = new TitleSinco();
 		MINI_PORTILIZEN = new TitlePort();
@@ -103,6 +102,7 @@ class TitleState extends State
 		if (CURRENT_STATE == INTRO)
 		{
 			Global.playSoundEffect('start-synth');
+                        CHARACTER_RING_CHARS_SHADER.brightness = -255;
 		}
 
 		super.create();
