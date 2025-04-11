@@ -5,6 +5,7 @@ import flxgif.FlxGifSprite;
 class PaulPortGameOver extends State
 {
 	public static var thegif:FlxGifSprite;
+        public static var bg:FlxSprite;
 
 	public static function init()
 	{
@@ -18,6 +19,10 @@ class PaulPortGameOver extends State
 		{
                         thegif.visible = false;
 		};
+
+                bg = new FlxSprite();
+                bg.loadGraphic(FileManager.getImageFile('gameplay/port stages/gameover_red'));
+                bg.setPosition(340.25);
 	}
 
 	override function create()
