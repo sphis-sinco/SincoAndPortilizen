@@ -9,7 +9,7 @@ class Sidebit1IntroCutscene extends State
         override public function new() {
               super();
               
-              sprite = new SparrowSprite('cutscenes/sideline1');
+              sprite = new SparrowSprite('cutscenes/sidebit1/pre-sidebit1');
               sprite.addAnimationByPrefix('part1', 'animation piece 1', 24, false);
               sprite.addAnimationByPrefix('part2', 'animation piece 2', 24, false);
               sprite.addAnimationByPrefix('part3', 'animation piece 3', 24, false);

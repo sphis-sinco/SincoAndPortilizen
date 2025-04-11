@@ -167,6 +167,9 @@ class InitState extends FlxState
 		#elseif GIF_PORT_GAMEOVER
 		switchToState(() -> new sap.stages.PaulPortGameOver(), 'PaulPortGameOver');
 		return;
+		#elseif SIDEBIT1_INTRO_CUTSCENE
+		switchToState(() -> new sap.stages.sidebit1.Sidebit1IntroCutscene(), 'Sidebit1IntroCutscene');
+		return;
 		#end
 
 		trace('Starting game regularly');
