@@ -9,7 +9,6 @@ class PaulPortGameOver extends State
 
 	public static function init()
 	{
-                trace('thegif init');
 		thegif = new FlxGifSprite();
 		thegif.loadGif(FileManager.getImageFile('gameplay/port stages/portgameover').replace('png', 'gif'));
 		thegif.screenCenter();
