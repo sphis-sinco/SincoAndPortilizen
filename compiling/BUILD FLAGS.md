@@ -9,6 +9,7 @@ These do things. Lmao!
 - `DISABLE_LOCALIZED_ASSETS`: Disables asset localization attempts for `FileManager.hx`
 - `DEFAULT_DIRECTORY`: Disables custom build directories besides the original ones
 - `EXCESS_TRACES`: Adds in traces that are unimportant
+- `PLAYTESTER_BUILD`: Adds in a "-playtest" to the end of the version string
 
 ## QOL Flags
 - `DISABLE_ANNOYING_ERRORS`: Makes errors less annoying

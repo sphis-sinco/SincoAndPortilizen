@@ -27,6 +27,10 @@ class Global
 			version += '-debug';
 		}
 
+                #if PLAYTESTER_BUILD
+			version += '-playtest';
+                #end
+
                 #if EXCESS_TRACES
 		trace('Version: ${version}');
                 #end

@@ -13,6 +13,7 @@
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
+- (source) `PLAYTESTER_BUILD` build flag
 - Sparrow (spritesheet) cutscene support
 - (source) `SIDEBIT1_INTRO_CUTSCENE` build flag
 - Medal unlock sound effect
