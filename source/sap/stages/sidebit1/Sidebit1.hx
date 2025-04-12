@@ -100,6 +100,12 @@ class Sidebit1 extends State
 				SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
 				SINCO.playAnimation('idle');
 			}
+
+			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
+
+			SINCO.x -= 0;
+			SINCO.y -= 0;
+			SINCO.playAnimation('hit');
 		});
 
 		SINCO_GHOST = new SB1Sinco();
@@ -129,10 +135,16 @@ class Sidebit1 extends State
 
 		PORTILIZEN.animation.onFinish.add(function(animName)
 		{
+			return;
+
 			if (animName == SB1PortAIState.ATTACK)
 			{
 				if (PORTILIZEN.overlaps(SINCO) && SINCO.animation.name != 'dodge')
 				{
+					disableAbilities();
+					SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
+					SINCO.x -= 0;
+					SINCO.y -= 0;
 					SINCO.playAnimation('hit');
 				}
 			}
