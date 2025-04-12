@@ -23,6 +23,7 @@ class Sidebit1IntroCutsceneAtlas extends State
 	{
 		super.create();
 
+                add(CUTSCENE_ATLAS);
                 CUTSCENE_ATLAS.anim.play('part1');
 	}
 
