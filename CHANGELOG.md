@@ -2,7 +2,8 @@
 ## 0.4.0 (Pitstop 2 - Sidebit 1) - 4/??/2025
 KNOWN BUG:
 - In stage 2 sometimes when you hit the first rock it never spawns more
-
+### Removed
+- Removed several unused assets
 ### Fixed
 - Crash when trying to check if uninitalize stages medals are unlocked
 - The "Huh, someone cares" medal icon now loads properly
