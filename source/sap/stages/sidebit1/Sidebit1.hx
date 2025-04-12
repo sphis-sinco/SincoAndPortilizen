@@ -1,5 +1,7 @@
 package sap.stages.sidebit1;
 
+import sap.stages.sidebit1.SB1Port.SB1PortAIState;
+
 class Sidebit1 extends State
 {
 	public static var DIFFICULTY:String;
@@ -8,8 +10,10 @@ class Sidebit1 extends State
 	public static var SINCO:SB1Sinco;
 	public static var SINCO_GHOST:SB1Sinco;
 	public static var PORTILIZEN:SB1Port;
+	public static var PORT_GHOST:SB1Port;
 
 	public static var SINCO_POINT:FlxPoint;
+	public static var PORTILIZEN_POINT:FlxPoint;
 
 	override public function new(difficulty:String)
 	{
@@ -19,6 +23,12 @@ class Sidebit1 extends State
 		DIFFICULTY_JSON = {};
 		trace('Sidebit 1 (${DIFFICULTY})');
 	}
+
+	public static var PORTILIZEN_ATTACK_CHANCE = 65;
+	public static var PORTILIZEN_FOCUS_CHANCE = 25;
+
+	public static var PORTILIZEN_DODGE_CHANCE_UNFOCUSED = 35;
+	public static var PORTILIZEN_DODGE_CHANCE_FOCUS = 70;
 
 	override function create()
 	{
@@ -55,6 +65,12 @@ class Sidebit1 extends State
 				FlxTween.tween(SINCO, {x: PORTILIZEN.x - 160}, SINCO_ATTACK_SPEED, {
 					onComplete: function(tween)
 					{
+						if (SINCO.overlaps(PORTILIZEN) && PORTILIZEN.State != ATTACK && PORTILIZEN.State != DODGE)
+						{
+							PORTILIZEN.State = HIT;
+							PORTILIZEN.playAnimation(PORTILIZEN.State);
+						}
+
 						FlxTween.tween(SINCO, {x: SINCO_POINT.x - 160}, SINCO_ATTACK_SPEED, {
 							onComplete: function(tween)
 							{
@@ -62,10 +78,10 @@ class Sidebit1 extends State
 								SINCO.x -= 14;
 								SINCO.playAnimation('attack-end');
 							},
-                                                        ease: FlxEase.sineOut
+							ease: FlxEase.sineOut
 						});
 					},
-                                        ease: FlxEase.sineIn
+					ease: FlxEase.sineIn
 				});
 			}
 
@@ -84,15 +100,89 @@ class Sidebit1 extends State
 		SINCO_GHOST = new SB1Sinco();
 		SINCO_GHOST.playAnimation('idle');
 		SINCO_GHOST.setPosition(SINCO_POINT.x, SINCO_POINT.y);
-		add(SINCO_GHOST);
 		SINCO_GHOST.alpha = 0.5;
 
+		// add(SINCO_GHOST);
 		add(SINCO);
 
 		PORTILIZEN = new SB1Port();
 		PORTILIZEN.playAnimation('idle');
 		PORTILIZEN.setPosition(64, FlxG.height - (PORTILIZEN.height / 1.3));
+
+		PORTILIZEN_POINT = new FlxPoint(0, 0);
+		PORTILIZEN_POINT.set(PORTILIZEN.x, PORTILIZEN.y);
+
+		PORT_GHOST = new SB1Port();
+		PORT_GHOST.playAnimation('idle');
+		PORT_GHOST.setPosition(PORTILIZEN_POINT.x, PORTILIZEN_POINT.y);
+		PORT_GHOST.alpha = 0.5;
+
+		add(PORT_GHOST);
 		add(PORTILIZEN);
+
+		PORTILIZEN.animation.onFinish.add(function(animName)
+		{
+			var proceed:Bool = true;
+
+			final port_focus_bool:Bool = FlxG.random.bool(PORTILIZEN_FOCUS_CHANCE);
+			final port_dodge_bool:Bool = (FlxG.random.bool(PORTILIZEN_DODGE_CHANCE_UNFOCUSED) && PORTILIZEN.State != FOCUS);
+			final port_dodge_focus_bool:Bool = (FlxG.random.bool(PORTILIZEN_DODGE_CHANCE_FOCUS) && PORTILIZEN.State == FOCUS);
+			final port_attack_bool:Bool = FlxG.random.bool(PORTILIZEN_ATTACK_CHANCE);
+
+			if (animName == 'idle')
+			{
+				if (port_focus_bool && proceed)
+				{
+					PORTILIZEN.State = FOCUS;
+					proceed = false;
+				}
+
+				if (SINCO.animation.name.contains('attack') && (port_dodge_bool || port_dodge_focus_bool) && proceed)
+				{
+					PORTILIZEN.State = DODGE;
+					proceed = false;
+				}
+
+				if (port_attack_bool && proceed)
+				{
+					if (!SINCO.animation.name.contains('attack'))
+					{
+						ABILITY_CAN_ATTACK = false;
+						PORTILIZEN.State = ATTACK;
+					}
+
+					proceed = false;
+				}
+			}
+			else
+			{
+				if (animName == SB1PortAIState.ATTACK && !SINCO.animation.name.contains('attack'))
+				{
+					ABILITY_CAN_ATTACK = true;
+				}
+
+				PORTILIZEN.State = IDLE;
+
+				if (SINCO.animation.name.contains('attack') && (port_dodge_bool || port_dodge_focus_bool))
+				{
+					PORTILIZEN.State = DODGE;
+				}
+			}
+
+			PORTILIZEN.setPosition(PORTILIZEN_POINT.x, PORTILIZEN_POINT.y);
+			switch (PORTILIZEN.State)
+			{
+				case ATTACK:
+					PORTILIZEN.x -= 100;
+					PORTILIZEN.y -= 70;
+				case HIT:
+					PORTILIZEN.x -= 0;
+					PORTILIZEN.y -= 0;
+				case DODGE | IDLE | FOCUS:
+					Global.pass;
+			}
+			PORTILIZEN.playAnimation(PORTILIZEN.State);
+		});
 	}
 
 	public static var ABILITY_CAN_DODGE:Bool = true;
