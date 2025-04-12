@@ -2,6 +2,8 @@ package sap.stages.sidebit1;
 
 class SB1Port extends SparrowSprite
 {
+        public var State:SB1PortAIState = IDLE;
+
 
         override public function new() {
                 super('gameplay/sidebits/port-sidebit1');
@@ -12,4 +14,11 @@ class SB1Port extends SparrowSprite
                 addAnimationByPrefix('idle', 'Portilizen idle', 24, false);
         }
         
+}
+
+enum abstract SB1PortAIState(String) from String to String {
+        public var ATTACK = 'attack';
+        public var HIT = 'hit';
+        public var DODGE = 'dodge';
+        public var IDLE = 'idle';
 }
