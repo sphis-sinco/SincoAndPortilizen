@@ -13,6 +13,7 @@ class Sidebit1 extends State
                 
 		DIFFICULTY = difficulty;
 		DIFFICULTY_JSON = FileManager.getJSON(FileManager.getDataFile('stages/sidebit1/${difficulty}.json'));
+                trace('Sidebit 1 (${DIFFICULTY})');
         }
 
         override function create() {
@@ -26,7 +27,7 @@ class Sidebit1 extends State
                 BACKGROUND_FLOOR = new FlxSprite();
                 BACKGROUND_FLOOR.makeGraphic(FlxG.width, 64, 0xB5B5B5);
                 BACKGROUND_FLOOR.screenCenter(X);
-                BACKGROUND_FLOOR.y = FlxG.height - BACKGROUND_FLOOR.height;
+                BACKGROUND_FLOOR.y = (FlxG.height - BACKGROUND_FLOOR.height);
                 add(BACKGROUND_FLOOR);
         }
 
