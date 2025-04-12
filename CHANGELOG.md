@@ -2,6 +2,30 @@
 ## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/??/2025
 KNOWN BUG:
 - In stage 2 sometimes when you hit the first rock it never spawns more
+### Added
+<!-- These are moved up because they are epicer-->
+- SIDEBIT 1
+- POST-LEVEL4 CUTSCENE
+- 7 UNLOCKABLE MEDALS
+- SIDEBIT SELECT MENU
+- (Desktop only) Added Discord RPC setting that toggles discord RPC
+- Cutscenes asset folder containing all the cutscene assets
+- (source) `SIDEBIT_ONE_INSTANT` build flag
+- (source) `SIDEBIT_ONE` build flag
+- Easier comic cutscene support via JSON (minus the fact you need a haxe file n shit but uh shush)
+- TJ Credit (TJ is apart of SAPTeam now)
+- Texture atlas cutscene support
+- (source) `FLXANIMATE_TESTING` build flag
+- (source) Crash trace (terminal) after the crash log is generator
+- (source) `PLAYTESTER_BUILD` build flag
+- Sparrow spritesheet cutscene support
+- (source) `SIDEBIT1_INTRO_CUTSCENE` build flag
+- Medal unlock sound effect
+- (source) `InitState` now tracks how long functions are taking via `haxe.Timer`
+- (source) `GIF_PORT_GAMEOVER` build flag
+- (source) FlxGif library
+- (source) Adjust Color Shader
+- (Desktop and sys only) New settings menu option to download latest traces
 ### Removed
 - Removed several unused assets
 ### Fixed
@@ -22,29 +46,6 @@ KNOWN BUG:
 - Several InitState traces are not apart of `EXCESS_TRACES`
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
-### Added
-- (Desktop only) Added Discord RPC setting that toggles discord RPC
-- Cutscenes asset folder containing all the cutscene assets
-- (source) `SIDEBIT_ONE_INSTANT` build flag
-- (source) `SIDEBIT_ONE` build flag
-- Post-level 4 cutscene
-- Easier comic cutscene support via JSON (minus the fact you need a haxe file n shit but uh shush)
-- TJ Credit (TJ is apart of SAPTeam now)
-- Atlas (texture atlas) cutscene support
-- (source) `FLXANIMATE_TESTING` build flag
-- (source) Crash trace (terminal) after the crash log is generator
-- (source) `PLAYTESTER_BUILD` build flag
-- Sparrow (spritesheet) cutscene support
-- (source) `SIDEBIT1_INTRO_CUTSCENE` build flag
-- Medal unlock sound effect
-- 7 unlockable medals
-- (source) `InitState` now tracks how long functions are taking via `haxe.Timer`
-- (source) `GIF_PORT_GAMEOVER` build flag
-- (source) FlxGif library
-- (source) Adjust Color Shader
-- (Desktop and sys only) New settings menu option to download latest traces
-- New button on the title screen leading to the Sidebit select menu
-
 <!-- A patch content update? How peculiar... normally this would be v0.4.0a but versioning has changed, like right now, LOL -->
 <!-- If there ain't a new level or MAJOR content update then its a "patch" update, otherwise a minor-->
 ## 0.3.2a - 4/9/2025
