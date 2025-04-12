@@ -1,0 +1,46 @@
+name: Windows Build
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Windows Build
+    permissions: write-all
+    runs-on: windows-latest
+    steps:
+      - name: Retrieving latest commit.
+        uses: actions/checkout@v4
+      - name: Setting up Haxe
+        uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: latest
+      - name: Restore existing build cache for faster compilation
+        uses: actions/cache@v3
+        with:
+          key: cache-build-windows
+          path: |
+            .haxelib/
+            export/windows/haxe/
+            export/windows/obj/
+          restore-keys: |
+            cache-build-windows
+      - name: Building the game
+        run: |
+          haxelib install hmm
+          haxelib run hmm install
+          haxelib run lime build windows
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SAP
+          path: export/windows/bin
+      - name: Uploading new cache
+        uses: actions/cache@v3
+        with:
+          key: cache-build-windows
+          path: |
+            .haxelib/
+            export/windows/haxe/
+            export/windows/obj/
+          restore-keys: |
+            cache-build-windows
