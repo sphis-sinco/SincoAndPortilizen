@@ -1,5 +1,5 @@
 # Alpha
-## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/??/2025
+## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
 ### Added
 <!-- These are moved up because they are epicer-->
 - SIDEBIT 1
