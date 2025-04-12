@@ -176,8 +176,8 @@ class Sidebit1 extends State
 					PORTILIZEN.x -= 100;
 					PORTILIZEN.y -= 70;
 				case HIT:
-					PORTILIZEN.x -= 0;
-					PORTILIZEN.y -= 0;
+					PORTILIZEN.x -= 40;
+					PORTILIZEN.y += 30;
 				case DODGE | IDLE | FOCUS:
 					Global.pass;
 			}
