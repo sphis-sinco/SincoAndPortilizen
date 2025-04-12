@@ -1,6 +1,6 @@
 package sap.savedata;
 
-class Settings
+class SavedSettings
 {
 	public static function returnDefaultSettings():Dynamic
 	{

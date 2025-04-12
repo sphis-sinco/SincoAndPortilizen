@@ -17,7 +17,7 @@ class SaveManager
 		FlxG.save.data.medals ??= getDefaultSave().medals;
 
 		// run these functions to make sure no null vals
-		Settings.setupSettings();
+		SavedSettings.setupSettings();
 		Results.setupResults();
 		GameplayStatus.setupGameplayStatus();
 
@@ -31,7 +31,7 @@ class SaveManager
 	{
 		return {
 			language: "english",
-                        settings: Settings.returnDefaultSettings(),
+                        settings: SavedSettings.returnDefaultSettings(),
 			results: Results.returnDefaultResults(),
 			gameplaystatus: GameplayStatus.returnDefaultGameplayStatus(),
                         medals: []
