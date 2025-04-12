@@ -166,13 +166,13 @@ class Stage1 extends State
 		OSIN_HEALTH = OSIN_MAX_HEALTH;
 
 		var tutorial1:FlxSprite = new FlxSprite();
-		tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Right-Dodge'));
+		tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Right-Dodge'));
 		tutorial1.screenCenter();
 		tutorial1.y -= tutorial1.height;
 		add(tutorial1);
 
 		var tutorial2:FlxSprite = new FlxSprite();
-		tutorial2.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Attack'));
+		tutorial2.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Space-Attack'));
 		tutorial2.screenCenter();
 		tutorial2.y += tutorial2.height;
 		add(tutorial2);

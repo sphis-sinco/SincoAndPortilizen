@@ -263,6 +263,30 @@ class Sidebit1 extends State
 		add(INFO_TEXTFIELD);
 	}
 
+        override function postCreate() {
+                super.postCreate();
+
+                
+
+		var tutorial1:FlxSprite = new FlxSprite();
+		tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/non-pixel/Space-Dodge'));
+		tutorial1.screenCenter();
+		tutorial1.y -= tutorial1.height;
+		add(tutorial1);
+
+		var tutorial2:FlxSprite = new FlxSprite();
+		tutorial2.loadGraphic(FileManager.getImageFile('gameplay/tutorials/non-pixel/Left-Attack'));
+		tutorial2.screenCenter();
+		tutorial2.y += tutorial2.height;
+		add(tutorial2);
+
+		FlxTimer.wait(3, () ->
+		{
+			FlxTween.tween(tutorial1, {alpha: 0}, 1);
+			FlxTween.tween(tutorial2, {alpha: 0}, 1);
+		});
+        }
+
 	public static var ABILITY_CAN_DODGE:Bool = true;
 	public static var ABILITY_CAN_ATTACK:Bool = true;
 	public static var SINCO_ATTACK_SPEED:Float = 0.25;

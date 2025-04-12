@@ -84,7 +84,7 @@ class Stage2 extends State
 		Global.changeDiscordRPCPresence('Stage 2 (${DIFFICULTY.toUpperCase()}): Tierra', null);
 
 		var tutorial:FlxSprite = new FlxSprite();
-		tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Attack'));
+		tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Space-Attack'));
 		tutorial.screenCenter();
 		add(tutorial);
 

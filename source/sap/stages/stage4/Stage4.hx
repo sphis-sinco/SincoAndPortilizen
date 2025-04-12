@@ -77,7 +77,7 @@ class Stage4 extends State
 		super.postCreate();
 
 		var tutorial:FlxSprite = new FlxSprite();
-		tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Dodge'));
+		tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Space-Dodge'));
 		tutorial.screenCenter();
 		tutorial.y -= tutorial.height * 2;
 		add(tutorial);
