@@ -9,7 +9,7 @@ class AtlasCutscene extends State
 	{
 		super();
 
-		CUTSCENE_JSON = FileManager.getJSON(FileManager.getDataFile('cutscenes/${cutsceneJsonPath}.json'));
+		CUTSCENE_JSON = FileManager.getJSON(FileManager.getDataFile('${cutsceneJsonPath}.json', CUTSCENES));
 
 		if (CUTSCENE_JSON.type.toLowerCase() == 'atlas')
 		{
@@ -25,7 +25,7 @@ class AtlasCutscene extends State
 			throw 'Cutscene json field "type" should be "atlas"';
 		}
 
-		CUTSCENE_ATLAS = new FlxAnimate(FileManager.getImageFile('cutscenes/${CUTSCENE_JSON.assetPath}').replace('.png', ''));
+		CUTSCENE_ATLAS = new FlxAnimate(FileManager.getImageFile('${CUTSCENE_JSON.assetPath}', CUTSCENES).replace('.png', ''));
 		CUTSCENE_PART = 0;
 
 		var part:Int = 1;

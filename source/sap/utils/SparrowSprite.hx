@@ -1,8 +1,10 @@
 package sap.utils;
 
+import sinlib.utilities.FileManager.PathTypes;
+
 class SparrowSprite extends FlxSprite
 {
-        override public function new(Imagepath:String = '', ?X:Float = 0, ?Y:Float = 0):Void {
+        override public function new(Imagepath:String = '', ?PATH_TYPE:PathTypes, ?X:Float = 0, ?Y:Float = 0):Void {
                 super(X,Y);
 
                 frames = FlxAtlasFrames.fromSparrow(FileManager.getImageFile(Imagepath), FileManager.getAssetFile('images/$Imagepath.xml'));

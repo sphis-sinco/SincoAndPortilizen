@@ -1,6 +1,10 @@
 # Alpha
 ## 0.4.0 (Pitstop 2 - Sidebit 1) - 4/??/2025
+KNOWN BUG:
+- In stage 2 sometimes when you hit the first rock it never spawns more
+
 ### Fixed
+- Crash when trying to check if uninitalize stages medals are unlocked
 - The "Huh, someone cares" medal icon now loads properly
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 ### Changed
@@ -17,6 +21,7 @@
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
+- Cutscenes asset folder containing all the cutscene assets
 - (source) `SIDEBIT_ONE_INSTANT` build flag
 - (source) `SIDEBIT_ONE` build flag
 - Post-level 4 cutscene

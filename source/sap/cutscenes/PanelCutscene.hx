@@ -16,7 +16,7 @@ class PanelCutscene extends State
 	{
 		super();
 
-		this.CUTSCENE_JSON = FileManager.getJSON(FileManager.getDataFile('cutscenes/${cutscenePath}.json'));
+		this.CUTSCENE_JSON = FileManager.getJSON(FileManager.getDataFile('${cutscenePath}.json', CUTSCENES));
 
 		if (this.CUTSCENE_JSON.panel_folder == null)
 		{
@@ -50,7 +50,7 @@ class PanelCutscene extends State
 		PANEL_SPRITE.screenCenter();
 		add(PANEL_SPRITE);
 
-		Global.playSoundEffect('cutscenes/paper-rustle');
+		Global.playSoundEffect('paper-rustle', CUTSCENES);
 
 		super.create();
 	}
@@ -64,7 +64,7 @@ class PanelCutscene extends State
 			{
 				finishedCutscene();
 			}
-			Global.playSoundEffect('cutscenes/paper-rustle');
+			Global.playSoundEffect('paper-rustle', CUTSCENES);
 			setPanel('${PANEL_PREFIX}panel$CUR_PANEL');
 			panelEvents(CUR_PANEL);
 		}
@@ -74,7 +74,7 @@ class PanelCutscene extends State
 
 	private function setPanel(panelpath:String = 'panel1'):Void
 	{
-		PANEL_SPRITE.loadGraphic(FileManager.getImageFile('cutscenes/$PANEL_FOLDER$panelpath'));
+		PANEL_SPRITE.loadGraphic(FileManager.getImageFile('$PANEL_FOLDER$panelpath', CUTSCENES));
 	}
 
 	public function finishedCutscene():Void {}

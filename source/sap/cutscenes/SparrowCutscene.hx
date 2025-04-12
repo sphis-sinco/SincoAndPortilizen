@@ -11,7 +11,7 @@ class SparrowCutscene extends State
 	{
 		super();
 
-		CUTSCENE_JSON = FileManager.getJSON(FileManager.getDataFile('cutscenes/${cutsceneJsonPath}.json'));
+		CUTSCENE_JSON = FileManager.getJSON(FileManager.getDataFile('${cutsceneJsonPath}.json', CUTSCENES));
 
 		if (CUTSCENE_JSON.type.toLowerCase() == 'sparrow')
 		{
@@ -29,7 +29,7 @@ class SparrowCutscene extends State
 			throw 'Cutscene json field "type" should be "sparrow"';
 		}
 
-		CUTSCENE_SPRITE = new SparrowSprite('cutscenes/${CUTSCENE_JSON.assetPath}');
+		CUTSCENE_SPRITE = new SparrowSprite('${CUTSCENE_JSON.assetPath}', CUTSCENES);
 		CUTSCENE_PART = 0;
 
 		var part:Int = 1;

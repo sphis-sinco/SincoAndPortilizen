@@ -28,7 +28,7 @@ class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
 		switch (animation)
 		{
 			case 'part1':
-				Global.playSoundEffect('cutscenes/SideBit1_IntroCutscene');
+				Global.playSoundEffect('SideBit1_IntroCutscene', CUTSCENES);
 			case 'part4':
 				trace('bye bye');
 		}

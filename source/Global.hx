@@ -149,14 +149,14 @@ class Global
 	 * Plays a sound effect using the `name` param
 	 * @param name this is the filename/filepath, for example `blipSelect` would return `assets/sounds/blipSelect.wav`
 	 */
-	public static function playSoundEffect(name:String, ?posinfo:PosInfos):Void
+	public static function playSoundEffect(name:String, ?PATH_TYPE:sinlib.utilities.FileManager.PathTypes, ?posinfo:PosInfos):Void
 	{
 		#if EXCESS_TRACES
 		final file:Array<String> = name.split('/');
 		trace('Trying to play sound effect: "${file[file.length - 1]}" | ${posInfoString(posinfo)}');
 		#end
 
-		FlxG.sound.play(FileManager.getSoundFile('sounds/$name'));
+		FlxG.sound.play(FileManager.getSoundFile('sounds/$name', PATH_TYPE));
 	}
 
 	/**
