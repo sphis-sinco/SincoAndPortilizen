@@ -1,6 +1,5 @@
 package sap.cutscenes;
 
-import sap.title.TitleState;
 
 class SparrowCutscene extends State
 {
@@ -40,7 +39,6 @@ class SparrowCutscene extends State
 
 			part++;
 		}
-
 	}
 
 	override function create()
@@ -55,13 +53,13 @@ class SparrowCutscene extends State
 
 			if (SLGame.isDebug)
 			{
-                                #if EXCESS_TRACES
+				#if EXCESS_TRACES
 				trace('Automatic cutscene pause');
 				CUTSCENE_SPRITE.animation.paused = true;
-                                #end
+				#end
 			}
 		});
-                cutsceneEvent('part1');
+		cutsceneEvent('part1');
 	}
 
 	final MOVEMENT_SPEED:Float = 5;
@@ -78,9 +76,9 @@ class SparrowCutscene extends State
 				CUTSCENE_SPRITE.x += (FlxG.keys.justReleased.LEFT) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
 			if (FlxG.keys.anyJustReleased([UP, DOWN]))
 				CUTSCENE_SPRITE.y += (FlxG.keys.justReleased.UP) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
-			
-                        // ! I dub this NOT, an excess trace conditional ! \\
-                        if (FlxG.keys.anyJustReleased([LEFT, RIGHT, UP, DOWN]))
+
+			// ! I dub this NOT, an excess trace conditional ! \\
+			if (FlxG.keys.anyJustReleased([LEFT, RIGHT, UP, DOWN]))
 				trace('Cutscene sprite position: ${CUTSCENE_SPRITE.getPosition()}');
 		}
 
@@ -92,22 +90,23 @@ class SparrowCutscene extends State
 
 	public function cutsceneEvent(animation:String):Void
 	{
-                #if EXCESS_TRACES
+		#if EXCESS_TRACES
 		trace(animation);
-                #end
+		#end
 
-                if (CUTSCENE_PART + 1 > CUTSCENE_JSON.parts)
-                        return;
+		if (!(CUTSCENE_PART + 1 > CUTSCENE_JSON.parts))
+		{
+			CUTSCENE_SPRITE.playAnimation('part${CUTSCENE_PART + 1}');
 
-		CUTSCENE_SPRITE.playAnimation('part${CUTSCENE_PART + 1}');
-		changeCutscenePosition(CUTSCENE_JSON.offsets[CUTSCENE_PART][0], CUTSCENE_JSON.offsets[CUTSCENE_PART][1]);
+			changeCutscenePosition(CUTSCENE_JSON.offsets[CUTSCENE_PART][0], CUTSCENE_JSON.offsets[CUTSCENE_PART][1]);
+		}
 	}
 
 	public function changeCutscenePosition(X:Float, Y:Float)
 	{
-                #if EXCESS_TRACES
+		#if EXCESS_TRACES
 		trace('New cutscene position (anim: ${CUTSCENE_SPRITE.animation.name}): (${X} | ${Y})');
-                #end
+		#end
 		CUTSCENE_SPRITE.setPosition(X, Y);
 	}
 }

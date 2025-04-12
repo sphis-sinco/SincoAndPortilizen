@@ -1,7 +1,6 @@
 package sap.cutscenes;
 
 import flxanimate.FlxAnimate;
-import sap.title.TitleState;
 
 class AtlasCutscene extends State
 {
@@ -25,7 +24,7 @@ class AtlasCutscene extends State
 		}
 		else
 		{
-			throw 'Cutscene json field "type" should be "sparrow"';
+			throw 'Cutscene json field "type" should be "atlas"';
 		}
 
 		CUTSCENE_ATLAS = new FlxAnimate(FileManager.getImageFile('cutscenes/${CUTSCENE_JSON.assetPath}').replace('.png', ''));
@@ -49,15 +48,7 @@ class AtlasCutscene extends State
 		{
 			{
 				CUTSCENE_PART++;
-				cutsceneEvent(CUTSCENE_ATLAS.animation.name);
-
-				if (SLGame.isDebug)
-				{
-					#if EXCESS_TRACES
-					trace('Automatic cutscene pause');
-					CUTSCENE_ATLAS.animation.paused = true;
-					#end
-				}
+				cutsceneEvent(CUTSCENE_ANIMATION_NAME);
 			}
 		});
 		cutsceneEvent('part1');
@@ -70,34 +61,31 @@ class AtlasCutscene extends State
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		if (CUTSCENE_ATLAS.animation.paused)
-		{
-			if (FlxG.keys.anyJustReleased([LEFT, RIGHT]))
-				CUTSCENE_ATLAS.x += (FlxG.keys.justReleased.LEFT) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
-			if (FlxG.keys.anyJustReleased([UP, DOWN]))
-				CUTSCENE_ATLAS.y += (FlxG.keys.justReleased.UP) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
-
-			// ! I dub this NOT, an excess trace conditional ! \\
-			if (FlxG.keys.anyJustReleased([LEFT, RIGHT, UP, DOWN]))
-				trace('Cutscene sprite position: ${CUTSCENE_ATLAS.getPosition()}');
-		}
-
-		if (FlxG.keys.justReleased.SPACE && SLGame.isDebug)
-		{
-			CUTSCENE_ATLAS.animation.paused = !CUTSCENE_ATLAS.animation.paused;
-		}
 	}
+
+	public var CUTSCENE_ANIMATION_NAME:String = null;
 
 	public function cutsceneEvent(animation:String):Void
 	{
-		#if EXCESS_TRACES
+		#if !EXCESS_TRACES
 		trace(animation);
 		#end
 
-		if (CUTSCENE_PART + 1 > CUTSCENE_JSON.parts)
-			return;
+		CUTSCENE_ANIMATION_NAME = 'part${CUTSCENE_PART + 1}';
 
-		CUTSCENE_ATLAS.anim.play('part${CUTSCENE_PART + 1}');
+		if (!(CUTSCENE_PART + 1 > CUTSCENE_JSON.parts))
+		{
+			CUTSCENE_ATLAS.anim.play(CUTSCENE_ANIMATION_NAME);
+		}
+		else
+		{
+			#if EXCESS_TRACES
+			trace('End of cutscene');
+			#end
+
+			cutsceneEnded();
+		}
 	}
+
+	public function cutsceneEnded():Void {}
 }
