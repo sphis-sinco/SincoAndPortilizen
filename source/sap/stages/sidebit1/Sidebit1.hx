@@ -32,6 +32,8 @@ class Sidebit1 extends State
 		add(SINCO);
 		SINCO.animation.onFinish.add(function(animName:String)
 		{
+			var idle:Bool = true;
+
 			if (SINCO.animation.name == 'dodge')
 			{
 				ABILITY_CAN_ATTACK = true;
@@ -39,9 +41,12 @@ class Sidebit1 extends State
 			else if (SINCO.animation.name.contains('attack'))
 			{
 				ABILITY_CAN_DODGE = true;
-			} else {
-                                SINCO.playAnimation('idle');
-                        }
+			}
+
+			if (idle)
+			{
+				SINCO.playAnimation('idle');
+			}
 		});
 
 		PORTILIZEN = new SB1Port();
