@@ -21,11 +21,12 @@ These do things. Lmao!
 - `STAGE_ONE`: Sends you to the first stage
 - `STAGE_TWO`: Sends you to the second stage
 - `STAGE_FOUR`: Sends you to the fourth stage
-- `EASY_DIFFICULTY` (executes with a `STAGE_` flag): Sets the difficulty to easy
-- `HARD_DIFFICULTY` (executes with a `STAGE_` flag): Sets the difficulty to hard
-- `EXTREME_DIFFICULTY` (executes with a `STAGE_` flag): Sets the difficulty to extreme
 
 - `SIDEBIT_ONE`: Sends you to the first sidebit
+
+- `EASY_DIFFICULTY` (executes with a `STAGE_` flag or a `SIDEBIT_` flag): Sets the difficulty to easy
+- `HARD_DIFFICULTY` (executes with a `STAGE_` flag or a `SIDEBIT_` flag): Sets the difficulty to hard
+- `EXTREME_DIFFICULTY` (executes with a `STAGE_` flag or a `SIDEBIT_` flag): Sets the difficulty to extreme
 
 - `WORLDMAP`: Sends you to the worldmap as Sinco
 
