@@ -94,6 +94,8 @@ class Stage2 extends State
 		});
 
 		decrease = 0;
+
+                TEMPO_CITY_HEALTH = diffJson.tempo_city_max_health;
 	}
 
 	public static dynamic function levelComplete():Void
@@ -207,7 +209,9 @@ class Stage2 extends State
 					onComplete: _tween ->
 					{
 						destroyRock(rock);
+						#if EXCESS_TRACES
 						trace('Destroy rock because collided with sinco');
+						#end
 					},
 					onStart: _tween ->
 					{

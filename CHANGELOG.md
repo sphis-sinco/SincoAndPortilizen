@@ -1,7 +1,5 @@
 # Alpha
 ## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/??/2025
-KNOWN BUG:
-- In stage 2 sometimes when you hit the first rock it never spawns more
 ### Added
 <!-- These are moved up because they are epicer-->
 - SIDEBIT 1
@@ -29,7 +27,9 @@ KNOWN BUG:
 ### Removed
 - Removed several unused assets
 ### Fixed
-- Crash when trying to check if uninitalize stages medals are unlocked
+- Stage 2 tempo city health not initalizing is fixed
+- Stage 2 rocks not spawning more rocks after playing a failed playthrough is fixed
+- The crash when trying to check if uninitalize stages medals are unlocked is fixed
 - The "Huh, someone cares" medal icon now loads properly
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 ### Changed
