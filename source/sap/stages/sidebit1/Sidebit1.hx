@@ -107,7 +107,7 @@ class Sidebit1 extends State
 		SINCO_GHOST.setPosition(SINCO_POINT.x, SINCO_POINT.y);
 		SINCO_GHOST.alpha = 0.5;
 
-		add(SINCO_GHOST);
+		// add(SINCO_GHOST);
 		add(SINCO);
 
 		PORTILIZEN = new SB1Port();
@@ -124,29 +124,20 @@ class Sidebit1 extends State
 		PORT_GHOST.x -= 100;
 		PORT_GHOST.y -= 70;
 
-		add(PORT_GHOST);
+		// add(PORT_GHOST);
 		add(PORTILIZEN);
 
 		PORTILIZEN.animation.onFinish.add(function(animName)
 		{
-			if (animName == SB1PortAIState.ATTACK)
-			{
-				if (PORTILIZEN.overlaps(SINCO) && SINCO.animation.name != 'dodge')
-				{
-					disableAbilities();
-                                        SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
-                                        SINCO.x -= 25;
-                                        SINCO.y += 100;
-                                        SINCO.playAnimation('hit');
-				}
-			}
-
 			var proceed:Bool = true;
 
 			final port_focus_bool:Bool = FlxG.random.bool(PORTILIZEN_FOCUS_CHANCE);
 			final port_dodge_bool:Bool = (FlxG.random.bool(PORTILIZEN_DODGE_CHANCE_UNFOCUSED) && PORTILIZEN.State != FOCUS);
 			final port_dodge_focus_bool:Bool = (FlxG.random.bool(PORTILIZEN_DODGE_CHANCE_FOCUS) && PORTILIZEN.State == FOCUS);
 			final port_attack_bool:Bool = FlxG.random.bool(PORTILIZEN_ATTACK_CHANCE);
+
+			if (animName == 'attack')
+				trace(PORTILIZEN.animation.frameIndex);
 
 			if (animName == 'idle')
 			{
@@ -178,6 +169,10 @@ class Sidebit1 extends State
 				if (animName == SB1PortAIState.ATTACK && !SINCO.animation.name.contains('attack'))
 				{
 					ABILITY_CAN_ATTACK = true;
+				}
+				if (animName == SB1PortAIState.ATTACK && SINCO.animation.name == 'hit')
+				{
+					disableAbilities();
 				}
 
 				PORTILIZEN.State = IDLE;
@@ -219,6 +214,7 @@ class Sidebit1 extends State
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		FlxG.watch.addQuick('port frame index', PORTILIZEN.animation.frameIndex);
 
 		if (FlxG.keys.justReleased.SPACE && ABILITY_CAN_DODGE)
 		{
@@ -234,6 +230,21 @@ class Sidebit1 extends State
 			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
 			SINCO.x -= 13.5;
 			SINCO.animation.play('attack');
+		}
+
+		if (PORTILIZEN.animation.frameIndex > 10 && PORTILIZEN.animation.frameIndex < 19)
+		{
+			if (PORTILIZEN.State != ATTACK)
+				return;
+			if (SINCO.animation.name == 'dodge')
+				return;
+
+			FlxTween.cancelTweensOf(SINCO);
+			disableAbilities();
+			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
+			SINCO.x -= 25;
+			SINCO.y += 100;
+			SINCO.playAnimation('hit');
 		}
 	}
 
