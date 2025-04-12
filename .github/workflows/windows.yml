@@ -30,6 +30,8 @@ jobs:
           haxelib run hmm install
       - name: Building the game
         run: |
+          haxelib install hmm
+          haxelib run hmm install
           haxelib run lime build windows
       - name: Uploading artifact
         uses: actions/upload-artifact@v4
