@@ -1,5 +1,5 @@
 # Alpha
-## 0.4.0 (Pitstop 2 - Sidebit 1) - 4/??/2025
+## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/??/2025
 KNOWN BUG:
 - In stage 2 sometimes when you hit the first rock it never spawns more
 ### Removed
