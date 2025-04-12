@@ -81,7 +81,7 @@ class Stage2 extends State
 		add(timerText);
 		StageGlobals.waitSec(diffJson.start_timer, time, timerText);
 
-		Global.changeDiscordRPCPresence('Stage 2: Tierra', null);
+		Global.changeDiscordRPCPresence('Stage 2 (${DIFFICULTY.toUpperCase()}): Tierra', null);
 
 		var tutorial:FlxSprite = new FlxSprite();
 		tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/Space-Attack'));
@@ -181,7 +181,7 @@ class Stage2 extends State
 	{
 		if (TEMPO_CITY_HEALTH > 0)
 		{
-                        trace('Spawning new rock');
+			trace('Spawning new rock');
 			if (rockGroup.members.length < max_rocks)
 			{
 				spawnRocks(FlxG.random.int(1, 2));

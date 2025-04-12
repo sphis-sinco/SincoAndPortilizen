@@ -4,6 +4,7 @@
 - The "Huh, someone cares" medal icon now loads properly
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 ### Changed
+- (Desktop only) Discord RPC now says the level difficulty
 - (source) Start state flags related to difficulty run with `SIDEBIT_` build flags
 - Reworked comic cutscenes to work with JSON
 - Re-enabled medals

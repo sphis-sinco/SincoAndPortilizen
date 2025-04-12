@@ -67,7 +67,7 @@ class Stage1 extends State
 			final og_combo_animateds:Array<Int> = PLAYER_COMBO_ANIMATEDS;
 			PLAYER_COMBO_ANIMATEDS = integer_combo_array;
 
-                        var compareSign:String = '=';
+			var compareSign:String = '=';
 
 			if (PLAYER_COMBO_ANIMATEDS.length > og_combo_animateds.length)
 			{
@@ -137,7 +137,7 @@ class Stage1 extends State
 		OSIN_POINT = new FlxPoint(0, 0);
 		OSIN_POINT.set(osin.x, osin.y);
 
-		Global.changeDiscordRPCPresence('Stage 1: Osin', null);
+		Global.changeDiscordRPCPresence('Stage 1 (${DIFFICULTY.toUpperCase()}): Osin', null);
 
 		OSIN_CAN_ATTACK = true;
 

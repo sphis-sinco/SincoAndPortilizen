@@ -67,7 +67,7 @@ class Stage4 extends State
 		add(timerText);
 		StageGlobals.waitSec(start_timer, time, timerText);
 
-		Global.changeDiscordRPCPresence('Stage 4: Dimensional String', null);
+		Global.changeDiscordRPCPresence('Stage 4 (${DIFFICULTY.toUpperCase()}): Dimensional String', null);
 
 		enemyCanAttack = true;
 	}
@@ -123,7 +123,7 @@ class Stage4 extends State
 
 	public static dynamic function enemyAttackCondition():Bool
 	{
-                final percent:Float = (diffJson.attack_percentage != null) ? diffJson.attack_percentage : 25;
+		final percent:Float = (diffJson.attack_percentage != null) ? diffJson.attack_percentage : 25;
 
 		return (FlxG.random.bool(percent) && enemyCanAttack);
 	}
@@ -186,9 +186,9 @@ class Stage4 extends State
 		final good = Std.parseInt(timerText.text);
 		trace(good);
 		if (win)
-                        FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new Worldmap("Port"), "port"));
-                else
-                        FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new PostStage4Cutscene(), "port"));
+			FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new Worldmap("Port"), "port"));
+		else
+			FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new PostStage4Cutscene(), "port"));
 	}
 
 	public static dynamic function enemyRetreat():Void
