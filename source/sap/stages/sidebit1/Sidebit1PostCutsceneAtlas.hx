@@ -1,13 +1,12 @@
 package sap.stages.sidebit1;
 
-import flxanimate.*;
 import sap.title.TitleState;
 
-class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
+class Sidebit1PostCutsceneAtlas extends AtlasCutscene
 {
 	override public function new()
 	{
-		super('sidebit1/pre-sidebit1_atlas');
+		super('sidebit1/post-sidebit1_atlas');
 	}
 
 	override function cutsceneEvent(animation:String)
@@ -16,7 +15,7 @@ class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
 
 		switch (animation)
 		{
-			case 'part4':
+			case 'part5':
 				FlxG.switchState(TitleState.new);
 		}
 	}

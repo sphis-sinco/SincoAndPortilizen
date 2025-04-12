@@ -1,6 +1,5 @@
 package sap.stages.sidebit1;
 
-import sap.cutscenes.SparrowCutscene;
 import sap.title.TitleState;
 
 class Sidebit1IntroCutscene extends SparrowCutscene

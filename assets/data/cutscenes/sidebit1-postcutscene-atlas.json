@@ -1,0 +1,15 @@
+{
+        "type": "atlas",
+
+        "assetPath": "sidebit1/post-sidebit1_atlas",
+
+        "parts": 5,
+
+        "symbol_names": [
+                "Animation part 1",
+                "Animation part 2",
+                "Animation part 3",
+                "Animation part 4",
+                "Animation part 5"
+        ]
+}

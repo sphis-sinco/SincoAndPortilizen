@@ -29,6 +29,7 @@ import openfl.net.*;
 import openfl.system.System;
 import openfl.text.*;
 import sap.*;
+import sap.cutscenes.*;
 import sap.localization.LocalizationManager;
 import sap.medals.*;
 import sap.plugins.*;
