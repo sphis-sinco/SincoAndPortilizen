@@ -17,13 +17,18 @@ These do things. Lmao!
 
 ## Start State Flags
 - `SKIP_TITLE`: Sends you to the Main Menu instantly instead of the Title Screen
+
 - `STAGE_ONE`: Sends you to the first stage
 - `STAGE_TWO`: Sends you to the second stage
 - `STAGE_FOUR`: Sends you to the fourth stage
 - `EASY_DIFFICULTY` (executes with a `STAGE_` flag): Sets the difficulty to easy
 - `HARD_DIFFICULTY` (executes with a `STAGE_` flag): Sets the difficulty to hard
 - `EXTREME_DIFFICULTY` (executes with a `STAGE_` flag): Sets the difficulty to extreme
+
+- `SIDEBIT_ONE`: Sends you to the first sidebit
+
 - `WORLDMAP`: Sends you to the worldmap as Sinco
+
 - `RESULTS`: Sends you to the results state as Sinco
 - `BAD_RANK` (executes with `RESULTS`): Sets the rank you will get to the bad rank
 - `GOOD_RANK` (executes with `RESULTS`): Sets the rank you will get to the good rank
@@ -31,7 +36,9 @@ These do things. Lmao!
 - `EXCELLENT_RANK` (executes with `RESULTS`): Sets the rank you will get to the excellent rank
 - `PERFECT_RANK` (executes with `RESULTS`): Sets the rank you will get to the perfect rank
 - `PORT_RANK_CHAR` (executes with `RESULTS`): Sends you to the results state as Portilizen
+
 - `GIF_PORT_GAMEOVER`: Sends you to the experimental `PaulPortGameOver` state
+
 - `SIDEBIT1_INTRO_CUTSCENE`: Sends you to the `Sidebit1IntroCutscene` state
 - `FLXANIMATE_TESTING`: Sends you to the `Sidebit1IntroCutsceneAtlas` state
 
