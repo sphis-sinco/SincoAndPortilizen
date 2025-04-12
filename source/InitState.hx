@@ -170,6 +170,9 @@ class InitState extends FlxState
 		#elseif SIDEBIT1_INTRO_CUTSCENE
 		switchToState(() -> new sap.stages.sidebit1.Sidebit1IntroCutscene(), 'Sidebit1IntroCutscene');
 		return;
+		#elseif SIDEBIT1_INTRO_CUTSCENE_ATLAS
+		switchToState(() -> new sap.stages.sidebit1.Sidebit1IntroCutsceneAtlas(), 'Sidebit1IntroCutsceneAtlas');
+		return;
 		#end
 
 		trace('Starting game regularly');

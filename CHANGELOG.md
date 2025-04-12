@@ -13,6 +13,7 @@
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
+- (source) `FLXANIMATE_TESTING` build flag
 - (source) Crash trace (terminal) after the crash log is generator
 - (source) `PLAYTESTER_BUILD` build flag
 - Sparrow (spritesheet) cutscene support

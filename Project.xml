@@ -93,6 +93,7 @@
 	<haxelib name="flixel-addons" />
         
 	<haxelib name="flxgif"/>
+	<haxelib name="flxanimate"/>
 
 	<haxelib name="sinlib" />
 
