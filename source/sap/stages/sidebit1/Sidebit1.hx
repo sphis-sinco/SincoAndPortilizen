@@ -129,8 +129,6 @@ class Sidebit1 extends State
 
 		PORTILIZEN.animation.onFinish.add(function(animName)
 		{
-			return;
-
 			if (animName == SB1PortAIState.ATTACK)
 			{
 				if (PORTILIZEN.overlaps(SINCO) && SINCO.animation.name != 'dodge')
