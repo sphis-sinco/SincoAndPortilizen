@@ -30,7 +30,7 @@ class SettingsMenu extends FlxSubState
 				return;
 			}
 
-                        trace('new_windowres is null + saved window_res is null');
+			trace('new_windowres is null + saved window_res is null');
 			new_windowres = '${FlxG.width}x${FlxG.height}';
 		}
 
@@ -59,6 +59,10 @@ class SettingsMenu extends FlxSubState
 
 		#if desktop
 		newSaveValue('window resolution', new_windowres);
+		#end
+
+		#if DISCORDRPC
+		newSaveValue('discord rpc', FlxG.save.data.settings.discord_rpc);
 		#end
 
 		#if debug
@@ -130,6 +134,17 @@ class SettingsMenu extends FlxSubState
 				}
 			case 'window resolution':
 				window_res(saveValues.get(SELECTED_SETTING), true);
+			#if DISCORDRPC
+			case 'discord rpc':
+				FlxG.save.data.settings.discord_rpc = !FlxG.save.data.settings.discord_rpc;
+				if (FlxG.save.data.settings.discord_rpc)
+				{
+					Discord.DiscordClient.initialize();
+				}
+				else {
+					Discord.DiscordClient.shutdown();
+                                }
+			#end
 			#if sys
 			case 'download latest traces':
 				final timestamp:String = funkin.util.DateUtil.generateTimestamp();

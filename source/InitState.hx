@@ -30,7 +30,13 @@ class InitState extends FlxState
 			Global.change_saveslot((SLGame.isDebug) ? 'debug' : 'release');
 
 			#if DISCORDRPC
-			Discord.DiscordClient.initialize();
+			if (FlxG.save.data.settings.discord_rpc)
+                        {
+                                Discord.DiscordClient.initialize();
+                        }
+                        else {
+                                Discord.DiscordClient.shutdown();
+                        }
 			#end
 
 			// Make errors and warnings less annoying.

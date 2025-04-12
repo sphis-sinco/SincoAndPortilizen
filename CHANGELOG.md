@@ -22,6 +22,7 @@ KNOWN BUG:
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
+- (Desktop only) Added Discord RPC setting that toggles discord RPC
 - Cutscenes asset folder containing all the cutscene assets
 - (source) `SIDEBIT_ONE_INSTANT` build flag
 - (source) `SIDEBIT_ONE` build flag
