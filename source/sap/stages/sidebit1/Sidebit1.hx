@@ -136,8 +136,10 @@ class Sidebit1 extends State
 			final port_dodge_focus_bool:Bool = (FlxG.random.bool(PORTILIZEN_DODGE_CHANCE_FOCUS) && PORTILIZEN.State == FOCUS);
 			final port_attack_bool:Bool = FlxG.random.bool(PORTILIZEN_ATTACK_CHANCE);
 
+                        #if EXCESS_TRACES
 			if (animName == 'attack')
-				trace(PORTILIZEN.animation.frameIndex);
+				trace('Port anim frame index: ${PORTILIZEN.animation.frameIndex}');
+                        #end
 
 			if (animName == 'idle')
 			{
