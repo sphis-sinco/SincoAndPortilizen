@@ -312,13 +312,15 @@ class Sidebit1 extends State
 
 		if (PORTILIZEN_HEALTH == 0)
 		{
-			FlxG.switchState(() -> new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), () -> new TitleState()));
+			FlxG.switchState(() -> new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), NEXT_STATE));
 		}
 		else if (SINCO_HEALTH == 0)
 		{
-			FlxG.switchState(() -> new ResultsMenu(Std.int(PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), () -> new TitleState()));
+			FlxG.switchState(() -> new ResultsMenu(Std.int(PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), NEXT_STATE));
 		}
 	}
+
+	public static var NEXT_STATE:NextState = () -> new TitleState();
 
 	public static dynamic function updateHealthIndicators():Void
 	{
