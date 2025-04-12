@@ -4,14 +4,18 @@ import sap.title.TitleState;
 
 class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
 {
-	public static var bg:FlxSprite;
+	public static var BG:FlxSprite;
 
-	override public function new()
+	public var DIFFICULTY:String = 'normal';
+
+	override public function new(diff:String)
 	{
 		super('sidebit1-precutscene-atlas');
 
-		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
-		add(bg);
+		BG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+		add(BG);
+
+		DIFFICULTY = diff;
 	}
 
 	override function create()
@@ -35,6 +39,6 @@ class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
 	override function cutsceneEnded()
 	{
 		super.cutsceneEnded();
-		FlxG.switchState(TitleState.new);
+		FlxG.switchState(() -> new Sidebit1(DIFFICULTY));
 	}
 }
