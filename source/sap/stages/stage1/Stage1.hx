@@ -147,7 +147,7 @@ class Stage1 extends State
 		PROGRESS_BAR.y = FlxG.height - PROGRESS_BAR.height - 64;
 		PROGRESS_BAR.createFilledBar(Random.dominantColor(sinco), Random.dominantColor(osin), true, FlxColor.BLACK, 4);
 
-		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, PROGRESS_BAR.width, INFO_TEXT, 16);
+		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
 		add(INFO_TEXTFIELD);
 
 		COMBO_SPRITE = new Combo();
@@ -228,6 +228,7 @@ class Stage1 extends State
 		INFO_TEXT = 'Sinco: ${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH || Osin: ${Global.getLocalizedPhrase('HP')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
 		PROGRESS_BAR.percent = (OSIN_HEALTH / OSIN_MAX_HEALTH) * 100;
 		INFO_TEXTFIELD.text = INFO_TEXT;
+                INFO_TEXTFIELD.screenCenter(X);
 	}
 
 	public static dynamic function osinJumpWait():Void

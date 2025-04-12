@@ -15,6 +15,20 @@ class Sidebit1 extends State
 	public static var SINCO_POINT:FlxPoint;
 	public static var PORTILIZEN_POINT:FlxPoint;
 
+	public static var INFO_TEXTFIELD:FlxText;
+	public static var INFO_TEXT:String;
+
+	public static var PROGRESS_BAR:FlxBar;
+
+	public static var SINCO_HEALTH:Float = 10;
+	public static var PORTILIZEN_HEALTH:Float = 10;
+
+	public static var SINCO_MAX_HEALTH:Float = 10;
+	public static var PORTILIZEN_MAX_HEALTH:Float = 10;
+
+	public static var CAN_DECREASE_SINCO_HEALTH:Bool = true;
+	public static var CAN_DECREASE_PORTILIZEN_HEALTH:Bool = true;
+
 	override public function new(difficulty:String)
 	{
 		super();
@@ -74,6 +88,11 @@ class Sidebit1 extends State
 							PORTILIZEN.x -= 40;
 							PORTILIZEN.y += 30;
 							PORTILIZEN.playAnimation(PORTILIZEN.State);
+							if (CAN_DECREASE_PORTILIZEN_HEALTH)
+							{
+								PORTILIZEN_HEALTH--;
+								CAN_DECREASE_PORTILIZEN_HEALTH = false;
+							}
 						}
 
 						FlxTween.tween(SINCO, {x: SINCO_POINT.x - 160}, SINCO_ATTACK_SPEED, {
@@ -99,6 +118,11 @@ class Sidebit1 extends State
 			{
 				SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
 				SINCO.playAnimation('idle');
+			}
+
+			if (!CAN_DECREASE_PORTILIZEN_HEALTH)
+			{
+				CAN_DECREASE_PORTILIZEN_HEALTH = true;
 			}
 		});
 
@@ -136,10 +160,10 @@ class Sidebit1 extends State
 			final port_dodge_focus_bool:Bool = (FlxG.random.bool(PORTILIZEN_DODGE_CHANCE_FOCUS) && PORTILIZEN.State == FOCUS);
 			final port_attack_bool:Bool = FlxG.random.bool(PORTILIZEN_ATTACK_CHANCE);
 
-                        #if EXCESS_TRACES
+			#if EXCESS_TRACES
 			if (animName == 'attack')
 				trace('Port anim frame index: ${PORTILIZEN.animation.frameIndex}');
-                        #end
+			#end
 
 			if (animName == 'idle')
 			{
@@ -174,7 +198,7 @@ class Sidebit1 extends State
 				}
 				if (animName == SB1PortAIState.ATTACK && SINCO.animation.name == 'hit')
 				{
-					disableAbilities();
+					enableAbilities();
 				}
 
 				PORTILIZEN.State = IDLE;
@@ -205,8 +229,23 @@ class Sidebit1 extends State
 				case DODGE | IDLE | FOCUS:
 					Global.pass;
 			}
+
+			if (!CAN_DECREASE_SINCO_HEALTH)
+			{
+				CAN_DECREASE_SINCO_HEALTH = true;
+			}
+
 			PORTILIZEN.playAnimation(PORTILIZEN.State);
 		});
+
+		PROGRESS_BAR = new FlxBar(0, 0, RIGHT_TO_LEFT, Std.int(FlxG.width / 2), 16, this, 'health', 0, 100, true);
+		add(PROGRESS_BAR);
+		PROGRESS_BAR.screenCenter(X);
+		PROGRESS_BAR.y = FlxG.height - PROGRESS_BAR.height - 64;
+		PROGRESS_BAR.createFilledBar(Random.dominantColor(SINCO), Random.dominantColor(PORTILIZEN), true, FlxColor.BLACK, 4);
+
+		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
+		add(INFO_TEXTFIELD);
 	}
 
 	public static var ABILITY_CAN_DODGE:Bool = true;
@@ -217,6 +256,8 @@ class Sidebit1 extends State
 	{
 		super.update(elapsed);
 		FlxG.watch.addQuick('port frame index', PORTILIZEN.animation.frameIndex);
+
+		updateHealthIndicators();
 
 		if (FlxG.keys.justReleased.SPACE && ABILITY_CAN_DODGE)
 		{
@@ -247,7 +288,20 @@ class Sidebit1 extends State
 			SINCO.x -= 25;
 			SINCO.y += 100;
 			SINCO.playAnimation('hit');
+			if (CAN_DECREASE_SINCO_HEALTH)
+			{
+				CAN_DECREASE_SINCO_HEALTH = false;
+				SINCO_HEALTH--;
+			}
 		}
+	}
+
+	public static dynamic function updateHealthIndicators():Void
+	{
+		INFO_TEXT = 'Sinco: ${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH || Portilizen: ${Global.getLocalizedPhrase('HP')}: $PORTILIZEN_HEALTH/$PORTILIZEN_MAX_HEALTH';
+		PROGRESS_BAR.percent = (PORTILIZEN_HEALTH / PORTILIZEN_MAX_HEALTH) * 100;
+		INFO_TEXTFIELD.text = INFO_TEXT;
+                INFO_TEXTFIELD.screenCenter(X);
 	}
 
 	public static dynamic function disableAbilities():Void
