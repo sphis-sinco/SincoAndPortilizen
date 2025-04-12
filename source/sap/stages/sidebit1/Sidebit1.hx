@@ -65,7 +65,7 @@ class Sidebit1 extends State
 				FlxTween.tween(SINCO, {x: PORTILIZEN.x - 160}, SINCO_ATTACK_SPEED, {
 					onComplete: function(tween)
 					{
-						if (SINCO.overlaps(PORTILIZEN) && PORTILIZEN.State != ATTACK && PORTILIZEN.State != DODGE)
+						if (SINCO.overlaps(PORTILIZEN) && (PORTILIZEN.State != ATTACK || PORTILIZEN.State != ATTACK_PREP) && PORTILIZEN.State != DODGE)
 						{
 							PORTILIZEN.State = HIT;
 							PORTILIZEN.setPosition(PORTILIZEN_POINT.x, PORTILIZEN_POINT.y);
