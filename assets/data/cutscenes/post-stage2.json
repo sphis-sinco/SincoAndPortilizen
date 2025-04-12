@@ -1,0 +1,8 @@
+{
+        "type": "comic",
+
+        "max_panels": 3,
+        "panel_prefix": "ps2-",
+        "panel_folder": "post-stage2/",
+        "rpc_details": "In the post-stage 2 cutscene"
+}

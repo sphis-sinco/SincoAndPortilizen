@@ -1,19 +1,8 @@
 package sap.cutscenes;
 
-typedef PanelCutsceneSettings =
-{
-	var max_panels:Null<Int>;
-
-	var panel_folder:String;
-	var panel_prefix:String;
-
-	var ?rpc_details:String;
-	var ?rpc_state:Null<String>;
-}
-
 class PanelCutscene extends State
 {
-	private var panel:FlxSprite;
+	private var PANEL_SPRITE:FlxSprite;
 
 	public var PANEL_FOLDER:String = 'intro/';
 	public var PANEL_PREFIX:String = 'intro-';
@@ -21,45 +10,45 @@ class PanelCutscene extends State
 	public var MAX_PANELS:Int = 5;
 	public var CUR_PANEL:Int = 1;
 
-	public var cutsceneSettings:PanelCutsceneSettings;
+	public var CUTSCENE_JSON:CutsceneJson;
 
-	override public function new(cutsceneSettings:PanelCutsceneSettings):Void
+	override public function new(cutscenePath:String):Void
 	{
 		super();
 
-		this.cutsceneSettings = cutsceneSettings;
+		this.CUTSCENE_JSON = FileManager.getJSON(FileManager.getDataFile('cutscenes/${cutscenePath}.json'));
 
-		if (this.cutsceneSettings.panel_folder == null)
+		if (this.CUTSCENE_JSON.panel_folder == null)
 		{
-			this.cutsceneSettings.panel_folder = 'intro/';
+			this.CUTSCENE_JSON.panel_folder = 'intro/';
 		}
-		if (this.cutsceneSettings.panel_prefix == null)
+		if (this.CUTSCENE_JSON.panel_prefix == null)
 		{
-			this.cutsceneSettings.panel_prefix = 'intro-';
+			this.CUTSCENE_JSON.panel_prefix = 'intro-';
 		}
-		if (this.cutsceneSettings.max_panels == null)
+		if (this.CUTSCENE_JSON.max_panels == null)
 		{
-			this.cutsceneSettings.max_panels = 5;
+			this.CUTSCENE_JSON.max_panels = 5;
 		}
-		if (this.cutsceneSettings.rpc_details == null)
+		if (this.CUTSCENE_JSON.rpc_details == null)
 		{
-			this.cutsceneSettings.rpc_details = 'In a panel cutscene';
+			this.CUTSCENE_JSON.rpc_details = 'In a panel cutscene';
 		}
 	}
 
 	override public function create():Void
 	{
-		PANEL_FOLDER = cutsceneSettings.panel_folder;
-		PANEL_PREFIX = cutsceneSettings.panel_prefix;
-		MAX_PANELS = cutsceneSettings.max_panels;
+		PANEL_FOLDER = CUTSCENE_JSON.panel_folder;
+		PANEL_PREFIX = CUTSCENE_JSON.panel_prefix;
+		MAX_PANELS = CUTSCENE_JSON.max_panels;
 
-		Global.changeDiscordRPCPresence(cutsceneSettings.rpc_details, cutsceneSettings.rpc_state);
+		Global.changeDiscordRPCPresence(CUTSCENE_JSON.rpc_details, CUTSCENE_JSON.rpc_state);
 
-		panel = new FlxSprite();
+		PANEL_SPRITE = new FlxSprite();
 		setPanel('${PANEL_PREFIX}panel$CUR_PANEL');
-		panel.antialiasing = true;
-		panel.screenCenter();
-		add(panel);
+		PANEL_SPRITE.antialiasing = true;
+		PANEL_SPRITE.screenCenter();
+		add(PANEL_SPRITE);
 
 		Global.playSoundEffect('cutscenes/paper-rustle');
 
@@ -85,7 +74,7 @@ class PanelCutscene extends State
 
 	private function setPanel(panelpath:String = 'panel1'):Void
 	{
-		panel.loadGraphic(FileManager.getImageFile('cutscenes/$PANEL_FOLDER$panelpath'));
+		PANEL_SPRITE.loadGraphic(FileManager.getImageFile('cutscenes/$PANEL_FOLDER$panelpath'));
 	}
 
 	public function finishedCutscene():Void {}

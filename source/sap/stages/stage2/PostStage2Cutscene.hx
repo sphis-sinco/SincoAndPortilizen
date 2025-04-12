@@ -6,12 +6,7 @@ class PostStage2Cutscene extends PanelCutscene
 {
 	override public function new():Void
 	{
-		super({
-			max_panels: 3,
-			panel_prefix: 'ps2-',
-			panel_folder: 'post-stage2/',
-			rpc_details: "In the post-stage 2 cutscene"
-		});
+		super('post-stage2');
 	}
 
 	override function finishedCutscene():Void

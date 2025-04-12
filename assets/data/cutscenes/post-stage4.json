@@ -1,0 +1,8 @@
+{
+        "type": "comic",
+
+        "max_panels": 5,
+        "panel_prefix": "ps4-",
+        "panel_folder": "post-stage4/",
+        "rpc_details": "In the post-stage 4 cutscene"
+}

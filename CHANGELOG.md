@@ -4,6 +4,7 @@
 - The "Huh, someone cares" medal icon now loads properly
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 ### Changed
+- Reworked comic cutscenes to work with JSON
 - Re-enabled medals
 - In the title state the characters in the character sing fade in via shaders
 - `Combo.hx` now is in the `sap.stages` folder
@@ -14,6 +15,7 @@
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
+- Easier comic cutscene support via JSON (minus the fact you need a haxe file n shit but uh shush)
 - TJ Credit (TJ is apart of SAPTeam now)
 - Atlas (texture atlas) cutscene support
 - (source) `FLXANIMATE_TESTING` build flag
