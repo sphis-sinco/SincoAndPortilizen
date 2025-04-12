@@ -15,6 +15,7 @@ import flixel.tweens.misc.ColorTween;
 import flixel.ui.FlxBar;
 import flixel.util.*;
 import flixel.util.typeLimit.NextState;
+import flxanimate.FlxAnimate;
 import haxe.*;
 import haxe.io.Path;
 import haxe.iterators.*;

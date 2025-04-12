@@ -91,7 +91,7 @@ class Stage4 extends State
 	public static dynamic function levelComplete():Void
 	{
 		Global.beatLevel(4);
-		moveToResultsMenu();
+		moveToResultsMenu(true);
 	}
 
 	public static var enemyX:Float = 0;
@@ -181,11 +181,14 @@ class Stage4 extends State
 		enemyRetreat();
 	}
 
-	public static dynamic function moveToResultsMenu():Void
+	public static dynamic function moveToResultsMenu(win:Bool = false):Void
 	{
 		final good = Std.parseInt(timerText.text);
 		trace(good);
-		FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new Worldmap("Port"), "port"));
+		if (win)
+                        FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new Worldmap("Port"), "port"));
+                else
+                        FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new PostStage4Cutscene(), "port"));
 	}
 
 	public static dynamic function enemyRetreat():Void

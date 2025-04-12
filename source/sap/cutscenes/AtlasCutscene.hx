@@ -1,7 +1,5 @@
 package sap.cutscenes;
 
-import flxanimate.FlxAnimate;
-
 class AtlasCutscene extends State
 {
 	public var CUTSCENE_JSON:CutsceneJson;

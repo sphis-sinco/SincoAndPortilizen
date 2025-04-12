@@ -15,6 +15,7 @@
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
+- Post-level 4 cutscene
 - Easier comic cutscene support via JSON (minus the fact you need a haxe file n shit but uh shush)
 - TJ Credit (TJ is apart of SAPTeam now)
 - Atlas (texture atlas) cutscene support

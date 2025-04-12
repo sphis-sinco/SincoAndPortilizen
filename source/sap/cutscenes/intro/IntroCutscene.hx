@@ -6,12 +6,7 @@ class IntroCutscene extends PanelCutscene
 {
 	override public function new():Void
 	{
-		super({
-			max_panels: 5,
-			panel_prefix: 'intro-',
-			panel_folder: 'intro/',
-			rpc_details: "In the intro cutscene"
-		});
+		super('intro');
 	}
 
 	override function finishedCutscene():Void

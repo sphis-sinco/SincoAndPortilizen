@@ -1,4 +1,4 @@
-package sap.stages.stage2;
+package sap.stages.stage4;
 
 import sap.worldmap.Worldmap;
 
