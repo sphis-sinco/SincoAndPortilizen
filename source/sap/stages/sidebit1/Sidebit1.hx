@@ -6,7 +6,10 @@ class Sidebit1 extends State
 	public static var DIFFICULTY_JSON:Sidebit1DifficultyJson;
 
 	public static var SINCO:SB1Sinco;
+	public static var SINCO_GHOST:SB1Sinco;
 	public static var PORTILIZEN:SB1Port;
+
+	public static var SINCO_POINT:FlxPoint;
 
 	override public function new(difficulty:String)
 	{
@@ -29,25 +32,40 @@ class Sidebit1 extends State
 		SINCO = new SB1Sinco();
 		SINCO.playAnimation('idle');
 		SINCO.setPosition(FlxG.width - (64 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER), FlxG.height - SINCO.height);
-		add(SINCO);
+
+		SINCO_POINT = new FlxPoint(0, 0);
+		SINCO_POINT.set(SINCO.x, SINCO.y);
+
 		SINCO.animation.onFinish.add(function(animName:String)
 		{
 			var idle:Bool = true;
+			var enable_abilities:Bool = true;
 
-			if (SINCO.animation.name == 'dodge')
+			if (SINCO.animation.name.contains('attack'))
 			{
-				ABILITY_CAN_ATTACK = true;
+                                enable_abilities = false;
+				// do smth here for loopin and shit
 			}
-			else if (SINCO.animation.name.contains('attack'))
+
+			if (enable_abilities)
 			{
-				ABILITY_CAN_DODGE = true;
+				enableAbilities();
 			}
 
 			if (idle)
 			{
+				SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
 				SINCO.playAnimation('idle');
 			}
 		});
+
+		SINCO_GHOST = new SB1Sinco();
+		SINCO_GHOST.playAnimation('idle');
+		SINCO_GHOST.setPosition(SINCO_POINT.x, SINCO_POINT.y);
+		add(SINCO_GHOST);
+		SINCO_GHOST.alpha = 0.5;
+
+		add(SINCO);
 
 		PORTILIZEN = new SB1Port();
 		PORTILIZEN.playAnimation('idle');
@@ -64,13 +82,30 @@ class Sidebit1 extends State
 
 		if (FlxG.keys.justReleased.SPACE && ABILITY_CAN_DODGE)
 		{
-			ABILITY_CAN_ATTACK = false;
+			disableAbilities();
+			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
+			SINCO.x -= 60;
+			SINCO.y += 85;
 			SINCO.animation.play('dodge');
 		}
 		else if (FlxG.keys.justReleased.LEFT && ABILITY_CAN_ATTACK)
 		{
-			ABILITY_CAN_DODGE = false;
+			disableAbilities();
+			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
+			SINCO.x -= 13.5;
 			SINCO.animation.play('attack');
 		}
+	}
+
+	public static dynamic function disableAbilities():Void
+	{
+		ABILITY_CAN_ATTACK = false;
+		ABILITY_CAN_DODGE = false;
+	}
+
+	public static dynamic function enableAbilities():Void
+	{
+		ABILITY_CAN_ATTACK = true;
+		ABILITY_CAN_DODGE = true;
 	}
 }
