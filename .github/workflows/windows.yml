@@ -26,7 +26,7 @@ jobs:
             cache-build-windows
       - name: Installing / Updating libraries
         run: |
-          haxe -cp cli --run Lib
+          hmm install
       - name: Building the game
         run: |
           haxelib run lime build windows
