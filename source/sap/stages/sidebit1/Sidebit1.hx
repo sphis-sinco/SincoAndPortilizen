@@ -100,12 +100,6 @@ class Sidebit1 extends State
 				SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
 				SINCO.playAnimation('idle');
 			}
-
-			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
-
-			SINCO.x -= 0;
-			SINCO.y -= 0;
-			SINCO.playAnimation('hit');
 		});
 
 		SINCO_GHOST = new SB1Sinco();
@@ -113,7 +107,7 @@ class Sidebit1 extends State
 		SINCO_GHOST.setPosition(SINCO_POINT.x, SINCO_POINT.y);
 		SINCO_GHOST.alpha = 0.5;
 
-		// add(SINCO_GHOST);
+		add(SINCO_GHOST);
 		add(SINCO);
 
 		PORTILIZEN = new SB1Port();
@@ -142,10 +136,10 @@ class Sidebit1 extends State
 				if (PORTILIZEN.overlaps(SINCO) && SINCO.animation.name != 'dodge')
 				{
 					disableAbilities();
-					SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
-					SINCO.x -= 0;
-					SINCO.y -= 0;
-					SINCO.playAnimation('hit');
+                                        SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
+                                        SINCO.x -= 25;
+                                        SINCO.y += 100;
+                                        SINCO.playAnimation('hit');
 				}
 			}
 
