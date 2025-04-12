@@ -10,16 +10,6 @@ class Sidebit1IntroCutscene extends SparrowCutscene
 		super('sidebit1-precutscene');
 	}
 
-	override function create()
-	{
-		super.create();
-	}
-
-	override function update(elapsed:Float)
-	{
-		super.update(elapsed);
-	}
-
         override function cutsceneEvent(animation:String) {
                 super.cutsceneEvent(animation);
 
