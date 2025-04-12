@@ -9,6 +9,7 @@ class SB1Port extends SparrowSprite
                 super('gameplay/sidebits/port-sidebit1');
 
                 addAnimationByPrefix('attack', 'Portilizen attack toss', 24, false);
+                addAnimationByPrefix('attack prep', 'Portilizen attack prep', 24, false);
                 addAnimationByPrefix('hit', 'Portilizen hit', 24, false);
                 addAnimationByPrefix('dodge', 'Portilizen dodge', 24, false);
                 addAnimationByPrefix('idle', 'Portilizen idle', 24, false);
@@ -19,6 +20,7 @@ class SB1Port extends SparrowSprite
 
 enum abstract SB1PortAIState(String) from String to String {
         public var ATTACK = 'attack';
+        public var ATTACK_PREP = 'attack prep';
         public var HIT = 'hit';
         public var DODGE = 'dodge';
         public var IDLE = 'idle';

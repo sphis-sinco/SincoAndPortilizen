@@ -68,6 +68,9 @@ class Sidebit1 extends State
 						if (SINCO.overlaps(PORTILIZEN) && PORTILIZEN.State != ATTACK && PORTILIZEN.State != DODGE)
 						{
 							PORTILIZEN.State = HIT;
+							PORTILIZEN.setPosition(PORTILIZEN_POINT.x, PORTILIZEN_POINT.y);
+							PORTILIZEN.x -= 40;
+							PORTILIZEN.y += 30;
 							PORTILIZEN.playAnimation(PORTILIZEN.State);
 						}
 
@@ -107,15 +110,17 @@ class Sidebit1 extends State
 
 		PORTILIZEN = new SB1Port();
 		PORTILIZEN.playAnimation('idle');
-		PORTILIZEN.setPosition(64, FlxG.height - (PORTILIZEN.height / 1.3));
+		PORTILIZEN.setPosition(64, FlxG.height - 250);
 
 		PORTILIZEN_POINT = new FlxPoint(0, 0);
 		PORTILIZEN_POINT.set(PORTILIZEN.x, PORTILIZEN.y);
 
 		PORT_GHOST = new SB1Port();
-		PORT_GHOST.playAnimation('idle');
+		PORT_GHOST.playAnimation('attack');
 		PORT_GHOST.setPosition(PORTILIZEN_POINT.x, PORTILIZEN_POINT.y);
 		PORT_GHOST.alpha = 0.5;
+		PORT_GHOST.x -= 100;
+		PORT_GHOST.y -= 70;
 
 		add(PORT_GHOST);
 		add(PORTILIZEN);
@@ -148,7 +153,7 @@ class Sidebit1 extends State
 					if (!SINCO.animation.name.contains('attack'))
 					{
 						ABILITY_CAN_ATTACK = false;
-						PORTILIZEN.State = ATTACK;
+						PORTILIZEN.State = ATTACK_PREP;
 					}
 
 					proceed = false;
@@ -167,6 +172,11 @@ class Sidebit1 extends State
 				{
 					PORTILIZEN.State = DODGE;
 				}
+
+				if (animName == SB1PortAIState.ATTACK_PREP)
+				{
+					PORTILIZEN.State = ATTACK;
+				}
 			}
 
 			PORTILIZEN.setPosition(PORTILIZEN_POINT.x, PORTILIZEN_POINT.y);
@@ -175,6 +185,9 @@ class Sidebit1 extends State
 				case ATTACK:
 					PORTILIZEN.x -= 100;
 					PORTILIZEN.y -= 70;
+				case ATTACK_PREP:
+					PORTILIZEN.x -= 100 + 10.5;
+					PORTILIZEN.y -= 70 - 35;
 				case HIT:
 					PORTILIZEN.x -= 40;
 					PORTILIZEN.y += 30;

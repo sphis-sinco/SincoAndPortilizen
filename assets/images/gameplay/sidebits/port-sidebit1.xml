@@ -2,54 +2,64 @@
 <TextureAtlas imagePath="port-sidebit1.png">
 	<!-- Created with Adobe Animate version 21.0.6.41649 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Portilizen attack toss0000" x="4" y="4" width="254" height="274" frameX="0" frameY="-38" frameWidth="726" frameHeight="312"/>
-	<SubTexture name="Portilizen attack toss0001" x="4" y="4" width="254" height="274" frameX="0" frameY="-38" frameWidth="726" frameHeight="312"/>
-	<SubTexture name="Portilizen attack toss0002" x="266" y="4" width="658" height="312" frameX="-68" frameY="0" frameWidth="726" frameHeight="312"/>
-	<SubTexture name="Portilizen attack toss0003" x="932" y="4" width="658" height="312" frameX="-68" frameY="0" frameWidth="726" frameHeight="312"/>
-	<SubTexture name="Portilizen attack toss0004" x="1598" y="4" width="413" height="264" frameX="-68" frameY="-48" frameWidth="726" frameHeight="312"/>
-	<SubTexture name="Portilizen attack toss0005" x="4" y="324" width="231" height="238" frameX="-68" frameY="-74" frameWidth="726" frameHeight="312"/>
-	<SubTexture name="Portilizen attack toss0006" x="243" y="324" width="240" height="238" frameX="-59" frameY="-74" frameWidth="726" frameHeight="312"/>
-	<SubTexture name="Portilizen attack toss0007" x="491" y="324" width="224" height="238" frameX="-75" frameY="-74" frameWidth="726" frameHeight="312"/>
-	<SubTexture name="Portilizen attack toss0008" x="723" y="324" width="224" height="238" frameX="-75" frameY="-74" frameWidth="726" frameHeight="312"/>
-	<SubTexture name="Portilizen attack toss0009" x="723" y="324" width="224" height="238" frameX="-75" frameY="-74" frameWidth="726" frameHeight="312"/>
-	<SubTexture name="Portilizen dodge0000" x="955" y="324" width="119" height="220"/>
-	<SubTexture name="Portilizen dodge0001" x="955" y="324" width="119" height="220"/>
-	<SubTexture name="Portilizen dodge0002" x="1082" y="324" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
-	<SubTexture name="Portilizen dodge0003" x="1082" y="324" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
-	<SubTexture name="Portilizen dodge0004" x="1082" y="324" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
-	<SubTexture name="Portilizen dodge0005" x="1082" y="324" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
-	<SubTexture name="Portilizen dodge0006" x="1082" y="324" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
-	<SubTexture name="Portilizen dodge0007" x="1082" y="324" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
-	<SubTexture name="Portilizen dodge0008" x="1082" y="324" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
-	<SubTexture name="Portilizen dodge0009" x="1082" y="324" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
-	<SubTexture name="Portilizen focus0000" x="1205" y="324" width="134" height="252"/>
-	<SubTexture name="Portilizen focus0001" x="1205" y="324" width="134" height="252"/>
-	<SubTexture name="Portilizen focus0002" x="1205" y="324" width="134" height="252"/>
-	<SubTexture name="Portilizen focus0003" x="1205" y="324" width="134" height="252"/>
-	<SubTexture name="Portilizen focus0004" x="1205" y="324" width="134" height="252"/>
-	<SubTexture name="Portilizen focus0005" x="1205" y="324" width="134" height="252"/>
-	<SubTexture name="Portilizen focus0006" x="1205" y="324" width="134" height="252"/>
-	<SubTexture name="Portilizen focus0007" x="1205" y="324" width="134" height="252"/>
-	<SubTexture name="Portilizen focus0008" x="1205" y="324" width="134" height="252"/>
-	<SubTexture name="Portilizen focus0009" x="1205" y="324" width="134" height="252"/>
-	<SubTexture name="Portilizen hit0000" x="1347" y="324" width="162" height="197" frameX="0" frameY="0" frameWidth="164" frameHeight="197"/>
-	<SubTexture name="Portilizen hit0001" x="1347" y="324" width="162" height="197" frameX="0" frameY="0" frameWidth="164" frameHeight="197"/>
-	<SubTexture name="Portilizen hit0002" x="1517" y="324" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
-	<SubTexture name="Portilizen hit0003" x="1517" y="324" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
-	<SubTexture name="Portilizen hit0004" x="1517" y="324" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
-	<SubTexture name="Portilizen hit0005" x="1517" y="324" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
-	<SubTexture name="Portilizen hit0006" x="1517" y="324" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
-	<SubTexture name="Portilizen hit0007" x="1517" y="324" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
-	<SubTexture name="Portilizen hit0008" x="1517" y="324" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
-	<SubTexture name="Portilizen hit0009" x="1517" y="324" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
-	<SubTexture name="Portilizen idle0000" x="1685" y="324" width="132" height="252"/>
-	<SubTexture name="Portilizen idle0001" x="1685" y="324" width="132" height="252"/>
-	<SubTexture name="Portilizen idle0002" x="1685" y="324" width="132" height="252"/>
-	<SubTexture name="Portilizen idle0003" x="1685" y="324" width="132" height="252"/>
-	<SubTexture name="Portilizen idle0004" x="1685" y="324" width="132" height="252"/>
-	<SubTexture name="Portilizen idle0005" x="1685" y="324" width="132" height="252"/>
-	<SubTexture name="Portilizen idle0006" x="1685" y="324" width="132" height="252"/>
-	<SubTexture name="Portilizen idle0007" x="1685" y="324" width="132" height="252"/>
-	<SubTexture name="Portilizen idle0008" x="1685" y="324" width="132" height="252"/>
-	<SubTexture name="Portilizen idle0009" x="1685" y="324" width="132" height="252"/>
+	<SubTexture name="Portilizen attack prep0000" x="4" y="4" width="240" height="274" frameX="0" frameY="-2" frameWidth="262" frameHeight="276"/>
+	<SubTexture name="Portilizen attack prep0001" x="4" y="4" width="240" height="274" frameX="0" frameY="-2" frameWidth="262" frameHeight="276"/>
+	<SubTexture name="Portilizen attack prep0002" x="252" y="4" width="236" height="276" frameX="-24" frameY="0" frameWidth="262" frameHeight="276"/>
+	<SubTexture name="Portilizen attack prep0003" x="496" y="4" width="235" height="274" frameX="-27" frameY="-2" frameWidth="262" frameHeight="276"/>
+	<SubTexture name="Portilizen attack prep0004" x="496" y="4" width="235" height="274" frameX="-27" frameY="-2" frameWidth="262" frameHeight="276"/>
+	<SubTexture name="Portilizen attack prep0005" x="496" y="4" width="235" height="274" frameX="-27" frameY="-2" frameWidth="262" frameHeight="276"/>
+	<SubTexture name="Portilizen attack prep0006" x="496" y="4" width="235" height="274" frameX="-27" frameY="-2" frameWidth="262" frameHeight="276"/>
+	<SubTexture name="Portilizen attack prep0007" x="496" y="4" width="235" height="274" frameX="-27" frameY="-2" frameWidth="262" frameHeight="276"/>
+	<SubTexture name="Portilizen attack prep0008" x="496" y="4" width="235" height="274" frameX="-27" frameY="-2" frameWidth="262" frameHeight="276"/>
+	<SubTexture name="Portilizen attack prep0009" x="496" y="4" width="235" height="274" frameX="-27" frameY="-2" frameWidth="262" frameHeight="276"/>
+	<SubTexture name="Portilizen attack toss0000" x="739" y="4" width="254" height="274" frameX="0" frameY="-38" frameWidth="726" frameHeight="312"/>
+	<SubTexture name="Portilizen attack toss0001" x="739" y="4" width="254" height="274" frameX="0" frameY="-38" frameWidth="726" frameHeight="312"/>
+	<SubTexture name="Portilizen attack toss0002" x="1001" y="4" width="658" height="312" frameX="-68" frameY="0" frameWidth="726" frameHeight="312"/>
+	<SubTexture name="Portilizen attack toss0003" x="4" y="324" width="658" height="312" frameX="-68" frameY="0" frameWidth="726" frameHeight="312"/>
+	<SubTexture name="Portilizen attack toss0004" x="670" y="324" width="413" height="264" frameX="-68" frameY="-48" frameWidth="726" frameHeight="312"/>
+	<SubTexture name="Portilizen attack toss0005" x="1091" y="324" width="231" height="238" frameX="-68" frameY="-74" frameWidth="726" frameHeight="312"/>
+	<SubTexture name="Portilizen attack toss0006" x="1330" y="324" width="240" height="238" frameX="-59" frameY="-74" frameWidth="726" frameHeight="312"/>
+	<SubTexture name="Portilizen attack toss0007" x="1578" y="324" width="224" height="238" frameX="-75" frameY="-74" frameWidth="726" frameHeight="312"/>
+	<SubTexture name="Portilizen attack toss0008" x="1810" y="324" width="224" height="238" frameX="-75" frameY="-74" frameWidth="726" frameHeight="312"/>
+	<SubTexture name="Portilizen attack toss0009" x="1810" y="324" width="224" height="238" frameX="-75" frameY="-74" frameWidth="726" frameHeight="312"/>
+	<SubTexture name="Portilizen dodge0000" x="4" y="644" width="119" height="220"/>
+	<SubTexture name="Portilizen dodge0001" x="4" y="644" width="119" height="220"/>
+	<SubTexture name="Portilizen dodge0002" x="131" y="644" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
+	<SubTexture name="Portilizen dodge0003" x="131" y="644" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
+	<SubTexture name="Portilizen dodge0004" x="131" y="644" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
+	<SubTexture name="Portilizen dodge0005" x="131" y="644" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
+	<SubTexture name="Portilizen dodge0006" x="131" y="644" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
+	<SubTexture name="Portilizen dodge0007" x="131" y="644" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
+	<SubTexture name="Portilizen dodge0008" x="131" y="644" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
+	<SubTexture name="Portilizen dodge0009" x="131" y="644" width="115" height="218" frameX="-4" frameY="-2" frameWidth="119" frameHeight="220"/>
+	<SubTexture name="Portilizen focus0000" x="254" y="644" width="134" height="252"/>
+	<SubTexture name="Portilizen focus0001" x="254" y="644" width="134" height="252"/>
+	<SubTexture name="Portilizen focus0002" x="254" y="644" width="134" height="252"/>
+	<SubTexture name="Portilizen focus0003" x="254" y="644" width="134" height="252"/>
+	<SubTexture name="Portilizen focus0004" x="254" y="644" width="134" height="252"/>
+	<SubTexture name="Portilizen focus0005" x="254" y="644" width="134" height="252"/>
+	<SubTexture name="Portilizen focus0006" x="254" y="644" width="134" height="252"/>
+	<SubTexture name="Portilizen focus0007" x="254" y="644" width="134" height="252"/>
+	<SubTexture name="Portilizen focus0008" x="254" y="644" width="134" height="252"/>
+	<SubTexture name="Portilizen focus0009" x="254" y="644" width="134" height="252"/>
+	<SubTexture name="Portilizen hit0000" x="396" y="644" width="162" height="197" frameX="0" frameY="0" frameWidth="164" frameHeight="197"/>
+	<SubTexture name="Portilizen hit0001" x="396" y="644" width="162" height="197" frameX="0" frameY="0" frameWidth="164" frameHeight="197"/>
+	<SubTexture name="Portilizen hit0002" x="566" y="644" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
+	<SubTexture name="Portilizen hit0003" x="566" y="644" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
+	<SubTexture name="Portilizen hit0004" x="566" y="644" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
+	<SubTexture name="Portilizen hit0005" x="566" y="644" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
+	<SubTexture name="Portilizen hit0006" x="566" y="644" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
+	<SubTexture name="Portilizen hit0007" x="566" y="644" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
+	<SubTexture name="Portilizen hit0008" x="566" y="644" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
+	<SubTexture name="Portilizen hit0009" x="566" y="644" width="160" height="197" frameX="-4" frameY="0" frameWidth="164" frameHeight="197"/>
+	<SubTexture name="Portilizen idle0000" x="734" y="644" width="132" height="252"/>
+	<SubTexture name="Portilizen idle0001" x="734" y="644" width="132" height="252"/>
+	<SubTexture name="Portilizen idle0002" x="734" y="644" width="132" height="252"/>
+	<SubTexture name="Portilizen idle0003" x="734" y="644" width="132" height="252"/>
+	<SubTexture name="Portilizen idle0004" x="734" y="644" width="132" height="252"/>
+	<SubTexture name="Portilizen idle0005" x="734" y="644" width="132" height="252"/>
+	<SubTexture name="Portilizen idle0006" x="734" y="644" width="132" height="252"/>
+	<SubTexture name="Portilizen idle0007" x="734" y="644" width="132" height="252"/>
+	<SubTexture name="Portilizen idle0008" x="734" y="644" width="132" height="252"/>
+	<SubTexture name="Portilizen idle0009" x="734" y="644" width="132" height="252"/>
 </TextureAtlas>
