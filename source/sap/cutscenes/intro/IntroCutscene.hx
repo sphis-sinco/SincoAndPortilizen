@@ -22,8 +22,11 @@ class IntroCutscene extends PanelCutscene
 
 		switch (panel)
 		{
+                        case 2:
+                                Global.playSoundEffect('tirok', CUTSCENES);
+
 			// gonna put voiceover stuff here
-			case 1, 2, 3, 4, 5:
+			case 1, 3, 4, 5:
 				Global.pass();
 		}
 	}
