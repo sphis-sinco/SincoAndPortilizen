@@ -24,10 +24,6 @@ jobs:
             export/windows/obj/
           restore-keys: |
             cache-build-windows
-      - name: Installing / Updating libraries
-        run: |
-          haxelib install hmm
-          haxelib run hmm install
       - name: Building the game
         run: |
           haxelib install hmm
