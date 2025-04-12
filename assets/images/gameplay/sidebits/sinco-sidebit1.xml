@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sinco-sidebit1.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Sinco animation attack0000" x="628" y="1062" width="241" height="521" frameX="-13" frameY="0" frameWidth="241" frameHeight="521"/>
+	<SubTexture name="Sinco animation attack0001" x="4" y="4" width="241" height="521" frameX="-13" frameY="0" frameWidth="254" frameHeight="521"/>
+	<SubTexture name="Sinco animation attack0002" x="253" y="4" width="242" height="521" frameX="-12" frameY="0" frameWidth="254" frameHeight="521"/>
+	<SubTexture name="Sinco animation attack0003" x="503" y="4" width="241" height="521" frameX="-13" frameY="0" frameWidth="254" frameHeight="521"/>
+	<SubTexture name="Sinco animation attack0004" x="752" y="4" width="241" height="521" frameX="-13" frameY="0" frameWidth="254" frameHeight="521"/>
+	<SubTexture name="Sinco animation attack0005" x="1001" y="4" width="241" height="521" frameX="-13" frameY="0" frameWidth="254" frameHeight="521"/>
+	<SubTexture name="Sinco animation attack0006" x="1250" y="4" width="239" height="521" frameX="-12" frameY="0" frameWidth="254" frameHeight="521"/>
+	<SubTexture name="Sinco animation attack0007" x="1497" y="4" width="239" height="521" frameX="0" frameY="0" frameWidth="254" frameHeight="521"/>
+	<SubTexture name="Sinco animation attack end0000" x="1744" y="4" width="239" height="521" frameX="0" frameY="0" frameWidth="251" frameHeight="521"/>
+	<SubTexture name="Sinco animation attack end0001" x="4" y="533" width="239" height="521" frameX="-12" frameY="0" frameWidth="251" frameHeight="521"/>
+	<SubTexture name="Sinco animation attack loop0000" x="251" y="533" width="358" height="501" frameX="-62" frameY="0" frameWidth="592" frameHeight="501"/>
+	<SubTexture name="Sinco animation attack loop0001" x="617" y="533" width="592" height="493" frameX="0" frameY="0" frameWidth="592" frameHeight="501"/>
+	<SubTexture name="Sinco animation attacked0000" x="1217" y="533" width="288" height="411" frameX="-7" frameY="-5" frameWidth="295" frameHeight="416"/>
+	<SubTexture name="Sinco animation attacked0001" x="1217" y="533" width="288" height="411" frameX="-7" frameY="-5" frameWidth="295" frameHeight="416"/>
+	<SubTexture name="Sinco animation attacked0002" x="1513" y="533" width="272" height="416" frameX="0" frameY="0" frameWidth="295" frameHeight="416"/>
+	<SubTexture name="Sinco animation attacked0003" x="1513" y="533" width="272" height="416" frameX="0" frameY="0" frameWidth="295" frameHeight="416"/>
+	<SubTexture name="Sinco animation attacked0004" x="1513" y="533" width="272" height="416" frameX="0" frameY="0" frameWidth="295" frameHeight="416"/>
+	<SubTexture name="Sinco animation attacked0005" x="1513" y="533" width="272" height="416" frameX="0" frameY="0" frameWidth="295" frameHeight="416"/>
+	<SubTexture name="Sinco animation attacked0006" x="1513" y="533" width="272" height="416" frameX="0" frameY="0" frameWidth="295" frameHeight="416"/>
+	<SubTexture name="Sinco animation attacked0007" x="1513" y="533" width="272" height="416" frameX="0" frameY="0" frameWidth="295" frameHeight="416"/>
+	<SubTexture name="Sinco animation attacked0008" x="1513" y="533" width="272" height="416" frameX="0" frameY="0" frameWidth="295" frameHeight="416"/>
+	<SubTexture name="Sinco animation attacked0009" x="1513" y="533" width="272" height="416" frameX="0" frameY="0" frameWidth="295" frameHeight="416"/>
+	<SubTexture name="Sinco animation dodge0000" x="4" y="1062" width="304" height="429" frameX="-5" frameY="0" frameWidth="309" frameHeight="429"/>
+	<SubTexture name="Sinco animation dodge0001" x="4" y="1062" width="304" height="429" frameX="-5" frameY="0" frameWidth="309" frameHeight="429"/>
+	<SubTexture name="Sinco animation dodge0002" x="316" y="1062" width="304" height="429" frameX="0" frameY="0" frameWidth="309" frameHeight="429"/>
+	<SubTexture name="Sinco animation dodge0003" x="316" y="1062" width="304" height="429" frameX="0" frameY="0" frameWidth="309" frameHeight="429"/>
+	<SubTexture name="Sinco animation dodge0004" x="316" y="1062" width="304" height="429" frameX="0" frameY="0" frameWidth="309" frameHeight="429"/>
+	<SubTexture name="Sinco animation dodge0005" x="316" y="1062" width="304" height="429" frameX="0" frameY="0" frameWidth="309" frameHeight="429"/>
+	<SubTexture name="Sinco animation dodge0006" x="316" y="1062" width="304" height="429" frameX="0" frameY="0" frameWidth="309" frameHeight="429"/>
+	<SubTexture name="Sinco animation dodge0007" x="316" y="1062" width="304" height="429" frameX="0" frameY="0" frameWidth="309" frameHeight="429"/>
+	<SubTexture name="Sinco animation dodge0008" x="316" y="1062" width="304" height="429" frameX="0" frameY="0" frameWidth="309" frameHeight="429"/>
+	<SubTexture name="Sinco animation dodge0009" x="316" y="1062" width="304" height="429" frameX="0" frameY="0" frameWidth="309" frameHeight="429"/>
+	<SubTexture name="Sinco animation idle0000" x="628" y="1062" width="241" height="521"/>
+</TextureAtlas>
