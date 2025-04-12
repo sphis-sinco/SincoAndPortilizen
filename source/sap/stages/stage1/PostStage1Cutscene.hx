@@ -15,16 +15,13 @@ class PostStage1Cutscene extends PanelCutscene
 
 		FlxG.switchState(() -> new Worldmap());
 	}
+        public var soundFX:FlxSound;
 
 	override function panelEvents(panel:Int):Void
 	{
 		super.panelEvents(panel);
 
-		switch (panel)
-		{
-			// gonna put voiceover stuff here prob
-			case 2:
-				Global.pass();
-		}
+		soundFX.loadEmbedded(FileManager.getSoundFile('sounds/poststage1/line-${panel}', CUTSCENES));
+                soundFX.play();
 	}
 }
