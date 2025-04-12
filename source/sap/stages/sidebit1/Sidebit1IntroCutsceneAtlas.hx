@@ -7,7 +7,7 @@ class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
 {
 	override public function new()
 	{
-		super('sidebit1/pre-sidebit1_atlas');
+		super('pre-sidebit1-atlas');
 	}
 
 	override function cutsceneEvent(animation:String)
@@ -16,6 +16,9 @@ class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
 
 		switch (animation)
 		{
+                        case 'part1':
+                                Global.playSoundEffect('cutscenes/SideBit1_IntroCutscene');
+
 			case 'part4':
 				FlxG.switchState(TitleState.new);
 		}
