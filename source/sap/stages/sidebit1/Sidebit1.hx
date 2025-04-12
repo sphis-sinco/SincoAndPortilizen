@@ -20,7 +20,7 @@ class Sidebit1 extends State
                 super.create();
 
                 BACKGROUND_SKY = new FlxSprite();
-                BACKGROUND_SKY.makeGraphic(FlxG.width, FlxG.height);
+                BACKGROUND_SKY.makeGraphic(FlxG.width, FlxG.height, 0xffffff);
                 BACKGROUND_SKY.screenCenter(XY);
                 add(BACKGROUND_SKY);
 

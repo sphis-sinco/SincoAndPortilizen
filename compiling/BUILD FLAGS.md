@@ -22,7 +22,8 @@ These do things. Lmao!
 - `STAGE_TWO`: Sends you to the second stage
 - `STAGE_FOUR`: Sends you to the fourth stage
 
-- `SIDEBIT_ONE`: Sends you to the first sidebit
+- `SIDEBIT_ONE`: Sends you to the first sidebit intro cutscene
+- `SIDEBIT_ONE_INSTANT`: Sends you to the first sidebit instantly
 
 - `EASY_DIFFICULTY` (executes with a `STAGE_` flag or a `SIDEBIT_` flag): Sets the difficulty to easy
 - `HARD_DIFFICULTY` (executes with a `STAGE_` flag or a `SIDEBIT_` flag): Sets the difficulty to hard
