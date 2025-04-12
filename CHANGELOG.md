@@ -1,6 +1,7 @@
 # Alpha
 ## 0.4.0 (Pitstop 2 - Sidebit 1) - 4/??/2025
 ### Fixed
+- The "Huh, someone cares" medal icon now loads properly
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 ### Changed
 - Re-enabled medals
@@ -13,6 +14,7 @@
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
 ### Added
+- TJ Credit (TJ is apart of SAPTeam now)
 - Atlas (texture atlas) cutscene support
 - (source) `FLXANIMATE_TESTING` build flag
 - (source) Crash trace (terminal) after the crash log is generator

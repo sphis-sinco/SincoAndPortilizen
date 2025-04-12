@@ -24,6 +24,12 @@
                 "spacing": 25
         },
         {
+                "text": "TJ - Arte, Animação, Testador de Jogo, Dublador",
+                "size": 0.5,
+                "color": [0, 191, 255],
+                "spacing": 25
+        },
+        {
                 "text": "ComaToast - Ajuda com Código e Ajuda com o RPC do Discord",
                 "size": 0.5,
                 "color": [255, 50, 255],
