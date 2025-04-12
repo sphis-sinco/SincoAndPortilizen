@@ -183,7 +183,9 @@ class Stage2 extends State
 	{
 		if (TEMPO_CITY_HEALTH > 0)
 		{
+                        #if EXCESS_TRACES
 			trace('Spawning new rock');
+                        #end
 			if (rockGroup.members.length < max_rocks)
 			{
 				spawnRocks(FlxG.random.int(1, 2));
