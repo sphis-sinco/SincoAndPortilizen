@@ -16,6 +16,7 @@ import flixel.ui.FlxBar;
 import flixel.util.*;
 import flixel.util.typeLimit.NextState;
 import flxanimate.FlxAnimate;
+import funkin.graphics.shaders.*;
 import haxe.*;
 import haxe.io.Path;
 import haxe.iterators.*;
