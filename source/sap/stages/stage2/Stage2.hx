@@ -64,7 +64,9 @@ class Stage2 extends State
 		sinco.x += 4 * 8;
 		sinco.y += 4 * 24;
 
+                #if EXCESS_TRACES
 		trace('Sinco y: ' + sinco.y);
+                #end
 
 		rockGroup = new FlxTypedGroup<Stage2Rock>();
 		add(rockGroup);
