@@ -1,6 +1,7 @@
 package sap.stages.sidebit1;
 
 import sap.stages.sidebit1.SB1Port.SB1PortAIState;
+import sap.title.TitleState;
 
 class Sidebit1 extends State
 {
@@ -34,15 +35,29 @@ class Sidebit1 extends State
 		super();
 
 		DIFFICULTY = difficulty;
-		DIFFICULTY_JSON = {};
+		DIFFICULTY_JSON = FileManager.getJSON(FileManager.getDataFile('stages/sidebit1/${difficulty}.json'));
+
+		SINCO_MAX_HEALTH = DIFFICULTY_JSON.player_max_health;
+		PORTILIZEN_MAX_HEALTH = DIFFICULTY_JSON.opponent_max_health;
+
+		SINCO_HEALTH = SINCO_MAX_HEALTH;
+		PORTILIZEN_HEALTH = PORTILIZEN_MAX_HEALTH;
+
+		SINCO_ATTACK_SPEED = DIFFICULTY_JSON.player_attack_speed;
+
+		PORTILIZEN_ATTACK_CHANCE = DIFFICULTY_JSON.opponent_attack_chance;
+		PORTILIZEN_FOCUS_CHANCE = DIFFICULTY_JSON.opponent_focus_chance;
+		PORTILIZEN_DODGE_CHANCE_UNFOCUSED = DIFFICULTY_JSON.opponent_dodge_chance_unfocused;
+		PORTILIZEN_DODGE_CHANCE_FOCUS = DIFFICULTY_JSON.opponent_dodge_chance_focused;
+
 		trace('Sidebit 1 (${DIFFICULTY})');
 	}
 
-	public static var PORTILIZEN_ATTACK_CHANCE = 65;
-	public static var PORTILIZEN_FOCUS_CHANCE = 25;
+	public static var PORTILIZEN_ATTACK_CHANCE:Float = 65;
+	public static var PORTILIZEN_FOCUS_CHANCE:Float = 25;
 
-	public static var PORTILIZEN_DODGE_CHANCE_UNFOCUSED = 35;
-	public static var PORTILIZEN_DODGE_CHANCE_FOCUS = 70;
+	public static var PORTILIZEN_DODGE_CHANCE_UNFOCUSED:Float = 35;
+	public static var PORTILIZEN_DODGE_CHANCE_FOCUS:Float = 70;
 
 	override function create()
 	{
@@ -294,6 +309,15 @@ class Sidebit1 extends State
 				SINCO_HEALTH--;
 			}
 		}
+
+		if (PORTILIZEN_HEALTH == 0)
+		{
+			FlxG.switchState(() -> new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), () -> new TitleState()));
+		}
+		else if (SINCO_HEALTH == 0)
+		{
+			FlxG.switchState(() -> new ResultsMenu(Std.int(PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), () -> new TitleState()));
+		}
 	}
 
 	public static dynamic function updateHealthIndicators():Void
@@ -301,7 +325,7 @@ class Sidebit1 extends State
 		INFO_TEXT = 'Sinco: ${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH || Portilizen: ${Global.getLocalizedPhrase('HP')}: $PORTILIZEN_HEALTH/$PORTILIZEN_MAX_HEALTH';
 		PROGRESS_BAR.percent = (PORTILIZEN_HEALTH / PORTILIZEN_MAX_HEALTH) * 100;
 		INFO_TEXTFIELD.text = INFO_TEXT;
-                INFO_TEXTFIELD.screenCenter(X);
+		INFO_TEXTFIELD.screenCenter(X);
 	}
 
 	public static dynamic function disableAbilities():Void

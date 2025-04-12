@@ -1,2 +1,10 @@
 {
+        "player_max_health": 15,
+        "player_attack_speed": 0.2,
+
+        "opponent_max_health": 5,
+        "opponent_attack_chance": 32.5,
+        "opponent_focus_chance": 5,
+        "opponent_dodge_chance_unfocused": 5,
+        "opponent_dodge_chance_focused": 10
 }
