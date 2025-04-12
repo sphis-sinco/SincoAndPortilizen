@@ -65,7 +65,9 @@ class Sidebit1 extends State
 				FlxTween.tween(SINCO, {x: PORTILIZEN.x - 160}, SINCO_ATTACK_SPEED, {
 					onComplete: function(tween)
 					{
-						if (SINCO.overlaps(PORTILIZEN) && (PORTILIZEN.State != ATTACK || PORTILIZEN.State != ATTACK_PREP) && PORTILIZEN.State != DODGE)
+						if (SINCO.overlaps(PORTILIZEN)
+							&& (PORTILIZEN.State != ATTACK || PORTILIZEN.State != ATTACK_PREP)
+							&& PORTILIZEN.State != DODGE)
 						{
 							PORTILIZEN.State = HIT;
 							PORTILIZEN.setPosition(PORTILIZEN_POINT.x, PORTILIZEN_POINT.y);
@@ -127,6 +129,14 @@ class Sidebit1 extends State
 
 		PORTILIZEN.animation.onFinish.add(function(animName)
 		{
+			if (animName == SB1PortAIState.ATTACK)
+			{
+				if (PORTILIZEN.overlaps(SINCO) && SINCO.animation.name != 'dodge')
+				{
+					SINCO.playAnimation('hit');
+				}
+			}
+
 			var proceed:Bool = true;
 
 			final port_focus_bool:Bool = FlxG.random.bool(PORTILIZEN_FOCUS_CHANCE);
