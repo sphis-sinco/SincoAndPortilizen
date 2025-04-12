@@ -41,10 +41,32 @@ class Sidebit1 extends State
 			var idle:Bool = true;
 			var enable_abilities:Bool = true;
 
-			if (SINCO.animation.name.contains('attack'))
+			if (SINCO.animation.name == 'attack')
 			{
-                                enable_abilities = false;
-				// do smth here for loopin and shit
+				// disable these lines and keep the tween to get sinco's cool epic new technique: transtant
+				enable_abilities = false;
+				idle = false;
+				// end of anti-transtant lines
+
+				SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
+				SINCO.x -= 160;
+
+				SINCO.playAnimation('attack-loop');
+				FlxTween.tween(SINCO, {x: PORTILIZEN.x - 160}, SINCO_ATTACK_SPEED, {
+					onComplete: function(tween)
+					{
+						FlxTween.tween(SINCO, {x: SINCO_POINT.x - 160}, SINCO_ATTACK_SPEED, {
+							onComplete: function(tween)
+							{
+								SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
+								SINCO.x -= 14;
+								SINCO.playAnimation('attack-end');
+							},
+                                                        ease: FlxEase.sineOut
+						});
+					},
+                                        ease: FlxEase.sineIn
+				});
 			}
 
 			if (enable_abilities)
@@ -75,6 +97,7 @@ class Sidebit1 extends State
 
 	public static var ABILITY_CAN_DODGE:Bool = true;
 	public static var ABILITY_CAN_ATTACK:Bool = true;
+	public static var SINCO_ATTACK_SPEED:Float = 0.25;
 
 	override function update(elapsed:Float)
 	{
