@@ -15,6 +15,7 @@ class SaveManager
 		FlxG.save.data.results ??= getDefaultSave().results;
 		FlxG.save.data.gameplaystatus ??= getDefaultSave().gameplaystatus;
 		FlxG.save.data.medals ??= getDefaultSave().medals;
+                FlxG.save.data.enabled_mods ??= getDefaultSave().enabled_mods;
 
 		// run these functions to make sure no null vals
 		SavedSettings.setupSettings();
@@ -34,7 +35,8 @@ class SaveManager
                         settings: SavedSettings.returnDefaultSettings(),
 			results: Results.returnDefaultResults(),
 			gameplaystatus: GameplayStatus.returnDefaultGameplayStatus(),
-                        medals: []
+                        medals: [],
+                        enabled_mods: []
 
 		}
 	}
@@ -57,5 +59,15 @@ class SaveManager
 	public static dynamic function getSettings():Dynamic
 	{
 		return FlxG.save.data.settings;
+	}
+
+	public static dynamic function getMedals():Dynamic
+	{
+		return FlxG.save.data.medals;
+	}
+
+	public static dynamic function getEnabledMods():Dynamic
+	{
+		return FlxG.save.data.enabled_mods;
 	}
 }

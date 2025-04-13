@@ -92,5 +92,7 @@ class ModFolderManager
 		ENABLED_MODS.sort(sortFunc);
 		MODS.sort(sortFunc);
 		DISABLED_MODS.sort(sortFunc);
+
+                FlxG.save.data.enabled_mods = ENABLED_MODS;
 	}
 }

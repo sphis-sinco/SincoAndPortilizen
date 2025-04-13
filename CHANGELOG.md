@@ -1,11 +1,16 @@
 # Alpha
 ## 0.4.1a - 4/13/2025
 ### Added
-- [`StringSortAlphabetically`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/Random.hx#L6-L7) function to [`Random.hx`](/source/sap/utils/Random.hx)
+- MOD MENU <!-- Moved up because it's the main addition -->
+- `getEnabledMods` function in the SaveManager
+- The missing `getMedals` function in the SaveManager is here
+- `enabled_mods` save field
+- `StringSortAlphabetically` function to Random.hx
 ### Changed
+- (Desktop only) the menu text box is longer vertically to fit the mods menu option
 - Mods are now sorted alphabetically
-- There is no longer spam about missing assets once it is found to be missing in [`FileManager`](/source/sinlib/utilities/FileManager.hx)
-- When using [`getAssetFile`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sinlib/utilities/FileManager.hx#L89) it now checks mod folders first before actually checking the assets folders, with a first come first serve system
+- There is no longer spam about missing assets once it is found to be missing in the FileManager
+- When using `getAssetFile` it now checks mod folders first before actually checking the assets folders, with a first come first serve system
 - Mod API version is now `0.1.1`
 
 ## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025

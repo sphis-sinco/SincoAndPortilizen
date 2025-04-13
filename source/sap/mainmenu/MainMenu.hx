@@ -14,7 +14,7 @@ class MainMenu extends State
 
 	public static var menuboxtexts:FlxTypedGroup<FlxText>;
 	public static var menutexts:Map<String, Array<String>> = [
-		'menu' => ['play', 'credits', 'settings', #if sys 'medals', #end 'leave'],
+		'menu' => ['play', 'credits', 'settings', #if sys 'medals', 'mods', #end 'leave'],
 		'play' => ['new', 'continue', 'back']
 	];
 
@@ -64,7 +64,7 @@ class MainMenu extends State
 		port.animation.play('visible');
 
 		menuselectbox = new FlxSprite();
-		menuselectbox.makeGraphic(80, #if sys 80 #else 64 #end, FlxColor.BLACK);
+		menuselectbox.makeGraphic(80, #if sys 104 #else 64 #end, FlxColor.BLACK);
 		Global.scaleSprite(menuselectbox, 0);
 		menuselectbox.screenCenter();
 		add(menuselectbox);
@@ -188,6 +188,7 @@ class MainMenu extends State
 	public static var CREDITS_SELECTION:Int = 1;
 	public static var SETTINGS_SELECTION:Int = 2;
 	public static var MEDALS_SELECTION:Int = 3;
+	public static var MODS_SELECTION:Int = 4;
 
 	public function selectionCheck():Void
 	{
@@ -211,6 +212,11 @@ class MainMenu extends State
 				inSubstate = true;
 				openSubState(new MedalsMenu());
 			}
+			if (PUBLIC_CUR_SELECTION == MODS_SELECTION)
+			{
+				inSubstate = true;
+				openSubState(new sap.modding.menu.ModsMenu());
+			}
 			#end
 
 			menuSelection();
@@ -223,7 +229,7 @@ class MainMenu extends State
 		{
 			case 0:
 				FlxG.switchState(PlayMenu.new);
-			#if sys case 4: #else case 3: #end
+			#if sys case 5: #else case 3: #end
 				FlxG.switchState(TitleState.new);
 		}
 	}
