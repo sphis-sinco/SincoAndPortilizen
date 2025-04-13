@@ -10,12 +10,12 @@
 ### Removed
 - Source code mods
 ### Changed
-- Mods now run `initalizeMod` after `loadScripts`
 - (Desktop only) the menu text box is longer vertically to fit the mods menu option
 - Mods are now sorted alphabetically
 - There is no longer spam about missing assets once it is found to be missing in the FileManager
-- When using `getAssetFile` it now checks mod folders first before actually checking the assets folders, with a first come first serve system
 - Mod API version is now `0.1.1`
+  - Mods now run `initalizeMod` after `loadScripts`
+  - When using `getAssetFile` it now checks mod folders first before actually checking the assets folders, with a first come first serve system
 
 ## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
 ### Added
