@@ -15,7 +15,7 @@ import sap.title.TitleState;
 import sap.worldmap.Worldmap;
 
 // This is initalization stuff + compiler condition flags
-class InitState extends State
+class InitState extends FlxState
 {
 	override public function create():Void
 	{
@@ -85,18 +85,6 @@ class InitState extends State
 			#if EXCESS_TRACES
 			trace('Loaded credits JSON');
 			#end
-
-                        var diamond:flixel.graphics.FlxGraphic = flixel.graphics.FlxGraphic.fromClass(flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond);
-			diamond.persist = true;
-			diamond.destroyOnNoUse = false;
-
-			flixel.addons.transition.FlxTransitionableState.defaultTransIn = new flixel.addons.transition.TransitionData(FADE, FlxColor.BLACK, 1, new FlxPoint(0, -1), {asset: diamond, width: 32, height: 32},
-				new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
-			flixel.addons.transition.FlxTransitionableState.defaultTransOut = new flixel.addons.transition.TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1),
-				{asset: diamond, width: 32, height: 32}, new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
-
-			transIn = flixel.addons.transition.FlxTransitionableState.defaultTransIn;
-			transOut = flixel.addons.transition.FlxTransitionableState.defaultTransOut;
 
 			// PaulPortGameOver.init();
 		});

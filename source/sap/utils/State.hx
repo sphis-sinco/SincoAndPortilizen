@@ -1,8 +1,7 @@
 package sap.utils;
 
-import flixel.addons.ui.FlxUIState;
 
-class State extends FlxUIState
+class State extends FlxState
 {
 	override public function new():Void
 	{
