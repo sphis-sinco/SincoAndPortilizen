@@ -1,6 +1,6 @@
 package sap.sidebitmenu;
 
-import sap.stages.sidebit1.Sidebit1;
+import sap.stages.sidebit1.*;
 import sap.title.TitleState;
 
 class SidebitSelect extends State
@@ -73,7 +73,7 @@ class SidebitSelect extends State
                         switch (SIDEBIT_NUMBER)
                         {
                                 case 1:
-                                        FlxG.switchState(() -> new Sidebit1(DIFFICULTY));
+                                        FlxG.switchState(() -> new Sidebit1IntroCutsceneAtlas(DIFFICULTY));
                         }
 		}
 
