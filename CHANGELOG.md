@@ -31,6 +31,7 @@
 ### Removed
 - Removed several unused assets
 ### Fixed
+- Level medals no longer unlock in other levels
 - Panel 1 of comic cutscenes not calling `panelEvents`
 - Stage 2 tempo city health not initalizing is fixed
 - Stage 2 rocks not spawning more rocks after playing a failed playthrough is fixed

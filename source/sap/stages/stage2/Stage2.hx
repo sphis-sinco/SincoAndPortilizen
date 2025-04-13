@@ -25,9 +25,14 @@ class Stage2 extends State
 	static var max_rocks:Int;
 	static var rock_speed_divider:Float;
 
+        public static var RUNNING:Bool = false;
+
+
 	override public function new(difficulty:String):Void
 	{
 		super();
+
+                RUNNING = true;
 
 		DIFFICULTY = difficulty;
 		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage2/${difficulty}.json'));
@@ -108,11 +113,13 @@ class Stage2 extends State
 
 	public static dynamic function cutsceneResults():Void
 	{
+                RUNNING = false;
 		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new PostStage2Cutscene(), "sinco"));
 	}
 
 	public static dynamic function moveToResultsMenu():Void
 	{
+                RUNNING = false;
 		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new Worldmap("Sinco"), "sinco"));
 	}
 

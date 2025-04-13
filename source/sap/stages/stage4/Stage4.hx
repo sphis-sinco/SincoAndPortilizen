@@ -21,9 +21,13 @@ class Stage4 extends State
 
 	public static var start_timer:Int = 60;
 
+        public static var RUNNING:Bool = false;
+
 	override public function new(difficulty:String):Void
 	{
 		super();
+
+                RUNNING = true;
 
 		DIFFICULTY = difficulty;
 		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage4/${difficulty}.json'));
@@ -185,6 +189,7 @@ class Stage4 extends State
 	{
 		final good = Std.parseInt(timerText.text);
 		trace(good);
+                RUNNING = false;
 		if (win)
 			FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new Worldmap("Port"), "port"));
 		else

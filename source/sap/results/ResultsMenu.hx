@@ -89,7 +89,7 @@ class ResultsMenu extends State
 		{
 			TryCatch.tryCatch(function()
 			{
-				if (Stage1.OSIN_HEALTH == 0)
+				if (Stage1.OSIN_HEALTH == 0 && Stage1.RUNNING)
 				{
 					add(MedalData.unlockMedal('Faker clash'));
 
@@ -98,7 +98,7 @@ class ResultsMenu extends State
 						add(MedalData.unlockMedal('The original stands on top'));
 					}
 				}
-				else if (Stage2.time == 0)
+				else if (Stage2.time == 0 && Stage2.RUNNING)
 				{
 					add(MedalData.unlockMedal('Protector'));
 					if (Stage2.TEMPO_CITY_HEALTH == Stage2.diffJson.tempo_city_max_health)
@@ -106,7 +106,7 @@ class ResultsMenu extends State
 						add(MedalData.unlockMedal('True Protector'));
 					}
 				}
-				else if (Stage4.time == Stage4.start_timer)
+				else if (Stage4.time == Stage4.start_timer && Stage4.RUNNING)
 				{
 					add(MedalData.unlockMedal('Dimensions reached'));
 				}
