@@ -7,7 +7,7 @@ class Sidebit1PostCutsceneAtlas extends AtlasCutscene
 {
 	override public function new()
 	{
-		super('post-sidebit1_atlas');
+		super('sidebit1-postcutscene-atlas');
 
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
 		add(bg);
