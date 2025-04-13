@@ -124,7 +124,7 @@ class ScriptManager
 					if (ny != null && Reflect.isFunction(ny))
 					{
 						script.call(fun, args);
-                                                trace('ran $fun with args $args', pos);
+                                                // trace('ran $fun with args $args', pos);
 					}
 				}
 				catch (e)
