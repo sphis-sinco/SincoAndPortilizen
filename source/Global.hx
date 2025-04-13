@@ -233,4 +233,14 @@ class Global
 
 		return returnPhrase;
 	}
+
+        public static function callScriptFunction(func:String, ?arguments:Array<Dynamic>)
+        {
+                ScriptManager.callScript(func, arguments);
+        }
+
+        public static function setScriptVariable(name:String, value:Dynamic, allowOverride:Bool = true)
+        {
+                ScriptManager.setScript(name, value, allowOverride);
+        }
 }
