@@ -1,5 +1,6 @@
 package sap.stages.sidebit1;
 
+import sap.sidebitmenu.SidebitSelect;
 import sap.stages.sidebit1.SB1Port.SB1PortAIState;
 import sap.title.TitleState;
 
@@ -263,10 +264,9 @@ class Sidebit1 extends State
 		add(INFO_TEXTFIELD);
 	}
 
-        override function postCreate() {
-                super.postCreate();
-
-                
+	override function postCreate()
+	{
+		super.postCreate();
 
 		var tutorial1:FlxSprite = new FlxSprite();
 		tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/non-pixel/Space-Dodge'));
@@ -285,7 +285,7 @@ class Sidebit1 extends State
 			FlxTween.tween(tutorial1, {alpha: 0}, 1);
 			FlxTween.tween(tutorial2, {alpha: 0}, 1);
 		});
-        }
+	}
 
 	public static var ABILITY_CAN_DODGE:Bool = true;
 	public static var ABILITY_CAN_ATTACK:Bool = true;
@@ -336,15 +336,16 @@ class Sidebit1 extends State
 
 		if (PORTILIZEN_HEALTH == 0)
 		{
-			FlxG.switchState(() -> new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), NEXT_STATE));
+			FlxG.switchState(() -> new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), NEXT_STATE_WIN));
 		}
 		else if (SINCO_HEALTH == 0)
 		{
-			FlxG.switchState(() -> new ResultsMenu(Std.int(PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), NEXT_STATE));
+			FlxG.switchState(() -> new ResultsMenu(Std.int(PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), NEXT_STATE_LOSS));
 		}
 	}
 
-	public static var NEXT_STATE:NextState = () -> new TitleState();
+	public static var NEXT_STATE_WIN:NextState = () -> new Sidebit1PostCutsceneAtlas();
+	public static var NEXT_STATE_LOSS:NextState = () -> new SidebitSelect();
 
 	public static dynamic function updateHealthIndicators():Void
 	{
