@@ -84,6 +84,7 @@ class Global
 		trace('Switched save slot to "$SAVE_SLOT"');
 
 		trace('Save dump: ${FlxG.save.data}');
+                FlxG.save.flush();
 	}
 
 	/**

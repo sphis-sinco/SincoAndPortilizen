@@ -5,6 +5,8 @@ class State extends FlxState
 {
 	override public function new():Void
 	{
+                SaveManager.save();
+
                 // trace('Crashable state');
 
 		super();

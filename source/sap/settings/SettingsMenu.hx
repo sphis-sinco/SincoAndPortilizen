@@ -109,7 +109,8 @@ class SettingsMenu extends FlxSubState
 		if (FlxG.keys.justReleased.ESCAPE)
 		{
 			FlxG.save.data.settings.window_res = saveValues.get('window resolution');
-
+                        SaveManager.save();
+                        
 			MainMenu.inSubstate = false;
 			close();
 		}

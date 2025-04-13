@@ -15,29 +15,28 @@ class SaveManager
 		FlxG.save.data.results ??= getDefaultSave().results;
 		FlxG.save.data.gameplaystatus ??= getDefaultSave().gameplaystatus;
 		FlxG.save.data.medals ??= getDefaultSave().medals;
-                FlxG.save.data.enabled_mods ??= getDefaultSave().enabled_mods;
+		FlxG.save.data.enabled_mods ??= getDefaultSave().enabled_mods;
 
 		// run these functions to make sure no null vals
 		SavedSettings.setupSettings();
 		Results.setupResults();
 		GameplayStatus.setupGameplayStatus();
 
-                SettingsMenu.window_res(getSettings().window_res);
-                SettingsMenu.new_windowres = getSettings().window_res;
+		SettingsMenu.window_res(getSettings().window_res);
+		SettingsMenu.new_windowres = getSettings().window_res;
 
-                MedalData.unlocked_medals = FlxG.save.data.medals;
+		MedalData.unlocked_medals = FlxG.save.data.medals;
 	}
 
 	public static dynamic function getDefaultSave():Dynamic
 	{
 		return {
 			language: "english",
-                        settings: SavedSettings.returnDefaultSettings(),
+			settings: SavedSettings.returnDefaultSettings(),
 			results: Results.returnDefaultResults(),
 			gameplaystatus: GameplayStatus.returnDefaultGameplayStatus(),
-                        medals: [],
-                        enabled_mods: []
-
+			medals: [],
+			enabled_mods: []
 		}
 	}
 
@@ -69,5 +68,15 @@ class SaveManager
 	public static dynamic function getEnabledMods():Dynamic
 	{
 		return FlxG.save.data.enabled_mods;
+	}
+
+	public static dynamic function save():Void
+	{
+		TryCatch.tryCatch(function()
+		{
+                        FlxG.save.flush();
+		}, {
+				traceErr: true
+		});
 	}
 }
