@@ -120,15 +120,7 @@ class FileManager
 	public static function getScriptArray():Array<String>
 	{
 		var arr:Array<String> = [];
-                var scriptPaths:Array<String> = ['assets/scripts/'];
-
-                for (folder in ModFolderManager.MODS)
-                {
-                        final newpath:String = '${ModFolderManager.MODS_FOLDER}$folder/scripts';
-
-                        if (exists(newpath))
-                                scriptPaths.push(newpath);
-                }
+		var scriptPaths:Array<String> = ['assets/scripts/'];
 
 		var readFolder:String->Void = function(folder)
 		{
@@ -148,17 +140,34 @@ class FileManager
 					traceErr: true
 			});
 		}
-                var readDir:Array<String>->Void = function(directory) {
-                        for (folder in directory)
-                                {
-                                        readFolder(folder);
-                                }
-                }
+		var readDir:Array<String>->Void = function(directory)
+		{
+			for (folder in directory)
+			{
+				readFolder(folder);
+			}
+		}
+
+		for (folder in ModFolderManager.MODS)
+		{
+			trace('Checking $folder for a scripts folder');
+			final folder_read:Array<String> = readDirectory('${ModFolderManager.MODS_FOLDER}${folder}/');
+
+			if (folder_read.contains('scripts'))
+			{
+				trace('$folder has a scripts folder');
+				final scripts:Array<String> = readDirectory('${ModFolderManager.MODS_FOLDER}${folder}/scripts/');
+				for (script in scripts)
+				{
+					readFolder(script);
+				}
+			}
+		}
 
 		for (path in scriptPaths)
 		{
-                        readDir(FileSystem.readDirectory(path));
-                }
+			readDir(FileSystem.readDirectory(path));
+		}
 
 		trace(arr);
 		return arr;
