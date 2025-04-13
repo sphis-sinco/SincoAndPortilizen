@@ -1,5 +1,7 @@
 package sap.sidebitmenu;
 
+import sap.title.TitleState;
+
 class SidebitSelect extends State
 {
 	public static var SIDEBIT_NUMBER:Int = 1;
@@ -58,6 +60,11 @@ class SidebitSelect extends State
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+                if (FlxG.keys.justReleased.ESCAPE)
+                {
+                        FlxG.switchState(() -> new TitleState());
+                }
 
 		if (SIDEBIT_NUMBER > SIDEBITS)
 			SIDEBIT_NUMBER = SIDEBITS;
