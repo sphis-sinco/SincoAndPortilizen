@@ -157,17 +157,17 @@ class FileManager
 
 		for (folder in ModFolderManager.MODS)
 		{
-			// #if EXCESS_TRACES
+			#if EXCESS_TRACES
 			trace('Checking $folder for a scripts folder');
-			// #end
+			#end
 			final folder_read:Array<String> = readDirectory('${ModFolderManager.MODS_FOLDER}${folder}/');
 
 			if (folder_read.contains('scripts'))
 			{
-				// #if !EXCESS_TRACES
+				#if !EXCESS_TRACES
 				trace('$folder has a scripts folder');
-				// #end
-				scriptPaths.push('${ModFolderManager.MODS_FOLDER}${folder}/');
+				#end
+				scriptPaths.push('${ModFolderManager.MODS_FOLDER}${folder}/scripts/');
 			}
 		}
 
