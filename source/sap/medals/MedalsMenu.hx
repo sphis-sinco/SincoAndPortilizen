@@ -35,10 +35,10 @@ class MedalsMenu extends FlxSubState
 		{
 			if (medal != 'award.png')
 			{
-                                #if EXCESS_TRACES
+				#if EXCESS_TRACES
 				trace(medal.split('.')[0]);
-                                #end
- 
+				#end
+
 				if (Reflect.hasField(MEDALS_JSON, medal.split('.')[0]))
 				{
 					var text:FlxText = new FlxText(0, cur_y, 0, Reflect.getProperty(MEDALS_JSON, medal.split('.')[0]), Std.int(32 * 0.5));
@@ -70,9 +70,13 @@ class MedalsMenu extends FlxSubState
 						var finalString:String = '';
 						var hiddenChar:String = '*';
 
+                                                var ii:Int = 0;
 						for (letter in text.text)
 						{
-							finalString += hiddenChar;
+							if (text.text.charAt(ii) != ' ')
+								finalString += hiddenChar;
+
+                                                        ii++;
 						}
 
 						text.text = finalString;
