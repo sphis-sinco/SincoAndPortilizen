@@ -65,26 +65,7 @@ class InitState extends FlxState
 			trace('FILE_MANAGER_VERSION_SUFFIX: "${FileManager.FILE_MANAGER_VERSION_SUFFIX}"');
 			#end
 
-			TryCatch.tryCatch(() ->
-			{
-				CreditsSubState.creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
-			}, {
-					errFunc: () ->
-					{
-						trace('Error while loading credits JSON');
-						CreditsSubState.creditsJSON = [
-							{
-								"text": "Credits could not load",
-								"size": 10,
-								"color": [255, 255, 255],
-								"spacing": 500
-							}
-						];
-					}
-			});
-			#if EXCESS_TRACES
-			trace('Loaded credits JSON');
-			#end
+                        CreditsSubState.creditsJSONInit();
 
 			// PaulPortGameOver.init();
 		});

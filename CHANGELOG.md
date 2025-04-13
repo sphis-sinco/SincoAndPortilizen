@@ -31,6 +31,7 @@
 ### Removed
 - Removed several unused assets
 ### Fixed
+- The credits text no longer only updates to a new language by reloading the game
 - Level medals no longer unlock in other levels
 - Panel 1 of comic cutscenes not calling `panelEvents`
 - Stage 2 tempo city health not initalizing is fixed

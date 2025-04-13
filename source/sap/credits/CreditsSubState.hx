@@ -14,7 +14,7 @@ class CreditsSubState extends FlxSubState
 	override function create():Void
 	{
 		super.create();
-                
+
 		overlay = new BlankBG();
 		overlay.color = 0x000000;
 		overlay.alpha = 0.5;
@@ -39,8 +39,8 @@ class CreditsSubState extends FlxSubState
 			cur_y += credit.spacing;
 			totalSpacing += credit.spacing;
 		}
-                
-                add(MedalData.unlockMedal('Huh, someone cares'));
+
+		add(MedalData.unlockMedal('Huh, someone cares'));
 	}
 
 	override function update(elapsed:Float):Void
@@ -73,5 +73,29 @@ class CreditsSubState extends FlxSubState
 				return;
 			}
 		}
+	}
+
+	public static dynamic function creditsJSONInit():Void
+	{
+		TryCatch.tryCatch(() ->
+		{
+			creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
+		}, {
+				errFunc: () ->
+				{
+					trace('Error while loading credits JSON');
+					creditsJSON = [
+						{
+							"text": "Credits could not load",
+							"size": 10,
+							"color": [255, 255, 255],
+							"spacing": 500
+						}
+					];
+				}
+		});
+		#if EXCESS_TRACES
+		trace('Loaded credits JSON');
+		#end
 	}
 }
