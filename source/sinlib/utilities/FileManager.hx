@@ -79,9 +79,9 @@ class FileManager
 
 		if (!UNFOUND_ASSETS.contains(returnpath))
 		{
-                        #if EXCESS_TRACES
+			#if EXCESS_TRACES
 			trace('Could not get asset: $returnpath');
-                        #end
+			#end
 			UNFOUND_ASSETS.push(returnpath);
 		}
 		return '';
@@ -99,12 +99,19 @@ class FileManager
 
 		for (mod in ModFolderManager.MODS)
 		{
+			// What if I was evil and made it so that 0.1.0 api mods couldnt do this >:)
+			var dir_meta:ModMetaData = FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json');
+
 			if (returnPath == '') // first come first serve
+			{
 				returnPath = getPath('mods/$mod/', '$file', PATH_TYPE); // 'mods/$mod/$file'
+			}
 		}
 
 		if (returnPath == '')
+		{
 			returnPath = getPath('assets/', '$file', PATH_TYPE); // 'assets/$file'
+		}
 
 		return returnPath;
 	}
