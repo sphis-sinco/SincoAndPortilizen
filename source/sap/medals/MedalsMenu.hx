@@ -7,6 +7,7 @@ class MedalsMenu extends FlxSubState
 	public static var overlay:BlankBG;
 
 	public static var medalTexts:FlxTypedGroup<FlxText>;
+	public static var medalIcons:FlxTypedGroup<FlxSprite>;
 	public static var totalSpacing:Int = 0;
 
 	public static var MEDALS_JSON:Dynamic;
@@ -25,23 +26,63 @@ class MedalsMenu extends FlxSubState
 		medalTexts = new FlxTypedGroup<FlxText>();
 		add(medalTexts);
 
+		medalIcons = new FlxTypedGroup<FlxSprite>();
+		add(medalIcons);
+
 		var cur_y:Float = 10;
 		var i:Int = 0;
 		for (medal in FileSystem.readDirectory('assets/images/medals/awards'))
 		{
 			if (medal != 'award.png')
 			{
+                                #if EXCESS_TRACES
 				trace(medal.split('.')[0]);
-
+                                #end
+ 
 				if (Reflect.hasField(MEDALS_JSON, medal.split('.')[0]))
 				{
 					var text:FlxText = new FlxText(0, cur_y, 0, Reflect.getProperty(MEDALS_JSON, medal.split('.')[0]), Std.int(32 * 0.5));
 					text.alignment = CENTER;
 					text.screenCenter(X);
 					text.ID = i;
+
+					var iconShader:HSVShader = new HSVShader();
+					iconShader.saturation = 1.0;
+
+					var iconPath:String = FileManager.getImageFile('medals/awards/${medal}');
+
+					if (!FileManager.exists(iconPath))
+					{
+						trace('${medal} does not have an icon');
+						iconPath = FileManager.getImageFile('medals/awards/award');
+					}
+
+					var icon:FlxSprite = new FlxSprite();
+					icon.loadGraphic(iconPath);
+					Global.scaleSprite(icon, -2);
+					icon.setPosition(text.x - 32, text.y);
+					icon.ID = i;
+
 					i++;
 
+					if (!FlxG.save.data.medals.contains(text.text))
+					{
+						var finalString:String = '';
+						var hiddenChar:String = '*';
+
+						for (letter in text.text)
+						{
+							finalString += hiddenChar;
+						}
+
+						text.text = finalString;
+						iconShader.saturation = 0.2;
+						iconShader.value = 0.1;
+					}
+					icon.shader = iconShader;
+
 					medalTexts.add(text);
+					medalIcons.add(icon);
 
 					cur_y += 50;
 					totalSpacing += 50;
@@ -77,6 +118,17 @@ class MedalsMenu extends FlxSubState
 			if ((text.y < -totalSpacing / 2 || text.y > totalSpacing / 2) && text.ID == 0)
 			{
 				text.y -= Amount;
+				return;
+			}
+		}
+
+		for (icon in medalIcons)
+		{
+			icon.y += Amount;
+
+			if ((icon.y < -totalSpacing / 2 || icon.y > totalSpacing / 2) && icon.ID == 0)
+			{
+				icon.y -= Amount;
 				return;
 			}
 		}

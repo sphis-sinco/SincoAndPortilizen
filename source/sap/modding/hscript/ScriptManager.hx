@@ -90,6 +90,7 @@ class ScriptManager
  
                 // medals
                 setScript('Medal', Medal, false);
+                setScript('MedalsMenu', MedalsMenu, false);
  
                 // locale
                 setScript('LocalizationManager', LocalizationManager, true);
