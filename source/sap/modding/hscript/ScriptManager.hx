@@ -35,8 +35,8 @@ class ScriptManager
 
 	public static function loadScripts():Void
 	{
-                // NO DUPES
-                LOADED_SCRIPTS = [];
+		// NO DUPES
+		LOADED_SCRIPTS = [];
 
 		// loading scripts
 		var scriptPaths:Array<String> = FileManager.getScriptArray();
@@ -45,73 +45,72 @@ class ScriptManager
 		{
 			TryCatch.tryCatch(function()
 			{
-				
-                                var newScript:Iris = new Iris(FileManager.readFile('$path'), {name: path, autoRun: true, autoPreset: true});
+				var newScript:Iris = new Iris(FileManager.readFile('$path'), {name: path, autoRun: true, autoPreset: true});
 				#if EXCESS_TRACES
-                                trace('New script: $path');
-                                #end
+				trace('New script: $path');
+				#end
 				LOADED_SCRIPTS.push(newScript);
 			});
 		}
 
-                // utils
-                setScript('Global', Global);
+		// utils
+		setScript('Global', Global);
 
-                setScript('FileManager', FileManager);
-                setScript('DAJSprite', DAJSprite);
-                setScript('State', State);
-                setScript('Random', Random);
+		setScript('FileManager', FileManager);
+		setScript('DAJSprite', DAJSprite);
+		setScript('State', State);
+		setScript('Random', Random);
 
-                setScript('BlankBG', BlankBG);
+		setScript('BlankBG', BlankBG);
 
-                // gameplay
-                setScript('StageGlobals', StageGlobals);
-                setScript('Combo', Combo);
-                setScript('PaulPortGameOver', PaulPortGameOver);
+		// gameplay
+		setScript('StageGlobals', StageGlobals);
+		setScript('Combo', Combo);
+		setScript('PaulPortGameOver', PaulPortGameOver);
 
-                setScript('Stage1', Stage1);
-                setScript('Stage1Sinco', Sinco);
-                setScript('Stage1Osin', Osin);
-                setScript('PostStage1Cutscene', PostStage1Cutscene);
+		setScript('Stage1', Stage1);
+		setScript('Stage1Sinco', Sinco);
+		setScript('Stage1Osin', Osin);
+		setScript('PostStage1Cutscene', PostStage1Cutscene);
 
-                setScript('Stage2', Stage2);
-                setScript('PostStage2Cutscene', PostStage2Cutscene);
-                setScript('Stage2Rock', Stage2Rock);
-                setScript('Stage2Sinco', Stage2Sinco);
+		setScript('Stage2', Stage2);
+		setScript('PostStage2Cutscene', PostStage2Cutscene);
+		setScript('Stage2Rock', Stage2Rock);
+		setScript('Stage2Sinco', Stage2Sinco);
 
-                setScript('Stage4', Stage4);
-                setScript('PostStage4Cutscene', PostStage4Cutscene);
-                setScript('PortS4', PortS4);
-                setScript('EnemyS4', EnemyS4);
-                
-                setScript('Sidebit1', Sidebit1);
-                setScript('Sidebit1IntroCutsceneAtlas', Sidebit1IntroCutsceneAtlas);
-                setScript('Sidebit1PostCutsceneAtlas', Sidebit1PostCutsceneAtlas);
- 
-                // results
-                setScript('Rank', Rank);
-                setScript('ResultsChar', ResultsChar);
-                setScript('ResultsMenu', ResultsMenu);
- 
-                // medals
-                setScript('Medal', Medal);
-                setScript('MedalsMenu', MedalsMenu);
- 
-                // locale
-                setScript('LocalizationManager', LocalizationManager);
- 
-                // cutscenes
-                setScript('AtlasCutscene', AtlasCutscene);
-                setScript('PanelCutscene', PanelCutscene);
-                setScript('SparrowCutscene', SparrowCutscene);
+		setScript('Stage4', Stage4);
+		setScript('PostStage4Cutscene', PostStage4Cutscene);
+		setScript('PortS4', PortS4);
+		setScript('EnemyS4', EnemyS4);
 
-                // menus
-                setScript('CreditsSubState', CreditsSubState);
-                setScript('SettingsMenu', SettingsMenu);
-                setScript('SidebitSelect', SidebitSelect);
-                setScript('MainMenu', MainMenu);
-                setScript('PlayMenu', PlayMenu);
-                setScript('TitleState', TitleState);
+		setScript('Sidebit1', Sidebit1);
+		setScript('Sidebit1IntroCutsceneAtlas', Sidebit1IntroCutsceneAtlas);
+		setScript('Sidebit1PostCutsceneAtlas', Sidebit1PostCutsceneAtlas);
+
+		// results
+		setScript('Rank', Rank);
+		setScript('ResultsChar', ResultsChar);
+		setScript('ResultsMenu', ResultsMenu);
+
+		// medals
+		setScript('Medal', Medal);
+		setScript('MedalsMenu', MedalsMenu);
+
+		// locale
+		setScript('LocalizationManager', LocalizationManager);
+
+		// cutscenes
+		setScript('AtlasCutscene', AtlasCutscene);
+		setScript('PanelCutscene', PanelCutscene);
+		setScript('SparrowCutscene', SparrowCutscene);
+
+		// menus
+		setScript('CreditsSubState', CreditsSubState);
+		setScript('SettingsMenu', SettingsMenu);
+		setScript('SidebitSelect', SidebitSelect);
+		setScript('MainMenu', MainMenu);
+		setScript('PlayMenu', PlayMenu);
+		setScript('TitleState', TitleState);
 	}
 
 	public static function callScript(fun:String, ?args:Array<Dynamic>):Void
@@ -123,7 +122,10 @@ class ScriptManager
 				try
 				{
 					if (ny != null && Reflect.isFunction(ny))
+					{
 						script.call(fun, args);
+                                                trace('ran $fun with args $args');
+					}
 				}
 				catch (e)
 				{
