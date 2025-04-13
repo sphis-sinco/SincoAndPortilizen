@@ -11,6 +11,8 @@ class Sidebit1PostCutsceneAtlas extends AtlasCutscene
 
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
 		add(bg);
+                
+                Global.playSoundEffect('SideBit1_EndingCutscene', CUTSCENES);
 	}
 
 	public static var bg:FlxSprite;
@@ -22,7 +24,6 @@ class Sidebit1PostCutsceneAtlas extends AtlasCutscene
 		switch (animation)
 		{
 			case 'part1':
-				Global.playSoundEffect('SideBit1_EndingCutscene', CUTSCENES);
 		}
 	}
 
