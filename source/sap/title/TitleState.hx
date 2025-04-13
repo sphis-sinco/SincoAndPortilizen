@@ -69,6 +69,8 @@ class TitleState extends State
 		CHARACTER_RING.screenCenter(X);
 		CHARACTER_RING.y = -(CHARACTER_RING.height * 2);
 		add(CHARACTER_RING);
+                
+		CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
 
 		PRESS_ANY_HINT = new FlxSprite();
 		PRESS_ANY_HINT.loadGraphic(FileManager.getImageFile('titlescreen/PressAnyToPlay'));
