@@ -35,6 +35,9 @@ class ScriptManager
 
 	public static function loadScripts():Void
 	{
+                // NO DUPES
+                LOADED_SCRIPTS = [];
+
 		// loading scripts
 		var scriptPaths:Array<String> = FileManager.getScriptArray();
 
