@@ -2,6 +2,7 @@
 ## 0.4.1a - 4/13/2025
 ### Added
 - MOD MENU <!-- Moved up because it's the main addition -->
+- PROPER SAVING
 - `getEnabledMods` function in the SaveManager
 - The missing `getMedals` function in the SaveManager is here
 - `enabled_mods` save field
@@ -9,6 +10,7 @@
 ### Removed
 - Source code mods
 ### Changed
+- Mods now run `initalizeMod` after `loadScripts`
 - (Desktop only) the menu text box is longer vertically to fit the mods menu option
 - Mods are now sorted alphabetically
 - There is no longer spam about missing assets once it is found to be missing in the FileManager

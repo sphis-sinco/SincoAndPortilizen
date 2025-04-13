@@ -191,8 +191,6 @@ class InitState extends FlxState
                         ModFolderManager.readModFolder();
                         
 			ScriptManager.loadScripts();
-
-                        ScriptManager.callScript('initalizeMod');
 		});
 	}
 

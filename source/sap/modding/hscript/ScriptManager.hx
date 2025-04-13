@@ -111,6 +111,11 @@ class ScriptManager
 		setScript('MainMenu', MainMenu);
 		setScript('PlayMenu', PlayMenu);
 		setScript('TitleState', TitleState);
+
+                
+
+                // init mod
+                ScriptManager.callScript('initalizeMod');
 	}
 
 	public static function callScript(fun:String, ?args:Array<Dynamic>, ?pos: haxe.PosInfos):Void
