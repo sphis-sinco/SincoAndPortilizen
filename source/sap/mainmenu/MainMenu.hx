@@ -14,7 +14,7 @@ class MainMenu extends State
 
 	public static var menuboxtexts:FlxTypedGroup<FlxText>;
 	public static var menutexts:Map<String, Array<String>> = [
-		'menu' => ['play', 'credits', 'settings', 'medals', 'leave'],
+		'menu' => ['play', 'credits', 'settings', #if sys 'medals', #end 'leave'],
 		'play' => ['new', 'continue', 'back']
 	];
 
@@ -206,12 +206,12 @@ class MainMenu extends State
 			}
 
 			#if sys
-                        if (PUBLIC_CUR_SELECTION == MEDALS_SELECTION)
+			if (PUBLIC_CUR_SELECTION == MEDALS_SELECTION)
 			{
 				inSubstate = true;
 				openSubState(new MedalsMenu());
 			}
-                        #end
+			#end
 
 			menuSelection();
 		}
