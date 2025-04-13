@@ -166,6 +166,9 @@ class Worldmap extends State
 
 	public dynamic function playLevel():Void
 	{
+		if (implementedLevels.get(character.lowercase_char())[current_level - 1] == false)
+			return;
+                
 		switch (current_level)
 		{
 			// TODO: implement level unlocking PLEASE
@@ -247,14 +250,14 @@ class Worldmap extends State
 
 			tileColor = FlxColor.RED;
 
-                        final levelIndex:Int = (i + 1) + addition;
-                        var levelBeat:Bool = false;
+			final levelIndex:Int = (i + 1) + addition;
+			var levelBeat:Bool = false;
 
-                        #if html5
-                        levelBeat = WebSave.LEVELS_COMPLETE.contains(levelIndex);
-                        #else
-                        levelBeat = SaveManager.getGameplaystatus().levels_complete.contains(levelIndex);
-                        #end
+			#if html5
+			levelBeat = WebSave.LEVELS_COMPLETE.contains(levelIndex);
+			#else
+			levelBeat = SaveManager.getGameplaystatus().levels_complete.contains(levelIndex);
+			#end
 
 			// * TODO (DONE?): implement color change for when a level is finished
 			if (levelBeat)

@@ -31,6 +31,7 @@
 ### Removed
 - Removed several unused assets
 ### Fixed
+- You can no longer select levels unlocked for one character but locked for another in the worldmap
 - The credits text no longer only updates to a new language by reloading the game
 - Level medals no longer unlock in other levels
 - Panel 1 of comic cutscenes not calling `panelEvents`
