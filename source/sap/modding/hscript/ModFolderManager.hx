@@ -8,11 +8,11 @@ class ModFolderManager
 
 	public static final SUPPORTED_MODDING_API_VERSIONS:Array<String> = [];
 
-        public static function makeSupportedModdingApiVersions():Void
-        {
-                SUPPORTED_MODDING_API_VERSIONS.push('0.1.5');
-                SUPPORTED_MODDING_API_VERSIONS.push('0.2.0');
-        }
+	public static function makeSupportedModdingApiVersions():Void
+	{
+		SUPPORTED_MODDING_API_VERSIONS.push('0.1.5');
+		SUPPORTED_MODDING_API_VERSIONS.push('0.2.0');
+	}
 
 	public static function readModFolder():Void
 	{
@@ -42,10 +42,11 @@ class ModFolderManager
 					if (!SUPPORTED_MODDING_API_VERSIONS.contains(dir_meta.api_version))
 					{
 						trace('Mod "${dir_meta.name}" was built for incompatible API version (${dir_meta.api_version.toString()}), "${SUPPORTED_MODDING_API_VERSIONS[0]}" expected at minimum');
-						break;
 					}
-
-					MODS.push(folder);
+					else
+					{
+						MODS.push(folder);
+					}
 				}
 			}
 		}
