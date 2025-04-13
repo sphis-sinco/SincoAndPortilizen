@@ -5,6 +5,7 @@ import flixel.util.typeLimit.NextState;
 import openfl.utils.AssetCache;
 import sap.credits.CreditsSubState;
 import sap.mainmenu.MainMenu;
+import sap.modding.hscript.ModFolderManager;
 import sap.modding.source.mods.MassMod;
 import sap.results.ResultsMenu;
 import sap.stages.PaulPortGameOver;
@@ -199,6 +200,8 @@ class InitState extends FlxState
 			#end
 
 			trace('Hscript mods');
+                        ModFolderManager.readModFolder();
+                        
 			ScriptManager.loadScripts();
 
                         ScriptManager.callScript('initalizeMod');
