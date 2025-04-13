@@ -1,10 +1,6 @@
 function initalizeMod() {}
 function initalizeLanguage() {}
 
-/**
- * [Description]
- */
-
 function stateSwitched() {}
 function stateCreate() {}
 function statePostCreate() {}
