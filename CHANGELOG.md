@@ -14,6 +14,8 @@
 - Mods are now sorted alphabetically
 - There is no longer spam about missing assets once it is found to be missing in the FileManager
 - Mod API version is now `0.1.1`
+  - `loadScripts` now destroys the scripts before clearing the list to avoid script instances with the same name
+  - New function for mod scripts: `UnlockMedal(medal:String)`
   - Mods now run `initalizeMod` after `loadScripts`
   - When using `getAssetFile` it now checks mod folders first before actually checking the assets folders, with a first come first serve system
 

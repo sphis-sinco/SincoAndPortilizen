@@ -36,6 +36,11 @@ class ScriptManager
 	public static function loadScripts():Void
 	{
 		// NO DUPES
+                for (instance in LOADED_SCRIPTS)
+                {
+                        // fix multiple instances of similar scripts
+                        instance.destroy();
+                }
 		LOADED_SCRIPTS = [];
 
 		// loading scripts
@@ -112,7 +117,10 @@ class ScriptManager
 		setScript('PlayMenu', PlayMenu);
 		setScript('TitleState', TitleState);
 
-                
+                // custom
+		setScript('UnlockMedal', function(medal:String):Medal {
+                        return MedalData.unlockMedal(medal);
+                });
 
                 // init mod
                 ScriptManager.callScript('initalizeMod');

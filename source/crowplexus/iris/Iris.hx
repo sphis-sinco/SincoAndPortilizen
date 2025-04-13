@@ -298,7 +298,7 @@ class Iris {
 		// you might wanna use Iris.print for your on-screen consoles and such.
 		set("trace", Reflect.makeVarArgs(function(x: Array<Dynamic>) {
 			var pos = this.interp != null ? this.interp.posInfos() : Iris.getDefaultPos(this.name);
-                        trace(pos);
+                        // trace(pos);
 
 			var v = x.shift();
 			if (x.length > 0)
