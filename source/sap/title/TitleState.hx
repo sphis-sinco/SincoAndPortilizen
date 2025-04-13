@@ -94,7 +94,7 @@ class TitleState extends State
 		add(VERSION_TEXT);
 
 		SIDEBIT_MENU_BUTTON = new SparrowSprite('titlescreen/SidebitMenuButton');
-		SIDEBIT_MENU_BUTTON.setPosition(560, 515);
+		SIDEBIT_MENU_BUTTON.setPosition(560, 93);
 		SIDEBIT_MENU_BUTTON.addAnimationByPrefix('loopAnim', 'Ring spin', 24);
 		add(SIDEBIT_MENU_BUTTON);
 		SIDEBIT_MENU_BUTTON.visible = false;
@@ -245,7 +245,7 @@ class TitleState extends State
 			HEADING_TO_MAINMENU = true;
 			Global.playSoundEffect('blipSelect');
 			FlxG.camera.flash(0xFFFFFF, 2);
-			FlxTween.tween(SIDEBIT_MENU_BUTTON, {y: FlxG.height * 2}, 2, {
+			FlxTween.tween(SIDEBIT_MENU_BUTTON, {y: -FlxG.height}, 2, {
 				ease: FlxEase.sineInOut,
 				onComplete: tween ->
 				{
