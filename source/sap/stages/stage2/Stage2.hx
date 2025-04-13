@@ -120,19 +120,19 @@ class Stage2 extends State
 		add(INFO_TEXTFIELD);
 	}
 
-	public static dynamic function levelComplete():Void
+	public static function levelComplete():Void
 	{
 		Global.beatLevel(2);
 		cutsceneResults();
 	}
 
-	public static dynamic function cutsceneResults():Void
+	public static function cutsceneResults():Void
 	{
                 RUNNING = false;
 		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new PostStage2Cutscene(), "sinco"));
 	}
 
-	public static dynamic function moveToResultsMenu():Void
+	public static function moveToResultsMenu():Void
 	{
                 RUNNING = false;
 		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new Worldmap("Sinco"), "sinco"));
@@ -140,7 +140,7 @@ class Stage2 extends State
 
 	static var decrease:Float = 0;
 
-	public static dynamic function spawnRocks(amount:Int = 1):Void
+	public static function spawnRocks(amount:Int = 1):Void
 	{
 		var index:Int = 0;
 
@@ -170,7 +170,7 @@ class Stage2 extends State
 		}
 	}
 
-	public static dynamic function rockHitTempoCity():Void
+	public static function rockHitTempoCity():Void
 	{
 		TEMPO_CITY_HEALTH--;
 
@@ -203,7 +203,7 @@ class Stage2 extends State
 		}
 	}
 
-	public static dynamic function destroyRock(rock:Stage2Rock):Void
+	public static function destroyRock(rock:Stage2Rock):Void
 	{
 		if (TEMPO_CITY_HEALTH > 0)
 		{
@@ -224,7 +224,7 @@ class Stage2 extends State
 		rockGroup.members.remove(rock);
 	}
 
-	public static dynamic function destroyRockCheck():Void
+	public static function destroyRockCheck():Void
 	{
 		for (rock in rockGroup.members)
 		{
@@ -248,7 +248,7 @@ class Stage2 extends State
 		}
 	}
 
-	public static dynamic function unjump():Void
+	public static function unjump():Void
 	{
 		FlxTween.tween(sinco, {y: (start_y + decrease)}, jump_speed + ((diffJson.tempo_city_max_health - TEMPO_CITY_HEALTH) / 100), {
 			onComplete: _tween ->
@@ -296,7 +296,7 @@ class Stage2 extends State
 		}
 	}
 
-	public static dynamic function updateHealthIndicators():Void
+	public static function updateHealthIndicators():Void
 	{
 		INFO_TEXT = '${Global.getLocalizedPhrase('tempo-city')} ${Global.getLocalizedPhrase('HP')}: ${TEMPO_CITY_HEALTH}/${diffJson.tempo_city_max_health}';
 		PROGRESS_BAR.percent = (TEMPO_CITY_HEALTH / diffJson.tempo_city_max_health) * 100;

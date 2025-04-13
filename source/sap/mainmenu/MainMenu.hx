@@ -89,7 +89,7 @@ class MainMenu extends State
 
 	public var cycle:Int = 0;
 
-	public static dynamic function gridBGAdapt():Void
+	public static function gridBGAdapt():Void
 	{
 		if (port.animation.name == 'blank')
 		{
@@ -136,7 +136,7 @@ class MainMenu extends State
 		super.update(elapsed);
 	}
 
-	public static dynamic function controls():Void
+	public static function controls():Void
 	{
 		if (FlxG.keys.justReleased.UP)
 		{
@@ -159,7 +159,7 @@ class MainMenu extends State
 		}
 	}
 
-	public static dynamic function set_menuboxtexts(mapstring:String):Void
+	public static function set_menuboxtexts(mapstring:String):Void
 	{
 		TryCatch.tryCatch(() ->
 		{
@@ -223,7 +223,7 @@ class MainMenu extends State
 		}
 	}
 
-	public static dynamic function menuSelection():Void
+	public static function menuSelection():Void
 	{
 		switch (PUBLIC_CUR_SELECTION)
 		{
@@ -234,7 +234,7 @@ class MainMenu extends State
 		}
 	}
 
-	public static dynamic function cycleUpdate():Void
+	public static function cycleUpdate():Void
 	{
 		sinco.animation.play((sinco.animation.name == 'blank') ? 'visible' : 'blank');
 		port.animation.play((port.animation.name == 'blank') ? 'visible' : 'blank');

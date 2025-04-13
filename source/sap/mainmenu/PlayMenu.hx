@@ -20,7 +20,7 @@ class PlayMenu extends MainMenu
 		}
 	}
 
-	public static dynamic function playSelectionCheck():Void
+	public static function playSelectionCheck():Void
 	{
 		switch (MainMenu.PUBLIC_CUR_SELECTION)
 		{

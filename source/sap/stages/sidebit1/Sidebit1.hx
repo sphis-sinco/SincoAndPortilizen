@@ -347,7 +347,7 @@ class Sidebit1 extends State
 	public static var NEXT_STATE_WIN:NextState = () -> new Sidebit1PostCutsceneAtlas();
 	public static var NEXT_STATE_LOSS:NextState = () -> new SidebitSelect();
 
-	public static dynamic function updateHealthIndicators():Void
+	public static function updateHealthIndicators():Void
 	{
 		INFO_TEXT = 'Sinco: ${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH || Portilizen: ${Global.getLocalizedPhrase('HP')}: $PORTILIZEN_HEALTH/$PORTILIZEN_MAX_HEALTH';
 		PROGRESS_BAR.percent = (PORTILIZEN_HEALTH / PORTILIZEN_MAX_HEALTH) * 100;
@@ -355,13 +355,13 @@ class Sidebit1 extends State
 		INFO_TEXTFIELD.screenCenter(X);
 	}
 
-	public static dynamic function disableAbilities():Void
+	public static function disableAbilities():Void
 	{
 		ABILITY_CAN_ATTACK = false;
 		ABILITY_CAN_DODGE = false;
 	}
 
-	public static dynamic function enableAbilities():Void
+	public static function enableAbilities():Void
 	{
 		ABILITY_CAN_ATTACK = true;
 		ABILITY_CAN_DODGE = true;

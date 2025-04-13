@@ -32,7 +32,7 @@ class LocalizationManager
 		"settings-window-resolution" => "window resolution"
 	];
 
-	public static dynamic function changeLanguage():Void
+	public static function changeLanguage():Void
 	{
 		trace('Trying to change to languge: "$LANGUAGE"');
 
@@ -52,7 +52,7 @@ class LocalizationManager
 		FileManager.LOCALIZED_ASSET_SUFFIX = ASSET_SUFFIX;
 	}
 
-	public static dynamic function returnLanguageTEXT_CONTENT():Map<String, String>
+	public static function returnLanguageTEXT_CONTENT():Map<String, String>
 	{
 		if (LANGUAGE == 'spanish')
 		{
@@ -114,7 +114,7 @@ class LocalizationManager
 		return default_text_content;
 	}
 
-	public static dynamic function swapLanguage():Void
+	public static function swapLanguage():Void
 	{
 		LANGUAGE = LANGUAGE_SWAP_LIST.get(LANGUAGE);
 		changeLanguage();

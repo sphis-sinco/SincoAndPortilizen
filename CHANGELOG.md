@@ -6,6 +6,8 @@
 - The missing `getMedals` function in the SaveManager is here
 - `enabled_mods` save field
 - `StringSortAlphabetically` function to Random.hx
+### Removed
+- Source code mods
 ### Changed
 - (Desktop only) the menu text box is longer vertically to fit the mods menu option
 - Mods are now sorted alphabetically

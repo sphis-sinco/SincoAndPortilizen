@@ -111,7 +111,7 @@ class Iris {
 	 *
 	 * Overriding is recommended if you're doing custom error handling.
 	**/
-	public dynamic static function logLevel(level: ErrorSeverity, x, ?pos: haxe.PosInfos): Void {
+	public static function logLevel(level: ErrorSeverity, x, ?pos: haxe.PosInfos): Void {
 		if (pos == null) {
 			pos = getDefaultPos();
 		}
@@ -146,14 +146,14 @@ class Iris {
 	/**
 	 * Custom print function for script wrappers.
 	**/
-	public dynamic static function print(x, ?pos: haxe.PosInfos): Void {
+	public static function print(x, ?pos: haxe.PosInfos): Void {
 		logLevel(NONE, x, pos);
 	}
 
 	/**
 	 * Custom error function for script wrappers.
 	**/
-	public dynamic static function error(x, ?pos: haxe.PosInfos): Void {
+	public static function error(x, ?pos: haxe.PosInfos): Void {
 		logLevel(ERROR, x, pos);
 	}
 
@@ -162,14 +162,14 @@ class Iris {
 	 *
 	 * Overriding is recommended if you're doing custom error handling.
 	**/
-	public dynamic static function warn(x, ?pos: haxe.PosInfos): Void {
+	public static function warn(x, ?pos: haxe.PosInfos): Void {
 		logLevel(WARN, x, pos);
 	}
 
 	/**
 	 * Custom fatal error function for script wrappers.
 	**/
-	public dynamic static function fatal(x, ?pos: haxe.PosInfos): Void {
+	public static function fatal(x, ?pos: haxe.PosInfos): Void {
 		logLevel(FATAL, x, pos);
 	}
 

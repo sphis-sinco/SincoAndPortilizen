@@ -7,7 +7,7 @@ class SaveManager
 	/**
 	 * This makes sure there are no null values
 	 */
-	public static dynamic function setupSave():Void
+	public static function setupSave():Void
 	{
 		// just the base thing
 		FlxG.save.data.language ??= getDefaultSave().language;
@@ -28,7 +28,7 @@ class SaveManager
 		MedalData.unlocked_medals = FlxG.save.data.medals;
 	}
 
-	public static dynamic function getDefaultSave():Dynamic
+	public static function getDefaultSave():Dynamic
 	{
 		return {
 			language: "english",
@@ -40,37 +40,37 @@ class SaveManager
 		}
 	}
 
-	public static dynamic function getLanguage():Dynamic
+	public static function getLanguage():Dynamic
 	{
 		return FlxG.save.data.language;
 	}
 
-	public static dynamic function getResults():Dynamic
+	public static function getResults():Dynamic
 	{
 		return FlxG.save.data.results;
 	}
 
-	public static dynamic function getGameplaystatus():Dynamic
+	public static function getGameplaystatus():Dynamic
 	{
 		return FlxG.save.data.gameplaystatus;
 	}
 
-	public static dynamic function getSettings():Dynamic
+	public static function getSettings():Dynamic
 	{
 		return FlxG.save.data.settings;
 	}
 
-	public static dynamic function getMedals():Dynamic
+	public static function getMedals():Dynamic
 	{
 		return FlxG.save.data.medals;
 	}
 
-	public static dynamic function getEnabledMods():Dynamic
+	public static function getEnabledMods():Dynamic
 	{
 		return FlxG.save.data.enabled_mods;
 	}
 
-	public static dynamic function save():Void
+	public static function save():Void
 	{
 		TryCatch.tryCatch(function()
 		{

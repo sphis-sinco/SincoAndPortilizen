@@ -150,7 +150,7 @@ class ResultsMenu extends State
 		super.update(elapsed);
 	}
 
-	public static dynamic function playRankMusic():Void
+	public static function playRankMusic():Void
 	{
 		var songSuffix:String = STATIC_RANK_CLASS.gradeUntranslated(STATIC_TARGET_PERCENT);
 
@@ -206,7 +206,7 @@ class ResultsMenu extends State
 		REACHED_TARGET_PERCENT = true;
 	}
 
-	public static dynamic function rankBGColor():Void
+	public static function rankBGColor():Void
 	{
 		switch (STATIC_RANK_CLASS.gradeUntranslated(STATIC_TARGET_PERCENT))
 		{

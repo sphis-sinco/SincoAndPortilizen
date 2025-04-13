@@ -139,12 +139,12 @@ class TitleState extends State
 		super.update(elapsed);
 	}
 
-	public static dynamic function stateChecks():Void
+	public static function stateChecks():Void
 	{
 		stateSwitchStatement();
 	}
 
-	public static dynamic function stateSwitchStatement():Void
+	public static function stateSwitchStatement():Void
 	{
 		switch (CURRENT_STATE)
 		{
@@ -159,7 +159,7 @@ class TitleState extends State
 		}
 	}
 
-	public static dynamic function introState():Void
+	public static function introState():Void
 	{
 		FlxTween.tween(CHARACTER_RING_CHARS_SHADER, {brightness: 0}, .75, {
 			ease: FlxEase.smoothStepOut,
@@ -172,7 +172,7 @@ class TitleState extends State
 		});
 	}
 
-	public static dynamic function introStateDone():TweenCallback
+	public static function introStateDone():TweenCallback
 	{
 		return _tween ->
 		{
@@ -183,7 +183,7 @@ class TitleState extends State
 		}
 	}
 
-	public static dynamic function flashState():Void
+	public static function flashState():Void
 	{
 		if (CURRENT_STATE == FLASH)
 		{
@@ -200,7 +200,7 @@ class TitleState extends State
 		VERSION_TEXT.visible = true;
 	}
 
-	public static dynamic function doneState():Void
+	public static function doneState():Void
 	{
 		Global.playMenuMusic();
 
@@ -235,7 +235,7 @@ class TitleState extends State
 		randomBGChar(MINI_PORTILIZEN, 4);
 	}
 
-	public static dynamic function pressAny():Void
+	public static function pressAny():Void
 	{
 		if (FlxG.keys.justReleased.ANY && !HEADING_TO_MAINMENU)
 		{
@@ -254,7 +254,7 @@ class TitleState extends State
 
 	public static var PRESS_ANY_HINT_TARGET_VERTICAL_POSITION:Float = 0;
 
-	public static dynamic function randomBGChar(char:FlxSprite, chance:Float):Void
+	public static function randomBGChar(char:FlxSprite, chance:Float):Void
 	{
 		if (FlxG.random.bool(chance) && !char.visible)
 		{
@@ -267,7 +267,7 @@ class TitleState extends State
 		}
 	}
 
-	public static dynamic function charDisappear(char:FlxSprite):TweenCallback
+	public static function charDisappear(char:FlxSprite):TweenCallback
 	{
 		return _tween ->
 		{
@@ -275,7 +275,7 @@ class TitleState extends State
 		}
 	}
 
-	public static dynamic function charDisWait(char:FlxSprite):Void
+	public static function charDisWait(char:FlxSprite):Void
 	{
 		FlxTimer.wait(FlxG.random.float(1, 4), () ->
 		{

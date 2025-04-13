@@ -108,7 +108,7 @@ class Worldmap extends State
 		}
 	}
 
-	public dynamic function difficultyChange():Void
+	public static function difficultyChange():Void
 	{
 		var down:Bool = !FlxG.keys.justReleased.UP;
 
@@ -130,7 +130,7 @@ class Worldmap extends State
 		}
 	}
 
-	public dynamic function characterMove():Void
+	public static function characterMove():Void
 	{
 		canSwap = false;
 		character.flipX = FlxG.keys.justReleased.LEFT;
@@ -149,7 +149,7 @@ class Worldmap extends State
 		});
 	}
 
-	public dynamic function characterMoveDone():TweenCallback
+	public static function characterMoveDone():TweenCallback
 	{
 		return tween ->
 		{
@@ -164,7 +164,7 @@ class Worldmap extends State
 		}
 	}
 
-	public dynamic function playLevel():Void
+	public static function playLevel():Void
 	{
 		if (implementedLevels.get(character.lowercase_char())[current_level - 1] == false)
 			return;
@@ -179,17 +179,17 @@ class Worldmap extends State
 		}
 	}
 
-	public dynamic function level1():Void
+	public static function level1():Void
 	{
 		FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1(DIFFICULTY) : new Stage4(DIFFICULTY)));
 	}
 
-	public dynamic function level2():Void
+	public static function level2():Void
 	{
 		FlxG.switchState(() -> (new Stage2(DIFFICULTY)));
 	}
 
-	public dynamic function swap():Void
+	public static function swap():Void
 	{
 		canSwap = false;
 		charWheel.animation.play('${character.lowercase_char()}-${character.swappedchar().toLowerCase()}');
@@ -200,7 +200,7 @@ class Worldmap extends State
 		});
 	}
 
-	public dynamic function swapWaitDone():Void
+	public static function swapWaitDone():Void
 	{
 		Global.changeDiscordRPCPresence('In the worldmap as ${character.swappedchar()}', null);
 
@@ -220,7 +220,7 @@ class Worldmap extends State
 
 	public static var canSwap:Bool = true;
 
-	public dynamic function makeMap():Void
+	public static function makeMap():Void
 	{
 		var i:Int = 0;
 		while (i < 3)
@@ -231,7 +231,7 @@ class Worldmap extends State
 		}
 	}
 
-	public dynamic function makeNewTile(i:Int):Void
+	public static function makeNewTile(i:Int):Void
 	{
 		// TODO: change these to use MapTile once you figure out the bug
 		// ?: What bug? lol.

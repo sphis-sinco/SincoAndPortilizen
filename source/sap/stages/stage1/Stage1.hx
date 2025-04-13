@@ -197,7 +197,7 @@ class Stage1 extends State
 
 	public static var OSIN_CAN_ATTACK:Bool = true;
 
-	public static dynamic function getOsinJumpCondition():Bool
+	public static function getOsinJumpCondition():Bool
 	{
 		return (SINCO_HEALTH >= 1
 			&& OSIN_HEALTH >= 1
@@ -227,7 +227,7 @@ class Stage1 extends State
 		osinDeathCheck();
 	}
 
-	public static dynamic function updateHealthIndicators():Void
+	public static function updateHealthIndicators():Void
 	{
 		INFO_TEXT = 'Sinco: ${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH || Osin: ${Global.getLocalizedPhrase('HP')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
 		PROGRESS_BAR.percent = (OSIN_HEALTH / OSIN_MAX_HEALTH) * 100;
@@ -235,7 +235,7 @@ class Stage1 extends State
                 INFO_TEXTFIELD.screenCenter(X);
 	}
 
-	public static dynamic function osinJumpWait():Void
+	public static function osinJumpWait():Void
 	{
 		OSIN_CAN_ATTACK = false;
 		FlxTimer.wait(FlxG.random.float(0, 2), () ->
@@ -244,7 +244,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function playerControls():Void
+	public static function playerControls():Void
 	{
 		if (FlxG.keys.justPressed.SPACE)
 		{
@@ -277,7 +277,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function sincoDeathCheck():Void
+	public static function sincoDeathCheck():Void
 	{
 		if (SINCO_HEALTH < 1)
 		{
@@ -290,7 +290,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function osinDeathCheck():Void
+	public static function osinDeathCheck():Void
 	{
 		if (OSIN_HEALTH < 1)
 		{
@@ -304,7 +304,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function osinWarning():Void
+	public static function osinWarning():Void
 	{
 		osin.animation.play(StageGlobals.JUMP_KEYWORD);
 		FlxTween.tween(osin, {y: OSIN_POINT.y - 150}, FlxG.random.float(0.5, 1), {
@@ -315,7 +315,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinJump():Void
+	public static function osinJump():Void
 	{
 		osin.animation.play(StageGlobals.JUMP_KEYWORD);
 		Global.playSoundEffect('gameplay/sinco-jump');
@@ -327,7 +327,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinJumpDone():Void
+	public static function osinJumpDone():Void
 	{
 		var waitn:Float = 0.25;
 
@@ -343,7 +343,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinHitSinco():Void
+	public static function osinHitSinco():Void
 	{
 		// Loss combo :(
 		PLAYER_COMBO = 0;
@@ -357,7 +357,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function osinJumpBack():Void
+	public static function osinJumpBack():Void
 	{
 		FlxTween.tween(osin, {x: OSIN_POINT.x, y: OSIN_POINT.y}, OSIN_JUMP_SPEED, {
 			onComplete: _tween ->
@@ -368,7 +368,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function sincoJump():Void
+	public static function sincoJump():Void
 	{
 		FlxTween.tween(sinco, {x: OSIN_POINT.x, y: OSIN_POINT.y}, SINCO_JUMP_SPEED, {
 			onComplete: _tween ->
@@ -378,7 +378,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function sincoJumpBack():Void
+	public static function sincoJumpBack():Void
 	{
 		osinHurtCheck();
 
@@ -416,7 +416,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinHurtCheck():Void
+	public static function osinHurtCheck():Void
 	{
 		if (sinco.overlaps(osin) && osin.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
@@ -429,7 +429,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function sincoDodge():Void
+	public static function sincoDodge():Void
 	{
 		FlxTween.tween(sinco, {x: OSIN_POINT.x}, SINCO_JUMP_SPEED, {
 			onComplete: _tween ->
@@ -439,7 +439,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function sincoDodgeRecoil():Void
+	public static function sincoDodgeRecoil():Void
 	{
 		FlxTween.tween(sinco, {x: SINCO_POINT.x}, SINCO_JUMP_SPEED, {
 			onComplete: _tween ->
@@ -450,7 +450,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function sincoDefeated():Void
+	public static function sincoDefeated():Void
 	{
 		FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
@@ -465,7 +465,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function osinDefeated():Void
+	public static function osinDefeated():Void
 	{
 		FlxTween.tween(osin, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
@@ -479,7 +479,7 @@ class Stage1 extends State
 		});
 	}
 
-	public static dynamic function deathSFX(name:String = 'dead'):Void
+	public static function deathSFX(name:String = 'dead'):Void
 	{
 		if (!PLAYED_DEATH_SFX)
 		{
@@ -488,7 +488,7 @@ class Stage1 extends State
 		}
 	}
 
-	public static dynamic function endCutsceneTransition():Void
+	public static function endCutsceneTransition():Void
 	{
 		Global.beatLevel(1);
                 RUNNING = false;

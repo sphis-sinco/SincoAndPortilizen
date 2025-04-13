@@ -87,7 +87,7 @@ class ModsMenu extends FlxSubState
 
 	public static var SCROLL_AMOUNT:Float = 10.0;
 
-	public dynamic function scroll(Amount:Float):Void
+	public static function scroll(Amount:Float):Void
 	{
 		for (text in modTexts)
 		{
@@ -101,7 +101,7 @@ class ModsMenu extends FlxSubState
 		}
 	}
 
-	public static dynamic function updateText():Void
+	public static function updateText():Void
 	{
 		for (text in modTexts)
 		{

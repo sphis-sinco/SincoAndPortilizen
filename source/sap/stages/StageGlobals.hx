@@ -6,7 +6,7 @@ class StageGlobals
 
 	public static final JUMP_KEYWORD:String = 'jump';
 
-	public static dynamic function waitSec(timer:Float, time:Float, timerText:FlxText):Void
+	public static function waitSec(timer:Float, time:Float, timerText:FlxText):Void
 	{
 		timerText.text = Std.string(timer - time);
 

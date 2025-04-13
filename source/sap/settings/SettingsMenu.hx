@@ -118,7 +118,7 @@ class SettingsMenu extends FlxSubState
 		super.update(elapsed);
 	}
 
-	public static dynamic function updateSettings():Void
+	public static function updateSettings():Void
 	{
 		switch (SELECTED_SETTING)
 		{

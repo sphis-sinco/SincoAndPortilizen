@@ -116,7 +116,7 @@ class MedalsMenu extends FlxSubState
 
 	public static var SCROLL_AMOUNT:Float = 10.0;
 
-	public dynamic function scroll(Amount:Float):Void
+	public static function scroll(Amount:Float):Void
 	{
 		for (text in medalTexts)
 		{

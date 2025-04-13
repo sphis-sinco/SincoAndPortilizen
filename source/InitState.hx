@@ -97,7 +97,7 @@ class InitState extends FlxState
 		super.update(elapsed);
 	}
 
-	public static dynamic function proceed():Void
+	public static function proceed():Void
 	{
 		var difficulty:String = 'normal';
 
@@ -186,17 +186,6 @@ class InitState extends FlxState
 		{
 			trace('mods init');
 
-			trace('Source code mods');
-			#if MASS_MOD
-			trace('MassMod added');
-			ModListManager.addMod(new MassMod());
-			#end
-			ModListManager.create();
-
-			#if MASS_MOD
-			MassMod.instance.toggleEnabled();
-			#end
-
 			trace('Hscript mods');
                         ModFolderManager.makeSupportedModdingApiVersions();
                         ModFolderManager.readModFolder();
@@ -207,7 +196,7 @@ class InitState extends FlxState
 		});
 	}
 
-	public static dynamic function LanguageInit():Void
+	public static function LanguageInit():Void
 	{
 		Timer.measure(function()
 		{

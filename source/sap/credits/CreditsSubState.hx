@@ -62,7 +62,7 @@ class CreditsSubState extends FlxSubState
 
 	public static var SCROLL_AMOUNT:Float = 10.0;
 
-	public dynamic function scroll(Amount:Float):Void
+	public static function scroll(Amount:Float):Void
 	{
 		for (text in creditsText)
 		{
@@ -76,7 +76,7 @@ class CreditsSubState extends FlxSubState
 		}
 	}
 
-	public static dynamic function creditsJSONInit():Void
+	public static function creditsJSONInit():Void
 	{
 		TryCatch.tryCatch(() ->
 		{
