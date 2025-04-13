@@ -32,8 +32,8 @@ class ModFolderManager
 				{
                                         #if EXCESS_TRACES
 					trace('$folder is a valid mod');
-					MODS.push(folder);
                                         #end
+					MODS.push(folder);
 				}
 			}
 		}
