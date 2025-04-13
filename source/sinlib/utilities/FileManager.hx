@@ -173,11 +173,13 @@ class FileManager
 		{
 			#if EXCESS_TRACES
 			trace('reading scriptPath: $path');
-                        #end
+			#end
 			readDir(path);
 		}
 
+		#if EXCESS_TRACES
 		trace(arr);
+		#end
 		return arr;
 	}
 	#else
