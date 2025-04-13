@@ -43,6 +43,8 @@
 - The "Huh, someone cares" medal icon now loads properly
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 ### Changed
+- The version text on the title screen has the modding api version
+- The version text on the title screen is smaller
 - When crashing the game with Ctrl+Alt+Shift+L it now says CASLCrash
 - The Stage 1 Info text below the health bar is now screenCentered on the X axis
 - (Desktop only) Discord RPC now says the level difficulty

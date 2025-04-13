@@ -1,7 +1,5 @@
 package sinlib.utilities;
 
-import sap.modding.hscript.ModFolderManager;
-
 class FileManager
 {
 	public static var SOUND_EXT:String = 'wav';

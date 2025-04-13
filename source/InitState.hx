@@ -5,8 +5,6 @@ import flixel.util.typeLimit.NextState;
 import openfl.utils.AssetCache;
 import sap.credits.CreditsSubState;
 import sap.mainmenu.MainMenu;
-import sap.modding.hscript.ModFolderManager;
-import sap.modding.source.mods.MassMod;
 import sap.results.ResultsMenu;
 import sap.stages.PaulPortGameOver;
 import sap.stages.stage1.Stage1;

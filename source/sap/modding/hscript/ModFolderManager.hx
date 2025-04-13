@@ -50,7 +50,7 @@ class ModFolderManager
 			}
 		}
 
-		trace('Loaded ${MODS.length} mods');
+		trace('Loaded ${MODS.length} mod${MODS.length > 1 ? 's' : ''}');
 		for (mod in MODS)
 		{
 			var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${mod}/meta.json');

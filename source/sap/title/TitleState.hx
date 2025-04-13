@@ -33,16 +33,16 @@ class TitleState extends State
 
 	public static dynamic function get_VERSION_TEXT():String
 	{
-		return 'v${Global.VERSION}';
+		return 'SAP v${Global.VERSION}\nModding API v${ModFolderManager.SUPPORTED_MODDING_API_VERSIONS[ModFolderManager.SUPPORTED_MODDING_API_VERSIONS.length - 1]}';
 	}
 
 	public static var SIDEBIT_MENU_BUTTON:SparrowSprite;
 
-        public static var CHARACTER_RING_CHARS_SHADER:AdjustColorShader;
+	public static var CHARACTER_RING_CHARS_SHADER:AdjustColorShader;
 
 	override public function create():Void
 	{
-                CHARACTER_RING_CHARS_SHADER = new AdjustColorShader();
+		CHARACTER_RING_CHARS_SHADER = new AdjustColorShader();
 
 		MINI_SINCO = new TitleSinco();
 		MINI_PORTILIZEN = new TitlePort();
@@ -61,7 +61,7 @@ class TitleState extends State
 		CHARACTER_RING_CHARACTERS.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing-characters'));
 		Global.scaleSprite(CHARACTER_RING_CHARACTERS, 0);
 		add(CHARACTER_RING_CHARACTERS);
-                CHARACTER_RING_CHARACTERS.shader = CHARACTER_RING_CHARS_SHADER;
+		CHARACTER_RING_CHARACTERS.shader = CHARACTER_RING_CHARS_SHADER;
 
 		CHARACTER_RING = new FlxSprite();
 		CHARACTER_RING.loadGraphic(FileManager.getImageFile('titlescreen/CharacterRing'));
@@ -87,7 +87,7 @@ class TitleState extends State
 
 		PRESS_ANY_HINT_TARGET_VERTICAL_POSITION = FlxG.height - (PRESS_ANY_HINT.height * 2) - (16 * 2);
 
-		VERSION_TEXT.size = 16;
+		VERSION_TEXT.size = 12;
 		VERSION_TEXT.setPosition(5, 5);
 		VERSION_TEXT.text = get_VERSION_TEXT();
 		VERSION_TEXT.color = FlxColor.BLACK;
@@ -103,7 +103,7 @@ class TitleState extends State
 		if (CURRENT_STATE == INTRO)
 		{
 			Global.playSoundEffect('start-synth');
-                        CHARACTER_RING_CHARS_SHADER.brightness = -255;
+			CHARACTER_RING_CHARS_SHADER.brightness = -255;
 		}
 
 		super.create();
@@ -129,7 +129,7 @@ class TitleState extends State
 						return;
 
 					trace('Head to sidebit menu');
-                                        FlxG.switchState(() -> new SidebitSelect());
+					FlxG.switchState(() -> new SidebitSelect());
 				}
 			}
 
@@ -166,10 +166,10 @@ class TitleState extends State
 
 	public static dynamic function introState():Void
 	{
-                FlxTween.tween(CHARACTER_RING_CHARS_SHADER, {brightness: 0}, .75, {
-                        ease: FlxEase.smoothStepOut,
-                        startDelay: .25
-                });
+		FlxTween.tween(CHARACTER_RING_CHARS_SHADER, {brightness: 0}, .75, {
+			ease: FlxEase.smoothStepOut,
+			startDelay: .25
+		});
 
 		FlxTween.tween(CHARACTER_RING, {y: CHARACTER_RING.height + 16}, 1.0, {
 			ease: FlxEase.sineOut,
