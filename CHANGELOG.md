@@ -9,6 +9,7 @@
 - POST-LEVEL4 CUTSCENE
 - 7 UNLOCKABLE MEDALS
 - SIDEBIT SELECT MENU
+- Fade transition
 - (source) `SIDEBIT_MENU` build flag
 - (Desktop only) Added Discord RPC setting that toggles discord RPC
 - Cutscenes asset folder containing all the cutscene assets
