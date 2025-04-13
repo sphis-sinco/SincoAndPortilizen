@@ -5,13 +5,14 @@
 - (Desktop) MEDALS MENU
 - (Desktop only probably) SOFTCODED MODDING (v0.1)
 - NEW MENU TRACK: LADOS
-- (Desktop only probably) HSCRIPTING (via `hscript-iris`)
+- (Desktop only probably) HSCRIPTING (via [`hscript-iris`](https://github.com/pisayesiwsi/hscript-iris))
 - VOICE-ACTED CUTSCENES
 - SIDEBIT 1
 - POST-LEVEL4 CUTSCENE
 - 7 UNLOCKABLE MEDALS
 - SIDEBIT SELECT MENU
 - (source) `RECOMPILE_ON_MOD_UPDATE` build flag
+- (source) [HSV Shader](https://github.com/FunkinCrew/Funkin/blob/main/source/funkin/graphics/shaders/HSVShader.hx)
 - Stage 2 now has a health bar for tempo city
 - (source) `SIDEBIT_MENU` build flag
 - (Desktop only) Added Discord RPC setting that toggles discord RPC
@@ -27,10 +28,10 @@
 - Sparrow spritesheet cutscene support
 - (source) `SIDEBIT1_INTRO_CUTSCENE` build flag
 - Medal unlock sound effect
-- (source) `InitState` now tracks how long functions are taking via `haxe.Timer`
+- (source) [`InitState`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/InitState.hx) now tracks how long functions are taking via [`haxe.Timer`](https://github.com/HaxeFoundation/haxe/blob/4.3.6/std/haxe/Timer.hx)
 - (source) `GIF_PORT_GAMEOVER` build flag
-- (source) FlxGif library
-- (source) Adjust Color Shader
+- (source) [FlxGif](https://github.com/MAJigsaw77/flxgif) library
+- (source) [Adjust Color Shader](https://github.com/FunkinCrew/Funkin/blob/main/source/funkin/graphics/shaders/AdjustColorShader.hx)
 - (Desktop and sys only) New settings menu option to download latest traces
 ### Removed
 - Removed several unused assets
@@ -38,8 +39,8 @@
 - You can no longer select levels unlocked for one character but locked for another in the worldmap
 - The credits text no longer only updates to a new language by reloading the game
 - Level medals no longer unlock in other levels
-- Panel 1 of comic cutscenes not calling `panelEvents`
-- Stage 2 tempo city health not initalizing is fixed
+- Panel 1 of comic cutscenes not calling [`panelEvents`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/cutscenes/PanelCutscene.hx)
+- Stage 2 tempo city health not initializing is fixed
 - Stage 2 rocks not spawning more rocks after playing a failed playthrough is fixed
 - The crash when trying to check if uninitalize stages medals are unlocked is fixed
 - The "Huh, someone cares" medal icon now loads properly
@@ -55,13 +56,14 @@
 - Reworked comic cutscenes to work with JSON
 - Re-enabled medals
 - In the title state the characters in the character sing fade in via shaders
-- `Combo.hx` now is in the `sap.stages` folder
+- [`Combo.hx`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/stages/Combo.hx) now is in the `sap.stages` folder
 - The title screen version text no longer is visible during the intro sequence
-- The crash handler trace for loop is now in the `AnsiTrace` file as a `neatTraceList` function
+- The crash handler trace for loop is now in the `AnsiTrace` file as a [`neatTraceList`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/funkin/util/logging/AnsiTrace.hx#L8) function
 - In the settings menu, if a save has a null value, the value will not display
 - Several InitState traces are not apart of `EXCESS_TRACES`
 - [`get_VERSION`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/Global.hx#L21) now has the version trace as apart of `EXCESS_TRACES`
 - Sparrow Sprites that get their animation added via [`addAnimationByPrefix`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sap/utils/SparrowSprite.hx#L11) now have the animation play automatically
+
 <!-- A patch content update? How peculiar... normally this would be v0.4.0a but versioning has changed, like right now, LOL -->
 <!-- If there ain't a new level or MAJOR content update then its a "patch" update, otherwise a minor-->
 ## 0.3.2a - 4/9/2025
