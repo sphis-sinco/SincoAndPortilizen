@@ -110,6 +110,8 @@
 	<error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile"/>
 
 	<echo value="discord rpc disabled" unless="windows || DISCORDRPC"/>
+        
+	<assets path="mods" if="SCRIPT_FILES"/>
 
         <!-- ______________________________ Haxedefines _____________________________ -->
 
