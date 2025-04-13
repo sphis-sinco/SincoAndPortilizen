@@ -2,7 +2,7 @@
 ## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
 ### Added
 <!-- These are moved up because they are epicer-->
-- NEW TRACK: LADOS
+- NEW MENU TRACK: LADOS
 - HSCRIPTING (via `hscript-iris`)
 - VOICE-ACTED CUTSCENES
 - SIDEBIT 1
