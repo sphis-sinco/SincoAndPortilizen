@@ -190,7 +190,7 @@ class Stage4 extends State
 		final good = Std.parseInt(timerText.text);
 		trace(good);
                 RUNNING = false;
-		if (win)
+		if (!win)
 			FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new Worldmap("Port"), "port"));
 		else
 			FlxG.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new PostStage4Cutscene(), "port"));
