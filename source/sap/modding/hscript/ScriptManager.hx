@@ -113,7 +113,7 @@ class ScriptManager
 		setScript('TitleState', TitleState);
 	}
 
-	public static function callScript(fun:String, ?args:Array<Dynamic>):Void
+	public static function callScript(fun:String, ?args:Array<Dynamic>, ?pos: haxe.PosInfos):Void
 	{
 		for (script in LOADED_SCRIPTS)
 		{
@@ -124,12 +124,12 @@ class ScriptManager
 					if (ny != null && Reflect.isFunction(ny))
 					{
 						script.call(fun, args);
-                                                trace('ran $fun with args $args');
+                                                trace('ran $fun with args $args', pos);
 					}
 				}
 				catch (e)
 				{
-					trace('error parsing script: ' + e);
+					trace('error parsing script: ' + e, pos);
 				}
 			}
 		}
