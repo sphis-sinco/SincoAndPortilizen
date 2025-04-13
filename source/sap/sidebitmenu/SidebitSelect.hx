@@ -10,12 +10,10 @@ class SidebitSelect extends State
 
 	public static var NUMBER_TEXT:SparrowSprite;
 
-        public static var DIFFICULTY:String = 'normal';
+	public static var DIFFICULTY:String = 'normal';
 
 	override function create()
 	{
-		Global.playMusic('Lado', 1.0, true);
-
 		var bg:FlxSprite = new FlxSprite();
 		bg.loadGraphic(FileManager.getImageFile('sidebitmenu/background'));
 		add(bg);
@@ -63,6 +61,7 @@ class SidebitSelect extends State
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		Global.playMusic('Lado', 1.0, false);
 
 		if (FlxG.keys.justReleased.ESCAPE)
 		{
@@ -70,12 +69,12 @@ class SidebitSelect extends State
 		}
 		else if (FlxG.keys.justReleased.ENTER)
 		{
-                        switch (SIDEBIT_NUMBER)
-                        {
-                                case 1:
-                                        FlxG.sound.music.stop();
-                                        FlxG.switchState(() -> new Sidebit1IntroCutsceneAtlas(DIFFICULTY));
-                        }
+			switch (SIDEBIT_NUMBER)
+			{
+				case 1:
+					FlxG.sound.music.stop();
+					FlxG.switchState(() -> new Sidebit1IntroCutsceneAtlas(DIFFICULTY));
+			}
 		}
 
 		if (SIDEBIT_NUMBER > SIDEBITS)
