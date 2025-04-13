@@ -7,10 +7,10 @@ class Sidebit1PostCutsceneAtlas extends AtlasCutscene
 {
 	override public function new()
 	{
-		super('sidebit1/post-sidebit1_atlas');
+		super('post-sidebit1_atlas');
 
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
-                add(bg);
+		add(bg);
 	}
 
 	public static var bg:FlxSprite;
@@ -22,7 +22,13 @@ class Sidebit1PostCutsceneAtlas extends AtlasCutscene
 		switch (animation)
 		{
 			case 'part5':
-				FlxG.switchState(SidebitSelect.new);
+				// FlxG.switchState(SidebitSelect.new);
 		}
+	}
+
+	override function cutsceneEnded()
+	{
+		super.cutsceneEnded();
+		FlxG.switchState(SidebitSelect.new);
 	}
 }
