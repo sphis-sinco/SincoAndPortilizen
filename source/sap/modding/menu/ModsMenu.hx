@@ -32,9 +32,7 @@ class ModsMenu extends FlxSubState
 		var i:Int = 0;
 		for (mod in ModFolderManager.MODS)
 		{
-			var dir_meta:ModMetaData = FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json');
-
-			var text:FlxText = new FlxText(20, cur_y, 0, '${dir_meta.name} v${dir_meta.version} (api version: ${dir_meta.api_version})', Std.int(32 * 0.5));
+			var text:FlxText = new FlxText(20, cur_y, 0, '${ModFolderManager.modInfo(FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json'))}', Std.int(32 * 0.5));
 			text.alignment = LEFT;
 			text.ID = i;
 

@@ -3,6 +3,7 @@
 ### Added
 - MOD MENU <!-- Moved up because it's the main addition -->
 - PROPER SAVING
+- `modInfo` function to help get mod info in a similar format
 - `getEnabledMods` function in the SaveManager
 - The missing `getMedals` function in the SaveManager is here
 - `enabled_mods` save field

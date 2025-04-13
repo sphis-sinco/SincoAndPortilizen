@@ -69,13 +69,12 @@ class ModFolderManager
 		trace('Loaded ${MODS.length} mod${MODS.length > 1 ? 's' : ''}');
 		for (mod in MODS)
 		{
-			var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${mod}/meta.json');
-			trace('* ${dir_meta.name} v${dir_meta.version} (api version: ${dir_meta.api_version})');
+			trace('* ${modInfo(FileManager.getJSON('${MODS_FOLDER}${mod}/meta.json'))}');
 		}
 
 		sortModArrays();
-		trace(ENABLED_MODS);
-		trace(DISABLED_MODS);
+		trace('ENABLED_MODS: ${ENABLED_MODS}');
+		trace('DISABLED_MODS: ${DISABLED_MODS}');
 		#else
 		trace('Not sys. No mods');
 		#end
@@ -128,10 +127,14 @@ class ModFolderManager
 
 		for (Mod in ENABLED_MODS)
 		{
-			var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${Mod}/meta.json');
-			neat_list += '${dir_meta.name} v${dir_meta.version} (api version: ${dir_meta.api_version})\n';
+			neat_list += '${modInfo(FileManager.getJSON('${MODS_FOLDER}${Mod}/meta.json'))}\n';
 		}
 
 		return neat_list;
+	}
+
+	public static function modInfo(dir_meta:ModMetaData, ?version:Bool = true, ?api_version:Bool = true):String
+	{
+		return '${dir_meta.name}' + '${(version) ? ' v${dir_meta.version}' : ''}' + '${(api_version) ? ' (api version: ${dir_meta.api_version})' : ''}';
 	}
 }
