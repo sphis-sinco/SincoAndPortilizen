@@ -1,11 +1,11 @@
 {
-        "locked":"Locked",
+        "locked":"Bloqueado",
         
-        "dimensions-reached":"Dimensions Reached",
-        "faker-clash":"Faker Clash",
-        "huh-someone-cares":"Huh, someone cares",
-        "protector":"Protector",
-        "the-original-stands-on-top":"The original stands on top",
-        "true-protector":"True protector",
-        "welcome":"Welcome"
+        "dimensions-reached":"Dimensões Alcançadas",
+        "faker-clash":"Conflito com Falso",
+        "huh-someone-cares":"Hã, alguém liga",
+        "protector":"Protetor",
+        "the-original-stands-on-top":"O original permanece no topo",
+        "true-protector":"Verdadeiro protetor",
+        "welcome":"Bem-vindo"
 }
