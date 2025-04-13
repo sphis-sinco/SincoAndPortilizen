@@ -124,6 +124,10 @@ class FileManager
 
 		var readFolder:String->Void = function(folder)
 		{
+			#if EXCESS_TRACES
+			trace('reading ${folder}');
+			#end
+
 			TryCatch.tryCatch(function()
 			{
 				if (!folder.contains('.'))
@@ -142,6 +146,9 @@ class FileManager
 		}
 		var readDir:Array<String>->Void = function(directory)
 		{
+			#if EXCESS_TRACES
+			trace('reading ${directory}');
+			#end
 			for (folder in directory)
 			{
 				readFolder(folder);
@@ -150,22 +157,23 @@ class FileManager
 
 		for (folder in ModFolderManager.MODS)
 		{
-			#if EXCESS_TRACES
+			// #if EXCESS_TRACES
 			trace('Checking $folder for a scripts folder');
-			#end
+			// #end
 			final folder_read:Array<String> = readDirectory('${ModFolderManager.MODS_FOLDER}${folder}/');
 
 			if (folder_read.contains('scripts'))
 			{
-				#if EXCESS_TRACES
+				// #if !EXCESS_TRACES
 				trace('$folder has a scripts folder');
-				#end
+				// #end
 				scriptPaths.push('${ModFolderManager.MODS_FOLDER}${folder}/');
 			}
 		}
 
 		for (path in scriptPaths)
 		{
+			trace('reading scriptPath: $path');
 			readDir(FileSystem.readDirectory(path));
 		}
 
