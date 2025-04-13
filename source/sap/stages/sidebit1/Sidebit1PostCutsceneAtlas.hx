@@ -1,5 +1,6 @@
 package sap.stages.sidebit1;
 
+import sap.sidebitmenu.SidebitSelect;
 import sap.title.TitleState;
 
 class Sidebit1PostCutsceneAtlas extends AtlasCutscene
@@ -21,7 +22,7 @@ class Sidebit1PostCutsceneAtlas extends AtlasCutscene
 		switch (animation)
 		{
 			case 'part5':
-				FlxG.switchState(TitleState.new);
+				FlxG.switchState(SidebitSelect.new);
 		}
 	}
 }
