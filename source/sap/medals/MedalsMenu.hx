@@ -9,7 +9,7 @@ class MedalsMenu extends FlxSubState
 	public static var medalTexts:FlxTypedGroup<FlxText>;
 	public static var totalSpacing:Int = 0;
 
-        public static var MEDALS_JSON:Dynamic;
+	public static var MEDALS_JSON:Dynamic;
 
 	override function create():Void
 	{
@@ -20,7 +20,7 @@ class MedalsMenu extends FlxSubState
 		overlay.alpha = 0.5;
 		add(overlay);
 
-                MEDALS_JSON = FileManager.getJSON(FileManager.getDataFile('medals.json'));
+		MEDALS_JSON = FileManager.getJSON(FileManager.getDataFile('medals.json'));
 
 		medalTexts = new FlxTypedGroup<FlxText>();
 		add(medalTexts);
@@ -29,24 +29,24 @@ class MedalsMenu extends FlxSubState
 		var i:Int = 0;
 		for (medal in FileSystem.readDirectory('assets/images/medals/awards'))
 		{
-			if (medal == 'award.png')
-				return;
+			if (medal != 'award.png')
+			{
+				trace(medal.split('.')[0]);
 
-                        if (!Reflect.hasField(MEDALS_JSON, medal.split('.')[0]))
-                        {
-                                return;
-                        }
+				if (Reflect.hasField(MEDALS_JSON, medal.split('.')[0]))
+				{
+					var text:FlxText = new FlxText(0, cur_y, 0, Reflect.getProperty(MEDALS_JSON, medal.split('.')[0]), Std.int(32 * 0.5));
+					text.alignment = CENTER;
+					text.screenCenter(X);
+					text.ID = i;
+					i++;
 
-			var text:FlxText = new FlxText(0, cur_y, 0, Reflect.getProperty(MEDALS_JSON, medal.split('.')[0]), Std.int(32 * 0.5));
-			text.alignment = CENTER;
-			text.screenCenter(X);
-			text.ID = i;
-			i++;
+					medalTexts.add(text);
 
-			medalTexts.add(text);
-
-			cur_y += 50;
-			totalSpacing += 50;
+					cur_y += 50;
+					totalSpacing += 50;
+				}
+			}
 		}
 	}
 
