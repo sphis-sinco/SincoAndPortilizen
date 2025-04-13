@@ -127,7 +127,7 @@ class Iris {
 		}
 		var posPrefix = '$prefix${pos.fileName}';
 		if (pos.lineNumber != -1)
-			posPrefix = '[$prefix${pos.fileName}:${pos.lineNumber}]';
+			posPrefix = '$prefix${pos.fileName}:${pos.lineNumber}';
 
 		if (prefix != "" && prefix != null) {
 			posPrefix = posPrefix.fg(ErrorSeverityTools.getColor(level)).reset();
