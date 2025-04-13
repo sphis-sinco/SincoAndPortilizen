@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project xmlns="http://lime.openfl.org/project/1.0.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
+<project xmlns="http://lime.openfl.org/project/1.0.4"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
 
-	<!-- _________________________ Application Settings _________________________ -->
+        <!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Sinco and Portilizen" file="SAP" main="Main" version="0.4.0a" company="SAPTeam" />
-	<app preloader="flixel.system.FlxPreloader" />
-	<set name="SWF_VERSION" value="11.8" />
+        <app title="Sinco and Portilizen" file="SAP" main="Main" version="0.4.0a" company="SAPTeam" />
+        <app preloader="flixel.system.FlxPreloader" />
+        <set name="SWF_VERSION" value="11.8" />
 
-	<!-- ____________________________ Window Settings ___________________________ -->
+        <!-- ____________________________ Window Settings ___________________________ -->
 
-	<!--These window settings apply to all targets-->
-	<window width="640" height="608" fps="60" background="#000000" hardware="true" vsync="false" />
+        <!--These
+        window settings apply to all targets-->
+        <window width="640" height="608" fps="60" background="#000000" hardware="true" vsync="false" />
 
-	<window if="html5" resizable="true" />
-	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
+        <window if="html5" resizable="true" />
+        <window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
+        <window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
 
-	<!-- _____________________________ Path Settings ____________________________ -->
+        <!-- _____________________________ Path Settings ____________________________ -->
 
-	<set name="BUILD_DIR" value="export/debug" if="debug"/>
-	<set name="BUILD_DIR" value="export/release" unless="debug"/>
+        <set name="BUILD_DIR" value="export/debug" if="debug" />
+        <set name="BUILD_DIR" value="export/release" unless="debug" />
 
         <section unless="DEFAULT_DIRECTORY">
                 <set name="BUILD_DIR" value="${BUILD_DIR}/CNGLA_TRACES" if="CNGLA_TRACES" />
@@ -33,9 +35,9 @@
                 <set name="BUILD_DIR" value="${BUILD_DIR}/portuguese" if="PORTUGUESE_LANGUAGE" />
         </section>
 
-	<source path="source" />
-	<assets path="assets"/>
-	<assets path="cur_lang.txt"/>
+        <source path="source" />
+        <assets path="assets" />
+        <assets path="cur_lang.txt" />
 
         <!-- English (US) -->
         <language name="en-US" />
@@ -46,95 +48,103 @@
 
         <!-- _________________________________ Before _______________________________ -->
 
-	<set name="buildOrTest" if="${project.command == build} || ${project.command == test}" />
-	<echo value="Building for ${project.target} on a ${project.host} machine" if="buildOrTest" />
+        <set name="buildOrTest" if="${project.command == build} || ${project.command == test}" />
+        <echo value="Building for ${project.target} on a ${project.host} machine" if="buildOrTest" />
 
-	<echo value="${meta.title} v${meta.version}" unless="debug" />
-	<echo value="${meta.title} v${meta.version}-debug" if="debug" />
+        <echo value="${meta.title} v${meta.version}" unless="debug" />
+        <echo value="${meta.title} v${meta.version}-debug" if="debug" />
         <echo value="${BUILD_DIR}" />
 
-        <echo value="EXCESS_TRACES" if="EXCESS_TRACES"/>
+        <echo value="EXCESS_TRACES" if="EXCESS_TRACES" />
 
         <!-- _____________________________ Custom Defines ___________________________ -->
 
         <define name="openfl-enable-handle-error" /> <!-- Required for crash handler -->
         <define name="SCRIPT_FILES" /> <!-- Required for Iris  -->
 
-	<define name="DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS"/>
-	<define name="DISABLE_ANNOYING_WARNINGS" unless="ENABLE_ANNOYING_WARNINGS"/>
+        <define name="DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS" />
+        <define name="DISABLE_ANNOYING_WARNINGS" unless="ENABLE_ANNOYING_WARNINGS" />
 
-	<define name="DISABLE_PLUGINS" if="mobile"/>
+        <define name="DISABLE_PLUGINS" if="mobile" />
 
-	<section if="DISABLE_PLUGINS">
-			<echo value="plugins disabled via DISABLE_PLUGINS" unless="mobile"/>
-			<echo value="plugins disabled on mobile" if="mobile"/>
-	</section>
+        <section if="DISABLE_PLUGINS">
+                <echo value="plugins disabled via DISABLE_PLUGINS" unless="mobile" />
+                <echo value="plugins disabled on mobile" if="mobile" />
+        </section>
 
-	<define name="DISABLE_SCREENSHOTS" if="html5 || mobile || DISABLE_PLUGINS"/>
+        <define name="DISABLE_SCREENSHOTS" if="html5 || mobile || DISABLE_PLUGINS" />
 
-	<section if="DISABLE_SCREENSHOTS">
-			<echo value="screenshots disabled via DISABLE_SCREENSHOTS" unless="html5 || mobile || DISABLE_PLUGINS"/>
+        <section if="DISABLE_SCREENSHOTS">
+                <echo value="screenshots disabled via DISABLE_SCREENSHOTS"
+                        unless="html5 || mobile || DISABLE_PLUGINS" />
 
-			<echo value="screenshots disabled via DISABLE_PLUGINS" if="DISABLE_PLUGINS"/>
-			<echo value="screenshots disabled on html5" if="html5" unless="DISABLE_PLUGINS || mobile"/>
-			<echo value="screenshots disabled on mobile" if="mobile" unless="DISABLE_PLUGINS || html5"/>
-	</section>
+                <echo value="screenshots disabled via DISABLE_PLUGINS" if="DISABLE_PLUGINS" />
+                <echo value="screenshots disabled on html5" if="html5"
+                        unless="DISABLE_PLUGINS || mobile" />
+                <echo value="screenshots disabled on mobile" if="mobile"
+                        unless="DISABLE_PLUGINS || html5" />
+        </section>
 
-	<define name="DISCORDRPC" if="windows" unless="hl"/>
+        <define name="DISCORDRPC" if="windows" unless="hl" />
 
-	<section if="DISCORDRPC">
-			<echo value="discord rpc enabled via DISCORDRPC" unless="windows"/>
+        <section if="DISCORDRPC">
+                <echo value="discord rpc enabled via DISCORDRPC" unless="windows" />
 
-			<echo value="discord rpc enabled on windows" if="windows"/>
-	</section>
+                <echo value="discord rpc enabled on windows" if="windows" />
+        </section>
 
         <!-- _______________________________ Libraries ______________________________ -->
 
-	<haxelib name="flixel" />
-	<haxelib name="flixel-addons" />
-        
-	<haxelib name="flxgif"/>
-	<haxelib name="flxanimate"/>
+        <haxelib name="flixel" />
+        <haxelib name="flixel-addons" />
 
-	<haxelib name="sinlib" />
+        <haxelib name="flxgif" />
+        <haxelib name="flxanimate" />
 
-	<haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS"/>
+        <haxelib name="sinlib" />
 
-	<haxelib name="discord_rpc" if="DISCORDRPC"/>
+        <haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS" />
 
-	<haxelib name="hscript" if="debug" /> <!--Used only for flixel's debugger!-->
-	<haxelib name="hscript-iris" if="SCRIPT_FILES"/>
+        <haxelib name="discord_rpc" if="DISCORDRPC" />
+
+        <haxelib name="hscript" if="debug" /> <!--Used
+        only for flixel's debugger!-->
+        <haxelib name="hscript-iris" if="SCRIPT_FILES" />
 
         <!-- _________________________________ After _______________________________ -->
 
-	<error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile"/>
+        <error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile" />
 
-	<echo value="discord rpc disabled" unless="windows || DISCORDRPC"/>
-        
-	<assets path="mods" if="SCRIPT_FILES"/>
+        <echo value="discord rpc disabled" unless="windows || DISCORDRPC" />
+
+        <assets path="mods" if="SCRIPT_FILES" />
+        <section if="SCRIPT_FILES">
+                <assets path="debug_mods" rename="mods" if="debug" />
+        </section>
 
         <!-- ______________________________ Haxedefines _____________________________ -->
 
-	<haxedef name="FLX_NO_HEALTH" />
+        <haxedef name="FLX_NO_HEALTH" />
 
-	<haxedef name="FLX_NO_MOUSE" if="mobile" />
-	<haxedef name="FLX_NO_KEYBOARD" if="mobile" />
-	<haxedef name="FLX_NO_TOUCH" if="desktop" />
+        <haxedef name="FLX_NO_MOUSE" if="mobile" />
+        <haxedef name="FLX_NO_KEYBOARD" if="mobile" />
+        <haxedef name="FLX_NO_TOUCH" if="desktop" />
 
-	<haxedef name="FLX_NO_DEBUG" unless="debug" />
+        <haxedef name="FLX_NO_DEBUG" unless="debug" />
 
-	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+        <haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
-	<haxedef name="message.reporting" value="pretty" />
+        <haxedef name="message.reporting" value="pretty" />
 
         <!-- _________________________________ Icons _______________________________ -->
 
-        <!--Place custom nodes like icons here-->
-	<icon path=".dev/AppIcon-16.png" size="16"/>
-	<icon path=".dev/AppIcon-32.png" size="32"/>
-	<icon path=".dev/AppIcon-64.png" size="64"/>
-	<icon path=".dev/AppIcon-128.png" size="128"/>
-	<icon path=".dev/AppIcon-256.png" size="256"/>
-	<icon path=".dev/AppIcon-512.png" size="512"/>
+        <!--Place
+        custom nodes like icons here-->
+        <icon path=".dev/AppIcon-16.png" size="16" />
+        <icon path=".dev/AppIcon-32.png" size="32" />
+        <icon path=".dev/AppIcon-64.png" size="64" />
+        <icon path=".dev/AppIcon-128.png" size="128" />
+        <icon path=".dev/AppIcon-256.png" size="256" />
+        <icon path=".dev/AppIcon-512.png" size="512" />
 
 </project>
