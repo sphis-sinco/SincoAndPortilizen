@@ -53,29 +53,26 @@ class FileManager
 		final suffix:String = (asset_suffix.length > 0) ? '-${LOCALIZED_ASSET_SUFFIX}' : '';
 		var localizedreturnpath:String = '${ogreturnpath.split('.')[0]}${suffix}.${ogreturnpath.split('.')[1]}';
 
-		if (localizedreturnpath == returnpath)
+		if (localizedreturnpath != returnpath)
 		{
-			return returnpath;
-		}
-
-		if (exists(localizedreturnpath))
-		{
-			return localizedreturnpath;
-		}
-		else
-		{
-			if (UNLOCALIZED_ASSETS.contains(localizedreturnpath))
+			if (exists(localizedreturnpath))
 			{
-				return returnpath;
+				returnpath = localizedreturnpath;
 			}
-
-			#if CNGLA_TRACES trace('Could not get localized asset: $localizedreturnpath'); #end
-			UNLOCALIZED_ASSETS.push(localizedreturnpath);
+			else
+			{
+				if (!UNLOCALIZED_ASSETS.contains(localizedreturnpath))
+				{
+					#if CNGLA_TRACES trace('Could not get localized asset: $localizedreturnpath'); #end
+					UNLOCALIZED_ASSETS.push(localizedreturnpath);
+				}
+			}
 		}
 		#end
 
 		if (exists(returnpath))
 		{
+			#if EXCESS_TRACES trace('Existing asset return path: ${returnpath}'); #end
 			return returnpath;
 		}
 
@@ -116,6 +113,20 @@ class FileManager
 
 		return getAssetFile(finalPath, PATH_TYPE);
 	}
+
+	#if sys
+	public static function getScriptArray():Array<String>
+	{
+		var arr:Array<String> = [];
+		for (folder in ["scripts"])
+		{
+			for (file in readDirectory(folder, [".hx", ".hxc"]))
+				arr.push('$folder/$file');
+		}
+		// trace(arr);
+		return arr;
+	}
+	#end
 	#else
 
 	/**
@@ -129,6 +140,14 @@ class FileManager
 	public static function getScriptFile(?file:String = "", ?PATH_TYPE:PathTypes = DEFAULT):String
 	{
 		return "";
+	}
+
+	/**
+	 * Dummy function for if not `SCRIPT_FILES`
+	 */
+	public static function getScriptArray():Array<String>
+	{
+		return [];
 	}
 	#end
 
@@ -218,10 +237,30 @@ class FileManager
 	 * Reads a directory if `sys` via `FileSystem.readDirectory`
 	 * @param dir This is the directory being read
 	 */
-	public static function readDirectory(dir:String):Array<String>
+	public static function readDirectory(dir:String, ?typeArr:Array<String>):Array<String>
 	{
+		var finalList:Array<String> = [];
+		var rawList:Array<String> = [];
+
 		#if sys
-		return FileSystem.readDirectory(dir);
+		rawList = FileSystem.readDirectory(dir);
+		for (i in 0...rawList.length)
+		{
+			if (typeArr?.length > 0)
+			{
+				for (type in typeArr)
+				{
+					if (rawList[i].endsWith(type))
+					{
+						finalList.push(rawList[i]);
+					}
+				}
+			}
+			else
+				finalList.push(rawList[i]);
+		}
+
+		return finalList;
 		#end
 
 		return null;

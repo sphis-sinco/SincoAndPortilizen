@@ -51,6 +51,7 @@ class PanelCutscene extends State
 		add(PANEL_SPRITE);
 
 		Global.playSoundEffect('paper-rustle', CUTSCENES);
+                panelEvents(CUR_PANEL);
 
 		super.create();
 	}

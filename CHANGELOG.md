@@ -2,6 +2,7 @@
 ## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
 ### Added
 <!-- These are moved up because they are epicer-->
+- VOICE-ACTED CUTSCENES
 - SIDEBIT 1
 - POST-LEVEL4 CUTSCENE
 - 7 UNLOCKABLE MEDALS
@@ -27,6 +28,7 @@
 ### Removed
 - Removed several unused assets
 ### Fixed
+- Panel 1 of comic cutscenes not calling `panelEvents`
 - Stage 2 tempo city health not initalizing is fixed
 - Stage 2 rocks not spawning more rocks after playing a failed playthrough is fixed
 - The crash when trying to check if uninitalize stages medals are unlocked is fixed
@@ -54,7 +56,7 @@
 ### Fixed
 - Fixed bug in stage 2 where sinco would float on air
 - Fixed bug in stage 2 where you could get 200% thanks to negative values
-- Fixed bug in stage 2 where you hit the first rock and it wouldnt spawn extra rocks(?)
+- Fixed bug in stage 2 where you hit the first rock and it wouldnt spawn extra rocks(?) <!-- nope -->
 ### Changed
 - Stage 1 UI is now updated and overhauled to be a health bar with text below it
 ### Added

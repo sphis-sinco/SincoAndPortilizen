@@ -8,7 +8,7 @@ class IntroCutscene extends PanelCutscene
 	{
 		super('intro');
 
-                soundFX = new FlxSound();
+		soundFX = new FlxSound();
 	}
 
 	override function finishedCutscene():Void
@@ -18,7 +18,7 @@ class IntroCutscene extends PanelCutscene
 		FlxG.switchState(() -> new Worldmap());
 	}
 
-        public var soundFX:FlxSound;
+	public var soundFX:FlxSound;
 
 	override function panelEvents(panel:Int):Void
 	{
@@ -26,14 +26,12 @@ class IntroCutscene extends PanelCutscene
 
 		switch (panel)
 		{
-                        case 2:
-                                soundFX.loadEmbedded(FileManager.getSoundFile('sounds/intro/tirok', CUTSCENES));
-                                soundFX.play();
-
-			// gonna put voiceover stuff here
-			case 1, 3, 4, 5:
-                                soundFX.loadEmbedded(FileManager.getSoundFile('sounds/intro/line-${panel}', CUTSCENES));
-                                soundFX.play();
+			case 2:
+				soundFX.loadEmbedded(FileManager.getSoundFile('sounds/intro/tirok', CUTSCENES));
+			default:
+				soundFX.loadEmbedded(FileManager.getSoundFile('sounds/intro/line-${panel}', CUTSCENES));
 		}
+
+		soundFX.play();
 	}
 }
