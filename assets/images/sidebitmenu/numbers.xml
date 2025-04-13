@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="numbers.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="number0000" x="4" y="4" width="106" height="171" frameX="0" frameY="0" frameWidth="130" frameHeight="171"/>
+	<SubTexture name="number0001" x="118" y="4" width="118" height="171" frameX="-12" frameY="0" frameWidth="130" frameHeight="171"/>
+	<SubTexture name="number0002" x="244" y="4" width="118" height="171" frameX="-12" frameY="0" frameWidth="130" frameHeight="171"/>
+	<SubTexture name="number0003" x="370" y="4" width="118" height="171" frameX="-12" frameY="0" frameWidth="130" frameHeight="171"/>
+	<SubTexture name="number0004" x="496" y="4" width="118" height="171" frameX="-12" frameY="0" frameWidth="130" frameHeight="171"/>
+	<SubTexture name="number0005" x="622" y="4" width="118" height="171" frameX="-12" frameY="0" frameWidth="130" frameHeight="171"/>
+	<SubTexture name="number0006" x="748" y="4" width="118" height="171" frameX="-12" frameY="0" frameWidth="130" frameHeight="171"/>
+	<SubTexture name="number0007" x="874" y="4" width="118" height="171" frameX="-12" frameY="0" frameWidth="130" frameHeight="171"/>
+	<SubTexture name="number0008" x="4" y="183" width="118" height="171" frameX="-12" frameY="0" frameWidth="130" frameHeight="171"/>
+	<SubTexture name="number0009" x="130" y="183" width="118" height="171" frameX="-12" frameY="0" frameWidth="130" frameHeight="171"/>
+</TextureAtlas>
