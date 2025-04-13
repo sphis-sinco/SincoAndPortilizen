@@ -88,7 +88,7 @@ class LocalizationManager
 			return [
 				"hp" => "HP",
 				"dodge" => "DESVIE",
-				"tempo-city" => "tempo city",
+				"tempo-city" => "Cidade do Tempo",
 				"rank-perfect" => "perfeito",
 				"rank-excellent" => "excelente",
 				"rank-great" => "ótimo",
