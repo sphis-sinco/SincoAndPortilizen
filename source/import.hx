@@ -34,6 +34,8 @@ import sap.*;
 import sap.cutscenes.*;
 import sap.localization.LocalizationManager;
 import sap.medals.*;
+import sap.modding.hscript.ScriptManager;
+import sap.modding.source.ModListManager;
 import sap.plugins.*;
 import sap.results.ResultsMenu;
 import sap.savedata.*;

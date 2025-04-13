@@ -5,7 +5,6 @@ import flixel.util.typeLimit.NextState;
 import openfl.utils.AssetCache;
 import sap.credits.CreditsSubState;
 import sap.mainmenu.MainMenu;
-import sap.modding.source.ModListManager;
 import sap.modding.source.mods.MassMod;
 import sap.results.ResultsMenu;
 import sap.stages.PaulPortGameOver;
@@ -31,12 +30,13 @@ class InitState extends FlxState
 
 			#if DISCORDRPC
 			if (FlxG.save.data.settings.discord_rpc)
-                        {
-                                Discord.DiscordClient.initialize();
-                        }
-                        else {
-                                Discord.DiscordClient.shutdown();
-                        }
+			{
+				Discord.DiscordClient.initialize();
+			}
+			else
+			{
+				Discord.DiscordClient.shutdown();
+			}
 			#end
 
 			// Make errors and warnings less annoying.
@@ -201,7 +201,9 @@ class InitState extends FlxState
 	{
 		Timer.measure(function()
 		{
-                        trace('mods init');
+			trace('mods init');
+
+			trace('Source code mods');
 			#if MASS_MOD
 			trace('MassMod added');
 			ModListManager.addMod(new MassMod());
@@ -211,6 +213,11 @@ class InitState extends FlxState
 			#if MASS_MOD
 			MassMod.instance.toggleEnabled();
 			#end
+
+			trace('Hscript mods');
+			ScriptManager.loadScripts();
+
+                        ScriptManager.callScript('initalizeMod');
 		});
 	}
 
@@ -235,6 +242,8 @@ class InitState extends FlxState
 			{
 				LocalizationManager.LANGUAGE = FileManager.readFile(FileManager.getPath('', 'cur_lang.txt'));
 			}
+
+                        ScriptManager.callScript('initalizeLanguage');
 
 			#if SPANISH_LANGUAGE
 			trace('Spanish language is being forced.');

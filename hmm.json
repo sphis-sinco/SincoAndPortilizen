@@ -1,5 +1,4 @@
 {
-        
   "dependencies": [
     {
       "name": "discord_rpc",
@@ -27,6 +26,21 @@
     },
     {
       "name": "flxgif",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "hscript",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "hscript-iris",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "hscriptPos",
       "type": "haxelib",
       "version": null
     },

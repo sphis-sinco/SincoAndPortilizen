@@ -2,6 +2,7 @@
 ## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
 ### Added
 <!-- These are moved up because they are epicer-->
+- HScripting via hscript-iris!
 - VOICE-ACTED CUTSCENES
 - SIDEBIT 1
 - POST-LEVEL4 CUTSCENE
@@ -35,6 +36,7 @@
 - The "Huh, someone cares" medal icon now loads properly
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 ### Changed
+- When crashing the game with Ctrl+Alt+Shift+L it now says CASLCrash
 - The Stage 1 Info text below the health bar is now screenCentered on the X axis
 - (Desktop only) Discord RPC now says the level difficulty
 - (source) Start state flags related to difficulty run with `SIDEBIT_` build flags

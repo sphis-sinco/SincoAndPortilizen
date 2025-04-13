@@ -105,7 +105,7 @@ class FileManager
 	 */
 	public static function getScriptFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
 	{
-		var finalPath:Dynamic = 'scripts/$file.$SCRIPT_EXT';
+		var finalPath:Dynamic = 'scripts/$file'; // .$SCRIPT_EXT';
 
 		#if SCRIPT_FILES_IN_DATA_FOLDER
 		return getDataFile(finalPath, PATH_TYPE);
@@ -118,13 +118,32 @@ class FileManager
 	public static function getScriptArray():Array<String>
 	{
 		var arr:Array<String> = [];
-		for (folder in ["scripts"])
+		for (folder in FileSystem.readDirectory('assets/scripts/'))
 		{
-			for (file in readDirectory(folder, [".hx", ".hxc"]))
-				arr.push('$folder/$file');
+			TryCatch.tryCatch(function()
+			{
+				if (FileSystem.isDirectory(folder))
+				{
+                                        for (file in readDirectory(folder, ['.hx', '.hxc']))
+                                                arr.push('$folder/$file');
+                                }
+                                else
+                                {
+                                        if (folder.endsWith('.hxc') || folder.endsWith('.hx'))
+                                                arr.push('$folder');
+                                }
+			}, {
+                                traceErr: true
+                        });
 		}
-		// trace(arr);
+		trace(arr);
 		return arr;
+	}
+	#else
+	public static function getScriptArray():Array<String>
+	{
+                trace('Not Sys!');
+		return [];
 	}
 	#end
 	#else
@@ -137,9 +156,9 @@ class FileManager
 	/**
 	 * Dummy function for if not `SCRIPT_FILES`
 	 */
-	public static function getScriptFile(?file:String = "", ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getScriptFile(?file:String = '', ?PATH_TYPE:PathTypes = DEFAULT):String
 	{
-		return "";
+		return '';
 	}
 
 	/**
@@ -282,6 +301,6 @@ class FileManager
  */
 enum abstract PathTypes(String) from String to String
 {
-	public var DEFAULT:String = "";
-	public var CUTSCENES:String = "cutscenes/";
+	public var DEFAULT:String = '';
+	public var CUTSCENES:String = 'cutscenes/';
 }
