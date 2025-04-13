@@ -3,6 +3,7 @@
 ### Added
 - MOD MENU <!-- Moved up because it's the main addition -->
 - PROPER SAVING
+- `DO_NOT_RECOMPILE_ON_MOD_UPDATE` build flag
 - `modInfo` function to help get mod info in a similar format
 - `getEnabledMods` function in the SaveManager
 - The missing `getMedals` function in the SaveManager is here
@@ -13,6 +14,7 @@
 ### Removed
 - Source code mods
 ### Changed
+- The `RECOMPILE_ON_MOD_UPDATE` build flag is enabled by default
 - This `CHANGELOG.md` file is now included in compiled builds
 - CrashHandler now includes enabled mods
 - (Desktop only) the menu text box is longer vertically to fit the mods menu option
