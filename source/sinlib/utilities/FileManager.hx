@@ -1,5 +1,7 @@
 package sinlib.utilities;
 
+import sap.modding.hscript.ModFolderManager;
+
 class FileManager
 {
 	public static var SOUND_EXT:String = 'wav';
@@ -118,6 +120,16 @@ class FileManager
 	public static function getScriptArray():Array<String>
 	{
 		var arr:Array<String> = [];
+                var scriptPaths:Array<String> = ['assets/scripts/'];
+
+                for (folder in ModFolderManager.MODS)
+                {
+                        final newpath:String = '${ModFolderManager.MODS_FOLDER}$folder/scripts';
+
+                        if (exists(newpath))
+                                scriptPaths.push(newpath);
+                }
+
 		var readFolder:String->Void = function(folder)
 		{
 			TryCatch.tryCatch(function()
@@ -143,8 +155,11 @@ class FileManager
                                 }
                 }
 
-		readDir(FileSystem.readDirectory('assets/scripts/'));
-                
+		for (path in scriptPaths)
+		{
+                        readDir(FileSystem.readDirectory(path));
+                }
+
 		trace(arr);
 		return arr;
 	}
