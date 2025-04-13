@@ -125,7 +125,7 @@ class Iris {
 		if (prefix != "" && prefix != null) {
 			prefix = '$prefix:';
 		}
-		var posPrefix = '[$prefix${pos.fileName}]';
+		var posPrefix = '$prefix${pos.fileName}';
 		if (pos.lineNumber != -1)
 			posPrefix = '[$prefix${pos.fileName}:${pos.lineNumber}]';
 
