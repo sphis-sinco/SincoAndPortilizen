@@ -126,7 +126,7 @@ class FileManager
 		{
 			TryCatch.tryCatch(function()
 			{
-				if (FileSystem.isDirectory(folder))
+				if (!folder.contains('.'))
 				{
 					for (file in readDirectory(folder, ['.hx', '.hxc']))
 						arr.push('$folder/$file');
