@@ -13,7 +13,7 @@ class MainMenu extends State
 	public static var menuselectbox:FlxSprite;
 
 	public static var menuboxtexts:FlxTypedGroup<FlxText>;
-	public static var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'credits', 'settings', 'leave'], 'play' => ['new', 'continue', 'back']];
+	public static var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'credits', 'settings', 'medals', 'leave'], 'play' => ['new', 'continue', 'back']];
 
 	public var menutextsSelection:String = 'menu';
 
@@ -183,6 +183,7 @@ class MainMenu extends State
 
 	public static var CREDITS_SELECTION:Int = 1;
 	public static var SETTINGS_SELECTION:Int = 2;
+	public static var MEDALS_SELECTION:Int = 3;
 
 	public function selectionCheck():Void
 	{
@@ -199,6 +200,12 @@ class MainMenu extends State
                                 inSubstate = true;
                                 openSubState(new SettingsMenu());
                         }
+
+			if (PUBLIC_CUR_SELECTION == MEDALS_SELECTION)
+                        {
+                                inSubstate = true;
+                                openSubState(new MedalsMenu());
+                        }
         
 			menuSelection();
 		}
@@ -210,7 +217,7 @@ class MainMenu extends State
 		{
 			case 0:
 				FlxG.switchState(PlayMenu.new);
-			case 3:
+			case 4:
 				FlxG.switchState(TitleState.new);
 		}
 	}

@@ -3,11 +3,7 @@ package sap.localization;
 class LocalizationManager
 {
 	public static var LANGUAGE:String = 'english';
-	public static var LANGUAGE_SWAP_LIST:Map<String, String> = [
-                'english' => 'spanish',
-                'spanish' => 'portuguese',
-                'portuguese' => 'english'
-        ];
+	public static var LANGUAGE_SWAP_LIST:Map<String, String> = ['english' => 'spanish', 'spanish' => 'portuguese', 'portuguese' => 'english'];
 	public static var ASSET_SUFFIX:String = '';
 
 	public static var TEXT_CONTENT:Map<String, String> = [];
@@ -27,6 +23,7 @@ class LocalizationManager
 		"menu-credits" => "credits",
 		"menu-leave" => "leave",
 		"menu-settings" => "settings",
+		"menu-medals" => "medals",
 		"play-new" => "new",
 		"play-continue" => "continue",
 		"play-back" => "back",
@@ -52,7 +49,7 @@ class LocalizationManager
 			trace('Succeeded to change to language: "$LANGUAGE"');
 		}
 
-                FileManager.LOCALIZED_ASSET_SUFFIX = ASSET_SUFFIX;
+		FileManager.LOCALIZED_ASSET_SUFFIX = ASSET_SUFFIX;
 	}
 
 	public static dynamic function returnLanguageTEXT_CONTENT():Map<String, String>
@@ -63,7 +60,7 @@ class LocalizationManager
 			return [
 				"hp" => "SALUD",
 				"dodge" => "ESQUIVAR",
-                                "tempo-city" => "ciudad de ritmo",
+				"tempo-city" => "ciudad de ritmo",
 				"rank-perfect" => "perfecto",
 				"rank-excellent" => "excelente",
 				"rank-great" => "un gran trabajo",
@@ -74,13 +71,14 @@ class LocalizationManager
 				"menu-play" => "jugar",
 				"menu-credits" => "créditos",
 				"menu-leave" => "dejar",
-                                "menu-settings" => "ajustes",
+				"menu-settings" => "ajustes",
+				"menu-medals" => "medalhas",
 				"play-new" => "nuevo",
 				"play-continue" => "continuar",
 				"play-back" => "atrás",
-                                "settings-language" => "idioma",
-                                "settings-volume" => "volumen",
-                                "settings-window-resolution" => "resolución de ventana"
+				"settings-language" => "idioma",
+				"settings-volume" => "volumen",
+				"settings-window-resolution" => "resolución de ventana"
 			];
 		}
 
@@ -90,7 +88,7 @@ class LocalizationManager
 			return [
 				"hp" => "HP",
 				"dodge" => "DESVIE",
-                                "tempo-city" => "tempo city",
+				"tempo-city" => "tempo city",
 				"rank-perfect" => "perfeito",
 				"rank-excellent" => "excelente",
 				"rank-great" => "ótimo",
@@ -101,13 +99,14 @@ class LocalizationManager
 				"menu-play" => "jogar",
 				"menu-credits" => "créditos",
 				"menu-leave" => "sair",
-                                "menu-settings" => "configurações",
+				"menu-settings" => "configurações",
+				"menu-medals" => "medals",
 				"play-new" => "novo",
 				"play-continue" => "continuar",
 				"play-back" => "voltar",
-                                "settings-language" => "linguagem",
-                                "settings-volume" => "volume",
-                                "settings-window-resolution" => "resolução da janela"
+				"settings-language" => "linguagem",
+				"settings-volume" => "volume",
+				"settings-window-resolution" => "resolução da janela"
 			];
 		}
 
@@ -115,9 +114,9 @@ class LocalizationManager
 		return default_text_content;
 	}
 
-        public static dynamic function swapLanguage():Void
-        {
-                LANGUAGE = LANGUAGE_SWAP_LIST.get(LANGUAGE);
-                changeLanguage();
-        }
+	public static dynamic function swapLanguage():Void
+	{
+		LANGUAGE = LANGUAGE_SWAP_LIST.get(LANGUAGE);
+		changeLanguage();
+	}
 }
