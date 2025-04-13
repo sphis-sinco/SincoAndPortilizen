@@ -44,6 +44,7 @@
 - The "Huh, someone cares" medal icon now loads properly
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 ### Changed
+- (Desktop only) the menu text box is longer vertically to fit the medals menu option
 - The version text on the title screen has the modding api version
 - The version text on the title screen is smaller
 - When crashing the game with Ctrl+Alt+Shift+L it now says CASLCrash

@@ -18,14 +18,17 @@ class MedalsMenu extends FlxSubState
 		overlay.alpha = 0.5;
 		add(overlay);
 
-                medalTexts = new FlxTypedGroup<FlxText>();
-                add(medalTexts);
+		medalTexts = new FlxTypedGroup<FlxText>();
+		add(medalTexts);
 
 		var cur_y:Float = 10;
 		var i:Int = 0;
 		for (medal in FileSystem.readDirectory('assets/images/medals/awards'))
 		{
-			var text:FlxText = new FlxText(0, cur_y, 0, medal, Std.int(32 * 0.5));
+			if (medal == 'award.png')
+				return;
+
+			var text:FlxText = new FlxText(0, cur_y, 0, medal.split('.')[0], Std.int(32 * 0.5));
 			text.alignment = CENTER;
 			text.screenCenter(X);
 			text.ID = i;
