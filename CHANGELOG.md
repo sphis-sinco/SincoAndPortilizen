@@ -1,6 +1,9 @@
 # Alpha
 ## 0.4.2a - 4/13/2025
+### Fixed
+- Tutorial assets are visible in Sidebit 1 now
 ### Changed
+- Sidebit 1 tutorial assets are more visible on the white background
 - Medals no longer unlock on web (the icon doesnt appear)
 
 ## 0.4.1a - 4/13/2025

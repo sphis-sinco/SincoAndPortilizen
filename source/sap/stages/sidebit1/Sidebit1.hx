@@ -60,6 +60,8 @@ class Sidebit1 extends State
 	public static var PORTILIZEN_DODGE_CHANCE_UNFOCUSED:Float = 35;
 	public static var PORTILIZEN_DODGE_CHANCE_FOCUS:Float = 70;
 
+        public static var TUTORIAL_SHADER:AdjustColorShader;
+
 	override function create()
 	{
 		super.create();
@@ -262,11 +264,9 @@ class Sidebit1 extends State
 
 		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
 		add(INFO_TEXTFIELD);
-	}
 
-	override function postCreate()
-	{
-		super.postCreate();
+                TUTORIAL_SHADER = new AdjustColorShader();
+                TUTORIAL_SHADER.brightness = -50;
 
 		var tutorial1:FlxSprite = new FlxSprite();
 		tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/non-pixel/Space-Dodge'));
@@ -279,6 +279,9 @@ class Sidebit1 extends State
 		tutorial2.screenCenter();
 		tutorial2.y += tutorial2.height;
 		add(tutorial2);
+
+                tutorial1.shader = TUTORIAL_SHADER;
+                tutorial2.shader = TUTORIAL_SHADER;
 
 		FlxTimer.wait(3, () ->
 		{
