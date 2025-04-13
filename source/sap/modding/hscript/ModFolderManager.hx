@@ -10,8 +10,8 @@ class ModFolderManager
 
 	public static function makeSupportedModdingApiVersions():Void
 	{
-		SUPPORTED_MODDING_API_VERSIONS.push('0.1.5');
-		SUPPORTED_MODDING_API_VERSIONS.push('0.2.0');
+		SUPPORTED_MODDING_API_VERSIONS.push('0.0.5');
+		SUPPORTED_MODDING_API_VERSIONS.push('0.1.0');
 	}
 
 	public static function readModFolder():Void
@@ -55,7 +55,7 @@ class ModFolderManager
 		for (mod in MODS)
 		{
 			var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${mod}/meta.json');
-			trace('* ${dir_meta.name} (v${dir_meta.version})');
+			trace('* ${dir_meta.name} v${dir_meta.version} (api version: ${dir_meta.api_version})');
 		}
 		#else
 		trace('Not sys. No mods');
