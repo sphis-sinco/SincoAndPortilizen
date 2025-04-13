@@ -2,10 +2,10 @@ import funkin.graphics.shaders.AdjustColorShader;
 
 function initalizeMod()
 {
-	TitleState.get_VERSION_TEXT = function():String
+	/*TitleState.get_VERSION_TEXT = function():String
 	{
 		return 'Sinco\'s cool mod v1';
-	}
+	}*/
 
 	coolShader = new AdjustColorShader();
 	coolShader.hue = 255;

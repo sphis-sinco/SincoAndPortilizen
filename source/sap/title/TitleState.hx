@@ -31,11 +31,6 @@ class TitleState extends State
 
 	public static var VERSION_TEXT:FlxText;
 
-	public static dynamic function get_VERSION_TEXT():String
-	{
-		return 'SAP v${Global.VERSION}\nModding API v${ModFolderManager.SUPPORTED_MODDING_API_VERSIONS[ModFolderManager.SUPPORTED_MODDING_API_VERSIONS.length - 1]}';
-	}
-
 	public static var SIDEBIT_MENU_BUTTON:SparrowSprite;
 
 	public static var CHARACTER_RING_CHARS_SHADER:AdjustColorShader;
@@ -89,7 +84,7 @@ class TitleState extends State
 
 		VERSION_TEXT.size = 12;
 		VERSION_TEXT.setPosition(5, 5);
-		VERSION_TEXT.text = get_VERSION_TEXT();
+		VERSION_TEXT.text = 'SAP v${Global.VERSION}'+'\nModding API v${ModFolderManager.SUPPORTED_MODDING_API_VERSIONS[ModFolderManager.SUPPORTED_MODDING_API_VERSIONS.length - 1]}';
 		VERSION_TEXT.color = FlxColor.BLACK;
 		VERSION_TEXT.visible = false;
 		add(VERSION_TEXT);
