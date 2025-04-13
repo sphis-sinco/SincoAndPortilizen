@@ -6,7 +6,13 @@ class ModFolderManager
 
 	public static var MODS_FOLDER:String = 'mods/';
 
-	public static final MODDING_API_VERSION_RULE:String = ">=0.1.0 <0.2.0";
+	public static final SUPPORTED_MODDING_API_VERSIONS:Array<String> = [];
+
+        public static function makeSupportedModdingApiVersions():Void
+        {
+                SUPPORTED_MODDING_API_VERSIONS.push('0.1.5');
+                SUPPORTED_MODDING_API_VERSIONS.push('0.2.0');
+        }
 
 	public static function readModFolder():Void
 	{
@@ -33,21 +39,23 @@ class ModFolderManager
 				if (dir.contains('meta.json'))
 				{
 					var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${folder}/meta.json');
-					if (!polymod.util.VersionUtil.match(dir_meta.api_version, MODDING_API_VERSION_RULE))
+					if (!SUPPORTED_MODDING_API_VERSIONS.contains(dir_meta.api_version))
 					{
-						trace('Mod "${dir_meta.name}" was built for incompatible API version ${dir_meta.api_version.toString()}, expected "${MODDING_API_VERSION_RULE.toString()}"');
-                                                break;
+						trace('Mod "${dir_meta.name}" was built for incompatible API version (${dir_meta.api_version.toString()}), "${SUPPORTED_MODDING_API_VERSIONS[0]}" expected at minimum');
+						break;
 					}
 
-					#if EXCESS_TRACES
-					trace('$folder is a valid mod');
-					#end
 					MODS.push(folder);
 				}
 			}
 		}
 
-		trace('All mods: ${MODS}');
+		trace('Loaded ${MODS.length} mods');
+		for (mod in MODS)
+		{
+			var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${mod}/meta.json');
+			trace('* ${dir_meta.name} (v${dir_meta.version})');
+		}
 		#else
 		trace('Not sys. No mods');
 		#end

@@ -46,11 +46,5 @@
                 "size": 0.5,
                 "color": [255, 255, 255],
                 "spacing": 25
-        },
-        {
-                "text": "Polymod - Modding API version shit",
-                "size": 0.5,
-                "color": [255, 255, 255],
-                "spacing": 25
         }
 ]

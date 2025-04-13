@@ -200,6 +200,7 @@ class InitState extends FlxState
 			#end
 
 			trace('Hscript mods');
+                        ModFolderManager.makeSupportedModdingApiVersions();
                         ModFolderManager.readModFolder();
                         
 			ScriptManager.loadScripts();
