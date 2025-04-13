@@ -9,6 +9,8 @@ class MedalsMenu extends FlxSubState
 	public static var medalTexts:FlxTypedGroup<FlxText>;
 	public static var totalSpacing:Int = 0;
 
+        public static var MEDALS_JSON:Dynamic;
+
 	override function create():Void
 	{
 		super.create();
@@ -17,6 +19,8 @@ class MedalsMenu extends FlxSubState
 		overlay.color = 0x000000;
 		overlay.alpha = 0.5;
 		add(overlay);
+
+                MEDALS_JSON = FileManager.getJSON(FileManager.getDataFile('medals.json'));
 
 		medalTexts = new FlxTypedGroup<FlxText>();
 		add(medalTexts);
@@ -28,7 +32,12 @@ class MedalsMenu extends FlxSubState
 			if (medal == 'award.png')
 				return;
 
-			var text:FlxText = new FlxText(0, cur_y, 0, medal.split('.')[0], Std.int(32 * 0.5));
+                        if (!Reflect.hasField(MEDALS_JSON, medal.split('.')[0]))
+                        {
+                                return;
+                        }
+
+			var text:FlxText = new FlxText(0, cur_y, 0, Reflect.getProperty(MEDALS_JSON, medal.split('.')[0]), Std.int(32 * 0.5));
 			text.alignment = CENTER;
 			text.screenCenter(X);
 			text.ID = i;
