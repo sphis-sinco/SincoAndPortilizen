@@ -133,12 +133,12 @@ class FileManager
 				if (!folder.contains('.'))
 				{
 					for (file in readDirectory(folder, ['.hx', '.hxc']))
-						arr.push('$ogdir/$folder/$file');
+						arr.push('${ogdir}$folder/$file');
 				}
 				else
 				{
 					if (folder.endsWith('.hxc') || folder.endsWith('.hx'))
-						arr.push('$ogdir/$folder');
+						arr.push('${ogdir}$folder');
 				}
 			}, {
 					traceErr: true
