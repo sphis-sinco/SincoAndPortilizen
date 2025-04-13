@@ -15,6 +15,7 @@ class LocalizationManager
 	public static var default_text_content:Map<String, String> = [
 		"hp" => "HP",
 		"dodge" => "DODGE",
+		"tempo city" => "Tempo city",
 		"rank-perfect" => "perfect",
 		"rank-excellent" => "excellent",
 		"rank-great" => "great",
@@ -62,6 +63,7 @@ class LocalizationManager
 			return [
 				"hp" => "SALUD",
 				"dodge" => "ESQUIVAR",
+                                "tempo city" => "ciudad de ritmo",
 				"rank-perfect" => "perfecto",
 				"rank-excellent" => "excelente",
 				"rank-great" => "un gran trabajo",
@@ -88,6 +90,7 @@ class LocalizationManager
 			return [
 				"hp" => "HP",
 				"dodge" => "DESVIE",
+                                "tempo city" => "tempo city",
 				"rank-perfect" => "perfeito",
 				"rank-excellent" => "excelente",
 				"rank-great" => "ótimo",

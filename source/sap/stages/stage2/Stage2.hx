@@ -53,6 +53,10 @@ class Stage2 extends State
 		});
 	}
 
+	public static var PROGRESS_BAR:FlxBar;
+	public static var INFO_TEXTFIELD:FlxText;
+	public static var INFO_TEXT:String;
+
 	override function create():Void
 	{
 		super.create();
@@ -103,6 +107,17 @@ class Stage2 extends State
 		decrease = 0;
 
                 TEMPO_CITY_HEALTH = diffJson.tempo_city_max_health;
+
+                var dummyRock:Stage2Rock = new Stage2Rock();
+
+                PROGRESS_BAR = new FlxBar(0, 0, RIGHT_TO_LEFT, Std.int(FlxG.width / 2), 16, this, 'health', 0, 100, true);
+		add(PROGRESS_BAR);
+		PROGRESS_BAR.screenCenter(X);
+		PROGRESS_BAR.y = FlxG.height - PROGRESS_BAR.height - 64;
+		PROGRESS_BAR.createFilledBar(Random.dominantColor(dummyRock), Random.dominantColor(sinco), true, FlxColor.BLACK, 4);
+
+		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
+		add(INFO_TEXTFIELD);
 	}
 
 	public static dynamic function levelComplete():Void
@@ -254,6 +269,8 @@ class Stage2 extends State
 	{
 		super.update(elapsed);
 
+                updateHealthIndicators();
+
 		if (FlxG.keys.justReleased.SPACE && sinco.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
 			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
@@ -277,5 +294,13 @@ class Stage2 extends State
 			FlxG.switchState(() -> new Stage2(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
+	}
+
+	public static dynamic function updateHealthIndicators():Void
+	{
+		INFO_TEXT = '${Global.getLocalizedPhrase('tempo-city')} ${Global.getLocalizedPhrase('HP')}: ${TEMPO_CITY_HEALTH}/${diffJson.tempo_city_max_health}';
+		PROGRESS_BAR.percent = (TEMPO_CITY_HEALTH / diffJson.tempo_city_max_health) * 100;
+		INFO_TEXTFIELD.text = INFO_TEXT;
+                INFO_TEXTFIELD.screenCenter(X);
 	}
 }
