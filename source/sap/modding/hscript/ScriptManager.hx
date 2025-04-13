@@ -55,61 +55,63 @@ class ScriptManager
 		}
 
                 // utils
-                setScript('Global', Global, false);
+                setScript('Global', Global);
 
-                setScript('FileManager', FileManager, false);
-                setScript('DAJSprite', DAJSprite, false);
-                setScript('State', State, false);
-                setScript('Random', Random, false);
+                setScript('FileManager', FileManager);
+                setScript('DAJSprite', DAJSprite);
+                setScript('State', State);
+                setScript('Random', Random);
+
+                setScript('BlankBG', BlankBG);
 
                 // gameplay
-                setScript('StageGlobals', StageGlobals, true);
-                setScript('Combo', Combo, true);
-                setScript('PaulPortGameOver', PaulPortGameOver, true);
+                setScript('StageGlobals', StageGlobals);
+                setScript('Combo', Combo);
+                setScript('PaulPortGameOver', PaulPortGameOver);
 
-                setScript('Stage1', Stage1, false);
-                setScript('Stage1Sinco', Sinco, true);
-                setScript('Stage1Osin', Osin, true);
-                setScript('PostStage1Cutscene', PostStage1Cutscene, true);
+                setScript('Stage1', Stage1);
+                setScript('Stage1Sinco', Sinco);
+                setScript('Stage1Osin', Osin);
+                setScript('PostStage1Cutscene', PostStage1Cutscene);
 
-                setScript('Stage2', Stage2, false);
-                setScript('PostStage2Cutscene', PostStage2Cutscene, true);
-                setScript('Stage2Rock', Stage2Rock, true);
-                setScript('Stage2Sinco', Stage2Sinco, true);
+                setScript('Stage2', Stage2);
+                setScript('PostStage2Cutscene', PostStage2Cutscene);
+                setScript('Stage2Rock', Stage2Rock);
+                setScript('Stage2Sinco', Stage2Sinco);
 
-                setScript('Stage4', Stage4, false);
-                setScript('PostStage4Cutscene', PostStage4Cutscene, true);
-                setScript('PortS4', PortS4, true);
-                setScript('EnemyS4', EnemyS4, true);
+                setScript('Stage4', Stage4);
+                setScript('PostStage4Cutscene', PostStage4Cutscene);
+                setScript('PortS4', PortS4);
+                setScript('EnemyS4', EnemyS4);
                 
-                setScript('Sidebit1', Sidebit1, false);
-                setScript('Sidebit1IntroCutsceneAtlas', Sidebit1IntroCutsceneAtlas, true);
-                setScript('Sidebit1PostCutsceneAtlas', Sidebit1PostCutsceneAtlas, true);
+                setScript('Sidebit1', Sidebit1);
+                setScript('Sidebit1IntroCutsceneAtlas', Sidebit1IntroCutsceneAtlas);
+                setScript('Sidebit1PostCutsceneAtlas', Sidebit1PostCutsceneAtlas);
  
                 // results
-                setScript('Rank', Rank, true);
-                setScript('ResultsChar', ResultsChar, true);
-                setScript('ResultsMenu', ResultsMenu, false);
+                setScript('Rank', Rank);
+                setScript('ResultsChar', ResultsChar);
+                setScript('ResultsMenu', ResultsMenu);
  
                 // medals
-                setScript('Medal', Medal, false);
-                setScript('MedalsMenu', MedalsMenu, false);
+                setScript('Medal', Medal);
+                setScript('MedalsMenu', MedalsMenu);
  
                 // locale
-                setScript('LocalizationManager', LocalizationManager, true);
+                setScript('LocalizationManager', LocalizationManager);
  
                 // cutscenes
-                setScript('AtlasCutscene', AtlasCutscene, true);
-                setScript('PanelCutscene', PanelCutscene, true);
-                setScript('SparrowCutscene', SparrowCutscene, true);
+                setScript('AtlasCutscene', AtlasCutscene);
+                setScript('PanelCutscene', PanelCutscene);
+                setScript('SparrowCutscene', SparrowCutscene);
 
                 // menus
-                setScript('CreditsSubState', CreditsSubState, true);
-                setScript('SettingsMenu', SettingsMenu, true);
-                setScript('SidebitSelect', SidebitSelect, true);
-                setScript('MainMenu', MainMenu, true);
-                setScript('PlayMenu', PlayMenu, true);
-                setScript('TitleState', TitleState, true);
+                setScript('CreditsSubState', CreditsSubState);
+                setScript('SettingsMenu', SettingsMenu);
+                setScript('SidebitSelect', SidebitSelect);
+                setScript('MainMenu', MainMenu);
+                setScript('PlayMenu', PlayMenu);
+                setScript('TitleState', TitleState);
 	}
 
 	public static function callScript(fun:String, ?args:Array<Dynamic>):Void
