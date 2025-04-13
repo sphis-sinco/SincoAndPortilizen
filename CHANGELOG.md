@@ -1,8 +1,4 @@
 # Alpha
-## 0.4.2a - 4/13/2025
-### Changed
-- Medals no longer unlock on web (the icon doesnt appear)
-
 ## 0.4.1a - 4/13/2025
 ### Added
 - MOD MENU <!-- Moved up because it's the main addition -->
