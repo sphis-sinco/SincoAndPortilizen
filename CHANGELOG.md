@@ -13,6 +13,7 @@
 ### Removed
 - Source code mods
 ### Changed
+- This `CHANGELOG.md` file is now included in compiled builds
 - CrashHandler now includes enabled mods
 - (Desktop only) the menu text box is longer vertically to fit the mods menu option
 - Mods are now sorted alphabetically

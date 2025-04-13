@@ -46,6 +46,7 @@
 
         <assets path="assets" />
         <assets path="cur_lang.txt" />
+        <assets path="CHANGELOG.md" />
 
         <!-- English (US) -->
         <language name="en-US" />
