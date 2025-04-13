@@ -1,6 +1,9 @@
 # Alpha
 ## 0.4.1a - 4/13/2025
-### Fixed
+### Changed
+- There is no longer spam about missing assets once it is found to be missing in [`FileManager`](/source/sinlib/utilities/FileManager.hx)
+- When using [`getAssetFile`](https://github.com/sphis-Sinco/SincoAndPortilizen/blob/main/source/sinlib/utilities/FileManager.hx#L89) it now checks mod folders first before actually checking the assets folders, with a first come first serve system
+- Mod API version is now `0.1.1`
 
 ## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
 ### Added

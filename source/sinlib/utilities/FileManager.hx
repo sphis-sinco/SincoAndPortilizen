@@ -33,6 +33,7 @@ class FileManager
 	}
 
 	public static var UNLOCALIZED_ASSETS:Array<String> = [];
+	public static var UNFOUND_ASSETS:Array<String> = [];
 
 	public static var LOCALIZED_ASSET_SUFFIX:String = '';
 
@@ -76,7 +77,11 @@ class FileManager
 			return returnpath;
 		}
 
-		trace('Could not get asset: $returnpath');
+		if (!UNFOUND_ASSETS.contains(returnpath))
+		{
+			trace('Could not get asset: $returnpath');
+			UNFOUND_ASSETS.push(returnpath);
+		}
 		return '';
 	}
 
@@ -88,7 +93,18 @@ class FileManager
 	 */
 	public static function getAssetFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
 	{
-		return getPath('assets/', '$file', PATH_TYPE); // 'assets/default/$file
+		var returnPath:String = '';
+
+		for (mod in ModFolderManager.MODS)
+		{
+			if (returnPath == '') // first come first serve
+				returnPath = getPath('mods/$mod/', '$file', PATH_TYPE); // 'mods/$mod/$file'
+		}
+
+		if (returnPath == '')
+			returnPath = getPath('assets/', '$file', PATH_TYPE); // 'assets/$file'
+
+		return returnPath;
 	}
 
 	#if SCRIPT_FILES
