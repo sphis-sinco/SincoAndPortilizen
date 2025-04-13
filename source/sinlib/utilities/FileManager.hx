@@ -118,31 +118,40 @@ class FileManager
 	public static function getScriptArray():Array<String>
 	{
 		var arr:Array<String> = [];
-		for (folder in FileSystem.readDirectory('assets/scripts/'))
+		var readFolder:String->Void = function(folder)
 		{
 			TryCatch.tryCatch(function()
 			{
 				if (FileSystem.isDirectory(folder))
 				{
-                                        for (file in readDirectory(folder, ['.hx', '.hxc']))
-                                                arr.push('$folder/$file');
-                                }
-                                else
-                                {
-                                        if (folder.endsWith('.hxc') || folder.endsWith('.hx'))
-                                                arr.push('$folder');
-                                }
+					for (file in readDirectory(folder, ['.hx', '.hxc']))
+						arr.push('$folder/$file');
+				}
+				else
+				{
+					if (folder.endsWith('.hxc') || folder.endsWith('.hx'))
+						arr.push('$folder');
+				}
 			}, {
-                                traceErr: true
-                        });
+					traceErr: true
+			});
 		}
+                var readDir:Array<String>->Void = function(directory) {
+                        for (folder in directory)
+                                {
+                                        readFolder(folder);
+                                }
+                }
+
+		readDir(FileSystem.readDirectory('assets/scripts/'));
+                
 		trace(arr);
 		return arr;
 	}
 	#else
 	public static function getScriptArray():Array<String>
 	{
-                trace('Not Sys!');
+		trace('Not Sys!');
 		return [];
 	}
 	#end
