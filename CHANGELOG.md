@@ -2,9 +2,10 @@
 ## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
 ### Added
 <!-- These are moved up because they are epicer-->
-- SOFTCODED MODDING (v0.1)
+- (Desktop) MEDALS MENU
+- (Desktop only probably) SOFTCODED MODDING (v0.1)
 - NEW MENU TRACK: LADOS
-- HSCRIPTING (via `hscript-iris`)
+- (Desktop only probably) HSCRIPTING (via `hscript-iris`)
 - VOICE-ACTED CUTSCENES
 - SIDEBIT 1
 - POST-LEVEL4 CUTSCENE

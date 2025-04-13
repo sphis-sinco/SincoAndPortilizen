@@ -17,6 +17,25 @@ class MedalsMenu extends FlxSubState
 		overlay.color = 0x000000;
 		overlay.alpha = 0.5;
 		add(overlay);
+
+                medalTexts = new FlxTypedGroup<FlxText>();
+                add(medalTexts);
+
+		var cur_y:Float = 10;
+		var i:Int = 0;
+		for (medal in FileSystem.readDirectory('assets/images/medals/awards'))
+		{
+			var text:FlxText = new FlxText(0, cur_y, 0, medal, Std.int(32 * 0.5));
+			text.alignment = CENTER;
+			text.screenCenter(X);
+			text.ID = i;
+			i++;
+
+			medalTexts.add(text);
+
+			cur_y += 50;
+			totalSpacing += 50;
+		}
 	}
 
 	override function update(elapsed:Float):Void

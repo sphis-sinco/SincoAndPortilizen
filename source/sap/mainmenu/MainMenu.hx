@@ -13,7 +13,10 @@ class MainMenu extends State
 	public static var menuselectbox:FlxSprite;
 
 	public static var menuboxtexts:FlxTypedGroup<FlxText>;
-	public static var menutexts:Map<String, Array<String>> = ['menu' => ['play', 'credits', 'settings', 'medals', 'leave'], 'play' => ['new', 'continue', 'back']];
+	public static var menutexts:Map<String, Array<String>> = [
+		'menu' => ['play', 'credits', 'settings', 'medals', 'leave'],
+		'play' => ['new', 'continue', 'back']
+	];
 
 	public var menutextsSelection:String = 'menu';
 
@@ -89,13 +92,13 @@ class MainMenu extends State
 	public static dynamic function gridBGAdapt():Void
 	{
 		if (port.animation.name == 'blank')
-                {
+		{
 			gridbg.x += 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
-                }
+		}
 		else
-                {
+		{
 			gridbg.x += -16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
-                }
+		}
 	}
 
 	override function update(elapsed:Float):Void
@@ -139,32 +142,33 @@ class MainMenu extends State
 		{
 			PUBLIC_CUR_SELECTION--;
 			if (PUBLIC_CUR_SELECTION < 0)
-                        {
-                                trace('Prevent underflow');
+			{
+				trace('Prevent underflow');
 				PUBLIC_CUR_SELECTION = 0;
-                        }
+			}
 		}
 
 		if (FlxG.keys.justReleased.DOWN)
 		{
 			PUBLIC_CUR_SELECTION++;
 			if (PUBLIC_CUR_SELECTION > menuboxtexts.members.length - 1)
-                        {
-                                trace('Prevent overflow');
+			{
+				trace('Prevent overflow');
 				PUBLIC_CUR_SELECTION = menuboxtexts.members.length - 1;
-                        }
+			}
 		}
 	}
 
 	public static dynamic function set_menuboxtexts(mapstring:String):Void
 	{
-                TryCatch.tryCatch(() -> {
-                        for (text in menuboxtexts)
-                                {
-                                        text.kill();
-                                        menuboxtexts.remove(text);
-                                }
-                });
+		TryCatch.tryCatch(() ->
+		{
+			for (text in menuboxtexts)
+			{
+				text.kill();
+				menuboxtexts.remove(text);
+			}
+		});
 
 		var i = 0;
 		for (text in menutexts.get(mapstring))
@@ -196,17 +200,19 @@ class MainMenu extends State
 			}
 
 			if (PUBLIC_CUR_SELECTION == SETTINGS_SELECTION)
-                        {
-                                inSubstate = true;
-                                openSubState(new SettingsMenu());
-                        }
+			{
+				inSubstate = true;
+				openSubState(new SettingsMenu());
+			}
 
-			if (PUBLIC_CUR_SELECTION == MEDALS_SELECTION)
-                        {
-                                inSubstate = true;
-                                openSubState(new MedalsMenu());
-                        }
-        
+			#if sys
+                        if (PUBLIC_CUR_SELECTION == MEDALS_SELECTION)
+			{
+				inSubstate = true;
+				openSubState(new MedalsMenu());
+			}
+                        #end
+
 			menuSelection();
 		}
 	}
@@ -217,7 +223,7 @@ class MainMenu extends State
 		{
 			case 0:
 				FlxG.switchState(PlayMenu.new);
-			case 4:
+			#if sys case 4: #else case 3: #end
 				FlxG.switchState(TitleState.new);
 		}
 	}
