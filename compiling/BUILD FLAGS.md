@@ -44,6 +44,8 @@ These do things. Lmao!
 - `SIDEBIT1_INTRO_CUTSCENE`: Sends you to the `Sidebit1IntroCutscene` state
 - `FLXANIMATE_TESTING`: Sends you to the `Sidebit1IntroCutsceneAtlas` state
 
+- `SIDEBIT_MENU`: Sends you to the `SidebitSelect` state
+
 ## Language Flags
 - `CNGLA_TRACES`: Allows the console to print out what localized assets it could not get
 - `FORCED_ENGLISH_LANGUAGE`: Forces your language to English

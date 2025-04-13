@@ -185,6 +185,9 @@ class InitState extends FlxState
 		#elseif SIDEBIT_ONE_INSTANT
 		switchToState(() -> new sap.stages.sidebit1.Sidebit1(difficulty), 'Sidebit 1');
 		return;
+		#elseif SIDEBIT_MENU
+		switchToState(() -> new sap.sidebitmenu.SidebitSelect(), 'Sidebit Select');
+		return;
 		#end
 
 		trace('Starting game regularly');
