@@ -2,7 +2,9 @@ package sap.modding.hscript;
 
 class ModFolderManager
 {
+	public static var ENABLED_MODS:Array<String> = [];
 	public static var MODS:Array<String> = [];
+	public static var DISABLED_MODS:Array<String> = [];
 
 	public static var MODS_FOLDER:String = 'mods/';
 
@@ -17,7 +19,9 @@ class ModFolderManager
 	public static function readModFolder():Void
 	{
 		// NO DUPES
+                ENABLED_MODS = [];
 		MODS = [];
+                DISABLED_MODS = [];
 
 		#if sys
 		for (folder in FileManager.readDirectory(MODS_FOLDER))
@@ -46,6 +50,7 @@ class ModFolderManager
 					else
 					{
 						MODS.push(folder);
+                                                ENABLED_MODS.push(folder);
 					}
 				}
 			}
@@ -61,4 +66,16 @@ class ModFolderManager
 		trace('Not sys. No mods');
 		#end
 	}
+
+        public static function disableMod(modName:String):Void
+        {
+                ENABLED_MODS.remove(modName);
+                DISABLED_MODS.push(modName);
+        }
+
+        public static function enableMod(modName:String):Void
+        {
+                DISABLED_MODS.remove(modName);
+                ENABLED_MODS.push(modName);
+        }
 }
