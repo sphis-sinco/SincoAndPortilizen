@@ -97,7 +97,7 @@ class FileManager
 	{
 		var returnPath:String = '';
 
-		for (mod in ModFolderManager.MODS)
+		for (mod in ModFolderManager.ENABLED_MODS)
 		{
 			// What if I was evil and made it so that 0.1.0 api mods couldnt do this >:)
 			var dir_meta:ModMetaData = FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json');
@@ -178,7 +178,7 @@ class FileManager
 			}
 		}
 
-		for (folder in ModFolderManager.MODS)
+		for (folder in ModFolderManager.ENABLED_MODS)
 		{
 			#if EXCESS_TRACES
 			trace('Checking $folder for a scripts folder');
