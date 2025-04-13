@@ -37,9 +37,12 @@
 
         <source path="source" />
 
-        <!-- Doing "-watch" with these 2 lines mean if either of the folders are modifyed it recompiles -->
-        <source path="debug_mods" />
-        <source path="mods" />
+        <!-- Doing "-watch" with these 2 lines mean if either of the folders are modifyed it
+        recompiles -->
+        <section if="RECOMPILE_ON_MOD_UPDATE">
+                <source path="debug_mods" />
+                <source path="mods" />
+        </section>
 
         <assets path="assets" />
         <assets path="cur_lang.txt" />
@@ -113,7 +116,8 @@
 
         <haxelib name="discord_rpc" if="DISCORDRPC" />
 
-        <haxelib name="hscript" if="debug" /> <!--Used only for flixel's debugger!-->
+        <haxelib name="hscript" if="debug" /> <!--Used
+        only for flixel's debugger!-->
         <haxelib name="hscript-iris" if="SCRIPT_FILES" />
 
         <!-- _________________________________ After _______________________________ -->

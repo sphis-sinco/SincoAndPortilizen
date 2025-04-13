@@ -14,6 +14,7 @@ These do things. Lmao!
 ## QOL Flags
 - `DISABLE_ANNOYING_ERRORS`: Makes errors less annoying
 - `DISABLE_ANNOYING_WARNINGS`: Makes warnings less annoying
+- `RECOMPILE_ON_MOD_UPDATE`: Makes it so that when doing `-watch` and changing mod files the game recompiles
 
 ## Start State Flags
 - `SKIP_TITLE`: Sends you to the Main Menu instantly instead of the Title Screen

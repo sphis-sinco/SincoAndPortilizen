@@ -11,6 +11,7 @@
 - POST-LEVEL4 CUTSCENE
 - 7 UNLOCKABLE MEDALS
 - SIDEBIT SELECT MENU
+- (source) `RECOMPILE_ON_MOD_UPDATE` build flag
 - Stage 2 now has a health bar for tempo city
 - (source) `SIDEBIT_MENU` build flag
 - (Desktop only) Added Discord RPC setting that toggles discord RPC
