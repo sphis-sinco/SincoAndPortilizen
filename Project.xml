@@ -36,6 +36,11 @@
         </section>
 
         <source path="source" />
+
+        <!-- Doing "-watch" with these 2 lines mean if either of the folders are modifyed it recompiles -->
+        <source path="debug_mods" />
+        <source path="mods" />
+
         <assets path="assets" />
         <assets path="cur_lang.txt" />
 
