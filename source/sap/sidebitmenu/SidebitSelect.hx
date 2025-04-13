@@ -1,5 +1,6 @@
 package sap.sidebitmenu;
 
+import sap.stages.sidebit1.Sidebit1;
 import sap.title.TitleState;
 
 class SidebitSelect extends State
@@ -8,6 +9,8 @@ class SidebitSelect extends State
 	public static var SIDEBITS:Int = 1;
 
 	public static var NUMBER_TEXT:SparrowSprite;
+
+        public static var DIFFICULTY:String = 'normal';
 
 	override function create()
 	{
@@ -51,7 +54,7 @@ class SidebitSelect extends State
 		NUMBER_TEXT.animation.pause();
 		NUMBER_TEXT.screenCenter();
 		NUMBER_TEXT.y += NUMBER_TEXT.height * 1.4;
-                NUMBER_TEXT.x += 30;
+		NUMBER_TEXT.x += 30;
 		add(NUMBER_TEXT);
 
 		super.create();
@@ -61,10 +64,18 @@ class SidebitSelect extends State
 	{
 		super.update(elapsed);
 
-                if (FlxG.keys.justReleased.ESCAPE)
-                {
-                        FlxG.switchState(() -> new TitleState());
-                }
+		if (FlxG.keys.justReleased.ESCAPE)
+		{
+			FlxG.switchState(() -> new TitleState());
+		}
+		else if (FlxG.keys.justReleased.ENTER)
+		{
+                        switch (SIDEBIT_NUMBER)
+                        {
+                                case 1:
+                                        FlxG.switchState(() -> new Sidebit1(DIFFICULTY));
+                        }
+		}
 
 		if (SIDEBIT_NUMBER > SIDEBITS)
 			SIDEBIT_NUMBER = SIDEBITS;
