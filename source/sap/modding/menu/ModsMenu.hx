@@ -8,6 +8,8 @@ class ModsMenu extends FlxSubState
 	public static var overlay:BlankBG;
 
 	public static var modTexts:FlxTypedGroup<FlxText>;
+        public static var modNames:Array<String> = [];
+
 	public static var totalSpacing:Int = 0;
 
 	public static var CURRENT_SELECTION:Int = 0;
@@ -24,6 +26,8 @@ class ModsMenu extends FlxSubState
 		modTexts = new FlxTypedGroup<FlxText>();
 		add(modTexts);
 
+                modNames = [];
+
 		var cur_y:Float = 10;
 		var i:Int = 0;
 		for (mod in ModFolderManager.MODS)
@@ -37,6 +41,7 @@ class ModsMenu extends FlxSubState
 			i++;
 
 			modTexts.add(text);
+                        modNames.push(mod);
 
 			cur_y += 25;
 			totalSpacing += 25;
@@ -106,16 +111,7 @@ class ModsMenu extends FlxSubState
 		for (text in modTexts)
 		{
 			text.color = (text.ID == CURRENT_SELECTION) ? FlxColor.YELLOW : FlxColor.WHITE;
-
-			for (mod in ModFolderManager.MODS)
-			{
-				var dir_meta:ModMetaData = FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json');
-
-				if (text.text == dir_meta.name)
-				{
-					text.alpha = (ModFolderManager.ENABLED_MODS.contains(mod)) ? 1.0 : 0.5;
-				}
-			}
+			text.alpha = (ModFolderManager.ENABLED_MODS.contains(modNames[text.ID])) ? 1.0 : 0.5;
 		}
 	}
 	#end

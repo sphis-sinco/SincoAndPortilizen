@@ -50,7 +50,17 @@ class ModFolderManager
 					else
 					{
 						MODS.push(folder);
-						ENABLED_MODS.push(folder);
+						if (SaveManager.getEnabledMods() != null)
+						{
+							if (!SaveManager.getEnabledMods().contains(folder))
+							{
+								DISABLED_MODS.push(folder);
+							}
+							else
+							{
+								ENABLED_MODS.push(folder);
+							}
+						}
 					}
 				}
 			}
@@ -61,17 +71,11 @@ class ModFolderManager
 		{
 			var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${mod}/meta.json');
 			trace('* ${dir_meta.name} v${dir_meta.version} (api version: ${dir_meta.api_version})');
-
-                        if (SaveManager.getEnabledMods() != null)
-                        {
-                                if (!SaveManager.getEnabledMods().contains(mod))
-                                {
-                                        disableMod(mod);
-                                }
-                        }
 		}
 
 		sortModArrays();
+                trace(ENABLED_MODS);
+                trace(DISABLED_MODS);
 		#else
 		trace('Not sys. No mods');
 		#end
@@ -110,6 +114,6 @@ class ModFolderManager
 		DISABLED_MODS.sort(sortFunc);
 
 		FlxG.save.data.enabled_mods = ENABLED_MODS;
-                ScriptManager.loadScripts();
+		ScriptManager.loadScripts();
 	}
 }
