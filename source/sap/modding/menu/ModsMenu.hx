@@ -51,6 +51,8 @@ class ModsMenu extends FlxSubState
 		if (FlxG.keys.justReleased.ESCAPE)
 		{
 			MainMenu.inSubstate = false;
+			FlxG.save.data.enabled_mods = ModFolderManager.ENABLED_MODS;
+                        FlxG.resetGame();
 			close();
 		}
 
@@ -58,8 +60,15 @@ class ModsMenu extends FlxSubState
 		{
 			scroll((FlxG.keys.pressed.UP) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
 		}
-		else if (FlxG.keys.anyJustReleased([UP, DOWN]))
+		else if (FlxG.keys.anyJustReleased([UP, DOWN, ENTER]))
 		{
+			if (FlxG.keys.justReleased.ENTER)
+			{
+				ModFolderManager.toggleMod(ModFolderManager.MODS[CURRENT_SELECTION]);
+				updateText();
+				return;
+			}
+
 			CURRENT_SELECTION += (FlxG.keys.justReleased.DOWN) ? 1 : -1;
 			if (CURRENT_SELECTION < 0)
 			{

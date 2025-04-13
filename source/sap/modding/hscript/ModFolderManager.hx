@@ -74,7 +74,7 @@ class ModFolderManager
 		ENABLED_MODS.remove(modName);
 		DISABLED_MODS.push(modName);
 
-                sortModArrays();
+		sortModArrays();
 	}
 
 	public static function enableMod(modName:String):Void
@@ -82,17 +82,26 @@ class ModFolderManager
 		DISABLED_MODS.remove(modName);
 		ENABLED_MODS.push(modName);
 
-                sortModArrays();
+		sortModArrays();
+	}
+
+	public static function toggleMod(modName:String):Void
+	{
+		if (ENABLED_MODS.contains(modName))
+			disableMod(modName);
+		else
+			enableMod(modName);
 	}
 
 	public static function sortModArrays():Void
 	{
-                final sortFunc:String->String->Int = (s1, s2) -> Random.StringSortAlphabetically(s1, s2);
+		final sortFunc:String->String->Int = (s1, s2) -> Random.StringSortAlphabetically(s1, s2);
 
 		ENABLED_MODS.sort(sortFunc);
 		MODS.sort(sortFunc);
 		DISABLED_MODS.sort(sortFunc);
 
-                FlxG.save.data.enabled_mods = ENABLED_MODS;
+		FlxG.save.data.enabled_mods = ENABLED_MODS;
+                ScriptManager.loadScripts();
 	}
 }
