@@ -24,6 +24,10 @@ class AnsiTrace
 	 */
 	public static function trace(v:Dynamic, ?info:haxe.PosInfos)
 	{
+                if (TRACE_LIST.length + 1 > MAX_TRACES)
+                {
+                        TRACE_LIST.remove(TRACE_LIST[0]);
+                }
 		TRACE_LIST.push('${Global.posInfoString(info).replace('/', '.').replace('source.', '')}: ${v}');
 
 		#if (NO_FEATURE_LOG_TRACE)

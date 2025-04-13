@@ -7,6 +7,8 @@
 - The missing `getMedals` function in the SaveManager is here
 - `enabled_mods` save field
 - `StringSortAlphabetically` function to Random.hx
+### Fixed
+- AnsiTrace now actually enforces `MAX_TRACES`
 ### Removed
 - Source code mods
 ### Changed
