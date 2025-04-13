@@ -2,6 +2,19 @@ package sap.utils;
 
 class Random
 {
+	// https://haxe.motion-twin.narkive.com/BxeZgKeh/sort-an-array-string-alphabetically
+	public static function StringSortAlphabetically(a:String, b:String):Int
+	{
+		a = a.toLowerCase();
+		b = b.toLowerCase();
+
+		if (a < b)
+			return -1;
+		if (a > b)
+			return 1;
+		return 0;
+	}
+
 	// stolen from psych engine
 	inline public static function dominantColor(sprite:flixel.FlxSprite):Int
 	{
