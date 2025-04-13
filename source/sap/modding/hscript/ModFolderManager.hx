@@ -37,6 +37,8 @@ class ModFolderManager
 				}
 			}
 		}
+
+                trace('All mods: ${MODS}');
                 #else
                 trace('Not sys. No mods');
                 #end
