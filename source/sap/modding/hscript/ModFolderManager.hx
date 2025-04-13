@@ -11,18 +11,26 @@ class ModFolderManager
 		// NO DUPES
 		MODS = [];
 
+                #if sys
 		for (folder in FileManager.readDirectory(MODS_FOLDER))
 		{
+                        trace(folder);
 			if (FileSystem.isDirectory(folder))
 			{
 				trace('Mod folder: $folder');
 
-				if (FileSystem.readDirectory('${MODS_FOLDER}${folder}').contains('meta.json'))
+                                var dir:Array<String> = FileSystem.readDirectory('${MODS_FOLDER}${folder}/');
+
+                                trace(dir);
+				if (dir.contains('meta.json'))
 				{
 					trace('$folder is a valid mod');
 					MODS.push(folder);
 				}
 			}
 		}
+                #else
+                trace('Not sys. No mods');
+                #end
 	}
 }
