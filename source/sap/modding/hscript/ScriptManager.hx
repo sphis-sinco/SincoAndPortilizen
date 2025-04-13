@@ -2,9 +2,12 @@ package sap.modding.hscript;
 
 import crowplexus.iris.Iris;
 import sap.credits.CreditsSubState;
+import sap.mainmenu.MainMenu;
+import sap.mainmenu.PlayMenu;
 import sap.results.Rank;
 import sap.results.ResultsChar;
 import sap.settings.SettingsMenu;
+import sap.sidebitmenu.SidebitSelect;
 import sap.stages.Combo;
 import sap.stages.PaulPortGameOver;
 import sap.stages.sidebit1.Sidebit1;
@@ -22,6 +25,7 @@ import sap.stages.stage4.EnemyS4;
 import sap.stages.stage4.PortS4;
 import sap.stages.stage4.PostStage4Cutscene;
 import sap.stages.stage4.Stage4;
+import sap.title.TitleState;
 
 // THANK YOU FNF-Doido-Engine
 class ScriptManager
@@ -92,11 +96,13 @@ class ScriptManager
                 setScript('PanelCutscene', PanelCutscene, true);
                 setScript('SparrowCutscene', SparrowCutscene, true);
 
-                // credits
+                // menus
                 setScript('CreditsSubState', CreditsSubState, true);
-
-                // settings
                 setScript('SettingsMenu', SettingsMenu, true);
+                setScript('SidebitSelect', SidebitSelect, true);
+                setScript('MainMenu', MainMenu, true);
+                setScript('PlayMenu', PlayMenu, true);
+                setScript('TitleState', TitleState, true);
 	}
 
 	public static function callScript(fun:String, ?args:Array<Dynamic>):Void

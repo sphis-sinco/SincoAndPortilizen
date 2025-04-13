@@ -8,6 +8,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import funkin.graphics.shaders.AdjustColorShader;
 import sap.mainmenu.MainMenu;
+import sap.sidebitmenu.SidebitSelect;
 
 enum abstract TitleStates(Int) from Int to Int
 {
@@ -94,7 +95,7 @@ class TitleState extends State
 		add(VERSION_TEXT);
 
 		SIDEBIT_MENU_BUTTON = new SparrowSprite('titlescreen/SidebitMenuButton');
-		SIDEBIT_MENU_BUTTON.setPosition(560, 93);
+		SIDEBIT_MENU_BUTTON.setPosition(560, 20);
 		SIDEBIT_MENU_BUTTON.addAnimationByPrefix('loopAnim', 'Ring spin', 24);
 		add(SIDEBIT_MENU_BUTTON);
 		SIDEBIT_MENU_BUTTON.visible = false;
@@ -128,6 +129,7 @@ class TitleState extends State
 						return;
 
 					trace('Head to sidebit menu');
+                                        FlxG.switchState(() -> new SidebitSelect());
 				}
 			}
 
