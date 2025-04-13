@@ -45,7 +45,7 @@ class ScriptManager
 		{
 			TryCatch.tryCatch(function()
 			{
-				var newScript:Iris = new Iris(FileManager.readFile(FileManager.getScriptFile('$path')), {name: path, autoRun: true, autoPreset: true});
+				var newScript:Iris = new Iris(FileManager.readFile('$path'), {name: path, autoRun: true, autoPreset: true});
 				trace('New script: $path');
 				LOADED_SCRIPTS.push(newScript);
 			});
