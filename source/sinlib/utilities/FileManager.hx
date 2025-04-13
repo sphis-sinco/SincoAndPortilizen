@@ -79,7 +79,9 @@ class FileManager
 
 		if (!UNFOUND_ASSETS.contains(returnpath))
 		{
+                        #if EXCESS_TRACES
 			trace('Could not get asset: $returnpath');
+                        #end
 			UNFOUND_ASSETS.push(returnpath);
 		}
 		return '';
