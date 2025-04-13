@@ -28,7 +28,6 @@ class State extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		ModListManager.update(elapsed);
                 ScriptManager.callScript('stateUpdate', [elapsed]);
 		super.update(elapsed);
 
