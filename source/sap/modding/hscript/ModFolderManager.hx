@@ -74,8 +74,8 @@ class ModFolderManager
 		}
 
 		sortModArrays();
-                trace(ENABLED_MODS);
-                trace(DISABLED_MODS);
+		trace(ENABLED_MODS);
+		trace(DISABLED_MODS);
 		#else
 		trace('Not sys. No mods');
 		#end
@@ -115,5 +115,23 @@ class ModFolderManager
 
 		FlxG.save.data.enabled_mods = ENABLED_MODS;
 		ScriptManager.loadScripts();
+	}
+
+	public static function neatModList():String
+	{
+		if (ENABLED_MODS.length == 0)
+		{
+			return 'No mods enabled\n';
+		}
+
+		var neat_list:String = '';
+
+		for (Mod in ENABLED_MODS)
+		{
+			var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${Mod}/meta.json');
+			neat_list += '${dir_meta.name} v${dir_meta.version} (api version: ${dir_meta.api_version})\n';
+		}
+
+		return neat_list;
 	}
 }

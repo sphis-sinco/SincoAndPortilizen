@@ -12,6 +12,7 @@
 ### Removed
 - Source code mods
 ### Changed
+- CrashHandler now includes enabled mods
 - (Desktop only) the menu text box is longer vertically to fit the mods menu option
 - Mods are now sorted alphabetically
 - There is no longer spam about missing assets once it is found to be missing in the FileManager

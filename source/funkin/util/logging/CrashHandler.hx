@@ -149,6 +149,12 @@ class CrashHandler
 
 		fullContents += '\n${spacing}\n\n';
 
+		fullContents += 'Enabled Mods:\n\n';
+
+		fullContents += '${ModFolderManager.neatModList()}';
+
+		fullContents += '\n${spacing}\n\n';
+
 		fullContents += message;
 
                 trace(message);
