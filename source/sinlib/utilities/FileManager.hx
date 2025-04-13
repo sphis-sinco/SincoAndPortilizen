@@ -122,7 +122,7 @@ class FileManager
 		var arr:Array<String> = [];
 		var scriptPaths:Array<String> = ['assets/scripts/'];
 
-		var readFolder:String->Void = function(folder)
+		var readFolder:Dynamic = function(folder:String, ogdir:String)
 		{
 			#if EXCESS_TRACES
 			trace('reading ${folder}');
@@ -133,25 +133,25 @@ class FileManager
 				if (!folder.contains('.'))
 				{
 					for (file in readDirectory(folder, ['.hx', '.hxc']))
-						arr.push('$folder/$file');
+						arr.push('$ogdir/$folder/$file');
 				}
 				else
 				{
 					if (folder.endsWith('.hxc') || folder.endsWith('.hx'))
-						arr.push('$folder');
+						arr.push('$ogdir/$folder');
 				}
 			}, {
 					traceErr: true
 			});
 		}
-		var readDir:Array<String>->Void = function(directory)
+		var readDir:Dynamic = function(directory:String)
 		{
 			#if EXCESS_TRACES
 			trace('reading ${directory}');
 			#end
-			for (folder in directory)
+			for (folder in FileSystem.readDirectory(directory))
 			{
-				readFolder(folder);
+				readFolder(folder, directory);
 			}
 		}
 
@@ -174,7 +174,7 @@ class FileManager
 		for (path in scriptPaths)
 		{
 			trace('reading scriptPath: $path');
-			readDir(FileSystem.readDirectory(path));
+			readDir(path);
 		}
 
 		trace(arr);
