@@ -14,18 +14,26 @@ class ModFolderManager
                 #if sys
 		for (folder in FileManager.readDirectory(MODS_FOLDER))
 		{
-                        trace(folder);
-			if (FileSystem.isDirectory(folder))
+                        #if EXCESS_TRACES
+                        trace('${MODS_FOLDER}$folder');
+                        #end
+			if (!folder.contains('.'))
 			{
-				trace('Mod folder: $folder');
+                                #if EXCESS_TRACES
+				trace('Potential mod folder: $folder');
+                                #end
 
                                 var dir:Array<String> = FileSystem.readDirectory('${MODS_FOLDER}${folder}/');
 
+                                #if EXCESS_TRACES
                                 trace(dir);
+                                #end
 				if (dir.contains('meta.json'))
 				{
+                                        #if EXCESS_TRACES
 					trace('$folder is a valid mod');
 					MODS.push(folder);
+                                        #end
 				}
 			}
 		}
