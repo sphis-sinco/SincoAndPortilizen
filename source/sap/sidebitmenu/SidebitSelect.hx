@@ -73,6 +73,7 @@ class SidebitSelect extends State
                         switch (SIDEBIT_NUMBER)
                         {
                                 case 1:
+                                        FlxG.sound.music.stop();
                                         FlxG.switchState(() -> new Sidebit1IntroCutsceneAtlas(DIFFICULTY));
                         }
 		}

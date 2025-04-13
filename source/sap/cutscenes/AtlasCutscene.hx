@@ -25,7 +25,7 @@ class AtlasCutscene extends State
 			throw 'Cutscene json field "type" should be "atlas"';
 		}
 
-		CUTSCENE_ATLAS = new FlxAnimate(FileManager.getImageFile('${CUTSCENE_JSON.assetPath}', CUTSCENES).replace('.png', ''));
+		CUTSCENE_ATLAS = new FlxAnimate('assets/cutscenes/images/${CUTSCENE_JSON.assetPath}');
 		CUTSCENE_PART = 0;
 
 		var part:Int = 1;
