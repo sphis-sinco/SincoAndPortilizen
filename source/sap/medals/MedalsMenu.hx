@@ -49,13 +49,7 @@ class MedalsMenu extends FlxSubState
 					var iconShader:HSVShader = new HSVShader();
 					iconShader.saturation = 1.0;
 
-					var iconPath:String = FileManager.getImageFile('medals/awards/${medal}');
-
-					if (!FileManager.exists(iconPath))
-					{
-						trace('${medal} does not have an icon');
-						iconPath = FileManager.getImageFile('medals/awards/award');
-					}
+					var iconPath:String = Medal.getMedalPath(medal);
 
 					var icon:FlxSprite = new FlxSprite();
 					icon.loadGraphic(iconPath);

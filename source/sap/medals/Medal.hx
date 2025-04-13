@@ -17,14 +17,7 @@ class Medal extends FlxTypedGroup<FlxObject>
 		add(medalBox);
 		final medalboxmid:FlxPoint = medalBox.getMidpoint();
 
-		var path:String = FileManager.getImageFile('${medalBox.assetFolder}/awards/${medal}');
-
-		if (!FileManager.exists(path))
-		{
-			trace('${medal} does not have an icon');
-                        path = FileManager.getImageFile('${medalBox.assetFolder}/awards/award');
-		}
-		// trace(path);
+		var path:String = getMedalPath(medal);
 
 		medalIcon = new FlxSprite().loadGraphic(path);
 		add(medalIcon);
@@ -63,4 +56,18 @@ class Medal extends FlxTypedGroup<FlxObject>
 			});
 		});
 	}
+
+        public static function getMedalPath(medal:String = 'award'):String
+        {
+                var path:String = FileManager.getImageFile('medals/awards/${medal}');
+
+		if (!FileManager.exists(path))
+		{
+			trace('${medal} does not have an icon');
+                        path = FileManager.getImageFile('medals/awards/award');
+		}
+		// trace(path);
+
+                return path;
+        }
 }
