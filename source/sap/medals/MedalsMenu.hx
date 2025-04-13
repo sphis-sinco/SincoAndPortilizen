@@ -5,6 +5,7 @@ import sap.mainmenu.MainMenu;
 class MedalsMenu extends FlxSubState
 {
 	public static var overlay:BlankBG;
+	public static var overlayWhite:BlankBG;
 
 	public static var medalTexts:FlxTypedGroup<FlxText>;
 	public static var medalIcons:FlxTypedGroup<FlxSprite>;
@@ -20,6 +21,13 @@ class MedalsMenu extends FlxSubState
 		overlay.color = 0x000000;
 		overlay.alpha = 0.5;
 		add(overlay);
+
+		overlayWhite = new BlankBG();
+		overlayWhite.color = 0xFFFFFF;
+		overlayWhite.alpha = 0.5;
+                overlayWhite.scale.x = 0.75;
+                overlayWhite.screenCenter(X);
+		add(overlayWhite);
 
 		MEDALS_JSON = FileManager.getJSON(FileManager.getDataFile('medals.json'));
 
@@ -67,7 +75,7 @@ class MedalsMenu extends FlxSubState
                                                 var ii:Int = 0;
 						for (letter in text.text)
 						{
-							if (text.text.charAt(ii) != ' ')
+							if (!text.text.isSpace(ii))
 								finalString += hiddenChar;
 
                                                         ii++;
