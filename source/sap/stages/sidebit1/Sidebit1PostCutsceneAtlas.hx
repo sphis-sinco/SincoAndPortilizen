@@ -21,8 +21,8 @@ class Sidebit1PostCutsceneAtlas extends AtlasCutscene
 
 		switch (animation)
 		{
-			case 'part5':
-				// FlxG.switchState(SidebitSelect.new);
+			case 'part1':
+				Global.playSoundEffect('SideBit1_EndingCutscene', CUTSCENES);
 		}
 	}
 
