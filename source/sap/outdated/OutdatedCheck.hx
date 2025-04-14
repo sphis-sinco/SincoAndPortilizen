@@ -17,16 +17,14 @@ class OutdatedCheck
 			.replace('[FILE]', GIT_FILE);
 
 		var http = new haxe.Http(final_link);
-		var returnedData:Array<String> = [];
+		var returnedData:String = '';
 
 		http.onData = function(data:String)
 		{
-			returnedData[0] = data.substring(0, data.indexOf(';'));
-			returnedData[1] = data.substring(data.indexOf('-'), data.length);
-			if (Global.VERSION_FULL.contains(returnedData[0].trim()))
-				return false;
+			returnedData = data;
+			if (Global.VERSION_FULL == returnedData) return false;
 
-			trace('OUTDATED VERSION: ' + returnedData[0] + ' != ' + Global.VERSION_FULL);
+			trace('OUTDATED VERSION: ' + returnedData + ' != ' + Global.VERSION);
 			return true;
 		}
 
