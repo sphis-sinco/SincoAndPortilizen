@@ -273,8 +273,8 @@ class Sidebit1 extends State
 		add(PLAYER_HEALTH_ICON);
 		add(OPPONENT_HEALTH_ICON);
 
-		PLAYER_HEALTH_ICON.y = PROGRESS_BAR.getGraphicMidpoint().y -= 48;
-		OPPONENT_HEALTH_ICON.y = PLAYER_HEALTH_ICON.y -= 16;
+		PLAYER_HEALTH_ICON.y = PROGRESS_BAR.getGraphicMidpoint().y - 48;
+		OPPONENT_HEALTH_ICON.y = PLAYER_HEALTH_ICON.y + 16;
 
 		TUTORIAL_SHADER = new AdjustColorShader();
 		TUTORIAL_SHADER.brightness = -50;
