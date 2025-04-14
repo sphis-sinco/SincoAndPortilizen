@@ -379,7 +379,7 @@ class Sidebit1 extends State
 		PLAYER_HEALTH_ICON.x = PROGRESS_BAR.x + ((percent * PROGRESS_BAR.pxPerPercent) - 32);
 		OPPONENT_HEALTH_ICON.x = PLAYER_HEALTH_ICON.x + POSITION_OFFSET;
 
-		if (percent > WINNING_THRESHOLD)
+		if (PORTILIZEN_HEALTH < WINNING_THRESHOLD)
 		{
 			if (PLAYER_HEALTH_ICON.animation.name == 'neutral' && PLAYER_HEALTH_ICON.animation.finished)
 				PLAYER_HEALTH_ICON.playAnimation('toWin');
@@ -391,7 +391,7 @@ class Sidebit1 extends State
 			else if (OPPONENT_HEALTH_ICON.animation.name == 'toLoss' && OPPONENT_HEALTH_ICON.animation.finished)
 				OPPONENT_HEALTH_ICON.playAnimation('loss');
 		}
-		else if (percent < LOSING_THRESHOLD)
+		else if (PORTILIZEN_HEALTH > LOSING_THRESHOLD)
 		{
 			if (OPPONENT_HEALTH_ICON.animation.name == 'neutral' && OPPONENT_HEALTH_ICON.animation.finished)
 				OPPONENT_HEALTH_ICON.playAnimation('toWin');
@@ -423,10 +423,9 @@ class Sidebit1 extends State
 
 	// These control health icon shit
 	static final MAXIMUM_PERCENT:Float = 100;
-	static final WINNING_THRESHOLD:Float = 0.2 * MAXIMUM_PERCENT;
-	static final LOSING_THRESHOLD:Float = 0.8 * MAXIMUM_PERCENT;
+	static final WINNING_THRESHOLD:Int = 2;
+	static final LOSING_THRESHOLD:Int = 8;
 	static final POSITION_OFFSET:Int = 64;
-	static final MOVING_OFFSET:Float = 1.5;
 
 	public static function disableAbilities():Void
 	{
