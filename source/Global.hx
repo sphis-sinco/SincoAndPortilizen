@@ -2,12 +2,16 @@ package;
 
 class Global
 {
-	public static var GENERATED_BY(get, never):String;
+	public static var GENERATED_BY(get, set):String;
 
 	static function get_GENERATED_BY():String
 	{
-		return 'Sinco and Portilizen v${VERSION}';
+		return 'Sinco and Portilizen v${VERSION_FULL}';
 	}
+
+        static function set_GENERATED_BY(value:String):String {
+                return value;
+        }
 
 	public static var VERSION(get, never):String;
 
