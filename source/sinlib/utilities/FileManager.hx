@@ -77,15 +77,27 @@ class FileManager
 			return returnpath;
 		}
 
-		if (!UNFOUND_ASSETS.contains(returnpath))
-		{
-			#if EXCESS_TRACES
-			trace('Could not get asset: $returnpath');
-			#end
-			UNFOUND_ASSETS.push(returnpath);
-		}
+		unfoundAsset(returnpath);
 		return '';
 	}
+
+        public static inline function unfoundAsset(asset:String):Void
+        {
+                if (!UNFOUND_ASSETS.contains(asset))
+                        {
+                                if (asset.contains('mods/'))
+                                {
+                                        #if EXCESS_TRACES
+                                        trace('Could not get asset: $asset');
+                                        #end
+                                }
+                                else
+                                {
+                                        trace('Could not get asset: $asset');
+                                }
+                                UNFOUND_ASSETS.push(asset);
+                        }
+        }
 
 	/**
 	 * Returns an `assets/$file`
@@ -294,21 +306,22 @@ class FileManager
 	 */
 	public static function readFile(path:String):String
 	{
+                if (!exists(path))
+                {
+                        unfoundAsset(path);
+                        return '';
+                }
+
 		try
 		{
 			return Assets.getText(path);
 		}
 		catch (e)
 		{
-			#if sys
-			trace(e);
-			Sys.exit(0);
-			return '';
-			#else
 			throw e;
-			return '';
-			#end
 		}
+
+                return '';
 	}
 
 	/**

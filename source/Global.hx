@@ -9,31 +9,20 @@ class Global
 		return 'Sinco and Portilizen v${VERSION}';
 	}
 
-	/**
-	 * Basically `Application.current.meta.get('version')` shortcut
-	 */
 	public static var VERSION(get, never):String;
 
-	/**
-	 * Returns `Application.current.meta.get('version')` basically
-	 * @return String
-	 */
 	static function get_VERSION():String
 	{
-		var version:String = Application.VERSION;
+		var version:String = '';
+                
+                version = FileManager.readFile('version.txt');
+                if (version == '') version = '[Null]';
 
-		if (SLGame.isDebug)
-		{
-			version += '-debug';
-		}
+		if (SLGame.isDebug) version += '-debug';
+                #if PLAYTESTER_BUILD version += '-playtest'; #end
 
-                #if PLAYTESTER_BUILD
-			version += '-playtest';
-                #end
+                #if EXCESS_TRACES trace('Version: ${version}'); #end
 
-                #if EXCESS_TRACES
-		trace('Version: ${version}');
-                #end
 		return '${version}';
 	}
 
