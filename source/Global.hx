@@ -11,7 +11,14 @@ class Global
 
 	public static var VERSION(get, never):String;
 
+	public static var VERSION_FULL(get, never):String;
+
 	static function get_VERSION():String
+	{
+		return VERSION_FULL.split('-')[0];
+	}
+
+	static function get_VERSION_FULL():String
 	{
 		var version:String = '';
                 
