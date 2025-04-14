@@ -268,7 +268,9 @@ class Sidebit1 extends State
 		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
 
 		PLAYER_HEALTH_ICON = new HealthIcon('gameplay/sidebits/sinco-healthicon', 'Sinco');
+                PLAYER_HEALTH_ICON.flipX = true;
 		OPPONENT_HEALTH_ICON = new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen');
+                OPPONENT_HEALTH_ICON.flipX = true;
 		add(PLAYER_HEALTH_ICON);
 		add(OPPONENT_HEALTH_ICON);
 
@@ -369,47 +371,50 @@ class Sidebit1 extends State
 		INFO_TEXTFIELD.text = INFO_TEXT;
 		INFO_TEXTFIELD.screenCenter(X);
 
-		final percent:Float = PROGRESS_BAR.percent;
+		var percent:Float = MAXIMUM_PERCENT - PROGRESS_BAR.percent;
 
-		PLAYER_HEALTH_ICON.x = PROGRESS_BAR.x;
-		OPPONENT_HEALTH_ICON.x = PROGRESS_BAR.x - POSITION_OFFSET;
+                if (percent < 0)
+                        percent = 0;
+
+		PLAYER_HEALTH_ICON.x = PROGRESS_BAR.x + ((percent * PROGRESS_BAR.pxPerPercent) - 32);
+		OPPONENT_HEALTH_ICON.x = PLAYER_HEALTH_ICON.x + POSITION_OFFSET;
 
 		if (percent > WINNING_THRESHOLD)
 		{
-			if (PLAYER_HEALTH_ICON.animation.name == 'neutral')
+			if (PLAYER_HEALTH_ICON.animation.name == 'neutral' && PLAYER_HEALTH_ICON.animation.finished)
 				PLAYER_HEALTH_ICON.playAnimation('toWin');
-			else if (PLAYER_HEALTH_ICON.animation.name == 'toWin')
+			else if (PLAYER_HEALTH_ICON.animation.name == 'toWin' && PLAYER_HEALTH_ICON.animation.finished)
 				PLAYER_HEALTH_ICON.playAnimation('win');
 
-			if (OPPONENT_HEALTH_ICON.animation.name == 'neutral')
+			if (OPPONENT_HEALTH_ICON.animation.name == 'neutral' && OPPONENT_HEALTH_ICON.animation.finished)
 				OPPONENT_HEALTH_ICON.playAnimation('toLoss');
-			else if (OPPONENT_HEALTH_ICON.animation.name == 'toLoss')
+			else if (OPPONENT_HEALTH_ICON.animation.name == 'toLoss' && OPPONENT_HEALTH_ICON.animation.finished)
 				OPPONENT_HEALTH_ICON.playAnimation('loss');
 		}
 		else if (percent < LOSING_THRESHOLD)
 		{
-			if (OPPONENT_HEALTH_ICON.animation.name == 'neutral')
+			if (OPPONENT_HEALTH_ICON.animation.name == 'neutral' && OPPONENT_HEALTH_ICON.animation.finished)
 				OPPONENT_HEALTH_ICON.playAnimation('toWin');
-			else if (OPPONENT_HEALTH_ICON.animation.name == 'toWin')
+			else if (OPPONENT_HEALTH_ICON.animation.name == 'toWin' && OPPONENT_HEALTH_ICON.animation.finished)
 				OPPONENT_HEALTH_ICON.playAnimation('win');
 
-			if (PLAYER_HEALTH_ICON.animation.name == 'neutral')
+			if (PLAYER_HEALTH_ICON.animation.name == 'neutral' && PLAYER_HEALTH_ICON.animation.finished)
 				PLAYER_HEALTH_ICON.playAnimation('toLoss');
-			else if (PLAYER_HEALTH_ICON.animation.name == 'toLoss')
+			else if (PLAYER_HEALTH_ICON.animation.name == 'toLoss' && PLAYER_HEALTH_ICON.animation.finished)
 				PLAYER_HEALTH_ICON.playAnimation('loss');
 		}
 		else
 		{
-			if (OPPONENT_HEALTH_ICON.animation.name == 'win')
+			if (OPPONENT_HEALTH_ICON.animation.name == 'win' && OPPONENT_HEALTH_ICON.animation.finished)
 				OPPONENT_HEALTH_ICON.playAnimation('toWin', false, true);
-			else if (OPPONENT_HEALTH_ICON.animation.name == 'loss')
+			else if (OPPONENT_HEALTH_ICON.animation.name == 'loss' && OPPONENT_HEALTH_ICON.animation.finished)
 				OPPONENT_HEALTH_ICON.playAnimation('toLoss', false, true);
 			else
 				OPPONENT_HEALTH_ICON.playAnimation('neutral');
 
-			if (PLAYER_HEALTH_ICON.animation.name == 'win')
+			if (PLAYER_HEALTH_ICON.animation.name == 'win' && PLAYER_HEALTH_ICON.animation.finished)
 				PLAYER_HEALTH_ICON.playAnimation('toWin', false, true);
-			else if (PLAYER_HEALTH_ICON.animation.name == 'loss')
+			else if (PLAYER_HEALTH_ICON.animation.name == 'loss' && PLAYER_HEALTH_ICON.animation.finished)
 				PLAYER_HEALTH_ICON.playAnimation('toLoss', false, true);
 			else
 				PLAYER_HEALTH_ICON.playAnimation('neutral');
@@ -417,10 +422,11 @@ class Sidebit1 extends State
 	}
 
 	// These control health icon shit
-	static final MAXIMUM_HEALTH:Float = 100;
-	static final WINNING_THRESHOLD:Float = 0.8 * MAXIMUM_HEALTH;
-	static final LOSING_THRESHOLD:Float = 0.2 * MAXIMUM_HEALTH;
-	static final POSITION_OFFSET:Int = 48;
+	static final MAXIMUM_PERCENT:Float = 100;
+	static final WINNING_THRESHOLD:Float = 0.2 * MAXIMUM_PERCENT;
+	static final LOSING_THRESHOLD:Float = 0.8 * MAXIMUM_PERCENT;
+	static final POSITION_OFFSET:Int = 64;
+	static final MOVING_OFFSET:Float = 1.5;
 
 	public static function disableAbilities():Void
 	{
