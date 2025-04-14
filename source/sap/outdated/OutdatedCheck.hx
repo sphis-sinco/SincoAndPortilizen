@@ -22,7 +22,7 @@ class OutdatedCheck
 		http.onData = function(data:String)
 		{
 			returnedData = data;
-			if (Global.VERSION_FULL == returnedData) return false;
+			if (Global.VERSION == returnedData) return false;
 
 			trace('OUTDATED VERSION: ' + returnedData + ' != ' + Global.VERSION);
 			return true;
