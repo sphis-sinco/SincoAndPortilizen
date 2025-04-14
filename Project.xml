@@ -112,8 +112,6 @@
         <haxelib name="flxgif" />
         <haxelib name="flxanimate" />
 
-        <haxelib name="sinlib" />
-
         <haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS" />
 
         <haxelib name="discord_rpc" if="DISCORDRPC" />

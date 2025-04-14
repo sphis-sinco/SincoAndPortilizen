@@ -1,4 +1,8 @@
 # Alpha
+## [Unreleased]
+### Removed
+- Sinlib is no longer required to compile and has been integrated into the source code
+
 ## 0.4.2a - 4/14/2025
 ### Added
 - Sidebit 1 health icons

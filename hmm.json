@@ -45,11 +45,6 @@
       "version": null
     },
     {
-      "name": "sinlib",
-      "type": "haxelib",
-      "version": null
-    },
-    {
       "name": "thx.semver",
       "type": "haxelib",
       "version": null
