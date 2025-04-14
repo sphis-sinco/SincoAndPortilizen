@@ -37,13 +37,6 @@
 
         <source path="source" />
 
-        <!-- Doing "-watch" with these 2 lines mean if either of the folders are modifyed it
-        recompiles -->
-        <section if="RECOMPILE_ON_MOD_UPDATE">
-                <source path="debug_mods" />
-                <source path="mods" />
-        </section>
-
         <assets path="assets" />
         <assets path="cur_lang.txt" />
         <assets path="CHANGELOG.md" />
@@ -68,10 +61,10 @@
 
         <!-- _____________________________ Custom Defines ___________________________ -->
 
-        <define name="openfl-enable-handle-error" /> <!-- Required for crash handler -->
+        <define name="openfl-enable-handle-error" /> <!-- Required for Crash Handler -->
         <define name="SCRIPT_FILES" /> <!-- Required for Iris  -->
-        <define name="hscriptPos" />
-        <define name="RECOMPILE_ON_MOD_UPDATE" unless="DO_NOT_RECOMPILE_ON_MOD_UPDATE"/>
+        <define name="hscriptPos" /><!-- Iris related -->
+        <define name="RECOMPILE_ON_MOD_UPDATE" unless="DO_NOT_RECOMPILE_ON_MOD_UPDATE"/> <!-- Doing "-watch" with this means that if the mod folders are modified it recompiles -->
 
         <define name="DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS" />
         <define name="DISABLE_ANNOYING_WARNINGS" unless="ENABLE_ANNOYING_WARNINGS" />
@@ -128,6 +121,11 @@
         <assets path="mods" if="SCRIPT_FILES" />
         <section if="SCRIPT_FILES">
                 <assets path="debug_mods" rename="mods" if="debug" />
+        </section>
+
+        <section if="RECOMPILE_ON_MOD_UPDATE">
+                <source path="debug_mods" />
+                <source path="mods" />
         </section>
 
         <!-- ______________________________ Haxedefines _____________________________ -->
