@@ -266,12 +266,13 @@ class Sidebit1 extends State
 		PROGRESS_BAR.createFilledBar(Random.dominantColor(SINCO), Random.dominantColor(PORTILIZEN), true, FlxColor.BLACK, 4);
 
 		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
-		add(INFO_TEXTFIELD);
 
 		PLAYER_HEALTH_ICON = new HealthIcon('gameplay/sidebits/sinco-healthicon', 'Sinco');
 		OPPONENT_HEALTH_ICON = new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen');
 		add(PLAYER_HEALTH_ICON);
 		add(OPPONENT_HEALTH_ICON);
+
+		add(INFO_TEXTFIELD);
 
 		PLAYER_HEALTH_ICON.y = PROGRESS_BAR.getGraphicMidpoint().y - 48;
 		OPPONENT_HEALTH_ICON.y = PLAYER_HEALTH_ICON.y + 16;
