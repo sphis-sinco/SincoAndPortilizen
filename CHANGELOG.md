@@ -1,5 +1,7 @@
 # Alpha
 ## 0.4.2a - 4/13/2025
+### Added
+- Portuguese Tutorial assets for sidebit1
 ### Fixed
 - Tutorial assets are visible in Sidebit 1 now
 ### Changed
