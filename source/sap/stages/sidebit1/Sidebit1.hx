@@ -60,10 +60,10 @@ class Sidebit1 extends State
 	public static var PORTILIZEN_DODGE_CHANCE_UNFOCUSED:Float = 35;
 	public static var PORTILIZEN_DODGE_CHANCE_FOCUS:Float = 70;
 
-        public static var TUTORIAL_SHADER:AdjustColorShader;
+	public static var TUTORIAL_SHADER:AdjustColorShader;
 
-        public static var PLAYER_HEALTH_ICON:HealthIcon;
-        public static var OPPONENT_HEALTH_ICON:HealthIcon;
+	public static var PLAYER_HEALTH_ICON:HealthIcon;
+	public static var OPPONENT_HEALTH_ICON:HealthIcon;
 
 	override function create()
 	{
@@ -268,13 +268,13 @@ class Sidebit1 extends State
 		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
 		add(INFO_TEXTFIELD);
 
-                PLAYER_HEALTH_ICON = new HealthIcon('gameplay/sidebits/sinco-healthicon', 'Sinco');
-                OPPONENT_HEALTH_ICON = new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen');
-                add(PLAYER_HEALTH_ICON);
-                add(OPPONENT_HEALTH_ICON);
+		PLAYER_HEALTH_ICON = new HealthIcon('gameplay/sidebits/sinco-healthicon', 'Sinco');
+		OPPONENT_HEALTH_ICON = new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen');
+		add(PLAYER_HEALTH_ICON);
+		add(OPPONENT_HEALTH_ICON);
 
-                TUTORIAL_SHADER = new AdjustColorShader();
-                TUTORIAL_SHADER.brightness = -50;
+		TUTORIAL_SHADER = new AdjustColorShader();
+		TUTORIAL_SHADER.brightness = -50;
 
 		var tutorial1:FlxSprite = new FlxSprite();
 		tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/non-pixel/Space-Dodge'));
@@ -288,8 +288,8 @@ class Sidebit1 extends State
 		tutorial2.y += tutorial2.height;
 		add(tutorial2);
 
-                tutorial1.shader = TUTORIAL_SHADER;
-                tutorial2.shader = TUTORIAL_SHADER;
+		tutorial1.shader = TUTORIAL_SHADER;
+		tutorial2.shader = TUTORIAL_SHADER;
 
 		FlxTimer.wait(3, () ->
 		{
@@ -364,7 +364,60 @@ class Sidebit1 extends State
 		PROGRESS_BAR.percent = (PORTILIZEN_HEALTH / PORTILIZEN_MAX_HEALTH) * 100;
 		INFO_TEXTFIELD.text = INFO_TEXT;
 		INFO_TEXTFIELD.screenCenter(X);
+
+		final percent:Float = PROGRESS_BAR.percent;
+		final bar_width_multiplication_math:Float = PROGRESS_BAR.width * (FlxMath.remapToRange(PROGRESS_BAR.value, 0, 2, 100, 0) * 0.01);
+
+		PLAYER_HEALTH_ICON.x = PROGRESS_BAR.x + POSITION_OFFSET;
+		OPPONENT_HEALTH_ICON.x = PROGRESS_BAR.x + (OPPONENT_HEALTH_ICON.width - POSITION_OFFSET);
+
+		if (percent > WINNING_THRESHOLD)
+		{
+			if (PLAYER_HEALTH_ICON.animation.name == 'neutral')
+				PLAYER_HEALTH_ICON.playAnimation('toWin');
+			if (OPPONENT_HEALTH_ICON.animation.name == 'neutral')
+				OPPONENT_HEALTH_ICON.playAnimation('toLoss');
+
+			if (PLAYER_HEALTH_ICON.animation.name == 'toWin')
+				PLAYER_HEALTH_ICON.playAnimation('win');
+			if (OPPONENT_HEALTH_ICON.animation.name == 'toLoss')
+				OPPONENT_HEALTH_ICON.playAnimation('loss');
+		}
+		else if (percent < LOSING_THRESHOLD)
+		{
+			if (OPPONENT_HEALTH_ICON.animation.name == 'neutral')
+				OPPONENT_HEALTH_ICON.playAnimation('toWin');
+			else if (OPPONENT_HEALTH_ICON.animation.name == 'toWin')
+				OPPONENT_HEALTH_ICON.playAnimation('win');
+
+			if (PLAYER_HEALTH_ICON.animation.name == 'neutral')
+				PLAYER_HEALTH_ICON.playAnimation('toLoss');
+			else if (PLAYER_HEALTH_ICON.animation.name == 'toLoss')
+				PLAYER_HEALTH_ICON.playAnimation('loss');
+		}
+		else
+		{
+			if (OPPONENT_HEALTH_ICON.animation.name == 'win')
+				OPPONENT_HEALTH_ICON.playAnimation('toWin', false, true);
+			else if (OPPONENT_HEALTH_ICON.animation.name == 'loss')
+				OPPONENT_HEALTH_ICON.playAnimation('toLoss', false, true);
+			else
+				OPPONENT_HEALTH_ICON.playAnimation('neutral');
+
+			if (PLAYER_HEALTH_ICON.animation.name == 'win')
+				PLAYER_HEALTH_ICON.playAnimation('toWin', false, true);
+			else if (PLAYER_HEALTH_ICON.animation.name == 'loss')
+				PLAYER_HEALTH_ICON.playAnimation('toLoss', false, true);
+			else
+				PLAYER_HEALTH_ICON.playAnimation('neutral');
+		}
 	}
+
+	// These control health icon shit
+	static final MAXIMUM_HEALTH:Float = 100;
+	static final WINNING_THRESHOLD:Float = 0.8 * MAXIMUM_HEALTH;
+	static final LOSING_THRESHOLD:Float = 0.2 * MAXIMUM_HEALTH;
+	static final POSITION_OFFSET:Int = 26;
 
 	public static function disableAbilities():Void
 	{
