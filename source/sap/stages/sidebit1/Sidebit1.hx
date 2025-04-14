@@ -273,8 +273,8 @@ class Sidebit1 extends State
 		add(PLAYER_HEALTH_ICON);
 		add(OPPONENT_HEALTH_ICON);
 
-                PLAYER_HEALTH_ICON.y = PROGRESS_BAR.getGraphicMidpoint().y;
-                OPPONENT_HEALTH_ICON.y = PROGRESS_BAR.getGraphicMidpoint().y;
+		PLAYER_HEALTH_ICON.y = PROGRESS_BAR.getGraphicMidpoint().y -= 48;
+		OPPONENT_HEALTH_ICON.y = PLAYER_HEALTH_ICON.y;
 
 		TUTORIAL_SHADER = new AdjustColorShader();
 		TUTORIAL_SHADER.brightness = -50;
@@ -377,12 +377,12 @@ class Sidebit1 extends State
 		{
 			if (PLAYER_HEALTH_ICON.animation.name == 'neutral')
 				PLAYER_HEALTH_ICON.playAnimation('toWin');
+			else if (PLAYER_HEALTH_ICON.animation.name == 'toWin')
+				PLAYER_HEALTH_ICON.playAnimation('win');
+
 			if (OPPONENT_HEALTH_ICON.animation.name == 'neutral')
 				OPPONENT_HEALTH_ICON.playAnimation('toLoss');
-
-			if (PLAYER_HEALTH_ICON.animation.name == 'toWin')
-				PLAYER_HEALTH_ICON.playAnimation('win');
-			if (OPPONENT_HEALTH_ICON.animation.name == 'toLoss')
+			else if (OPPONENT_HEALTH_ICON.animation.name == 'toLoss')
 				OPPONENT_HEALTH_ICON.playAnimation('loss');
 		}
 		else if (percent < LOSING_THRESHOLD)
@@ -419,7 +419,7 @@ class Sidebit1 extends State
 	static final MAXIMUM_HEALTH:Float = 100;
 	static final WINNING_THRESHOLD:Float = 0.8 * MAXIMUM_HEALTH;
 	static final LOSING_THRESHOLD:Float = 0.2 * MAXIMUM_HEALTH;
-	static final POSITION_OFFSET:Int = 26;
+	static final POSITION_OFFSET:Int = 32;
 
 	public static function disableAbilities():Void
 	{
