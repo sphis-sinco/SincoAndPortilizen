@@ -1,5 +1,5 @@
 # Alpha
-## 0.4.2a - 4/13/2025
+## 0.4.2a - 4/14/2025
 ### Added
 - Sidebit 1 health icons
 - Portuguese Tutorial assets for sidebit1
