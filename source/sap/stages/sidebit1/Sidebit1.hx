@@ -423,8 +423,8 @@ class Sidebit1 extends State
 
 	// These control health icon shit
 	static final MAXIMUM_PERCENT:Float = 100;
-	static final WINNING_THRESHOLD:Int = 2;
-	static final LOSING_THRESHOLD:Int = 8;
+	static final WINNING_THRESHOLD:Int = 3;
+	static final LOSING_THRESHOLD:Int = 7;
 	static final POSITION_OFFSET:Int = 64;
 
 	public static function disableAbilities():Void
