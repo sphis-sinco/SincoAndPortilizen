@@ -3,6 +3,7 @@
 ### Fixed
 - Fixed crash when beating stage 4 ([#23](#23_link))
 ### Changed
+- In stage 1 you can no longer attack when the opponent is attacking
 - Global now has 2 version variables: `VERSION` and `VERSION_FULL`, `VERSION` is the simplist version (i.e `0.5.2a`), `VERSION_FULL` is the most complicated (i.e `0.10.5a-debug-playtester (github-actions)`)
 - The FileManager now has a new function for saying if it cant find a file via `unfoundAsset`
 - The FileManager now says if it can't find a file in the `readFile` function

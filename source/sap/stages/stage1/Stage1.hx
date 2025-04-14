@@ -162,6 +162,8 @@ class Stage1 extends State
 		PLAYER_COMBO = 0;
 	}
 
+        public static var ABILITY_CAN_ATTACK_PLAYER:Bool = true;
+
 	override function postCreate():Void
 	{
 		super.postCreate();
@@ -246,7 +248,7 @@ class Stage1 extends State
 
 	public static function playerControls():Void
 	{
-		if (FlxG.keys.justPressed.SPACE)
+		if (FlxG.keys.justPressed.SPACE && ABILITY_CAN_ATTACK_PLAYER)
 		{
 			if (sinco.x != SINCO_POINT.x)
 			{
@@ -317,6 +319,7 @@ class Stage1 extends State
 
 	public static function osinJump():Void
 	{
+                ABILITY_CAN_ATTACK_PLAYER = false;
 		osin.animation.play(StageGlobals.JUMP_KEYWORD);
 		Global.playSoundEffect('gameplay/sinco-jump');
 		FlxTween.tween(osin, {x: SINCO_POINT.x, y: SINCO_POINT.y}, OSIN_JUMP_SPEED, {
@@ -364,6 +367,7 @@ class Stage1 extends State
 			{
 				osin.animation.play('run');
 				OSIN_CAN_ATTACK = true;
+                                ABILITY_CAN_ATTACK_PLAYER = true;
 			}
 		});
 	}
