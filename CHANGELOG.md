@@ -7,6 +7,7 @@
 - Tutorial assets are visible in Sidebit 1 now
 ### Changed
 - Modding API version is now `0.1.2`
+  - `ModFolderManager` now traces the supported modding API versions
   - New function: `PlayMusic`
   - New function: `PlaySFX`
 - Sidebit 1 tutorial assets are more visible on the white background
