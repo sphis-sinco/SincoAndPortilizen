@@ -2,6 +2,11 @@ name: 'Close stale issues and PRs'
 on:
   schedule:
     - cron: '* * * * *'
+    
+permissions:
+  contents: write # only for delete-branch option
+  issues: write
+  pull-requests: write
 
 jobs:
   stale:
@@ -12,16 +17,14 @@ jobs:
           stale-issue-message: 'This issue is stale and has automatically been closed'
           stale-pr-message: 'This PR is stale and has automatically been closed'
 
+          exempt-pr-labels: 'Response: Unknown'
           exempt-issue-labels: 'Response: Unknown'
           
           stale-issue-label: 'Response: Stale'
           stale-pr-label: 'Response: Stale'
           
-          exempt-pr-labels: 'awaiting-approval,work-in-progress'
           only-labels: 'Response: Unreproducible bug,Respose: Planned,Response: Fixed,Response: Ignored,Response: Intentional,Response: Developer created'
 
-          days-before-issue-stale: 1
-          days-before-pr-stale: 1
+          days-before-stale: 1
 
-          days-before-issue-close: 0
-          days-before-pr-close: 0
+          days-before-close: 0
