@@ -62,6 +62,9 @@ class Sidebit1 extends State
 
         public static var TUTORIAL_SHADER:AdjustColorShader;
 
+        public static var PLAYER_HEALTH_ICON:HealthIcon;
+        public static var OPPONENT_HEALTH_ICON:HealthIcon;
+
 	override function create()
 	{
 		super.create();
@@ -264,6 +267,11 @@ class Sidebit1 extends State
 
 		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
 		add(INFO_TEXTFIELD);
+
+                PLAYER_HEALTH_ICON = new HealthIcon('gameplay/sidebits/sinco-healthicon', 'Sinco');
+                OPPONENT_HEALTH_ICON = new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen');
+                add(PLAYER_HEALTH_ICON);
+                add(OPPONENT_HEALTH_ICON);
 
                 TUTORIAL_SHADER = new AdjustColorShader();
                 TUTORIAL_SHADER.brightness = -50;
