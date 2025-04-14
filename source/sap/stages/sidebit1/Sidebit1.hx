@@ -369,7 +369,6 @@ class Sidebit1 extends State
 		INFO_TEXTFIELD.screenCenter(X);
 
 		final percent:Float = PROGRESS_BAR.percent;
-		final bar_width_multiplication_math:Float = PROGRESS_BAR.width * (FlxMath.remapToRange(PROGRESS_BAR.value, 0, 2, 100, 0) * 0.01);
 
 		PLAYER_HEALTH_ICON.x = PROGRESS_BAR.x + POSITION_OFFSET;
 		OPPONENT_HEALTH_ICON.x = PROGRESS_BAR.x + (OPPONENT_HEALTH_ICON.width - POSITION_OFFSET);
