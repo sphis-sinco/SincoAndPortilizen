@@ -16,11 +16,13 @@ class ModFolderManager
 		SUPPORTED_MODDING_API_VERSIONS.push('0.1.1');
 		SUPPORTED_MODDING_API_VERSIONS.push('0.1.2');
 
+                #if EXCESS_TRACES
                 trace('Supported mod API versions: ');
                 for (version in SUPPORTED_MODDING_API_VERSIONS)
                 {
                         trace('* ${version}');
                 }
+                #end
 	}
 
 	public static function readModFolder():Void
