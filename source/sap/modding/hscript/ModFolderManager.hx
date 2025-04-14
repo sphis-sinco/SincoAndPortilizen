@@ -14,6 +14,7 @@ class ModFolderManager
 	{
 		SUPPORTED_MODDING_API_VERSIONS.push('0.1.0');
 		SUPPORTED_MODDING_API_VERSIONS.push('0.1.1');
+		SUPPORTED_MODDING_API_VERSIONS.push('0.1.2');
 	}
 
 	public static function readModFolder():Void
