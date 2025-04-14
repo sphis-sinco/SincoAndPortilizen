@@ -268,16 +268,13 @@ class Sidebit1 extends State
 		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
 
 		PLAYER_HEALTH_ICON = new HealthIcon('gameplay/sidebits/sinco-healthicon', 'Sinco');
-                PLAYER_HEALTH_ICON.flipX = true;
+		PLAYER_HEALTH_ICON.flipX = true;
 		OPPONENT_HEALTH_ICON = new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen');
-                OPPONENT_HEALTH_ICON.flipX = true;
+		OPPONENT_HEALTH_ICON.flipX = true;
 		add(PLAYER_HEALTH_ICON);
 		add(OPPONENT_HEALTH_ICON);
 
 		add(INFO_TEXTFIELD);
-
-		PLAYER_HEALTH_ICON.y = PROGRESS_BAR.getGraphicMidpoint().y - 48;
-		OPPONENT_HEALTH_ICON.y = PLAYER_HEALTH_ICON.y - 4;
 
 		TUTORIAL_SHADER = new AdjustColorShader();
 		TUTORIAL_SHADER.brightness = -50;
@@ -373,11 +370,19 @@ class Sidebit1 extends State
 
 		var percent:Float = MAXIMUM_PERCENT - PROGRESS_BAR.percent;
 
-                if (percent < 0)
-                        percent = 0;
+		if (percent < 0)
+			percent = 0;
 
 		PLAYER_HEALTH_ICON.x = PROGRESS_BAR.x + ((percent * PROGRESS_BAR.pxPerPercent) - 32);
 		OPPONENT_HEALTH_ICON.x = PLAYER_HEALTH_ICON.x + POSITION_OFFSET;
+
+		PLAYER_HEALTH_ICON.y = PROGRESS_BAR.getGraphicMidpoint().y - 48;
+		OPPONENT_HEALTH_ICON.y = PLAYER_HEALTH_ICON.y - 4;
+
+		if (OPPONENT_HEALTH_ICON.animation.name.toLowerCase().contains('loss'))
+		{
+			OPPONENT_HEALTH_ICON.y = PLAYER_HEALTH_ICON.y + 4;
+		}
 
 		if (PORTILIZEN_HEALTH < WINNING_THRESHOLD)
 		{
