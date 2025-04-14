@@ -1,4 +1,4 @@
-name: Build (Indev)
+name: Indev builds
 
 on:
   push:
