@@ -23,10 +23,12 @@ A clear and concise description of what you expected to happen.
 # Screenshots
 If applicable, add screenshots to help explain your problem.
 
-# Desktop (please complete the following information as it may be a web or desktop-specific issue)
+# Basic Information (please complete the following information as it may be a web or desktop-specific issue)
+<!-- If you are playing a github actions build say "gab-" and then the action number along with the first word in the workflow name (i.e gab-13-indev) for the game version field -->
  - OS (DOWNLOADED BUILDS): [e.g. iOS]
  - Browser (WEB): [e.g. chrome, safari]
  - Version: [e.g. 22]
+ - Game Version: 0.4.2a
 
 # Additional Information
 Provide any other context about the problem here.
