@@ -116,7 +116,7 @@
 
         <haxelib name="discord_rpc" if="DISCORDRPC" />
 
-        <haxelib name="hscript" if="debug" /> <!--Used only for flixel's debugger! I think -->
+        <haxelib name="hscript" if="debug" />
         <haxelib name="hscript-iris" if="SCRIPT_FILES" />
 
         <!-- _________________________________ After _______________________________ -->
