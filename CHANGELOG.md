@@ -1,5 +1,7 @@
 # Alpha
 ## 0.4.3a - 4/14/2025
+### Fixed
+- Fixed crash when beating stage 4 ([#23](#23_link))
 ### Changed
 - Global now has 2 version variables: `VERSION` and `VERSION_FULL`, `VERSION` is the simplist version (i.e `0.5.2a`), `VERSION_FULL` is the most complicated (i.e `0.10.5a-debug-playtester (github-actions)`)
 - The FileManager now has a new function for saying if it cant find a file via `unfoundAsset`
@@ -354,3 +356,4 @@ CURRENT FEATURES:
 [#16_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/16
 [#18_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/18
 [#19_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/19
+[#23_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/23
