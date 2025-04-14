@@ -8,32 +8,28 @@ class MedalData
 
 	public static function unlockMedal(medal:String = 'award'):Medal
 	{
-
 		var medalClass:Medal = new Medal(medal.replace(' ', '-').replace(',', '').toLowerCase(), unlocked_medals.contains(medal), cur_y_offset);
 		cur_y_offset += 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 
-
-		#if !sys 
-                if (!WebSave.MEDALS.contains(medal))
-                {
-			unlocked_medals.push(medal);
-			WebSave.MEDALS = unlocked_medals;
-                        medalClass.visible = false;
-                }
-                return medalClass;
-                #end
-
 		trace('New medal: ${medal}');
 
+		#if sys
 		if (FlxG.save.data.medals.contains(medal))
+		#else
+		if (WebSave.MEDALS.contains(medal))
+		#end
 		{
 			trace('MEDAL IS ALREADY EARNED');
 		}
-		else
-		{
-			unlocked_medals.push(medal);
-			FlxG.save.data.medals = unlocked_medals;
-		}
+	else
+	{
+		unlocked_medals.push(medal);
+		#if sys
+		FlxG.save.data.medals = unlocked_medals;
+		#else
+		WebSave.MEDALS = unlocked_medals;
+		#end
+	}
 
 		return medalClass;
 	}
