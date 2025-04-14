@@ -5,6 +5,7 @@ import flixel.util.typeLimit.NextState;
 import openfl.utils.AssetCache;
 import sap.credits.CreditsSubState;
 import sap.mainmenu.MainMenu;
+import sap.outdated.OutdatedCheck;
 import sap.results.ResultsMenu;
 import sap.stages.PaulPortGameOver;
 import sap.stages.stage1.Stage1;
@@ -65,6 +66,8 @@ class InitState extends FlxState
 			#end
 
                         CreditsSubState.creditsJSONInit();
+
+                        OutdatedCheck.checkForOutdatedVersion();
 
 			// PaulPortGameOver.init();
 		});
