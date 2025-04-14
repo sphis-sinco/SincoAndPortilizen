@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sinco-healthicon.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Sinco loss0000" x="181" y="4" width="69" height="65" frameX="0" frameY="0" frameWidth="70" frameHeight="68"/>
+	<SubTexture name="Sinco neutral0000" x="4" y="4" width="91" height="72"/>
+	<SubTexture name="Sinco toLoss0000" x="103" y="4" width="70" height="66" frameX="0" frameY="0" frameWidth="70" frameHeight="68"/>
+	<SubTexture name="Sinco toLoss0001" x="103" y="4" width="70" height="66" frameX="0" frameY="0" frameWidth="70" frameHeight="68"/>
+	<SubTexture name="Sinco toLoss0002" x="181" y="4" width="69" height="65" frameX="-1" frameY="-3" frameWidth="70" frameHeight="68"/>
+	<SubTexture name="Sinco toLoss0003" x="181" y="4" width="69" height="65" frameX="-1" frameY="-3" frameWidth="70" frameHeight="68"/>
+	<SubTexture name="Sinco toWin0000" x="4" y="84" width="83" height="71" frameX="-1" frameY="0" frameWidth="84" frameHeight="71"/>
+	<SubTexture name="Sinco toWin0001" x="4" y="84" width="83" height="71" frameX="-1" frameY="0" frameWidth="84" frameHeight="71"/>
+	<SubTexture name="Sinco toWin0002" x="95" y="84" width="84" height="71"/>
+	<SubTexture name="Sinco toWin0003" x="95" y="84" width="84" height="71"/>
+	<SubTexture name="Sinco win0000" x="95" y="84" width="84" height="71"/>
+</TextureAtlas>

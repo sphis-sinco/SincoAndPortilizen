@@ -1,4 +1,18 @@
 # Alpha
+## 0.4.2a - 4/14/2025
+### Added
+- Sidebit 1 health icons
+- Portuguese Tutorial assets for sidebit1
+### Fixed
+- Tutorial assets are visible in Sidebit 1 now
+### Changed
+- Modding API version is now `0.1.2`
+  - `ModFolderManager` now traces the supported modding API versions
+  - New function: `PlayMusic`
+  - New function: `PlaySFX`
+- Sidebit 1 tutorial assets are more visible on the white background
+- Medals no longer unlock on web (the icon doesnt appear)
+
 ## 0.4.1a - 4/13/2025
 ### Added
 - MOD MENU <!-- Moved up because it's the main addition -->

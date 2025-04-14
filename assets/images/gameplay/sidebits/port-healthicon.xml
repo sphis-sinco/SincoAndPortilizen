@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="port-healthicon.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Portilizen loss0000" x="155" y="4" width="64" height="61" frameX="0" frameY="0" frameWidth="68" frameHeight="68"/>
+	<SubTexture name="Portilizen neutral0000" x="4" y="4" width="68" height="70"/>
+	<SubTexture name="Portilizen toLoss0000" x="80" y="4" width="67" height="68" frameX="-1" frameY="0" frameWidth="68" frameHeight="68"/>
+	<SubTexture name="Portilizen toLoss0001" x="80" y="4" width="67" height="68" frameX="-1" frameY="0" frameWidth="68" frameHeight="68"/>
+	<SubTexture name="Portilizen toLoss0002" x="155" y="4" width="64" height="61" frameX="0" frameY="-7" frameWidth="68" frameHeight="68"/>
+	<SubTexture name="Portilizen toLoss0003" x="155" y="4" width="64" height="61" frameX="0" frameY="-7" frameWidth="68" frameHeight="68"/>
+	<SubTexture name="Portilizen toWin0000" x="4" y="82" width="62" height="70" frameX="0" frameY="0" frameWidth="63" frameHeight="71"/>
+	<SubTexture name="Portilizen toWin0001" x="4" y="82" width="62" height="70" frameX="0" frameY="0" frameWidth="63" frameHeight="71"/>
+	<SubTexture name="Portilizen toWin0002" x="74" y="82" width="60" height="66" frameX="-3" frameY="-5" frameWidth="63" frameHeight="71"/>
+	<SubTexture name="Portilizen toWin0003" x="74" y="82" width="60" height="66" frameX="-3" frameY="-5" frameWidth="63" frameHeight="71"/>
+	<SubTexture name="Portilizen win0000" x="74" y="82" width="60" height="66" frameX="0" frameY="0" frameWidth="63" frameHeight="71"/>
+</TextureAtlas>

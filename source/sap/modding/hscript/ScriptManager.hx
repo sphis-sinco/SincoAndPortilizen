@@ -26,6 +26,7 @@ import sap.stages.stage4.PortS4;
 import sap.stages.stage4.PostStage4Cutscene;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
+import sinlib.utilities.FileManager.PathTypes;
 
 // THANK YOU FNF-Doido-Engine
 class ScriptManager
@@ -120,6 +121,12 @@ class ScriptManager
                 // custom
 		setScript('UnlockMedal', function(medal:String):Medal {
                         return MedalData.unlockMedal(medal);
+                });
+		setScript('PlaySFX', function(soundEffect:String, PATH_TYPE:PathTypes):Void {
+                        Global.playSoundEffect(soundEffect, PATH_TYPE);
+                });
+		setScript('PlayMusic', function(filename:String, ?volume:Float = 1.0, ?loop:Bool = false):Void {
+                        Global.playMusic(filename, volume, loop);
                 });
 
                 // init mod
