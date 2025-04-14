@@ -419,7 +419,7 @@ class Sidebit1 extends State
 	static final MAXIMUM_HEALTH:Float = 100;
 	static final WINNING_THRESHOLD:Float = 0.8 * MAXIMUM_HEALTH;
 	static final LOSING_THRESHOLD:Float = 0.2 * MAXIMUM_HEALTH;
-	static final POSITION_OFFSET:Int = 32;
+	static final POSITION_OFFSET:Int = 48;
 
 	public static function disableAbilities():Void
 	{
