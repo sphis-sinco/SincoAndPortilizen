@@ -1,4 +1,6 @@
 # Alpha
+## 0.5.0a - 4/??/2025
+
 ## 0.4.3a - 4/15/2025
 ### Added
 - (Desktop only) Added oudated version menu
