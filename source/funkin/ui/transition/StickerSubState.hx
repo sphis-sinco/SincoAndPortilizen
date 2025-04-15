@@ -266,7 +266,7 @@ class StickerSubState extends FlxSubState
 					if (sticker == null)
 						return;
 
-					sticker.scale.x = sticker.scale.y = FlxG.random.float(0.97, 1.02);
+					sticker.scale.x = sticker.scale.y = (FlxG.random.float(0.97, 1.02) * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 
 					if (ind == grpStickers.members.length - 1)
 					{
