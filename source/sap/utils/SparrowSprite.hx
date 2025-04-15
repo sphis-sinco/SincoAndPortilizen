@@ -7,7 +7,7 @@ class SparrowSprite extends FlxSprite
         override public function new(Imagepath:String = '', ?PATH_TYPE:PathTypes, ?X:Float = 0, ?Y:Float = 0):Void {
                 super(X,Y);
 
-                frames = FlxAtlasFrames.fromSparrow(FileManager.getImageFile(Imagepath), FileManager.getAssetFile('images/$Imagepath.xml'));
+                frames = FileManager.getSparrowAtlas(Imagepath, PATH_TYPE);
         }
 
         public function addAnimationByPrefix(name:String, prefix:String, frameRate = 30.0, looped = true, flipX = false, flipY = false):Void

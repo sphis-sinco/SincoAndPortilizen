@@ -81,23 +81,23 @@ class FileManager
 		return '';
 	}
 
-        public static inline function unfoundAsset(asset:String):Void
-        {
-                if (!UNFOUND_ASSETS.contains(asset))
-                        {
-                                if (asset.contains('mods/'))
-                                {
-                                        #if EXCESS_TRACES
-                                        trace('Could not get asset: $asset');
-                                        #end
-                                }
-                                else
-                                {
-                                        trace('Could not get asset: $asset');
-                                }
-                                UNFOUND_ASSETS.push(asset);
-                        }
-        }
+	public static inline function unfoundAsset(asset:String):Void
+	{
+		if (!UNFOUND_ASSETS.contains(asset))
+		{
+			if (asset.contains('mods/'))
+			{
+				#if EXCESS_TRACES
+				trace('Could not get asset: $asset');
+				#end
+			}
+			else
+			{
+				trace('Could not get asset: $asset');
+			}
+			UNFOUND_ASSETS.push(asset);
+		}
+	}
 
 	/**
 	 * Returns an `assets/$file`
@@ -306,11 +306,11 @@ class FileManager
 	 */
 	public static function readFile(path:String):String
 	{
-                if (!exists(path))
-                {
-                        unfoundAsset(path);
-                        return '';
-                }
+		if (!exists(path))
+		{
+			unfoundAsset(path);
+			return '';
+		}
 
 		try
 		{
@@ -321,7 +321,7 @@ class FileManager
 			throw e;
 		}
 
-                return '';
+		return '';
 	}
 
 	/**
@@ -375,6 +375,15 @@ class FileManager
 	{
 		return openfl.utils.Assets.exists(path);
 	}
+
+	public static function getPackerAtlas(path:String, ?path_type:PathTypes):FlxAtlasFrames
+	{
+		return FlxAtlasFrames.fromSpriteSheetPacker(getImageFile(path, path_type), getImageFile('$path', path_type).replace('.png', '.txt'));
+	}
+
+        public static function getSparrowAtlas(path:String, ?path_type:PathTypes) {
+		return FlxAtlasFrames.fromSparrow(getImageFile(path, path_type), getImageFile('$path', path_type).replace('.png', '.xml'));
+        }
 }
 
 /**

@@ -1,8 +1,13 @@
 # Alpha
 ## 0.5.0a - 4/??/2025
 ### Added
+- (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - Sticker transition from FNF
-- Pixel perfect rendering on Web ([#27][#27_link])
+- (Web only) Pixel perfect rendering ([#27][#27_link])
+### Changed
+- SparrowSprite uses the file manager's `getSparrowAtlas` function
+- Several states now use the `switchState` function from Global
+- Global now has a `switchState` function that uses the new sticker transition
 
 ## 0.4.3a - 4/15/2025
 ### Added
