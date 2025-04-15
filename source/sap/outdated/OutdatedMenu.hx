@@ -2,8 +2,7 @@ package sap.outdated;
 
 class OutdatedMenu extends State
 {
-        // heh
-	public static var OUTDATED_TEXT:String = '// ! You are running an outdated version (${Global.VERSION}) ! \\'
+	public static var OUTDATED_TEXT:String = '// ! You are running an outdated version ([VERSION]) ! \\'
 		+ '\n\nIt is recommended to update to the latest version'
                 + '\nespecally if you are working on a mod with script files';
 
@@ -14,7 +13,7 @@ class OutdatedMenu extends State
 		super.create();
 
                 BEGONE = true;
-                var text:FlxText = new FlxText(0,0,0,OUTDATED_TEXT,16);
+                var text:FlxText = new FlxText(0,0,0,OUTDATED_TEXT.replace('[VERSION]', '${Global.VERSION}'),16);
                 text.alignment = CENTER;
                 text.screenCenter();
                 add(text);
