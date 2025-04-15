@@ -124,8 +124,6 @@ class StickerSubState extends FlxSubState
 		}
 		else
 			regenStickers();
-
-		ScreenshotPlugin.capture();
 	}
 
 	public function degenStickers():Void
