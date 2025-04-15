@@ -1,7 +1,7 @@
 # Alpha
 ## 0.4.3a - 4/14/2025
 ### Added
-- Added oudated version menu (take a guess on what it does)
+- Added oudated version menu
 ### Fixed
 - Fixed crash when beating stage 4 ([#23](#23_link))
 ### Changed
