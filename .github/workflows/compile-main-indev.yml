@@ -54,12 +54,12 @@ jobs:
             cache-build-linux
 
       - name: Tar files
-        run: tar -zcvf Template.tar.gz export/release/linux/bin
+        run: tar -zcvf Linux.tar.gz export/release/linux/bin
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: linuxBuild
-          path: Template.tar.gz
+          path: Linux.tar.gz
   buildWindows:
     runs-on: windows-latest
 
@@ -154,9 +154,9 @@ jobs:
             cache-build-mac
 
       - name: Tar files
-        run: tar -zcvf Template.tar.gz export/release/macos/bin
+        run: tar -zcvf Mac.tar.gz export/release/macos/bin
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: macBuild
-          path: Template.tar.gz
+          path: Mac.tar.gz
