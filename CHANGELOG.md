@@ -1,6 +1,7 @@
 # Alpha
 ## 0.5.0a - 4/??/2025
 ### Added
+- Sticker transition from FNF
 - Pixel perfect rendering on Web ([#27][#27_link])
 
 ## 0.4.3a - 4/15/2025
