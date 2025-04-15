@@ -13,7 +13,7 @@ class PostStage2Cutscene extends PanelCutscene
 	{
 		super.finishedCutscene();
 
-		Global.switchState(() -> new Worldmap());
+		Global.switchState(new Worldmap());
 	}
 
 	override function panelEvents(panel:Int):Void

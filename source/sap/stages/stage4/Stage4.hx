@@ -113,7 +113,7 @@ class Stage4 extends State
 
 		if (FlxG.keys.justPressed.R)
 		{
-			Global.switchState(() -> new Stage4(DIFFICULTY));
+			Global.switchState(new Stage4(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
 		if (enemyAttackCondition())
@@ -191,9 +191,9 @@ class Stage4 extends State
 		trace(good);
                 RUNNING = false;
 		if (!win)
-			Global.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new Worldmap("Port"), "port"));
+			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new Worldmap("Port"), "port"));
 		else
-			Global.switchState(() -> new ResultsMenu(start_timer - good, start_timer, () -> new PostStage4Cutscene(), "port"));
+			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new PostStage4Cutscene(), "port"));
 	}
 
 	public static function enemyRetreat():Void

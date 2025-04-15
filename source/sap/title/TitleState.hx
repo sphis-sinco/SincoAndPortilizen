@@ -124,7 +124,7 @@ class TitleState extends State
 						return;
 
 					trace('Head to sidebit menu');
-					Global.switchState(() -> new SidebitSelect());
+					Global.switchState(new SidebitSelect());
 				}
 			}
 
@@ -246,7 +246,7 @@ class TitleState extends State
 				ease: FlxEase.sineInOut,
 				onComplete: tween ->
 				{
-					Global.switchState(() -> new MainMenu());
+					Global.switchState(new MainMenu());
 				}
 			});
 		}

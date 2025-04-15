@@ -274,7 +274,7 @@ class Stage1 extends State
 
 		if (FlxG.keys.justPressed.R)
 		{
-			Global.switchState(() -> new Stage1(DIFFICULTY));
+			Global.switchState(new Stage1(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
 	}
@@ -460,7 +460,7 @@ class Stage1 extends State
 			onComplete: _tween ->
 			{
                                 RUNNING = false;
-				Global.switchState(() -> new ResultsMenu((OSIN_MAX_HEALTH - OSIN_HEALTH), OSIN_MAX_HEALTH, () -> new Worldmap()));
+				Global.switchState(new ResultsMenu((OSIN_MAX_HEALTH - OSIN_HEALTH), OSIN_MAX_HEALTH, new Worldmap()));
 			},
 			onStart: _tween ->
 			{
@@ -496,7 +496,7 @@ class Stage1 extends State
 	{
 		Global.beatLevel(1);
                 RUNNING = false;
-		Global.switchState(() -> new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, () -> new PostStage1Cutscene()));
+		Global.switchState(new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, new PostStage1Cutscene()));
 	}
 
 	public static var PLAYED_DEATH_SFX:Bool = false;

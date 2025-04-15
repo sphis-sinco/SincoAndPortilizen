@@ -39,6 +39,6 @@ class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
 	override function cutsceneEnded()
 	{
 		super.cutsceneEnded();
-		Global.switchState(() -> new Sidebit1(DIFFICULTY));
+		Global.switchState(new Sidebit1(DIFFICULTY));
 	}
 }

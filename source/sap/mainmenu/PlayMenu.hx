@@ -28,14 +28,14 @@ class PlayMenu extends MainMenu
 				FlxG.save.data.gameplaystatus = GameplayStatus.returnDefaultGameplayStatus();
 
 				FlxG.sound.music.stop();
-				Global.switchState(() -> new IntroCutscene());
+				Global.switchState(new IntroCutscene());
 
 			case 1:
 				FlxG.sound.music.stop();
-				Global.switchState(() -> new Worldmap());
+				Global.switchState(new Worldmap());
 
 			case 2:
-				Global.switchState(() -> new MainMenu());
+				Global.switchState(new MainMenu());
 		}
 	}
 }

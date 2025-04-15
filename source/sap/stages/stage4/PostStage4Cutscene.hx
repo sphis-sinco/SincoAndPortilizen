@@ -13,6 +13,6 @@ class PostStage4Cutscene extends PanelCutscene
 	{
 		super.finishedCutscene();
 
-		Global.switchState(() -> new Worldmap('Port'));
+		Global.switchState(new Worldmap('Port'));
 	}
 }

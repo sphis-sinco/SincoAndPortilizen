@@ -65,7 +65,7 @@ class SidebitSelect extends State
 
 		if (FlxG.keys.justReleased.ESCAPE)
 		{
-			Global.switchState(() -> new TitleState());
+			Global.switchState(new TitleState());
 		}
 		else if (FlxG.keys.justReleased.ENTER)
 		{
@@ -73,7 +73,7 @@ class SidebitSelect extends State
 			{
 				case 1:
 					FlxG.sound.music.stop();
-					Global.switchState(() -> new Sidebit1IntroCutsceneAtlas(DIFFICULTY));
+					Global.switchState(new Sidebit1IntroCutsceneAtlas(DIFFICULTY));
 			}
 		}
 

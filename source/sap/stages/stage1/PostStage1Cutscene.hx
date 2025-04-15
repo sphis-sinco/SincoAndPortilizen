@@ -14,7 +14,7 @@ class PostStage1Cutscene extends PanelCutscene
 	{
 		super.finishedCutscene();
 
-		Global.switchState(() -> new Worldmap());
+		Global.switchState(new Worldmap());
 	}
 
 	public var soundFX:FlxSound;

@@ -234,17 +234,17 @@ class Global
 		return returnPhrase;
 	}
 
-	public static function callScriptFunction(func:String, ?arguments:Array<Dynamic>)
+	public static function callScriptFunction(func:String, ?arguments:Array<Dynamic>):Void
 	{
 		ScriptManager.callScript(func, arguments);
 	}
 
-	public static function setScriptVariable(name:String, value:Dynamic, allowOverride:Bool = true)
+	public static function setScriptVariable(name:String, value:Dynamic, allowOverride:Bool = true):Void
 	{
 		ScriptManager.setScript(name, value, allowOverride);
 	}
 
-	public static function switchState(new_state:FlxState, ?stickerSet:String = 'sinco')
+	public static function switchState(new_state:FlxState, ?stickerSet:String = 'sinco'):Void
 	{
 		var stickerTransition = new funkin.ui.transition.StickerSubState({
 			targetState: state -> new_state,
