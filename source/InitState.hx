@@ -6,6 +6,7 @@ import openfl.utils.AssetCache;
 import sap.credits.CreditsSubState;
 import sap.mainmenu.MainMenu;
 import sap.outdated.OutdatedCheck;
+import sap.outdated.OutdatedMenu;
 import sap.results.ResultsMenu;
 import sap.stages.PaulPortGameOver;
 import sap.stages.stage1.Stage1;
@@ -65,9 +66,7 @@ class InitState extends FlxState
 			trace('FILE_MANAGER_VERSION_SUFFIX: "${FileManager.FILE_MANAGER_VERSION_SUFFIX}"');
 			#end
 
-                        CreditsSubState.creditsJSONInit();
-
-                        OutdatedCheck.checkForOutdatedVersion();
+			CreditsSubState.creditsJSONInit();
 
 			// PaulPortGameOver.init();
 		});
@@ -82,7 +81,10 @@ class InitState extends FlxState
 		else
 		{
 			#if EXCESS_TRACES
-			trace('Game is a debug build');
+			if (SLGame.isDebug)
+			{
+				trace('Game is a debug build');
+			}
 			#end
 		}
 
@@ -102,6 +104,14 @@ class InitState extends FlxState
 
 	public static function proceed():Void
 	{
+                var outdated:Bool = OutdatedCheck.checkForOutdatedVersion();
+		#if html5 outdated = false; #end
+                
+		if (outdated)
+		{
+			FlxG.switchState(() -> new OutdatedMenu());
+		}
+
 		var difficulty:String = 'normal';
 
 		#if EASY_DIFFICULTY
@@ -190,9 +200,9 @@ class InitState extends FlxState
 			trace('mods init');
 
 			trace('Hscript mods');
-                        ModFolderManager.makeSupportedModdingApiVersions();
-                        ModFolderManager.readModFolder();
-                        
+			ModFolderManager.makeSupportedModdingApiVersions();
+			ModFolderManager.readModFolder();
+
 			ScriptManager.loadScripts();
 		});
 	}
@@ -219,7 +229,7 @@ class InitState extends FlxState
 				LocalizationManager.LANGUAGE = FileManager.readFile(FileManager.getPath('', 'cur_lang.txt'));
 			}
 
-                        ScriptManager.callScript('initalizeLanguage');
+			ScriptManager.callScript('initalizeLanguage');
 
 			#if SPANISH_LANGUAGE
 			trace('Spanish language is being forced.');

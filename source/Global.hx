@@ -19,7 +19,7 @@ class Global
 
 	static function get_VERSION():String
 	{
-		return VERSION_FULL.split('-')[0];
+		return VERSION_FULL.split('.')[0];
 	}
 
 	static function get_VERSION_FULL():String

@@ -1,8 +1,11 @@
 # Alpha
 ## 0.4.3a - 4/14/2025
+### Added
+- Added oudated version menu (take a guess on what it does)
 ### Fixed
 - Fixed crash when beating stage 4 ([#23](#23_link))
 ### Changed
+- Crash logs now use `GENERATED_BY`
 - `GENERATED_BY` now uses `VERSION_FULL`
 - `GENERATED_BY` can be modified from other files
 - `ModFolderManager` traces the supported modding API versions with `EXCESS_TRACES` enabled only
