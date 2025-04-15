@@ -350,11 +350,11 @@ class Sidebit1 extends State
 
 		if (PORTILIZEN_HEALTH == 0)
 		{
-			FlxG.switchState(() -> new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), NEXT_STATE_WIN));
+			Global.switchState(() -> new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), NEXT_STATE_WIN));
 		}
 		else if (SINCO_HEALTH == 0)
 		{
-			FlxG.switchState(() -> new ResultsMenu(Std.int(PORTILIZEN_MAX_HEALTH - PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), NEXT_STATE_LOSS));
+			Global.switchState(() -> new ResultsMenu(Std.int(PORTILIZEN_MAX_HEALTH - PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), NEXT_STATE_LOSS));
 		}
 	}
 

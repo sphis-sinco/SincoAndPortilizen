@@ -30,6 +30,6 @@ class Sidebit1PostCutsceneAtlas extends AtlasCutscene
 	override function cutsceneEnded()
 	{
 		super.cutsceneEnded();
-		FlxG.switchState(SidebitSelect.new);
+		Global.switchState(SidebitSelect.new);
 	}
 }

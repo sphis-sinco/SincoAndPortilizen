@@ -228,7 +228,7 @@ class MainMenu extends State
 				}
 				else
 				{
-					FlxG.switchState(TitleState.new);
+					Global.switchState(TitleState.new);
 				}
 			}
 			#end
@@ -242,9 +242,9 @@ class MainMenu extends State
 		switch (PUBLIC_CUR_SELECTION)
 		{
 			case 0:
-				FlxG.switchState(PlayMenu.new);
+				Global.switchState(PlayMenu.new);
 			#if sys case 5: #else case 3: #end
-				FlxG.switchState(TitleState.new);
+				Global.switchState(TitleState.new);
 		}
 	}
 

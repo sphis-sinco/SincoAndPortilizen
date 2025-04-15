@@ -129,13 +129,13 @@ class Stage2 extends State
 	public static function cutsceneResults():Void
 	{
                 RUNNING = false;
-		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new PostStage2Cutscene(), "sinco"));
+		Global.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new PostStage2Cutscene(), "sinco"));
 	}
 
 	public static function moveToResultsMenu():Void
 	{
                 RUNNING = false;
-		FlxG.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new Worldmap("Sinco"), "sinco"));
+		Global.switchState(() -> new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, () -> new Worldmap("Sinco"), "sinco"));
 	}
 
 	static var decrease:Float = 0;
@@ -291,7 +291,7 @@ class Stage2 extends State
 
 		if (FlxG.keys.justPressed.R)
 		{
-			FlxG.switchState(() -> new Stage2(DIFFICULTY));
+			Global.switchState(() -> new Stage2(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
 	}

@@ -158,7 +158,7 @@ class Worldmap extends State
 
 			if (current_level < 1)
 			{
-				FlxG.switchState(() -> new MainMenu());
+				Global.switchState(() -> new MainMenu());
 				current_level += 1;
 			}
 		}
@@ -181,12 +181,12 @@ class Worldmap extends State
 
 	public static function level1():Void
 	{
-		FlxG.switchState(() -> ((character.char == 'sinco') ? new Stage1(DIFFICULTY) : new Stage4(DIFFICULTY)));
+		Global.switchState(() -> ((character.char == 'sinco') ? new Stage1(DIFFICULTY) : new Stage4(DIFFICULTY)));
 	}
 
 	public static function level2():Void
 	{
-		FlxG.switchState(() -> (new Stage2(DIFFICULTY)));
+		Global.switchState(() -> (new Stage2(DIFFICULTY)));
 	}
 
 	public static function swap():Void
