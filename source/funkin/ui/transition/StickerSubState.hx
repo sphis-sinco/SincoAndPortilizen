@@ -181,8 +181,11 @@ class StickerSubState extends FlxSubState
 		var yPos:Float = -100;
 		while (xPos <= FlxG.width)
 		{
-			var stickersId:String = FlxG.random.getObject(stickers.get(stickerSetsArray[FlxG.random.int(0, stickerSetsArray.length - 1)]));
-			var stickers = stickers.get(stickersId);
+                        final randomStickerId = stickers.get(stickerSetsArray[FlxG.random.int(0, stickerSetsArray.length - 1)]);
+
+                        var stickersId:String = FlxG.random.getObject((randomStickerId != null) ? randomStickerId : ['sinco_1']);
+			
+                        var stickers = stickers.get(stickersId);
 			if (stickers == null)
 				throw 'Could not get sticker group ${stickersId}';
 
