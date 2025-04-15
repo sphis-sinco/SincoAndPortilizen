@@ -1,0 +1,13 @@
+{
+  "name": "Sinco sticker pack",
+  "artist": "Sphis_Sinco",
+  "stickers": {
+    "set-1": ["sinco_1","sinco_2","sinco_3","sinco_4","sinco_5"],
+    "set-2": ["sinco_6","sinco_7","sinco_8","sinco_9","sinco_10"]
+  },
+  "stickerPacks": {
+    "all": ["set-1", "set-2"],
+    "set-1": ["set-1"],
+    "set-2": ["set-2"]
+  }
+}
