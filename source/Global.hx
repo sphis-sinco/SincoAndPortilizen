@@ -261,7 +261,7 @@ class Global
 		var stickerTransition = new funkin.ui.transition.StickerSubState({
 			targetState: state -> new_state,
 			stickerSet: stickerSet,
-			oldStickers: oldStickars
+			oldStickers: (oldStickars.length > 0) ? oldStickars : null
 		});
 
 		FlxG.state.openSubState(stickerTransition);
