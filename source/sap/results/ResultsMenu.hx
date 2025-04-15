@@ -32,9 +32,9 @@ class ResultsMenu extends State
 
 	public static var STATIC_RESULTS_BG:BlankBG;
 
-	public var nextState:NextState;
+	public var nextState:FlxState;
 
-	override public function new(goods:Int = 0, total:Int = 0, nextState:NextState, ?char:String = 'sinco'):Void
+	override public function new(goods:Int = 0, total:Int = 0, nextState:FlxState, ?char:String = 'sinco'):Void
 	{
 		this.nextState = nextState;
 
