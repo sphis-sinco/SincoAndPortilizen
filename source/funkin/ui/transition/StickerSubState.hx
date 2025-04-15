@@ -29,7 +29,8 @@ typedef StickerSubStateParams =
 @:nullSafety
 class StickerSubState extends FlxSubState
 {
-	public var grpStickers:FlxTypedGroup<StickerSprite>;
+        @:nullSafety(Off)
+	public static var grpStickers:FlxTypedGroup<StickerSprite>;
 
 	// yes... a damn OpenFL sprite!!!
 	// public var dipshit:Sprite;
@@ -123,6 +124,8 @@ class StickerSubState extends FlxSubState
 		}
 		else
 			regenStickers();
+
+		ScreenshotPlugin.capture();
 	}
 
 	public function degenStickers():Void
@@ -315,8 +318,6 @@ class StickerSubState extends FlxSubState
 		lastOne.updateHitbox();
 		lastOne.angle = 0;
 		lastOne.screenCenter();
-
-                ScreenshotPlugin.capture();
 	}
 
 	override public function update(elapsed:Float):Void
@@ -354,7 +355,7 @@ class StickerSprite extends FunkinSprite
 	{
 		super(x, y);
 		loadTexture('${stickerSet}/${stickerName}');
-                Global.scaleSprite(this);
+		Global.scaleSprite(this);
 		updateHitbox();
 		scrollFactor.set();
 	}

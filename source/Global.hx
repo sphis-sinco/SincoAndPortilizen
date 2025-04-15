@@ -1,5 +1,7 @@
 package;
 
+import funkin.ui.transition.StickerSubState;
+
 class Global
 {
 	public static var GENERATED_BY(get, set):String;
@@ -246,11 +248,22 @@ class Global
 
 	public static function switchState(new_state:FlxState, ?stickerSet:String = 'sinco'):Void
 	{
-		var stickerTransition = new funkin.ui.transition.StickerSubState({
-			targetState: state -> new_state,
-                        stickerSet: stickerSet
+		var oldStickars:Array<funkin.ui.transition.StickerSubState.StickerSprite> = [];
+
+		TryCatch.tryCatch(function()
+		{
+			for (sticker in StickerSubState.grpStickers.members)
+			{
+				oldStickars.push(sticker);
+			}
 		});
 
-                FlxG.state.openSubState(stickerTransition);
+		var stickerTransition = new funkin.ui.transition.StickerSubState({
+			targetState: state -> new_state,
+			stickerSet: stickerSet,
+			oldStickers: oldStickars
+		});
+
+		FlxG.state.openSubState(stickerTransition);
 	}
 }
