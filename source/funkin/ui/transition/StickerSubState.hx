@@ -351,6 +351,7 @@ class StickerSprite extends FunkinSprite
 	{
 		super(x, y);
 		loadTexture('${stickerSet}/${stickerName}');
+                Global.scaleSprite(this);
 		updateHitbox();
 		scrollFactor.set();
 	}
