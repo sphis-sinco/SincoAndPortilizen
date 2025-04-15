@@ -67,13 +67,13 @@ class StickerSubState extends FlxSubState
 
 		var soundFilterFunc = function(a:String)
 		{
-			return a.startsWith('assets/shared/sounds/stickersounds/');
+			return a.startsWith('assets/stickers/sounds/stickersounds/');
 		};
 
 		soundSelections = assetsInList.filter(soundFilterFunc);
 		soundSelections = soundSelections.map(function(a:String)
 		{
-			return a.replace('assets/shared/sounds/stickersounds/', '').split('/')[0];
+			return a.replace('assets/stickers/sounds/stickersounds/', '').split('/')[0];
 		});
 
 		grpStickers = new FlxTypedGroup<StickerSprite>();
@@ -95,13 +95,13 @@ class StickerSubState extends FlxSubState
 
 		var filterFunc = function(a:String)
 		{
-			return a.startsWith('assets/shared/sounds/stickersounds/' + this.soundSelection + '/');
+			return a.startsWith('assets/stickers/sounds/stickersounds/' + this.soundSelection + '/');
 		};
 		var assetsInList3 = Assets.list();
 		sounds = assetsInList3.filter(filterFunc);
 		for (i in 0...sounds.length)
 		{
-			sounds[i] = sounds[i].replace('assets/shared/sounds/', '');
+			sounds[i] = sounds[i].replace('assets/stickers/sounds/', '');
 			sounds[i] = sounds[i].substring(0, sounds[i].lastIndexOf('.'));
 		}
 
@@ -149,7 +149,7 @@ class StickerSubState extends FlxSubState
 			{
 				sticker.visible = false;
 				var daSound:String = FlxG.random.getObject(sounds);
-				Global.playSoundEffect(daSound);
+				Global.playSoundEffect(daSound, STICKERS);
 
 				if (grpStickers == null || ind == grpStickers.members.length - 1)
 				{
@@ -160,7 +160,7 @@ class StickerSubState extends FlxSubState
 		}
 	}
 
-	@:nullSafety
+	@:nullSafety(Off)
 	function regenStickers():Void
 	{
 		if (grpStickers.members.length > 0)
@@ -171,21 +171,23 @@ class StickerSubState extends FlxSubState
 		var stickerInfo:StickerInfo = new StickerInfo(this.stickerSet);
 		var stickers:Map<String, Array<String>> = new Map<String, Array<String>>();
 		var stickerSetsArray:Array<String> = [];
+		var stickerSetsInfoArray:Array<Array<String>> = [];
 		for (stickerSets in stickerInfo.getPack(this.stickerPack))
 		{
 			stickers.set(stickerSets, stickerInfo.getStickers(stickerSets));
 			stickerSetsArray.push(stickerSets);
+			stickerSetsInfoArray.push(stickerInfo.getStickers(stickerSets));
 		}
+
+		trace(stickers);
 
 		var xPos:Float = -100;
 		var yPos:Float = -100;
 		while (xPos <= FlxG.width)
 		{
-                        final randomStickerId = stickers.get(stickerSetsArray[FlxG.random.int(0, stickerSetsArray.length - 1)]);
+			var stickersId:String = FlxG.random.getObject(stickerSetsArray);
 
-                        var stickersId:String = FlxG.random.getObject((randomStickerId != null) ? randomStickerId : ['sinco_1']);
-			
-                        var stickers = stickers.get(stickersId);
+			var stickers = stickers.get(stickersId);
 			if (stickers == null)
 				throw 'Could not get sticker group ${stickersId}';
 
@@ -251,7 +253,7 @@ class StickerSubState extends FlxSubState
 
 				sticker.visible = true;
 				var daSound:String = FlxG.random.getObject(sounds);
-				Global.playSoundEffect(daSound);
+				Global.playSoundEffect(daSound, STICKERS);
 
 				var frameTimer:Int = FlxG.random.int(0, 2);
 
@@ -348,7 +350,7 @@ class StickerSprite extends FunkinSprite
 	public function new(x:Float, y:Float, stickerSet:String, stickerName:String):Void
 	{
 		super(x, y);
-		loadTexture('transitionSwag/' + stickerSet + '/' + stickerName);
+		loadTexture('${stickerSet}/${stickerName}');
 		updateHitbox();
 		scrollFactor.set();
 	}

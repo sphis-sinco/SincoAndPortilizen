@@ -190,7 +190,12 @@ class InitState extends FlxState
 		#end
 
 		trace('Starting game regularly');
+
+                #if debug
+                Global.switchState(new TitleState());
+                #else
 		FlxG.switchState(TitleState.new);
+                #end
 	}
 
 	public static function switchToState(state:NextState, stateName:String):Void
