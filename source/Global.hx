@@ -19,15 +19,12 @@ class Global
 
 	static function get_VERSION():String
 	{
-		return VERSION_FULL.split('.')[0];
+		return Application.VERSION;
 	}
 
 	static function get_VERSION_FULL():String
 	{
-		var version:String = '';
-                
-                version = FileManager.readFile('version.txt');
-                if (version == '') version = '[Null]';
+		var version:String = Application.VERSION;
 
 		if (SLGame.isDebug) version += '-debug';
                 #if PLAYTESTER_BUILD version += '-playtest'; #end

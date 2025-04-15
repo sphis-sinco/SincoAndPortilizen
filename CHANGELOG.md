@@ -15,7 +15,6 @@
 - The FileManager now says if it can't find a file in the `readFile` function
 - The FileManager no longer only traces that it couldn't find a file when `EXCESS_TRACES` is enabled
 - The project xml no longer echos the game name and version
-- The game version is now read from a text file
 ### Removed
 - Sinlib is no longer required to compile and has been integrated into the source code
 
