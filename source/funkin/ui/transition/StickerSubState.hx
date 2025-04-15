@@ -9,6 +9,7 @@ import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 // import flxtyped group
 import funkin.graphics.FunkinSprite;
+import funkin.util.plugins.ScreenshotPlugin;
 import haxe.Json;
 import sap.title.TitleState;
 
@@ -314,6 +315,8 @@ class StickerSubState extends FlxSubState
 		lastOne.updateHitbox();
 		lastOne.angle = 0;
 		lastOne.screenCenter();
+
+                ScreenshotPlugin.capture();
 	}
 
 	override public function update(elapsed:Float):Void
