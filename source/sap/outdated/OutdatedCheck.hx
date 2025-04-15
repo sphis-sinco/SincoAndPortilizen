@@ -25,7 +25,7 @@ class OutdatedCheck
 		{
 			returnedData = data;
                         LATEST_VERSION = data;
-			if (Global.VERSION == returnedData) return true;
+			if (Global.VERSION == returnedData) return false;
 
 			trace('OUTDATED VERSION: ' + returnedData + ' != ' + Global.VERSION);
 			return true;
@@ -38,6 +38,6 @@ class OutdatedCheck
 
 		http.request();
 
-		return true;
+		return false;
 	}
 }
