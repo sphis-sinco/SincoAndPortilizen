@@ -53,13 +53,13 @@ jobs:
           restore-keys: |
             cache-build-linux
 
-      - name: Tar files
-        run: tar -zcvf Linux.tar.gz export/release/linux/bin
+      # - name: Tar files
+        # run: tar -zcvf Linux.tar.gz export/release/linux/bin
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: linuxBuild
-          path: Linux.tar.gz
+          path: export/release/linux/bin
   buildWindows:
     runs-on: windows-latest
 
@@ -153,10 +153,10 @@ jobs:
           restore-keys: |
             cache-build-mac
 
-      - name: Tar files
-        run: tar -zcvf Mac.tar.gz export/release/macos/bin
+      # - name: Tar files
+        # run: tar -zcvf Mac.tar.gz export/release/macos/bin
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: macBuild
-          path: Mac.tar.gz
+          path: export/release/macos/bin
