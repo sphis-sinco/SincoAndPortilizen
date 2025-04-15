@@ -22,7 +22,7 @@ class OutdatedCheck
 		http.onData = function(data:String)
 		{
 			returnedData = data;
-			if (Global.VERSION == returnedData) return false;
+			if (Global.VERSION == returnedData) return true;
 
 			trace('OUTDATED VERSION: ' + returnedData + ' != ' + Global.VERSION);
 			return true;
@@ -35,6 +35,6 @@ class OutdatedCheck
 
 		http.request();
 
-		return false;
+		return true;
 	}
 }
