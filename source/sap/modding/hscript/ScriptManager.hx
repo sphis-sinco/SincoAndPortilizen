@@ -59,6 +59,15 @@ class ScriptManager
 			});
 		}
 
+		// import stuff
+                #if sys
+                setScript('FileSystem', FileSystem);
+                setScript('File', File);
+                #end
+                #if DISCORDRPC
+                setScript('DiscordClient', Discord.DiscordClient);
+                #end
+
 		// utils
 		setScript('Global', Global);
 

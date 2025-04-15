@@ -57,7 +57,7 @@ class FileUtil
 	public static function readStringFromPath(path:String):String
 	{
 		#if sys
-		return sys.io.File.getContent(path);
+		return File.getContent(path);
 		#else
 		trace('ERROR: readStringFromPath not implemented for this platform');
 		return null;
@@ -76,7 +76,7 @@ class FileUtil
 		#if sys
 		if (!doesFileExist(path))
 			return null;
-		return sys.io.File.getBytes(path);
+		return File.getBytes(path);
 		#else
 		return null;
 		#end
@@ -148,7 +148,7 @@ class FileUtil
 		#if sys
 		try
 		{
-			return SerializerUtil.fromJSON(sys.io.File.getContent(path));
+			return SerializerUtil.fromJSON(File.getContent(path));
 		}
 		catch (ex)
 		{
@@ -174,11 +174,11 @@ class FileUtil
 		switch (mode)
 		{
 			case Force:
-				sys.io.File.saveContent(path, data);
+				File.saveContent(path, data);
 			case Skip:
 				if (!doesFileExist(path))
 				{
-					sys.io.File.saveContent(path, data);
+					File.saveContent(path, data);
 				}
 				else
 				{
@@ -193,7 +193,7 @@ class FileUtil
 				}
 				else
 				{
-					sys.io.File.saveContent(path, data);
+					File.saveContent(path, data);
 				}
 		}
 		#else
@@ -216,11 +216,11 @@ class FileUtil
 		switch (mode)
 		{
 			case Force:
-				sys.io.File.saveBytes(path, data);
+				File.saveBytes(path, data);
 			case Skip:
 				if (!doesFileExist(path))
 				{
-					sys.io.File.saveBytes(path, data);
+					File.saveBytes(path, data);
 				}
 				else
 				{
@@ -235,7 +235,7 @@ class FileUtil
 				}
 				else
 				{
-					sys.io.File.saveBytes(path, data);
+					File.saveBytes(path, data);
 				}
 		}
 		#else
@@ -253,7 +253,7 @@ class FileUtil
 	public static function appendStringToPath(path:String, data:String):Void
 	{
 		#if sys
-		sys.io.File.append(path, false).writeString(data);
+		File.append(path, false).writeString(data);
 		#else
 		throw 'Direct file writing by path not supported on this platform.';
 		#end

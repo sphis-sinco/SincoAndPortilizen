@@ -115,7 +115,7 @@ class CrashHandler
 	{
 		FileUtil.createDirIfNotExists(LOG_FOLDER);
 
-		sys.io.File.saveContent('$LOG_FOLDER/crash${critical ? '-critical' : ''}-${DateUtil.generateTimestamp()}.log', buildCrashReport(message));
+		File.saveContent('$LOG_FOLDER/crash${critical ? '-critical' : ''}-${DateUtil.generateTimestamp()}.log', buildCrashReport(message));
 	}
 	#end
 

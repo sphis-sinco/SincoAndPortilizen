@@ -5,6 +5,8 @@
 ### Fixed
 - Fixed crash when beating stage 4 ([#23](#23_link))
 ### Changed
+- Modding API version is now `0.1.3`
+  - There are now additional "Variables" from `import.hx`
 - (Desktop only) The menu text box vertical size changes depending on if the mod option is visible or not
 - (Desktop only) The MainMenu mod option is not visible when there are no mods
 - (source) `GENERATED_BY` now uses `VERSION_FULL`
