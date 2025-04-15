@@ -91,7 +91,7 @@ class StickerSubState extends FlxSubState
 			soundSelections.push(i);
 		}
 
-		trace(soundSelections);
+		// trace(soundSelections);
 
 		soundSelection = FlxG.random.getObject(soundSelections);
 
@@ -107,7 +107,7 @@ class StickerSubState extends FlxSubState
 			sounds[i] = sounds[i].substring(0, sounds[i].lastIndexOf('.'));
 		}
 
-		trace(sounds);
+		// trace(sounds);
 
 		// makes the stickers on the most recent camera, which is more often than not... a UI camera!!
 		// grpStickers.cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
@@ -181,7 +181,7 @@ class StickerSubState extends FlxSubState
 			stickerSetsInfoArray.push(stickerInfo.getStickers(stickerSets));
 		}
 
-		trace(stickers);
+                // trace(stickers);
 
 		var xPos:Float = -100;
 		var yPos:Float = -100;

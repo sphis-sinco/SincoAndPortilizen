@@ -1,5 +1,7 @@
 package sap.utils;
 
+import funkin.ui.transition.StickerSubState;
+
 
 class State extends FlxState
 {
@@ -24,6 +26,12 @@ class State extends FlxState
 
 	public function postCreate():Void {
                 ScriptManager.callScript('statePostCreate');
+
+                if (StickerSubState.grpStickers != null)
+                {
+                        trace('Degen stickers');
+                        Global.switchState(this, true);
+                }
         }
 
 	override function update(elapsed:Float):Void
