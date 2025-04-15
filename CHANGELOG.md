@@ -3,7 +3,7 @@
 ### Added
 - (Desktop only) Added oudated version menu
 ### Fixed
-- Fixed crash when beating stage 4 ([#23](#23_link))
+- Fixed crash when switching from the stage 4 ending cutscene to the worldmap ([#23](#23_link))
 ### Changed
 - Modding API version is now `0.1.3`
   - There are now additional "Variables" from `import.hx`
