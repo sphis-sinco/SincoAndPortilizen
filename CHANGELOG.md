@@ -5,6 +5,7 @@
 - Sticker transition from FNF
 - (Web only) Pixel perfect rendering ([#27][#27_link])
 ### Changed
+- The screenshot plugin now has (probably) everything as a static var/function
 - SparrowSprite uses the file manager's `getSparrowAtlas` function
 - Several states now use the `switchState` function from Global
 - Global now has a `switchState` function that uses the new sticker transition

@@ -21,26 +21,26 @@ class ScreenshotPlugin extends FlxBasic
 {
 	public static final SCREENSHOT_FOLDER = 'screenshots';
 
-	var _hotkeys:Array<FlxKey>;
+	static var _hotkeys:Array<FlxKey>;
 
-	var _region:Null<Rectangle>;
+	static var _region:Null<Rectangle>;
 
-	var _shouldHideMouse:Bool;
+	static var _shouldHideMouse:Bool;
 
-	var _flashColor:Null<FlxColor>;
+	static var _flashColor:Null<FlxColor>;
 
-	var _fancyPreview:Bool;
+	static var _fancyPreview:Bool;
 
 	/**
 	 * A signal fired before the screenshot is taken.
 	 */
-	public var onPreScreenshot(default, null):FlxTypedSignal<Void->Void>;
+	public static var onPreScreenshot(default, null):FlxTypedSignal<Void->Void>;
 
 	/**
 	 * A signal fired after the screenshot is taken.
 	 * @param bitmap The bitmap that was captured.
 	 */
-	public var onPostScreenshot(default, null):FlxTypedSignal<Bitmap->Void>;
+	public static var onPostScreenshot(default, null):FlxTypedSignal<Bitmap->Void>;
 
 	public function new(params:ScreenshotPluginParams)
 	{
@@ -113,7 +113,7 @@ class ScreenshotPlugin extends FlxBasic
 	/**
 	 * Capture the game screen as a bitmap.
 	 */
-	public function capture():Void
+	public static function capture():Void
 	{
 		onPreScreenshot.dispatch();
 
@@ -143,7 +143,7 @@ class ScreenshotPlugin extends FlxBasic
 	/**
 	 * Visual and audio feedback when a screenshot is taken.
 	 */
-	function showCaptureFeedback():Void
+	static function showCaptureFeedback():Void
 	{
 		var flashBitmap = new Bitmap(new BitmapData(Std.int(FlxG.stage.width), Std.int(FlxG.stage.height), false, 0xFFFFFFFF));
 		var flashSpr = new Sprite();
@@ -157,13 +157,13 @@ class ScreenshotPlugin extends FlxBasic
 	static final PREVIEW_FADE_OUT_DELAY = 1.25; // How long the preview stays on screen.
 	static final PREVIEW_FADE_OUT_DURATION = 0.3; // How long the preview takes to fade out.
 
-	var previewSprite:Null<Sprite> = null;
+	static var previewSprite:Null<Sprite> = null;
 
-	dynamic function onHover(e:MouseEvent) {}
+	static dynamic function onHover(e:MouseEvent) {}
 
-	dynamic function onHoverOut(e:MouseEvent) {}
+	static dynamic function onHoverOut(e:MouseEvent) {}
 
-	function showFancyPreview(bitmap:Bitmap):Void
+	static function showFancyPreview(bitmap:Bitmap):Void
 	{
 		if (previewSprite != null)
 			return;
@@ -225,7 +225,7 @@ class ScreenshotPlugin extends FlxBasic
 		});
 	}
 
-	function fadeInTweenDone(changingAlpha:Bool)
+	static function fadeInTweenDone(changingAlpha:Bool)
 	{
 		changingAlpha = false;
 		// Wait to fade out.
@@ -237,7 +237,7 @@ class ScreenshotPlugin extends FlxBasic
 		});
 	}
 
-	function fadeOutPreviewSprite()
+	static function fadeOutPreviewSprite()
 	{
 		TryCatch.tryCatch(() ->
 		{
@@ -251,7 +251,7 @@ class ScreenshotPlugin extends FlxBasic
 		});
 	}
 
-	function killPreviewSpr()
+	static function killPreviewSpr()
 	{
 		TryCatch.tryCatch(() ->
 		{
@@ -264,7 +264,7 @@ class ScreenshotPlugin extends FlxBasic
 		});
 	}
 
-	function openScreenshotsFolder(e:MouseEvent):Void
+	static function openScreenshotsFolder(e:MouseEvent):Void
 	{
 		FileUtil.openFolder(SCREENSHOT_FOLDER);
 	}
