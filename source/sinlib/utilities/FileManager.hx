@@ -384,4 +384,5 @@ enum abstract PathTypes(String) from String to String
 {
 	public var DEFAULT:String = '';
 	public var CUTSCENES:String = 'cutscenes/';
+	public var STICKERS:String = 'stickers/';
 }
