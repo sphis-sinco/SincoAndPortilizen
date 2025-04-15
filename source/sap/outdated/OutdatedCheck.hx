@@ -9,6 +9,8 @@ class OutdatedCheck
 	public static var GIT_BRANCH:String = #if debug 'main-indev' #else 'main' #end;
 	public static var GIT_FILE:String = 'version';
 
+        public static var LATEST_VERSION:String = '';
+
 	public static function checkForOutdatedVersion():Bool
 	{
 		final final_link:String = LINK.replace('[USER]', GIT_USER)
@@ -22,6 +24,7 @@ class OutdatedCheck
 		http.onData = function(data:String)
 		{
 			returnedData = data;
+                        LATEST_VERSION = data;
 			if (Global.VERSION == returnedData) return true;
 
 			trace('OUTDATED VERSION: ' + returnedData + ' != ' + Global.VERSION);
