@@ -71,6 +71,15 @@ class InitState extends FlxState
 			// PaulPortGameOver.init();
 		});
 
+		var outdated:Bool = OutdatedCheck.checkForOutdatedVersion();
+		#if html5 outdated = false; #end
+
+		if (outdated && !OutdatedMenu.BEGONE)
+		{
+			trace('OUTDATED');
+			FlxG.switchState(() -> new OutdatedMenu());
+		}
+
 		if (!SLGame.isDebug)
 		{
 			#if EXCESS_TRACES
@@ -104,14 +113,6 @@ class InitState extends FlxState
 
 	public static function proceed():Void
 	{
-                var outdated:Bool = OutdatedCheck.checkForOutdatedVersion();
-		#if html5 outdated = false; #end
-                
-		if (outdated && !OutdatedMenu.BEGONE)
-		{
-			FlxG.switchState(() -> new OutdatedMenu());
-		}
-
 		var difficulty:String = 'normal';
 
 		#if EASY_DIFFICULTY
