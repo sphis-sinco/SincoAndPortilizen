@@ -4,7 +4,8 @@ class OutdatedMenu extends State
 {
 	public static var OUTDATED_TEXT:String = '-// ! You are running an outdated version ([VERSION]) ! \\\\-'
 		+ '\n\nIt is recommended to update to the latest version (LATEST_VERSION)'
-		+ '\nespecally if you are working on a mod with script files';
+		+ '\nespecally if you are working on a mod with script files'
+		+ '\nthrough the itch.io page or github depending on your platform';
 
 	public static var BEGONE:Bool = false;
 
