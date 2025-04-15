@@ -9,9 +9,10 @@ class Global
 		return 'Sinco and Portilizen v${VERSION_FULL}';
 	}
 
-        static function set_GENERATED_BY(value:String):String {
-                return value;
-        }
+	static function set_GENERATED_BY(value:String):String
+	{
+		return value;
+	}
 
 	public static var VERSION(get, never):String;
 
@@ -26,10 +27,11 @@ class Global
 	{
 		var version:String = Application.VERSION;
 
-		if (SLGame.isDebug) version += '-debug';
-                #if PLAYTESTER_BUILD version += '-playtest'; #end
+		if (SLGame.isDebug)
+			version += '-debug';
+		#if PLAYTESTER_BUILD version += '-playtest'; #end
 
-                #if EXCESS_TRACES trace('Version: ${version}'); #end
+		#if EXCESS_TRACES trace('Version: ${version}'); #end
 
 		return '${version}';
 	}
@@ -81,7 +83,7 @@ class Global
 		trace('Switched save slot to "$SAVE_SLOT"');
 
 		trace('Save dump: ${FlxG.save.data}');
-                FlxG.save.flush();
+		FlxG.save.flush();
 	}
 
 	/**
@@ -232,13 +234,23 @@ class Global
 		return returnPhrase;
 	}
 
-        public static function callScriptFunction(func:String, ?arguments:Array<Dynamic>)
-        {
-                ScriptManager.callScript(func, arguments);
-        }
+	public static function callScriptFunction(func:String, ?arguments:Array<Dynamic>)
+	{
+		ScriptManager.callScript(func, arguments);
+	}
 
-        public static function setScriptVariable(name:String, value:Dynamic, allowOverride:Bool = true)
-        {
-                ScriptManager.setScript(name, value, allowOverride);
-        }
+	public static function setScriptVariable(name:String, value:Dynamic, allowOverride:Bool = true)
+	{
+		ScriptManager.setScript(name, value, allowOverride);
+	}
+
+	public static function switchState(new_state:FlxState, ?stickerSet:String = 'sinco')
+	{
+		var stickerTransition = new funkin.ui.transition.StickerSubState({
+			targetState: state -> new_state,
+                        stickerSet: stickerSet
+		});
+
+                FlxG.state.openSubState(stickerTransition);
+	}
 }
