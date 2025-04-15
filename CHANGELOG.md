@@ -1,5 +1,5 @@
 # Alpha
-## 0.4.3a - 4/14/2025
+## 0.4.3a - 4/15/2025
 ### Added
 - (Desktop only) Added oudated version menu
 ### Fixed
