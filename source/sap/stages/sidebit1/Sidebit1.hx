@@ -350,16 +350,13 @@ class Sidebit1 extends State
 
 		if (PORTILIZEN_HEALTH == 0)
 		{
-			Global.switchState(new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), NEXT_STATE_WIN));
+			Global.switchState(new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), new Sidebit1PostCutsceneAtlas()));
 		}
 		else if (SINCO_HEALTH == 0)
 		{
-			Global.switchState(new ResultsMenu(Std.int(PORTILIZEN_MAX_HEALTH - PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), NEXT_STATE_LOSS));
+			Global.switchState(new ResultsMenu(Std.int(PORTILIZEN_MAX_HEALTH - PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), new SidebitSelect()));
 		}
 	}
-
-	public static var NEXT_STATE_WIN:FlxState = new Sidebit1PostCutsceneAtlas();
-	public static var NEXT_STATE_LOSS:FlxState = new SidebitSelect();
 
 	public static function updateHealthIndicators():Void
 	{
