@@ -1,4 +1,4 @@
-name: Indev builds
+name: Final builds
 
 on:
   push:
