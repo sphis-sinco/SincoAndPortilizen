@@ -160,6 +160,7 @@ class StickerSubState extends FlxSubState
 		}
 	}
 
+	@:nullSafety
 	function regenStickers():Void
 	{
 		if (grpStickers.members.length > 0)
