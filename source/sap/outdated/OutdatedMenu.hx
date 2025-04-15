@@ -7,10 +7,13 @@ class OutdatedMenu extends State
 		+ '\n\nIt is recommended to update to the latest version'
                 + '\nespecally if you are working on a mod with script files';
 
+        public static var BEGONE:Bool = false;
+
 	override function create()
 	{
 		super.create();
 
+                BEGONE = true;
                 var text:FlxText = new FlxText(0,0,0,OUTDATED_TEXT,16);
                 text.alignment = CENTER;
                 text.screenCenter();
