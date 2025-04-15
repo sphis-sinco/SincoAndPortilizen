@@ -5,6 +5,7 @@
 ### Fixed
 - Fixed crash when switching from the stage 4 ending cutscene to the worldmap ([#23](#23_link))
 ### Changed
+- Worldmap character asset grabbing is no longer case sensitive
 - Modding API version is now `0.1.3`
   - There are now additional "Variables" from `import.hx`
 - (Desktop only) The menu text box vertical size changes depending on if the mod option is visible or not

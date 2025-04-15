@@ -54,7 +54,7 @@ class Worldmap extends State
 		charWheel.screenCenter(X);
 		charWheel.y = charWheel.height + 16;
 
-		charWheel.animation.play('${character.lowercase_char()}');
+		charWheel.animation.play(character.char);
 
 		add(charWheel);
 
@@ -166,7 +166,7 @@ class Worldmap extends State
 
 	public static function playLevel():Void
 	{
-		if (implementedLevels.get(character.lowercase_char())[current_level - 1] == false)
+		if (implementedLevels.get(character.char)[current_level - 1] == false)
 			return;
                 
 		switch (current_level)
@@ -181,7 +181,7 @@ class Worldmap extends State
 
 	public static function level1():Void
 	{
-		FlxG.switchState(() -> ((character.lowercase_char() == 'sinco') ? new Stage1(DIFFICULTY) : new Stage4(DIFFICULTY)));
+		FlxG.switchState(() -> ((character.char == 'sinco') ? new Stage1(DIFFICULTY) : new Stage4(DIFFICULTY)));
 	}
 
 	public static function level2():Void
@@ -192,7 +192,7 @@ class Worldmap extends State
 	public static function swap():Void
 	{
 		canSwap = false;
-		charWheel.animation.play('${character.lowercase_char()}-${character.swappedchar().toLowerCase()}');
+		charWheel.animation.play('${character}-${character.swappedchar()}');
 
 		FlxTimer.wait(2 / 12, () ->
 		{
@@ -239,11 +239,11 @@ class Worldmap extends State
 		var level:FlxSprite = new FlxSprite(mapTileXPosThing - 12 + (i * 256), character.getGraphicMidpoint().y);
 		var tileColor:FlxColor = FlxColor.BLACK;
 
-		if (implementedLevels.get(character.lowercase_char())[i])
+		if (implementedLevels.get(character.char)[i])
 		{
 			var addition:Int = 0;
 
-			if (character.lowercase_char() == 'port')
+			if (character.char == 'port')
 			{
 				addition = 3;
 			}
