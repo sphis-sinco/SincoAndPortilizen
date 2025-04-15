@@ -14,7 +14,7 @@ class MainMenu extends State
 
 	public static var menuboxtexts:FlxTypedGroup<FlxText>;
 	public static var menutexts:Map<String, Array<String>> = [
-		'menu' => ['play', 'credits', 'settings', #if sys 'medals', 'mods', #end 'leave'],
+		'menu' => ['play', 'credits', 'settings', 'leave'],
 		'play' => ['new', 'continue', 'back']
 	];
 
@@ -39,6 +39,13 @@ class MainMenu extends State
 
 	override function create():Void
 	{
+		#if sys
+		var menuArr:Array<String> = ['play', 'credits', 'settings', #if sys 'medals', #end 'leave'];
+		if (ModFolderManager.MODS.length > 0)
+			menuArr.insert(4, 'mods');
+		menutexts.set('menu', menuArr);
+		#end
+
 		menucharvis ??= [false, true];
 
 		gridbg = new FlxSprite();
@@ -214,8 +221,15 @@ class MainMenu extends State
 			}
 			if (PUBLIC_CUR_SELECTION == MODS_SELECTION)
 			{
-				inSubstate = true;
-				openSubState(new sap.modding.menu.ModsMenu());
+				if (ModFolderManager.MODS.length > 0)
+				{
+					inSubstate = true;
+					openSubState(new sap.modding.menu.ModsMenu());
+				}
+				else
+				{
+					FlxG.switchState(TitleState.new);
+				}
 			}
 			#end
 
