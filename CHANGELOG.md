@@ -1,5 +1,7 @@
 # Alpha
 ## 0.5.0a - 4/??/2025
+### Added
+- Pixel perfect rendering on Web ([#27][#27_link])
 
 ## 0.4.3a - 4/15/2025
 ### Added
@@ -369,3 +371,4 @@ CURRENT FEATURES:
 [#18_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/18
 [#19_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/19
 [#23_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/23
+[#27_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/27

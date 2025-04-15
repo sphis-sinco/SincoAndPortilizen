@@ -40,6 +40,11 @@ class InitState extends FlxState
 			}
 			#end
 
+			#if web
+			// pixel perfect render fix!
+			Application.current.window.element.style.setProperty("image-rendering", "pixelated");
+			#end
+
 			// Make errors and warnings less annoying.
 			#if DISABLE_ANNOYING_ERRORS
 			LogStyle.ERROR.openConsole = false;
