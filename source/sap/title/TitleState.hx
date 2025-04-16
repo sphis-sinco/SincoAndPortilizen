@@ -275,6 +275,7 @@ class TitleState extends State
 				ease: FlxEase.sineInOut,
 				onComplete: tween ->
 				{
+                                        trace('Cmon');
 					Global.switchState(new MainMenu());
 				}
 			});
