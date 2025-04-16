@@ -7,6 +7,7 @@
 ### Fixed
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 ### Changed
+- (Debug only) InitState uses a random sticker transition when there are no build flags enabled
 - The screenshot plugin now has (probably) everything as a static var/function
 - SparrowSprite uses the file manager's `getSparrowAtlas` function
 - Several states now use the `switchState` function from Global
