@@ -1,6 +1,5 @@
 package sap.cutscenes;
 
-
 class SparrowCutscene extends State
 {
 	public var CUTSCENE_SPRITE:SparrowSprite;
@@ -86,6 +85,11 @@ class SparrowCutscene extends State
 		{
 			CUTSCENE_SPRITE.animation.paused = !CUTSCENE_SPRITE.animation.paused;
 		}
+
+		if (FlxG.keys.justReleased.ESCAPE && !CUTSCENE_SPRITE.animation.paused)
+		{
+			cutsceneEnded(true);
+		}
 	}
 
 	public function cutsceneEvent(animation:String):Void
@@ -100,6 +104,10 @@ class SparrowCutscene extends State
 
 			changeCutscenePosition(CUTSCENE_JSON.offsets[CUTSCENE_PART][0], CUTSCENE_JSON.offsets[CUTSCENE_PART][1]);
 		}
+		else
+		{
+			cutsceneEnded();
+		}
 	}
 
 	public function changeCutscenePosition(X:Float, Y:Float)
@@ -109,4 +117,6 @@ class SparrowCutscene extends State
 		#end
 		CUTSCENE_SPRITE.setPosition(X, Y);
 	}
+
+	public function cutsceneEnded(?skipped_cutscene:Bool):Void {}
 }

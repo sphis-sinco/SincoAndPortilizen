@@ -19,12 +19,37 @@ class Global
 
 	public static function randomStickerPack(?folder:String):String
 	{
+		if (SLGame.isDebug)
+		{
+                        trace('randomStickerPack: attempting to grab random sticker pack from "$folder"');
+                }
+
 		var pack:String = 'all';
+		final nullCheck:Void->Void = function()
+		{
+			if (SLGame.isDebug)
+			{
+				trace('randomStickerPack: could not get random pack for ${folder}');
+				pack = 'all';
+			}
+		};
 
 		if (folder != null)
 		{
-			final packArray:Array<String> = RANDOM_STICKER_PACKS.get(folder);
-			pack = packArray[FlxG.random.int(0, packArray.length - 1)];
+			TryCatch.tryCatch(function()
+			{
+                                if (!RANDOM_STICKER_PACKS.exists(folder))
+                                {
+                                        trace('randomStickerPack: "${folder}" doesn\'t have a RANDOM_STICKER_PACKS entry');
+                                        return;
+                                }
+
+				final packArray:Array<String> = RANDOM_STICKER_PACKS.get(folder);
+				pack = packArray[FlxG.random.int(0, packArray.length - 1)];
+
+			}, {
+					errFunc: nullCheck
+			});
 		}
 
 		return pack;

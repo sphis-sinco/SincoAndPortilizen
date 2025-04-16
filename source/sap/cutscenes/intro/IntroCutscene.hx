@@ -11,9 +11,9 @@ class IntroCutscene extends PanelCutscene
 		soundFX = new FlxSound();
 	}
 
-	override function finishedCutscene():Void
+	override function finishedCutscene(?cutscene_skipped:Bool)
 	{
-		super.finishedCutscene();
+		super.finishedCutscene(cutscene_skipped);
 
 		Global.switchState(new Worldmap(), false, 'misc');
 	}

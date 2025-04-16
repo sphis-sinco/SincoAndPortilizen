@@ -51,7 +51,7 @@ class PanelCutscene extends State
 		add(PANEL_SPRITE);
 
 		Global.playSoundEffect('paper-rustle', CUTSCENES);
-                panelEvents(CUR_PANEL);
+		panelEvents(CUR_PANEL);
 
 		super.create();
 	}
@@ -70,6 +70,11 @@ class PanelCutscene extends State
 			panelEvents(CUR_PANEL);
 		}
 
+		if (FlxG.keys.justReleased.ESCAPE)
+		{
+			finishedCutscene(true);
+		}
+
 		super.update(elapsed);
 	}
 
@@ -78,7 +83,7 @@ class PanelCutscene extends State
 		PANEL_SPRITE.loadGraphic(FileManager.getImageFile('$PANEL_FOLDER$panelpath', CUTSCENES));
 	}
 
-	public function finishedCutscene():Void {}
+	public function finishedCutscene(?cutscene_skipped:Bool):Void {}
 
 	public function panelEvents(panel:Int):Void {}
 }

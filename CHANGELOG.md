@@ -2,6 +2,9 @@
 ## 0.5.0a - 4/??/2025
 ### Added
 - (Source) Global now has functions related to keys being pressed, just released, and just pressed
+- Comic cutscenes can be skipped by pressing ESCAPE
+- Sparrow cutscenes can be skipped by pressing ESCAPE
+- Atlas cutscenes can be skipped by pressing ESCAPE ([#24][#24_link])
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - Sticker transition from FNF
 - (Web only) Pixel perfect rendering ([#27][#27_link])
@@ -388,3 +391,4 @@ CURRENT FEATURES:
 [#19_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/19
 [#23_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/23
 [#27_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/27
+[#24_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/24
