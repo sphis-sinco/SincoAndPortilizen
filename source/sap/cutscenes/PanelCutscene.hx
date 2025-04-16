@@ -70,7 +70,7 @@ class PanelCutscene extends State
 			panelEvents(CUR_PANEL);
 		}
 
-		if (FlxG.keys.justReleased.ESCAPE)
+		if (Global.keyJustReleased(ESCAPE))
 		{
 			finishedCutscene(true);
 		}

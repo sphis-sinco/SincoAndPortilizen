@@ -86,7 +86,7 @@ class SparrowCutscene extends State
 			CUTSCENE_SPRITE.animation.paused = !CUTSCENE_SPRITE.animation.paused;
 		}
 
-		if (FlxG.keys.justReleased.ESCAPE && !CUTSCENE_SPRITE.animation.paused)
+		if (Global.keyJustReleased(ESCAPE) && !CUTSCENE_SPRITE.animation.paused)
 		{
 			cutsceneEnded(true);
 		}

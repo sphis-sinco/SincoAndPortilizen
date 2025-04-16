@@ -60,7 +60,7 @@ class AtlasCutscene extends State
 	{
 		super.update(elapsed);
 
-                if (FlxG.keys.justReleased.ESCAPE)
+                if (Global.keyJustReleased(ESCAPE))
                 {
                         cutsceneEnded(true);
                 }
