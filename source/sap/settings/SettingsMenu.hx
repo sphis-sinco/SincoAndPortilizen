@@ -165,18 +165,12 @@ class SettingsMenu extends FlxSubState
 		{
 			switch (res)
 			{
-				case '1280x1216':
-					FlxG.resizeWindow(320, 304);
-					new_windowres = '320x304';
-				case '320x304':
-					FlxG.resizeWindow(160, 152);
-					new_windowres = '160x152';
-				case '160x152':
+				case '1280x720':
 					FlxG.resizeWindow(640, 608);
 					new_windowres = '640x608';
 				default:
-					FlxG.resizeWindow(1280, 1216);
-					new_windowres = '1280x1216';
+					FlxG.resizeWindow(1280, 720);
+					new_windowres = '1280x720';
 			}
 		}
 		else

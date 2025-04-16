@@ -1,6 +1,7 @@
 # Alpha
 ## 0.5.0a - 4/??/2025
 ### Added
+- (Desktop only) New window resolution option: 1280x720 ([#34][#34_link])
 - (Source) Global now has functions related to keys being pressed, just released, and just pressed
 - Comic cutscenes can be skipped by pressing ESCAPE
 - Sparrow cutscenes can be skipped by pressing ESCAPE
@@ -392,3 +393,4 @@ CURRENT FEATURES:
 [#23_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/23
 [#27_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/27
 [#24_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/24
+[#34_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/34
