@@ -307,13 +307,17 @@ class Global
 			{
 				oldStickars.push(sticker);
 			}
-		});
+		}, {
+                        traceErr: true
+                });
+
+                var oldStickersList = (oldStickars != null) ? (oldStickars.length > 0 && oldStickers) ? oldStickars : null : null;
 
 		var stickerTransition = new funkin.ui.transition.StickerSubState({
 			targetState: state -> new_state,
 			stickerSet: stickerSet,
 			stickerPack: stickerPack,
-			oldStickers: (oldStickars.length > 0 && oldStickers) ? oldStickars : null
+			oldStickers: oldStickersList
 		});
 
 		FlxG.state.openSubState(stickerTransition);
