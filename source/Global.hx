@@ -22,7 +22,7 @@ class Global
 		var pack:String = 'all';
 		final nullCheck:Void->Void = function()
 		{
-			if (pack == null && SLGame.isDebug)
+			if (SLGame.isDebug)
 			{
 				trace('randomStickerPack: could not get pack');
 				pack ??= 'all';
