@@ -5,6 +5,7 @@
 - Sticker transition from FNF
 - (Web only) Pixel perfect rendering ([#27][#27_link])
 ### Fixed
+- Mods not being added to ENABLED_MODS when the Mod save data is null
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 ### Changed
 - (Debug only) The titlestate now has a `DEBUG` intro state that waits a second before actually starting the intro sequence

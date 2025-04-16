@@ -17,13 +17,13 @@ class ModFolderManager
 		SUPPORTED_MODDING_API_VERSIONS.push('0.1.2');
 		SUPPORTED_MODDING_API_VERSIONS.push('0.1.3');
 
-                #if EXCESS_TRACES
-                trace('Supported mod API versions: ');
-                for (version in SUPPORTED_MODDING_API_VERSIONS)
-                {
-                        trace('* ${version}');
-                }
-                #end
+		#if EXCESS_TRACES
+		trace('Supported mod API versions: ');
+		for (version in SUPPORTED_MODDING_API_VERSIONS)
+		{
+			trace('* ${version}');
+		}
+		#end
 	}
 
 	public static function readModFolder():Void
@@ -70,6 +70,10 @@ class ModFolderManager
 							{
 								ENABLED_MODS.push(folder);
 							}
+						}
+						else
+						{
+							ENABLED_MODS.push(folder);
 						}
 					}
 				}
