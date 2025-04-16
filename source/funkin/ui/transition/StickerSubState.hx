@@ -56,8 +56,8 @@ class StickerSubState extends FlxSubState
 	{
 		super();
 
-		this.stickerSet = params.stickerSet ?? 'stickers-set-1';
-		this.stickerPack = params.stickerPack ?? 'all';
+		this.stickerSet = params.stickerSet ?? Global.randomStickerFolder();
+		this.stickerPack = params.stickerPack ?? Global.randomStickerPack(this.stickerSet);
 
 		this.targetState = params.targetState ?? (sticker) -> new TitleState();
 
