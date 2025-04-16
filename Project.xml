@@ -119,10 +119,10 @@
 
         <assets path="mods" if="SCRIPT_FILES" />
         <section if="SCRIPT_FILES">
-                <assets path="debug_mods" rename="mods" if="debug" />
+                <assets path="debug_mods" rename="mods" if="debug" unless="NO_MODS"/>
         </section>
 
-        <section if="RECOMPILE_ON_MOD_UPDATE">
+        <section if="RECOMPILE_ON_MOD_UPDATE" unless="NO_MODS">
                 <source path="debug_mods" />
                 <source path="mods" />
         </section>
