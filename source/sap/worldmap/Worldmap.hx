@@ -87,22 +87,22 @@ class Worldmap extends State
 			difficultySprite.playAnimation(DIFFICULTY);
 		}
 
-		if (FlxG.keys.anyJustReleased([LEFT, RIGHT]) && character.animationname() != 'run')
+		if (Global.anyKeysJustReleased([LEFT, RIGHT]) && character.animationname() != 'run')
 		{
 			characterMove();
 		}
 
-		if (FlxG.keys.anyJustReleased([UP, DOWN]))
+		if (Global.anyKeysJustReleased([UP, DOWN]))
 		{
 			difficultyChange();
 		}
 
-		if (FlxG.keys.justReleased.ENTER && character.animationname() == 'idle')
+		if (Global.keyJustReleased(ENTER) && character.animationname() == 'idle')
 		{
 			playLevel();
 		}
 
-		if (FlxG.keys.justReleased.SPACE && canSwap)
+		if (Global.keyJustReleased(SPACE) && canSwap)
 		{
 			swap();
 		}
@@ -110,7 +110,7 @@ class Worldmap extends State
 
 	public static function difficultyChange():Void
 	{
-		var down:Bool = !FlxG.keys.justReleased.UP;
+		var down:Bool = !Global.keyJustReleased(UP);
 
 		if (DIFFICULTY == StageGlobals.EASY_DIFF)
 		{
@@ -133,7 +133,7 @@ class Worldmap extends State
 	public static function characterMove():Void
 	{
 		canSwap = false;
-		character.flipX = FlxG.keys.justReleased.LEFT;
+		character.flipX = Global.keyJustReleased(LEFT);
 
 		current_level += (character.flipX) ? -1 : 1;
 		if (current_level > 3)

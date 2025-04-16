@@ -266,7 +266,7 @@ class TitleState extends State
 
 	public static function pressAny():Void
 	{
-		if (FlxG.keys.justReleased.ANY && !HEADING_TO_MAINMENU)
+		if (Global.keyJustReleased(ANY) && !HEADING_TO_MAINMENU)
 		{
 			HEADING_TO_MAINMENU = true;
 			Global.playSoundEffect('blipSelect');

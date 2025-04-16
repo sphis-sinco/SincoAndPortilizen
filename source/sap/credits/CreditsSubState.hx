@@ -48,15 +48,15 @@ class CreditsSubState extends FlxSubState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justReleased.ESCAPE)
+		if (Global.keyJustReleased(ESCAPE))
 		{
 			MainMenu.inSubstate = false;
 			close();
 		}
 
-		if (FlxG.keys.anyPressed([UP, DOWN]))
+		if (Global.anyKeysPressed([UP, DOWN]))
 		{
-			scroll((FlxG.keys.pressed.UP) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
+			scroll((Global.keyPressed(UP)) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
 		}
 	}
 

@@ -43,7 +43,7 @@ class State extends FlxState
                 ScriptManager.callScript('stateUpdate', [elapsed]);
 		super.update(elapsed);
 
-                if (FlxG.keys.pressed.CONTROL && FlxG.keys.pressed.ALT && FlxG.keys.pressed.SHIFT && FlxG.keys.justPressed.L)
+                if (Global.anyKeysPressed(CONTROL, ALT, SHIFT, L))
                 {
                         ScriptManager.callScript('CASLCrash', [elapsed]);
                         throw 'CASLCrash';

@@ -63,11 +63,11 @@ class SidebitSelect extends State
 		super.update(elapsed);
 		Global.playMusic('Lado', 1.0, false);
 
-		if (FlxG.keys.justReleased.ESCAPE)
+		if (Global.keyJustReleased(ESCAPE))
 		{
 			Global.switchState(new TitleState());
 		}
-		else if (FlxG.keys.justReleased.ENTER)
+		else if (Global.keyJustReleased(ENTER))
 		{
 			switch (SIDEBIT_NUMBER)
 			{

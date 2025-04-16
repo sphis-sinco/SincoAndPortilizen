@@ -58,7 +58,7 @@ class PanelCutscene extends State
 
 	override public function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justReleased.SPACE)
+		if (Global.keyJustReleased(SPACE))
 		{
 			CUR_PANEL++;
 			if (CUR_PANEL > MAX_PANELS)

@@ -248,7 +248,7 @@ class Stage1 extends State
 
 	public static function playerControls():Void
 	{
-		if (FlxG.keys.justPressed.SPACE && ABILITY_CAN_ATTACK_PLAYER)
+		if (Global.keyJustPressed(SPACE) && ABILITY_CAN_ATTACK_PLAYER)
 		{
 			if (sinco.x != SINCO_POINT.x)
 			{
@@ -259,7 +259,7 @@ class Stage1 extends State
 			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
 			sincoJump();
 		}
-		else if (FlxG.keys.justPressed.RIGHT)
+		else if (Global.keyJustPressed(RIGHT))
 		{
 			if (sinco.x != SINCO_POINT.x)
 			{
@@ -272,7 +272,7 @@ class Stage1 extends State
 			sincoDodge();
 		}
 
-		if (FlxG.keys.justPressed.R)
+		if (Global.keyJustPressed(R))
 		{
 			Global.switchState(new Stage1(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);

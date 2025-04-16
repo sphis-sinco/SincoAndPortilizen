@@ -312,7 +312,7 @@ class Sidebit1 extends State
 
 		updateHealthIndicators();
 
-		if (FlxG.keys.justReleased.SPACE && ABILITY_CAN_DODGE)
+		if (Global.keyJustReleased(SPACE) && ABILITY_CAN_DODGE)
 		{
 			disableAbilities();
 			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
@@ -320,7 +320,7 @@ class Sidebit1 extends State
 			SINCO.y += 85;
 			SINCO.animation.play('dodge');
 		}
-		else if (FlxG.keys.justReleased.LEFT && ABILITY_CAN_ATTACK)
+		else if (Global.keyJustReleased(LEFT) && ABILITY_CAN_ATTACK)
 		{
 			disableAbilities();
 			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
