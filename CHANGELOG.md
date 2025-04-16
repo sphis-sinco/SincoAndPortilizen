@@ -1,6 +1,7 @@
 # Alpha
 ## 0.5.0a - 4/??/2025
 ### Added
+- Sparrow cutscenes can be skipped by pressing ESCAPE
 - Atlas cutscenes can be skipped by pressing ESCAPE ([#24][#24_link])
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - Sticker transition from FNF
