@@ -20,17 +20,24 @@ class Global
 	public static function randomStickerPack(?folder:String):String
 	{
 		var pack:String = 'all';
-
-		if (folder != null)
+		final nullCheck:Void->Void = function()
 		{
-			final packArray:Array<String> = RANDOM_STICKER_PACKS.get(folder);
-			pack = packArray[FlxG.random.int(0, packArray.length - 1)];
-
 			if (pack == null && SLGame.isDebug)
 			{
 				trace('randomStickerPack: could not get pack');
-                                pack ??= 'all';
+				pack ??= 'all';
 			}
+		};
+
+		if (folder != null)
+		{
+			TryCatch.tryCatch(function()
+			{
+				final packArray:Array<String> = RANDOM_STICKER_PACKS.get(folder);
+				pack = packArray[FlxG.random.int(0, packArray.length - 1)];
+			}, {
+					errFunc: nullCheck
+			});
 		}
 
 		return pack;
