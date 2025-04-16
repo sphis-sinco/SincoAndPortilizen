@@ -298,6 +298,7 @@ class Global
 
 	public static function switchState(new_state:FlxState, ?oldStickers:Bool = false, ?stickerSet:String = 'sinco', ?stickerPack:String = 'all'):Void
 	{
+                trace('switch');
 		TryCatch.tryCatch(function()
 		{
 			var oldStickars:Array<funkin.ui.transition.StickerSubState.StickerSprite> = [];
@@ -326,7 +327,8 @@ class Global
 		}, {
 				errFunc: function()
 				{
-					FlxG.switchState(() -> new_state);
+                                        trace('flxG switch');
+                                        FlxG.switchState(() -> new_state);
 				},
 				traceErr: true
 		});
