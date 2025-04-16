@@ -4,6 +4,8 @@
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - Sticker transition from FNF
 - (Web only) Pixel perfect rendering ([#27][#27_link])
+### Fixed
+- Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 ### Changed
 - The screenshot plugin now has (probably) everything as a static var/function
 - SparrowSprite uses the file manager's `getSparrowAtlas` function

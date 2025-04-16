@@ -107,12 +107,23 @@ class TitleState extends State
 		add(MedalData.unlockMedal('Welcome'));
 	}
 
+        override function postCreate() {
+                super.postCreate();
+
+                updateFunctionBasic();
+        }
+
+        public static function updateFunctionBasic():Void
+        {
+                CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
+                stateChecks();
+        }
+
 	public static var HEADING_TO_MAINMENU:Bool = false;
 
 	override public function update(elapsed:Float):Void
 	{
-		CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
-		stateChecks();
+                updateFunctionBasic();
 
 		if (CURRENT_STATE == DONE)
 		{
@@ -140,11 +151,6 @@ class TitleState extends State
 	}
 
 	public static function stateChecks():Void
-	{
-		stateSwitchStatement();
-	}
-
-	public static function stateSwitchStatement():Void
 	{
 		switch (CURRENT_STATE)
 		{
