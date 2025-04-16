@@ -29,7 +29,7 @@ typedef StickerSubStateParams =
 @:nullSafety
 class StickerSubState extends FlxSubState
 {
-        @:nullSafety(Off)
+	@:nullSafety(Off)
 	public static var grpStickers:FlxTypedGroup<StickerSprite>;
 
 	// yes... a damn OpenFL sprite!!!
@@ -151,10 +151,10 @@ class StickerSubState extends FlxSubState
 			{
 				sticker.visible = false;
 
-                                sticker.destroy();
-                                grpStickers.remove(sticker);
-				
-                                var daSound:String = FlxG.random.getObject(sounds);
+				sticker.destroy();
+				grpStickers.remove(sticker);
+
+				var daSound:String = FlxG.random.getObject(sounds);
 				Global.playSoundEffect(daSound, STICKERS);
 
 				if (grpStickers == null || ind == grpStickers.members.length - 1)
@@ -185,7 +185,7 @@ class StickerSubState extends FlxSubState
 			stickerSetsInfoArray.push(stickerInfo.getStickers(stickerSets));
 		}
 
-                // trace(stickers);
+		// trace(stickers);
 
 		var xPos:Float = -100;
 		var yPos:Float = -100;
@@ -353,20 +353,21 @@ class StickerSprite extends FunkinSprite
 {
 	public var timing:Float = 0;
 
-        public var pixelArt:Bool = true;
+	public var pixelArt:Bool = true;
 
 	public function new(x:Float, y:Float, stickerSet:String, stickerName:String, pixelArt:Bool = true):Void
 	{
 		super(x, y);
 		loadTexture('${stickerSet}/${stickerName}');
-		
-                this.pixelArt = pixelArt;
-                if (this.pixelArt) {
-                        this.antialiasing = false;
-                        Global.scaleSprite(this);
-                }
-                
-                updateHitbox();
+
+		this.pixelArt = pixelArt;
+		this.antialiasing = !this.pixelArt;
+		if (this.pixelArt)
+		{
+			Global.scaleSprite(this);
+		}
+
+		updateHitbox();
 		scrollFactor.set();
 	}
 }
@@ -391,7 +392,7 @@ class StickerInfo
 		this.name = jsonInfo.name;
 		this.artist = jsonInfo.artist;
 		this.pixelArt = jsonInfo.pixel;
-                this.pixelArt ??= true;
+		this.pixelArt ??= true;
 
 		stickerPacks = new Map<String, Array<String>>();
 
