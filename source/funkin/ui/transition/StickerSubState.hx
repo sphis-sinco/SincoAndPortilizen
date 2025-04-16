@@ -377,7 +377,7 @@ class StickerInfo
 	public var artist:String;
 	public var stickers:Map<String, Array<String>>;
 	public var stickerPacks:Map<String, Array<String>>;
-	public var pixelArt:Bool;
+	public var pixelArt:Null<Bool>;
 
 	public function new(stickerSet:String):Void
 	{
