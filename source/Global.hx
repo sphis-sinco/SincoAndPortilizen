@@ -29,7 +29,7 @@ class Global
 		{
 			if (SLGame.isDebug)
 			{
-				trace('randomStickerPack: could not get random pack for $folder');
+				trace('randomStickerPack: could not get random pack for ${folder}');
 				pack = 'all';
 			}
 		};
@@ -40,7 +40,7 @@ class Global
 			{
                                 if (!RANDOM_STICKER_PACKS.exists(folder))
                                 {
-                                        trace('randomStickerPack: $folder doesn\'t have a RANDOM_STICKER_PACKS entry');
+                                        trace('randomStickerPack: "${folder}" doesn\'t have a RANDOM_STICKER_PACKS entry');
                                         return;
                                 }
 
