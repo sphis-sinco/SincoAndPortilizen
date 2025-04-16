@@ -12,6 +12,7 @@
 ### Fixed
 - Mods not being added to ENABLED_MODS when the Mod save data is null
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
+- Fixed missing worldmap character assets
 ### Changed
 - (Source) Instead of using `FlxG.keys.` every file uses one of the `Global.key` functions
 - (Debug only) The titlestate now has a `DEBUG` intro state that waits a second before actually starting the intro sequence
