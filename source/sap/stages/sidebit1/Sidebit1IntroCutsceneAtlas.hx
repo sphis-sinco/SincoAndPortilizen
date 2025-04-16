@@ -36,9 +36,9 @@ class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
 		super.cutsceneEvent(animation);
 	}
 
-	override function cutsceneEnded()
+	override function cutsceneEnded(?skipped_cutscene:Bool)
 	{
-		super.cutsceneEnded();
+		super.cutsceneEnded(skipped_cutscene);
 		Global.switchState(new Sidebit1(DIFFICULTY));
 	}
 }
