@@ -496,7 +496,8 @@ class Stage1 extends State
 	{
 		Global.beatLevel(1);
                 RUNNING = false;
-		Global.switchState(new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, new PostStage1Cutscene()));
+
+		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, new PostStage1Cutscene()));
 	}
 
 	public static var PLAYED_DEATH_SFX:Bool = false;
