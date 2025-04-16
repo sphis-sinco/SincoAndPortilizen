@@ -21,8 +21,8 @@ class Global
 	{
 		if (SLGame.isDebug)
 		{
-                        trace('randomStickerPack: attempting to grab random sticker pack from "$folder"');
-                }
+			trace('randomStickerPack: attempting to grab random sticker pack from "$folder"');
+		}
 
 		var pack:String = 'all';
 		final nullCheck:Void->Void = function()
@@ -38,15 +38,14 @@ class Global
 		{
 			TryCatch.tryCatch(function()
 			{
-                                if (!RANDOM_STICKER_PACKS.exists(folder))
-                                {
-                                        trace('randomStickerPack: "${folder}" doesn\'t have a RANDOM_STICKER_PACKS entry');
-                                        return;
-                                }
+				if (!RANDOM_STICKER_PACKS.exists(folder))
+				{
+					trace('randomStickerPack: "${folder}" doesn\'t have a RANDOM_STICKER_PACKS entry');
+					return;
+				}
 
 				final packArray:Array<String> = RANDOM_STICKER_PACKS.get(folder);
 				pack = packArray[FlxG.random.int(0, packArray.length - 1)];
-
 			}, {
 					errFunc: nullCheck
 			});
@@ -299,29 +298,38 @@ class Global
 
 	public static function switchState(new_state:FlxState, ?oldStickers:Bool = false, ?stickerSet:String = 'sinco', ?stickerPack:String = 'all'):Void
 	{
-		var oldStickars:Array<funkin.ui.transition.StickerSubState.StickerSprite> = [];
-
 		TryCatch.tryCatch(function()
 		{
-			for (sticker in StickerSubState.grpStickers.members)
+			var oldStickars:Array<funkin.ui.transition.StickerSubState.StickerSprite> = [];
+
+			TryCatch.tryCatch(function()
 			{
-				oldStickars.push(sticker);
-			}
+				for (sticker in StickerSubState.grpStickers.members)
+				{
+					oldStickars.push(sticker);
+				}
+			}, {
+					traceErr: true
+			});
+
+			var oldStickersList = (oldStickars != null) ? (oldStickars.length > 0 && oldStickers) ? oldStickars : null : null;
+
+			var stickerTransition = new funkin.ui.transition.StickerSubState({
+				targetState: state -> new_state,
+				stickerSet: stickerSet,
+				stickerPack: stickerPack,
+				oldStickers: oldStickersList
+			});
+
+			trace('Openning ${new_state}');
+			FlxG.state.openSubState(stickerTransition);
 		}, {
-                        traceErr: true
-                });
-
-                var oldStickersList = (oldStickars != null) ? (oldStickars.length > 0 && oldStickers) ? oldStickars : null : null;
-
-		var stickerTransition = new funkin.ui.transition.StickerSubState({
-			targetState: state -> new_state,
-			stickerSet: stickerSet,
-			stickerPack: stickerPack,
-			oldStickers: oldStickersList
+				errFunc: function()
+				{
+					FlxG.switchState(() -> new_state);
+				},
+				traceErr: true
 		});
-
-                trace('Openning ${new_state}');
-		FlxG.state.openSubState(stickerTransition);
 	}
 
 	public static function anyKeysPressed(keys:Array<FlxKey>):Bool
