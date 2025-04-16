@@ -272,7 +272,7 @@ class Global
 		ScriptManager.setScript(name, value, allowOverride);
 	}
 
-	public static function switchState(new_state:FlxState, ?oldStickers:Bool = false, ?stickerSet:String = 'sinco'. ?stickerPack:String = 'all'):Void
+	public static function switchState(new_state:FlxState, ?oldStickers:Bool = false, ?stickerSet:String = 'sinco', ?stickerPack:String = 'all'):Void
 	{
 		var oldStickars:Array<funkin.ui.transition.StickerSubState.StickerSprite> = [];
 
