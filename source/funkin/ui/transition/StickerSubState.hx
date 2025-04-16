@@ -353,7 +353,7 @@ class StickerSprite extends FunkinSprite
 {
 	public var timing:Float = 0;
 
-	public var pixelArt:Bool = true;
+	public var pixelArt:Null<Bool> = true;
 
 	public function new(x:Float, y:Float, stickerSet:String, stickerName:String, pixelArt:Bool = true):Void
 	{
@@ -362,7 +362,7 @@ class StickerSprite extends FunkinSprite
 
 		this.pixelArt = pixelArt;
 		this.pixelArt ??= true;
-                
+
 		this.antialiasing = !this.pixelArt;
 		if (this.pixelArt)
 		{
