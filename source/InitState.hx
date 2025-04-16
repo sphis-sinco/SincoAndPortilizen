@@ -193,13 +193,10 @@ class InitState extends FlxState
 
 		if (SLGame.isDebug)
 		{
-			var randomStickerFolders:Array<String> = ['sinco', 'misc'];
-			var randomStickerFolder:String = randomStickerFolders[FlxG.random.int(0, randomStickerFolders.length - 1)];
-
-			Global.switchState(new TitleState(), false, randomStickerFolder);
+			Global.switchState(new TitleState(), false, Global.randomStickerFolder());
 			return;
 		}
-                
+
 		FlxG.switchState(TitleState.new);
 	}
 

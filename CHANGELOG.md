@@ -7,6 +7,8 @@
 ### Fixed
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 ### Changed
+- Global now has a `randomStickerFolder` function that is used for when a random sticker folder is needed
+- Global now has a `RANDOM_STICKER_FOLDERS` variable that is used for when a random sticker folder is needed
 - (Debug only) InitState uses a random sticker transition when there are no build flags enabled
 - The screenshot plugin now has (probably) everything as a static var/function
 - SparrowSprite uses the file manager's `getSparrowAtlas` function
