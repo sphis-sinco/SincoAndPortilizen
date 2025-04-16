@@ -72,9 +72,9 @@ class SparrowCutscene extends State
 		if (CUTSCENE_SPRITE.animation.paused)
 		{
 			if (Global.anyKeysPressed([LEFT, RIGHT]))
-				CUTSCENE_SPRITE.x += (Global.keyJustReleased(LEFT) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
+				CUTSCENE_SPRITE.x += (Global.keyJustReleased(LEFT)) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
 			if (Global.anyKeysPressed([UP, DOWN]))
-				CUTSCENE_SPRITE.y += (Global.keyJustReleased(UP) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
+				CUTSCENE_SPRITE.y += (Global.keyJustReleased(UP)) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
 
 			// ! I dub this NOT, an excess trace conditional ! \\
 			if (Global.anyKeysPressed([LEFT, RIGHT, UP, DOWN]))
