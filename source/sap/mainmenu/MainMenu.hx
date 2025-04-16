@@ -242,7 +242,8 @@ class MainMenu extends State
 		switch (PUBLIC_CUR_SELECTION)
 		{
 			case 0:
-				Global.switchState(new PlayMenu());
+                                // this should not have the sticker transition
+				FlxG.switchState(PlayMenu.new);
 			#if sys case 5: #else case 3: #end
 				Global.switchState(new TitleState());
 		}
