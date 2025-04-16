@@ -9,10 +9,19 @@
 'PR/Type: Haxe':
 - changed-files:
   - any-glob-to-any-file: '**/*.hx'
-'PR/Type/Haxe: Stage Modification':
+  
+'PR/Type/Haxe: Stage modification':
 - changed-files:
-  - any-glob-to-any-file: '**/stages/*.hx'
+  - any-glob-to-any-file: '**/stages/*.hx'  
 
+'PR/Type/Haxe: Global':
+- changed-files:
+  - any-glob-to-any-file: 'source/Global.hx'
+  
+'PR/Type/Haxe: Save data':
+- changed-files:
+  - any-glob-to-any-file: '**/savedata/*.hx'
+  
 # Add GitHub tag to PR's changing yml files, or anything in the .github folder 
 'PR/Type: Github':
 - changed-files:
