@@ -29,8 +29,8 @@ class Global
 		{
 			if (SLGame.isDebug)
 			{
-				trace('randomStickerPack: could not get pack');
-				pack ??= 'all';
+				trace('randomStickerPack: could not get random pack for $folder');
+				pack = 'all';
 			}
 		};
 
@@ -38,6 +38,12 @@ class Global
 		{
 			TryCatch.tryCatch(function()
 			{
+                                if (!RANDOM_STICKER_PACKS.exists(folder))
+                                {
+                                        trace('randomStickerPack: $folder doesn\'t have a RANDOM_STICKER_PACKS entry');
+                                        return;
+                                }
+
 				final packArray:Array<String> = RANDOM_STICKER_PACKS.get(folder);
 				pack = packArray[FlxG.random.int(0, packArray.length - 1)];
 
