@@ -15,6 +15,7 @@ jobs:
       uses: actions/labeler@v5
       with:
         sync-labels: true
+        configuration-path: .github/pr-labeler.yml
   # Apply labels to pull requests based on how many lines were edited
   changed-lines-count-labeler:
     permissions:
