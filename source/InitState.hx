@@ -193,7 +193,8 @@ class InitState extends FlxState
 
 		if (SLGame.isDebug)
 		{
-			Global.switchState(new TitleState(), false, Global.randomStickerFolder());
+			final folder:String = Global.randomStickerFolder();
+			Global.switchState(new TitleState(), false, folder, Global.randomStickerPack(folder));
 			return;
 		}
 
