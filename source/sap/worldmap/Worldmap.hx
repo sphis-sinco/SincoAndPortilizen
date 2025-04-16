@@ -158,6 +158,9 @@ class Worldmap extends State
 
 			if (current_level < 1)
 			{
+                                // Fix missing sticker degen
+                                MainMenu.public_menutextsSelection = 'menu';
+                                
 				Global.switchState(new MainMenu());
 				current_level += 1;
 			}
