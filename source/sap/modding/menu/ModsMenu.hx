@@ -45,6 +45,8 @@ class ModsMenu extends FlxSubState
 			totalSpacing += 25;
 		}
 		updateText();
+
+                CURRENT_SELECTION = 0;
 	}
 
 	override function update(elapsed:Float):Void
@@ -64,7 +66,7 @@ class ModsMenu extends FlxSubState
 		{
 			scroll((Global.keyPressed(UP)) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
 		}
-		else if (Global.anyKeysPressed([UP, DOWN, ENTER]))
+		else if (Global.anyKeysJustReleased([UP, DOWN, ENTER]))
 		{
 			if (Global.keyJustReleased(ENTER))
 			{
