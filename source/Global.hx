@@ -2,6 +2,7 @@ package;
 
 import funkin.ui.transition.StickerSubState;
 
+// Util file with several public variabkes
 class Global
 {
 	// TODO: Softcode these in maybe by reading the images folder
