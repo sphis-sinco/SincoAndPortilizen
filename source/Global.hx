@@ -253,7 +253,7 @@ class Global
 		ScriptManager.setScript(name, value, allowOverride);
 	}
 
-	public static function switchState(new_state:FlxState, ?oldStickers:Bool = false, ?stickerSet:String = 'sinco'):Void
+	public static function switchState(new_state:FlxState, ?oldStickers:Bool = false, ?stickerSet:String = 'sinco'. ?stickerPack:String = 'all'):Void
 	{
 		var oldStickars:Array<funkin.ui.transition.StickerSubState.StickerSprite> = [];
 
@@ -268,6 +268,7 @@ class Global
 		var stickerTransition = new funkin.ui.transition.StickerSubState({
 			targetState: state -> new_state,
 			stickerSet: stickerSet,
+			stickerPack: stickerPack,
 			oldStickers: (oldStickars.length > 0 && oldStickers) ? oldStickars : null
 		});
 
