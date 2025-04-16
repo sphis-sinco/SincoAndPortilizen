@@ -361,6 +361,8 @@ class StickerSprite extends FunkinSprite
 		loadTexture('${stickerSet}/${stickerName}');
 
 		this.pixelArt = pixelArt;
+		this.pixelArt ??= true;
+                
 		this.antialiasing = !this.pixelArt;
 		if (this.pixelArt)
 		{
