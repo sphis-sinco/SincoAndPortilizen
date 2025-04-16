@@ -115,6 +115,8 @@ class StickerSubState extends FlxSubState
 
 		if (params.oldStickers != null)
 		{
+			trace('Old stickers');
+
 			for (sticker in params.oldStickers)
 			{
 				grpStickers.add(sticker);
@@ -123,7 +125,10 @@ class StickerSubState extends FlxSubState
 			degenStickers();
 		}
 		else
+		{
+                        trace('New stickers');
 			regenStickers();
+		}
 	}
 
 	public function degenStickers():Void
@@ -272,9 +277,10 @@ class StickerSubState extends FlxSubState
 					if (sticker == null)
 						return;
 
-					TryCatch.tryCatch(function() {
-                                                sticker.scale.x = sticker.scale.y = (FlxG.random.float(0.97, 1.02) * ((sticker.pixelArt) ? Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : 1));
-                                        });
+					TryCatch.tryCatch(function()
+					{
+						sticker.scale.x = sticker.scale.y = (FlxG.random.float(0.97, 1.02) * ((sticker.pixelArt) ? Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : 1));
+					});
 
 					if (ind == grpStickers.members.length - 1)
 					{
