@@ -1,0 +1,18 @@
+{
+  "name": "all",
+  "artist": "Sphis_Sinco",
+  "stickers": {
+    "heros": ["misc_1","misc_2","misc_4"],
+    "villains": ["misc_3","misc_6"],
+    "the hated": ["misc_4","misc_3","misc_6"],
+    "the loved": ["misc_1","misc_2"],
+    "legendary": ["misc_5"]
+  },
+  "stickerPacks": {
+    "all": ["heros", "villains", "the hated", "the loved", "legendary"],
+    "heros": ["heros", "the loved"],
+    "villains": ["villains", "the hated"],
+    "mix": ["the loved", "the hated"],
+    "legendaries": ["legendary", "heros", "the loved"]
+  }
+}
