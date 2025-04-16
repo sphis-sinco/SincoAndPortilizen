@@ -30,7 +30,13 @@
       - '**/*.yml'
 
 # A file is changed: it's an addition
-'Status: Addition':
+'Status: Addition,PR':
+- changed-files:
+  - any-glob-to-any-file:
+      - '**.*'
+      
+# No one has seen this PR
+'PR/Response: Pending':
 - changed-files:
   - any-glob-to-any-file:
       - '**.*'
