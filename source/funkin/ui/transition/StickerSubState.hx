@@ -391,6 +391,7 @@ class StickerInfo
 		this.name = jsonInfo.name;
 		this.artist = jsonInfo.artist;
 		this.pixelArt = jsonInfo.pixel;
+                this.pixelArt ??= true;
 
 		stickerPacks = new Map<String, Array<String>>();
 
