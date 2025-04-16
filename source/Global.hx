@@ -320,6 +320,7 @@ class Global
 			oldStickers: oldStickersList
 		});
 
+                trace('Openning ${new_state}');
 		FlxG.state.openSubState(stickerTransition);
 	}
 
