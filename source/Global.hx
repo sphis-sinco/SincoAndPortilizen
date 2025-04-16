@@ -7,7 +7,7 @@ class Global
 	// TODO: Softcode these in maybe by reading the images folder
         public static var RANDOM_STICKER_FOLDERS:Array<String> = ['sinco', 'misc'];
 	// TODO: Softcode this in maybe by reading the images folder and checking the sticker jsons
-        public static var RANDOM_STICKER_PACKS:Map<String,String> = [
+        public static var RANDOM_STICKER_PACKS:Map<String,Array<String>> = [
 		'sinco' => ['all', 'set-1', 'set-2'],
 		'misc' => ['all', 'heros', 'villains', 'legendaries']
 	];
