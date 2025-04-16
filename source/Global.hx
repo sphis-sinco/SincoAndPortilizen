@@ -5,28 +5,28 @@ import funkin.ui.transition.StickerSubState;
 class Global
 {
 	// TODO: Softcode these in maybe by reading the images folder
-        public static var RANDOM_STICKER_FOLDERS:Array<String> = ['sinco', 'misc'];
+	public static var RANDOM_STICKER_FOLDERS:Array<String> = ['sinco', 'misc'];
 	// TODO: Softcode this in maybe by reading the images folder and checking the sticker jsons
-        public static var RANDOM_STICKER_PACKS:Map<String,Array<String>> = [
+	public static var RANDOM_STICKER_PACKS:Map<String, Array<String>> = [
 		'sinco' => ['all', 'set-1', 'set-2'],
 		'misc' => ['all', 'heros', 'villains', 'legendaries']
 	];
 
-        public static function randomStickerFolder():String
-        {
-                return Global.RANDOM_STICKER_FOLDERS[FlxG.random.int(0, Global.RANDOM_STICKER_FOLDERS.length - 1)];
-        }
+	public static function randomStickerFolder():String
+	{
+		return Global.RANDOM_STICKER_FOLDERS[FlxG.random.int(0, Global.RANDOM_STICKER_FOLDERS.length - 1)];
+	}
 
 	public static function randomStickerPack(?folder:String):String
 	{
 		var pack:String = 'all';
-		
+
 		if (folder != null)
 		{
 			final packArray:Array<String> = RANDOM_STICKER_PACKS.get(folder);
 			pack = packArray[FlxG.random.int(0, packArray.length - 1)];
 		}
-		
+
 		return pack;
 	}
 
@@ -292,5 +292,35 @@ class Global
 		});
 
 		FlxG.state.openSubState(stickerTransition);
+	}
+
+	public static function anyKeysPressed(keys:Array<FlxKey>):Bool
+	{
+		return FlxG.keys.anyPressed(keys);
+	}
+
+	public static function keyPressed(key:FlxKey):Bool
+	{
+		return anyKeysPressed([key]);
+	}
+
+	public static function anyKeysJustReleased(keys:Array<FlxKey>):Bool
+	{
+		return FlxG.keys.anyJustReleased(keys);
+	}
+
+	public static function keyJustReleased(key:FlxKey):Bool
+	{
+		return anyKeysJustReleased([key]);
+	}
+
+	public static function anyKeysJustPressed(keys:Array<FlxKey>):Bool
+	{
+		return FlxG.keys.anyJustPressed(keys);
+	}
+
+	public static function keyJustPressed(key:FlxKey):Bool
+	{
+		return anyKeysJustPressed([key]);
 	}
 }
