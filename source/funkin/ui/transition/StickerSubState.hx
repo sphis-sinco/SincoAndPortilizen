@@ -56,10 +56,10 @@ class StickerSubState extends FlxSubState
 	{
 		super();
 
-		this.stickerSet = params.stickerSet ?? Global.randomStickerFolder();
-		this.stickerPack = params.stickerPack ?? Global.randomStickerPack(this.stickerSet);
+		this.stickerSet = params.stickerSet ??= Global.randomStickerFolder();
+		this.stickerPack = params.stickerPack ??= Global.randomStickerPack(this.stickerSet);
 
-		this.targetState = params.targetState ?? (sticker) -> new TitleState();
+		this.targetState = params.targetState ??= (sticker) -> new TitleState();
 
 		// todo still
 		// make sure that ONLY plays mp3/ogg files
