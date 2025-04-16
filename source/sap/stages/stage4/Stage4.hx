@@ -106,12 +106,12 @@ class Stage4 extends State
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justReleased.SPACE && !portJumping)
+		if (Global.keyJustReleased(SPACE) && !portJumping)
 		{
 			portPreJump();
 		}
 
-		if (FlxG.keys.justPressed.R)
+		if (Global.keyJustPressed(R))
 		{
 			Global.switchState(new Stage4(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);

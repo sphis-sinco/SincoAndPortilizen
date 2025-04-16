@@ -1,6 +1,7 @@
 # Alpha
 ## 0.5.0a - 4/??/2025
 ### Added
+- (Source) Global now has functions related to keys being pressed, just released, and just pressed
 - Comic cutscenes can be skipped by pressing ESCAPE
 - Sparrow cutscenes can be skipped by pressing ESCAPE
 - Atlas cutscenes can be skipped by pressing ESCAPE ([#24][#24_link])
@@ -11,6 +12,7 @@
 - Mods not being added to ENABLED_MODS when the Mod save data is null
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 ### Changed
+- (Source) Instead of using `FlxG.keys.` every file uses one of the `Global.key` functions
 - (Debug only) The titlestate now has a `DEBUG` intro state that waits a second before actually starting the intro sequence
 - Global now has a `randomStickerFolder` function that is used for when a random sticker folder is needed
 - Global now has a `RANDOM_STICKER_FOLDERS` variable that is used for when a random sticker folder is needed

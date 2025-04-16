@@ -51,7 +51,7 @@ class ModsMenu extends FlxSubState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justReleased.ESCAPE)
+		if (Global.keyJustReleased(ESCAPE))
 		{
 			MainMenu.inSubstate = false;
 			FlxG.save.data.enabled_mods = ModFolderManager.ENABLED_MODS;
@@ -60,20 +60,20 @@ class ModsMenu extends FlxSubState
 			close();
 		}
 
-		if (FlxG.keys.anyPressed([UP, DOWN]) && FlxG.keys.pressed.SHIFT)
+		if (Global.anyKeysPressed([UP, DOWN]) && Global.keyPressed(SHIFT))
 		{
-			scroll((FlxG.keys.pressed.UP) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
+			scroll((Global.keyPressed(UP)) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
 		}
-		else if (FlxG.keys.anyJustReleased([UP, DOWN, ENTER]))
+		else if (Global.anyKeysPressed([UP, DOWN, ENTER]))
 		{
-			if (FlxG.keys.justReleased.ENTER)
+			if (Global.keyJustReleased(ENTER))
 			{
 				ModFolderManager.toggleMod(ModFolderManager.MODS[CURRENT_SELECTION]);
 				updateText();
 				return;
 			}
 
-			CURRENT_SELECTION += (FlxG.keys.justReleased.DOWN) ? 1 : -1;
+			CURRENT_SELECTION += (Global.keyJustReleased(DOWN)) ? 1 : -1;
 			if (CURRENT_SELECTION < 0)
 			{
 				trace('Prevent underflow');

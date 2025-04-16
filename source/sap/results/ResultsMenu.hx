@@ -139,7 +139,7 @@ class ResultsMenu extends State
 			playRankMusic();
 		}
 
-		if (FlxG.keys.justReleased.SPACE && REACHED_TARGET_PERCENT)
+		if (Global.keyJustReleased(SPACE) && REACHED_TARGET_PERCENT)
 		{
 			FlxG.sound.music.stop();
 			Global.switchState(nextState);

@@ -137,7 +137,7 @@ class MainMenu extends State
 			controls();
 			CUR_SELECTION = PUBLIC_CUR_SELECTION;
 
-			if (FlxG.keys.justReleased.ENTER)
+			if (Global.keyJustReleased(ENTER))
 			{
 				selectionCheck();
 			}
@@ -148,7 +148,7 @@ class MainMenu extends State
 
 	public static function controls():Void
 	{
-		if (FlxG.keys.justReleased.UP)
+		if (Global.keyJustReleased(UP))
 		{
 			PUBLIC_CUR_SELECTION--;
 			if (PUBLIC_CUR_SELECTION < 0)
@@ -158,7 +158,7 @@ class MainMenu extends State
 			}
 		}
 
-		if (FlxG.keys.justReleased.DOWN)
+		if (Global.keyJustReleased(DOWN))
 		{
 			PUBLIC_CUR_SELECTION++;
 			if (PUBLIC_CUR_SELECTION > menuboxtexts.members.length - 1)

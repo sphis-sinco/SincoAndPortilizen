@@ -71,17 +71,17 @@ class SparrowCutscene extends State
 
 		if (CUTSCENE_SPRITE.animation.paused)
 		{
-			if (FlxG.keys.anyJustReleased([LEFT, RIGHT]))
-				CUTSCENE_SPRITE.x += (FlxG.keys.justReleased.LEFT) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
-			if (FlxG.keys.anyJustReleased([UP, DOWN]))
-				CUTSCENE_SPRITE.y += (FlxG.keys.justReleased.UP) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
+			if (Global.anyKeysPressed([LEFT, RIGHT]))
+				CUTSCENE_SPRITE.x += (Global.keyJustReleased(LEFT) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
+			if (Global.anyKeysPressed([UP, DOWN]))
+				CUTSCENE_SPRITE.y += (Global.keyJustReleased(UP) ? -MOVEMENT_SPEED : MOVEMENT_SPEED;
 
 			// ! I dub this NOT, an excess trace conditional ! \\
-			if (FlxG.keys.anyJustReleased([LEFT, RIGHT, UP, DOWN]))
+			if (Global.anyKeysPressed([LEFT, RIGHT, UP, DOWN]))
 				trace('Cutscene sprite position: ${CUTSCENE_SPRITE.getPosition()}');
 		}
 
-		if (FlxG.keys.justReleased.SPACE && SLGame.isDebug)
+		if (Global.keyJustReleased(SPACE) && SLGame.isDebug)
 		{
 			CUTSCENE_SPRITE.animation.paused = !CUTSCENE_SPRITE.animation.paused;
 		}

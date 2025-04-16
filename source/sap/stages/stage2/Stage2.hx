@@ -271,7 +271,7 @@ class Stage2 extends State
 
                 updateHealthIndicators();
 
-		if (FlxG.keys.justReleased.SPACE && sinco.animation.name != StageGlobals.JUMP_KEYWORD)
+		if (Global.keyJustReleased(SPACE) && sinco.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
 			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
 			Global.playSoundEffect('gameplay/sinco-jump');
@@ -289,7 +289,7 @@ class Stage2 extends State
 				});
 		}
 
-		if (FlxG.keys.justPressed.R)
+		if (Global.keyJustPressed(R))
 		{
 			Global.switchState(new Stage2(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);

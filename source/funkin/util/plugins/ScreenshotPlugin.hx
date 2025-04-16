@@ -93,7 +93,7 @@ class ScreenshotPlugin extends FlxBasic
 	{
                 #if html5 return false; #end
 
-		return FlxG.keys.anyJustReleased(_hotkeys);
+		return Global.anyKeysJustReleased(_hotkeys);
 	}
 
 	public function updatePreferences():Void

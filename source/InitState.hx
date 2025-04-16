@@ -108,7 +108,7 @@ class InitState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		// when on debug builds you have to press something to stop
-		if (FlxG.keys.justReleased.ANY && SLGame.isDebug)
+		if (Global.keyJustReleased(ANY) && SLGame.isDebug)
 		{
 			proceed();
 		}

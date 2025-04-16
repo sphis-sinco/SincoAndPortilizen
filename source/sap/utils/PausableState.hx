@@ -16,7 +16,7 @@ class PausableState extends State
 
 	override function update(elapsed:Float):Void
 	{
-                if (FlxG.keys.justReleased.ESCAPE)
+                if (Global.keyJustReleased(ESCAPE))
                 {
                         togglePaused();
                 }

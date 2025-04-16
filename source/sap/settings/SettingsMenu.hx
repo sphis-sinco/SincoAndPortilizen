@@ -81,7 +81,7 @@ class SettingsMenu extends FlxSubState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justReleased.UP)
+		if (Global.keyJustReleased(UP))
 		{
 			CURRENT_SELECTION--;
 			if (CURRENT_SELECTION < 0)
@@ -91,7 +91,7 @@ class SettingsMenu extends FlxSubState
 			createSettingsText();
 		}
 
-		if (FlxG.keys.justReleased.DOWN)
+		if (Global.keyJustReleased(DOWN))
 		{
 			CURRENT_SELECTION++;
 			if (CURRENT_SELECTION == saveValue_length)
@@ -101,12 +101,12 @@ class SettingsMenu extends FlxSubState
 			createSettingsText();
 		}
 
-		if (FlxG.keys.justReleased.ENTER)
+		if (Global.keyJustReleased(ENTER))
 		{
 			updateSettings();
 		}
 
-		if (FlxG.keys.justReleased.ESCAPE)
+		if (Global.keyJustReleased(ESCAPE))
 		{
 			FlxG.save.data.settings.window_res = saveValues.get('window resolution');
                         SaveManager.save();

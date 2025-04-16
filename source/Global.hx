@@ -318,4 +318,34 @@ class Global
 
 		FlxG.state.openSubState(stickerTransition);
 	}
+
+	public static function anyKeysPressed(keys:Array<FlxKey>):Bool
+	{
+		return FlxG.keys.anyPressed(keys);
+	}
+
+	public static function keyPressed(key:FlxKey):Bool
+	{
+		return anyKeysPressed([key]);
+	}
+
+	public static function anyKeysJustReleased(keys:Array<FlxKey>):Bool
+	{
+		return FlxG.keys.anyJustReleased(keys);
+	}
+
+	public static function keyJustReleased(key:FlxKey):Bool
+	{
+		return anyKeysJustReleased([key]);
+	}
+
+	public static function anyKeysJustPressed(keys:Array<FlxKey>):Bool
+	{
+		return FlxG.keys.anyJustPressed(keys);
+	}
+
+	public static function keyJustPressed(key:FlxKey):Bool
+	{
+		return anyKeysJustPressed([key]);
+	}
 }

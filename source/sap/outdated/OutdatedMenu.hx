@@ -24,7 +24,7 @@ class OutdatedMenu extends State
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justReleased.ENTER)
+		if (Global.keyJustReleased(ENTER))
 		{
 			BEGONE = true;
 			InitState.proceed();
