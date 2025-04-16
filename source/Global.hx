@@ -19,6 +19,11 @@ class Global
 
 	public static function randomStickerPack(?folder:String):String
 	{
+		if (SLGame.isDebug)
+		{
+                        trace('randomStickerPack: attempting to grab random sticker pack from "$folder"');
+                }
+
 		var pack:String = 'all';
 		final nullCheck:Void->Void = function()
 		{
@@ -35,6 +40,7 @@ class Global
 			{
 				final packArray:Array<String> = RANDOM_STICKER_PACKS.get(folder);
 				pack = packArray[FlxG.random.int(0, packArray.length - 1)];
+
 			}, {
 					errFunc: nullCheck
 			});
