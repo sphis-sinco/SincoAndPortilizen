@@ -4,7 +4,7 @@ import sap.stages.stage1.Stage1;
 import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
 
-class ResultsMenu extends State
+class ResultsMenu extends FlxState
 {
 	public static var resultsInstance:ResultsMenu;
 
