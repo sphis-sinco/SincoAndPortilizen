@@ -5,6 +5,10 @@ import funkin.ui.transition.StickerSubState;
 class Global
 {
         public static var RANDOM_STICKER_FOLDERS:Array<String> = ['sinco', 'misc'];
+	public static var RANDOM_STICKER_PACKS:Map<String,String> = [
+		'sinco' -> ['all', 'set-1', 'set-2'],
+		'misc' -> ['all']
+	];
 
         public static function randomStickerFolder():String
         {
