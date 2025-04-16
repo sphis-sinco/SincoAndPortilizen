@@ -59,6 +59,11 @@ class AtlasCutscene extends State
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+                if (FlxG.keys.justReleased.ESCAPE)
+                {
+                        cutsceneEnded(true);
+                }
 	}
 
 	public var CUTSCENE_ANIMATION_NAME:String = null;
@@ -85,5 +90,5 @@ class AtlasCutscene extends State
 		}
 	}
 
-	public function cutsceneEnded():Void {}
+	public function cutsceneEnded(?skipped_cutscene:Bool):Void {}
 }

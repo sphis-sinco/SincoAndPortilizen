@@ -10,9 +10,9 @@ class PostStage1Cutscene extends PanelCutscene
 		soundFX = new FlxSound();
 	}
 
-	override function finishedCutscene():Void
+	override function finishedCutscene(?cutscene_skipped:Bool):Void
 	{
-		super.finishedCutscene();
+		super.finishedCutscene(cutscene_skipped);
 
 		Global.switchState(new Worldmap());
 	}

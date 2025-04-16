@@ -9,9 +9,9 @@ class PostStage4Cutscene extends PanelCutscene
 		super('post-stage4');
 	}
 
-	override function finishedCutscene():Void
+	override function finishedCutscene(?cutscene_skipped:Bool):Void
 	{
-		super.finishedCutscene();
+		super.finishedCutscene(cutscene_skipped);
 
 		Global.switchState(new Worldmap('Port'));
 	}
