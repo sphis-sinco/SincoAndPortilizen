@@ -198,7 +198,7 @@ class StickerSubState extends FlxSubState
 				throw 'Could not get sticker group ${stickersId}';
 
 			var sticker:String = FlxG.random.getObject(stickers);
-			var sticky:StickerSprite = new StickerSprite(0, 0, stickerInfo.name, sticker);
+			var sticky:StickerSprite = new StickerSprite(0, 0, stickerInfo.name, sticker, stickerInfo.pixelArt);
 			sticky.visible = false;
 
 			sticky.x = xPos;
@@ -272,7 +272,7 @@ class StickerSubState extends FlxSubState
 					if (sticker == null)
 						return;
 
-					sticker.scale.x = sticker.scale.y = (FlxG.random.float(0.97, 1.02) * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+					sticker.scale.x = sticker.scale.y = (FlxG.random.float(0.97, 1.02) * ((sticker.pixelArt) ? Global.DEFAULT_IMAGE_SCALE_MULTIPLIER : 1));
 
 					if (ind == grpStickers.members.length - 1)
 					{
@@ -353,12 +353,20 @@ class StickerSprite extends FunkinSprite
 {
 	public var timing:Float = 0;
 
-	public function new(x:Float, y:Float, stickerSet:String, stickerName:String):Void
+        public var pixelArt:Bool = true;
+
+	public function new(x:Float, y:Float, stickerSet:String, stickerName:String, pixelArt:Bool = true):Void
 	{
 		super(x, y);
 		loadTexture('${stickerSet}/${stickerName}');
-		Global.scaleSprite(this);
-		updateHitbox();
+		
+                this.pixelArt = pixelArt;
+                if (this.pixelArt) {
+                        this.antialiasing = false;
+                        Global.scaleSprite(this);
+                }
+                
+                updateHitbox();
 		scrollFactor.set();
 	}
 }
@@ -369,6 +377,7 @@ class StickerInfo
 	public var artist:String;
 	public var stickers:Map<String, Array<String>>;
 	public var stickerPacks:Map<String, Array<String>>;
+	public var pixelArt:Bool;
 
 	public function new(stickerSet:String):Void
 	{
@@ -381,6 +390,7 @@ class StickerInfo
 
 		this.name = jsonInfo.name;
 		this.artist = jsonInfo.artist;
+		this.pixelArt = jsonInfo.pixel;
 
 		stickerPacks = new Map<String, Array<String>>();
 
@@ -424,5 +434,6 @@ typedef StickerShit =
 	name:String,
 	artist:String,
 	stickers:Map<String, Array<String>>,
-	stickerPacks:Map<String, Array<String>>
+	stickerPacks:Map<String, Array<String>>,
+	?pixel:Bool
 }
