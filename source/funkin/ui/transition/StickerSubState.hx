@@ -150,7 +150,11 @@ class StickerSubState extends FlxSubState
 			new FlxTimer().start(sticker.timing, _ ->
 			{
 				sticker.visible = false;
-				var daSound:String = FlxG.random.getObject(sounds);
+
+                                sticker.destroy();
+                                grpStickers.remove(sticker);
+				
+                                var daSound:String = FlxG.random.getObject(sounds);
 				Global.playSoundEffect(daSound, STICKERS);
 
 				if (grpStickers == null || ind == grpStickers.members.length - 1)

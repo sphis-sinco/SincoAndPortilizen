@@ -7,11 +7,13 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import funkin.graphics.shaders.AdjustColorShader;
+import funkin.ui.transition.StickerSubState;
 import sap.mainmenu.MainMenu;
 import sap.sidebitmenu.SidebitSelect;
 
 enum abstract TitleStates(Int) from Int to Int
 {
+	public var DEBUG = -1;
 	public var INTRO = 0;
 	public var FLASH = 1;
 	public var DONE = 2;
@@ -19,7 +21,7 @@ enum abstract TitleStates(Int) from Int to Int
 
 class TitleState extends State
 {
-	public static var CURRENT_STATE:TitleStates = INTRO;
+	public static var CURRENT_STATE:TitleStates = (SLGame.isDebug) ? DEBUG : INTRO;
 
 	public static var CHARACTER_RING_CHARACTERS:FlxSprite;
 	public static var CHARACTER_RING:FlxSprite;
@@ -84,7 +86,8 @@ class TitleState extends State
 
 		VERSION_TEXT.size = 12;
 		VERSION_TEXT.setPosition(5, 5);
-		VERSION_TEXT.text = 'SAP v${Global.VERSION_FULL}'+'\nModding API v${ModFolderManager.SUPPORTED_MODDING_API_VERSIONS[ModFolderManager.SUPPORTED_MODDING_API_VERSIONS.length - 1]}';
+		VERSION_TEXT.text = 'SAP v${Global.VERSION_FULL}'
+			+ '\nModding API v${ModFolderManager.SUPPORTED_MODDING_API_VERSIONS[ModFolderManager.SUPPORTED_MODDING_API_VERSIONS.length - 1]}';
 		VERSION_TEXT.color = FlxColor.BLACK;
 		VERSION_TEXT.visible = false;
 		add(VERSION_TEXT);
@@ -95,10 +98,20 @@ class TitleState extends State
 		add(SIDEBIT_MENU_BUTTON);
 		SIDEBIT_MENU_BUTTON.visible = false;
 
-		if (CURRENT_STATE == INTRO)
+		if (CURRENT_STATE == INTRO || CURRENT_STATE == DEBUG)
 		{
-			Global.playSoundEffect('start-synth');
-			CHARACTER_RING_CHARS_SHADER.brightness = -255;
+			if (CURRENT_STATE == INTRO)
+			{
+				introStuff();
+			}
+			else if (CURRENT_STATE == DEBUG)
+			{
+				FlxTimer.wait(1, function()
+				{
+					introStuff();
+                                        CURRENT_STATE = INTRO;
+				});
+			}
 		}
 
 		super.create();
@@ -107,23 +120,30 @@ class TitleState extends State
 		add(MedalData.unlockMedal('Welcome'));
 	}
 
-        override function postCreate() {
-                super.postCreate();
+	override function postCreate()
+	{
+		super.postCreate();
 
-                updateFunctionBasic();
-        }
+		updateFunctionBasic();
+	}
 
-        public static function updateFunctionBasic():Void
-        {
-                CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
-                stateChecks();
-        }
+	public static function introStuff():Void
+	{
+		Global.playSoundEffect('start-synth');
+		CHARACTER_RING_CHARS_SHADER.brightness = -255;
+	}
+
+	public static function updateFunctionBasic():Void
+	{
+		CHARACTER_RING_CHARACTERS.setPosition(CHARACTER_RING.x, CHARACTER_RING.y);
+		stateChecks();
+	}
 
 	public static var HEADING_TO_MAINMENU:Bool = false;
 
 	override public function update(elapsed:Float):Void
 	{
-                updateFunctionBasic();
+		updateFunctionBasic();
 
 		if (CURRENT_STATE == DONE)
 		{
@@ -154,6 +174,9 @@ class TitleState extends State
 	{
 		switch (CURRENT_STATE)
 		{
+			case DEBUG:
+				Global.pass();
+
 			case INTRO:
 				introState();
 
