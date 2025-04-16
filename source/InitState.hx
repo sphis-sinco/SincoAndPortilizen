@@ -167,7 +167,7 @@ class InitState extends FlxState
 
 		#if PORT_RANK_CHAR char = 'port'; #end
 
-		switchToState(() -> new ResultsMenu(good, 10, () -> new MainMenu(), char), 'Results Menu');
+		switchToState(() -> new ResultsMenu(good, 10, new MainMenu(), char), 'Results Menu');
 		return;
 		#elseif GIF_PORT_GAMEOVER
 		switchToState(() -> new sap.stages.PaulPortGameOver(), 'PaulPortGameOver');
