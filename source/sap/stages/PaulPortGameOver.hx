@@ -2,6 +2,7 @@ package sap.stages;
 
 import flxgif.FlxGifSprite;
 
+// how to pause the gif?
 class PaulPortGameOver extends State
 {
 	public static var thegif:FlxGifSprite;
