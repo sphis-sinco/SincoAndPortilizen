@@ -307,6 +307,7 @@ class Global
 			{
 				for (sticker in StickerSubState.grpStickers.members)
 				{
+                                        trace('new sticker');
 					oldStickars.push(sticker);
 				}
 			}, {
