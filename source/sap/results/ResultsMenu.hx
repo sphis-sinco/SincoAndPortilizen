@@ -48,19 +48,9 @@ class ResultsMenu extends State
 		{
 			TARGET_PERCENT = -TARGET_PERCENT;
 		}
-
-		RESULTS_CHARACTER = new ResultsChar(char);
-		RESULTS_CHARACTER.screenCenter(XY);
-
-		trace('${goods}/${total}');
-
-		super();
-	}
-
-	override public function create():Void
-	{
 		RANK_CLASS = new Rank((TARGET_PERCENT == null) ? 0 : TARGET_PERCENT);
 
+		trace('${goods}/${total}');
 		trace('${TARGET_PERCENT}%');
 
 		RANK_GRADE_TEXT = new FlxText(10, 10, FlxG.width, '${Global.getLocalizedPhrase('YOU DID')}...', 64);
@@ -71,10 +61,18 @@ class ResultsMenu extends State
 		RANK_PERCENT_TEXT.alpha = 0.5;
 		RANK_PERCENT_TEXT.alignment = LEFT;
 
+		RESULTS_CHARACTER = new ResultsChar(char);
+		RESULTS_CHARACTER.screenCenter(XY);
+
 		RESULTS_BG = new BlankBG();
 		RESULTS_BG.color = 0x999999;
 		RESULTS_BG.screenCenter(XY);
 
+		super();
+	}
+
+	override public function create():Void
+	{
 		add(RESULTS_BG);
 
 		add(RANK_GRADE_TEXT);
