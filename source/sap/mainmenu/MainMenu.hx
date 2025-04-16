@@ -34,6 +34,9 @@ class MainMenu extends State
 	{
 		super();
 
+                // disable sticker transition from PlayMenu to MainMenu
+                if (public_menutextsSelection == 'play') this.stickerDegen = false;
+
 		menutextsSelection = select;
 	}
 
@@ -242,7 +245,7 @@ class MainMenu extends State
 		switch (PUBLIC_CUR_SELECTION)
 		{
 			case 0:
-                                // this should not have the sticker transition
+				// this should not have the sticker transition
 				FlxG.switchState(PlayMenu.new);
 			#if sys case 5: #else case 3: #end
 				Global.switchState(new TitleState());

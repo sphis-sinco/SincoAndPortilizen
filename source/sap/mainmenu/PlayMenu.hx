@@ -8,6 +8,9 @@ class PlayMenu extends MainMenu
 	override public function new():Void
 	{
 		super('play');
+
+                // disable sticker transition
+                this.stickerDegen = false;
 	}
 
 	override function selectionCheck():Void
@@ -35,7 +38,7 @@ class PlayMenu extends MainMenu
 				Global.switchState(new Worldmap());
 
 			case 2:
-				Global.switchState(new MainMenu());
+				FlxG.switchState(() -> new MainMenu());
 		}
 	}
 }
