@@ -28,4 +28,10 @@
   - any-glob-to-any-file:
       - github/*
       - '**/*.yml'
+
+# A file is changed: it's an addition
+'Status: Addition':
+- changed-files:
+  - any-glob-to-any-file:
+      - '**.*'
       
