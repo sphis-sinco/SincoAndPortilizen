@@ -15,6 +15,13 @@ class Global
                 return Global.RANDOM_STICKER_FOLDERS[FlxG.random.int(0, Global.RANDOM_STICKER_FOLDERS.length - 1)];
         }
 
+	public static function randomStickerPack(folder:String):String
+	{
+		var pack:String = 'all';
+		
+		return pack;
+	}
+
 	public static var GENERATED_BY(get, set):String;
 
 	static function get_GENERATED_BY():String
