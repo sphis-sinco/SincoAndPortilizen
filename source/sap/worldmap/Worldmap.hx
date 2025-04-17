@@ -4,6 +4,11 @@ class Worldmap extends State
 {
         public static var CURRENT_PLAYER_CHARACTER:String = 'sinco';
         public static var CURRENT_PLAYER_CHARACTER_JSON:PlayableCharacter = null;
+        public static var CURRENT_PLAYER_LEVELS:Int = 0;
+
+        public static var CURRENT_SELECTION:Int = 0;
+
+        public static var LEVEL_TEXT:FlxText;
 
 	override public function new(character:String = 'sinco')
 	{
@@ -11,11 +16,14 @@ class Worldmap extends State
                 
                 CURRENT_PLAYER_CHARACTER = character;
                 CURRENT_PLAYER_CHARACTER_JSON = PlayableCharacterManager.readPlayableCharacterJSON(CURRENT_PLAYER_CHARACTER);
+                CURRENT_PLAYER_LEVELS = CURRENT_PLAYER_CHARACTER_JSON.levels;
 	}
 
 	override function create()
 	{
 		super.create();
+                
+                CURRENT_SELECTION = 0;
 
                 var background:FlxSprite = new FlxSprite();
                 background.loadGraphic(FileManager.getImageFile('worldmap/worldmapBG'));
@@ -27,6 +35,10 @@ class Worldmap extends State
                 bar.makeGraphic(FlxG.width, 32 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, FlxColor.BLACK);
                 add(bar);
                 bar.screenCenter();
+
+                LEVEL_TEXT = new FlxText(0, 0, 0, "Hi", 16);
+                add(LEVEL_TEXT);
+                LEVEL_TEXT.screenCenter();
 	}
 
 	override function update(elapsed:Float)
