@@ -2,6 +2,7 @@
         "character_display_name":"Sinco",
 
         "levels": 2,
+        "level_number_offset": 0,
 
         "results_asset_prefix":"sinco"
 }
