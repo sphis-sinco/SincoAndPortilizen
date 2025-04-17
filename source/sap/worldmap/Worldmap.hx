@@ -42,6 +42,7 @@ class Worldmap extends State
 		LEVEL_TEXT = new FlxText(0, 0, 0, 'Hi', 32);
 		add(LEVEL_TEXT);
 		LEVEL_TEXT.screenCenter();
+                LEVEL_TEXT.y -= LEVEL_TEXT.height;
 	}
 
 	override function update(elapsed:Float)
@@ -49,7 +50,7 @@ class Worldmap extends State
 		super.update(elapsed);
 
 		LEVEL_TEXT.text = '${CURRENT_PLAYER_CHARACTER_JSON.character_display_name}: level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET}';
-		LEVEL_TEXT.screenCenter();
+		LEVEL_TEXT.screenCenter(X);
 
 		controlManagement();
 	}
