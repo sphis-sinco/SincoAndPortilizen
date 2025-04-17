@@ -13,6 +13,8 @@ class Worldmap extends State
 	public static var LEVEL_TEXT:FlxText;
 	public static var DIFFICULTY_TEXT:FlxText;
 
+        public static var CHARACTER_SELECT_BUTTON:FlxSprite;
+
 	override public function new(character:String = 'sinco')
 	{
 		super();
@@ -49,6 +51,12 @@ class Worldmap extends State
                 add(DIFFICULTY_TEXT);
                 DIFFICULTY_TEXT.screenCenter();
                 DIFFICULTY_TEXT.y += DIFFICULTY_TEXT.height / 2;
+
+                CHARACTER_SELECT_BUTTON = new FlxSprite();
+                CHARACTER_SELECT_BUTTON.loadGraphic(FileManager.getImageFile('worldmap/charSelButton'));
+                add(CHARACTER_SELECT_BUTTON);
+                Global.scaleSprite(CHARACTER_SELECT_BUTTON, -2);
+                CHARACTER_SELECT_BUTTON.setPosition(8 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, 8 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 	}
 
 	override function update(elapsed:Float)
