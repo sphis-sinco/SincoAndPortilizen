@@ -82,7 +82,7 @@ class InitState extends FlxState
 		if (outdated && !OutdatedMenu.BEGONE)
 		{
 			trace('OUTDATED');
-			FlxG.switchState(() -> new OutdatedMenu());
+			Global.switchState(new OutdatedMenu());
 		}
 
 		if (!SLGame.isDebug)
@@ -141,19 +141,19 @@ class InitState extends FlxState
 		#if CUTSCENE_TESTING
 		#elseif SKIP_TITLE
 		trace('Skipping Title');
-		switchToState(() -> new MainMenu(), 'MainMenu');
+		switchToState(new MainMenu(), 'MainMenu');
 		return;
 		#elseif STAGE_ONE
-		switchToState(() -> new Stage1(difficulty), 'Stage 1');
+		switchToState(new Stage1(difficulty), 'Stage 1');
 		return;
 		#elseif STAGE_TWO
-		switchToState(() -> new Stage2(difficulty), 'Stage 2');
+		switchToState(new Stage2(difficulty), 'Stage 2');
 		return;
 		#elseif STAGE_FOUR
-		switchToState(() -> new Stage4(difficulty), 'Stage 4');
+		switchToState(new Stage4(difficulty), 'Stage 4');
 		return;
 		#elseif WORLDMAP
-		switchToState(() -> new Worldmap(), 'Worldmap');
+		switchToState(new Worldmap(), 'Worldmap');
 		return;
 		#elseif RESULTS
 		var good:Int = 0;
@@ -167,44 +167,37 @@ class InitState extends FlxState
 
 		#if PORT_RANK_CHAR char = 'port'; #end
 
-		switchToState(() -> new ResultsMenu(good, 10, new MainMenu(), char), 'Results Menu');
+		switchToState(new ResultsMenu(good, 10, new MainMenu(), char), 'Results Menu');
 		return;
 		#elseif GIF_PORT_GAMEOVER
-		switchToState(() -> new sap.stages.PaulPortGameOver(), 'PaulPortGameOver');
+		switchToState(new sap.stages.PaulPortGameOver(), 'PaulPortGameOver');
 		return;
 		#elseif SIDEBIT1_INTRO_CUTSCENE
-		switchToState(() -> new sap.stages.sidebit1.Sidebit1IntroCutscene(), 'Sidebit1IntroCutscene');
+		switchToState(new sap.stages.sidebit1.Sidebit1IntroCutscene(), 'Sidebit1IntroCutscene');
 		return;
 		#elseif FLXANIMATE_TESTING
-		switchToState(() -> new sap.stages.sidebit1.Sidebit1IntroCutsceneAtlas(), 'Sidebit1IntroCutsceneAtlas');
+		switchToState(new sap.stages.sidebit1.Sidebit1IntroCutsceneAtlas(), 'Sidebit1IntroCutsceneAtlas');
 		return;
 		#elseif SIDEBIT_ONE
-		switchToState(() -> new sap.stages.sidebit1.Sidebit1IntroCutsceneAtlas(difficulty), 'Sidebit 1');
+		switchToState(new sap.stages.sidebit1.Sidebit1IntroCutsceneAtlas(difficulty), 'Sidebit 1');
 		return;
 		#elseif SIDEBIT_ONE_INSTANT
-		switchToState(() -> new sap.stages.sidebit1.Sidebit1(difficulty), 'Sidebit 1');
+		switchToState(new sap.stages.sidebit1.Sidebit1(difficulty), 'Sidebit 1');
 		return;
 		#elseif SIDEBIT_MENU
-		switchToState(() -> new sap.sidebitmenu.SidebitSelect(), 'Sidebit Select');
+		switchToState(new sap.sidebitmenu.SidebitSelect(), 'Sidebit Select');
 		return;
 		#end
 
 		trace('Starting game regularly');
 
-		if (SLGame.isDebug)
-		{
-			final folder:String = Global.randomStickerFolder();
-			Global.switchState(new TitleState(), false, folder, Global.randomStickerPack(folder));
-			return;
-		}
-
-		FlxG.switchState(TitleState.new);
+                Global.switchState(new TitleState());
 	}
 
-	public static function switchToState(state:NextState, stateName:String):Void
+	public static function switchToState(state:FlxState, stateName:String):Void
 	{
 		trace('Moving to $stateName');
-		FlxG.switchState(state);
+		Global.switchState(state);
 	}
 
 	public static function ModsInit():Void

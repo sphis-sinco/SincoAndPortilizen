@@ -15,7 +15,7 @@ class IntroCutscene extends PanelCutscene
 	{
 		super.finishedCutscene(cutscene_skipped);
 
-		Global.switchState(new Worldmap(), false, 'misc');
+		Global.switchState(new Worldmap());
 	}
 
 	public var soundFX:FlxSound;
