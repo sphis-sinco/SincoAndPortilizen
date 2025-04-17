@@ -47,7 +47,7 @@ class Worldmap extends State
 	{
 		super.update(elapsed);
 
-		LEVEL_TEXT.text = 'Level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_LEVELS}';
+		LEVEL_TEXT.text = 'Level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET}';
 
 		controlManagement();
 	}
