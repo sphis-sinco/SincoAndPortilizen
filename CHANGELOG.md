@@ -1,5 +1,6 @@
 # Alpha
 ## Unreleased
+- FileManager uses PosInfos for the `unfoundAsset`, `getPath`, `readFile` functions.
 - Scripts should no longer be loaded multiple times
 - Loaded scripts get traced once more
 - Scripts no longer have to be at the root or in only 1 sub-folder of the scripts folder in mods or in the assets folder
