@@ -1,4 +1,4 @@
 function worldmapSelection(character:String, selection:Int)
 {
-        trace('${character}: Level ${selection}');
+	trace(character + ' Level ' + selection);
 }
