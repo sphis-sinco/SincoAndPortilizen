@@ -21,6 +21,7 @@ class Worldmap extends State
                 background.loadGraphic(FileManager.getImageFile('worldmap/worldmapBG'));
                 add(background);
                 Global.scaleSprite(background);
+                background.screenCenter();
 	}
 
 	override function update(elapsed:Float)
