@@ -42,7 +42,7 @@ class Worldmap extends State
 		LEVEL_TEXT = new FlxText(0, 0, 0, 'Hi', 32);
 		add(LEVEL_TEXT);
 		LEVEL_TEXT.screenCenter();
-                LEVEL_TEXT.y -= LEVEL_TEXT.height;
+		LEVEL_TEXT.y -= LEVEL_TEXT.height;
 	}
 
 	override function update(elapsed:Float)
@@ -57,7 +57,28 @@ class Worldmap extends State
 
 	public static function controlManagement():Void
 	{
-		if (Global.anyKeysJustReleased([UP, DOWN]))
+		if (Global.anyKeysJustReleased([LEFT, RIGHT]))
+		{
+			var left:Bool = !Global.keyJustReleased(RIGHT);
+
+			if (CURRENT_DIFFICULTY == StageGlobals.EASY_DIFF)
+			{
+				CURRENT_DIFFICULTY = (left) ? StageGlobals.EXTREME_DIFF : StageGlobals.NORMAL_DIFF;
+			}
+			else if (CURRENT_DIFFICULTY == StageGlobals.NORMAL_DIFF)
+			{
+				CURRENT_DIFFICULTY = (left) ? StageGlobals.EASY_DIFF : StageGlobals.HARD_DIFF;
+			}
+			else if (CURRENT_DIFFICULTY == StageGlobals.HARD_DIFF)
+			{
+				CURRENT_DIFFICULTY = (left) ? StageGlobals.NORMAL_DIFF : StageGlobals.EXTREME_DIFF;
+			}
+			else if (CURRENT_DIFFICULTY == StageGlobals.EXTREME_DIFF)
+			{
+				CURRENT_DIFFICULTY = (left) ? StageGlobals.HARD_DIFF : StageGlobals.EASY_DIFF;
+			}
+		}
+		else if (Global.anyKeysJustReleased([UP, DOWN]))
 		{
 			if (Global.keyJustReleased(DOWN))
 			{
@@ -76,7 +97,10 @@ class Worldmap extends State
 		}
 		else if (Global.keyJustReleased(ENTER))
 		{
-			Global.callScriptFunction('worldmapSelection', [CURRENT_PLAYER_CHARACTER, CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET]);
+			Global.callScriptFunction('worldmapSelection', [
+				CURRENT_PLAYER_CHARACTER,
+				CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET
+			]);
 		}
 	}
 }
