@@ -20,7 +20,7 @@ enum abstract TitleStates(Int) from Int to Int
 
 class TitleState extends State
 {
-	public static var CURRENT_STATE:TitleStates = (SLGame.isDebug) ? DEBUG : INTRO;
+	public static var CURRENT_STATE:TitleStates = (Global.DEBUG_BUILD) ? DEBUG : INTRO;
 
 	public static var CHARACTER_RING_CHARACTERS:FlxSprite;
 	public static var CHARACTER_RING:FlxSprite;

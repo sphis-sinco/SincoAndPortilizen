@@ -83,7 +83,7 @@ class ScreenshotPlugin extends FlxBasic
 			flashColor: FlxColor.WHITE, // Was originally a black flash.
 
 			// TODO: Add a way to configure screenshots from the options menu.
-			hotkeys: [(SLGame.isDebug) ? FlxKey.F1 : FlxKey.F2],
+			hotkeys: [(Global.DEBUG_BUILD) ? FlxKey.F1 : FlxKey.F2],
 			shouldHideMouse: false,
 			fancyPreview: true,
 		}));

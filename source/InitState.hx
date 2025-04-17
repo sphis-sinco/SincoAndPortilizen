@@ -27,7 +27,7 @@ class InitState extends FlxState
 			InitState.LanguageInit();
 
 			// Set the saveslot to a debug saveslot or a release saveslot
-			Global.change_saveslot((SLGame.isDebug) ? 'debug' : 'release');
+			Global.change_saveslot((Global.DEBUG_BUILD) ? 'debug' : 'release');
 
 			#if DISCORDRPC
 			if (FlxG.save.data.settings.discord_rpc)
@@ -87,7 +87,7 @@ class InitState extends FlxState
 			Global.switchState(new OutdatedMenu());
 		}
 
-		if (!SLGame.isDebug)
+		if (!Global.DEBUG_BUILD)
 		{
 			#if EXCESS_TRACES
 			trace('Game is not a debug build, auto-proceed');
@@ -97,7 +97,7 @@ class InitState extends FlxState
 		else
 		{
 			#if EXCESS_TRACES
-			if (SLGame.isDebug)
+			if (Global.DEBUG_BUILD)
 			{
 				trace('Game is a debug build');
 			}
@@ -110,7 +110,7 @@ class InitState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		// when on debug builds you have to press something to stop
-		if (Global.keyJustReleased(ANY) && SLGame.isDebug)
+		if (Global.keyJustReleased(ANY) && Global.DEBUG_BUILD)
 		{
 			proceed();
 		}

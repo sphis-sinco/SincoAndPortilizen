@@ -50,7 +50,7 @@ class SparrowCutscene extends State
 			CUTSCENE_PART++;
 			cutsceneEvent(animName);
 
-			if (SLGame.isDebug)
+			if (Global.DEBUG_BUILD)
 			{
 				#if EXCESS_TRACES
 				trace('Automatic cutscene pause');
@@ -81,7 +81,7 @@ class SparrowCutscene extends State
 				trace('Cutscene sprite position: ${CUTSCENE_SPRITE.getPosition()}');
 		}
 
-		if (Global.keyJustReleased(SPACE) && SLGame.isDebug)
+		if (Global.keyJustReleased(SPACE) && Global.DEBUG_BUILD)
 		{
 			CUTSCENE_SPRITE.animation.paused = !CUTSCENE_SPRITE.animation.paused;
 		}
