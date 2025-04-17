@@ -301,6 +301,7 @@ class Global
                 trace('switch');
 		TryCatch.tryCatch(function()
 		{
+                        trace('initLOL');
 			var oldStickars:Array<funkin.ui.transition.StickerSubState.StickerSprite> = [];
 
 			TryCatch.tryCatch(function()
