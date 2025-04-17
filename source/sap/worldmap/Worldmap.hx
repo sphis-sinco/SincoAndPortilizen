@@ -22,6 +22,11 @@ class Worldmap extends State
                 add(background);
                 Global.scaleSprite(background);
                 background.screenCenter();
+
+                var bar:FlxSprite = new FlxSprite();
+                bar.makeGraphic(FlxG.width, 32 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, FlxColor.BLACK);
+                add(bar);
+                bar.screenCenter();
 	}
 
 	override function update(elapsed:Float)
