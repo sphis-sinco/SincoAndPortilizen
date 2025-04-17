@@ -1,7 +1,5 @@
 package sap.utils;
 
-import funkin.ui.transition.StickerSubState;
-
 class State extends FlxState
 {
 	override public function new():Void

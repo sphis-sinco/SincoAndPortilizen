@@ -8,7 +8,6 @@
 - Sparrow cutscenes can be skipped by pressing ESCAPE
 - Atlas cutscenes can be skipped by pressing ESCAPE ([#24][#24_link])
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
-- Sticker transition from FNF
 - (Web only) Pixel perfect rendering ([#27][#27_link])
 ### Fixed
 - Mods not being added to ENABLED_MODS when the Mod save data is null
@@ -17,13 +16,11 @@
 ### Changed
 - (Source) Instead of using `FlxG.keys.` every file uses one of the `Global.key` functions
 - (Debug only) The titlestate now has a `DEBUG` intro state that waits a second before actually starting the intro sequence
-- Global now has a `randomStickerFolder` function that is used for when a random sticker folder is needed
-- Global now has a `RANDOM_STICKER_FOLDERS` variable that is used for when a random sticker folder is needed
 - (Debug only) InitState uses a random sticker transition when there are no build flags enabled
 - The screenshot plugin now has (probably) everything as a static var/function
 - SparrowSprite uses the file manager's `getSparrowAtlas` function
 - Several states now use the `switchState` function from Global
-- Global now has a `switchState` function that uses the new sticker transition
+- Global now has a `switchState` function
 
 ## 0.4.3a - 4/15/2025
 ### Added

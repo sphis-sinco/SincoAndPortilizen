@@ -7,7 +7,6 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import funkin.graphics.shaders.AdjustColorShader;
-import funkin.ui.transition.StickerSubState;
 import sap.mainmenu.MainMenu;
 import sap.sidebitmenu.SidebitSelect;
 
@@ -275,7 +274,6 @@ class TitleState extends State
 				ease: FlxEase.sineInOut,
 				onComplete: tween ->
 				{
-                                        trace('Cmon');
 					Global.switchState(new MainMenu());
 				}
 			});
