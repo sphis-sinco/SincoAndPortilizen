@@ -1,6 +1,7 @@
 # Alpha
 ## Unreleased
-- `DONT_RECOMPILE_ON_ASSET_SCRIPT_UPDATE` build flag
+- `DONT_RECOMPILE_ON_ASSET_UPDATE` build flag
+- `RECOMPILE_ON_ASSET_UPDATE` build flag
 - FileManager uses PosInfos for the `unfoundAsset`, `getPath`, `readFile` functions.
 - Scripts should no longer be loaded multiple times
 - Loaded scripts get traced once more
