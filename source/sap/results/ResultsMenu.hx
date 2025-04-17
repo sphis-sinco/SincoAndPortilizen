@@ -61,7 +61,17 @@ class ResultsMenu extends FlxState
 		RANK_PERCENT_TEXT.alpha = 0.5;
 		RANK_PERCENT_TEXT.alignment = LEFT;
 
-		RESULTS_CHARACTER = new ResultsChar(char);
+		var resultCharacter:String = char;
+
+		if (Worldmap.CURRENT_PLAYER_CHARACTER == char)
+		{
+			final PCJ:PlayableCharacter = PlayableCharacterManager.readPlayableCharacterJSON(char);
+
+			if (PCJ.results_asset_prefix != null)
+				resultCharacter = PCJ.results_asset_prefix;
+		}
+
+		RESULTS_CHARACTER = new ResultsChar(resultCharacter);
 		RESULTS_CHARACTER.screenCenter(XY);
 
 		RESULTS_BG = new BlankBG();
@@ -96,7 +106,7 @@ class ResultsMenu extends FlxState
 					add(MedalData.unlockMedal('The original stands on top'));
 				}
 
-                                Stage1.RUNNING = false;
+				Stage1.RUNNING = false;
 			}
 			else if (Stage2.time == 0 && Stage2.RUNNING)
 			{
@@ -106,13 +116,13 @@ class ResultsMenu extends FlxState
 					add(MedalData.unlockMedal('True Protector'));
 				}
 
-                                Stage2.RUNNING = false;
+				Stage2.RUNNING = false;
 			}
 			else if (Stage4.time == Stage4.start_timer && Stage4.RUNNING)
 			{
 				add(MedalData.unlockMedal('Dimensions reached'));
-                                
-                                Stage4.RUNNING = false;
+
+				Stage4.RUNNING = false;
 			}
 		});
 	}
