@@ -34,9 +34,6 @@ class MainMenu extends State
 	{
 		super();
 
-                // disable sticker transition from PlayMenu to MainMenu
-                if (public_menutextsSelection == 'play') this.stickerDegen = false;
-
 		menutextsSelection = select;
 	}
 
