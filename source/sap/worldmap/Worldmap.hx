@@ -16,6 +16,11 @@ class Worldmap extends State
 	override function create()
 	{
 		super.create();
+
+                var background:FlxSprite = new FlxSprite();
+                background.loadGraphic(FileManager.getImageFile('worldmap/worldmapBG'));
+                add(background);
+                Global.scaleSprite(background);
 	}
 
 	override function update(elapsed:Float)
