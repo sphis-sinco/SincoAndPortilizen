@@ -48,7 +48,7 @@ class Worldmap extends State
 		super.update(elapsed);
 
 		LEVEL_TEXT.text = '${CURRENT_PLAYER_CHARACTER_JSON.character_display_name}: Level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET}';
-                LEVEL_TEXT.screenCenter();
+		LEVEL_TEXT.screenCenter();
 
 		controlManagement();
 	}
@@ -71,6 +71,10 @@ class Worldmap extends State
 
 			if (CURRENT_SELECTION > CURRENT_PLAYER_LEVELS - 1)
 				CURRENT_SELECTION = CURRENT_PLAYER_LEVELS - 1;
+		}
+		else if (Global.keyJustReleased(ENTER))
+		{
+			Global.callScriptFunction('worldmapSelection', [CURRENT_PLAYER_CHARACTER, CURRENT_SELECTION + 1]);
 		}
 	}
 }
