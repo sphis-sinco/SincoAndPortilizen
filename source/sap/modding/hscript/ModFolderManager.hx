@@ -16,6 +16,7 @@ class ModFolderManager
 		SUPPORTED_MODDING_API_VERSIONS.push('0.1.1');
 		SUPPORTED_MODDING_API_VERSIONS.push('0.1.2');
 		SUPPORTED_MODDING_API_VERSIONS.push('0.1.3');
+		SUPPORTED_MODDING_API_VERSIONS.push('0.1.4');
 
 		#if EXCESS_TRACES
 		trace('Supported mod API versions: ');
