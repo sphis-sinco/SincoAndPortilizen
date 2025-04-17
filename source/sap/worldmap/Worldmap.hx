@@ -78,6 +78,11 @@ class Worldmap extends State
                 }
 
 		controlManagement();
+
+                if (FlxG.mouse.overlaps(CHARACTER_SELECT_BUTTON) && FlxG.mouse.released)
+                {
+                        trace('Character select here');
+                }
 	}
 
 	public static function controlManagement():Void
