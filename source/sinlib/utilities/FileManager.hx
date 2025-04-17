@@ -237,7 +237,7 @@ class FileManager
 
 		for (path in scriptPaths)
 		{
-			#if !EXCESS_TRACES
+			#if EXCESS_TRACES
 			trace('reading scriptPath: $path');
 			#end
 			readDir(path);
