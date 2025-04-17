@@ -11,6 +11,7 @@ class Worldmap extends State
 	public static var CURRENT_DIFFICULTY:String = 'normal';
 
 	public static var LEVEL_TEXT:FlxText;
+	public static var DIFFICULTY_TEXT:FlxText;
 
 	override public function new(character:String = 'sinco')
 	{
@@ -43,6 +44,11 @@ class Worldmap extends State
 		add(LEVEL_TEXT);
 		LEVEL_TEXT.screenCenter();
 		LEVEL_TEXT.y -= LEVEL_TEXT.height;
+
+                DIFFICULTY_TEXT = new FlxText(0,0,0,'Bye', 32);
+                add(DIFFICULTY_TEXT);
+                DIFFICULTY_TEXT.screenCenter();
+                DIFFICULTY_TEXT.y += DIFFICULTY_TEXT.height;
 	}
 
 	override function update(elapsed:Float)
@@ -51,6 +57,9 @@ class Worldmap extends State
 
 		LEVEL_TEXT.text = '${CURRENT_PLAYER_CHARACTER_JSON.character_display_name}: level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET}';
 		LEVEL_TEXT.screenCenter(X);
+
+		DIFFICULTY_TEXT.text = '${Global.keyPressed(LEFT) ? '-' : '<'} ${CURRENT_DIFFICULTY} ${Global.keyPressed(RIGHT) ? '-' : '>'}';
+		DIFFICULTY_TEXT.screenCenter(X);
 
 		controlManagement();
 	}
