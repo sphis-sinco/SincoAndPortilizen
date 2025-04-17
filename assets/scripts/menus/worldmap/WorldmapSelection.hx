@@ -1,4 +1,10 @@
 function worldmapSelection(character:String, selection:Int)
 {
-	trace(character + ' Level ' + selection);
+	trace(character + ' level ' + selection);
+
+	switch (character)
+	{
+		default:
+			trace(character + ' has no implementation');
+	}
 }
