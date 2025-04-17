@@ -74,7 +74,7 @@ class Worldmap extends State
 		}
 		else if (Global.keyJustReleased(ENTER))
 		{
-			Global.callScriptFunction('worldmapSelection', [CURRENT_PLAYER_CHARACTER, CURRENT_SELECTION + 1]);
+			Global.callScriptFunction('worldmapSelection', [CURRENT_PLAYER_CHARACTER, CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET]);
 		}
 	}
 }
