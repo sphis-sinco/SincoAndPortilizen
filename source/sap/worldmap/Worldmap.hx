@@ -43,12 +43,12 @@ class Worldmap extends State
 		LEVEL_TEXT = new FlxText(0, 0, 0, 'Hi', 32);
 		add(LEVEL_TEXT);
 		LEVEL_TEXT.screenCenter();
-		LEVEL_TEXT.y -= LEVEL_TEXT.height;
+		LEVEL_TEXT.y -= LEVEL_TEXT.height / 2;
 
                 DIFFICULTY_TEXT = new FlxText(0,0,0,'Bye', 32);
                 add(DIFFICULTY_TEXT);
                 DIFFICULTY_TEXT.screenCenter();
-                DIFFICULTY_TEXT.y += DIFFICULTY_TEXT.height;
+                DIFFICULTY_TEXT.y += DIFFICULTY_TEXT.height / 2;
 	}
 
 	override function update(elapsed:Float)
