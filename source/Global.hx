@@ -302,7 +302,7 @@ class Global
 		TryCatch.tryCatch(function()
 		{
                         trace('initLOL');
-			var oldStickars:Array<funkin.graphics.FunkinSprite> = [];
+			var oldStickars:Array<StickerSprite> = [];
 
 			TryCatch.tryCatch(function()
 			{
