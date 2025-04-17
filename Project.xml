@@ -64,6 +64,7 @@
         <define name="SCRIPT_FILES" /> <!-- Required for Iris  -->
         <define name="hscriptPos" /><!-- Iris related -->
         <define name="RECOMPILE_ON_MOD_UPDATE" unless="DO_NOT_RECOMPILE_ON_MOD_UPDATE"/> <!-- Doing "-watch" with this means that if the mod folders are modified it recompiles -->
+        <define name="RECOMPILE_ON_ASSET_SCRIPT_UPDATE" unless="DONT_RECOMPILE_ON_ASSET_SCRIPT_UPDATE"/> <!-- Doing "-watch" with this means that if the asset/scripts folders are modified it recompiles -->
 
         <define name="DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS" />
         <define name="DISABLE_ANNOYING_WARNINGS" unless="ENABLE_ANNOYING_WARNINGS" />
@@ -127,7 +128,7 @@
                 <source path="mods" />
         </section>
 
-        <source path="assets/scripts" unless="DONT_RECOMPILE_ON_ASSET_SCRIPT_UPDATE"/>
+        <source path="assets/scripts" if="RECOMPILE_ON_ASSET_SCRIPT_UPDATE" unless="DONT_RECOMPILE_ON_ASSET_SCRIPT_UPDATE"/>
 
         <!-- ______________________________ Haxedefines _____________________________ -->
 
