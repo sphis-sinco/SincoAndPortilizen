@@ -156,24 +156,53 @@ class FileManager
 	{
 		var arr:Array<String> = [];
 		var scriptPaths:Array<String> = ['assets/scripts/'];
+		var scriptExtensions:Array<String> = ['.hx', '.hxc'];
 
-		var readFolder:Dynamic = function(folder:String, ogdir:String)
+		var readFolder:Dynamic = function(folder:String, ogdir:String) {};
+
+		var readFileFolder:Dynamic = function(folder:String, ogdir:String, splitter:Bool = false)
 		{
-			#if EXCESS_TRACES
-			trace('reading ${folder}');
-			#end
+                        #if EXCESS_TRACES
+			trace('${ogdir}${folder}');
+                        #end
+
+			for (file in readDirectory('${ogdir}${folder}'))
+			{
+				for (extension in scriptExtensions)
+				{
+					if (file.endsWith(extension))
+					{
+                                                final path:String = '${ogdir}${folder}/${file}';
+
+                                                if (!arr.contains(path))
+                                                {
+                                                        arr.push('${path}');
+                                                }
+					}
+				}
+
+				if (!file.contains('.'))
+				{
+					readFolder('${file}', '${ogdir}${folder}${!folder.endsWith('/')&&!file.startsWith('/') ? '/' : ''}');
+				}
+			}
+		}
+
+		readFolder = function(folder:String, ogdir:String)
+		{
+                        #if EXCESS_TRACES
+			trace('reading ${ogdir}${folder}');
+                        #end
 
 			TryCatch.tryCatch(function()
 			{
 				if (!folder.contains('.'))
 				{
-					for (file in readDirectory(folder, ['.hx', '.hxc']))
-						arr.push('${ogdir}$folder/$file');
+					readFileFolder(folder, '${ogdir}', ogdir == '');
 				}
 				else
 				{
-					if (folder.endsWith('.hxc') || folder.endsWith('.hx'))
-						arr.push('${ogdir}$folder');
+					readFileFolder(ogdir, '', ogdir == '');
 				}
 			}, {
 					traceErr: true
@@ -208,15 +237,20 @@ class FileManager
 
 		for (path in scriptPaths)
 		{
-			#if EXCESS_TRACES
+			#if !EXCESS_TRACES
 			trace('reading scriptPath: $path');
 			#end
 			readDir(path);
 		}
 
-		#if EXCESS_TRACES
-		trace(arr);
-		#end
+                var traceArr:Array<String> = [];
+		for (path in arr)
+		{
+                        var split = path.split('/');
+                        traceArr.push(split[split.length - 1]);
+                }
+
+                trace('Loaded files: ${traceArr}');
 		return arr;
 	}
 	#else
