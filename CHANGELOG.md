@@ -39,7 +39,7 @@
 - (source) `GENERATED_BY` now uses `VERSION_FULL`
 - (source) `GENERATED_BY` can be modified from other files
 - (compiling) `ModFolderManager` traces the supported modding API versions with `EXCESS_TRACES` enabled only
-- (source) In stage 1 you can no longer attack when the opponent is attacking
+- In stage 1 you can no longer attack when the opponent is attacking
 - (source) Global now has 2 version variables: `VERSION` and `VERSION_FULL`, `VERSION` is the simplist version (i.e `0.5.2a`), `VERSION_FULL` is the most complicated (i.e `0.10.5a-debug-playtester (github-actions)`)
 - (source) The FileManager now has a new function for saying if it cant find a file via `unfoundAsset`
 - (source) The FileManager now says if it can't find a file in the `readFile` function
