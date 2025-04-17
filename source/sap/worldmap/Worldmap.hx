@@ -44,5 +44,7 @@ class Worldmap extends State
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+                LEVEL_TEXT.text = 'Level 1';
 	}
 }
