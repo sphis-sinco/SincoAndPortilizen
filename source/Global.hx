@@ -298,42 +298,7 @@ class Global
 
 	public static function switchState(new_state:FlxState, ?oldStickers:Bool = false, ?stickerSet:String = 'sinco', ?stickerPack:String = 'all'):Void
 	{
-                trace('switch');
-		TryCatch.tryCatch(function()
-		{
-                        trace('initLOL');
-			var oldStickars:Array<StickerSprite> = [];
-
-			TryCatch.tryCatch(function()
-			{
-				for (sticker in StickerSubState.grpStickers.members)
-				{
-                                        trace('new sticker');
-					oldStickars.push(sticker);
-				}
-			}, {
-					traceErr: true
-			});
-
-			var oldStickersList = (oldStickars != null) ? (oldStickars.length > 0 && oldStickers) ? oldStickars : null : null;
-
-			var stickerTransition = new funkin.ui.transition.StickerSubState({
-				targetState: state -> new_state,
-				stickerSet: stickerSet,
-				stickerPack: stickerPack,
-				oldStickers: oldStickersList
-			});
-
-			trace('Openning ${new_state}');
-			FlxG.state.openSubState(stickerTransition);
-		}, {
-				errFunc: function()
-				{
-                                        trace('flxG switch');
-                                        FlxG.switchState(() -> new_state);
-				},
-				traceErr: true
-		});
+                FlxG.switchState(() -> new_state);
 	}
 
 	public static function anyKeysPressed(keys:Array<FlxKey>):Bool
