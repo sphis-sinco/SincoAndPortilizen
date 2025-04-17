@@ -1,11 +1,13 @@
 # Alpha
 ## Unreleased
+- Modding API version is now `0.1.4`
+  - Removed custom variables for different classes in `ScriptManager` except for a few (using import has been found to work)
+  - Scripts should no longer be loaded multiple times
+  - Loaded scripts get traced once more
+  - Scripts no longer have to be at the root or in only 1 sub-folder of the scripts folder in mods or in the assets folder
+- FileManager uses PosInfos for several functions
 - `DONT_RECOMPILE_ON_ASSET_UPDATE` build flag
 - `RECOMPILE_ON_ASSET_UPDATE` build flag
-- FileManager uses PosInfos for several functions.
-- Scripts should no longer be loaded multiple times
-- Loaded scripts get traced once more
-- Scripts no longer have to be at the root or in only 1 sub-folder of the scripts folder in mods or in the assets folder
 - Worldmap overhaul
 
 ## 0.5.0a - 4/??/2025
