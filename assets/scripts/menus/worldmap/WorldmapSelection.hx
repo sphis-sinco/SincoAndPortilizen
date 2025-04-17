@@ -1,6 +1,6 @@
 function worldmapSelection(character:String, selection:Int)
 {
-        final difficulty:String = 'normal';
+        final difficulty:String = sap.worldmap.Worldmap.CURRENT_DIFFICULTY;
 
 	trace(character + ' level ' + selection);
 

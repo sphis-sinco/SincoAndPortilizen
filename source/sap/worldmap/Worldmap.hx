@@ -8,6 +8,7 @@ class Worldmap extends State
 	public static var CURRENT_PLAYER_SELECTION_OFFSET:Int = 0;
 
 	public static var CURRENT_SELECTION:Int = 0;
+	public static var CURRENT_DIFFICULTY:String = 'normal';
 
 	public static var LEVEL_TEXT:FlxText;
 
