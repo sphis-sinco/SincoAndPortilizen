@@ -127,6 +127,8 @@
                 <source path="mods" />
         </section>
 
+        <source path="assets/scripts" unless="DONT_RECOMPILE_ON_ASSET_SCRIPT_UPDATE"/>
+
         <!-- ______________________________ Haxedefines _____________________________ -->
 
         <haxedef name="FLX_NO_HEALTH" />
