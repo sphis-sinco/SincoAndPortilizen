@@ -44,7 +44,7 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getPath(pathprefix:String, path:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getPath(pathprefix:String, path:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
 	{
 		var ogreturnpath:String = '${pathprefix}${PATH_TYPE}${path}';
 		var returnpath:String = ogreturnpath;
@@ -77,23 +77,23 @@ class FileManager
 			return returnpath;
 		}
 
-		unfoundAsset(returnpath);
+		unfoundAsset(returnpath, posinfo);
 		return '';
 	}
 
-	public static inline function unfoundAsset(asset:String):Void
+	public static inline function unfoundAsset(asset:String, ?posinfo:PosInfos):Void
 	{
 		if (!UNFOUND_ASSETS.contains(asset))
 		{
 			if (asset.contains('mods/'))
 			{
 				#if EXCESS_TRACES
-				trace('Could not get asset: $asset');
+				trace('Could not get asset: $asset', posinfo);
 				#end
 			}
 			else
 			{
-				trace('Could not get asset: $asset');
+				trace('Could not get asset: $asset', posinfo);
 			}
 			UNFOUND_ASSETS.push(asset);
 		}
@@ -160,49 +160,51 @@ class FileManager
 
 		var readFolder:Dynamic = function(folder:String, ogdir:String) {};
 
-		var readFileFolder:Dynamic = function(folder:String, ogdir:String, splitter:Bool = false)
+		var readFileFolder:Dynamic = function(folder:String, ogdir:String)
 		{
-                        #if EXCESS_TRACES
+			#if EXCESS_TRACES
 			trace('${ogdir}${folder}');
-                        #end
+			#end
 
 			for (file in readDirectory('${ogdir}${folder}'))
 			{
+				final endsplitter:String = '${!folder.endsWith('/') && !file.startsWith('/') ? '/' : ''}';
 				for (extension in scriptExtensions)
 				{
 					if (file.endsWith(extension))
 					{
-                                                final path:String = '${ogdir}${folder}/${file}';
+						final path:String = '${ogdir}${folder}${endsplitter}${file}';
 
-                                                if (!arr.contains(path))
-                                                {
-                                                        arr.push('${path}');
-                                                }
+						if (!arr.contains(path))
+						{
+							arr.push('${path}');
+
+						}
 					}
 				}
 
 				if (!file.contains('.'))
 				{
-					readFolder('${file}', '${ogdir}${folder}${!folder.endsWith('/')&&!file.startsWith('/') ? '/' : ''}');
+					readFolder('${file}', '${ogdir}${folder}${endsplitter}');
 				}
 			}
 		}
 
 		readFolder = function(folder:String, ogdir:String)
 		{
-                        #if EXCESS_TRACES
+			#if EXCESS_TRACES
 			trace('reading ${ogdir}${folder}');
-                        #end
+			#end
 
 			TryCatch.tryCatch(function()
 			{
 				if (!folder.contains('.'))
 				{
-					readFileFolder(folder, '${ogdir}', ogdir == '');
+					readFileFolder(folder, '${ogdir}');
 				}
 				else
 				{
-					readFileFolder(ogdir, '', ogdir == '');
+					readFileFolder(ogdir, '');
 				}
 			}, {
 					traceErr: true
@@ -243,14 +245,14 @@ class FileManager
 			readDir(path);
 		}
 
-                var traceArr:Array<String> = [];
+		var traceArr:Array<String> = [];
 		for (path in arr)
 		{
-                        var split = path.split('/');
-                        traceArr.push(split[split.length - 1]);
-                }
+			var split = path.split('/');
+			traceArr.push(split[split.length - 1]);
+		}
 
-                trace('Loaded files: ${traceArr}');
+		trace('Loaded script files: ${traceArr}');
 		return arr;
 	}
 	#else
@@ -338,11 +340,11 @@ class FileManager
 	 * Read a file using `lime.utils.Assets` and a try catch function
 	 * @param path the path of the file your trying to read
 	 */
-	public static function readFile(path:String):String
+	public static function readFile(path:String, ?posinfo:PosInfos):String
 	{
 		if (!exists(path))
 		{
-			unfoundAsset(path);
+			unfoundAsset(path, posinfo);
 			return '';
 		}
 
