@@ -2,6 +2,7 @@
         "character_display_name":"Portilizen",
 
         "levels": 1,
+        "level_number_offset": 0,
 
         "results-asset-prefix":"sinco"
 }

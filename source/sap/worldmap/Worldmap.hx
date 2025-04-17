@@ -5,6 +5,7 @@ class Worldmap extends State
         public static var CURRENT_PLAYER_CHARACTER:String = 'sinco';
         public static var CURRENT_PLAYER_CHARACTER_JSON:PlayableCharacter = null;
         public static var CURRENT_PLAYER_LEVELS:Int = 0;
+        public static var CURRENT_PLAYER_SELECTION_OFFSET:Int = 0;
 
         public static var CURRENT_SELECTION:Int = 0;
 
@@ -17,6 +18,7 @@ class Worldmap extends State
                 CURRENT_PLAYER_CHARACTER = character;
                 CURRENT_PLAYER_CHARACTER_JSON = PlayableCharacterManager.readPlayableCharacterJSON(CURRENT_PLAYER_CHARACTER);
                 CURRENT_PLAYER_LEVELS = CURRENT_PLAYER_CHARACTER_JSON.levels;
+                CURRENT_PLAYER_SELECTION_OFFSET = CURRENT_PLAYER_CHARACTER_JSON.level_number_offset;
 	}
 
 	override function create()
@@ -45,6 +47,6 @@ class Worldmap extends State
 	{
 		super.update(elapsed);
 
-                LEVEL_TEXT.text = 'Level 1';
+                LEVEL_TEXT.text = 'Level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_LEVELS}';
 	}
 }
