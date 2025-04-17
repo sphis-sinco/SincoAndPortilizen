@@ -65,7 +65,7 @@ class ResultsMenu extends FlxState
 
 		if (Worldmap.CURRENT_PLAYER_CHARACTER == char)
 		{
-			final PCJ:PlayableCharacter = PlayableCharacterManager.readPlayableCharacterJSON(char);
+			final PCJ:PlayableCharacter = Worldmap.CURRENT_PLAYER_CHARACTER_JSON;
 
 			if (PCJ.results_asset_prefix != null)
 				resultCharacter = PCJ.results_asset_prefix;
