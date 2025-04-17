@@ -81,7 +81,7 @@ class Worldmap extends State
 
                 if (FlxG.mouse.overlaps(CHARACTER_SELECT_BUTTON) && FlxG.mouse.released)
                 {
-                        trace('Character select here');
+                        Global.switchState(new CharacterSelect());
                 }
 	}
 
