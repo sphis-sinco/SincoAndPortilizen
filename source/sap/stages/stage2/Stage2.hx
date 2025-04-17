@@ -127,13 +127,11 @@ class Stage2 extends State
 
 	public static function cutsceneResults():Void
 	{
-		RUNNING = false;
 		Global.switchState(new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, new PostStage2Cutscene(), "sinco"));
 	}
 
 	public static function moveToResultsMenu():Void
 	{
-		RUNNING = false;
 		Global.switchState(new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, new Worldmap("Sinco"), "sinco"));
 	}
 

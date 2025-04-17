@@ -1,7 +1,5 @@
 package sap.stages.stage4;
 
-import sap.worldmap.Worldmap;
-
 class PostStage4Cutscene extends PanelCutscene
 {
 	override public function new():Void
@@ -13,6 +11,6 @@ class PostStage4Cutscene extends PanelCutscene
 	{
 		super.finishedCutscene(cutscene_skipped);
 
-		Global.switchState(new Worldmap('Port'));
+		Global.switchState(new Worldmap('portilizen'));
 	}
 }
