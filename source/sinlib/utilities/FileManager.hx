@@ -105,24 +105,24 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getAssetFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getAssetFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
 	{
 		var returnPath:String = '';
 
 		for (mod in ModFolderManager.ENABLED_MODS)
 		{
 			// What if I was evil and made it so that 0.1.0 api mods couldnt do this >:)
-			var dir_meta:ModMetaData = FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json');
+			var dir_meta:ModMetaData = FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json', posinfo);
 
 			if (returnPath == '') // first come first serve
 			{
-				returnPath = getPath('mods/$mod/', '$file', PATH_TYPE); // 'mods/$mod/$file'
+				returnPath = getPath('mods/$mod/', '$file', PATH_TYPE, posinfo); // 'mods/$mod/$file'
 			}
 		}
 
 		if (returnPath == '')
 		{
-			returnPath = getPath('assets/', '$file', PATH_TYPE); // 'assets/$file'
+			returnPath = getPath('assets/', '$file', PATH_TYPE, posinfo); // 'assets/$file'
 		}
 
 		return returnPath;
@@ -140,15 +140,15 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getScriptFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getScriptFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
 	{
 		var finalPath:Dynamic = 'scripts/$file'; // .$SCRIPT_EXT';
 
 		#if SCRIPT_FILES_IN_DATA_FOLDER
-		return getDataFile(finalPath, PATH_TYPE);
+		return getDataFile(finalPath, PATH_TYPE, posinfo);
 		#end
 
-		return getAssetFile(finalPath, PATH_TYPE);
+		return getAssetFile(finalPath, PATH_TYPE, posinfo);
 	}
 
 	#if sys
@@ -272,7 +272,7 @@ class FileManager
 	/**
 	 * Dummy function for if not `SCRIPT_FILES`
 	 */
-	public static function getScriptFile(?file:String = '', ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getScriptFile(?file:String = '', ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
 	{
 		return '';
 	}
@@ -292,8 +292,8 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getDataFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
-		return getAssetFile('data/$file', PATH_TYPE);
+	public static function getDataFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
+		return getAssetFile('data/$file', PATH_TYPE, posinfo);
 
 	/**
 	 * Returns `assets/images/$file.png`
@@ -301,8 +301,8 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getImageFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
-		return getAssetFile('images/$file.png', PATH_TYPE);
+	public static function getImageFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
+		return getAssetFile('images/$file.png', PATH_TYPE, posinfo);
 
 	/**
 	 * Returns `assets/$file.$SOUND_EXT`
@@ -310,9 +310,9 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getSoundFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getSoundFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
 	{
-		return getAssetFile('$file.$SOUND_EXT', PATH_TYPE);
+		return getAssetFile('$file.$SOUND_EXT', PATH_TYPE, posinfo);
 	}
 
 	/**
@@ -364,9 +364,9 @@ class FileManager
 	 * Reads a file that SHOULD BE A JSON, using `readFile`
 	 * @param path the path of the json your trying to get
 	 */
-	public static function getJSON(path:String):Dynamic
+	public static function getJSON(path:String, ?posinfo:PosInfos):Dynamic
 	{
-		return Json.parse(readFile(path));
+		return Json.parse(readFile(path, posinfo));
 	}
 
 	/**
@@ -412,14 +412,14 @@ class FileManager
 		return openfl.utils.Assets.exists(path);
 	}
 
-	public static function getPackerAtlas(path:String, ?path_type:PathTypes):FlxAtlasFrames
+	public static function getPackerAtlas(path:String, ?path_type:PathTypes, ?posinfo:PosInfos):FlxAtlasFrames
 	{
-		return FlxAtlasFrames.fromSpriteSheetPacker(getImageFile(path, path_type), getImageFile('$path', path_type).replace('.png', '.txt'));
+		return FlxAtlasFrames.fromSpriteSheetPacker(getImageFile(path, path_type, posinfo), getImageFile('$path', path_type, posinfo).replace('.png', '.txt'));
 	}
 
-	public static function getSparrowAtlas(path:String, ?path_type:PathTypes)
+	public static function getSparrowAtlas(path:String, ?path_type:PathTypes, ?posinfo:PosInfos)
 	{
-		return FlxAtlasFrames.fromSparrow(getImageFile(path, path_type), getImageFile('$path', path_type).replace('.png', '.xml'));
+		return FlxAtlasFrames.fromSparrow(getImageFile(path, path_type, posinfo), getImageFile('$path', path_type, posinfo).replace('.png', '.xml'));
 	}
 }
 
