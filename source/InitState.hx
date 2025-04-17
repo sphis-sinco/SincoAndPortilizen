@@ -40,6 +40,8 @@ class InitState extends FlxState
 			}
 			#end
 
+                        FlxG.sound.volume = FlxG.save.data.settings.volume;
+
 			#if web
 			// pixel perfect render fix!
 			Application.current.window.element.style.setProperty("image-rendering", "pixelated");

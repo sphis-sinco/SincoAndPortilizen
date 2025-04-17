@@ -10,10 +10,12 @@
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - (Web only) Pixel perfect rendering ([#27][#27_link])
 ### Fixed
+- Volume settings now get saved ([#35][#35_link])
 - Mods not being added to ENABLED_MODS when the Mod save data is null
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 - Fixed missing worldmap character assets
 ### Changed
+- The volume now is set as the last saved audio setting
 - (Source) Instead of using `FlxG.keys.` every file uses one of the `Global.key` functions
 - (Debug only) The titlestate now has a `DEBUG` intro state that waits a second before actually starting the intro sequence
 - (Debug only) InitState uses a random sticker transition when there are no build flags enabled
@@ -393,3 +395,4 @@ CURRENT FEATURES:
 [#27_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/27
 [#24_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/24
 [#34_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/34
+[#35_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/35

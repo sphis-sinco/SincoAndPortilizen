@@ -133,6 +133,7 @@ class SettingsMenu extends FlxSubState
 				{
 					FlxG.sound.changeVolume(-1);
 				}
+                                FlxG.save.data.settings.volume = FlxG.sound.volume;
 			case 'window resolution':
 				window_res(saveValues.get(SELECTED_SETTING), true);
 			#if DISCORDRPC
