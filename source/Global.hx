@@ -302,7 +302,7 @@ class Global
 		TryCatch.tryCatch(function()
 		{
                         trace('initLOL');
-			var oldStickars:Array<funkin.ui.transition.StickerSubState.StickerSprite> = [];
+			var oldStickars:Array<funkin.graphics.FunkinSprite> = [];
 
 			TryCatch.tryCatch(function()
 			{
