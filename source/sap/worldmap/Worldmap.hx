@@ -36,7 +36,7 @@ class Worldmap extends State
                 add(bar);
                 bar.screenCenter();
 
-                LEVEL_TEXT = new FlxText(0, 0, 0, "Hi", 16);
+                LEVEL_TEXT = new FlxText(0, 0, 0, 'Hi', 16);
                 add(LEVEL_TEXT);
                 LEVEL_TEXT.screenCenter();
 	}
