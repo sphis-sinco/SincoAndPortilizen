@@ -61,6 +61,14 @@ class Worldmap extends State
 		DIFFICULTY_TEXT.text = '${Global.keyPressed(LEFT) ? '-' : '<'} ${CURRENT_DIFFICULTY} ${Global.keyPressed(RIGHT) ? '-' : '>'}';
 		DIFFICULTY_TEXT.screenCenter(X);
 
+                switch (CURRENT_DIFFICULTY.toLowerCase())
+                {
+                        case 'easy': DIFFICULTY_TEXT.color = FlxColor.LIME;
+                        case 'normal': DIFFICULTY_TEXT.color = FlxColor.YELLOW;
+                        case 'hard': DIFFICULTY_TEXT.color = FlxColor.RED;
+                        case 'extreme': DIFFICULTY_TEXT.color = FlxColor.PINK;
+                }
+
 		controlManagement();
 	}
 
