@@ -12,6 +12,7 @@ class CharacterSelect extends State
                 {
                         CHARACTER_LIST.push(file.split('.')[0]);
                 }
+                trace(CHARACTER_LIST);
         }
 
 	override function create()
