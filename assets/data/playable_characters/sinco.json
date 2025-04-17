@@ -3,5 +3,5 @@
 
         "levels": 2,
 
-        "results-asset-prefix":"sinco"
+        "results_asset_prefix":"sinco"
 }
