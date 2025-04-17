@@ -56,19 +56,20 @@ class Worldmap extends State
 	{
 		if (Global.anyKeysJustReleased([UP, DOWN]))
 		{
-			if (Global.keyJustReleased(UP))
+			if (Global.keyJustReleased(DOWN))
 			{
 				CURRENT_SELECTION--;
-				if (CURRENT_SELECTION < 0)
-					CURRENT_SELECTION = 0;
 			}
 			else
 			{
 				CURRENT_SELECTION++;
-
-				if (CURRENT_SELECTION > CURRENT_PLAYER_LEVELS)
-					CURRENT_SELECTION = CURRENT_PLAYER_LEVELS;
 			}
+
+			if (CURRENT_SELECTION < 0)
+				CURRENT_SELECTION = 0;
+
+			if (CURRENT_SELECTION > CURRENT_PLAYER_LEVELS - 1)
+				CURRENT_SELECTION = CURRENT_PLAYER_LEVELS - 1;
 		}
 	}
 }
