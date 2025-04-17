@@ -492,7 +492,6 @@ class Stage1 extends State
 	public static function endCutsceneTransition():Void
 	{
 		Global.beatLevel(1);
-                RUNNING = false;
 
 		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, new PostStage1Cutscene()));
 	}
