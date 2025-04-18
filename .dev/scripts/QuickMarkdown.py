@@ -1,7 +1,7 @@
 import re
 
 # Increase for every update to the file
-version = 13  # Incremented version
+version = 14  # Incremented version
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -18,19 +18,19 @@ def parse_hx_file(file_path):
 
         # Regex to match Haxe package declaration
         package_pattern = re.compile(r'^\s*package\s+([\w\.]+);', re.MULTILINE)
-        # Regex to match Haxe function definitions
-        function_pattern = re.compile(r'function\s+(\w+)\s*\(')
-        # Regex to match Haxe variable declarations outside of functions
-        variable_pattern = re.compile(r'^\s*var\s+(\w+)\s*:', re.MULTILINE)
+        # Regex to match public static Haxe function definitions
+        function_pattern = re.compile(r'public\s+static\s+function\s+(\w+)\s*\(')
+        # Regex to match public static Haxe variable declarations
+        variable_pattern = re.compile(r'public\s+static\s+var\s+(\w+)\s*:', re.MULTILINE)
 
         # Extract package name
         package_match = package_pattern.search(content)
         if package_match:
                 package_name = package_match.group(1)
 
-        # Find all functions
+        # Find all public static functions
         functions.extend(function_pattern.findall(content))
-        # Find all variables outside of functions
+        # Find all public static variables
         variables.extend(variable_pattern.findall(content))
 
         # Create the output strings
