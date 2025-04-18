@@ -1,12 +1,12 @@
 import re
 
 # Increase for every update to the file
-version = 25  # Incremented version
+version = 28  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v25: Added back the \"- TBA\" to the variable and function descriptions"""
+version_changes = """v28: Removed the printing of function references and variable references."""
 
-# This script parses a Haxe (.hx) file to extract function and variable names.
+# This script parses a Haxe (.hx) file to extract function and variable names and their references.
 def parse_hx_file(file_path):
         try:
                 with open(file_path, 'r', encoding='utf-8') as file:
@@ -21,30 +21,24 @@ def parse_hx_file(file_path):
 
         # Regex to match Haxe package declaration
         package_pattern = re.compile(r'^\s*package\s+([\w\.]+);', re.MULTILINE)
-        # Regex to match public static Haxe function definitions
-        function_pattern = re.compile(r'public\s+static\s+function\s+(\w+)\s*\(')
-        # Regex to match public static Haxe variable declarations
-        variable_pattern = re.compile(r'public\s+static\s+var\s+(\w+)\s*:', re.MULTILINE)
-        # Regex to match public (non-static) Haxe function definitions
-        public_function_pattern = re.compile(r'public\s+function\s+(\w+)\s*\(')
+        # Regex to match Haxe function definitions (keyword "function")
+        function_pattern = re.compile(r'\bfunction\s+(\w+)\s*\(')
+        # Regex to match Haxe variable declarations (keyword "var" outside functions)
+        variable_pattern = re.compile(r'^\s*(?!.*function\b).*?\bvar\s+(\w+)\s*:', re.MULTILINE)
 
         # Extract package name
         package_match = package_pattern.search(content)
         if package_match:
                 package_name = package_match.group(1)
 
-        # Find all public static functions
+        # Find all functions
         functions.extend(function_pattern.findall(content))
-
-        # If no public static functions are found, check for public functions
-        if not functions:
-                functions.extend(public_function_pattern.findall(content))
 
         # Filter out unwanted functions
         ignored_functions = {'new', 'create', 'postCreate', 'update'}
         functions = [func for func in functions if func not in ignored_functions]
 
-        # Find all public static variables
+        # Find all variables outside functions
         variables.extend(variable_pattern.findall(content))
 
         # Create the output strings
