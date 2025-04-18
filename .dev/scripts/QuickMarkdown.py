@@ -2,13 +2,13 @@ import re
 import os
 
 # Increase for every update to the file
-version = 31  # Incremented version
+version = 32  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v31: Removed per-file generation comment in folder mode and added a summary comment for folder processing."""
+version_changes = """v32: Added support for parse_hx_file to use Header 1 for folder mode and Header2's separately for file mode."""
 
 # This script parses a Haxe (.hx) file to extract function and variable names and their references.
-def parse_hx_file(file_path):
+def parse_hx_file(file_path, folder_mode):
         try:
                 with open(file_path, 'r', encoding='utf-8') as file:
                         content = file.read()
@@ -42,16 +42,18 @@ def parse_hx_file(file_path):
         # Find all variables outside functions
         variables.extend(variable_pattern.findall(content))
 
+        header = '##' if folder_mode else '#'
+
         # Create the output strings
         function_list = ''
         if functions:  # Only generate the function list if functions are found
-                function_list = '## Functions\n' + '\n'.join(
+                function_list = f'{header} Functions\n' + '\n'.join(
                         [f'- `{func}` - TBA' for func in functions]
                 )
 
         variable_list = ''
         if variables:
-                variable_list = '## Variables\n' + '\n'.join(
+                variable_list = f'{header} Variables\n' + '\n'.join(
                         [f'- `{var}` - TBA' for var in variables]
                 )
 
@@ -63,7 +65,7 @@ def process_folder(folder_path):
         for file in os.listdir(folder_path):
                 file_path = os.path.join(folder_path, file)
                 if os.path.isfile(file_path) and file.endswith('.hx'):  # Check for Haxe files
-                        result = parse_hx_file(file_path)
+                        result = parse_hx_file(file_path, true)
                         if result:
                                 package_name, function_list, variable_list = result
                                 print(f'# {file}\n')  # Markdown header 1 for the file name
@@ -85,7 +87,7 @@ if __name__ == '__main__':
         mode = input('Enter "file" to process a single file or "folder" to process a folder: ').strip().lower()
         if mode == 'file':
                 hx_file_path = input('Enter the path to the .hx file: ').strip()
-                result = parse_hx_file(hx_file_path)
+                result = parse_hx_file(hx_file_path, false)
                 file = hx_file_path.split('\\')[-1]
 
                 if result:
