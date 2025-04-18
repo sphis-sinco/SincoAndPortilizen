@@ -1,50 +1,30 @@
 [
-        {
-                "text": "Créditos Sinco y Portilizen",
-                "size": 1,
-                "color": [255, 255, 255],
-                "spacing": 50
-        },
-        {
-                "text": "Sinco: Pixel Art, Programación, Compositor, \nModerador de Github, Actor de doblaje",
-                "size": 0.5,
-                "color": [50, 255, 50],
-                "spacing": 50
-        },
-        {
-                "text": "Djotta Flow: pruebas de juego, comentarios, pixel art, \nanimación de píxeles, traducción al portugués",
-                "size": 0.5,
-                "color": [50, 50, 255],
-                "spacing": 50
-        },
-        {
-                "text": "Paul leps: pruebas de juego, comentarios, pixel art, arte",
-                "size": 0.5,
-                "color": [255, 50, 50],
-                "spacing": 25
-        },
-        {
-                "text": "TJ: Arte, animación, probador de juegos, actor de voz",
-                "size": 0.5,
-                "color": [0, 191, 255],
-                "spacing": 25
-        },
-        {
-                "text": "ComaToast: ayuda con el código y ayuda con Discord RPC",
-                "size": 0.5,
-                "color": [255, 50, 255],
-                "spacing": 25
-        },
-        {
-                "text": "Derechos de código abierto",
-                "size": 1,
-                "color": [255, 255, 255],
-                "spacing": 50
-        },
-        {
-                "text": "Friday Night Funkin: \nnuevo plugin de captura de pantalla y \ntransición de stickers",
-                "size": 0.5,
-                "color": [255, 255, 255],
-                "spacing": 75
-        }
+        { "text": "Créditos de Sinco y Portilizen", "size": 1, "color": [255, 255, 255], "spacing": 50 },
+
+        { "text": "Directores", "size": 0.7, "color": [255, 255, 255], "spacing": 35 },
+        { "text": "Sinco", "size": 0.5, "color": [50, 255, 50], "spacing": 25 },
+        { "text": "Djotta Flow", "size": 0.5, "color": [50, 50, 255], "spacing": 25 },
+
+        { "text": "Programadores", "size": 0.7, "color": [255, 255, 255], "spacing": 35 },
+        { "text": "Sinco", "size": 0.5, "color": [50, 255, 50], "spacing": 25 },
+        { "text": "ZSolarDev", "size": 0.5, "color": [50, 255, 50], "spacing": 25 },
+
+        { "text": "Pruebas de juego y comentarios", "size": 0.7, "color": [255, 255, 255], "spacing": 35 },
+        { "text": "Djotta Flow", "size": 0.5, "color": [50, 50, 255], "spacing": 25 },
+        { "text": "Paul leps", "size": 0.5, "color": [255, 50, 50], "spacing": 25 },
+        { "text": "TJ", "size": 0.5, "color": [0, 191, 255], "spacing": 25 },
+
+        { "text": "actuación de voz", "size": 0.7, "color": [255, 255, 255], "spacing": 35 },
+        { "text": "Sinco", "size": 0.5, "color": [50, 255, 50], "spacing": 25 },
+        { "text": "TJ", "size": 0.5, "color": [0, 191, 255], "spacing": 25 },
+
+        { "text": "Composición", "size": 0.7, "color": [255, 255, 255], "spacing": 35 },
+        { "text": "Sinco", "size": 0.5, "color": [50, 255, 50], "spacing": 25 },
+        { "text": "ZSolarDev", "size": 0.5, "color": [50, 255, 50], "spacing": 25 },
+        
+        { "text": "Aleatorio", "size": 0.7, "color": [255, 255, 255], "spacing": 35 },
+        { "text": "ComaToast - Ayuda con el código y ayuda con Discord RPC", "size": 0.5, "color": [255, 50, 255], "spacing": 25 },
+        
+        { "text": "Derechos de código abierto", "size": 1, "color": [255, 255, 255], "spacing": 50 },
+        { "text": "Friday Night Funkin - Nuevo complemento de captura de pantalla", "size": 0.5, "color": [255, 255, 255], "spacing": 25 }
 ]
