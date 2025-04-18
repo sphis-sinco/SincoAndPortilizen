@@ -35,13 +35,13 @@ class Stage1 extends State
 
 	public static var PROGRESS_BAR:FlxBar;
 
-        public static var RUNNING:Bool = false;
+	public static var RUNNING:Bool = false;
 
 	override public function new(difficulty:String):Void
 	{
 		super();
 
-                RUNNING = true;
+		RUNNING = true;
 
 		DIFFICULTY = difficulty;
 		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage1/${difficulty}.json'));
@@ -162,7 +162,7 @@ class Stage1 extends State
 		PLAYER_COMBO = 0;
 	}
 
-        public static var ABILITY_CAN_ATTACK_PLAYER:Bool = true;
+	public static var ABILITY_CAN_ATTACK_PLAYER:Bool = true;
 
 	override function postCreate():Void
 	{
@@ -234,7 +234,7 @@ class Stage1 extends State
 		INFO_TEXT = 'Sinco: ${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH || Osin: ${Global.getLocalizedPhrase('HP')}: $OSIN_HEALTH/$OSIN_MAX_HEALTH';
 		PROGRESS_BAR.percent = (OSIN_HEALTH / OSIN_MAX_HEALTH) * 100;
 		INFO_TEXTFIELD.text = INFO_TEXT;
-                INFO_TEXTFIELD.screenCenter(X);
+		INFO_TEXTFIELD.screenCenter(X);
 	}
 
 	public static function osinJumpWait():Void
@@ -319,7 +319,7 @@ class Stage1 extends State
 
 	public static function osinJump():Void
 	{
-                ABILITY_CAN_ATTACK_PLAYER = false;
+		ABILITY_CAN_ATTACK_PLAYER = false;
 		osin.animation.play(StageGlobals.JUMP_KEYWORD);
 		Global.playSoundEffect('gameplay/sinco-jump');
 		FlxTween.tween(osin, {x: SINCO_POINT.x, y: SINCO_POINT.y}, OSIN_JUMP_SPEED, {
@@ -367,7 +367,7 @@ class Stage1 extends State
 			{
 				osin.animation.play('run');
 				OSIN_CAN_ATTACK = true;
-                                ABILITY_CAN_ATTACK_PLAYER = true;
+				ABILITY_CAN_ATTACK_PLAYER = true;
 			}
 		});
 	}
@@ -459,7 +459,7 @@ class Stage1 extends State
 		FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
 			{
-                                RUNNING = false;
+				RUNNING = false;
 				Global.switchState(new ResultsMenu((OSIN_MAX_HEALTH - OSIN_HEALTH), OSIN_MAX_HEALTH, new Worldmap()));
 			},
 			onStart: _tween ->
@@ -495,7 +495,7 @@ class Stage1 extends State
 	public static function endCutsceneTransition():Void
 	{
 		Global.beatLevel(1);
-                RUNNING = false;
+		RUNNING = false;
 
 		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, new PostStage1Cutscene()));
 	}

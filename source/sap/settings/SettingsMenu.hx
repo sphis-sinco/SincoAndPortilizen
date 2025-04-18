@@ -109,8 +109,8 @@ class SettingsMenu extends FlxSubState
 		if (Global.keyJustReleased(ESCAPE))
 		{
 			FlxG.save.data.settings.window_res = saveValues.get('window resolution');
-                        SaveManager.save();
-                        
+			SaveManager.save();
+
 			MainMenu.inSubstate = false;
 			close();
 		}
@@ -133,7 +133,7 @@ class SettingsMenu extends FlxSubState
 				{
 					FlxG.sound.changeVolume(-1);
 				}
-                                FlxG.save.data.settings.volume = FlxG.sound.volume;
+				FlxG.save.data.settings.volume = FlxG.sound.volume;
 			case 'window resolution':
 				window_res(saveValues.get(SELECTED_SETTING), true);
 			#if DISCORDRPC
@@ -143,9 +143,10 @@ class SettingsMenu extends FlxSubState
 				{
 					Discord.DiscordClient.initialize();
 				}
-				else {
+				else
+				{
 					Discord.DiscordClient.shutdown();
-                                }
+				}
 			#end
 			#if sys
 			case 'download latest traces':

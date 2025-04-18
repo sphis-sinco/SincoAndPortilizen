@@ -35,7 +35,7 @@ class DiscordClient
 
 	public static function shutdown():Void
 	{
-                trace('Shutting down...');
+		trace('Shutting down...');
 		DiscordRpc.shutdown();
 	}
 

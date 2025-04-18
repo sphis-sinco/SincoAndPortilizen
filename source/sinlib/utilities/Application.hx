@@ -2,13 +2,15 @@ package sinlib.utilities;
 
 import lime.app.Application as App;
 
-class Application {
+class Application
+{
 	/**
 	 * `Application.current.meta`;
 	 */
 	public static var META(get, never):Map<String, String>;
 
-	static function get_META():Map<String, String> {
+	static function get_META():Map<String, String>
+	{
 		return App.current.meta;
 	}
 
@@ -17,7 +19,8 @@ class Application {
 	 */
 	public static var BUILD(get, never):Dynamic;
 
-	static function get_BUILD():Dynamic {
+	static function get_BUILD():Dynamic
+	{
 		return META.get("build");
 	}
 
@@ -26,7 +29,8 @@ class Application {
 	 */
 	public static var COMPANY(get, never):String;
 
-	static function get_COMPANY():String {
+	static function get_COMPANY():String
+	{
 		return META.get("company");
 	}
 
@@ -35,7 +39,8 @@ class Application {
 	 */
 	public static var FILE(get, never):String;
 
-	static function get_FILE():String {
+	static function get_FILE():String
+	{
 		return META.get("file");
 	}
 
@@ -44,7 +49,8 @@ class Application {
 	 */
 	public static var NAME(get, never):String;
 
-	static function get_NAME():String {
+	static function get_NAME():String
+	{
 		return META.get("name");
 	}
 
@@ -53,7 +59,8 @@ class Application {
 	 */
 	public static var PACKAGE_NAME(get, never):String;
 
-	static function get_PACKAGE_NAME():String {
+	static function get_PACKAGE_NAME():String
+	{
 		return META.get("packageName");
 	}
 
@@ -62,7 +69,8 @@ class Application {
 	 */
 	public static var VERSION(get, never):String;
 
-	static function get_VERSION():String {
+	static function get_VERSION():String
+	{
 		return META.get("version");
 	}
 }

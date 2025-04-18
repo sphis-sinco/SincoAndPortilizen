@@ -157,7 +157,7 @@ class CrashHandler
 
 		fullContents += message;
 
-                trace(message);
+		trace(message);
 
 		fullContents += '\n';
 
@@ -221,17 +221,17 @@ class CrashHandler
 		var currentStatus = Lib.current.stage.__uncaughtErrorEvents.__enabled;
 		trace('ERROR HANDLER STATUS: ' + currentStatus);
 
-                #if openfl_disable_handle_error
-                final disable_handle:Bool = true;
-                #else
-                final disable_handle:Bool = false;
-                #end
+		#if openfl_disable_handle_error
+		final disable_handle:Bool = true;
+		#else
+		final disable_handle:Bool = false;
+		#end
 
-                #if openfl_enable_handle_error
-                final enable_handle:Bool = true;
-                #else
-                final enable_handle:Bool = false;
-                #end
+		#if openfl_enable_handle_error
+		final enable_handle:Bool = true;
+		#else
+		final enable_handle:Bool = false;
+		#end
 
 		trace('Define: openfl_enable_handle_error is ${enable_handle}');
 		trace('Define: openfl_disable_handle_error is ${disable_handle}');

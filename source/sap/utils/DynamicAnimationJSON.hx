@@ -1,11 +1,13 @@
 package sap.utils;
 
-typedef DynamicAnimationJSON = {
+typedef DynamicAnimationJSON =
+{
 	var animation_order:Array<String>;
 	var animation_data:Array<AnimData>;
 }
 
-typedef AnimData = {
+typedef AnimData =
+{
 	var Name:String;
 	var Asset:String;
 	var ?FPS:Float;

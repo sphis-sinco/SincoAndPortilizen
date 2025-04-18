@@ -1,6 +1,5 @@
 package sap.title;
 
-import flixel.effects.FlxFlicker;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -108,7 +107,7 @@ class TitleState extends State
 				FlxTimer.wait(1, function()
 				{
 					introStuff();
-                                        CURRENT_STATE = INTRO;
+					CURRENT_STATE = INTRO;
 				});
 			}
 		}

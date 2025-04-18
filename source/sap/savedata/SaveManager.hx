@@ -74,7 +74,7 @@ class SaveManager
 	{
 		TryCatch.tryCatch(function()
 		{
-                        FlxG.save.flush();
+			FlxG.save.flush();
 		}, {
 				traceErr: true
 		});

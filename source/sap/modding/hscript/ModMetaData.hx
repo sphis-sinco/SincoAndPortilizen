@@ -1,6 +1,7 @@
 package sap.modding.hscript;
 
-typedef ModMetaData = {
+typedef ModMetaData =
+{
 	var name:String;
 	var credits:Array<String>;
 	var version:String;

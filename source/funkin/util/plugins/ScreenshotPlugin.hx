@@ -91,7 +91,7 @@ class ScreenshotPlugin extends FlxBasic
 
 	public function hasPressedScreenshot():Bool
 	{
-                #if html5 return false; #end
+		#if html5 return false; #end
 
 		return Global.anyKeysJustReleased(_hotkeys);
 	}
@@ -145,7 +145,7 @@ class ScreenshotPlugin extends FlxBasic
 	 */
 	static function showCaptureFeedback():Void
 	{
-        FlxG.camera.flash();
+		FlxG.camera.flash();
 	}
 
 	static final PREVIEW_INITIAL_DELAY = 0.25; // How long before the preview starts fading in.

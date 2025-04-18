@@ -13,7 +13,7 @@ class CreditsSubState extends FlxSubState
 
 	override function create():Void
 	{
-                creditsJSONInit();
+		creditsJSONInit();
 		super.create();
 
 		overlay = new BlankBG();

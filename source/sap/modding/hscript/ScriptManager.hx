@@ -37,11 +37,11 @@ class ScriptManager
 	public static function loadScripts():Void
 	{
 		// NO DUPES
-                for (instance in LOADED_SCRIPTS)
-                {
-                        // fix multiple instances of similar scripts
-                        instance.destroy();
-                }
+		for (instance in LOADED_SCRIPTS)
+		{
+			// fix multiple instances of similar scripts
+			instance.destroy();
+		}
 		LOADED_SCRIPTS = [];
 
 		// loading scripts
@@ -60,13 +60,13 @@ class ScriptManager
 		}
 
 		// import stuff
-                #if sys
-                setScript('FileSystem', FileSystem);
-                setScript('File', File);
-                #end
-                #if DISCORDRPC
-                setScript('DiscordClient', Discord.DiscordClient);
-                #end
+		#if sys
+		setScript('FileSystem', FileSystem);
+		setScript('File', File);
+		#end
+		#if DISCORDRPC
+		setScript('DiscordClient', Discord.DiscordClient);
+		#end
 
 		// utils
 		setScript('Global', Global);
@@ -127,22 +127,25 @@ class ScriptManager
 		setScript('PlayMenu', PlayMenu);
 		setScript('TitleState', TitleState);
 
-                // custom
-		setScript('UnlockMedal', function(medal:String):Medal {
-                        return MedalData.unlockMedal(medal);
-                });
-		setScript('PlaySFX', function(soundEffect:String, PATH_TYPE:PathTypes):Void {
-                        Global.playSoundEffect(soundEffect, PATH_TYPE);
-                });
-		setScript('PlayMusic', function(filename:String, ?volume:Float = 1.0, ?loop:Bool = false):Void {
-                        Global.playMusic(filename, volume, loop);
-                });
+		// custom
+		setScript('UnlockMedal', function(medal:String):Medal
+		{
+			return MedalData.unlockMedal(medal);
+		});
+		setScript('PlaySFX', function(soundEffect:String, PATH_TYPE:PathTypes):Void
+		{
+			Global.playSoundEffect(soundEffect, PATH_TYPE);
+		});
+		setScript('PlayMusic', function(filename:String, ?volume:Float = 1.0, ?loop:Bool = false):Void
+		{
+			Global.playMusic(filename, volume, loop);
+		});
 
-                // init mod
-                ScriptManager.callScript('initalizeMod');
+		// init mod
+		ScriptManager.callScript('initalizeMod');
 	}
 
-	public static function callScript(fun:String, ?args:Array<Dynamic>, ?pos: haxe.PosInfos):Void
+	public static function callScript(fun:String, ?args:Array<Dynamic>, ?pos:haxe.PosInfos):Void
 	{
 		for (script in LOADED_SCRIPTS)
 		{
@@ -153,7 +156,7 @@ class ScriptManager
 					if (ny != null && Reflect.isFunction(ny))
 					{
 						script.call(fun, args);
-                                                // trace('ran $fun with args $args', pos);
+						// trace('ran $fun with args $args', pos);
 					}
 				}
 				catch (e)

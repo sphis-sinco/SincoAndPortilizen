@@ -158,8 +158,8 @@ class Worldmap extends State
 
 			if (current_level < 1)
 			{
-                                // Fix missing sticker degen
-                                MainMenu.public_menutextsSelection = 'menu';
+				// Fix missing sticker degen
+				MainMenu.public_menutextsSelection = 'menu';
 
 				Global.switchState(new MainMenu());
 				current_level += 1;
@@ -171,7 +171,7 @@ class Worldmap extends State
 	{
 		if (implementedLevels.get(character.char)[current_level - 1] == false)
 			return;
-                
+
 		switch (current_level)
 		{
 			// TODO: implement level unlocking PLEASE

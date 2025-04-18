@@ -31,16 +31,12 @@ class InitState extends FlxState
 
 			#if DISCORDRPC
 			if (FlxG.save.data.settings.discord_rpc)
-			{
 				Discord.DiscordClient.initialize();
-			}
 			else
-			{
 				Discord.DiscordClient.shutdown();
-			}
 			#end
 
-                        FlxG.sound.volume = FlxG.save.data.settings.volume;
+			FlxG.sound.volume = FlxG.save.data.settings.volume;
 
 			#if web
 			// pixel perfect render fix!
@@ -81,7 +77,7 @@ class InitState extends FlxState
 		var outdated:Bool = OutdatedCheck.checkForOutdatedVersion();
 		#if html5 outdated = false; #end
 
-                OutdatedMenu.BEGONE = false;
+		OutdatedMenu.BEGONE = false;
 		if (outdated && !OutdatedMenu.BEGONE)
 		{
 			trace('OUTDATED');
@@ -111,10 +107,7 @@ class InitState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		// when on debug builds you have to press something to stop
-		if (Global.keyJustReleased(ANY) && Global.DEBUG_BUILD)
-		{
-			proceed();
-		}
+		if (Global.keyJustReleased(ANY) && Global.DEBUG_BUILD) proceed();
 
 		super.update(elapsed);
 	}
@@ -194,7 +187,7 @@ class InitState extends FlxState
 
 		trace('Starting game regularly');
 
-                Global.switchState(new TitleState());
+		Global.switchState(new TitleState());
 	}
 
 	public static function switchToState(state:FlxState, stateName:String):Void

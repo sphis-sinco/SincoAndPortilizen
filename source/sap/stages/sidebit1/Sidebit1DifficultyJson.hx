@@ -4,7 +4,7 @@ typedef Sidebit1DifficultyJson =
 {
 	var player_max_health:Float;
 	var player_attack_speed:Float;
-        
+
 	var opponent_max_health:Float;
 	var opponent_attack_chance:Float;
 	var opponent_focus_chance:Float;

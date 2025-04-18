@@ -13,7 +13,8 @@ class OutdatedMenu extends State
 	{
 		super.create();
 
-		var textField:FlxText = new FlxText(0, 0, 0, OUTDATED_TEXT.replace('[VERSION]', '${Global.VERSION}').replace('LATEST_VERSION', '${OutdatedCheck.LATEST_VERSION}'), 16);
+		var textField:FlxText = new FlxText(0, 0, 0,
+			OUTDATED_TEXT.replace('[VERSION]', '${Global.VERSION}').replace('LATEST_VERSION', '${OutdatedCheck.LATEST_VERSION}'), 16);
 		textField.alignment = CENTER;
 		textField.screenCenter();
 		textField.applyMarkup(textField.text, [new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED, true, true), '-')]);

@@ -60,10 +60,10 @@ class AtlasCutscene extends State
 	{
 		super.update(elapsed);
 
-                if (Global.keyJustReleased(ESCAPE))
-                {
-                        cutsceneEnded(true);
-                }
+		if (Global.keyJustReleased(ESCAPE))
+		{
+			cutsceneEnded(true);
+		}
 	}
 
 	public var CUTSCENE_ANIMATION_NAME:String = null;

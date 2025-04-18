@@ -8,7 +8,7 @@ class ModsMenu extends FlxSubState
 	public static var overlay:BlankBG;
 
 	public static var modTexts:FlxTypedGroup<FlxText>;
-        public static var modNames:Array<String> = [];
+	public static var modNames:Array<String> = [];
 
 	public static var totalSpacing:Int = 0;
 
@@ -26,27 +26,28 @@ class ModsMenu extends FlxSubState
 		modTexts = new FlxTypedGroup<FlxText>();
 		add(modTexts);
 
-                modNames = [];
+		modNames = [];
 
 		var cur_y:Float = 10;
 		var i:Int = 0;
 		for (mod in ModFolderManager.MODS)
 		{
-			var text:FlxText = new FlxText(20, cur_y, 0, '${ModFolderManager.modInfo(FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json'))}', Std.int(32 * 0.5));
+			var text:FlxText = new FlxText(20, cur_y, 0,
+				'${ModFolderManager.modInfo(FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json'))}', Std.int(32 * 0.5));
 			text.alignment = LEFT;
 			text.ID = i;
 
 			i++;
 
 			modTexts.add(text);
-                        modNames.push(mod);
+			modNames.push(mod);
 
 			cur_y += 25;
 			totalSpacing += 25;
 		}
 		updateText();
 
-                CURRENT_SELECTION = 0;
+		CURRENT_SELECTION = 0;
 	}
 
 	override function update(elapsed:Float):Void
@@ -57,8 +58,8 @@ class ModsMenu extends FlxSubState
 		{
 			MainMenu.inSubstate = false;
 			FlxG.save.data.enabled_mods = ModFolderManager.ENABLED_MODS;
-                        SaveManager.save();
-                        // FlxG.resetGame();
+			SaveManager.save();
+			// FlxG.resetGame();
 			close();
 		}
 

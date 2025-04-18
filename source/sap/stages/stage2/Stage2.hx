@@ -25,14 +25,13 @@ class Stage2 extends State
 	static var max_rocks:Int;
 	static var rock_speed_divider:Float;
 
-        public static var RUNNING:Bool = false;
-
+	public static var RUNNING:Bool = false;
 
 	override public function new(difficulty:String):Void
 	{
 		super();
 
-                RUNNING = true;
+		RUNNING = true;
 
 		DIFFICULTY = difficulty;
 		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage2/${difficulty}.json'));
@@ -73,9 +72,9 @@ class Stage2 extends State
 		sinco.x += 4 * 8;
 		sinco.y += 4 * 24;
 
-                #if EXCESS_TRACES
+		#if EXCESS_TRACES
 		trace('Sinco y: ' + sinco.y);
-                #end
+		#end
 
 		rockGroup = new FlxTypedGroup<Stage2Rock>();
 		add(rockGroup);
@@ -106,11 +105,11 @@ class Stage2 extends State
 
 		decrease = 0;
 
-                TEMPO_CITY_HEALTH = diffJson.tempo_city_max_health;
+		TEMPO_CITY_HEALTH = diffJson.tempo_city_max_health;
 
-                var dummyRock:Stage2Rock = new Stage2Rock();
+		var dummyRock:Stage2Rock = new Stage2Rock();
 
-                PROGRESS_BAR = new FlxBar(0, 0, RIGHT_TO_LEFT, Std.int(FlxG.width / 2), 16, this, 'health', 0, 100, true);
+		PROGRESS_BAR = new FlxBar(0, 0, RIGHT_TO_LEFT, Std.int(FlxG.width / 2), 16, this, 'health', 0, 100, true);
 		add(PROGRESS_BAR);
 		PROGRESS_BAR.screenCenter(X);
 		PROGRESS_BAR.y = FlxG.height - PROGRESS_BAR.height - 64;
@@ -128,13 +127,13 @@ class Stage2 extends State
 
 	public static function cutsceneResults():Void
 	{
-                RUNNING = false;
+		RUNNING = false;
 		Global.switchState(new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, new PostStage2Cutscene(), "sinco"));
 	}
 
 	public static function moveToResultsMenu():Void
 	{
-                RUNNING = false;
+		RUNNING = false;
 		Global.switchState(new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, new Worldmap("Sinco"), "sinco"));
 	}
 
@@ -207,9 +206,9 @@ class Stage2 extends State
 	{
 		if (TEMPO_CITY_HEALTH > 0)
 		{
-                        #if EXCESS_TRACES
+			#if EXCESS_TRACES
 			trace('Spawning new rock');
-                        #end
+			#end
 			if (rockGroup.members.length < max_rocks)
 			{
 				spawnRocks(FlxG.random.int(1, 2));
@@ -269,7 +268,7 @@ class Stage2 extends State
 	{
 		super.update(elapsed);
 
-                updateHealthIndicators();
+		updateHealthIndicators();
 
 		if (Global.keyJustReleased(SPACE) && sinco.animation.name != StageGlobals.JUMP_KEYWORD)
 		{
@@ -301,6 +300,6 @@ class Stage2 extends State
 		INFO_TEXT = '${Global.getLocalizedPhrase('tempo-city')} ${Global.getLocalizedPhrase('HP')}: ${TEMPO_CITY_HEALTH}/${diffJson.tempo_city_max_health}';
 		PROGRESS_BAR.percent = (TEMPO_CITY_HEALTH / diffJson.tempo_city_max_health) * 100;
 		INFO_TEXTFIELD.text = INFO_TEXT;
-                INFO_TEXTFIELD.screenCenter(X);
+		INFO_TEXTFIELD.screenCenter(X);
 	}
 }

@@ -381,9 +381,10 @@ class FileManager
 		return FlxAtlasFrames.fromSpriteSheetPacker(getImageFile(path, path_type), getImageFile('$path', path_type).replace('.png', '.txt'));
 	}
 
-        public static function getSparrowAtlas(path:String, ?path_type:PathTypes) {
+	public static function getSparrowAtlas(path:String, ?path_type:PathTypes)
+	{
 		return FlxAtlasFrames.fromSparrow(getImageFile(path, path_type), getImageFile('$path', path_type).replace('.png', '.xml'));
-        }
+	}
 }
 
 /**

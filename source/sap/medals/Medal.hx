@@ -26,48 +26,53 @@ class Medal extends FlxTypedGroup<FlxObject>
 		final offset:Float = 2 * 4;
 		medalIcon.setPosition(medalBox.HORIZONTAL_POSITION + offset, medalBox.VERTICAL_POSITION + offset);
 
-                medalBox.y += y_offset;
-                medalIcon.y += y_offset;
+		medalBox.y += y_offset;
+		medalIcon.y += y_offset;
 
 		if (earnedAlready)
 		{
 			medalBox.destroy();
 			medalIcon.destroy();
 			this.destroy();
-                        MedalData.cur_y_offset -= 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+			MedalData.cur_y_offset -= 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 		}
-                else {
-                        Global.playSoundEffect('medal');
-                }
+		else
+		{
+			Global.playSoundEffect('medal');
+		}
 		FlxTimer.wait(waitTime, () ->
 		{
-			FlxTween.tween(medalBox, {alpha: 0}, fadeWaitTime, {onComplete: tween ->
-			{
-				medalBox.destroy();
-			}});
-			FlxTween.tween(medalIcon, {alpha: 0}, fadeWaitTime, {onComplete: tween ->
-			{
-				medalIcon.destroy();
-			}});
+			FlxTween.tween(medalBox, {alpha: 0}, fadeWaitTime, {
+				onComplete: tween ->
+				{
+					medalBox.destroy();
+				}
+			});
+			FlxTween.tween(medalIcon, {alpha: 0}, fadeWaitTime, {
+				onComplete: tween ->
+				{
+					medalIcon.destroy();
+				}
+			});
 			FlxTimer.wait(fadeWaitTime, () ->
 			{
 				this.destroy();
-                                MedalData.cur_y_offset -= 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
+				MedalData.cur_y_offset -= 16 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER;
 			});
 		});
 	}
 
-        public static function getMedalPath(medal:String = 'award'):String
-        {
-                var path:String = FileManager.getImageFile('medals/awards/${medal}');
+	public static function getMedalPath(medal:String = 'award'):String
+	{
+		var path:String = FileManager.getImageFile('medals/awards/${medal}');
 
 		if (!FileManager.exists(path))
 		{
 			trace('${medal} does not have an icon');
-                        path = FileManager.getImageFile('medals/awards/award');
+			path = FileManager.getImageFile('medals/awards/award');
 		}
 		// trace(path);
 
-                return path;
-        }
+		return path;
+	}
 }
