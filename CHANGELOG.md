@@ -1,7 +1,7 @@
 # Alpha
 ## 0.5.0a - 4/??/2025
 ### Added
-- `DONT_RECOMPILE_ON_ASSET_UPDATE` build flag
+- `DO_NOT_RECOMPILE_ON_ASSET_UPDATE` build flag
 - `RECOMPILE_ON_ASSET_UPDATE` build flag
 - `NO_MODS` build flag
 - (Desktop only) New window resolution option: 1280x720 ([#34][#34_link])

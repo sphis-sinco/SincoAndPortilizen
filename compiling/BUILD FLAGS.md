@@ -18,7 +18,7 @@ These do things. Lmao!
 - `DO_NOT_RECOMPILE_ON_MOD_UPDATE`: Disables `RECOMPILE_ON_MOD_UPDATE`
 - `NO_MODS`: When compiling with debug you don't get the debug_mods folder being turnt into the mods folder
 - `RECOMPILE_ON_ASSET_UPDATE` (enabled by default): Makes it so that when doing `-watch` and changing asset script files the game recompiles
-- `DONT_RECOMPILE_ON_ASSET_UPDATE`: Disables `RECOMPILE_ON_ASSET_UPDATE`
+- `DO_NOT_RECOMPILE_ON_ASSET_UPDATE`: Disables `RECOMPILE_ON_ASSET_UPDATE`
 
 ## Start State Flags
 - `SKIP_TITLE`: Sends you to the Main Menu instantly instead of the Title Screen
