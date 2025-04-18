@@ -4,7 +4,8 @@ class CharacterSelect extends State
 {
 	public static var CHARACTER_LIST:Array<String> = [];
 
-	public static var CHARACTER_SELECT_BOX:CharSelector;
+	public static var CHARACTER_BOX:CharSelector;
+	public static var CHARACTER_SELECTION_BOX:CharSelector;
 
 	override public function new()
 	{
@@ -30,11 +31,15 @@ class CharacterSelect extends State
 		Global.scaleSprite(backdrop);
 		backdrop.screenCenter();
 
-		CHARACTER_SELECT_BOX = new CharSelector();
-		add(CHARACTER_SELECT_BOX);
-		CHARACTER_SELECT_BOX.screenCenter();
-		CHARACTER_SELECT_BOX.playAnimation('blank');
-                CHARACTER_SELECT_BOX.flipX = true;
+		CHARACTER_BOX = new CharSelector();
+		add(CHARACTER_BOX);
+		CHARACTER_BOX.playAnimation('blank');
+		CHARACTER_BOX.screenCenter();
+
+                CHARACTER_SELECTION_BOX = new CharSelector();
+                add(CHARACTER_SELECTION_BOX);
+                Global.scaleSprite(CHARACTER_SELECTION_BOX, -1);
+                CHARACTER_SELECTION_BOX.screenCenter();
 	}
 
 	override function update(elapsed:Float)
