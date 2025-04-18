@@ -2,22 +2,29 @@ package sap.worldmap;
 
 class CharacterSelect extends State
 {
-        public static var CHARACTER_LIST:Array<String> = [];
+	public static var CHARACTER_LIST:Array<String> = [];
 
-        override public function new() {
-                super();
+	override public function new()
+	{
+		super();
 
-                CHARACTER_LIST = [];
-                for (file in FileManager.readDirectory('assets/data/playable_characters'))
-                {
-                        CHARACTER_LIST.push(file.split('.')[0]);
-                }
-                trace(CHARACTER_LIST);
-        }
+		CHARACTER_LIST = [];
+		for (file in FileManager.readDirectory('assets/data/playable_characters'))
+		{
+			CHARACTER_LIST.push(file.split('.')[0]);
+		}
+		trace(CHARACTER_LIST);
+	}
 
 	override function create()
 	{
 		super.create();
+
+		var backdrop:FlxSprite = new FlxSprite();
+		backdrop.loadGraphic(FileManager.getImageFile('worldmap/character_select/back'));
+		add(backdrop);
+		Global.scaleSprite(backdrop);
+		backdrop.screenCenter();
 	}
 
 	override function update(elapsed:Float)
