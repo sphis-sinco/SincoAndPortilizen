@@ -13,5 +13,11 @@
 	"haxe.enableExtendedIndentation": true,
 	"vscord.app.privacyMode.enable": false,
 	"vscord.app.name": "Visual Studio Code",
-	"vscord.status.showElapsedTime": true
+        "vscord.status.showElapsedTime": true,
+        "github.copilot.enable": {
+                "*": false,
+                "plaintext": false,
+                "markdown": false,
+                "scminput": false
+        }
 }
