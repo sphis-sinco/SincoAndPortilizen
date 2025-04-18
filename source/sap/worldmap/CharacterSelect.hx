@@ -44,6 +44,7 @@ class CharacterSelect extends State
 
                 CHARACTER_ICON = new CharIcon('sinco');
                 add(CHARACTER_ICON);
+                CHARACTER_ICON.screenCenter();
 	}
 
 	override function update(elapsed:Float)
