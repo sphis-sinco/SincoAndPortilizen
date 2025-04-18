@@ -1,5 +1,6 @@
 {
         "character_display_name":"Portilizen",
+        "unlocked_when_loaded": false,
 
         "levels": 1,
         "level_number_offset": 0,
