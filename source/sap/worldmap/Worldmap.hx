@@ -79,7 +79,7 @@ class Worldmap extends State
 
 		controlManagement();
 
-                if (FlxG.mouse.overlaps(CHARACTER_SELECT_BUTTON) && FlxG.mouse.released)
+                if (FlxG.mouse.overlaps(CHARACTER_SELECT_BUTTON) && FlxG.mouse.justReleased)
                 {
                         Global.switchState(new CharacterSelect());
                 }
