@@ -1,7 +1,7 @@
 import re
 
 # Increase for every update to the file
-version = 12  # Incremented version
+version = 13  # Incremented version
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -51,7 +51,7 @@ if __name__ == "__main__":
                 package_name, function_list, variable_list = result
                 
                 dot = '.' if '' != package_name else ''
-                if dot is '.':
+                if dot == '.':
                         print(f"Package: {package_name}\n")
 
                 print(function_list)
