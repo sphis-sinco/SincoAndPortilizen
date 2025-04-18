@@ -28,13 +28,22 @@ class Global
 		var version:String = Application.VERSION;
 
 		if (SLGame.isDebug)
+		{
 			version += '-debug';
+		}
 		#if PLAYTESTER_BUILD version += '-playtest'; #end
+
+		if (SLGame.isDebug)
+		{
+			version += ' (commit: ${COMMIT_HASH})';
+		}
 
 		#if EXCESS_TRACES trace('Version: ${version}'); #end
 
 		return '${version}';
 	}
+
+	public static var COMMIT_HASH(default, never):String = Git.getGitCommitHash();
 
 	/**
 	 * This says if its a debug build
@@ -246,7 +255,7 @@ class Global
 
 	public static function switchState(new_state:FlxState):Void
 	{
-                FlxG.switchState(() -> new_state);
+		FlxG.switchState(() -> new_state);
 	}
 
 	public static function anyKeysPressed(keys:Array<FlxKey>):Bool
