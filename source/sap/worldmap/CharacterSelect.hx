@@ -38,7 +38,6 @@ class CharacterSelect extends State
 
                 CHARACTER_SELECTION_BOX = new CharSelector();
                 add(CHARACTER_SELECTION_BOX);
-                Global.scaleSprite(CHARACTER_SELECTION_BOX, -1);
                 CHARACTER_SELECTION_BOX.screenCenter();
 	}
 
