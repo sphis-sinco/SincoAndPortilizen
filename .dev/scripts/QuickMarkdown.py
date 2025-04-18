@@ -39,3 +39,4 @@ if __name__ == "__main__":
                 function_list, variable_list = result
                 print("\n" + function_list)
                 print("\n" + variable_list)
+                print("<!-- Generated (mostly) by QuickMarkdown.py -->")
