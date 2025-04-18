@@ -9,12 +9,12 @@ def parse_hx_file(file_path):
                 with open(file_path, 'r', encoding='utf-8') as file:
                         content = file.read()
         except FileNotFoundError:
-                print(f"File not found: {file_path}")
+                print(f'File not found: {file_path}')
                 return
 
         functions = []
         variables = []
-        package_name = ""  # Blank package if none is found
+        package_name = ''  # Blank package if none is found
 
         # Regex to match Haxe package declaration
         package_pattern = re.compile(r'^\s*package\s+([\w\.]+);', re.MULTILINE)
@@ -38,23 +38,23 @@ def parse_hx_file(file_path):
                 functions.extend(public_function_pattern.findall(content))
 
         # Filter out unwanted functions
-        ignored_functions = {"new", "create", "postCreate", "update"}
+        ignored_functions = {'new', 'create', 'postCreate', 'update'}
         functions = [func for func in functions if func not in ignored_functions]
 
         # Find all public static variables
         variables.extend(variable_pattern.findall(content))
 
         # Create the output strings
-        function_list = "# Functions\n" + "\n".join([f"- `{func}` - TBA" for func in functions])
-        variable_list = ""
+        function_list = '# Functions\n' + '\n'.join([f'- `{func}` - TBA' for func in functions])
+        variable_list = ''
         if variables:
-                variable_list = "# Variables\n" + "\n".join([f"- `{var}` - TBA" for var in variables])
+                variable_list = '# Variables\n' + '\n'.join([f'- `{var}` - TBA' for var in variables])
 
         return package_name, function_list, variable_list
 
 
-if __name__ == "__main__":
-        hx_file_path = input("Enter the path to the .hx file: ").strip()
+if __name__ == '__main__':
+        hx_file_path = input('Enter the path to the .hx file: ').strip()
         result = parse_hx_file(hx_file_path)
         file = hx_file_path.split('\\')[-1]
 
@@ -63,11 +63,11 @@ if __name__ == "__main__":
                 
                 dot = '.' if '' != package_name else ''
                 if dot == '.':
-                        print(f"Package: {package_name}\n")
+                        print(f'Package: {package_name}\n')
 
                 print(function_list)
 
                 if variable_list:  # Only print if there are variables
-                        print("\n" + variable_list)
+                        print('\n' + variable_list)
 
-                print(f"\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->")
+                print(f'\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->')
