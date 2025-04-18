@@ -21,6 +21,8 @@ class CharacterSelect extends State
 			CHARACTER_LIST.push(file.split('.')[0]);
 		}
 		trace(CHARACTER_LIST);
+                
+                CURRENT_SELECTION = CHARACTER_LIST.indexOf(Worldmap.CURRENT_PLAYER_CHARACTER);
 	}
 
 	override function create()
