@@ -1,7 +1,12 @@
 import re
 
 # Increase for every update to the file
-version = 19  # Incremented version
+version = 21  # Incremented version
+
+# Add your changes to this string here
+version_changes = """
+v21: Added version_changes variable to track changes to this script.
+"""
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -44,33 +49,21 @@ def parse_hx_file(file_path):
         # Find all public static variables
         variables.extend(variable_pattern.findall(content))
 
-        # Generate descriptions for functions and variables based on their usages
-        def generate_description(name, is_function=True):
-                # Find the code block where the function or variable is used/defined
-                pattern = re.compile(rf'\b{name}\b.*?;|{name}\s*\(.*?\)', re.DOTALL)
-                matches = pattern.findall(content)
-
-                if matches:
-                        # Use the first match to generate a description
-                        context = matches[0].strip()
-                        if is_function:
-                                return f"This function is used in the context: `{context}`."
-                        else:
-                                return f"This variable is defined or used in the context: `{context}`."
-                else:
-                        # Fallback to splitting camelCase or PascalCase into words
-                        words = re.findall(r'[A-Z]?[a-z]+|[A-Z]+(?=[A-Z]|$)', name)
-                        description = ' '.join(words).lower()
-                        return f"This represents {description}."
+        # Generate descriptions for functions and variables
+        def generate_description(name):
+                # Split camelCase or PascalCase into words
+                words = re.findall(r'[A-Z]?[a-z]+|[A-Z]+(?=[A-Z]|$)', name)
+                description = ' '.join(words).lower()
+                return f"This represents {description}."
 
         # Create the output strings
         function_list = '# Functions\n' + '\n'.join(
-                [f'- `{func}` - {generate_description(func, is_function=True)}' for func in functions]
+                [f'- `{func}` - {generate_description(func)}' for func in functions]
         )
         variable_list = ''
         if variables:
                 variable_list = '# Variables\n' + '\n'.join(
-                        [f'- `{var}` - {generate_description(var, is_function=False)}' for var in variables]
+                        [f'- `{var}` - {generate_description(var)}' for var in variables]
                 )
 
         return package_name, function_list, variable_list
@@ -94,3 +87,6 @@ if __name__ == '__main__':
                         print('\n' + variable_list)
 
                 print(f'\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->')
+
+        # Print version changes
+        print(f"<!-- \nVersion Changes:\n{version_changes} -->")
