@@ -1,10 +1,10 @@
 import re
 
 # Increase for every update to the file
-version = 23  # Incremented version
+version = 24  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v23: Added a condition to omit the # Functions section if no functions are found."""
+version_changes = """v24: Removed the generation of descriptions for functions and variables."""
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -47,24 +47,17 @@ def parse_hx_file(file_path):
         # Find all public static variables
         variables.extend(variable_pattern.findall(content))
 
-        # Generate descriptions for functions and variables
-        def generate_description(name):
-                # Split camelCase or PascalCase into words
-                words = re.findall(r'[A-Z]?[a-z]+|[A-Z]+(?=[A-Z]|$)', name)
-                description = ' '.join(words).lower()
-                return f"This represents {description}."
-
         # Create the output strings
         function_list = ''
         if functions:  # Only generate the function list if functions are found
                 function_list = '# Functions\n' + '\n'.join(
-                        [f'- `{func}` - {generate_description(func)}' for func in functions]
+                        [f'- `{func}`' for func in functions]
                 )
 
         variable_list = ''
         if variables:
                 variable_list = '# Variables\n' + '\n'.join(
-                        [f'- `{var}` - {generate_description(var)}' for var in variables]
+                        [f'- `{var}`' for var in variables]
                 )
 
         return package_name, function_list, variable_list
