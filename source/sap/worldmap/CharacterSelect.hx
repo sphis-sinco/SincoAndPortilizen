@@ -27,19 +27,7 @@ class CharacterSelect extends State
 
 			if (json.unlocked_when_loaded)
 			{
-				#if html5
-				if (!WebSave.CHARACTERS.contains(name))
-				#else
-				if (!FlxG.save.data.unlocked_characters.contains(name))
-				#end
-				{
-					#if html5
-					WebSave.CHARACTERS.push(name);
-					#else
-					FlxG.save.data.unlocked_characters.push(name);
-					#end
-                                        trace('Unlocked: ${name}');
-				}
+				unlockCharacter(name);
 			}
 
 			CHARACTER_LIST.push(name);
@@ -47,6 +35,23 @@ class CharacterSelect extends State
 		trace(CHARACTER_LIST);
 
 		CURRENT_SELECTION = CHARACTER_LIST.indexOf(Worldmap.CURRENT_PLAYER_CHARACTER);
+	}
+
+	public static function unlockCharacter(name:String)
+	{
+		#if html5
+		if (!WebSave.CHARACTERS.contains(name))
+		#else
+		if (!FlxG.save.data.unlocked_characters.contains(name))
+		#end
+		{
+			#if html5
+			WebSave.CHARACTERS.push(name);
+			#else
+			FlxG.save.data.unlocked_characters.push(name);
+			#end
+			trace('Unlocked player character: ${name}');
+		}
 	}
 
 	override function create()
