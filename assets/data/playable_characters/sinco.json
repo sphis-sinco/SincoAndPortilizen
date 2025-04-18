@@ -1,5 +1,6 @@
 {
         "character_display_name":"Sinco",
+        "unlocked_when_loaded": true,
 
         "levels": 2,
         "level_number_offset": 0,

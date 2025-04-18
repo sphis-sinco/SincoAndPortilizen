@@ -14,10 +14,35 @@ class CharacterSelect extends State
 	{
 		super();
 
+		init();
+	}
+
+	public static function init()
+	{
 		CHARACTER_LIST = [];
 		for (file in FileManager.readDirectory('assets/data/playable_characters'))
 		{
-			CHARACTER_LIST.push(file.split('.')[0]);
+			final name:String = file.split('.')[0];
+			final json:PlayableCharacter = PlayableCharacterManager.readPlayableCharacterJSON(name);
+
+			if (json.unlocked_when_loaded)
+			{
+				#if html5
+				if (!WebSave.CHARACTERS.contains(name))
+				#else
+				if (!FlxG.save.data.unlocked_characters.contains(name))
+				#end
+				{
+					#if html5
+					WebSave.CHARACTERS.push(name);
+					#else
+					FlxG.save.data.unlocked_characters.push(name);
+					#end
+                                        trace('Unlocked: ${name}');
+				}
+			}
+
+			CHARACTER_LIST.push(name);
 		}
 		trace(CHARACTER_LIST);
 
@@ -39,8 +64,8 @@ class CharacterSelect extends State
 		CHARACTER_SELECTION_BOX = new CharSelector();
 		add(CHARACTER_SELECTION_BOX);
 		CHARACTER_SELECTION_BOX.screenCenter();
-                CHARACTER_SELECTION_BOX.x += 64 + 8;
-                CHARACTER_SELECTION_BOX.y -= 8;
+		CHARACTER_SELECTION_BOX.x += 64 + 8;
+		CHARACTER_SELECTION_BOX.y -= 8;
 
 		CHARACTER_ICON = new CharIcon(CHARACTER_LIST[CURRENT_SELECTION]);
 		add(CHARACTER_ICON);
@@ -64,7 +89,11 @@ class CharacterSelect extends State
 			if (CHARACTER_ICON.animation.name != 'idle')
 			{
 				CHARACTER_ICON.animation.play('idle', false, true);
-                                CHARACTER_SELECTION_BOX.animation.play('idle');
+			}
+
+			if (CHARACTER_SELECTION_BOX.animation.name != 'idle' && CHARACTER_SELECTION_BOX.animation.finished)
+			{
+				CHARACTER_SELECTION_BOX.animation.play('idle');
 			}
 		}
 
@@ -85,6 +114,26 @@ class CharacterSelect extends State
 
 			CHARACTER_ICON.character = CHARACTER_LIST[CURRENT_SELECTION];
 			CHARACTER_ICON.refresh();
+		}
+		else if (Global.keyJustReleased(ENTER))
+		{
+			var proceed:Bool = true;
+
+			#if html5
+			if (!WebSave.CHARACTERS.contains(CHARACTER_ICON.character))
+			#else
+			if (!SaveManager.getUnlockedCharacters().contains(CHARACTER_ICON.character))
+			#end
+			{
+				trace('Locked character');
+				proceed = false;
+				CHARACTER_SELECTION_BOX.animation.play('cant-select');
+			}
+
+			if (Worldmap.CURRENT_PLAYER_CHARACTER != CHARACTER_ICON.character && proceed)
+			{
+				Worldmap.CURRENT_PLAYER_CHARACTER = CHARACTER_ICON.character;
+			}
 		}
 	}
 }
