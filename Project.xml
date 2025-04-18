@@ -48,16 +48,6 @@
         <!-- Portuguese (Brazil) -->
         <language name="pt-BR" />
 
-        <!-- _________________________________ Before _______________________________ -->
-
-        <set name="buildOrTest" if="${project.command == build} || ${project.command == test}" />
-        <echo value="Building for ${project.target} on a ${project.host} machine" if="buildOrTest" />
-
-        <echo value="DEBUG BUILD" if="debug" />
-        <echo value="${BUILD_DIR}" />
-
-        <echo value="EXCESS_TRACES" if="EXCESS_TRACES" />
-
         <!-- _____________________________ Custom Defines ___________________________ -->
 
         <define name="openfl-enable-handle-error" /> <!-- Required for Crash Handler -->
@@ -70,31 +60,9 @@
 
         <define name="DISABLE_PLUGINS" if="mobile" />
 
-        <section if="DISABLE_PLUGINS">
-                <echo value="plugins disabled via DISABLE_PLUGINS" unless="mobile" />
-                <echo value="plugins disabled on mobile" if="mobile" />
-        </section>
-
         <define name="DISABLE_SCREENSHOTS" if="html5 || mobile || DISABLE_PLUGINS" />
 
-        <section if="DISABLE_SCREENSHOTS">
-                <echo value="screenshots disabled via DISABLE_SCREENSHOTS"
-                        unless="html5 || mobile || DISABLE_PLUGINS" />
-
-                <echo value="screenshots disabled via DISABLE_PLUGINS" if="DISABLE_PLUGINS" />
-                <echo value="screenshots disabled on html5" if="html5"
-                        unless="DISABLE_PLUGINS || mobile" />
-                <echo value="screenshots disabled on mobile" if="mobile"
-                        unless="DISABLE_PLUGINS || html5" />
-        </section>
-
         <define name="DISCORDRPC" if="windows" unless="hl" />
-
-        <section if="DISCORDRPC">
-                <echo value="discord rpc enabled via DISCORDRPC" unless="windows" />
-
-                <echo value="discord rpc enabled on windows" if="windows" />
-        </section>
 
         <!-- _______________________________ Libraries ______________________________ -->
 
@@ -114,8 +82,6 @@
         <!-- _________________________________ After _______________________________ -->
 
         <error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile" />
-
-        <echo value="discord rpc disabled" unless="windows || DISCORDRPC" />
 
         <assets path="mods" if="SCRIPT_FILES" />
         <section if="SCRIPT_FILES">

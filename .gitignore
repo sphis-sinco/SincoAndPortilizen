@@ -8,3 +8,5 @@ source/NDA/
 RECOVER_**.fla
 
 *.mp4
+
+checkstyle.json
