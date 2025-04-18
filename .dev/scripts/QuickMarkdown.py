@@ -1,10 +1,10 @@
 import re
 
 # Increase for every update to the file
-version = 22  # Incremented version
+version = 23  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v22: Removed uneeded line breaks in the output for the version changes."""
+version_changes = """v23: Added a condition to omit the # Functions section if no functions are found."""
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -55,9 +55,12 @@ def parse_hx_file(file_path):
                 return f"This represents {description}."
 
         # Create the output strings
-        function_list = '# Functions\n' + '\n'.join(
-                [f'- `{func}` - {generate_description(func)}' for func in functions]
-        )
+        function_list = ''
+        if functions:  # Only generate the function list if functions are found
+                function_list = '# Functions\n' + '\n'.join(
+                        [f'- `{func}` - {generate_description(func)}' for func in functions]
+                )
+
         variable_list = ''
         if variables:
                 variable_list = '# Variables\n' + '\n'.join(
@@ -79,7 +82,8 @@ if __name__ == '__main__':
                 if dot == '.':
                         print(f'Package: {package_name}\n')
 
-                print(function_list)
+                if function_list:  # Only print if there are functions
+                        print(function_list)
 
                 if variable_list:  # Only print if there are variables
                         print('\n' + variable_list)
