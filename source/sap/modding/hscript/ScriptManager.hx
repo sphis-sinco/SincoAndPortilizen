@@ -62,6 +62,7 @@ class ScriptManager
                 
 
 		// import stuff
+<<<<<<< HEAD
 		#if sys
 		setScript('FileSystem', FileSystem);
 		setScript('File', File);
@@ -69,6 +70,15 @@ class ScriptManager
 		#if DISCORDRPC
 		setScript('DiscordClient', Discord.DiscordClient);
 		#end
+=======
+                #if sys
+                setScript('FileSystem', FileSystem);
+                setScript('File', File);
+                #end
+                #if DISCORDRPC
+                setScript('DiscordClient', Discord.DiscordClient);
+                #end
+>>>>>>> 781357c1f1efb9a48ab96e68bc9b6d17391f6acb
 
 		setScript('Global', Global);
 
