@@ -59,10 +59,7 @@ class ScriptManager
 			});
 		}
 
-                
-
 		// import stuff
-<<<<<<< HEAD
 		#if sys
 		setScript('FileSystem', FileSystem);
 		setScript('File', File);
@@ -70,15 +67,6 @@ class ScriptManager
 		#if DISCORDRPC
 		setScript('DiscordClient', Discord.DiscordClient);
 		#end
-=======
-                #if sys
-                setScript('FileSystem', FileSystem);
-                setScript('File', File);
-                #end
-                #if DISCORDRPC
-                setScript('DiscordClient', Discord.DiscordClient);
-                #end
->>>>>>> 781357c1f1efb9a48ab96e68bc9b6d17391f6acb
 
 		setScript('Global', Global);
 
@@ -89,16 +77,19 @@ class ScriptManager
 
 		setScript('BlankBG', BlankBG);
 
-                // functions
-		setScript('UnlockMedal', function(medal:String):Medal {
-                        return MedalData.unlockMedal(medal);
-                });
-		setScript('PlaySFX', function(soundEffect:String, PATH_TYPE:PathTypes):Void {
-                        Global.playSoundEffect(soundEffect, PATH_TYPE);
-                });
-		setScript('PlayMusic', function(filename:String, ?volume:Float = 1.0, ?loop:Bool = false):Void {
-                        Global.playMusic(filename, volume, loop);
-                });
+		// functions
+		setScript('UnlockMedal', function(medal:String):Medal
+		{
+			return MedalData.unlockMedal(medal);
+		});
+		setScript('PlaySFX', function(soundEffect:String, PATH_TYPE:PathTypes):Void
+		{
+			Global.playSoundEffect(soundEffect, PATH_TYPE);
+		});
+		setScript('PlayMusic', function(filename:String, ?volume:Float = 1.0, ?loop:Bool = false):Void
+		{
+			Global.playMusic(filename, volume, loop);
+		});
 
 		// init mod
 		ScriptManager.callScript('initalizeMod');
