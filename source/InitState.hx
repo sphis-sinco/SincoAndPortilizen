@@ -73,6 +73,7 @@ class InitState extends FlxState
 			#end
 
 			CreditsSubState.creditsJSONInit();
+                        CharacterSelect.init();
 
 			// PaulPortGameOver.init();
 		});

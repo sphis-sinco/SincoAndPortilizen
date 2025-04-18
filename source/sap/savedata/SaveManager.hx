@@ -15,6 +15,7 @@ class SaveManager
 		FlxG.save.data.results ??= getDefaultSave().results;
 		FlxG.save.data.gameplaystatus ??= getDefaultSave().gameplaystatus;
 		FlxG.save.data.medals ??= getDefaultSave().medals;
+		FlxG.save.data.unlocked_characters ??= getDefaultSave().unlocked_characters;
 		FlxG.save.data.enabled_mods ??= getDefaultSave().enabled_mods;
 
 		// run these functions to make sure no null vals
@@ -36,6 +37,7 @@ class SaveManager
 			results: Results.returnDefaultResults(),
 			gameplaystatus: GameplayStatus.returnDefaultGameplayStatus(),
 			medals: [],
+			unlocked_characters: [],
 			enabled_mods: []
 		}
 	}
@@ -65,6 +67,11 @@ class SaveManager
 		return FlxG.save.data.medals;
 	}
 
+	public static function getUnlockedCharacters():Dynamic
+	{
+		return FlxG.save.data.unlocked_characters;
+	}
+
 	public static function getEnabledMods():Dynamic
 	{
 		return FlxG.save.data.enabled_mods;
@@ -74,7 +81,7 @@ class SaveManager
 	{
 		TryCatch.tryCatch(function()
 		{
-                        FlxG.save.flush();
+			FlxG.save.flush();
 		}, {
 				traceErr: true
 		});
