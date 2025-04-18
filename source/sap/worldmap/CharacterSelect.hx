@@ -4,12 +4,12 @@ class CharacterSelect extends State
 {
 	public static var CHARACTER_LIST:Array<String> = [];
 
-        public static var CURRENT_SELECTION:Int = 0;
+	public static var CURRENT_SELECTION:Int = 0;
 
 	public static var CHARACTER_BOX:CharSelector;
 	public static var CHARACTER_SELECTION_BOX:CharSelector;
 
-        public static var CHARACTER_ICON:CharIcon;
+	public static var CHARACTER_ICON:CharIcon;
 
 	override public function new()
 	{
@@ -40,36 +40,49 @@ class CharacterSelect extends State
 		CHARACTER_BOX.playAnimation('blank');
 		CHARACTER_BOX.screenCenter();
 
-                CHARACTER_ICON = new CharIcon('sinco');
-                add(CHARACTER_ICON);
-                CHARACTER_ICON.screenCenter();
-                CHARACTER_ICON.x -= 32;
+                CHARACTER_ICON = new CharIcon(CHARACTER_LIST[CURRENT_SELECTION]);
+		add(CHARACTER_ICON);
+		CHARACTER_ICON.screenCenter();
+		CHARACTER_ICON.x -= 32;
 
-                CHARACTER_SELECTION_BOX = new CharSelector();
-                add(CHARACTER_SELECTION_BOX);
-                CHARACTER_SELECTION_BOX.screenCenter();
+		CHARACTER_SELECTION_BOX = new CharSelector();
+		add(CHARACTER_SELECTION_BOX);
+		CHARACTER_SELECTION_BOX.screenCenter();
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-                if (Worldmap.CURRENT_PLAYER_CHARACTER == CHARACTER_ICON.character)
-                {
-                        if (CHARACTER_ICON.animation.name != 'confirm') CHARACTER_ICON.animation.play('confirm');
-                } else {
-                        if (CHARACTER_ICON.animation.name != 'idle') CHARACTER_ICON.animation.play('idle', false, true);
-                }
+		if (Worldmap.CURRENT_PLAYER_CHARACTER == CHARACTER_ICON.character)
+		{
+			if (CHARACTER_ICON.animation.name != 'confirm')
+				CHARACTER_ICON.animation.play('confirm');
+		}
+		else
+		{
+			if (CHARACTER_ICON.animation.name != 'idle')
+				CHARACTER_ICON.animation.play('idle', false, true);
+		}
 
-                if (Global.anyKeysJustReleased([LEFT, RIGHT]))
-                {
-                        final left:Bool = Global.keyJustReleased(LEFT);
+		if (Global.anyKeysJustReleased([LEFT, RIGHT]))
+		{
+			final left:Bool = Global.keyJustReleased(LEFT);
 
-                        if (left)
-                        {
+			CURRENT_SELECTION += (left) ? -1 : 1;
 
-                        }
-                }
+			if (CURRENT_SELECTION < 0)
+			{
+				CURRENT_SELECTION = 0;
+			}
+			else if (CURRENT_SELECTION > CHARACTER_LIST.length - 1)
+			{
+				CURRENT_SELECTION = CHARACTER_LIST.length - 1;
+			}
+
+                        CHARACTER_ICON.character = CHARACTER_LIST[CURRENT_SELECTION];
+                        CHARACTER_ICON.refresh();
+		}
 	}
 }
 
