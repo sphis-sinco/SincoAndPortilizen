@@ -1,10 +1,11 @@
 import re
+import os
 
 # Increase for every update to the file
-version = 28  # Incremented version
+version = 29  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v28: Removed the printing of function references and variable references."""
+version_changes = """v29: Added folder processing to parse all .hx files and generate markdown with headers."""
 
 # This script parses a Haxe (.hx) file to extract function and variable names and their references.
 def parse_hx_file(file_path):
@@ -44,38 +45,69 @@ def parse_hx_file(file_path):
         # Create the output strings
         function_list = ''
         if functions:  # Only generate the function list if functions are found
-                function_list = '# Functions\n' + '\n'.join(
+                function_list = '## Functions\n' + '\n'.join(
                         [f'- `{func}` - TBA' for func in functions]
                 )
 
         variable_list = ''
         if variables:
-                variable_list = '# Variables\n' + '\n'.join(
+                variable_list = '## Variables\n' + '\n'.join(
                         [f'- `{var}` - TBA' for var in variables]
                 )
 
         return package_name, function_list, variable_list
 
 
+def process_folder(folder_path):
+        # Iterate through all files in the folder
+        for root, _, files in os.walk(folder_path):
+                for file in files:
+                        if file.endswith('.hx'):  # Check for Haxe files
+                                file_path = os.path.join(root, file)
+                                result = parse_hx_file(file_path)
+                                if result:
+                                        package_name, function_list, variable_list = result
+                                        print(f'# {file}\n')  # Markdown header 1 for the file name
+
+                                        dot = '.' if package_name else ''
+                                        if package_name:
+                                                print(f'Package: {package_name}\n')
+
+                                        if function_list:  # Only print if there are functions
+                                                print(function_list)
+
+                                        if variable_list:  # Only print if there are variables
+                                                print('\n' + variable_list)
+
+                                        print(f'\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->\n')
+
+
 if __name__ == '__main__':
-        hx_file_path = input('Enter the path to the .hx file: ').strip()
-        result = parse_hx_file(hx_file_path)
-        file = hx_file_path.split('\\')[-1]
+        mode = input('Enter "file" to process a single file or "folder" to process a folder: ').strip().lower()
+        if mode == 'file':
+                hx_file_path = input('Enter the path to the .hx file: ').strip()
+                result = parse_hx_file(hx_file_path)
+                file = hx_file_path.split('\\')[-1]
 
-        if result:
-                package_name, function_list, variable_list = result
-                
-                dot = '.' if '' != package_name else ''
-                if dot == '.':
-                        print(f'Package: {package_name}\n')
+                if result:
+                        package_name, function_list, variable_list = result
 
-                if function_list:  # Only print if there are functions
-                        print(function_list)
+                        dot = '.' if package_name else ''
+                        if package_name:
+                                print(f'# {file}\n')  # Markdown header 1 for the file name
+                                print(f'Package: {package_name}\n')
 
-                if variable_list:  # Only print if there are variables
-                        print('\n' + variable_list)
+                        if function_list:  # Only print if there are functions
+                                print(function_list)
 
-                print(f'\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->')
+                        if variable_list:  # Only print if there are variables
+                                print('\n' + variable_list)
+
+                        print(f'\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->')
+
+        elif mode == 'folder':
+                folder_path = input('Enter the path to the folder: ').strip()
+                process_folder(folder_path)
 
         # Print version changes
         print(f"<!-- Version Changes: {version_changes} -->")
