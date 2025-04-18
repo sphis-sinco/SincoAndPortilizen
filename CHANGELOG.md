@@ -1,17 +1,8 @@
 # Alpha
-## Unreleased
-- Modding API version is now `0.1.4`
-  - Removed custom variables for different classes in `ScriptManager` except for a few (using import has been found to work)
-  - Scripts should no longer be loaded multiple times
-  - Loaded scripts get traced once more
-  - Scripts no longer have to be at the root or in only 1 sub-folder of the scripts folder in mods or in the assets folder
-- FileManager uses PosInfos for several functions
-- `DONT_RECOMPILE_ON_ASSET_UPDATE` build flag
-- `RECOMPILE_ON_ASSET_UPDATE` build flag
-- Worldmap overhaul
-
 ## 0.5.0a - 4/??/2025
 ### Added
+- `DONT_RECOMPILE_ON_ASSET_UPDATE` build flag
+- `RECOMPILE_ON_ASSET_UPDATE` build flag
 - `NO_MODS` build flag
 - (Desktop only) New window resolution option: 1280x720 ([#34][#34_link])
 - (Source) Global now has functions related to keys being pressed, just released, and just pressed
@@ -21,11 +12,19 @@
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - (Web only) Pixel perfect rendering ([#27][#27_link])
 ### Fixed
+- "Sinco's cool mod" now works fully
 - Volume settings now get saved ([#35][#35_link])
 - Mods not being added to ENABLED_MODS when the Mod save data is null
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 - Fixed missing worldmap character assets
 ### Changed
+- Modding API version is now `0.1.4`
+  - Removed custom variables for different classes in `ScriptManager` except for a few (using import has been found to work)
+  - Scripts should no longer be loaded multiple times
+  - Loaded scripts get traced once more
+  - Scripts no longer have to be at the root or in only 1 sub-folder of the scripts folder in mods or in the assets folder
+- FileManager uses PosInfos for several functions
+- Worldmap overhaul
 - (Source) Using `Global.DEBUG_BUILD` instead of `SLGame.isDebug`
 - The volume now is set as the last saved audio setting
 - (Source) Instead of using `FlxG.keys.` every file uses one of the `Global.key` functions
