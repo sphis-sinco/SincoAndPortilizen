@@ -4,6 +4,8 @@ class CharacterSelect extends State
 {
 	public static var CHARACTER_LIST:Array<String> = [];
 
+        public static var CURRENT_SELECTION:Int = 0;
+
 	public static var CHARACTER_BOX:CharSelector;
 	public static var CHARACTER_SELECTION_BOX:CharSelector;
 
@@ -41,6 +43,7 @@ class CharacterSelect extends State
                 CHARACTER_ICON = new CharIcon('sinco');
                 add(CHARACTER_ICON);
                 CHARACTER_ICON.screenCenter();
+                CHARACTER_ICON.x -= 32;
 
                 CHARACTER_SELECTION_BOX = new CharSelector();
                 add(CHARACTER_SELECTION_BOX);
@@ -56,6 +59,16 @@ class CharacterSelect extends State
                         if (CHARACTER_ICON.animation.name != 'confirm') CHARACTER_ICON.animation.play('confirm');
                 } else {
                         if (CHARACTER_ICON.animation.name != 'idle') CHARACTER_ICON.animation.play('idle', false, true);
+                }
+
+                if (Global.anyKeysJustReleased([LEFT, RIGHT]))
+                {
+                        final left:Bool = Global.keyJustReleased(LEFT);
+
+                        if (left)
+                        {
+
+                        }
                 }
 	}
 }
