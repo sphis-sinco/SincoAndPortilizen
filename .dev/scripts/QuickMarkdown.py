@@ -1,7 +1,7 @@
 import re
 
 # Increase for every update to the file
-version = 6
+version = 7
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -40,4 +40,4 @@ if __name__ == "__main__":
                 function_list, variable_list = result
                 print("\n" + function_list)
                 print("\n" + variable_list)
-                print(f"<!-- Generated (mostly) by QuickMarkdown.py v{version} -->")
+                print(f"\n<!-- Generated (mostly) by QuickMarkdown.py v{version} -->")
