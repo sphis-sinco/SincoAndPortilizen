@@ -1,7 +1,7 @@
 import re
 
 # Increase for every update to the file
-version = 16  # Incremented version
+version = 19  # Incremented version
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -44,11 +44,34 @@ def parse_hx_file(file_path):
         # Find all public static variables
         variables.extend(variable_pattern.findall(content))
 
+        # Generate descriptions for functions and variables based on their usages
+        def generate_description(name, is_function=True):
+                # Find the code block where the function or variable is used/defined
+                pattern = re.compile(rf'\b{name}\b.*?;|{name}\s*\(.*?\)', re.DOTALL)
+                matches = pattern.findall(content)
+
+                if matches:
+                        # Use the first match to generate a description
+                        context = matches[0].strip()
+                        if is_function:
+                                return f"This function is used in the context: `{context}`."
+                        else:
+                                return f"This variable is defined or used in the context: `{context}`."
+                else:
+                        # Fallback to splitting camelCase or PascalCase into words
+                        words = re.findall(r'[A-Z]?[a-z]+|[A-Z]+(?=[A-Z]|$)', name)
+                        description = ' '.join(words).lower()
+                        return f"This represents {description}."
+
         # Create the output strings
-        function_list = '# Functions\n' + '\n'.join([f'- `{func}` - TBA' for func in functions])
+        function_list = '# Functions\n' + '\n'.join(
+                [f'- `{func}` - {generate_description(func, is_function=True)}' for func in functions]
+        )
         variable_list = ''
         if variables:
-                variable_list = '# Variables\n' + '\n'.join([f'- `{var}` - TBA' for var in variables])
+                variable_list = '# Variables\n' + '\n'.join(
+                        [f'- `{var}` - {generate_description(var, is_function=False)}' for var in variables]
+                )
 
         return package_name, function_list, variable_list
 
