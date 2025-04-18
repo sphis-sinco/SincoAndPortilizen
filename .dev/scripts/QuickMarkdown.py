@@ -1,12 +1,10 @@
 import re
 
 # Increase for every update to the file
-version = 21  # Incremented version
+version = 22  # Incremented version
 
 # Add your changes to this string here
-version_changes = """
-v21: Added version_changes variable to track changes to this script.
-"""
+version_changes = """v22: Removed uneeded line breaks in the output for the version changes."""
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -89,4 +87,4 @@ if __name__ == '__main__':
                 print(f'\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->')
 
         # Print version changes
-        print(f"<!-- \nVersion Changes:\n{version_changes} -->")
+        print(f"<!-- Version Changes: {version_changes} -->")
