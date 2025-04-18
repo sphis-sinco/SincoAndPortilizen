@@ -7,7 +7,7 @@ class CharacterSelect extends State
 	public static var CHARACTER_BOX:CharSelector;
 	public static var CHARACTER_SELECTION_BOX:CharSelector;
 
-        public static var CHARACTER_ICON:FlxSprite;
+        public static var CHARACTER_ICON:CharIcon;
 
 	override public function new()
 	{
@@ -50,6 +50,13 @@ class CharacterSelect extends State
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+                if (Worldmap.CURRENT_PLAYER_CHARACTER == CHARACTER_ICON.character)
+                {
+                        if (CHARACTER_ICON.animation.name != 'confirm') CHARACTER_ICON.animation.play('confirm');
+                } else {
+                        if (CHARACTER_ICON.animation.name != 'idle') CHARACTER_ICON.animation.play('idle', false, true);
+                }
 	}
 }
 
