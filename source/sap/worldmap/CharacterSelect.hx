@@ -7,6 +7,8 @@ class CharacterSelect extends State
 	public static var CHARACTER_BOX:CharSelector;
 	public static var CHARACTER_SELECTION_BOX:CharSelector;
 
+        public static var CHARACTER_ICON:FlxSprite;
+
 	override public function new()
 	{
 		super();
@@ -39,6 +41,9 @@ class CharacterSelect extends State
                 CHARACTER_SELECTION_BOX = new CharSelector();
                 add(CHARACTER_SELECTION_BOX);
                 CHARACTER_SELECTION_BOX.screenCenter();
+
+                CHARACTER_ICON = new CharIcon('sinco');
+                add(CHARACTER_ICON);
 	}
 
 	override function update(elapsed:Float)
