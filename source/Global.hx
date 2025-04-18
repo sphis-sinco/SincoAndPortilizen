@@ -33,17 +33,10 @@ class Global
 		}
 		#if PLAYTESTER_BUILD version += '-playtest'; #end
 
-		if (SLGame.isDebug)
-		{
-			version += ' (commit: ${COMMIT_HASH})';
-		}
-
 		#if EXCESS_TRACES trace('Version: ${version}'); #end
 
 		return '${version}';
 	}
-
-	public static var COMMIT_HASH(default, never):String = Git.getGitCommitHash();
 
 	/**
 	 * This says if its a debug build
