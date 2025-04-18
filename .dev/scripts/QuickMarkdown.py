@@ -1,10 +1,10 @@
 import re
 
 # Increase for every update to the file
-version = 24  # Incremented version
+version = 25  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v24: Removed the generation of descriptions for functions and variables."""
+version_changes = """v25: Added back the \"- TBA\" to the variable and function descriptions"""
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -51,13 +51,13 @@ def parse_hx_file(file_path):
         function_list = ''
         if functions:  # Only generate the function list if functions are found
                 function_list = '# Functions\n' + '\n'.join(
-                        [f'- `{func}`' for func in functions]
+                        [f'- `{func}` - TBA' for func in functions]
                 )
 
         variable_list = ''
         if variables:
                 variable_list = '# Variables\n' + '\n'.join(
-                        [f'- `{var}`' for var in variables]
+                        [f'- `{var}` - TBA' for var in variables]
                 )
 
         return package_name, function_list, variable_list
