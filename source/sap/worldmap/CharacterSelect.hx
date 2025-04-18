@@ -38,13 +38,13 @@ class CharacterSelect extends State
 		CHARACTER_BOX.playAnimation('blank');
 		CHARACTER_BOX.screenCenter();
 
-                CHARACTER_SELECTION_BOX = new CharSelector();
-                add(CHARACTER_SELECTION_BOX);
-                CHARACTER_SELECTION_BOX.screenCenter();
-
                 CHARACTER_ICON = new CharIcon('sinco');
                 add(CHARACTER_ICON);
                 CHARACTER_ICON.screenCenter();
+
+                CHARACTER_SELECTION_BOX = new CharSelector();
+                add(CHARACTER_SELECTION_BOX);
+                CHARACTER_SELECTION_BOX.screenCenter();
 	}
 
 	override function update(elapsed:Float)
