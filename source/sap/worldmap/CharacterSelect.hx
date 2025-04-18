@@ -36,14 +36,14 @@ class CharacterSelect extends State
 		Global.scaleSprite(backdrop);
 		backdrop.screenCenter();
 
-		CHARACTER_ICON = new CharIcon(CHARACTER_LIST[CURRENT_SELECTION]);
-		add(CHARACTER_ICON);
-		CHARACTER_ICON.screenCenter();
-		CHARACTER_ICON.x -= 32;
-
 		CHARACTER_SELECTION_BOX = new CharSelector();
 		add(CHARACTER_SELECTION_BOX);
 		CHARACTER_SELECTION_BOX.screenCenter();
+                CHARACTER_SELECTION_BOX.x += 64;
+
+		CHARACTER_ICON = new CharIcon(CHARACTER_LIST[CURRENT_SELECTION]);
+		add(CHARACTER_ICON);
+		CHARACTER_ICON.screenCenter();
 	}
 
 	override function update(elapsed:Float)
