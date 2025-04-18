@@ -1,5 +1,7 @@
 package sap.worldmap;
 
+import sap.mainmenu.PlayMenu;
+
 class Worldmap extends State
 {
 	public static var CURRENT_PLAYER_CHARACTER:String = 'sinco';
@@ -135,6 +137,10 @@ class Worldmap extends State
 				CURRENT_PLAYER_CHARACTER,
 				CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET
 			]);
+		}
+		else if (Global.keyJustReleased(ESCAPE))
+		{
+			Global.switchState(new PlayMenu());
 		}
 	}
 }

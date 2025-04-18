@@ -140,6 +140,10 @@ class CharacterSelect extends State
 				Worldmap.CURRENT_PLAYER_CHARACTER = CHARACTER_ICON.character;
 			}
 		}
+		else if (Global.keyJustReleased(ESCAPE))
+		{
+			Global.switchState(new Worldmap(Worldmap.CURRENT_PLAYER_CHARACTER));
+		}
 	}
 }
 
