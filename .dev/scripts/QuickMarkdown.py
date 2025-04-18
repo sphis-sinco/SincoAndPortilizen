@@ -2,10 +2,10 @@ import re
 import os
 
 # Increase for every update to the file
-version = 35  # Incremented version
+version = 36  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v34: Exclude files without functions or variables from folder mode output. v35: Added a line break between file headers."""
+version_changes = """v36 Removed uneeded package printing"""
 
 # This script parses a Haxe (.hx) file to extract function and variable names and their references.
 def parse_hx_file(file_path, folder_mode):
@@ -73,9 +73,6 @@ def process_folder(folder_path):
                                 if function_list or variable_list:
                                         print(f'\n# {file}\n')  # Markdown header 1 for the file name
 
-                                        if package_name:
-                                                print(f'Package: {package_name}\n')
-
                                         if function_list:  # Only print if there are functions
                                                 print(function_list)
 
@@ -98,7 +95,6 @@ if __name__ == '__main__':
 
                         if package_name:
                                 print(f'# {file}\n')  # Markdown header 1 for the file name
-                                print(f'Package: {package_name}\n')
 
                         if function_list:  # Only print if there are functions
                                 print(function_list)
