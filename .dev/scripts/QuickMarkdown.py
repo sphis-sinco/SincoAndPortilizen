@@ -2,10 +2,10 @@ import re
 import os
 
 # Increase for every update to the file
-version = 33  # Incremented version
+version = 35  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v33: Fix crashes when trying to parse haxe files."""
+version_changes = """v34: Exclude files without functions or variables from folder mode output. v35: Added a line break between file headers."""
 
 # This script parses a Haxe (.hx) file to extract function and variable names and their references.
 def parse_hx_file(file_path, folder_mode):
@@ -68,16 +68,19 @@ def process_folder(folder_path):
                         result = parse_hx_file(file_path, True)
                         if result:
                                 package_name, function_list, variable_list = result
-                                print(f'# {file}\n')  # Markdown header 1 for the file name
 
-                                if package_name:
-                                        print(f'Package: {package_name}\n')
+                                # Only include files with functions or variables
+                                if function_list or variable_list:
+                                        print(f'\n# {file}\n')  # Markdown header 1 for the file name
 
-                                if function_list:  # Only print if there are functions
-                                        print(function_list)
+                                        if package_name:
+                                                print(f'Package: {package_name}\n')
 
-                                if variable_list:  # Only print if there are variables
-                                        print('\n' + variable_list)
+                                        if function_list:  # Only print if there are functions
+                                                print(function_list)
+
+                                        if variable_list:  # Only print if there are variables
+                                                print('\n' + variable_list)
 
         # Add a summary comment at the end of folder processing
         print(f"\n<!-- Folder markdown file generated (mostly) by QuickMarkdown.py v{version} -->")
