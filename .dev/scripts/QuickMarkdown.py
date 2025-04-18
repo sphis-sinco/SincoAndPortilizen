@@ -2,10 +2,10 @@ import re
 import os
 
 # Increase for every update to the file
-version = 36  # Incremented version
+version = 37  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v36 Removed uneeded package printing"""
+version_changes = """v37 Updated "Folder markdown file" to include the actual folder path"""
 
 # This script parses a Haxe (.hx) file to extract function and variable names and their references.
 def parse_hx_file(file_path, folder_mode):
@@ -79,8 +79,9 @@ def process_folder(folder_path):
                                         if variable_list:  # Only print if there are variables
                                                 print('\n' + variable_list)
 
+        print_folder_path = folder_path.split('\\')[-1]
         # Add a summary comment at the end of folder processing
-        print(f"\n<!-- Folder markdown file generated (mostly) by QuickMarkdown.py v{version} -->")
+        print(f"\n<!-- {print_folder_path} markdown file generated (mostly) by QuickMarkdown.py v{version} -->")
 
 
 if __name__ == '__main__':
