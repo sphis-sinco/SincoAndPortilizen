@@ -22,8 +22,8 @@ def parse_hx_file(file_path):
         variables.extend(variable_pattern.findall(content))
 
         # Create the output strings
-        function_list = "## Functions:\n" + "\n".join([f"- `{func}`" for func in functions])
-        variable_list = "## Variables:\n" + "\n".join([f"- `{var}`" for var in variables])
+        function_list = "# Functions\n" + "\n".join([f"- `{func}`" for func in functions]) + " - TBA"
+        variable_list = "# Variables\n" + "\n".join([f"- `{var}`" for var in variables]) + " - TBA"
 
         return function_list, variable_list
 
