@@ -18,7 +18,7 @@ class CharIcon extends FlxSprite
 		loadGraphic(FileManager.getImageFile('worldmap/character_select/icon-${this.character}'), true, 64, 64);
 
 		animation.add('idle', [0], 0, false);
-		animation.add('confirm', [1, 2, 2, 3], 24, false);
+		animation.add('confirm', [0, 1, 2, 2, 3], 24, false);
 
 		Global.scaleSprite(this, -2);
 	}
