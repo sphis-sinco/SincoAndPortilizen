@@ -10,6 +10,6 @@ class CharIcon extends FlxSprite
                 animation.add('idle', [0], 0, false);
                 animation.add('confirm', [1,2,2,3], 24, false);
 
-                Global.scaleSprite(this);
+                Global.scaleSprite(this, -2);
         }
 }
