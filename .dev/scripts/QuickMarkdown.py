@@ -1,7 +1,7 @@
 import re
 
 # Increase for every update to the file
-version = 15  # Incremented version
+version = 16  # Incremented version
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -36,6 +36,10 @@ def parse_hx_file(file_path):
         # If no public static functions are found, check for public functions
         if not functions:
                 functions.extend(public_function_pattern.findall(content))
+
+        # Filter out unwanted functions
+        ignored_functions = {"new", "create", "postCreate", "update"}
+        functions = [func for func in functions if func not in ignored_functions]
 
         # Find all public static variables
         variables.extend(variable_pattern.findall(content))
