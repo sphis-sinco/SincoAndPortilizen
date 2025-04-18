@@ -6,7 +6,6 @@ class CharacterSelect extends State
 
 	public static var CURRENT_SELECTION:Int = 0;
 
-	public static var CHARACTER_BOX:CharSelector;
 	public static var CHARACTER_SELECTION_BOX:CharSelector;
 
 	public static var CHARACTER_ICON:CharIcon;
@@ -21,8 +20,8 @@ class CharacterSelect extends State
 			CHARACTER_LIST.push(file.split('.')[0]);
 		}
 		trace(CHARACTER_LIST);
-                
-                CURRENT_SELECTION = CHARACTER_LIST.indexOf(Worldmap.CURRENT_PLAYER_CHARACTER);
+
+		CURRENT_SELECTION = CHARACTER_LIST.indexOf(Worldmap.CURRENT_PLAYER_CHARACTER);
 	}
 
 	override function create()
@@ -37,12 +36,7 @@ class CharacterSelect extends State
 		Global.scaleSprite(backdrop);
 		backdrop.screenCenter();
 
-		CHARACTER_BOX = new CharSelector();
-		add(CHARACTER_BOX);
-		CHARACTER_BOX.playAnimation('blank');
-		CHARACTER_BOX.screenCenter();
-
-                CHARACTER_ICON = new CharIcon(CHARACTER_LIST[CURRENT_SELECTION]);
+		CHARACTER_ICON = new CharIcon(CHARACTER_LIST[CURRENT_SELECTION]);
 		add(CHARACTER_ICON);
 		CHARACTER_ICON.screenCenter();
 		CHARACTER_ICON.x -= 32;
@@ -59,12 +53,18 @@ class CharacterSelect extends State
 		if (Worldmap.CURRENT_PLAYER_CHARACTER == CHARACTER_ICON.character)
 		{
 			if (CHARACTER_ICON.animation.name != 'confirm')
+			{
 				CHARACTER_ICON.animation.play('confirm');
+				CHARACTER_SELECTION_BOX.animation.play('select');
+			}
 		}
 		else
 		{
 			if (CHARACTER_ICON.animation.name != 'idle')
+			{
 				CHARACTER_ICON.animation.play('idle', false, true);
+                                CHARACTER_SELECTION_BOX.animation.play('idle');
+			}
 		}
 
 		if (Global.anyKeysJustReleased([LEFT, RIGHT]))
@@ -82,8 +82,8 @@ class CharacterSelect extends State
 				CURRENT_SELECTION = CHARACTER_LIST.length - 1;
 			}
 
-                        CHARACTER_ICON.character = CHARACTER_LIST[CURRENT_SELECTION];
-                        CHARACTER_ICON.refresh();
+			CHARACTER_ICON.character = CHARACTER_LIST[CURRENT_SELECTION];
+			CHARACTER_ICON.refresh();
 		}
 	}
 }
@@ -101,6 +101,6 @@ class CharSelector extends SparrowSprite
 
 		playAnimation('idle');
 
-		Global.scaleSprite(this, -2);
+		Global.scaleSprite(this, 1);
 	}
 }
