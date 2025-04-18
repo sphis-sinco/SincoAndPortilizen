@@ -13,7 +13,7 @@ class Worldmap extends State
 	public static var LEVEL_TEXT:FlxText;
 	public static var DIFFICULTY_TEXT:FlxText;
 
-        public static var CHARACTER_SELECT_BUTTON:FlxSprite;
+	public static var CHARACTER_SELECT_BUTTON:FlxSprite;
 
 	override public function new(character:String = 'sinco')
 	{
@@ -47,16 +47,16 @@ class Worldmap extends State
 		LEVEL_TEXT.screenCenter();
 		LEVEL_TEXT.y -= LEVEL_TEXT.height / 2;
 
-                DIFFICULTY_TEXT = new FlxText(0,0,0,'Bye', 32);
-                add(DIFFICULTY_TEXT);
-                DIFFICULTY_TEXT.screenCenter();
-                DIFFICULTY_TEXT.y += DIFFICULTY_TEXT.height / 2;
+		DIFFICULTY_TEXT = new FlxText(0, 0, 0, 'Bye', 32);
+		add(DIFFICULTY_TEXT);
+		DIFFICULTY_TEXT.screenCenter();
+		DIFFICULTY_TEXT.y += DIFFICULTY_TEXT.height / 2;
 
-                CHARACTER_SELECT_BUTTON = new FlxSprite();
-                CHARACTER_SELECT_BUTTON.loadGraphic(FileManager.getImageFile('worldmap/charSelButton'));
-                add(CHARACTER_SELECT_BUTTON);
-                Global.scaleSprite(CHARACTER_SELECT_BUTTON, -2);
-                CHARACTER_SELECT_BUTTON.setPosition(8 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, 8 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
+		CHARACTER_SELECT_BUTTON = new FlxSprite();
+		CHARACTER_SELECT_BUTTON.loadGraphic(FileManager.getImageFile('worldmap/charSelButton'));
+		add(CHARACTER_SELECT_BUTTON);
+		Global.scaleSprite(CHARACTER_SELECT_BUTTON, -2);
+		CHARACTER_SELECT_BUTTON.setPosition(8 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, 8 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 	}
 
 	override function update(elapsed:Float)
@@ -69,20 +69,24 @@ class Worldmap extends State
 		DIFFICULTY_TEXT.text = '${Global.keyPressed(LEFT) ? '-' : '<'} ${CURRENT_DIFFICULTY} ${Global.keyPressed(RIGHT) ? '-' : '>'}';
 		DIFFICULTY_TEXT.screenCenter(X);
 
-                switch (CURRENT_DIFFICULTY.toLowerCase())
-                {
-                        case 'easy': DIFFICULTY_TEXT.color = FlxColor.LIME;
-                        case 'normal': DIFFICULTY_TEXT.color = FlxColor.YELLOW;
-                        case 'hard': DIFFICULTY_TEXT.color = FlxColor.RED;
-                        case 'extreme': DIFFICULTY_TEXT.color = FlxColor.PINK;
-                }
+		switch (CURRENT_DIFFICULTY.toLowerCase())
+		{
+			case 'easy':
+				DIFFICULTY_TEXT.color = FlxColor.LIME;
+			case 'normal':
+				DIFFICULTY_TEXT.color = FlxColor.YELLOW;
+			case 'hard':
+				DIFFICULTY_TEXT.color = FlxColor.RED;
+			case 'extreme':
+				DIFFICULTY_TEXT.color = FlxColor.PINK;
+		}
 
 		controlManagement();
 
-                if (FlxG.mouse.overlaps(CHARACTER_SELECT_BUTTON) && FlxG.mouse.justReleased)
-                {
-                        Global.switchState(new CharacterSelect());
-                }
+		if (FlxG.mouse.overlaps(CHARACTER_SELECT_BUTTON) && FlxG.mouse.justReleased)
+		{
+			Global.switchState(new CharacterSelect());
+		}
 	}
 
 	public static function controlManagement():Void
