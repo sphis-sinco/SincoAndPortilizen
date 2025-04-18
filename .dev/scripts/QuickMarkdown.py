@@ -2,10 +2,10 @@ import re
 import os
 
 # Increase for every update to the file
-version = 30  # Incremented version
+version = 31  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v30: Modified folder processing to only check files in the specified folder, ignoring subfolders."""
+version_changes = """v31: Removed per-file generation comment in folder mode and added a summary comment for folder processing."""
 
 # This script parses a Haxe (.hx) file to extract function and variable names and their references.
 def parse_hx_file(file_path):
@@ -68,7 +68,6 @@ def process_folder(folder_path):
                                 package_name, function_list, variable_list = result
                                 print(f'# {file}\n')  # Markdown header 1 for the file name
 
-                                dot = '.' if package_name else ''
                                 if package_name:
                                         print(f'Package: {package_name}\n')
 
@@ -78,7 +77,8 @@ def process_folder(folder_path):
                                 if variable_list:  # Only print if there are variables
                                         print('\n' + variable_list)
 
-                                print(f'\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->\n')
+        # Add a summary comment at the end of folder processing
+        print(f"\n<!-- Folder markdown file generated (mostly) by QuickMarkdown.py v{version} -->")
 
 
 if __name__ == '__main__':
@@ -91,7 +91,6 @@ if __name__ == '__main__':
                 if result:
                         package_name, function_list, variable_list = result
 
-                        dot = '.' if package_name else ''
                         if package_name:
                                 print(f'# {file}\n')  # Markdown header 1 for the file name
                                 print(f'Package: {package_name}\n')
@@ -102,7 +101,7 @@ if __name__ == '__main__':
                         if variable_list:  # Only print if there are variables
                                 print('\n' + variable_list)
 
-                        print(f'\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->')
+                        print(f'\n<!-- {package_name}.{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->')
 
         elif mode == 'folder':
                 folder_path = input('Enter the path to the folder: ').strip()
