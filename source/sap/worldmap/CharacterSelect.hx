@@ -21,7 +21,9 @@ class CharacterSelect extends State
 		super.create();
 
 		var backdrop:FlxSprite = new FlxSprite();
-		backdrop.loadGraphic(FileManager.getImageFile('worldmap/character_select/back'));
+		backdrop.loadGraphic(FileManager.getImageFile('worldmap/character_select/back'), true, 160, 152);
+                backdrop.animation.add('idle', [0,1], 2);
+                backdrop.animation.play('idle');
 		add(backdrop);
 		Global.scaleSprite(backdrop);
 		backdrop.screenCenter();
