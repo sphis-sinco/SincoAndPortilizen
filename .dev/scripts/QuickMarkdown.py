@@ -1,7 +1,7 @@
 import re
 
 # Increase for every update to the file
-version = 10  # Incremented version
+version = 11  # Incremented version
 
 # This script parses a Haxe (.hx) file to extract function and variable names.
 def parse_hx_file(file_path):
@@ -14,7 +14,7 @@ def parse_hx_file(file_path):
 
         functions = []
         variables = []
-        package_name = "default"  # Default package if none is found
+        package_name = ""  # Blank package if none is found
 
         # Regex to match Haxe package declaration
         package_pattern = re.compile(r'^\s*package\s+([\w\.]+);', re.MULTILINE)
@@ -49,8 +49,14 @@ if __name__ == "__main__":
 
         if result:
                 package_name, function_list, variable_list = result
-                print(f"Package: {package_name}\n")
+                
+                dot = '.' if '' is not package_name else ''
+                if dot is '.':
+                        print(f"Package: {package_name}\n")
+
                 print(function_list)
+
                 if variable_list:  # Only print if there are variables
                         print("\n" + variable_list)
-                print(f"\n<!-- {package_name}.{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->")
+
+                print(f"\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->")
