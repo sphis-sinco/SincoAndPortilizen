@@ -2,10 +2,10 @@ import re
 import os
 
 # Increase for every update to the file
-version = 29  # Incremented version
+version = 30  # Incremented version
 
 # Add your changes to this string here
-version_changes = """v29: Added folder processing to parse all .hx files and generate markdown with headers."""
+version_changes = """v30: Modified folder processing to only check files in the specified folder, ignoring subfolders."""
 
 # This script parses a Haxe (.hx) file to extract function and variable names and their references.
 def parse_hx_file(file_path):
@@ -59,27 +59,26 @@ def parse_hx_file(file_path):
 
 
 def process_folder(folder_path):
-        # Iterate through all files in the folder
-        for root, _, files in os.walk(folder_path):
-                for file in files:
-                        if file.endswith('.hx'):  # Check for Haxe files
-                                file_path = os.path.join(root, file)
-                                result = parse_hx_file(file_path)
-                                if result:
-                                        package_name, function_list, variable_list = result
-                                        print(f'# {file}\n')  # Markdown header 1 for the file name
+        # Only iterate through files in the specified folder (ignore subfolders)
+        for file in os.listdir(folder_path):
+                file_path = os.path.join(folder_path, file)
+                if os.path.isfile(file_path) and file.endswith('.hx'):  # Check for Haxe files
+                        result = parse_hx_file(file_path)
+                        if result:
+                                package_name, function_list, variable_list = result
+                                print(f'# {file}\n')  # Markdown header 1 for the file name
 
-                                        dot = '.' if package_name else ''
-                                        if package_name:
-                                                print(f'Package: {package_name}\n')
+                                dot = '.' if package_name else ''
+                                if package_name:
+                                        print(f'Package: {package_name}\n')
 
-                                        if function_list:  # Only print if there are functions
-                                                print(function_list)
+                                if function_list:  # Only print if there are functions
+                                        print(function_list)
 
-                                        if variable_list:  # Only print if there are variables
-                                                print('\n' + variable_list)
+                                if variable_list:  # Only print if there are variables
+                                        print('\n' + variable_list)
 
-                                        print(f'\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->\n')
+                                print(f'\n<!-- {package_name}{dot}{file} markdown file generated (mostly) by QuickMarkdown.py v{version} -->\n')
 
 
 if __name__ == '__main__':
