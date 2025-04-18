@@ -2,19 +2,24 @@ package sap.worldmap;
 
 class CharIcon extends FlxSprite
 {
-        public var character:String = 'sinco';
+	public var character:String = 'sinco';
 
 	public function new(character:String)
-        {
-                super(0,0);
+	{
+		super(0, 0);
 
-                this.character = character;
+		this.character = character;
 
-                loadGraphic(FileManager.getImageFile('worldmap/character_select/icon-${this.character}'), true, 64, 64);
-               
-                animation.add('idle', [0], 0, false);
-                animation.add('confirm', [1,2,2,3], 24, false);
+		refresh();
+	}
 
-                Global.scaleSprite(this, -2);
-        }
+	public function refresh()
+	{
+		loadGraphic(FileManager.getImageFile('worldmap/character_select/icon-${this.character}'), true, 64, 64);
+
+		animation.add('idle', [0], 0, false);
+		animation.add('confirm', [1, 2, 2, 3], 24, false);
+
+		Global.scaleSprite(this, -2);
+	}
 }
