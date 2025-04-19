@@ -3,6 +3,7 @@
 ### Added
 - LEVEL 5: RIVAL CLASH
 - NEW WORLDMAP
+- Ctrl+Alt+Shift+F5 game restart keybind
 - Sidebit 1 medals
 - `STAGE_FIVE` build flag
 - `DO_NOT_RECOMPILE_ON_ASSET_UPDATE` build flag

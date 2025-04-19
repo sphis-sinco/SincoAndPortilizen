@@ -35,11 +35,18 @@ class State extends FlxState
 		final altPressed:Bool = Global.keyPressed(ALT);
 		final shiftPressed:Bool = Global.keyPressed(SHIFT);
 		final lPressed:Bool = Global.keyPressed(L);
+		final f5Pressed:Bool = Global.keyPressed(F5);
 
 		if (controlPressed && altPressed && shiftPressed && lPressed)
 		{
 			ScriptManager.callScript('CASLCrash', [elapsed]);
 			throw 'CASLCrash';
+		}
+
+		if (controlPressed && altPressed && shiftPressed && f5Pressed)
+		{
+			ScriptManager.callScript('GameRestart', [elapsed]);
+                        FlxG.resetGame();
 		}
 	}
 }
