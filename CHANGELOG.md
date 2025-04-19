@@ -13,6 +13,8 @@
 - Atlas cutscenes can be skipped by pressing ESCAPE ([#24][#24_link])
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - (Web only) Pixel perfect rendering ([#27][#27_link])
+### Removed
+- (Destop only) Old window resolution options besides 640x608 has been removed
 ### Fixed
 - Levels no longer reset by *PRESSING* the Reset button
 - Sidebit 1 now has the Reset button
