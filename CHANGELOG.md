@@ -3,6 +3,7 @@
 ### Added
 - Sidebit 1 has SFX now
 ### Fixed
+- In the character select the character icon doesn't refresh when it's the same character
 - Programmer "Null"'s credit color
 - Crash when accessing level 2(?)
 
