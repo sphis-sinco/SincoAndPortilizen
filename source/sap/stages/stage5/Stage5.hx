@@ -268,6 +268,11 @@ class Stage5 extends State
 		FlxG.watch.addQuick('Opponent charge tick', OPPONENT_CHARGE_TICK);
 		FlxG.watch.addQuick('Opponent pause tick', OPPONENT_PAUSE_TICK);
 
+                if (Std.parseInt(TIMER_TEXT.text) < 0)
+                {
+                        TIMER_TEXT.text = '0';
+                }
+
 		if (EDITOR_MODE)
 			editorModeTick();
 		else if (!IN_CUTSCENE)
