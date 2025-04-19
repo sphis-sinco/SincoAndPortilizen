@@ -132,7 +132,7 @@ class Stage2 extends State
 
 	public static function moveToResultsMenu():Void
 	{
-		Global.switchState(new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, new Worldmap("Sinco"), "sinco"));
+		Global.switchState(new ResultsMenu(TEMPO_CITY_HEALTH, diffJson.tempo_city_max_health, new Worldmap(), 'sinco'));
 	}
 
 	static var decrease:Float = 0;
