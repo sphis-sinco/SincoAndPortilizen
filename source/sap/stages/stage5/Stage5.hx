@@ -23,6 +23,7 @@ class Stage5 extends State
 		initializeCharacters();
 
 		add(OBJ_PLAYER);
+		add(OBJ_OPPONENT);
 	}
 
 	override function postCreate()
