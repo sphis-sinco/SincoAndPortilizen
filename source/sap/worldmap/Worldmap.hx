@@ -65,7 +65,7 @@ class Worldmap extends State
 	{
 		super.update(elapsed);
 
-		LEVEL_TEXT.text = '${CURRENT_PLAYER_CHARACTER_JSON.character_display_name}: level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET}';
+		LEVEL_TEXT.text = 'Level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET} (${CURRENT_PLAYER_CHARACTER_JSON.character_display_name})';
 		LEVEL_TEXT.screenCenter(X);
 
 		DIFFICULTY_TEXT.text = '${Global.keyPressed(LEFT) ? '-' : '<'} ${CURRENT_DIFFICULTY} ${Global.keyPressed(RIGHT) ? '-' : '>'}';
