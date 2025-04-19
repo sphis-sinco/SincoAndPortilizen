@@ -23,6 +23,11 @@ class Stage5 extends State
 	public static var OBJ_PLAYER:FlxSprite;
 
 	/**
+	 * The player attack sprite
+	 */
+	public static var OBJ_PLAYER_ATTACK:FlxSprite;
+
+	/**
 	 * The current charge the player has
 	 */
 	public static var PLAYER_CHARGE:Int = 0;
@@ -31,6 +36,11 @@ class Stage5 extends State
 	 * The opponent sprite
 	 */
 	public static var OBJ_OPPONENT:FlxSprite;
+
+	/**
+	 * The opponent attack sprite
+	 */
+	public static var OBJ_OPPONENT_ATTACK:FlxSprite;
 
 	/**
 	 * The current charge the opponent has
@@ -120,9 +130,13 @@ class Stage5 extends State
 		Global.scaleSprite(bg);
 
 		initializeCharacters();
+		initializeAttacks();
 
 		add(OBJ_PLAYER);
 		add(OBJ_OPPONENT);
+
+		add(OBJ_PLAYER_ATTACK);
+		add(OBJ_OPPONENT_ATTACK);
 
 		// PRESS [SPACE] TO CHARGE \\
 		var tutorial1:FlxSprite = new FlxSprite();
@@ -165,6 +179,12 @@ class Stage5 extends State
 
 		FlxG.watch.addQuick('Opponent charge tick', OPPONENT_CHARGE_TICK);
 		FlxG.watch.addQuick('Opponent pause tick', OPPONENT_PAUSE_TICK);
+
+		OBJ_PLAYER_ATTACK.setPosition(OBJ_PLAYER.x, OBJ_PLAYER.y - (OBJ_PLAYER_ATTACK.height * (OBJ_PLAYER_ATTACK.scale.y / 4)) * 2);
+		OBJ_OPPONENT_ATTACK.setPosition(OBJ_OPPONENT.x, OBJ_OPPONENT.y - (OBJ_OPPONENT_ATTACK.height * (OBJ_OPPONENT_ATTACK.scale.y / 2)) * 2);
+
+		OBJ_PLAYER_ATTACK.scale.y = OBJ_PLAYER_ATTACK.scale.x = 1 + (PLAYER_CHARGE / 100);
+		OBJ_OPPONENT_ATTACK.scale.y = OBJ_OPPONENT_ATTACK.scale.x = 1 + (OPPONENT_CHARGE / 100);
 
 		if (EDITOR_MODE)
 		{
@@ -289,5 +309,19 @@ class Stage5 extends State
 		// rim.loadAltMask(FileManager.getImageFile('gameplay/port stages/Stage5${char}-ShaderMask'));
 
 		return rim;
+	}
+
+	/**
+	 * This initalizes the attack sprites
+	 */
+	function initializeAttacks()
+	{
+		OBJ_PLAYER_ATTACK = new FlxSprite();
+		OBJ_PLAYER_ATTACK.makeGraphic(32, 32, FlxColor.PURPLE);
+		OBJ_PLAYER_ATTACK.shader = getRimLighting('PortAttack');
+
+		OBJ_OPPONENT_ATTACK = new FlxSprite();
+		OBJ_OPPONENT_ATTACK.makeGraphic(32, 32, FlxColor.GREEN);
+		OBJ_OPPONENT_ATTACK.shader = getRimLighting('STCSAttack');
 	}
 }
