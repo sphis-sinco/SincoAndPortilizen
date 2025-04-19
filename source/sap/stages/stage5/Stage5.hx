@@ -45,22 +45,32 @@ class Stage5 extends State
 	/**
 	 * The tick goal until `OPPONENT_CHARGE` is incremented
 	 */
-	public static var OPPONENT_CHARGE_TICK_GOAL:Int = 30;
+	public static var OPPONENT_CHARGE_TICK_GOAL:Int = 10;
 
 	/**
 	 * The certain random value minimum where the opponent pauses charging
 	 */
-	public static var OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN:Int = 15;
+	public static var OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN:Int = 2;
 
 	/**
 	 * The certain random value maximum where the opponent pauses charging
 	 */
-	public static var OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX:Int = 25;
+	public static var OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX:Int = 8;
 
 	/**
 	 * The recharge ticks starting value
 	 */
-	public static var OPPONENT_PAUSE_TICK_START_VALUE:Int = 60;
+	public static var OPPONENT_PAUSE_TICK_START_VALUE:Int = 5;
+
+        /**
+         * The chance of the opponent pausing when the conditions are right
+         */
+        public static var OPPONENT_PAUSE_CHANGE:Float = 45;
+
+        /**
+         * This is how much `OPPONENT_PAUSE_CHANGE` changes when the player's charge is ahead of the opponents
+         */
+        public static var OPPONENT_LOCKIN_OFFSET:Float = 0.05;
 
 	/**
 	 * The recharge ticks: counts down
@@ -70,7 +80,7 @@ class Stage5 extends State
 	/**
 	 * The tick goal until `OPPONENT_PAUSE_TICK` is decreased
 	 */
-	public static var OPPONENT_PAUSE_TICK_GOAL:Int = 15;
+	public static var OPPONENT_PAUSE_TICK_GOAL:Int = 2;
 
 	/**
 	 * The difficulty string
@@ -137,6 +147,7 @@ class Stage5 extends State
 
 		FlxG.watch.addQuick('Player charge', PLAYER_CHARGE);
 		FlxG.watch.addQuick('Opponent charge', OPPONENT_CHARGE);
+		FlxG.watch.addQuick('Opponent pause chance', OPPONENT_PAUSE_CHANGE);
 
 		FlxG.watch.addQuick('Opponent charge tick', OPPONENT_CHARGE_TICK);
 		FlxG.watch.addQuick('Opponent pause tick', OPPONENT_PAUSE_TICK);
@@ -168,6 +179,11 @@ class Stage5 extends State
 		if (Global.keyJustReleased(SPACE))
 		{
 			PLAYER_CHARGE++;
+
+                        if (PLAYER_CHARGE > OPPONENT_CHARGE)
+                        {
+                                OPPONENT_PAUSE_CHANGE -= OPPONENT_LOCKIN_OFFSET;
+                        }
 		}
 	}
 
@@ -178,7 +194,7 @@ class Stage5 extends State
 	{
 		OPPONENT_CHARGE_TICK++;
 
-		if (OPPONENT_CHARGE_TICK == FlxG.random.int(OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN, OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX))
+		if (OPPONENT_CHARGE_TICK == FlxG.random.int(OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN, OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX) && FlxG.random.bool(OPPONENT_PAUSE_CHANGE))
 		{
 			OPPONENT_PAUSE_TICK = OPPONENT_PAUSE_TICK_START_VALUE;
 		}
