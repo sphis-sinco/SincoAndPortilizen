@@ -205,6 +205,10 @@ class Stage5 extends State
 
 				Global.switchState(new ResultsMenu((won) ? PLAYER_CHARGE : OPPONENT_CHARGE - PLAYER_CHARGE, (won) ? PLAYER_CHARGE : OPPONENT_CHARGE,
 					new Worldmap(Worldmap.CURRENT_PLAYER_CHARACTER), 'port'));
+			},
+			onStart: function(tween)
+			{
+				OBJ_PLAYER.animation.play('attack');
 			}
 		});
 		FlxTween.tween(OBJ_OPPONENT_ATTACK, {x: OBJ_PLAYER.x, y: OBJ_PLAYER.y}, speed, {
@@ -256,6 +260,9 @@ class Stage5 extends State
 
 		if (Global.keyJustReleased(SPACE))
 		{
+			if (OBJ_PLAYER.animation.name != 'charge')
+				OBJ_PLAYER.animation.play('charge');
+
 			PLAYER_CHARGE++;
 
 			if (PLAYER_CHARGE > OPPONENT_CHARGE)
@@ -325,18 +332,18 @@ class Stage5 extends State
 	{
 		OBJ_PLAYER = new FlxSprite();
 		OBJ_PLAYER.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage5Portilizen'), true, 64, 64);
-                OBJ_PLAYER.animation.add('intro', [0], 1, false);
-                OBJ_PLAYER.animation.add('charge', [1], 1, false);
-                OBJ_PLAYER.animation.add('attack', [2], 1, false);
-                OBJ_PLAYER.animation.play('intro');
+		OBJ_PLAYER.animation.add('intro', [0], 1, false);
+		OBJ_PLAYER.animation.add('charge', [1], 1, false);
+		OBJ_PLAYER.animation.add('attack', [2], 1, false);
+		OBJ_PLAYER.animation.play('intro');
 		OBJ_PLAYER.setPosition(480, 400);
 		OBJ_PLAYER.shader = getRimLighting('Portilizen');
-                Global.scaleSprite(OBJ_PLAYER, -2);
+		Global.scaleSprite(OBJ_PLAYER, -2);
 
 		OBJ_OPPONENT = new FlxSprite();
 		OBJ_OPPONENT.makeGraphic(32, 64, FlxColor.GREEN);
 		OBJ_OPPONENT.setPosition(120, 400);
-		OBJ_OPPONENT.shader = getRimLighting(null);//'STCS');
+		OBJ_OPPONENT.shader = getRimLighting(null); // 'STCS');
 	}
 
 	/**
