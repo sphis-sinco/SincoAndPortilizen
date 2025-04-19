@@ -57,14 +57,14 @@ class Stage5 extends State
 
                 // PRESS [SPACE] TO CHARGE \\
                 var tutorial1:FlxSprite = new FlxSprite();
-                tutorial1.makeGraphic(64, 32);
+                tutorial1.makeGraphic(128, 32);
                 add(tutorial1);
                 tutorial1.screenCenter();
                 tutorial1.y -= tutorial1.height;
 
                 // THE MOST POWERFUL ATTACK WINS \\
                 var tutorial2:FlxSprite = new FlxSprite();
-                tutorial2.makeGraphic(64, 32);
+                tutorial2.makeGraphic(128, 32);
                 add(tutorial2);
                 tutorial2.screenCenter();
                 tutorial2.y += tutorial2.height;
