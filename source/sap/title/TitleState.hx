@@ -84,7 +84,7 @@ class TitleState extends State
 
 		VERSION_TEXT.size = 12;
 		VERSION_TEXT.setPosition(5, 5);
-		VERSION_TEXT.text = 'SAP v${Global.VERSION_FULL}'
+		VERSION_TEXT.text = '${SAPVersion.toString().replace('Sinco and Portilizen', 'SAP')}'
 			+ '\nModding API v${ModFolderManager.SUPPORTED_MODDING_API_VERSIONS[ModFolderManager.SUPPORTED_MODDING_API_VERSIONS.length - 1]}';
 		VERSION_TEXT.color = FlxColor.BLACK;
 		VERSION_TEXT.visible = false;

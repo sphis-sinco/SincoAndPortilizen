@@ -116,7 +116,7 @@ class InitState extends FlxState
 
 	public static function proceed():Void
 	{
-		trace('${Global.SAPVersion}');
+		trace('${Global.GIT_VER}');
 		var difficulty:String = 'normal';
 
 		#if EASY_DIFFICULTY

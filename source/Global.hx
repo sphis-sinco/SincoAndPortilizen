@@ -39,12 +39,11 @@ class Global
 	}
 
 	@:isVar
-	public static var SAPVersion(get, never):String;
+	public static var GIT_VER(get, never):String;
 
-	static function get_SAPVersion():String
+	static function get_GIT_VER():String
 	{
-		final ver:Array<String> = VERSION.split('.');
-		return new SAPVersion(Std.parseInt(ver[0]), Std.parseInt(ver[1]), Std.parseInt(ver[2])).toString();
+		return SAPVersion.toString();
 	}
 
 	/**
