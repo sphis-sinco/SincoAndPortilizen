@@ -29,7 +29,7 @@ class Sidebit1 extends State
 
 	public static var CAN_DECREASE_SINCO_HEALTH:Bool = true;
 	public static var CAN_DECREASE_PORTILIZEN_HEALTH:Bool = true;
-        
+
 	public static var RUNNING:Bool = false;
 
 	override public function new(difficulty:String)
@@ -98,6 +98,7 @@ class Sidebit1 extends State
 				SINCO.x -= 160;
 
 				SINCO.playAnimation('attack-loop');
+                                Global.playSoundEffect('gameplay/attack');
 				FlxTween.tween(SINCO, {x: PORTILIZEN.x - 160}, SINCO_ATTACK_SPEED, {
 					onComplete: function(tween)
 					{
@@ -106,6 +107,7 @@ class Sidebit1 extends State
 							&& PORTILIZEN.State != DODGE)
 						{
 							PORTILIZEN.State = HIT;
+							Global.hitHurt();
 							PORTILIZEN.setPosition(PORTILIZEN_POINT.x, PORTILIZEN_POINT.y);
 							PORTILIZEN.x -= 40;
 							PORTILIZEN.y += 30;
@@ -300,7 +302,7 @@ class Sidebit1 extends State
 			FlxTween.tween(tutorial1, {alpha: 0}, 1);
 			FlxTween.tween(tutorial2, {alpha: 0}, 1);
 		});
-                RUNNING = true;
+		RUNNING = true;
 	}
 
 	public static var ABILITY_CAN_DODGE:Bool = true;
@@ -349,6 +351,7 @@ class Sidebit1 extends State
 			SINCO.x -= 25;
 			SINCO.y += 100;
 			SINCO.playAnimation('hit');
+			Global.hitHurt();
 			if (CAN_DECREASE_SINCO_HEALTH)
 			{
 				CAN_DECREASE_SINCO_HEALTH = false;
@@ -356,7 +359,7 @@ class Sidebit1 extends State
 			}
 		}
 
-                Worldmap.SIDEBIT_MODE = true;
+		Worldmap.SIDEBIT_MODE = true;
 		if (PORTILIZEN_HEALTH == 0)
 			Global.switchState(new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), new Sidebit1PostCutsceneAtlas()));
 		else if (SINCO_HEALTH == 0)

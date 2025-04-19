@@ -1,5 +1,7 @@
 # Alpha
 ## 0.5.1a - 4/19/2025
+### Added
+- Sidebit 1 has SFX now
 ### Fixed
 - Crash when accessing level 2(?)
 
