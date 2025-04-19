@@ -7,7 +7,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import funkin.graphics.shaders.AdjustColorShader;
 import sap.mainmenu.MainMenu;
-import sap.sidebitmenu.SidebitSelect;
 
 enum abstract TitleStates(Int) from Int to Int
 {
@@ -30,8 +29,6 @@ class TitleState extends State
 	public static var MINI_PORTILIZEN:TitlePort;
 
 	public static var VERSION_TEXT:FlxText;
-
-	public static var SIDEBIT_MENU_BUTTON:SparrowSprite;
 
 	public static var CHARACTER_RING_CHARS_SHADER:AdjustColorShader;
 
@@ -90,12 +87,6 @@ class TitleState extends State
 		VERSION_TEXT.visible = false;
 		add(VERSION_TEXT);
 
-		SIDEBIT_MENU_BUTTON = new SparrowSprite('titlescreen/SidebitMenuButton');
-		SIDEBIT_MENU_BUTTON.setPosition(560, 20);
-		SIDEBIT_MENU_BUTTON.addAnimationByPrefix('loopAnim', 'Ring spin', 24);
-		add(SIDEBIT_MENU_BUTTON);
-		SIDEBIT_MENU_BUTTON.visible = false;
-
 		if (CURRENT_STATE == INTRO || CURRENT_STATE == DEBUG)
 		{
 			if (CURRENT_STATE == INTRO)
@@ -145,18 +136,6 @@ class TitleState extends State
 
 		if (CURRENT_STATE == DONE)
 		{
-			if (FlxG.mouse.overlaps(SIDEBIT_MENU_BUTTON))
-			{
-				if (FlxG.mouse.justReleased)
-				{
-					if (HEADING_TO_MAINMENU)
-						return;
-
-					trace('Head to sidebit menu');
-					Global.switchState(new SidebitSelect());
-				}
-			}
-
 			if (!PRESS_ANY_HINT.visible)
 			{
 				PRESS_ANY_HINT.visible = true;
@@ -223,7 +202,6 @@ class TitleState extends State
 
 		CURRENT_STATE = DONE;
 		PRESS_ANY_HINT.visible = true;
-		SIDEBIT_MENU_BUTTON.visible = true;
 		VERSION_TEXT.visible = true;
 	}
 
@@ -238,10 +216,6 @@ class TitleState extends State
 		if (!PRESS_ANY_HINT.visible)
 		{
 			PRESS_ANY_HINT.visible = true;
-		}
-		if (!SIDEBIT_MENU_BUTTON.visible)
-		{
-			SIDEBIT_MENU_BUTTON.visible = true;
 		}
 		if (!VERSION_TEXT.visible)
 		{
@@ -269,12 +243,9 @@ class TitleState extends State
 			HEADING_TO_MAINMENU = true;
 			Global.playSoundEffect('blipSelect');
 			FlxG.camera.flash(0xFFFFFF, 2);
-			FlxTween.tween(SIDEBIT_MENU_BUTTON, {y: -FlxG.height}, 2, {
-				ease: FlxEase.sineInOut,
-				onComplete: tween ->
-				{
-					Global.switchState(new MainMenu());
-				}
+			FlxTimer.wait(2, function()
+			{
+				Global.switchState(new MainMenu());
 			});
 		}
 	}
