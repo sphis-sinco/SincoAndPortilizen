@@ -70,7 +70,7 @@ class Stage5 extends State
 	/**
 	 * This is how much `OPPONENT_PAUSE_CHANGE` changes when the player's charge is ahead of the opponents
 	 */
-	public static var OPPONENT_LOCKIN_OFFSET:Float = 0.05;
+	public static var OPPONENT_LOCKIN_OFFSET:Float = 0.1;
 
 	/**
 	 * The recharge ticks: counts down
