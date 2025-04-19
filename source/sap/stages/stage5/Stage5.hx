@@ -108,6 +108,6 @@ class Stage5 extends State
 
 		OBJ_OPPONENT = new FlxSprite();
 		OBJ_OPPONENT.makeGraphic(32, 64, FlxColor.GREEN);
-		OBJ_OPPONENT.setPosition(120, 300);
+		OBJ_OPPONENT.setPosition(120, 400);
 	}
 }
