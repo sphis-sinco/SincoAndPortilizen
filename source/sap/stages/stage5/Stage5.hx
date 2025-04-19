@@ -212,7 +212,11 @@ class Stage5 extends State
 			}
 		});
 		FlxTween.tween(OBJ_OPPONENT_ATTACK, {x: OBJ_PLAYER.x, y: OBJ_PLAYER.y}, speed, {
-			ease: FlxEase.sineInOut
+			ease: FlxEase.sineInOut,
+			onStart: function(tween)
+			{
+				OBJ_OPPONENT_ATTACK.animation.play('attack');
+			}
 		});
 	}
 
@@ -278,6 +282,7 @@ class Stage5 extends State
 	public static function opponentChargeTick():Void
 	{
 		OPPONENT_CHARGE_TICK++;
+		OBJ_OPPONENT.animation.play('charge');
 
 		if (OPPONENT_CHARGE_TICK == FlxG.random.int(OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN, OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX)
 			&& FlxG.random.bool(OPPONENT_PAUSE_CHANGE))
@@ -341,9 +346,14 @@ class Stage5 extends State
 		Global.scaleSprite(OBJ_PLAYER, -2);
 
 		OBJ_OPPONENT = new FlxSprite();
-		OBJ_OPPONENT.makeGraphic(32, 64, FlxColor.GREEN);
+		OBJ_OPPONENT.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage5STCS'), true, 64, 64);
+		OBJ_OPPONENT.animation.add('intro', [0], 1, false);
+		OBJ_OPPONENT.animation.add('charge', [1], 1, false);
+		OBJ_OPPONENT.animation.add('attack', [2], 1, false);
+		OBJ_OPPONENT.animation.play('intro');
 		OBJ_OPPONENT.setPosition(120, 400);
 		// OBJ_OPPONENT.shader = getRimLighting(null); // 'STCS');
+		Global.scaleSprite(OBJ_OPPONENT, -2);
 	}
 
 	/**
