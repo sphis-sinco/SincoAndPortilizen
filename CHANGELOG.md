@@ -21,6 +21,7 @@
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 - Fixed missing worldmap character assets
 ### Changed
+- The game version + the game git sha is now traced in the terminal in the InitState proceed function
 - The sidebit 1 background is now a general background usable for anything (folder change LOL)
 - Modding API version is now `0.1.4`
   - Removed custom variables for different classes in `ScriptManager` except for a few (using import has been found to work)

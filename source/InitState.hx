@@ -70,7 +70,7 @@ class InitState extends FlxState
 			#end
 
 			CreditsSubState.creditsJSONInit();
-                        CharacterSelect.init();
+			CharacterSelect.init();
 
 			// PaulPortGameOver.init();
 		});
@@ -108,13 +108,15 @@ class InitState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		// when on debug builds you have to press something to stop
-		if (Global.keyJustReleased(ANY) && Global.DEBUG_BUILD) proceed();
+		if (Global.keyJustReleased(ANY) && Global.DEBUG_BUILD)
+			proceed();
 
 		super.update(elapsed);
 	}
 
 	public static function proceed():Void
 	{
+		trace('${Global.SAPVersion}');
 		var difficulty:String = 'normal';
 
 		#if EASY_DIFFICULTY
