@@ -1,11 +1,15 @@
 # Alpha
+## 0.5.2a - 4/19/2025
+### Fixed
+- (Desktop only) Invalid char 0 at position 0
+
 ## 0.5.1a - 4/19/2025
 ### Added
 - Sidebit 1 has SFX now
 ### Fixed
 - In the character select the character icon doesn't refresh when it's the same character
 - Programmer "Null"'s credit color
-- Crash when accessing level 2(?)
+- (Desktop only) Crash when accessing level 2(?)
 
 ## 0.5.0a (Destination 3 - Rival clash) - 4/19/2025
 ### Added
