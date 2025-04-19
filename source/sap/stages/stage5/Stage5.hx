@@ -112,6 +112,11 @@ class Stage5 extends State
 	 */
 	public static var DIFFICULTY_JSON:Stage5DifficultyJson;
 
+	/**
+	 * This helps the results menu when it comes to medals
+	 */
+	public static var RUNNING:Bool = false;
+
 	override public function new(difficulty:String)
 	{
 		super();
@@ -130,6 +135,9 @@ class Stage5 extends State
 		TIMER = DIFFICULTY_JSON.timer;
 
 		IN_CUTSCENE = false;
+		TIMER = 1;
+
+		RUNNING = true;
 	}
 
 	override function create()
@@ -184,6 +192,20 @@ class Stage5 extends State
 	public static function levelEndSequence():Void
 	{
 		IN_CUTSCENE = true;
+
+		FlxTween.tween(OBJ_PLAYER_ATTACK, {x: OBJ_OPPONENT.x, y: OBJ_OPPONENT.y}, 5, {
+			ease: FlxEase.sineInOut,
+			onComplete: function(tween)
+			{
+				final won:Bool = PLAYER_CHARGE > OPPONENT_CHARGE;
+
+				Global.switchState(new ResultsMenu((won) ? PLAYER_CHARGE : OPPONENT_CHARGE - PLAYER_CHARGE, (won) ? PLAYER_CHARGE : OPPONENT_CHARGE,
+					new Worldmap(Worldmap.CURRENT_PLAYER_CHARACTER), 'port'));
+			}
+		});
+		FlxTween.tween(OBJ_OPPONENT_ATTACK, {x: OBJ_PLAYER.x, y: OBJ_PLAYER.y}, 5, {
+			ease: FlxEase.sineInOut
+		});
 	}
 
 	override function update(elapsed:Float)
@@ -200,16 +222,18 @@ class Stage5 extends State
 		FlxG.watch.addQuick('Opponent charge tick', OPPONENT_CHARGE_TICK);
 		FlxG.watch.addQuick('Opponent pause tick', OPPONENT_PAUSE_TICK);
 
-		OBJ_PLAYER_ATTACK.setPosition(OBJ_PLAYER.x, OBJ_PLAYER.y - (OBJ_PLAYER_ATTACK.height * ((OBJ_PLAYER_ATTACK.scale.y / 4) + 1)) * 2);
-		OBJ_OPPONENT_ATTACK.setPosition(OBJ_OPPONENT.x, OBJ_OPPONENT.y - (OBJ_OPPONENT_ATTACK.height * ((OBJ_OPPONENT_ATTACK.scale.y / 4) + 1)) * 2);
-
-		OBJ_PLAYER_ATTACK.scale.y = OBJ_PLAYER_ATTACK.scale.x = 1 + (PLAYER_CHARGE / 100);
-		OBJ_OPPONENT_ATTACK.scale.y = OBJ_OPPONENT_ATTACK.scale.x = 1 + (OPPONENT_CHARGE / 100);
-
 		if (EDITOR_MODE)
 			editorModeTick();
 		else if (!IN_CUTSCENE)
+		{
+			OBJ_PLAYER_ATTACK.setPosition(OBJ_PLAYER.x, OBJ_PLAYER.y - (OBJ_PLAYER_ATTACK.height * ((OBJ_PLAYER_ATTACK.scale.y / 4) + 1)) * 2);
+			OBJ_OPPONENT_ATTACK.setPosition(OBJ_OPPONENT.x, OBJ_OPPONENT.y - (OBJ_OPPONENT_ATTACK.height * ((OBJ_OPPONENT_ATTACK.scale.y / 4) + 1)) * 2);
+
+			OBJ_PLAYER_ATTACK.scale.y = OBJ_PLAYER_ATTACK.scale.x = 1 + (PLAYER_CHARGE / 100);
+			OBJ_OPPONENT_ATTACK.scale.y = OBJ_OPPONENT_ATTACK.scale.x = 1 + (OPPONENT_CHARGE / 100);
+
 			gameplayTick();
+		}
 	}
 
 	/**

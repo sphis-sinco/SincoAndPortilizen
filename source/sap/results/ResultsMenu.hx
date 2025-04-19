@@ -1,5 +1,6 @@
 package sap.results;
 
+import sap.stages.stage5.Stage5;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
@@ -123,6 +124,23 @@ class ResultsMenu extends FlxState
 				add(MedalData.unlockMedal('Dimensions reached'));
 
 				Stage4.RUNNING = false;
+			}
+			else if (Stage5.RUNNING)
+			{
+				Stage5.RUNNING = false;
+				final flashLength:Int = 2;
+
+                                final finishFunction:Void->Void = function() {
+                                        // trace('Flash finished: reverting PERCENT_TICK_GOAL');
+                                        // PERCENT_TICK_GOAL = 5;
+                                }
+
+                                // PERCENT_TICK_GOAL = FlxMath.MAX_VALUE_INT;
+
+				if (Stage5.PLAYER_CHARGE > Stage5.OPPONENT_CHARGE)
+					FlxG.camera.flash(FlxColor.PURPLE, flashLength, finishFunction);
+				else
+					FlxG.camera.flash(FlxColor.GREEN, flashLength, finishFunction);
 			}
 		});
 	}
