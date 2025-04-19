@@ -19,22 +19,31 @@ class CharacterSelect extends State
 
 	public static function init()
 	{
+                final hardcoded_charList:Array<String> = ['portilizen', 'sinco'];
+
 		CHARACTER_LIST = [];
 		#if !html5
-		for (file in FileManager.readDirectory('assets/data/playable_characters'))
+		TryCatch.tryCatch(function()
 		{
-			final name:String = file.split('.')[0];
-			final json:PlayableCharacter = PlayableCharacterManager.readPlayableCharacterJSON(name);
-
-			if (json.unlocked_when_loaded)
+			for (file in FileManager.readDirectory('assets/data/playable_characters'))
 			{
-				unlockCharacter(name);
-			}
+				final name:String = file.split('.')[0];
+				final json:PlayableCharacter = PlayableCharacterManager.readPlayableCharacterJSON(name);
 
-			CHARACTER_LIST.push(name);
-		}
+				if (json.unlocked_when_loaded)
+				{
+					unlockCharacter(name);
+				}
+
+				CHARACTER_LIST.push(name);
+			}
+		}, {
+                        errFunc: function() {
+
+                        }
+                });
 		#else
-		CHARACTER_LIST = ['portilizen', 'sinco'];
+		CHARACTER_LIST = hardcoded_charList;
 		#end
 		trace(CHARACTER_LIST);
 
