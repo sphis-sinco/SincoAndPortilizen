@@ -9,7 +9,7 @@ function worldmapSelection(character:String, selection:Int)
 
 	trace(character + ' level ' + selection);
 
-	switch (character)
+	switch (character.toLowerCase())
 	{
                 case 'portilizen':
                         if (selection == 4) Global.switchState(new Stage4(difficulty));
