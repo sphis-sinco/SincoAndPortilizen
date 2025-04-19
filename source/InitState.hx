@@ -40,7 +40,7 @@ class InitState extends FlxState
 
 			#if web
 			// pixel perfect render fix!
-			Application.current.window.element.style.setProperty("image-rendering", "pixelated");
+			lime.app.Application.current.window.element.style.setProperty("image-rendering", "pixelated");
 			#end
 
 			// Make errors and warnings less annoying.
@@ -71,9 +71,9 @@ class InitState extends FlxState
 
 			CreditsSubState.creditsJSONInit();
 			CharacterSelect.init();
-                        
-                        Worldmap.init();
-                        Worldmap.initSidebits();
+
+			Worldmap.init();
+			Worldmap.initSidebits();
 
 			// PaulPortGameOver.init();
 		});

@@ -48,6 +48,7 @@ class Worldmap extends State
 
 		var denied:Int = 0;
 
+		#if !html5
 		for (sidebit in FileManager.readDirectory('assets/data/sidebits'))
 		{
 			final sidebitName:String = sidebit.split('.')[0];
@@ -64,6 +65,9 @@ class Worldmap extends State
                         if (denied == SIDEBIT_JSONS.length && SIDEBIT_MODE)
                                 switchModes();
 		}
+                #else
+                SIDEBITS = ['sidebit1'];
+                #end
 	}
 
 	override function create()

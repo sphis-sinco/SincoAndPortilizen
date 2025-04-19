@@ -20,7 +20,8 @@ class CharacterSelect extends State
 	public static function init()
 	{
 		CHARACTER_LIST = [];
-		for (file in FileManager.readDirectory('assets/data/playable_characters'))
+		#if !html5
+                for (file in FileManager.readDirectory('assets/data/playable_characters'))
 		{
 			final name:String = file.split('.')[0];
 			final json:PlayableCharacter = PlayableCharacterManager.readPlayableCharacterJSON(name);
@@ -32,6 +33,9 @@ class CharacterSelect extends State
 
 			CHARACTER_LIST.push(name);
 		}
+                #else
+                CHARACTER_LIST = ['portilizen', 'sinco'];
+                #end
 		trace(CHARACTER_LIST);
 
 		CURRENT_SELECTION = CHARACTER_LIST.indexOf(Worldmap.CURRENT_PLAYER_CHARACTER);
