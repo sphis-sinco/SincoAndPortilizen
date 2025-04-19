@@ -16,3 +16,9 @@
   - any-glob-to-any-file:
       - github/*
       - '**/*.yml'
+
+# A file changed = an addition
+'Status: Addition':
+- changed-files:
+  - any-glob-to-any-file:
+      - '*'
