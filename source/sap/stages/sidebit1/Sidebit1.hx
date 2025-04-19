@@ -69,7 +69,7 @@ class Sidebit1 extends State
 	{
 		super.create();
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile('gameplay/sidebits/timeVoid'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile('gameplay/timeVoid'));
 		add(bg);
 		bg.screenCenter();
 		Global.scaleSprite(bg);
