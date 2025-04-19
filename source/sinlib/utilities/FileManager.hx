@@ -44,7 +44,7 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getPath(pathprefix:String, path:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getPath(pathprefix:String, path:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
 	{
 		var ogreturnpath:String = '${pathprefix}${PATH_TYPE}${path}';
 		var returnpath:String = ogreturnpath;
@@ -77,23 +77,23 @@ class FileManager
 			return returnpath;
 		}
 
-		unfoundAsset(returnpath);
+		unfoundAsset(returnpath, posinfo);
 		return '';
 	}
 
-	public static inline function unfoundAsset(asset:String):Void
+	public static inline function unfoundAsset(asset:String, ?posinfo:PosInfos):Void
 	{
 		if (!UNFOUND_ASSETS.contains(asset))
 		{
 			if (asset.contains('mods/'))
 			{
 				#if EXCESS_TRACES
-				trace('Could not get asset: $asset');
+				trace('Could not get asset: $asset', posinfo);
 				#end
 			}
 			else
 			{
-				trace('Could not get asset: $asset');
+				trace('Could not get asset: $asset', posinfo);
 			}
 			UNFOUND_ASSETS.push(asset);
 		}
@@ -105,24 +105,24 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getAssetFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getAssetFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
 	{
 		var returnPath:String = '';
 
 		for (mod in ModFolderManager.ENABLED_MODS)
 		{
 			// What if I was evil and made it so that 0.1.0 api mods couldnt do this >:)
-			var dir_meta:ModMetaData = FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json');
+			var dir_meta:ModMetaData = FileManager.getJSON('${ModFolderManager.MODS_FOLDER}${mod}/meta.json', posinfo);
 
 			if (returnPath == '') // first come first serve
 			{
-				returnPath = getPath('mods/$mod/', '$file', PATH_TYPE); // 'mods/$mod/$file'
+				returnPath = getPath('mods/$mod/', '$file', PATH_TYPE, posinfo); // 'mods/$mod/$file'
 			}
 		}
 
 		if (returnPath == '')
 		{
-			returnPath = getPath('assets/', '$file', PATH_TYPE); // 'assets/$file'
+			returnPath = getPath('assets/', '$file', PATH_TYPE, posinfo); // 'assets/$file'
 		}
 
 		return returnPath;
@@ -140,15 +140,15 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getScriptFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getScriptFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
 	{
 		var finalPath:Dynamic = 'scripts/$file'; // .$SCRIPT_EXT';
 
 		#if SCRIPT_FILES_IN_DATA_FOLDER
-		return getDataFile(finalPath, PATH_TYPE);
+		return getDataFile(finalPath, PATH_TYPE, posinfo);
 		#end
 
-		return getAssetFile(finalPath, PATH_TYPE);
+		return getAssetFile(finalPath, PATH_TYPE, posinfo);
 	}
 
 	#if sys
@@ -156,24 +156,55 @@ class FileManager
 	{
 		var arr:Array<String> = [];
 		var scriptPaths:Array<String> = ['assets/scripts/'];
+		var scriptExtensions:Array<String> = ['.hx', '.hxc'];
 
-		var readFolder:Dynamic = function(folder:String, ogdir:String)
+		var readFolder:Dynamic = function(folder:String, ogdir:String) {};
+
+		var readFileFolder:Dynamic = function(folder:String, ogdir:String)
 		{
 			#if EXCESS_TRACES
-			trace('reading ${folder}');
+			trace('${ogdir}${folder}');
+			#end
+
+			for (file in readDirectory('${ogdir}${folder}'))
+			{
+				final endsplitter:String = '${!folder.endsWith('/') && !file.startsWith('/') ? '/' : ''}';
+				for (extension in scriptExtensions)
+				{
+					if (file.endsWith(extension))
+					{
+						final path:String = '${ogdir}${folder}${endsplitter}${file}';
+
+						if (!arr.contains(path))
+						{
+							arr.push('${path}');
+
+						}
+					}
+				}
+
+				if (!file.contains('.'))
+				{
+					readFolder('${file}', '${ogdir}${folder}${endsplitter}');
+				}
+			}
+		}
+
+		readFolder = function(folder:String, ogdir:String)
+		{
+			#if EXCESS_TRACES
+			trace('reading ${ogdir}${folder}');
 			#end
 
 			TryCatch.tryCatch(function()
 			{
 				if (!folder.contains('.'))
 				{
-					for (file in readDirectory(folder, ['.hx', '.hxc']))
-						arr.push('${ogdir}$folder/$file');
+					readFileFolder(folder, '${ogdir}');
 				}
 				else
 				{
-					if (folder.endsWith('.hxc') || folder.endsWith('.hx'))
-						arr.push('${ogdir}$folder');
+					readFileFolder(ogdir, '');
 				}
 			}, {
 					traceErr: true
@@ -214,9 +245,14 @@ class FileManager
 			readDir(path);
 		}
 
-		#if EXCESS_TRACES
-		trace(arr);
-		#end
+		var traceArr:Array<String> = [];
+		for (path in arr)
+		{
+			var split = path.split('/');
+			traceArr.push(split[split.length - 1]);
+		}
+
+		trace('Loaded script files: ${traceArr}');
 		return arr;
 	}
 	#else
@@ -236,7 +272,7 @@ class FileManager
 	/**
 	 * Dummy function for if not `SCRIPT_FILES`
 	 */
-	public static function getScriptFile(?file:String = '', ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getScriptFile(?file:String = '', ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
 	{
 		return '';
 	}
@@ -256,8 +292,8 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getDataFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
-		return getAssetFile('data/$file', PATH_TYPE);
+	public static function getDataFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
+		return getAssetFile('data/$file', PATH_TYPE, posinfo);
 
 	/**
 	 * Returns `assets/images/$file.png`
@@ -265,8 +301,8 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getImageFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
-		return getAssetFile('images/$file.png', PATH_TYPE);
+	public static function getImageFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
+		return getAssetFile('images/$file.png', PATH_TYPE, posinfo);
 
 	/**
 	 * Returns `assets/$file.$SOUND_EXT`
@@ -274,9 +310,9 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getSoundFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT):String
+	public static function getSoundFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
 	{
-		return getAssetFile('$file.$SOUND_EXT', PATH_TYPE);
+		return getAssetFile('$file.$SOUND_EXT', PATH_TYPE, posinfo);
 	}
 
 	/**
@@ -304,11 +340,11 @@ class FileManager
 	 * Read a file using `lime.utils.Assets` and a try catch function
 	 * @param path the path of the file your trying to read
 	 */
-	public static function readFile(path:String):String
+	public static function readFile(path:String, ?posinfo:PosInfos):String
 	{
 		if (!exists(path))
 		{
-			unfoundAsset(path);
+			unfoundAsset(path, posinfo);
 			return '';
 		}
 
@@ -328,9 +364,9 @@ class FileManager
 	 * Reads a file that SHOULD BE A JSON, using `readFile`
 	 * @param path the path of the json your trying to get
 	 */
-	public static function getJSON(path:String):Dynamic
+	public static function getJSON(path:String, ?posinfo:PosInfos):Dynamic
 	{
-		return Json.parse(readFile(path));
+		return Json.parse(readFile(path, posinfo));
 	}
 
 	/**
@@ -376,14 +412,14 @@ class FileManager
 		return openfl.utils.Assets.exists(path);
 	}
 
-	public static function getPackerAtlas(path:String, ?path_type:PathTypes):FlxAtlasFrames
+	public static function getPackerAtlas(path:String, ?path_type:PathTypes, ?posinfo:PosInfos):FlxAtlasFrames
 	{
-		return FlxAtlasFrames.fromSpriteSheetPacker(getImageFile(path, path_type), getImageFile('$path', path_type).replace('.png', '.txt'));
+		return FlxAtlasFrames.fromSpriteSheetPacker(getImageFile(path, path_type, posinfo), getImageFile('$path', path_type, posinfo).replace('.png', '.txt'));
 	}
 
-	public static function getSparrowAtlas(path:String, ?path_type:PathTypes)
+	public static function getSparrowAtlas(path:String, ?path_type:PathTypes, ?posinfo:PosInfos)
 	{
-		return FlxAtlasFrames.fromSparrow(getImageFile(path, path_type), getImageFile('$path', path_type).replace('.png', '.xml'));
+		return FlxAtlasFrames.fromSparrow(getImageFile(path, path_type, posinfo), getImageFile('$path', path_type, posinfo).replace('.png', '.xml'));
 	}
 }
 

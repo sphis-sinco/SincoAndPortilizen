@@ -41,7 +41,8 @@ import sap.savedata.*;
 import sap.stages.StageGlobals;
 import sap.utils.*;
 import sap.utils.DynamicAnimationJSON.AnimData;
-import sap.worldmap.Worldmap;
+import sap.worldmap.*;
+import sap.worldmap.PlayableCharacter;
 import sinlib.*;
 import sinlib.utilities.*;
 

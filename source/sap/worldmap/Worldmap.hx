@@ -1,276 +1,129 @@
 package sap.worldmap;
 
-import sap.mainmenu.MainMenu;
-import sap.stages.stage1.Stage1;
-import sap.stages.stage2.Stage2;
-import sap.stages.stage4.Stage4;
+import sap.mainmenu.PlayMenu;
 
 class Worldmap extends State
 {
-	public static var character:MapCharacter;
-	public static var charWheel:CharacterWheel;
+	public static var CURRENT_PLAYER_CHARACTER:String = 'sinco';
+	public static var CURRENT_PLAYER_CHARACTER_JSON:PlayableCharacter = null;
+	public static var CURRENT_PLAYER_LEVELS:Int = 0;
+	public static var CURRENT_PLAYER_SELECTION_OFFSET:Int = 0;
 
-	public static var current_level:Int = 1;
+	public static var CURRENT_SELECTION:Int = 0;
+	public static var CURRENT_DIFFICULTY:String = 'normal';
 
-	public static var mapGRP:FlxTypedGroup<FlxSprite>;
+	public static var LEVEL_TEXT:FlxText;
+	public static var DIFFICULTY_TEXT:FlxText;
 
-	public static var implementedLevels(get, never):Map<String, Array<Bool>>;
+	public static var CHARACTER_SELECT_BUTTON:FlxSprite;
 
-	static function get_implementedLevels():Map<String, Array<Bool>>
-	{
-		return ["sinco" => [true, true, false], "port" => [true, false, false]];
-	}
-
-	public static var DIFFICULTY:String = StageGlobals.NORMAL_DIFF;
-	public static var difficultySprite:SparrowSprite;
-
-	override public function new(char:String = "Sinco"):Void
+	override public function new(character:String = 'sinco')
 	{
 		super();
 
-		charWheel = new CharacterWheel();
-		character = new MapCharacter(char);
-		mapGRP = new FlxTypedGroup<FlxSprite>();
-		difficultySprite = new SparrowSprite('levelselect/difficulties', 0, 0);
+		CURRENT_PLAYER_CHARACTER = character;
+		CURRENT_PLAYER_CHARACTER_JSON = PlayableCharacterManager.readPlayableCharacterJSON(CURRENT_PLAYER_CHARACTER);
+		CURRENT_PLAYER_LEVELS = CURRENT_PLAYER_CHARACTER_JSON.levels;
+		CURRENT_PLAYER_SELECTION_OFFSET = CURRENT_PLAYER_CHARACTER_JSON.level_number_offset;
 	}
 
-	override function create():Void
+	override function create()
 	{
 		super.create();
 
-		var bg:FlxSprite = new FlxSprite();
-		bg.makeGraphic(FlxG.width, FlxG.height);
-		add(bg);
+		CURRENT_SELECTION = 0;
 
-		character.screenCenter();
-		character.x = 32 + character.width;
-		mapTileXPosThing = character.getGraphicMidpoint().x;
+		var background:FlxSprite = new FlxSprite();
+		background.loadGraphic(FileManager.getImageFile('worldmap/worldmapBG'));
+		add(background);
+		Global.scaleSprite(background);
+		background.screenCenter();
 
-		makeMap();
+		var bar:FlxSprite = new FlxSprite();
+		bar.makeGraphic(FlxG.width, 32 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, FlxColor.BLACK);
+		add(bar);
+		bar.screenCenter();
 
-		add(mapGRP);
-		add(character);
+		LEVEL_TEXT = new FlxText(0, 0, 0, 'Hi', 32);
+		add(LEVEL_TEXT);
+		LEVEL_TEXT.screenCenter();
+		LEVEL_TEXT.y -= LEVEL_TEXT.height / 2;
 
-		charWheel.screenCenter(X);
-		charWheel.y = charWheel.height + 16;
+		DIFFICULTY_TEXT = new FlxText(0, 0, 0, 'Bye', 32);
+		add(DIFFICULTY_TEXT);
+		DIFFICULTY_TEXT.screenCenter();
+		DIFFICULTY_TEXT.y += DIFFICULTY_TEXT.height / 2;
 
-		charWheel.animation.play(character.char);
-
-		add(charWheel);
-
-		Global.changeDiscordRPCPresence('In the worldmap as ${character.char}', null);
-
-		if (current_level > 1)
-		{
-			character.x += 256 * (current_level - 1);
-		}
-
-		difficultySprite.addAnimationByPrefix('easy', 'easy', 24);
-		difficultySprite.addAnimationByPrefix('normal', 'normal', 24);
-		difficultySprite.addAnimationByPrefix('hard', 'hard', 24);
-		difficultySprite.addAnimationByPrefix('extreme', 'extreme', 24);
-
-		difficultySprite.screenCenter();
-		Global.scaleSprite(difficultySprite);
-		difficultySprite.y += (difficultySprite.height * StageGlobals.DISMx2);
-		add(difficultySprite);
+		CHARACTER_SELECT_BUTTON = new FlxSprite();
+		CHARACTER_SELECT_BUTTON.loadGraphic(FileManager.getImageFile('worldmap/charSelButton'));
+		add(CHARACTER_SELECT_BUTTON);
+		Global.scaleSprite(CHARACTER_SELECT_BUTTON, -2);
+		CHARACTER_SELECT_BUTTON.setPosition(8 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER, 8 * Global.DEFAULT_IMAGE_SCALE_MULTIPLIER);
 	}
 
-	public static var mapTileXPosThing:Float = 0;
-
-	override function update(elapsed:Float):Void
+	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (difficultySprite.animation.name != DIFFICULTY.toLowerCase())
+		LEVEL_TEXT.text = '${CURRENT_PLAYER_CHARACTER_JSON.character_display_name}: level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET}';
+		LEVEL_TEXT.screenCenter(X);
+
+		DIFFICULTY_TEXT.text = '${Global.keyPressed(LEFT) ? '-' : '<'} ${CURRENT_DIFFICULTY} ${Global.keyPressed(RIGHT) ? '-' : '>'}';
+		DIFFICULTY_TEXT.screenCenter(X);
+
+		switch (CURRENT_DIFFICULTY.toLowerCase())
 		{
-			difficultySprite.playAnimation(DIFFICULTY);
+			case 'easy':
+				DIFFICULTY_TEXT.color = FlxColor.LIME;
+			case 'normal':
+				DIFFICULTY_TEXT.color = FlxColor.YELLOW;
+			case 'hard':
+				DIFFICULTY_TEXT.color = FlxColor.RED;
+			case 'extreme':
+				DIFFICULTY_TEXT.color = FlxColor.PINK;
 		}
 
-		if (Global.anyKeysJustReleased([LEFT, RIGHT]) && character.animationname() != 'run')
-		{
-			characterMove();
-		}
+		controlManagement();
 
-		if (Global.anyKeysJustReleased([UP, DOWN]))
+		if (FlxG.mouse.overlaps(CHARACTER_SELECT_BUTTON) && FlxG.mouse.justReleased)
 		{
-			difficultyChange();
-		}
-
-		if (Global.keyJustReleased(ENTER) && character.animationname() == 'idle')
-		{
-			playLevel();
-		}
-
-		if (Global.keyJustReleased(SPACE) && canSwap)
-		{
-			swap();
-		}
-	}
-
-	public static function difficultyChange():Void
-	{
-		var down:Bool = !Global.keyJustReleased(UP);
-
-		if (DIFFICULTY == StageGlobals.EASY_DIFF)
-		{
-			DIFFICULTY = (down) ? StageGlobals.EXTREME_DIFF : StageGlobals.NORMAL_DIFF;
-		}
-		else if (DIFFICULTY == StageGlobals.NORMAL_DIFF)
-		{
-			DIFFICULTY = (down) ? StageGlobals.EASY_DIFF : StageGlobals.HARD_DIFF;
-		}
-		else if (DIFFICULTY == StageGlobals.HARD_DIFF)
-		{
-			DIFFICULTY = (down) ? StageGlobals.NORMAL_DIFF : StageGlobals.EXTREME_DIFF;
-		}
-		else if (DIFFICULTY == StageGlobals.EXTREME_DIFF)
-		{
-			DIFFICULTY = (down) ? StageGlobals.HARD_DIFF : StageGlobals.EASY_DIFF;
+			Global.switchState(new CharacterSelect());
 		}
 	}
 
-	public static function characterMove():Void
+	public static function controlManagement():Void
 	{
-		canSwap = false;
-		character.flipX = Global.keyJustReleased(LEFT);
-
-		current_level += (character.flipX) ? -1 : 1;
-		if (current_level > 3)
+		if (Global.anyKeysJustReleased([LEFT, RIGHT]))
 		{
-			current_level -= 1;
-			canSwap = true;
-			return;
+			CURRENT_DIFFICULTY = StageGlobals.cycleDifficulty(CURRENT_DIFFICULTY, Global.keyJustReleased(LEFT));
 		}
-
-		character.animation.play('run');
-		FlxTween.tween(character, {x: character.x + ((character.flipX) ? -256 : 256)}, 1, {
-			onComplete: characterMoveDone()
-		});
-	}
-
-	public static function characterMoveDone():TweenCallback
-	{
-		return tween ->
+		else if (Global.anyKeysJustReleased([UP, DOWN]))
 		{
-			canSwap = true;
-			character.animation.play('idle');
-
-			if (current_level < 1)
+			if (Global.keyJustReleased(DOWN))
 			{
-				// Fix missing sticker degen
-				MainMenu.public_menutextsSelection = 'menu';
-
-				Global.switchState(new MainMenu());
-				current_level += 1;
+				CURRENT_SELECTION--;
 			}
-		}
-	}
-
-	public static function playLevel():Void
-	{
-		if (implementedLevels.get(character.char)[current_level - 1] == false)
-			return;
-
-		switch (current_level)
-		{
-			// TODO: implement level unlocking PLEASE
-			case 1:
-				level1();
-			case 2:
-				level2();
-		}
-	}
-
-	public static function level1():Void
-	{
-		Global.switchState((character.char == 'sinco') ? new Stage1(DIFFICULTY) : new Stage4(DIFFICULTY));
-	}
-
-	public static function level2():Void
-	{
-		Global.switchState(new Stage2(DIFFICULTY));
-	}
-
-	public static function swap():Void
-	{
-		canSwap = false;
-		charWheel.animation.play('${character}-${character.swappedchar()}');
-
-		FlxTimer.wait(2 / 12, () ->
-		{
-			swapWaitDone();
-		});
-	}
-
-	public static function swapWaitDone():Void
-	{
-		Global.changeDiscordRPCPresence('In the worldmap as ${character.swappedchar()}', null);
-
-		FlxG.camera.flash(0xffffff, 1, () ->
-		{
-			canSwap = true;
-		});
-		for (tile in mapGRP)
-		{
-			tile.destroy();
-			mapGRP.remove(tile);
-		}
-		character.swapCharacter();
-		character.animation.play('idle');
-		makeMap();
-	}
-
-	public static var canSwap:Bool = true;
-
-	public static function makeMap():Void
-	{
-		var i:Int = 0;
-		while (i < 3)
-		{
-			makeNewTile(i);
-
-			i++;
-		}
-	}
-
-	public static function makeNewTile(i:Int):Void
-	{
-		// TODO: change these to use MapTile once you figure out the bug
-		// ?: What bug? lol.
-
-		var level:FlxSprite = new FlxSprite(mapTileXPosThing - 12 + (i * 256), character.getGraphicMidpoint().y);
-		var tileColor:FlxColor = FlxColor.BLACK;
-
-		if (implementedLevels.get(character.char)[i])
-		{
-			var addition:Int = 0;
-
-			if (character.char == 'port')
+			else
 			{
-				addition = 3;
+				CURRENT_SELECTION++;
 			}
 
-			tileColor = FlxColor.RED;
+			if (CURRENT_SELECTION < 0)
+				CURRENT_SELECTION = 0;
 
-			final levelIndex:Int = (i + 1) + addition;
-			var levelBeat:Bool = false;
-
-			#if html5
-			levelBeat = WebSave.LEVELS_COMPLETE.contains(levelIndex);
-			#else
-			levelBeat = SaveManager.getGameplaystatus().levels_complete.contains(levelIndex);
-			#end
-
-			// * TODO (DONE?): implement color change for when a level is finished
-			if (levelBeat)
-			{
-				tileColor = FlxColor.LIME;
-			}
+			if (CURRENT_SELECTION > CURRENT_PLAYER_LEVELS - 1)
+				CURRENT_SELECTION = CURRENT_PLAYER_LEVELS - 1;
 		}
-
-		level.makeGraphic(24, 24, tileColor);
-
-		mapGRP.add(level);
+		else if (Global.keyJustReleased(ENTER))
+		{
+			Global.callScriptFunction('worldmapSelection', [
+				CURRENT_PLAYER_CHARACTER,
+				CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET
+			]);
+		}
+		else if (Global.keyJustReleased(ESCAPE))
+		{
+			Global.switchState(new PlayMenu());
+		}
 	}
 }

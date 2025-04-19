@@ -6,8 +6,6 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import funkin.graphics.shaders.DropShadowShader;
 import sap.results.ResultsMenu;
-import sap.worldmap.Worldmap;
-
 class Stage1 extends State
 {
 	public static var RACE_TRACK:FlxSprite;
@@ -459,7 +457,6 @@ class Stage1 extends State
 		FlxTween.tween(sinco, {y: FlxG.width * 2}, 1, {
 			onComplete: _tween ->
 			{
-				RUNNING = false;
 				Global.switchState(new ResultsMenu((OSIN_MAX_HEALTH - OSIN_HEALTH), OSIN_MAX_HEALTH, new Worldmap()));
 			},
 			onStart: _tween ->
@@ -495,7 +492,6 @@ class Stage1 extends State
 	public static function endCutsceneTransition():Void
 	{
 		Global.beatLevel(1);
-		RUNNING = false;
 
 		FlxG.switchState(() -> new ResultsMenu(SINCO_HEALTH, SINCO_MAX_HEALTH, new PostStage1Cutscene()));
 	}

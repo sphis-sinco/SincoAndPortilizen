@@ -68,7 +68,6 @@ class ScriptManager
 		setScript('DiscordClient', Discord.DiscordClient);
 		#end
 
-		// utils
 		setScript('Global', Global);
 
 		setScript('FileManager', FileManager);
@@ -78,56 +77,7 @@ class ScriptManager
 
 		setScript('BlankBG', BlankBG);
 
-		// gameplay
-		setScript('StageGlobals', StageGlobals);
-		setScript('Combo', Combo);
-		setScript('PaulPortGameOver', PaulPortGameOver);
-
-		setScript('Stage1', Stage1);
-		setScript('Stage1Sinco', Sinco);
-		setScript('Stage1Osin', Osin);
-		setScript('PostStage1Cutscene', PostStage1Cutscene);
-
-		setScript('Stage2', Stage2);
-		setScript('PostStage2Cutscene', PostStage2Cutscene);
-		setScript('Stage2Rock', Stage2Rock);
-		setScript('Stage2Sinco', Stage2Sinco);
-
-		setScript('Stage4', Stage4);
-		setScript('PostStage4Cutscene', PostStage4Cutscene);
-		setScript('PortS4', PortS4);
-		setScript('EnemyS4', EnemyS4);
-
-		setScript('Sidebit1', Sidebit1);
-		setScript('Sidebit1IntroCutsceneAtlas', Sidebit1IntroCutsceneAtlas);
-		setScript('Sidebit1PostCutsceneAtlas', Sidebit1PostCutsceneAtlas);
-
-		// results
-		setScript('Rank', Rank);
-		setScript('ResultsChar', ResultsChar);
-		setScript('ResultsMenu', ResultsMenu);
-
-		// medals
-		setScript('Medal', Medal);
-		setScript('MedalsMenu', MedalsMenu);
-
-		// locale
-		setScript('LocalizationManager', LocalizationManager);
-
-		// cutscenes
-		setScript('AtlasCutscene', AtlasCutscene);
-		setScript('PanelCutscene', PanelCutscene);
-		setScript('SparrowCutscene', SparrowCutscene);
-
-		// menus
-		setScript('CreditsSubState', CreditsSubState);
-		setScript('SettingsMenu', SettingsMenu);
-		setScript('SidebitSelect', SidebitSelect);
-		setScript('MainMenu', MainMenu);
-		setScript('PlayMenu', PlayMenu);
-		setScript('TitleState', TitleState);
-
-		// custom
+		// functions
 		setScript('UnlockMedal', function(medal:String):Medal
 		{
 			return MedalData.unlockMedal(medal);

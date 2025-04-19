@@ -1,4 +1,6 @@
+import sap.title.TitleState;
+
 function statePostCreate()
 {
-        TitleState.CHARACTER_RING.visible = false;
+       if (TitleState.CHARACTER_RING != null) TitleState.CHARACTER_RING.visible = false;
 }

@@ -1,7 +1,5 @@
 package sap.stages.stage2;
 
-import sap.worldmap.Worldmap;
-
 class PostStage2Cutscene extends PanelCutscene
 {
 	override public function new():Void
