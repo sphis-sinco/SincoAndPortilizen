@@ -18,6 +18,7 @@
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 - Fixed missing worldmap character assets
 ### Changed
+- The sidebit 1 background is now a general background usable for anything (folder change LOL)
 - (Source) Using `Global.DEBUG_BUILD` instead of `SLGame.isDebug`
 - The volume now is set as the last saved audio setting
 - (Source) Instead of using `FlxG.keys.` every file uses one of the `Global.key` functions
