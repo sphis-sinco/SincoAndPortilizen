@@ -17,13 +17,15 @@ class StageGlobals
 		});
 	}
 
-	public static var EASY_DIFF:String = 'easy';
-	public static var NORMAL_DIFF:String = 'normal';
-	public static var HARD_DIFF:String = 'hard';
-	public static var EXTREME_DIFF:String = 'extreme';
+	public static var difficultyCycle = {
+		"easy": ["extreme", "normal"],
+		"normal": ["easy", "hard"],
+		"hard": ["normal", "extreme"],
+		"extreme": ["hard", "easy"]
+	};
 
-	public static var DIFFICULTYS:Array<String> = [EASY_DIFF, NORMAL_DIFF, HARD_DIFF];
-	public static var DIFFICULTYS_ALL:Array<String> = [EASY_DIFF, NORMAL_DIFF, HARD_DIFF, EXTREME_DIFF];
-	public static var DIFFICULTYS_EASY:Array<String> = [EASY_DIFF, NORMAL_DIFF];
-	public static var DIFFICULTYS_HARD:Array<String> = [HARD_DIFF, EXTREME_DIFF];
+	public static function cycleDifficulty(current:String, left:Bool):String
+	{
+		return difficultyCycle[current][left ? 0 : 1];
+	}
 }

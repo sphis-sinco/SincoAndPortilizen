@@ -95,24 +95,7 @@ class Worldmap extends State
 	{
 		if (Global.anyKeysJustReleased([LEFT, RIGHT]))
 		{
-			var left:Bool = !Global.keyJustReleased(RIGHT);
-
-			if (CURRENT_DIFFICULTY == StageGlobals.EASY_DIFF)
-			{
-				CURRENT_DIFFICULTY = (left) ? StageGlobals.EXTREME_DIFF : StageGlobals.NORMAL_DIFF;
-			}
-			else if (CURRENT_DIFFICULTY == StageGlobals.NORMAL_DIFF)
-			{
-				CURRENT_DIFFICULTY = (left) ? StageGlobals.EASY_DIFF : StageGlobals.HARD_DIFF;
-			}
-			else if (CURRENT_DIFFICULTY == StageGlobals.HARD_DIFF)
-			{
-				CURRENT_DIFFICULTY = (left) ? StageGlobals.NORMAL_DIFF : StageGlobals.EXTREME_DIFF;
-			}
-			else if (CURRENT_DIFFICULTY == StageGlobals.EXTREME_DIFF)
-			{
-				CURRENT_DIFFICULTY = (left) ? StageGlobals.HARD_DIFF : StageGlobals.EASY_DIFF;
-			}
+			CURRENT_DIFFICULTY = StageGlobals.cycleDifficulty(CURRENT_DIFFICULTY, Global.keyJustReleased(LEFT));
 		}
 		else if (Global.anyKeysJustReleased([UP, DOWN]))
 		{
