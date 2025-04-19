@@ -180,8 +180,8 @@ class Stage5 extends State
 		FlxG.watch.addQuick('Opponent charge tick', OPPONENT_CHARGE_TICK);
 		FlxG.watch.addQuick('Opponent pause tick', OPPONENT_PAUSE_TICK);
 
-		OBJ_PLAYER_ATTACK.setPosition(OBJ_PLAYER.x, OBJ_PLAYER.y - (OBJ_PLAYER_ATTACK.height * (OBJ_PLAYER_ATTACK.scale.y / 4)) * 2);
-		OBJ_OPPONENT_ATTACK.setPosition(OBJ_OPPONENT.x, OBJ_OPPONENT.y - (OBJ_OPPONENT_ATTACK.height * (OBJ_OPPONENT_ATTACK.scale.y / 2)) * 2);
+		OBJ_PLAYER_ATTACK.setPosition(OBJ_PLAYER.x, OBJ_PLAYER.y - (OBJ_PLAYER_ATTACK.height * ((OBJ_PLAYER_ATTACK.scale.y / 4) + 1)) * 2);
+		OBJ_OPPONENT_ATTACK.setPosition(OBJ_OPPONENT.x, OBJ_OPPONENT.y - (OBJ_OPPONENT_ATTACK.height * ((OBJ_OPPONENT_ATTACK.scale.y / 4) + 1)) * 2);
 
 		OBJ_PLAYER_ATTACK.scale.y = OBJ_PLAYER_ATTACK.scale.x = 1 + (PLAYER_CHARGE / 100);
 		OBJ_OPPONENT_ATTACK.scale.y = OBJ_OPPONENT_ATTACK.scale.x = 1 + (OPPONENT_CHARGE / 100);
