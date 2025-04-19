@@ -1,4 +1,6 @@
 # Alpha
+## 0.5.3a - 4/19/2025
+
 ## 0.5.2a - 4/19/2025
 ### Fixed
 - (Desktop only) Invalid char 0 at position 0
