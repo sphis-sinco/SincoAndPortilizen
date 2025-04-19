@@ -135,7 +135,6 @@ class Stage5 extends State
 		TIMER = DIFFICULTY_JSON.timer;
 
 		IN_CUTSCENE = false;
-		TIMER = 1;
 
 		RUNNING = true;
 	}
