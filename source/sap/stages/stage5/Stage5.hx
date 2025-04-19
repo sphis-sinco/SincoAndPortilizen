@@ -282,7 +282,6 @@ class Stage5 extends State
 				OBJ_PLAYER.animation.play('charge');
 
 			PLAYER_CHARGE++;
-                        Global.playSoundEffect('gameplay/attack-charge');
 
 			if (PLAYER_CHARGE > OPPONENT_CHARGE)
 			{
@@ -298,7 +297,6 @@ class Stage5 extends State
 	{
 		OPPONENT_CHARGE_TICK++;
 		OBJ_OPPONENT.animation.play('charge');
-                Global.playSoundEffect('gameplay/attack-charge');
 
 		if (OPPONENT_CHARGE_TICK == FlxG.random.int(OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN, OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX)
 			&& FlxG.random.bool(OPPONENT_PAUSE_CHANGE))
