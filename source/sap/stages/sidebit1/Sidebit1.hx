@@ -350,8 +350,8 @@ class Sidebit1 extends State
 			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
 			SINCO.x -= 25;
 			SINCO.y += 100;
+			if (SINCO.animation.name != 'hit') Global.hitHurt();
 			SINCO.playAnimation('hit');
-			Global.hitHurt();
 			if (CAN_DECREASE_SINCO_HEALTH)
 			{
 				CAN_DECREASE_SINCO_HEALTH = false;
