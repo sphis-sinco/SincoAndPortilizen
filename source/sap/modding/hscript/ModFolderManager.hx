@@ -53,30 +53,10 @@ class ModFolderManager
 				#end
 				if (dir.contains('meta.json'))
 				{
-					var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${folder}/meta.json');
-					if (!SUPPORTED_MODDING_API_VERSIONS.contains(dir_meta.api_version))
+					TryCatch.tryCatch(function()
 					{
-						trace('Mod "${dir_meta.name}" was built for incompatible API version (${dir_meta.api_version.toString()}), "${SUPPORTED_MODDING_API_VERSIONS[0]}" expected at minimum');
-					}
-					else
-					{
-						MODS.push(folder);
-						if (SaveManager.getEnabledMods() != null)
-						{
-							if (!SaveManager.getEnabledMods().contains(folder))
-							{
-								DISABLED_MODS.push(folder);
-							}
-							else
-							{
-								ENABLED_MODS.push(folder);
-							}
-						}
-						else
-						{
-							ENABLED_MODS.push(folder);
-						}
-					}
+						readMetaData(folder)
+					});
 				}
 			}
 		}
@@ -151,5 +131,33 @@ class ModFolderManager
 	public static function modInfo(dir_meta:ModMetaData, ?version:Bool = true, ?api_version:Bool = true):String
 	{
 		return '${dir_meta.name}' + '${(version) ? ' v${dir_meta.version}' : ''}' + '${(api_version) ? ' (api version: ${dir_meta.api_version})' : ''}';
+	}
+
+	private static function readMetaData(folder:String):Void
+	{
+		var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${folder}/meta.json');
+		if (!SUPPORTED_MODDING_API_VERSIONS.contains(dir_meta.api_version))
+		{
+			trace('Mod "${dir_meta.name}" was built for incompatible API version (${dir_meta.api_version.toString()}), "${SUPPORTED_MODDING_API_VERSIONS[0]}" expected at minimum');
+		}
+		else
+		{
+			MODS.push(folder);
+			if (SaveManager.getEnabledMods() != null)
+			{
+				if (!SaveManager.getEnabledMods().contains(folder))
+				{
+					DISABLED_MODS.push(folder);
+				}
+				else
+				{
+					ENABLED_MODS.push(folder);
+				}
+			}
+			else
+			{
+				ENABLED_MODS.push(folder);
+			}
+		}
 	}
 }
