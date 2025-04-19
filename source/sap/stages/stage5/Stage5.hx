@@ -23,9 +23,54 @@ class Stage5 extends State
 	public static var OBJ_PLAYER:FlxSprite;
 
 	/**
+	 * The current charge the player has
+	 */
+	public static var PLAYER_CHARGE:Int = 0;
+
+	/**
 	 * The opponent sprite
 	 */
 	public static var OBJ_OPPONENT:FlxSprite;
+
+	/**
+	 * The current charge the opponent has
+	 */
+	public static var OPPONENT_CHARGE:Int = 0;
+
+	/**
+	 * The current tick of the opponent's charge: when it is a certain random value the opponent will stop charging
+	 */
+	public static var OPPONENT_CHARGE_TICK:Int = 0;
+
+	/**
+	 * The tick goal until `OPPONENT_CHARGE` is incremented
+	 */
+	public static var OPPONENT_CHARGE_TICK_GOAL:Int = 30;
+
+	/**
+	 * The certain random value minimum where the opponent pauses charging
+	 */
+	public static var OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN:Int = 15;
+
+	/**
+	 * The certain random value maximum where the opponent pauses charging
+	 */
+	public static var OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX:Int = 25;
+
+	/**
+	 * The recharge ticks starting value
+	 */
+	public static var OPPONENT_PAUSE_TICK_START_VALUE:Int = 60;
+
+	/**
+	 * The recharge ticks: counts down
+	 */
+	public static var OPPONENT_PAUSE_TICK:Int = 0;
+
+	/**
+	 * The tick goal until `OPPONENT_PAUSE_TICK` is decreased
+	 */
+	public static var OPPONENT_PAUSE_TICK_GOAL:Int = 15;
 
 	/**
 	 * The difficulty string
@@ -90,6 +135,12 @@ class Stage5 extends State
 		FlxG.watch.addQuick('Player position', OBJ_PLAYER.getPosition());
 		FlxG.watch.addQuick('Opponent position', OBJ_OPPONENT.getPosition());
 
+		FlxG.watch.addQuick('Player charge', PLAYER_CHARGE);
+		FlxG.watch.addQuick('Opponent charge', OPPONENT_CHARGE);
+
+		FlxG.watch.addQuick('Opponent charge tick', OPPONENT_CHARGE_TICK);
+		FlxG.watch.addQuick('Opponent pause tick', OPPONENT_PAUSE_TICK);
+
 		if (EDITOR_MODE)
 		{
 			editorModeTick();
@@ -103,7 +154,46 @@ class Stage5 extends State
 	/**
 	 * This controls everything related to the gameplay loop
 	 */
-	public static function gameplayTick():Void {}
+	public static function gameplayTick():Void
+	{
+		if (OPPONENT_PAUSE_TICK == 0)
+		{
+			opponentChargeTick();
+		}
+		else
+		{
+			OPPONENT_PAUSE_TICK--;
+		}
+	}
+
+	/**
+	 * Controls opponent charge ticks
+	 */
+	public static function opponentChargeTick():Void
+	{
+		OPPONENT_CHARGE_TICK++;
+
+		if (OPPONENT_CHARGE_TICK == FlxG.random.int(OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN, OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX))
+		{
+			OPPONENT_PAUSE_TICK = OPPONENT_PAUSE_TICK_START_VALUE;
+		}
+		else
+		{
+			opponentTickGoalCheck();
+		}
+	}
+
+	/**
+	 * Checks if `OPPONENT_CHARGE_TICK` is `OPPONENT_CHARGE_TICK_GOAL` and if so it increments `OPPONENT_CHARGE`
+	 */
+	public static function opponentTickGoalCheck():Void
+	{
+		if (OPPONENT_CHARGE_TICK == OPPONENT_CHARGE_TICK_GOAL)
+		{
+			OPPONENT_CHARGE++;
+			OPPONENT_CHARGE_TICK = 0;
+		}
+	}
 
 	/**
 	 *  This controls everything related to EDITOR_MODE
