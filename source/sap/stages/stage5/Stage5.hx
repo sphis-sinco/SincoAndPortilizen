@@ -337,13 +337,13 @@ class Stage5 extends State
 		OBJ_PLAYER.animation.add('attack', [2], 1, false);
 		OBJ_PLAYER.animation.play('intro');
 		OBJ_PLAYER.setPosition(480, 400);
-		OBJ_PLAYER.shader = getRimLighting('Portilizen');
+		// OBJ_PLAYER.shader = getRimLighting('Portilizen');
 		Global.scaleSprite(OBJ_PLAYER, -2);
 
 		OBJ_OPPONENT = new FlxSprite();
 		OBJ_OPPONENT.makeGraphic(32, 64, FlxColor.GREEN);
 		OBJ_OPPONENT.setPosition(120, 400);
-		OBJ_OPPONENT.shader = getRimLighting(null); // 'STCS');
+		// OBJ_OPPONENT.shader = getRimLighting(null); // 'STCS');
 	}
 
 	/**
@@ -376,10 +376,10 @@ class Stage5 extends State
 	{
 		OBJ_PLAYER_ATTACK = new FlxSprite();
 		OBJ_PLAYER_ATTACK.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage5PortilizenAttack'));
-		OBJ_PLAYER_ATTACK.shader = getRimLighting('Attack');
+		// OBJ_PLAYER_ATTACK.shader = getRimLighting('Attack');
 
 		OBJ_OPPONENT_ATTACK = new FlxSprite();
 		OBJ_OPPONENT_ATTACK.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage5STCSAttack'));
-		OBJ_OPPONENT_ATTACK.shader = getRimLighting('Attack');
+		// OBJ_OPPONENT_ATTACK.shader = getRimLighting('Attack');
 	}
 }
