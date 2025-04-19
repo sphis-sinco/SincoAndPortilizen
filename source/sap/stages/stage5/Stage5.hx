@@ -198,6 +198,8 @@ class Stage5 extends State
 		final speed:Int = 2;
 		final won:Bool = PLAYER_CHARGE > OPPONENT_CHARGE;
 
+                Global.playSoundEffect('gameplay/attack');
+
 		FlxTween.tween(OBJ_PLAYER_ATTACK, {x: OBJ_OPPONENT.x, y: OBJ_OPPONENT.y}, speed, {
 			ease: FlxEase.sineInOut,
 			onStart: function(tween)
@@ -215,6 +217,7 @@ class Stage5 extends State
 			{
 				if (OBJ_OPPONENT_ATTACK.overlaps(OBJ_PLAYER_ATTACK))
 				{
+                                        Global.playSoundEffect('gameplay/attack-failed');
 					if (won)
 						OBJ_OPPONENT_ATTACK.destroy();
 					else
@@ -279,6 +282,7 @@ class Stage5 extends State
 				OBJ_PLAYER.animation.play('charge');
 
 			PLAYER_CHARGE++;
+                        Global.playSoundEffect('gameplay/attack-charge');
 
 			if (PLAYER_CHARGE > OPPONENT_CHARGE)
 			{
@@ -294,6 +298,7 @@ class Stage5 extends State
 	{
 		OPPONENT_CHARGE_TICK++;
 		OBJ_OPPONENT.animation.play('charge');
+                Global.playSoundEffect('gameplay/attack-charge');
 
 		if (OPPONENT_CHARGE_TICK == FlxG.random.int(OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN, OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX)
 			&& FlxG.random.bool(OPPONENT_PAUSE_CHANGE))

@@ -22,6 +22,7 @@
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 - Fixed missing worldmap character assets
 ### Changed
+- New medal SFX
 - The titleState version text now can contain the github sha
 - The game version + the game git sha is now traced in the terminal in the InitState proceed function
 - The sidebit 1 background is now a general background usable for anything (folder change LOL)
