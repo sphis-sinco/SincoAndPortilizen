@@ -60,6 +60,9 @@ class Worldmap extends State
 				denied++;
 			else
 				SIDEBITS.push(sidebitName);
+
+                        if (denied == SIDEBIT_JSONS.length && SIDEBIT_MODE)
+                                switchModes();
 		}
 	}
 
