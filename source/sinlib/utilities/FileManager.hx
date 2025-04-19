@@ -88,12 +88,12 @@ class FileManager
 			if (asset.contains('mods/'))
 			{
 				#if EXCESS_TRACES
-				trace('Could not get asset: $asset', posinfo);
+				trace('Could not get asset: $asset'); //, posinfo);
 				#end
 			}
 			else
 			{
-				trace('Could not get asset: $asset', posinfo);
+				trace('Could not get asset: $asset'); //, posinfo);
 			}
 			UNFOUND_ASSETS.push(asset);
 		}
