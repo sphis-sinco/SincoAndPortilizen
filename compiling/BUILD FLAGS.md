@@ -24,6 +24,7 @@ These do things. Lmao!
 - `STAGE_ONE`: Sends you to the first stage
 - `STAGE_TWO`: Sends you to the second stage
 - `STAGE_FOUR`: Sends you to the fourth stage
+- `STAGE_FIVE`: Sends you to the fifth stage
 
 - `SIDEBIT_ONE`: Sends you to the first sidebit intro cutscene
 - `SIDEBIT_ONE_INSTANT`: Sends you to the first sidebit instantly

@@ -1,6 +1,7 @@
 # Alpha
 ## 0.5.0a - 4/??/2025
 ### Added
+- `STAGE_FIVE` build flag
 - `NO_MODS` build flag
 - (Desktop only) New window resolution option: 1280x720 ([#34][#34_link])
 - (Source) Global now has functions related to keys being pressed, just released, and just pressed
