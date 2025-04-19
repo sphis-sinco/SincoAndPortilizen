@@ -135,8 +135,23 @@ class ModFolderManager
 
 	private static function readMetaData(folder:String):Void
 	{
-		var dir_meta:ModMetaData = FileManager.getJSON('${MODS_FOLDER}${folder}/meta.json');
-		if (!SUPPORTED_MODDING_API_VERSIONS.contains(dir_meta.api_version))
+		var dir_meta:ModMetaData = null;
+
+		TryCatch.tryCatch(function()
+		{
+			dir_meta = FileManager.getJSON('${MODS_FOLDER}${folder}/meta.json');
+		}, {
+				errFunc: function()
+				{
+					dir_meta = null;
+				}
+		});
+
+		if (dir_meta == null)
+                {
+                        trace('Mod "${folder}" could not have the meta.json read, sorry');
+                }
+		else if (!SUPPORTED_MODDING_API_VERSIONS.contains(dir_meta.api_version))
 		{
 			trace('Mod "${dir_meta.name}" was built for incompatible API version (${dir_meta.api_version.toString()}), "${SUPPORTED_MODDING_API_VERSIONS[0]}" expected at minimum');
 		}
