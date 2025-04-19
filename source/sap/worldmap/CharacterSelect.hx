@@ -39,7 +39,7 @@ class CharacterSelect extends State
 			}
 		}, {
                         errFunc: function() {
-
+                                CHARACTER_LIST = hardcoded_charList;
                         }
                 });
 		#else
