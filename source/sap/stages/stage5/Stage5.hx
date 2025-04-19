@@ -117,6 +117,21 @@ class Stage5 extends State
 	 */
 	public static var RUNNING:Bool = false;
 
+	/**
+	 * This is a text that displays information about the current gameplay
+	 */
+	public static var INFO_TEXTFIELD:FlxText;
+
+	/**
+	 * This is the actual gameplay information
+	 */
+	public static var INFO_TEXT:String;
+
+	/**
+	 * This is the progress bar that in this level will compare the power levels (ITS OVER 9 THOUSAND)
+	 */
+	public static var PROGRESS_BAR:FlxBar;
+
 	override public function new(difficulty:String)
 	{
 		super();
@@ -186,13 +201,27 @@ class Stage5 extends State
 			{
 				levelEndSequence();
 			});
+
+		PROGRESS_BAR = new FlxBar(0, 0, RIGHT_TO_LEFT, Std.int(FlxG.width / 2), 16, this, 'health', 0, 100, true);
+		add(PROGRESS_BAR);
+		PROGRESS_BAR.screenCenter(X);
+		PROGRESS_BAR.y = FlxG.height - PROGRESS_BAR.height - 64;
+		PROGRESS_BAR.createFilledBar(Random.dominantColor(OBJ_PLAYER), Random.dominantColor(OBJ_OPPONENT), true, FlxColor.BLACK, 4);
+
+		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
+		add(INFO_TEXTFIELD);
 	}
 
+	/**
+	 * This is the ending sequence, when the attacks fly at their targets
+	 */
 	public static function levelEndSequence():Void
 	{
 		IN_CUTSCENE = true;
 
-		FlxTween.tween(OBJ_PLAYER_ATTACK, {x: OBJ_OPPONENT.x, y: OBJ_OPPONENT.y}, 5, {
+		final speed:Int = 2;
+
+		FlxTween.tween(OBJ_PLAYER_ATTACK, {x: OBJ_OPPONENT.x, y: OBJ_OPPONENT.y}, speed, {
 			ease: FlxEase.sineInOut,
 			onComplete: function(tween)
 			{
@@ -202,7 +231,7 @@ class Stage5 extends State
 					new Worldmap(Worldmap.CURRENT_PLAYER_CHARACTER), 'port'));
 			}
 		});
-		FlxTween.tween(OBJ_OPPONENT_ATTACK, {x: OBJ_PLAYER.x, y: OBJ_PLAYER.y}, 5, {
+		FlxTween.tween(OBJ_OPPONENT_ATTACK, {x: OBJ_PLAYER.x, y: OBJ_PLAYER.y}, speed, {
 			ease: FlxEase.sineInOut
 		});
 	}
@@ -231,8 +260,20 @@ class Stage5 extends State
 			OBJ_PLAYER_ATTACK.scale.y = OBJ_PLAYER_ATTACK.scale.x = 1 + (PLAYER_CHARGE / 100);
 			OBJ_OPPONENT_ATTACK.scale.y = OBJ_OPPONENT_ATTACK.scale.x = 1 + (OPPONENT_CHARGE / 100);
 
+			updateHealthIndicators();
 			gameplayTick();
 		}
+	}
+
+	/**
+	 * Updates the variables related to the progress bar and info text
+	 */
+	public static function updateHealthIndicators():Void
+	{
+		INFO_TEXT = 'Portilizen: ${PLAYER_CHARGE} || STCS: ${OPPONENT_CHARGE}';
+		PROGRESS_BAR.percent = PLAYER_CHARGE / OPPONENT_CHARGE * 100;
+		INFO_TEXTFIELD.text = INFO_TEXT;
+		INFO_TEXTFIELD.screenCenter(X);
 	}
 
 	/**
