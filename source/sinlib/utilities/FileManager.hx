@@ -88,12 +88,12 @@ class FileManager
 			if (asset.contains('mods/'))
 			{
 				#if EXCESS_TRACES
-				trace('Could not get asset: $asset'); //, posinfo);
+				trace('Could not get asset: $asset'); // , posinfo);
 				#end
 			}
 			else
 			{
-				trace('Could not get asset: $asset'); //, posinfo);
+				trace('Could not get asset: $asset'); // , posinfo);
 			}
 			UNFOUND_ASSETS.push(asset);
 		}
@@ -178,7 +178,6 @@ class FileManager
 						if (!arr.contains(path))
 						{
 							arr.push('${path}');
-
 						}
 					}
 				}
@@ -348,19 +347,21 @@ class FileManager
 			return '';
 		}
 
-                #if sys
-		TryCatch.tryCatch(function() {
+		#if sys
+		TryCatch.tryCatch(function()
+		{
 			return File.getContent(path);
-                }, {
-                        traceErr: true
-                });
-                #end
+		}, {
+				traceErr: true
+		});
+		#end
 
-		TryCatch.tryCatch(function() {
+		TryCatch.tryCatch(function()
+		{
 			return Assets.getText(path);
-                }, {
-                        traceErr: true
-                });
+		}, {
+				traceErr: true
+		});
 
 		return '';
 	}
@@ -371,7 +372,19 @@ class FileManager
 	 */
 	public static function getJSON(path:String, ?posinfo:PosInfos):Dynamic
 	{
-		return Json.parse(readFile(path, posinfo));
+		var json:Dynamic = null;
+
+		TryCatch.tryCatch(function()
+		{
+			json = Json.parse(readFile(path, posinfo));
+		}, {
+				errFunc: function()
+				{
+					json = null;
+				}
+		});
+
+		return json;
 	}
 
 	/**
