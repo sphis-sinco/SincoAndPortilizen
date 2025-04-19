@@ -12,6 +12,7 @@ import sap.stages.PaulPortGameOver;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
+import sap.stages.stage5.Stage5;
 import sap.title.TitleState;
 import sap.worldmap.Worldmap;
 
@@ -147,6 +148,9 @@ class InitState extends FlxState
 		return;
 		#elseif STAGE_FOUR
 		switchToState(new Stage4(difficulty), 'Stage 4');
+		return;
+		#elseif STAGE_FIVE
+		switchToState(new Stage5(difficulty), 'Stage 5');
 		return;
 		#elseif WORLDMAP
 		switchToState(new Worldmap(), 'Worldmap');
