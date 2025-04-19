@@ -95,7 +95,17 @@ class Stage5 extends State
 	/**
 	 * How long you are in the level for
 	 */
-	public static var TIMER:Int = 60;
+	public static var TIMER_SECONDS:Int = 60;
+
+	/**
+	 * Time elapsed in the level
+	 */
+	public static var TIME_SECONDS:Int = 0;
+
+	/**
+	 * The text displaying the time left in the level
+	 */
+	public static var TIMER_TEXT:FlxText;
 
 	/**
 	 * This controls if gameplay is being executed or not
@@ -132,7 +142,7 @@ class Stage5 extends State
 		OPPONENT_LOCKIN_OFFSET = DIFFICULTY_JSON.opponent_lockin_offset;
 		OPPONENT_PAUSE_TICK_GOAL = DIFFICULTY_JSON.opponent_pause_tick_goal;
 
-		TIMER = DIFFICULTY_JSON.timer;
+		TIMER_SECONDS = DIFFICULTY_JSON.timer;
 
 		IN_CUTSCENE = false;
 
@@ -182,13 +192,20 @@ class Stage5 extends State
 		});
 
 		if (!EDITOR_MODE)
-			FlxTimer.wait(TIMER, function()
+			FlxTimer.wait(TIMER_SECONDS, function()
 			{
 				levelEndSequence();
 			});
 
 		PLAYER_CHARGE = OPPONENT_CHARGE = 0;
 		OPPONENT_CHARGE_TICK = OPPONENT_PAUSE_TICK = 0;
+
+                TIME_SECONDS = 0;
+
+                TIMER_TEXT = new FlxText(10, 64, 0, "60", 64);
+		TIMER_TEXT.screenCenter(X);
+		add(TIMER_TEXT);
+		StageGlobals.waitSec(TIMER_SECONDS, TIME_SECONDS, TIMER_TEXT);
 	}
 
 	/**
