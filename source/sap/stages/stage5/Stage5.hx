@@ -211,7 +211,7 @@ class Stage5 extends State
 			ease: FlxEase.sineInOut,
 			onStart: function(tween)
 			{
-				OBJ_OPPONENT_ATTACK.animation.play('attack');
+				OBJ_OPPONENT.animation.play('attack');
 			},
 			onUpdate: function(tween)
 			{
