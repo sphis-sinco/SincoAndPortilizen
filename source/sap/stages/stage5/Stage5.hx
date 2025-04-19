@@ -368,11 +368,11 @@ class Stage5 extends State
 	function initializeAttacks()
 	{
 		OBJ_PLAYER_ATTACK = new FlxSprite();
-		OBJ_PLAYER_ATTACK.loadGraphic('gameplay/port stages/Stage5PortilizenAttack');
-		OBJ_PLAYER_ATTACK.shader = getRimLighting('PortilizenAttack');
+		OBJ_PLAYER_ATTACK.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage5PortilizenAttack'));
+		OBJ_PLAYER_ATTACK.shader = getRimLighting('Attack');
 
 		OBJ_OPPONENT_ATTACK = new FlxSprite();
-		OBJ_PLAYER_ATTACK.loadGraphic('gameplay/port stages/Stage5STCSAttack');
-		OBJ_OPPONENT_ATTACK.shader = getRimLighting('STCSAttack');
+		OBJ_OPPONENT_ATTACK.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage5STCSAttack'));
+		OBJ_OPPONENT_ATTACK.shader = getRimLighting('Attack');
 	}
 }
