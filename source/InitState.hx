@@ -22,8 +22,8 @@ class InitState extends FlxState
 		Timer.measure(function()
 		{
 			trace('init');
-			InitState.ModsInit();
-			InitState.LanguageInit();
+			ModsInit();
+			LanguageInit();
 
 			// Set the saveslot to a debug saveslot or a release saveslot
 			Global.change_saveslot((Global.DEBUG_BUILD) ? 'debug' : 'release');
