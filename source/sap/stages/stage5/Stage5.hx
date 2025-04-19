@@ -324,7 +324,11 @@ class Stage5 extends State
 	public static function initializeCharacters():Void
 	{
 		OBJ_PLAYER = new FlxSprite();
-		OBJ_PLAYER.makeGraphic(32, 64, FlxColor.PURPLE);
+		OBJ_PLAYER.loadGraphic(FileManager.getImageFile('gameplay/port stages/Stage5Portilizen'));
+                OBJ_PLAYER.animation.add('intro', [0], 1, false);
+                OBJ_PLAYER.animation.add('charge', [1], 1, false);
+                OBJ_PLAYER.animation.add('attack', [2], 1, false);
+                OBJ_PLAYER.animation.play('intro');
 		OBJ_PLAYER.setPosition(480, 400);
 		OBJ_PLAYER.shader = getRimLighting('Portilizen');
 
