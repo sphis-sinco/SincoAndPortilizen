@@ -1,5 +1,7 @@
 # Alpha
 ## 0.5.3a - 4/19/2025
+### Fixed
+- (Desktop only) No more crashes when starting the damn game
 
 ## 0.5.2a - 4/19/2025
 ### Fixed
