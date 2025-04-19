@@ -59,13 +59,15 @@ class Stage5 extends State
                 var tutorial1:FlxSprite = new FlxSprite();
                 tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Space-Charge'));
                 add(tutorial1);
+                Global.scaleSprite(tutorial1, -2);
                 tutorial1.screenCenter();
                 tutorial1.y -= tutorial1.height;
 
                 // THE MOST POWERFUL ATTACK WINS \\
                 var tutorial2:FlxSprite = new FlxSprite();
-                tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Strongest-wins'));
+                tutorial2.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Strongest-wins'));
                 add(tutorial2);
+                Global.scaleSprite(tutorial2, -2);
                 tutorial2.screenCenter();
                 tutorial2.y += tutorial2.height;
 
