@@ -196,16 +196,10 @@ class Stage5 extends State
 		IN_CUTSCENE = true;
 
 		final speed:Int = 2;
+		final won:Bool = PLAYER_CHARGE > OPPONENT_CHARGE;
 
 		FlxTween.tween(OBJ_PLAYER_ATTACK, {x: OBJ_OPPONENT.x, y: OBJ_OPPONENT.y}, speed, {
 			ease: FlxEase.sineInOut,
-			onComplete: function(tween)
-			{
-				final won:Bool = PLAYER_CHARGE > OPPONENT_CHARGE;
-
-				Global.switchState(new ResultsMenu((won) ? PLAYER_CHARGE : OPPONENT_CHARGE - PLAYER_CHARGE, (won) ? PLAYER_CHARGE : OPPONENT_CHARGE,
-					new Worldmap(Worldmap.CURRENT_PLAYER_CHARACTER), 'port'));
-			},
 			onStart: function(tween)
 			{
 				OBJ_PLAYER.animation.play('attack');
@@ -216,7 +210,23 @@ class Stage5 extends State
 			onStart: function(tween)
 			{
 				OBJ_OPPONENT_ATTACK.animation.play('attack');
+			},
+			onUpdate: function(tween)
+			{
+				if (OBJ_OPPONENT_ATTACK.overlaps(OBJ_PLAYER_ATTACK))
+				{
+					if (won)
+						OBJ_OPPONENT_ATTACK.destroy();
+					else
+						OBJ_PLAYER_ATTACK.destroy();
+				}
 			}
+		});
+
+		FlxTimer.wait(speed, function()
+		{
+			Global.switchState(new ResultsMenu((won) ? PLAYER_CHARGE : OPPONENT_CHARGE - PLAYER_CHARGE, (won) ? PLAYER_CHARGE : OPPONENT_CHARGE,
+				new Worldmap(Worldmap.CURRENT_PLAYER_CHARACTER), 'port'));
 		});
 	}
 
@@ -238,8 +248,9 @@ class Stage5 extends State
 			editorModeTick();
 		else if (!IN_CUTSCENE)
 		{
-			OBJ_PLAYER_ATTACK.setPosition(OBJ_PLAYER.x, OBJ_PLAYER.y - (OBJ_PLAYER_ATTACK.height * ((OBJ_PLAYER_ATTACK.scale.y / 4) + 1)) * 2);
-			OBJ_OPPONENT_ATTACK.setPosition(OBJ_OPPONENT.x, OBJ_OPPONENT.y - (OBJ_OPPONENT_ATTACK.height * ((OBJ_OPPONENT_ATTACK.scale.y / 4) + 1)) * 2);
+			OBJ_PLAYER_ATTACK.setPosition(OBJ_PLAYER.x + ((OBJ_PLAYER.animation.name == 'intro') ? 32 : 0),
+				OBJ_PLAYER.y - (OBJ_PLAYER_ATTACK.height * ((OBJ_PLAYER_ATTACK.scale.y / 4) + 1)) * 2);
+			OBJ_OPPONENT_ATTACK.setPosition(OBJ_OPPONENT.x + 20, OBJ_OPPONENT.y - (OBJ_OPPONENT_ATTACK.height * ((OBJ_OPPONENT_ATTACK.scale.y / 4) + 1)) * 2);
 
 			OBJ_PLAYER_ATTACK.scale.y = OBJ_PLAYER_ATTACK.scale.x = 1 + (PLAYER_CHARGE / 100);
 			OBJ_OPPONENT_ATTACK.scale.y = OBJ_OPPONENT_ATTACK.scale.x = 1 + (OPPONENT_CHARGE / 100);
@@ -351,7 +362,7 @@ class Stage5 extends State
 		OBJ_OPPONENT.animation.add('charge', [1], 1, false);
 		OBJ_OPPONENT.animation.add('attack', [2], 1, false);
 		OBJ_OPPONENT.animation.play('intro');
-		OBJ_OPPONENT.setPosition(120, 400);
+		OBJ_OPPONENT.setPosition(100, 400);
 		// OBJ_OPPONENT.shader = getRimLighting(null); // 'STCS');
 		Global.scaleSprite(OBJ_OPPONENT, -2);
 	}
