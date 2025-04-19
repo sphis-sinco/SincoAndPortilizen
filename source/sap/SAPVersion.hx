@@ -9,7 +9,7 @@ import flixel.system.FlxVersion;
 @:build(flixel.system.macros.FlxGitSHA.buildGitSHA("flixel"))
 class SAPVersion
 {
-	public static function toString():String
+	public static function getVer():String
 	{
 		var sha = FlxVersion.sha;
 		if (sha != "")

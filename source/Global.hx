@@ -43,7 +43,7 @@ class Global
 
 	static function get_GIT_VER():String
 	{
-		return SAPVersion.toString();
+		return SAPVersion.getVer();
 	}
 
 	/**
