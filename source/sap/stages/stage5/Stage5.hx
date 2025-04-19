@@ -55,23 +55,23 @@ class Stage5 extends State
 		add(OBJ_PLAYER);
 		add(OBJ_OPPONENT);
 
-                // PRESS [SPACE] TO CHARGE \\
-                var tutorial1:FlxSprite = new FlxSprite();
-                tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Space-Charge'));
-                add(tutorial1);
-                Global.scaleSprite(tutorial1, -2);
-                tutorial1.screenCenter();
-                tutorial1.y -= tutorial1.height;
+		// PRESS [SPACE] TO CHARGE \\
+		var tutorial1:FlxSprite = new FlxSprite();
+		tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Space-Charge'));
+		add(tutorial1);
+		Global.scaleSprite(tutorial1, -2);
+		tutorial1.screenCenter();
+		tutorial1.y -= tutorial1.height;
 
-                // THE MOST POWERFUL ATTACK WINS \\
-                var tutorial2:FlxSprite = new FlxSprite();
-                tutorial2.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Strongest-wins'));
-                add(tutorial2);
-                Global.scaleSprite(tutorial2, -2);
-                tutorial2.screenCenter();
-                tutorial2.y += tutorial2.height;
+		// THE MOST POWERFUL ATTACK WINS \\
+		var tutorial2:FlxSprite = new FlxSprite();
+		tutorial2.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Strongest-wins'));
+		add(tutorial2);
+		Global.scaleSprite(tutorial2, -2);
+		tutorial2.screenCenter();
+		tutorial2.y += tutorial2.height;
 
-                FlxTimer.wait(3, () ->
+		FlxTimer.wait(3, () ->
 		{
 			FlxTween.tween(tutorial1, {alpha: 0}, 1);
 			FlxTween.tween(tutorial2, {alpha: 0}, 1);
@@ -92,16 +92,25 @@ class Stage5 extends State
 
 		if (EDITOR_MODE)
 		{
-			editorMode();
+			editorModeTick();
+		}
+		else
+		{
+			gameplayTick();
 		}
 	}
 
 	/**
+	 * This controls everything related to the gameplay loop
+	 */
+	public static function gameplayTick():Void {}
+
+	/**
 	 *  This controls everything related to EDITOR_MODE
 	 */
-	private static function editorMode():Void
+	private static function editorModeTick():Void
 	{
-                final speed:Int = (Global.keyPressed(SHIFT)) ? EDITABLE_OBJ_SHIFT_MOVEMENT_SPEED : EDITABLE_OBJ_MOVEMENT_SPEED;
+		final speed:Int = (Global.keyPressed(SHIFT)) ? EDITABLE_OBJ_SHIFT_MOVEMENT_SPEED : EDITABLE_OBJ_MOVEMENT_SPEED;
 
 		if (Global.anyKeysPressed([UP, LEFT, DOWN, RIGHT]))
 		{
