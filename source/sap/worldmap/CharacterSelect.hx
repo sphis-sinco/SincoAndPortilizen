@@ -72,7 +72,7 @@ class CharacterSelect extends State
 		CHARACTER_SELECTION_BOX.x += 64 + 8;
 		CHARACTER_SELECTION_BOX.y -= 8;
 
-		CHARACTER_ICON = new CharIcon(CHARACTER_LIST[CURRENT_SELECTION]);
+		CHARACTER_ICON = new CharIcon(CHARACTER_LIST[CURRENT_SELECTION].toLowerCase());
 		add(CHARACTER_ICON);
 		CHARACTER_ICON.screenCenter();
 	}
