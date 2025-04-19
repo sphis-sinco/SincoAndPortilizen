@@ -204,6 +204,7 @@ class Stage5 extends State
 
                 TIMER_TEXT = new FlxText(10, 64, 0, "60", 64);
 		TIMER_TEXT.screenCenter(X);
+                TIMER_TEXT.alignment = CENTER;
 		add(TIMER_TEXT);
 		StageGlobals.waitSec(TIMER_SECONDS, TIME_SECONDS, TIMER_TEXT);
 	}
