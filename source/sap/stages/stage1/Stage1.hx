@@ -160,16 +160,6 @@ class Stage1 extends State
 		COMBO_SPRITE.screenCenter();
 
 		PLAYER_COMBO = 0;
-	}
-
-	public static var ABILITY_CAN_ATTACK_PLAYER:Bool = true;
-
-	override function postCreate():Void
-	{
-		super.postCreate();
-
-		SINCO_HEALTH = SINCO_MAX_HEALTH;
-		OSIN_HEALTH = OSIN_MAX_HEALTH;
 
 		var tutorial1:FlxSprite = new FlxSprite();
 		tutorial1.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Right-Dodge'));
@@ -188,6 +178,16 @@ class Stage1 extends State
 			FlxTween.tween(tutorial1, {alpha: 0}, 1);
 			FlxTween.tween(tutorial2, {alpha: 0}, 1);
 		});
+	}
+
+	public static var ABILITY_CAN_ATTACK_PLAYER:Bool = true;
+
+	override function postCreate():Void
+	{
+		super.postCreate();
+
+		SINCO_HEALTH = SINCO_MAX_HEALTH;
+		OSIN_HEALTH = OSIN_MAX_HEALTH;
 	}
 
 	public static var COMBO_SPRITE:Combo;
