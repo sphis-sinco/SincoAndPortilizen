@@ -229,7 +229,7 @@ class Stage5 extends State
 		FlxTimer.wait(speed, function()
 		{
 			Global.switchState(new ResultsMenu((won) ? PLAYER_CHARGE : OPPONENT_CHARGE - PLAYER_CHARGE, (won) ? PLAYER_CHARGE : OPPONENT_CHARGE,
-				new PostStage5Cutscene(), 'port'));
+				(won) ? new PostStage5Cutscene() : new Worldmap(), 'port'));
 		});
 	}
 
