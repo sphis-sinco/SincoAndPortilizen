@@ -3,6 +3,7 @@
 ### Added
 - Sidebit 1 has SFX now
 ### Fixed
+- Programmer "Null"'s credit color
 - Crash when accessing level 2(?)
 
 ## 0.5.0a (Destination 3 - Rival clash) - 4/19/2025
