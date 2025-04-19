@@ -331,6 +331,7 @@ class Stage5 extends State
                 OBJ_PLAYER.animation.play('intro');
 		OBJ_PLAYER.setPosition(480, 400);
 		OBJ_PLAYER.shader = getRimLighting('Portilizen');
+                Global.scaleSprite(OBJ_PLAYER, -2);
 
 		OBJ_OPPONENT = new FlxSprite();
 		OBJ_OPPONENT.makeGraphic(32, 64, FlxColor.GREEN);
@@ -346,10 +347,10 @@ class Stage5 extends State
 	public static function getRimLighting(char:String = null):DropShadowShader
 	{
 		var rim:DropShadowShader = new DropShadowShader();
-		rim.setAdjustColor(0, 0, 0, 0);
-		rim.color = 0xFF6A6A6A;
+		rim.setAdjustColor(-25, -5, 0, 0);
+		rim.color = 0xFF445664;
 		rim.antialiasAmt = 0;
-		rim.distance = 5;
+		rim.distance = 10;
 
 		rim.angle = 90;
 		rim.maskThreshold = 1;
