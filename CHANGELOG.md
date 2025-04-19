@@ -1,5 +1,5 @@
 # Alpha
-## 0.5.0a - 4/??/2025
+## 0.5.0a (Destination 3 - Rival clash) - 4/19/2025
 ### Added
 - LEVEL 5: RIVAL CLASH
 - Sidebit 1 medals
