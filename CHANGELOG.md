@@ -41,7 +41,6 @@
 - The volume now is set as the last saved audio setting
 - (Source) Instead of using `FlxG.keys.` every file uses one of the `Global.key` functions
 - (Debug only) The titlestate now has a `DEBUG` intro state that waits a second before actually starting the intro sequence
-- (Debug only) InitState uses a random sticker transition when there are no build flags enabled
 - The screenshot plugin now has (probably) everything as a static var/function
 - SparrowSprite uses the file manager's `getSparrowAtlas` function
 - Several states now use the `switchState` function from Global
