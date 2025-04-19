@@ -164,6 +164,11 @@ class Stage5 extends State
 		{
 			OPPONENT_PAUSE_TICK--;
 		}
+
+		if (Global.keyJustReleased(SPACE))
+		{
+			PLAYER_CHARGE++;
+		}
 	}
 
 	/**
