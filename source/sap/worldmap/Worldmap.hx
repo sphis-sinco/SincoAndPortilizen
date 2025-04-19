@@ -17,14 +17,18 @@ class Worldmap extends State
 
 	public static var CHARACTER_SELECT_BUTTON:FlxSprite;
 
-	override public function new(character:String = 'sinco')
+	override public function new(character:String = null)
 	{
 		super();
 
-		CURRENT_PLAYER_CHARACTER = character;
-		CURRENT_PLAYER_CHARACTER_JSON = PlayableCharacterManager.readPlayableCharacterJSON(CURRENT_PLAYER_CHARACTER);
-		CURRENT_PLAYER_LEVELS = CURRENT_PLAYER_CHARACTER_JSON.levels;
-		CURRENT_PLAYER_SELECTION_OFFSET = CURRENT_PLAYER_CHARACTER_JSON.level_number_offset;
+                // In theory this should just make it use it's own variable?
+		if (character != null)
+		{
+			CURRENT_PLAYER_CHARACTER = character;
+			CURRENT_PLAYER_CHARACTER_JSON = PlayableCharacterManager.readPlayableCharacterJSON(CURRENT_PLAYER_CHARACTER);
+			CURRENT_PLAYER_LEVELS = CURRENT_PLAYER_CHARACTER_JSON.levels;
+			CURRENT_PLAYER_SELECTION_OFFSET = CURRENT_PLAYER_CHARACTER_JSON.level_number_offset;
+		}
 	}
 
 	override function create()
