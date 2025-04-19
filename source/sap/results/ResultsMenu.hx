@@ -1,5 +1,6 @@
 package sap.results;
 
+import sap.stages.sidebit1.Sidebit1;
 import sap.stages.stage5.Stage5;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage2.Stage2;
@@ -130,17 +131,25 @@ class ResultsMenu extends FlxState
 				Stage5.RUNNING = false;
 				final flashLength:Int = 2;
 
-                                final finishFunction:Void->Void = function() {
-                                        // trace('Flash finished: reverting PERCENT_TICK_GOAL');
-                                        // PERCENT_TICK_GOAL = 5;
-                                }
-
-                                // PERCENT_TICK_GOAL = FlxMath.MAX_VALUE_INT;
-
+				add(MedalData.unlockMedal('The OC of history'));
 				if (Stage5.PLAYER_CHARGE > Stage5.OPPONENT_CHARGE)
-					FlxG.camera.flash(FlxColor.PURPLE, flashLength, finishFunction);
+				{
+					FlxG.camera.flash(FlxColor.PURPLE, flashLength);
+					add(MedalData.unlockMedal('Brothers split again'));
+				}
 				else
-					FlxG.camera.flash(FlxColor.GREEN, flashLength, finishFunction);
+					FlxG.camera.flash(FlxColor.GREEN, flashLength);
+			}
+			else if (Sidebit1.RUNNING)
+			{
+				Sidebit1.RUNNING = false;
+
+				add(MedalData.unlockMedal('The consistentless'));
+
+				if (Sidebit1.PORTILIZEN_HEALTH == 0)
+				{
+					add(MedalData.unlockMedal('The OC of today'));
+				}
 			}
 		});
 	}

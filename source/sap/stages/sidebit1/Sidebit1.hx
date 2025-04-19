@@ -30,6 +30,8 @@ class Sidebit1 extends State
 
 	public static var CAN_DECREASE_SINCO_HEALTH:Bool = true;
 	public static var CAN_DECREASE_PORTILIZEN_HEALTH:Bool = true;
+        
+	public static var RUNNING:Bool = false;
 
 	override public function new(difficulty:String)
 	{
@@ -299,6 +301,7 @@ class Sidebit1 extends State
 			FlxTween.tween(tutorial1, {alpha: 0}, 1);
 			FlxTween.tween(tutorial2, {alpha: 0}, 1);
 		});
+                RUNNING = true;
 	}
 
 	public static var ABILITY_CAN_DODGE:Bool = true;

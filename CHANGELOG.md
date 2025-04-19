@@ -2,6 +2,7 @@
 ## 0.5.0a - 4/??/2025
 ### Added
 - LEVEL 5: RIVAL CLASH
+- Sidebit 1 medals
 - `STAGE_FIVE` build flag
 - `DO_NOT_RECOMPILE_ON_ASSET_UPDATE` build flag
 - `RECOMPILE_ON_ASSET_UPDATE` build flag

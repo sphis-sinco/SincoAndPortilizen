@@ -1,11 +1,14 @@
 {
-        "locked":"Bloqueado",
-        
         "dimensions-reached":"Dimensões Alcançadas",
         "faker-clash":"Confronto Falsificado",
         "huh-someone-cares":"Huh, alguém se importa",
         "protector":"Protetor",
         "the-original-stands-on-top":"O original fica no topo",
         "true-protector":"Verdadeiro protetor",
-        "welcome":"Bem-vindo"
+        "welcome":"Bem-vindo",
+        
+        "brothers-split-again":"Brothers split again",
+        "the-consistentless":"The consistentless",
+        "the-oc-of-history":"The OC of history",
+        "the-oc-of-today":"The OC of today"
 }
