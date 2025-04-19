@@ -244,12 +244,25 @@ class Stage5 extends State
 	 */
 	public static function initializeCharacters():Void
 	{
+                var rim:DropShadowShader = new DropShadowShader();
+		rim.setAdjustColor(0, 0, 0, 0);
+		rim.color = 0xFF6A6A6A;
+		rim.antialiasAmt = 0;
+		rim.distance = 5;
+
+		rim.angle = 90;
+		rim.maskThreshold = 1;
+		// rim.useAltMask = true;
+		// rim.loadAltMask(FileManager.getImageFile('gameplay/sinco stages/Stage1Sinco-ShaderMask'));
+
 		OBJ_PLAYER = new FlxSprite();
 		OBJ_PLAYER.makeGraphic(32, 64, FlxColor.PURPLE);
 		OBJ_PLAYER.setPosition(480, 400);
+                OBJ_PLAYER.shader = rim;
 
 		OBJ_OPPONENT = new FlxSprite();
 		OBJ_OPPONENT.makeGraphic(32, 64, FlxColor.GREEN);
 		OBJ_OPPONENT.setPosition(120, 400);
+                OBJ_OPPONENT.shader = rim;
 	}
 }
