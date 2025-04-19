@@ -286,7 +286,7 @@ class Stage2 extends State
 				});
 		}
 
-		if (Global.keyJustPressed(R))
+		if (Global.keyJustReleased(R))
 		{
 			Global.switchState(new Stage2(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);

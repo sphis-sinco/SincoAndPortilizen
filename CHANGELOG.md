@@ -14,6 +14,8 @@
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - (Web only) Pixel perfect rendering ([#27][#27_link])
 ### Fixed
+- Levels no longer reset by *PRESSING* the Reset button
+- Sidebit 1 now has the Reset button
 - Fixed stage 4 tutorial assets not being visible
 - Fixed stage 1 tutorial assets not being visible
 - "Sinco's cool mod" now works in the MainMenu

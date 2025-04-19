@@ -270,7 +270,7 @@ class Stage1 extends State
 			sincoDodge();
 		}
 
-		if (Global.keyJustPressed(R))
+		if (Global.keyJustReleased(R))
 		{
 			Global.switchState(new Stage1(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);

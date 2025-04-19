@@ -105,7 +105,7 @@ class Stage4 extends State
 			portPreJump();
 		}
 
-		if (Global.keyJustPressed(R))
+		if (Global.keyJustReleased(R))
 		{
 			Global.switchState(new Stage4(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);

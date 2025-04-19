@@ -328,6 +328,12 @@ class Sidebit1 extends State
 			SINCO.animation.play('attack');
 		}
 
+		if (Global.keyJustReleased(R))
+		{
+			Global.switchState(new Sidebit1(DIFFICULTY));
+			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
+		}
+
 		if (PORTILIZEN.animation.frameIndex > 10 && PORTILIZEN.animation.frameIndex < 19)
 		{
 			if (PORTILIZEN.State != ATTACK)
