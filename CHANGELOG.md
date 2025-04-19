@@ -17,6 +17,7 @@
 ### Removed
 - (Destop only) Old window resolution options besides 640x608 has been removed
 ### Fixed
+- Fixed medals not popping up when you get a medal
 - Levels no longer reset by *PRESSING* the Reset button
 - Sidebit 1 now has the Reset button
 - Fixed stage 4 tutorial assets not being visible

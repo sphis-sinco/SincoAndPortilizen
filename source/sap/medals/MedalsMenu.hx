@@ -68,7 +68,8 @@ class MedalsMenu extends FlxSubState
 
 					i++;
 
-					if (!FlxG.save.data.medals.contains(text.text))
+					if (!MedalData.unlocked_medals.contains(Reflect.getProperty(MEDALS_JSON,
+						iconPath.split('/')[iconPath.split('/').length - 1].split('.')[0])))
 					{
 						var finalString:String = '';
 						var hiddenChar:String = '*';

@@ -151,6 +151,8 @@ class ResultsMenu extends FlxState
 					add(MedalData.unlockMedal('The OC of today'));
 				}
 			}
+
+                        SaveManager.save();
 		});
 	}
 
