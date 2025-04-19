@@ -87,11 +87,25 @@ class Stage5 extends State
 	 */
 	public static var DIFFICULTY:String = 'normal';
 
+	/**
+	 * The difficulty JSON
+	 */
+	public static var DIFFICULTY_JSON:Stage5DifficultyJson;
+
 	override public function new(difficulty:String)
 	{
 		super();
 
 		DIFFICULTY = difficulty;
+		DIFFICULTY_JSON = FileManager.getJSON(FileManager.getDataFile('stages/stage5/${DIFFICULTY}.json'));
+
+		OPPONENT_CHARGE_TICK_GOAL = DIFFICULTY_JSON.opponent_charge_tick_goal;
+		OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN = DIFFICULTY_JSON.opponent_charge_random_tick_pause_max;
+		OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX = DIFFICULTY_JSON.opponent_charge_random_tick_pause_min;
+		OPPONENT_PAUSE_TICK_START_VALUE = DIFFICULTY_JSON.opponent_pause_tick_start_value;
+		OPPONENT_PAUSE_CHANGE = DIFFICULTY_JSON.opponent_pause_change;
+		OPPONENT_LOCKIN_OFFSET = DIFFICULTY_JSON.opponent_lockin_offset;
+		OPPONENT_PAUSE_TICK_GOAL = DIFFICULTY_JSON.opponent_pause_tick_goal;
 	}
 
 	override function create()
