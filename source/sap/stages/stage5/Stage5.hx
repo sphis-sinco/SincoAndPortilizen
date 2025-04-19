@@ -2,7 +2,7 @@ package sap.stages.stage5;
 
 class Stage5 extends State
 {
-	override public function new()
+	override public function new(difficulty:String)
 	{
 		super();
 	}
@@ -10,6 +10,8 @@ class Stage5 extends State
 	override function create()
 	{
 		super.create();
+
+		Global.changeDiscordRPCPresence('Stage 5 (${DIFFICULTY.toUpperCase()}): Rival Clash', null);
 	}
 
 	override function postCreate()
