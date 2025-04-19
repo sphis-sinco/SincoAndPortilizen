@@ -15,6 +15,7 @@ class SaveManager
 		FlxG.save.data.results ??= getDefaultSave().results;
 		FlxG.save.data.gameplaystatus ??= getDefaultSave().gameplaystatus;
 		FlxG.save.data.medals ??= getDefaultSave().medals;
+		MedalData.unlocked_medals ??= FlxG.save.data.medals;
                 if (FlxG.save.data.unlocked_characters == null)
                 {
                         Worldmap.CURRENT_PLAYER_CHARACTER = 'sinco';

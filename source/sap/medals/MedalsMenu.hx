@@ -40,6 +40,9 @@ class MedalsMenu extends FlxSubState
 
 		var cur_y:Float = 10;
 		var i:Int = 0;
+                #if EXCESS_TRACES
+                trace(MedalData.unlocked_medals);
+                #end
 		for (medal in FileSystem.readDirectory('assets/images/medals/awards'))
 		{
 			if (medal != 'award.png')
@@ -58,7 +61,7 @@ class MedalsMenu extends FlxSubState
 					var iconShader:HSVShader = new HSVShader();
 					iconShader.saturation = 1.0;
 
-					var iconPath:String = Medal.getMedalPath(medal);
+					var iconPath:String = Medal.getMedalPath(medal.split('.')[0]);
 
 					var icon:FlxSprite = new FlxSprite();
 					icon.loadGraphic(iconPath);
@@ -68,7 +71,7 @@ class MedalsMenu extends FlxSubState
 
 					i++;
 
-					if (!FlxG.save.data.medals.contains(text.text))
+					if (!MedalData.unlocked_medals.contains(medal.split('.')[0]))
 					{
 						var finalString:String = '';
 						var hiddenChar:String = '*';

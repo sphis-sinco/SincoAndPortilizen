@@ -105,7 +105,7 @@ class Stage4 extends State
 			portPreJump();
 		}
 
-		if (Global.keyJustPressed(R))
+		if (Global.keyJustReleased(R))
 		{
 			Global.switchState(new Stage4(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
@@ -184,7 +184,7 @@ class Stage4 extends State
 		final good = Std.parseInt(timerText.text);
 		trace(good);
 		if (!win)
-			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new Worldmap('portilizen'), "port"));
+			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new Worldmap(), "port"));
 		else
 			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new PostStage4Cutscene(), "port"));
 	}

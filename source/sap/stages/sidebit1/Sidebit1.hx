@@ -30,6 +30,8 @@ class Sidebit1 extends State
 
 	public static var CAN_DECREASE_SINCO_HEALTH:Bool = true;
 	public static var CAN_DECREASE_PORTILIZEN_HEALTH:Bool = true;
+        
+	public static var RUNNING:Bool = false;
 
 	override public function new(difficulty:String)
 	{
@@ -69,7 +71,7 @@ class Sidebit1 extends State
 	{
 		super.create();
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile('gameplay/sidebits/timeVoid'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile('gameplay/timeVoid'));
 		add(bg);
 		bg.screenCenter();
 		Global.scaleSprite(bg);
@@ -299,6 +301,7 @@ class Sidebit1 extends State
 			FlxTween.tween(tutorial1, {alpha: 0}, 1);
 			FlxTween.tween(tutorial2, {alpha: 0}, 1);
 		});
+                RUNNING = true;
 	}
 
 	public static var ABILITY_CAN_DODGE:Bool = true;
@@ -326,6 +329,12 @@ class Sidebit1 extends State
 			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
 			SINCO.x -= 13.5;
 			SINCO.animation.play('attack');
+		}
+
+		if (Global.keyJustReleased(R))
+		{
+			Global.switchState(new Sidebit1(DIFFICULTY));
+			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
 
 		if (PORTILIZEN.animation.frameIndex > 10 && PORTILIZEN.animation.frameIndex < 19)

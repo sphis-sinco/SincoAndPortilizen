@@ -38,6 +38,14 @@ class Global
 		return '${version}';
 	}
 
+	@:isVar
+	public static var GIT_VER(get, never):String;
+
+	static function get_GIT_VER():String
+	{
+		return SAPVersion.getVer();
+	}
+
 	/**
 	 * This says if its a debug build
 	 */

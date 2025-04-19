@@ -12,6 +12,7 @@ import sap.stages.PaulPortGameOver;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
+import sap.stages.stage5.Stage5;
 import sap.title.TitleState;
 
 // This is initalization stuff + compiler condition flags
@@ -69,7 +70,9 @@ class InitState extends FlxState
 			#end
 
 			CreditsSubState.creditsJSONInit();
-                        CharacterSelect.init();
+			CharacterSelect.init();
+                        
+                        Worldmap.init();
 
 			// PaulPortGameOver.init();
 		});
@@ -107,13 +110,15 @@ class InitState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		// when on debug builds you have to press something to stop
-		if (Global.keyJustReleased(ANY) && Global.DEBUG_BUILD) proceed();
+		if (Global.keyJustReleased(ANY) && Global.DEBUG_BUILD)
+			proceed();
 
 		super.update(elapsed);
 	}
 
 	public static function proceed():Void
 	{
+		trace('${Global.GIT_VER}');
 		var difficulty:String = 'normal';
 
 		#if EASY_DIFFICULTY
@@ -147,6 +152,9 @@ class InitState extends FlxState
 		return;
 		#elseif STAGE_FOUR
 		switchToState(new Stage4(difficulty), 'Stage 4');
+		return;
+		#elseif STAGE_FIVE
+		switchToState(new Stage5(difficulty), 'Stage 5');
 		return;
 		#elseif WORLDMAP
 		switchToState(new Worldmap(), 'Worldmap');

@@ -1,0 +1,15 @@
+{
+        "opponent_charge_tick_goal": 10,
+        
+        "opponent_charge_random_tick_pause_min": 2,
+        "opponent_charge_random_tick_pause_max": 8,
+
+        "opponent_pause_tick_start_value": 5,
+        "opponent_pause_change": 45,
+
+        "opponent_lockin_offset": 0.1,
+
+        "opponent_pause_tick_goal": 2,
+
+        "timer": 60
+}

@@ -71,6 +71,7 @@ class ModsMenu extends FlxSubState
 		{
 			if (Global.keyJustReleased(ENTER))
 			{
+                                MainMenu.initChars();
 				ModFolderManager.toggleMod(ModFolderManager.MODS[CURRENT_SELECTION]);
 				updateText();
 				return;

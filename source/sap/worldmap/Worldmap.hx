@@ -17,11 +17,21 @@ class Worldmap extends State
 
 	public static var CHARACTER_SELECT_BUTTON:FlxSprite;
 
-	override public function new(character:String = 'sinco')
+	override public function new(character:String = null)
 	{
 		super();
 
-		CURRENT_PLAYER_CHARACTER = character;
+		// In theory this should just make it use it's own variable?
+		if (character != null)
+		{
+			CURRENT_PLAYER_CHARACTER = character;
+		}
+
+		init();
+	}
+
+	public static function init():Void
+	{
 		CURRENT_PLAYER_CHARACTER_JSON = PlayableCharacterManager.readPlayableCharacterJSON(CURRENT_PLAYER_CHARACTER);
 		CURRENT_PLAYER_LEVELS = CURRENT_PLAYER_CHARACTER_JSON.levels;
 		CURRENT_PLAYER_SELECTION_OFFSET = CURRENT_PLAYER_CHARACTER_JSON.level_number_offset;
@@ -65,7 +75,7 @@ class Worldmap extends State
 	{
 		super.update(elapsed);
 
-		LEVEL_TEXT.text = '${CURRENT_PLAYER_CHARACTER_JSON.character_display_name}: level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET}';
+		LEVEL_TEXT.text = 'Level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET} (${CURRENT_PLAYER_CHARACTER_JSON.character_display_name})';
 		LEVEL_TEXT.screenCenter(X);
 
 		DIFFICULTY_TEXT.text = '${Global.keyPressed(LEFT) ? '-' : '<'} ${CURRENT_DIFFICULTY} ${Global.keyPressed(RIGHT) ? '-' : '>'}';

@@ -1,6 +1,9 @@
 # Alpha
 ## 0.5.0a - 4/??/2025
 ### Added
+- LEVEL 5: RIVAL CLASH
+- Sidebit 1 medals
+- `STAGE_FIVE` build flag
 - `DO_NOT_RECOMPILE_ON_ASSET_UPDATE` build flag
 - `RECOMPILE_ON_ASSET_UPDATE` build flag
 - `NO_MODS` build flag
@@ -11,7 +14,12 @@
 - Atlas cutscenes can be skipped by pressing ESCAPE ([#24][#24_link])
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - (Web only) Pixel perfect rendering ([#27][#27_link])
+### Removed
+- (Destop only) Old window resolution options besides 640x608 has been removed
 ### Fixed
+- Fixed medals not popping up when you get a medal
+- Levels no longer reset by *PRESSING* the Reset button
+- Sidebit 1 now has the Reset button
 - Fixed stage 4 tutorial assets not being visible
 - Fixed stage 1 tutorial assets not being visible
 - "Sinco's cool mod" now works in the MainMenu
@@ -20,6 +28,10 @@
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 - Fixed missing worldmap character assets
 ### Changed
+- New medal SFX
+- The titleState version text now can contain the github sha
+- The game version + the game git sha is now traced in the terminal in the InitState proceed function
+- The sidebit 1 background is now a general background usable for anything (folder change LOL)
 - Modding API version is now `0.1.4`
   - Removed custom variables for different classes in `ScriptManager` except for a few (using import has been found to work)
   - Scripts should no longer be loaded multiple times
@@ -31,7 +43,6 @@
 - The volume now is set as the last saved audio setting
 - (Source) Instead of using `FlxG.keys.` every file uses one of the `Global.key` functions
 - (Debug only) The titlestate now has a `DEBUG` intro state that waits a second before actually starting the intro sequence
-- (Debug only) InitState uses a random sticker transition when there are no build flags enabled
 - The screenshot plugin now has (probably) everything as a static var/function
 - SparrowSprite uses the file manager's `getSparrowAtlas` function
 - Several states now use the `switchState` function from Global

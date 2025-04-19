@@ -53,23 +53,12 @@ class MainMenu extends State
 		Global.scaleSprite(gridbg, 0);
 		gridbg.screenCenter();
 
-		sinco = new MenuCharacter(0, 0, "Sinco");
-		port = new MenuCharacter(0, 0, "Portilizen");
-
-		sinco.screenCenter();
-		port.screenCenter();
-
-		sinco.x -= sinco.width * 2.5;
-		port.x += port.width * 2.5;
+		initChars();
 
 		add(gridbg);
-
 		add(sinco);
-
-		port.flipX = true;
 		add(port);
-		port.animation.play('visible');
-
+                
 		menuselectbox = new FlxSprite();
 		menuselectbox.makeGraphic(80, #if sys (ModFolderManager.MODS.length > 0) ? 104 : 80 #else 64 #end, FlxColor.BLACK);
 		Global.scaleSprite(menuselectbox, 0);
@@ -258,5 +247,20 @@ class MainMenu extends State
 		menucharvis[1] = port.animation.name == 'visible';
 
 		gridBGAdapt();
+	}
+
+	public static function initChars():Void
+	{
+		sinco = new MenuCharacter(0, 0, "Sinco");
+		port = new MenuCharacter(0, 0, "Portilizen");
+
+		sinco.screenCenter();
+		port.screenCenter();
+
+		sinco.x -= sinco.width * 2.5;
+		port.x += port.width * 2.5;
+
+		port.flipX = true;
+		port.animation.play('visible');
 	}
 }
