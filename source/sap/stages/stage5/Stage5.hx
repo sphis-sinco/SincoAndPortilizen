@@ -62,15 +62,15 @@ class Stage5 extends State
 	 */
 	public static var OPPONENT_PAUSE_TICK_START_VALUE:Int = 5;
 
-        /**
-         * The chance of the opponent pausing when the conditions are right
-         */
-        public static var OPPONENT_PAUSE_CHANGE:Float = 45;
+	/**
+	 * The chance of the opponent pausing when the conditions are right
+	 */
+	public static var OPPONENT_PAUSE_CHANGE:Float = 45;
 
-        /**
-         * This is how much `OPPONENT_PAUSE_CHANGE` changes when the player's charge is ahead of the opponents
-         */
-        public static var OPPONENT_LOCKIN_OFFSET:Float = 0.05;
+	/**
+	 * This is how much `OPPONENT_PAUSE_CHANGE` changes when the player's charge is ahead of the opponents
+	 */
+	public static var OPPONENT_LOCKIN_OFFSET:Float = 0.05;
 
 	/**
 	 * The recharge ticks: counts down
@@ -180,10 +180,10 @@ class Stage5 extends State
 		{
 			PLAYER_CHARGE++;
 
-                        if (PLAYER_CHARGE > OPPONENT_CHARGE)
-                        {
-                                OPPONENT_PAUSE_CHANGE -= OPPONENT_LOCKIN_OFFSET;
-                        }
+			if (PLAYER_CHARGE > OPPONENT_CHARGE)
+			{
+				OPPONENT_PAUSE_CHANGE -= OPPONENT_LOCKIN_OFFSET;
+			}
 		}
 	}
 
@@ -194,7 +194,8 @@ class Stage5 extends State
 	{
 		OPPONENT_CHARGE_TICK++;
 
-		if (OPPONENT_CHARGE_TICK == FlxG.random.int(OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN, OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX) && FlxG.random.bool(OPPONENT_PAUSE_CHANGE))
+		if (OPPONENT_CHARGE_TICK == FlxG.random.int(OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MIN, OPPONENT_CHARGE_RANDOM_TICK_PAUSE_MAX)
+			&& FlxG.random.bool(OPPONENT_PAUSE_CHANGE))
 		{
 			OPPONENT_PAUSE_TICK = OPPONENT_PAUSE_TICK_START_VALUE;
 		}
@@ -244,7 +245,25 @@ class Stage5 extends State
 	 */
 	public static function initializeCharacters():Void
 	{
-                var rim:DropShadowShader = new DropShadowShader();
+		OBJ_PLAYER = new FlxSprite();
+		OBJ_PLAYER.makeGraphic(32, 64, FlxColor.PURPLE);
+		OBJ_PLAYER.setPosition(480, 400);
+		OBJ_PLAYER.shader = getRimLighting('Port');
+
+		OBJ_OPPONENT = new FlxSprite();
+		OBJ_OPPONENT.makeGraphic(32, 64, FlxColor.GREEN);
+		OBJ_OPPONENT.setPosition(120, 400);
+		OBJ_OPPONENT.shader = getRimLighting('STCS');
+	}
+
+	/**
+	 * Returns a rim lighting shader with an altMask according to the character you want
+	 * @param char The character shadermask you would like
+	 * @return DropShadowShader
+	 */
+	public static function getRimLighting(char:String):DropShadowShader
+	{
+		var rim:DropShadowShader = new DropShadowShader();
 		rim.setAdjustColor(0, 0, 0, 0);
 		rim.color = 0xFF6A6A6A;
 		rim.antialiasAmt = 0;
@@ -253,16 +272,8 @@ class Stage5 extends State
 		rim.angle = 90;
 		rim.maskThreshold = 1;
 		// rim.useAltMask = true;
-		// rim.loadAltMask(FileManager.getImageFile('gameplay/sinco stages/Stage1Sinco-ShaderMask'));
+		// rim.loadAltMask(FileManager.getImageFile('gameplay/port stages/Stage5${char}-ShaderMask'));
 
-		OBJ_PLAYER = new FlxSprite();
-		OBJ_PLAYER.makeGraphic(32, 64, FlxColor.PURPLE);
-		OBJ_PLAYER.setPosition(480, 400);
-                OBJ_PLAYER.shader = rim;
-
-		OBJ_OPPONENT = new FlxSprite();
-		OBJ_OPPONENT.makeGraphic(32, 64, FlxColor.GREEN);
-		OBJ_OPPONENT.setPosition(120, 400);
-                OBJ_OPPONENT.shader = rim;
+		return rim;
 	}
 }
