@@ -2,8 +2,8 @@
         "character_display_name":"Portilizen",
         "unlocked_when_loaded": true,
 
-        "levels": 1,
-        "level_number_offset": 0,
+        "levels": 2,
+        "level_number_offset": 3,
 
-        "results-asset-prefix":"sinco"
+        "results_asset_prefix":"port"
 }
