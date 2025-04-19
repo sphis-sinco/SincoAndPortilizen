@@ -74,11 +74,6 @@ class Stage4 extends State
 		Global.changeDiscordRPCPresence('Stage 4 (${DIFFICULTY.toUpperCase()}): Dimensional String', null);
 
 		enemyCanAttack = true;
-	}
-
-	override function postCreate():Void
-	{
-		super.postCreate();
 
 		var tutorial:FlxSprite = new FlxSprite();
 		tutorial.loadGraphic(FileManager.getImageFile('gameplay/tutorials/pixel/Space-Dodge'));

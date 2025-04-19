@@ -10,6 +10,7 @@
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - (Web only) Pixel perfect rendering ([#27][#27_link])
 ### Fixed
+- Fixed stage 4 tutorial assets not being visible
 - Fixed stage 1 tutorial assets not being visible
 - Volume settings now get saved ([#35][#35_link])
 - Mods not being added to ENABLED_MODS when the Mod save data is null
