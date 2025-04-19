@@ -1,7 +1,9 @@
 # Alpha
 ## 0.5.3a - 4/19/2025
 ### Fixed
-- (Desktop only) No more crashes when starting the damn game
+- (Desktop only) No more crashes when starting the damn game with mods
+### Changes
+- FileManager `readFile` can read assets with sys if sys
 
 ## 0.5.2a - 4/19/2025
 ### Fixed

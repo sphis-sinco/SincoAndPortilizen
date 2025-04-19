@@ -348,14 +348,19 @@ class FileManager
 			return '';
 		}
 
-		try
-		{
+                #if sys
+		TryCatch.tryCatch(function() {
+			return File.getContent(path);
+                }, {
+                        traceErr: true
+                });
+                #end
+
+		TryCatch.tryCatch(function() {
 			return Assets.getText(path);
-		}
-		catch (e)
-		{
-			throw e;
-		}
+                }, {
+                        traceErr: true
+                });
 
 		return '';
 	}

@@ -55,7 +55,7 @@ class ModFolderManager
 				{
 					TryCatch.tryCatch(function()
 					{
-						readMetaData(folder)
+						readMetaData(folder);
 					});
 				}
 			}
