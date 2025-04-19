@@ -42,14 +42,17 @@ class Stage2 extends State
 		max_rocks = 2;
 		rock_speed_divider = diffJson.rock_speed_divider;
 
-		TryCatch.tryCatch(function()
+		if (rockGroup != null)
 		{
-			for (rock in rockGroup.members)
+			TryCatch.tryCatch(function()
 			{
-				rock.destroy();
-				rockGroup.members.remove(rock);
-			}
-		});
+				for (rock in rockGroup.members)
+				{
+					rock.destroy();
+					rockGroup.members.remove(rock);
+				}
+			});
+		}
 	}
 
 	public static var PROGRESS_BAR:FlxBar;
