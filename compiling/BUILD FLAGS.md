@@ -16,7 +16,7 @@ These do things. Lmao!
 - `DISABLE_ANNOYING_WARNINGS`: Makes warnings less annoying
 - `RECOMPILE_ON_MOD_UPDATE` (enabled by default): Makes it so that when doing `-watch` and changing mod files the game recompiles
 - `DO_NOT_RECOMPILE_ON_MOD_UPDATE`: Disables `RECOMPILE_ON_MOD_UPDATE`
-- `NO_MODS`: When compiling with debug you don't get the debug_mods folder being turnt into the mods folder
+- `NO_MODS`: When compiling with debug you don't get the debug_mods folder being transformed into the mods folder
 - `RECOMPILE_ON_ASSET_UPDATE` (enabled by default): Makes it so that when doing `-watch` and changing asset script files the game recompiles
 - `DO_NOT_RECOMPILE_ON_ASSET_UPDATE`: Disables `RECOMPILE_ON_ASSET_UPDATE`
 
