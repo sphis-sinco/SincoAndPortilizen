@@ -8,4 +8,6 @@ typedef Stage5DifficultyJson = {
         var opponent_pause_change:Int;
         var opponent_lockin_offset:Float;
         var opponent_pause_tick_goal:Int;
+
+        var timer:Int;
 }

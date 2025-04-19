@@ -93,6 +93,16 @@ class Stage5 extends State
 	public static var OPPONENT_PAUSE_TICK_GOAL:Int = 2;
 
 	/**
+	 * How long you are in the level for
+	 */
+	public static var TIMER:Int = 60;
+
+	/**
+	 * This controls if gameplay is being executed or not
+	 */
+	public static var IN_CUTSCENE:Bool = false;
+
+	/**
 	 * The difficulty string
 	 */
 	public static var DIFFICULTY:String = 'normal';
@@ -116,6 +126,10 @@ class Stage5 extends State
 		OPPONENT_PAUSE_CHANGE = DIFFICULTY_JSON.opponent_pause_change;
 		OPPONENT_LOCKIN_OFFSET = DIFFICULTY_JSON.opponent_lockin_offset;
 		OPPONENT_PAUSE_TICK_GOAL = DIFFICULTY_JSON.opponent_pause_tick_goal;
+
+		TIMER = DIFFICULTY_JSON.timer;
+
+		IN_CUTSCENE = false;
 	}
 
 	override function create()
@@ -159,11 +173,17 @@ class Stage5 extends State
 			FlxTween.tween(tutorial1, {alpha: 0}, 1);
 			FlxTween.tween(tutorial2, {alpha: 0}, 1);
 		});
+
+		if (!EDITOR_MODE)
+			FlxTimer.wait(TIMER, function()
+			{
+				levelEndSequence();
+			});
 	}
 
-	override function postCreate()
+	public static function levelEndSequence():Void
 	{
-		super.postCreate();
+		IN_CUTSCENE = true;
 	}
 
 	override function update(elapsed:Float)
@@ -187,13 +207,9 @@ class Stage5 extends State
 		OBJ_OPPONENT_ATTACK.scale.y = OBJ_OPPONENT_ATTACK.scale.x = 1 + (OPPONENT_CHARGE / 100);
 
 		if (EDITOR_MODE)
-		{
 			editorModeTick();
-		}
-		else
-		{
+		else if (!IN_CUTSCENE)
 			gameplayTick();
-		}
 	}
 
 	/**
