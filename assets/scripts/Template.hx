@@ -12,4 +12,4 @@ function stateUpdate(elapsed:Float) {}
 function CASLCrash() {}
 
 // Called by the worldmap
-function worldmapSelection(character:String, selection:Int) {}
+function worldmapSelection(character:String, selection:Int, sidebitMode:Bool) {}

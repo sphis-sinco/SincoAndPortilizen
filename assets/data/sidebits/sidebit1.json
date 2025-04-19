@@ -1,3 +1,4 @@
 {
-  "sidebit_ids": ["sinco", "port"]
+  "sidebit_ids": ["sinco", "port"],
+  "player": "Sinco"
 }

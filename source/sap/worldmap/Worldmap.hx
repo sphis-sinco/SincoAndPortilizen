@@ -4,6 +4,10 @@ import sap.mainmenu.PlayMenu;
 
 class Worldmap extends State
 {
+	public static var SIDEBIT_MODE:Bool = false;
+	public static var SIDEBITS:Array<String> = [];
+        public static var SIDEBIT_JSONS:Array<Dynamic> = [];
+
 	public static var CURRENT_PLAYER_CHARACTER:String = 'sinco';
 	public static var CURRENT_PLAYER_CHARACTER_JSON:PlayableCharacter = null;
 	public static var CURRENT_PLAYER_LEVELS:Int = 0;
@@ -28,6 +32,7 @@ class Worldmap extends State
 		}
 
 		init();
+		initSidebits();
 	}
 
 	public static function init():Void
@@ -35,6 +40,27 @@ class Worldmap extends State
 		CURRENT_PLAYER_CHARACTER_JSON = PlayableCharacterManager.readPlayableCharacterJSON(CURRENT_PLAYER_CHARACTER);
 		CURRENT_PLAYER_LEVELS = CURRENT_PLAYER_CHARACTER_JSON.levels;
 		CURRENT_PLAYER_SELECTION_OFFSET = CURRENT_PLAYER_CHARACTER_JSON.level_number_offset;
+	}
+
+	public static function initSidebits():Void
+	{
+		SIDEBITS = [];
+
+		var denied:Int = 0;
+
+		for (sidebit in FileManager.readDirectory('assets/data/sidebits'))
+		{
+			final sidebitName:String = sidebit.split('.')[0];
+			final sidebitJson = FileManager.getJSON(FileManager.getDataFile('sidebits/$sidebit'));
+                        SIDEBIT_JSONS.push(sidebitJson);
+
+			if (SIDEBIT_MODE
+				&& (!sidebitJson.sidebit_ids.contains(CURRENT_PLAYER_CHARACTER_JSON.sidebit_id)
+					|| !CURRENT_PLAYER_CHARACTER_JSON.has_sidebits))
+				denied++;
+			else
+				SIDEBITS.push(sidebitName);
+		}
 	}
 
 	override function create()
@@ -75,7 +101,10 @@ class Worldmap extends State
 	{
 		super.update(elapsed);
 
-		LEVEL_TEXT.text = 'Level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET} (${CURRENT_PLAYER_CHARACTER_JSON.character_display_name})';
+		if (!SIDEBIT_MODE)
+			LEVEL_TEXT.text = 'Level ${CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET} (${CURRENT_PLAYER_CHARACTER_JSON.character_display_name})';
+		else
+			LEVEL_TEXT.text = 'Sidebit ${CURRENT_SELECTION + 1} (${SIDEBIT_JSONS[CURRENT_SELECTION].player})';
 		LEVEL_TEXT.screenCenter(X);
 
 		DIFFICULTY_TEXT.text = '${Global.keyPressed(LEFT) ? '-' : '<'} ${CURRENT_DIFFICULTY} ${Global.keyPressed(RIGHT) ? '-' : '>'}';
@@ -121,19 +150,32 @@ class Worldmap extends State
 			if (CURRENT_SELECTION < 0)
 				CURRENT_SELECTION = 0;
 
-			if (CURRENT_SELECTION > CURRENT_PLAYER_LEVELS - 1)
-				CURRENT_SELECTION = CURRENT_PLAYER_LEVELS - 1;
+			final max:Int = (SIDEBIT_MODE) ? SIDEBITS.length - 1 : CURRENT_PLAYER_LEVELS - 1;
+			if (CURRENT_SELECTION > max)
+				CURRENT_SELECTION = max;
 		}
 		else if (Global.keyJustReleased(ENTER))
 		{
 			Global.callScriptFunction('worldmapSelection', [
 				CURRENT_PLAYER_CHARACTER,
-				CURRENT_SELECTION + 1 + CURRENT_PLAYER_SELECTION_OFFSET
+				CURRENT_SELECTION + 1 + ((SIDEBIT_MODE) ? 0 : CURRENT_PLAYER_SELECTION_OFFSET),
+				SIDEBIT_MODE
 			]);
 		}
 		else if (Global.keyJustReleased(ESCAPE))
 		{
 			Global.switchState(new PlayMenu());
 		}
+		else if (Global.keyJustReleased(TAB))
+		{
+			switchModes();
+		}
+	}
+
+	public static function switchModes():Void
+	{
+		SIDEBIT_MODE = !SIDEBIT_MODE;
+		CURRENT_SELECTION = 0;
+		initSidebits();
 	}
 }
