@@ -20,7 +20,7 @@ class Stage5 extends State
 
 		Global.changeDiscordRPCPresence('Stage 5 (${DIFFICULTY.toUpperCase()}): Rival Clash', null);
                 
-                var bg:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile('gameplay/timeVoid'));
+                var bg:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile('gameplay/timeVoid-stage5'));
 		add(bg);
 		bg.screenCenter();
 		Global.scaleSprite(bg);
