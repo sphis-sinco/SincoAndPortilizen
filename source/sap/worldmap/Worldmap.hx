@@ -25,8 +25,13 @@ class Worldmap extends State
 		if (character != null)
 		{
 			CURRENT_PLAYER_CHARACTER = character;
-                }
+		}
 
+		init();
+	}
+
+	public static function init():Void
+	{
 		CURRENT_PLAYER_CHARACTER_JSON = PlayableCharacterManager.readPlayableCharacterJSON(CURRENT_PLAYER_CHARACTER);
 		CURRENT_PLAYER_LEVELS = CURRENT_PLAYER_CHARACTER_JSON.levels;
 		CURRENT_PLAYER_SELECTION_OFFSET = CURRENT_PLAYER_CHARACTER_JSON.level_number_offset;

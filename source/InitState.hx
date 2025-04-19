@@ -71,6 +71,8 @@ class InitState extends FlxState
 
 			CreditsSubState.creditsJSONInit();
 			CharacterSelect.init();
+                        
+                        Worldmap.init();
 
 			// PaulPortGameOver.init();
 		});
