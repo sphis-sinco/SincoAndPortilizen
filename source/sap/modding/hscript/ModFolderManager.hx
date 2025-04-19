@@ -61,15 +61,18 @@ class ModFolderManager
 			}
 		}
 
-		trace('Loaded ${MODS.length} mod${MODS.length > 1 ? 's' : ''}');
-		for (mod in MODS)
+		if (MODS.length > 0)
 		{
-			trace('* ${modInfo(FileManager.getJSON('${MODS_FOLDER}${mod}/meta.json'))}');
-		}
+			trace('Loaded ${MODS.length} mod${MODS.length > 1 ? 's' : ''}');
+			for (mod in MODS)
+			{
+				trace('* ${modInfo(FileManager.getJSON('${MODS_FOLDER}${mod}/meta.json'))}');
+			}
 
-		sortModArrays();
-		trace('ENABLED_MODS: ${ENABLED_MODS}');
-		trace('DISABLED_MODS: ${DISABLED_MODS}');
+			sortModArrays();
+			trace('ENABLED_MODS: ${ENABLED_MODS}');
+			trace('DISABLED_MODS: ${DISABLED_MODS}');
+		}
 		#else
 		trace('Not sys. No mods');
 		#end
@@ -148,9 +151,9 @@ class ModFolderManager
 		});
 
 		if (dir_meta == null)
-                {
-                        trace('Mod "${folder}" could not have the meta.json read, sorry');
-                }
+		{
+			trace('Mod "${folder}" could not have the meta.json read, sorry');
+		}
 		else if (!SUPPORTED_MODDING_API_VERSIONS.contains(dir_meta.api_version))
 		{
 			trace('Mod "${dir_meta.name}" was built for incompatible API version (${dir_meta.api_version.toString()}), "${SUPPORTED_MODDING_API_VERSIONS[0]}" expected at minimum');
