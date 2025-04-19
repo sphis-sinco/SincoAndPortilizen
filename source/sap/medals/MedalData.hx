@@ -8,6 +8,9 @@ class MedalData
 
 	public static function unlockMedal(medal:String = 'award'):Medal
 	{
+                if (cur_y_offset < 0)
+                        cur_y_offset = 0;
+
                 final actual_medal:String = medal.replace(' ', '-').replace(',', '').toLowerCase();
 
 		final has_medal = unlocked_medals.contains(actual_medal);
