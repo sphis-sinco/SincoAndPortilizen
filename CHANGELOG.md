@@ -2,6 +2,7 @@
 ## 0.5.0a (Destination 3 - Rival clash) - 4/19/2025
 ### Added
 - LEVEL 5: RIVAL CLASH
+- NEW WORLDMAP
 - Sidebit 1 medals
 - `STAGE_FIVE` build flag
 - `DO_NOT_RECOMPILE_ON_ASSET_UPDATE` build flag
@@ -15,8 +16,10 @@
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - (Web only) Pixel perfect rendering ([#27][#27_link])
 ### Removed
+- Sidebit menu (integrated into the new worldmap)
 - (Destop only) Old window resolution options besides 640x608 has been removed
 ### Fixed
+- Sidebit 1 can played with different difficulties
 - Fixed medals not popping up when you get a medal
 - Levels no longer reset by *PRESSING* the Reset button
 - Sidebit 1 now has the Reset button

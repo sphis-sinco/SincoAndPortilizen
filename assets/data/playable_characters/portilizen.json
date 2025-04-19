@@ -4,6 +4,8 @@
 
         "levels": 2,
         "level_number_offset": 3,
+        "has_sidebits": true,
+        "sidebit_id": "port",
 
         "results_asset_prefix":"port"
 }

@@ -1,6 +1,5 @@
 package sap.stages.sidebit1;
 
-import sap.sidebitmenu.SidebitSelect;
 import sap.title.TitleState;
 
 class Sidebit1PostCutsceneAtlas extends AtlasCutscene
@@ -30,6 +29,6 @@ class Sidebit1PostCutsceneAtlas extends AtlasCutscene
 	override function cutsceneEnded(?skipped_cutscene:Bool)
 	{
 		super.cutsceneEnded(skipped_cutscene);
-		Global.switchState(new SidebitSelect());
+		Global.switchState(new Worldmap());
 	}
 }

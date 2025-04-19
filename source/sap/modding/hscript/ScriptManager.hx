@@ -7,7 +7,6 @@ import sap.mainmenu.PlayMenu;
 import sap.results.Rank;
 import sap.results.ResultsChar;
 import sap.settings.SettingsMenu;
-import sap.sidebitmenu.SidebitSelect;
 import sap.stages.Combo;
 import sap.stages.PaulPortGameOver;
 import sap.stages.sidebit1.Sidebit1;

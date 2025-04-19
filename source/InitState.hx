@@ -73,6 +73,7 @@ class InitState extends FlxState
 			CharacterSelect.init();
                         
                         Worldmap.init();
+                        Worldmap.initSidebits();
 
 			// PaulPortGameOver.init();
 		});

@@ -1,6 +1,5 @@
 package sap.stages.sidebit1;
 
-import sap.sidebitmenu.SidebitSelect;
 import sap.stages.sidebit1.SB1Port.SB1PortAIState;
 import sap.title.TitleState;
 
@@ -357,14 +356,11 @@ class Sidebit1 extends State
 			}
 		}
 
+                Worldmap.SIDEBIT_MODE = true;
 		if (PORTILIZEN_HEALTH == 0)
-		{
 			Global.switchState(new ResultsMenu(Std.int(SINCO_HEALTH), Std.int(SINCO_MAX_HEALTH), new Sidebit1PostCutsceneAtlas()));
-		}
 		else if (SINCO_HEALTH == 0)
-		{
-			Global.switchState(new ResultsMenu(Std.int(PORTILIZEN_MAX_HEALTH - PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), new SidebitSelect()));
-		}
+			Global.switchState(new ResultsMenu(Std.int(PORTILIZEN_MAX_HEALTH - PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), new Worldmap()));
 	}
 
 	public static function updateHealthIndicators():Void

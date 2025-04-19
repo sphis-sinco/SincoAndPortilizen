@@ -8,6 +8,9 @@ typedef PlayableCharacter =
 	var levels:Int;
 	var level_number_offset:Int;
 
+	var has_sidebits:Bool;
+	var sidebit_id:String;
+
 	var ?results_asset_prefix:String;
 }
 
