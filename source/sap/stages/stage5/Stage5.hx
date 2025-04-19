@@ -326,12 +326,12 @@ class Stage5 extends State
 		OBJ_PLAYER = new FlxSprite();
 		OBJ_PLAYER.makeGraphic(32, 64, FlxColor.PURPLE);
 		OBJ_PLAYER.setPosition(480, 400);
-		OBJ_PLAYER.shader = getRimLighting('Port');
+		OBJ_PLAYER.shader = getRimLighting('Portilizen');
 
 		OBJ_OPPONENT = new FlxSprite();
 		OBJ_OPPONENT.makeGraphic(32, 64, FlxColor.GREEN);
 		OBJ_OPPONENT.setPosition(120, 400);
-		OBJ_OPPONENT.shader = getRimLighting('STCS');
+		OBJ_OPPONENT.shader = getRimLighting(null);//'STCS');
 	}
 
 	/**
@@ -339,7 +339,7 @@ class Stage5 extends State
 	 * @param char The character shadermask you would like
 	 * @return DropShadowShader
 	 */
-	public static function getRimLighting(char:String):DropShadowShader
+	public static function getRimLighting(char:String = null):DropShadowShader
 	{
 		var rim:DropShadowShader = new DropShadowShader();
 		rim.setAdjustColor(0, 0, 0, 0);
@@ -349,9 +349,11 @@ class Stage5 extends State
 
 		rim.angle = 90;
 		rim.maskThreshold = 1;
-		// rim.useAltMask = true;
-		// rim.loadAltMask(FileManager.getImageFile('gameplay/port stages/Stage5${char}-ShaderMask'));
-
+		if (char != null)
+		{
+			rim.useAltMask = true;
+			rim.loadAltMask(FileManager.getImageFile('gameplay/port stages/Stage5${char}-ShaderMask'));
+		}
 		return rim;
 	}
 
@@ -362,10 +364,10 @@ class Stage5 extends State
 	{
 		OBJ_PLAYER_ATTACK = new FlxSprite();
 		OBJ_PLAYER_ATTACK.makeGraphic(32, 32, FlxColor.PURPLE);
-		OBJ_PLAYER_ATTACK.shader = getRimLighting('PortAttack');
+		OBJ_PLAYER_ATTACK.shader = getRimLighting(null);//'PortAttack');
 
 		OBJ_OPPONENT_ATTACK = new FlxSprite();
 		OBJ_OPPONENT_ATTACK.makeGraphic(32, 32, FlxColor.GREEN);
-		OBJ_OPPONENT_ATTACK.shader = getRimLighting('STCSAttack');
+		OBJ_OPPONENT_ATTACK.shader = getRimLighting(null);//'STCSAttack');
 	}
 }
