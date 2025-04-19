@@ -5,6 +5,11 @@
         { "text": "Sinco", "size": 0.5, "color": [50, 255, 50], "spacing": 25 },
         { "text": "Djotta Flow", "size": 0.5, "color": [50, 50, 255], "spacing": 25 },
 
+        { "text": "Art/Animation", "size": 0.7, "color": [255, 255, 255], "spacing": 35 },
+        { "text": "Sinco", "size": 0.5, "color": [50, 255, 50], "spacing": 25 },
+        { "text": "Djotta Flow", "size": 0.5, "color": [50, 50, 255], "spacing": 25 },
+        { "text": "Paul leps", "size": 0.5, "color": [255, 50, 50], "spacing": 25 },
+
         { "text": "Programmers", "size": 0.7, "color": [255, 255, 255], "spacing": 35 },
         { "text": "Sinco", "size": 0.5, "color": [50, 255, 50], "spacing": 25 },
         { "text": "ZSolarDev", "size": 0.5, "color": [50, 255, 50], "spacing": 25 },
