@@ -4,7 +4,6 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import sap.results.ResultsMenu;
-import sap.worldmap.Worldmap;
 
 class Stage4 extends State
 {
@@ -184,9 +183,8 @@ class Stage4 extends State
 	{
 		final good = Std.parseInt(timerText.text);
 		trace(good);
-		RUNNING = false;
 		if (!win)
-			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new Worldmap("Port"), "port"));
+			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new Worldmap('portilizen'), "port"));
 		else
 			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new PostStage4Cutscene(), "port"));
 	}

@@ -13,7 +13,6 @@ import sap.stages.stage1.Stage1;
 import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
-import sap.worldmap.Worldmap;
 
 // This is initalization stuff + compiler condition flags
 class InitState extends FlxState
@@ -23,8 +22,8 @@ class InitState extends FlxState
 		Timer.measure(function()
 		{
 			trace('init');
-			InitState.ModsInit();
-			InitState.LanguageInit();
+			ModsInit();
+			LanguageInit();
 
 			// Set the saveslot to a debug saveslot or a release saveslot
 			Global.change_saveslot((Global.DEBUG_BUILD) ? 'debug' : 'release');
@@ -70,6 +69,7 @@ class InitState extends FlxState
 			#end
 
 			CreditsSubState.creditsJSONInit();
+                        CharacterSelect.init();
 
 			// PaulPortGameOver.init();
 		});

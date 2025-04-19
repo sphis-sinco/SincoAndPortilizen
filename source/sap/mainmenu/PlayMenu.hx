@@ -1,7 +1,6 @@
 package sap.mainmenu;
 
 import sap.cutscenes.intro.IntroCutscene;
-import sap.worldmap.Worldmap;
 
 class PlayMenu extends MainMenu
 {

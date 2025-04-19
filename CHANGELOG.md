@@ -1,6 +1,8 @@
 # Alpha
 ## 0.5.0a - 4/??/2025
 ### Added
+- `DO_NOT_RECOMPILE_ON_ASSET_UPDATE` build flag
+- `RECOMPILE_ON_ASSET_UPDATE` build flag
 - `NO_MODS` build flag
 - (Desktop only) New window resolution option: 1280x720 ([#34][#34_link])
 - (Source) Global now has functions related to keys being pressed, just released, and just pressed
@@ -12,11 +14,19 @@
 ### Fixed
 - Fixed stage 4 tutorial assets not being visible
 - Fixed stage 1 tutorial assets not being visible
+- "Sinco's cool mod" now works in the MainMenu
 - Volume settings now get saved ([#35][#35_link])
 - Mods not being added to ENABLED_MODS when the Mod save data is null
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 - Fixed missing worldmap character assets
 ### Changed
+- Modding API version is now `0.1.4`
+  - Removed custom variables for different classes in `ScriptManager` except for a few (using import has been found to work)
+  - Scripts should no longer be loaded multiple times
+  - Loaded scripts get traced once more
+  - Scripts no longer have to be at the root or in only 1 sub-folder of the scripts folder in mods or in the assets folder
+- FileManager uses PosInfos for several functions
+- Worldmap overhaul
 - (Source) Using `Global.DEBUG_BUILD` instead of `SLGame.isDebug`
 - The volume now is set as the last saved audio setting
 - (Source) Instead of using `FlxG.keys.` every file uses one of the `Global.key` functions
@@ -41,7 +51,7 @@
 - (source) `GENERATED_BY` now uses `VERSION_FULL`
 - (source) `GENERATED_BY` can be modified from other files
 - (compiling) `ModFolderManager` traces the supported modding API versions with `EXCESS_TRACES` enabled only
-- (source) In stage 1 you can no longer attack when the opponent is attacking
+- In stage 1 you can no longer attack when the opponent is attacking
 - (source) Global now has 2 version variables: `VERSION` and `VERSION_FULL`, `VERSION` is the simplist version (i.e `0.5.2a`), `VERSION_FULL` is the most complicated (i.e `0.10.5a-debug-playtester (github-actions)`)
 - (source) The FileManager now has a new function for saying if it cant find a file via `unfoundAsset`
 - (source) The FileManager now says if it can't find a file in the `readFile` function

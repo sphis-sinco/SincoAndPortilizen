@@ -1,7 +1,5 @@
 package sap.cutscenes.intro;
 
-import sap.worldmap.Worldmap;
-
 class IntroCutscene extends PanelCutscene
 {
 	override public function new():Void

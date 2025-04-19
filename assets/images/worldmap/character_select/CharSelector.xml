@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="spritesheet.png">
+	<SubTexture name="idle0000" x="4" y="4" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="idle0001" x="4" y="4" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="character-box0000" x="95" y="4" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="character-box0001" x="95" y="4" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="select0000" x="186" y="4" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="select0001" x="186" y="4" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="select0002" x="4" y="80" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="select0003" x="4" y="80" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="select0004" x="95" y="80" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="select0005" x="95" y="80" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="cant-select0000" x="186" y="80" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="cant-select0001" x="186" y="80" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="cant-select0002" x="4" y="156" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="cant-select0003" x="4" y="156" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="cant-select0004" x="95" y="156" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+	<SubTexture name="cant-select0005" x="95" y="156" width="83" height="68" frameX="-24" frameY="-44" frameWidth="160" frameHeight="152" />
+</TextureAtlas>

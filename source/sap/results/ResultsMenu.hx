@@ -61,7 +61,17 @@ class ResultsMenu extends FlxState
 		RANK_PERCENT_TEXT.alpha = 0.5;
 		RANK_PERCENT_TEXT.alignment = LEFT;
 
-		RESULTS_CHARACTER = new ResultsChar(char);
+		var resultCharacter:String = char;
+
+		if (Worldmap.CURRENT_PLAYER_CHARACTER == char)
+		{
+			final PCJ:PlayableCharacter = Worldmap.CURRENT_PLAYER_CHARACTER_JSON;
+
+			if (PCJ.results_asset_prefix != null)
+				resultCharacter = PCJ.results_asset_prefix;
+		}
+
+		RESULTS_CHARACTER = new ResultsChar(resultCharacter);
 		RESULTS_CHARACTER.screenCenter(XY);
 
 		RESULTS_BG = new BlankBG();
@@ -85,33 +95,36 @@ class ResultsMenu extends FlxState
 		Global.changeDiscordRPCPresence('Results menu for ${RESULTS_CHARACTER.char}', null);
 		resultsInstance = this;
 
-		if (Worldmap.DIFFICULTY != StageGlobals.EASY_DIFF)
+		TryCatch.tryCatch(function()
 		{
-			TryCatch.tryCatch(function()
+			if (Stage1.OSIN_HEALTH == 0 && Stage1.RUNNING)
 			{
-				if (Stage1.OSIN_HEALTH == 0 && Stage1.RUNNING)
-				{
-					add(MedalData.unlockMedal('Faker clash'));
+				add(MedalData.unlockMedal('Faker clash'));
 
-					if (Stage1.SINCO_HEALTH == Stage1.SINCO_MAX_HEALTH)
-					{
-						add(MedalData.unlockMedal('The original stands on top'));
-					}
-				}
-				else if (Stage2.time == 0 && Stage2.RUNNING)
+				if (Stage1.SINCO_HEALTH == Stage1.SINCO_MAX_HEALTH)
 				{
-					add(MedalData.unlockMedal('Protector'));
-					if (Stage2.TEMPO_CITY_HEALTH == Stage2.diffJson.tempo_city_max_health)
-					{
-						add(MedalData.unlockMedal('True Protector'));
-					}
+					add(MedalData.unlockMedal('The original stands on top'));
 				}
-				else if (Stage4.time == Stage4.start_timer && Stage4.RUNNING)
+
+				Stage1.RUNNING = false;
+			}
+			else if (Stage2.time == 0 && Stage2.RUNNING)
+			{
+				add(MedalData.unlockMedal('Protector'));
+				if (Stage2.TEMPO_CITY_HEALTH == Stage2.diffJson.tempo_city_max_health)
 				{
-					add(MedalData.unlockMedal('Dimensions reached'));
+					add(MedalData.unlockMedal('True Protector'));
 				}
-			});
-		}
+
+				Stage2.RUNNING = false;
+			}
+			else if (Stage4.time == Stage4.start_timer && Stage4.RUNNING)
+			{
+				add(MedalData.unlockMedal('Dimensions reached'));
+
+				Stage4.RUNNING = false;
+			}
+		});
 	}
 
 	override public function update(elapsed:Float):Void
