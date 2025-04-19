@@ -209,13 +209,16 @@ class InitState extends FlxState
 	{
 		Timer.measure(function()
 		{
-			trace('mods init');
+			TryCatch.tryCatch(function()
+			{
+				trace('mods init');
 
-			trace('Hscript mods');
-			ModFolderManager.makeSupportedModdingApiVersions();
-			ModFolderManager.readModFolder();
+				trace('Hscript mods');
+				ModFolderManager.makeSupportedModdingApiVersions();
+				ModFolderManager.readModFolder();
 
-			ScriptManager.loadScripts();
+				ScriptManager.loadScripts();
+			});
 		});
 	}
 
