@@ -9,5 +9,7 @@
 
         "opponent_lockin_offset": 1,
 
-        "opponent_pause_tick_goal": 0
+        "opponent_pause_tick_goal": 0,
+
+        "timer": 120
 }
