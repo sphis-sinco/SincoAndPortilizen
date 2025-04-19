@@ -2,9 +2,13 @@ package sap.stages.stage5;
 
 class Stage5 extends State
 {
+        public static var DIFFICULTY:String = 'normal';        
+
 	override public function new(difficulty:String)
 	{
 		super();
+
+                DIFFICULTY = difficulty;
 	}
 
 	override function create()
