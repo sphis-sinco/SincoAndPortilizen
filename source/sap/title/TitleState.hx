@@ -106,7 +106,10 @@ class TitleState extends State
 		super.create();
 
 		Global.changeDiscordRPCPresence('In the title screen', null);
-		add(MedalData.unlockMedal('Welcome'));
+		TryCatch.tryCatch(function()
+		{
+			add(MedalData.unlockMedal('Welcome'));
+		});
 	}
 
 	override function postCreate()
