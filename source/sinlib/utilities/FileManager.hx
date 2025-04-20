@@ -380,7 +380,7 @@ class FileManager
 		}, {
 				errFunc: function()
 				{
-					json = null;
+					json = readFile(path, posinfo);
 				}
 		});
 
