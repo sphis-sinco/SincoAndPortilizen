@@ -13,27 +13,22 @@ class TryCatch
 	 * @param func the function you are trying to run
 	 * @param paramaters optional paramaters for the tryCatch.
 	 */
-	public static function tryCatch(func:Dynamic, ?paramaters:TryCatchParamaters)
+	public static function tryCatch<T>(func:Void->T, ?options:TryCatchParamaters):T
 	{
 		try
 		{
-			func();
+			return func();
 		}
-		catch (e)
+		catch (e:Dynamic)
 		{
-			try
+			if (options != null)
 			{
-				if (paramaters.traceErr)
-					trace(e);
+				if (options.traceErr)
+					trace('Error: $e');
+				if (options.errFunc != null)
+					options.errFunc();
 			}
-			catch (e)
-			{/** This is purely incase you do `tryCatch(funcHere);` **/}
-
-			try
-			{
-				paramaters.errFunc();
-			}
-			catch (e) {}
+			return null;
 		}
 	}
 }

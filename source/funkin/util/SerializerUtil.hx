@@ -35,7 +35,7 @@ class SerializerUtil
 	{
 		try
 		{
-			return TJSON.parse(input);
+			return Json.parse(input);
 		}
 		catch (e)
 		{
@@ -52,7 +52,7 @@ class SerializerUtil
 	{
 		try
 		{
-			return TJSON.parse(input.toString());
+			return Json.parse(input.toString());
 		}
 		catch (e:Dynamic)
 		{

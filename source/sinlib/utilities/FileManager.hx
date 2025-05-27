@@ -348,7 +348,7 @@ class FileManager
 		}
 
 		#if sys
-		TryCatch.tryCatch(function()
+		return TryCatch.tryCatch(function()
 		{
 			return File.getContent(path);
 		}, {
@@ -356,7 +356,7 @@ class FileManager
 		});
 		#end
 
-		TryCatch.tryCatch(function()
+		return TryCatch.tryCatch(function()
 		{
 			return Assets.getText(path);
 		}, {
@@ -373,14 +373,15 @@ class FileManager
 	public static function getJSON(path:String, ?posinfo:PosInfos):Dynamic
 	{
 		var json:Dynamic = null;
+		var file:String = readFile(path, posinfo);
 
 		TryCatch.tryCatch(function()
 		{
-			json = TJSON.parse(readFile(path, posinfo));
+			json = Json.parse(file);
 		}, {
 				errFunc: function()
 				{
-					json = readFile(path, posinfo);
+					json = file;
 				}
 		});
 

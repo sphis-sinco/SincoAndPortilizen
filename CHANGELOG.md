@@ -1,4 +1,8 @@
 # Alpha
+## 0.5.4a - 5/27/2025
+## Fixed
+- (Desktop only) Fixed asset loading issues PROPERLY (JSON stuff)
+
 ## 0.5.3a - 4/19/2025
 ### Fixed
 - (Desktop only) Crashes with mods that could not have the meta.json read
