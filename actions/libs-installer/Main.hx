@@ -23,7 +23,7 @@ class Main
 
 		for (lib in json)
 		{
-			trace('${lib.name} v${lib.version}');
+			trace('${lib.name} version: ${lib.version}');
 			switch (lib.type)
 			{
 				case "haxelib":
