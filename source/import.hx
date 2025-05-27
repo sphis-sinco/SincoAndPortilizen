@@ -55,3 +55,4 @@ import sys.io.File;
 #if DISCORDRPC
 import Discord.DiscordClient;
 #end
+import tjson.TJSON;

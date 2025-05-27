@@ -376,7 +376,7 @@ class FileManager
 
 		TryCatch.tryCatch(function()
 		{
-			json = Json.parse(readFile(path, posinfo));
+			json = TJSON.parse(readFile(path, posinfo));
 		}, {
 				errFunc: function()
 				{
