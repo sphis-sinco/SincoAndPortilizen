@@ -52,7 +52,7 @@ class Worldmap extends State
 		for (sidebit in FileManager.readDirectory('assets/data/sidebits'))
 		{
 			final sidebitName:String = sidebit.split('.')[0];
-			final sidebitJson = FileManager.getJSON(FileManager.getDataFile('sidebits/$sidebit'));
+			final sidebitJson = FileManager.getJSON(FileManager.getDataFile('sidebits/$sidebit.json'));
                         SIDEBIT_JSONS.push(sidebitJson);
 
 			if (SIDEBIT_MODE
