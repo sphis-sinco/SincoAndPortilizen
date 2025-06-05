@@ -1,7 +1,7 @@
 # Alpha
 ## 0.5.3a - 6/4/2025
 ### Fixed
-- (Desktop only) Crashes with mods that could not have the meta.json read
+- (Desktop only) Json crashes
 ### Changes
 - FileManager `readFile` can read assets with sys if sys
 
