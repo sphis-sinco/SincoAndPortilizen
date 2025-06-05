@@ -32,7 +32,6 @@ import openfl.system.System;
 import openfl.text.*;
 import sap.*;
 import sap.cutscenes.*;
-import sap.localization.LocalizationManager;
 import sap.medals.*;
 import sap.modding.hscript.*;
 import sap.plugins.*;
@@ -55,3 +54,4 @@ import sys.io.File;
 #if DISCORDRPC
 import Discord.DiscordClient;
 #end
+import sap.localization.*;

@@ -159,7 +159,7 @@ class Global
 	 * Plays a sound effect using the `name` param
 	 * @param name this is the filename/filepath, for example `blipSelect` would return `assets/sounds/blipSelect.wav`
 	 */
-	public static function playSoundEffect(name:String, ?PATH_TYPE:sinlib.utilities.FileManager.PathTypes, ?posinfo:PosInfos):Void
+	public static function playSoundEffect(name:String, ?PATH_TYPE:FileManager.PathTypes, ?posinfo:PosInfos):Void
 	{
 		#if EXCESS_TRACES
 		final file:Array<String> = name.split('/');
@@ -227,7 +227,7 @@ class Global
 	}
 
 	/**
-	 * Returns a key value from `LocalizationManager.TEXT_CONTENT`
+	 * Returns a key value from `Locale.languageJson`
 	 * @param phrase the key you are trying to read
 	 * @return String
 	 */
@@ -235,7 +235,7 @@ class Global
 	{
 		var phrase_that_works:String = phrase.toLowerCase().replace(' ', '-');
 
-		var returnPhrase:String = LocalizationManager.TEXT_CONTENT.get(phrase_that_works);
+		var returnPhrase:String = Reflect.getPhrase(phrase_that_works, fallback);
 		if (returnPhrase == null)
 		{
 			returnPhrase = (fallback == null) ? phrase_that_works : fallback;

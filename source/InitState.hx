@@ -227,11 +227,11 @@ class InitState extends FlxState
 		Timer.measure(function()
 		{
 			trace('language init');
-			LocalizationManager.LANGUAGE = 'english';
+			Locale.localeName = 'english';
 
 			TryCatch.tryCatch(() ->
 			{
-				LocalizationManager.LANGUAGE = SaveManager.getLanguage();
+				Locale.localeName = SaveManager.getLanguage();
 			}, {
 					errFunc: () ->
 					{
@@ -241,26 +241,26 @@ class InitState extends FlxState
 
 			if (FileManager.exists(FileManager.getPath('', 'cur_lang.txt')))
 			{
-				LocalizationManager.LANGUAGE = FileManager.readFile(FileManager.getPath('', 'cur_lang.txt'));
+				Locale.localeName = FileManager.readFile(FileManager.getPath('', 'cur_lang.txt'));
 			}
 
 			ScriptManager.callScript('initalizeLanguage');
 
 			#if SPANISH_LANGUAGE
 			trace('Spanish language is being forced.');
-			LocalizationManager.LANGUAGE = 'spanish';
+			Locale.localeName = 'spanish';
 			#end
 			#if PORTUGUESE_LANGUAGE
 			trace('Portuguese language is being forced.');
-			LocalizationManager.LANGUAGE = 'portuguese';
+			Locale.localeName = 'portuguese';
 			#end
 
 			#if FORCED_ENGLISH
 			trace('English language is being forced.');
-			LocalizationManager.LANGUAGE = 'english';
+			Locale.localeName = 'english';
 			#end
 
-			LocalizationManager.changeLanguage();
+			Locale.initalizeLocale();
 		});
 	}
 }

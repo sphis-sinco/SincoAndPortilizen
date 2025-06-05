@@ -54,7 +54,7 @@ class SettingsMenu extends FlxSubState
 		saveValues_array = [];
 		saveValue_length = 0;
 
-		newSaveValue('language', LocalizationManager.LANGUAGE);
+		newSaveValue('language', Locale.localeName);
 		newSaveValue('volume', FlxMath.roundDecimal(FlxG.sound.volume * 100, 0));
 
 		#if desktop
@@ -123,10 +123,10 @@ class SettingsMenu extends FlxSubState
 		switch (SELECTED_SETTING)
 		{
 			case 'language':
-				LocalizationManager.swapLanguage();
+				Locale.initalizeLocale();
 				MainMenu.set_menuboxtexts(MainMenu.public_menutextsSelection);
 
-				FileManager.writeToPath('cur_lang.txt', LocalizationManager.LANGUAGE);
+				FileManager.writeToPath('cur_lang.txt', Locale.localeName);
 			case 'volume':
 				FlxG.sound.changeVolume(0.1);
 				if (FlxG.sound.volume == 1)
