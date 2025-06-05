@@ -44,12 +44,12 @@ class Worldmap extends State
 
 	public static function initSidebits():Void
 	{
-		SIDEBITS = [];
+		SIDEBITS = ['sidebit1'];
 
 		var denied:Int = 0;
 
-		#if !html5
-		for (sidebit in FileManager.readDirectory('assets/data/sidebits'))
+		final array:Array<String> = #if !html5 FileManager.readDirectory('assets/data/sidebits') #else SIDEBITS #end;
+		for (sidebit in array)
 		{
 			final sidebitName:String = sidebit.split('.')[0];
 			final sidebitJson = FileManager.getJSON(FileManager.getDataFile('sidebits/$sidebit.json'));
@@ -65,9 +65,6 @@ class Worldmap extends State
                         if (denied == SIDEBIT_JSONS.length && SIDEBIT_MODE)
                                 switchModes();
 		}
-                #else
-                SIDEBITS = ['sidebit1'];
-                #end
 	}
 
 	override function create()
