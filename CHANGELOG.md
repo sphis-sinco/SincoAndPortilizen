@@ -1,5 +1,7 @@
 # Alpha [SEASON 2]
 ## 0.6.0a - 6/??/2025
+### Removed
+- Intro Cutscene
 ### Fixed
 - (Web only) Worldmap crash when switching to Sidebit mode
 

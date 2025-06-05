@@ -1,7 +1,5 @@
 package sap.mainmenu;
 
-import sap.cutscenes.intro.IntroCutscene;
-
 class PlayMenu extends MainMenu
 {
 	override public function new():Void
@@ -21,17 +19,20 @@ class PlayMenu extends MainMenu
 
 	public static function playSelectionCheck():Void
 	{
+		final worldmapSwitch:Void->Void = function()
+		{
+			FlxG.sound.music.stop();
+			Global.switchState(new Worldmap());
+		};
+
 		switch (MainMenu.PUBLIC_CUR_SELECTION)
 		{
 			case 0:
 				FlxG.save.data.gameplaystatus = GameplayStatus.returnDefaultGameplayStatus();
 
-				FlxG.sound.music.stop();
-				Global.switchState(new IntroCutscene());
-
+				worldmapSwitch();
 			case 1:
-				FlxG.sound.music.stop();
-				Global.switchState(new Worldmap());
+				worldmapSwitch();
 
 			case 2:
 				FlxG.switchState(() -> new MainMenu());
