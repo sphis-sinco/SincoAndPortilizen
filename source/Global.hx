@@ -235,7 +235,7 @@ class Global
 	{
 		var phrase_that_works:String = phrase.toLowerCase().replace(' ', '-');
 
-		var returnPhrase:String = Reflect.getPhrase(phrase_that_works, fallback);
+		var returnPhrase:String = Reflect.getProperty(phrase_that_works, fallback);
 		if (returnPhrase == null)
 		{
 			returnPhrase = (fallback == null) ? phrase_that_works : fallback;
