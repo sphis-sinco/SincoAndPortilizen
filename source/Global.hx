@@ -238,7 +238,6 @@ class Global
 		var returnPhrase:String = Reflect.getProperty(Locale.languageJson, phrase_that_works);
 		if (returnPhrase == null)
 		{
-                        trace(returnPhrase);
 			returnPhrase = (fallback == null) ? phrase_that_works : fallback;
 		}
 
