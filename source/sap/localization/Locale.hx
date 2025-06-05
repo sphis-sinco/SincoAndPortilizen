@@ -5,9 +5,10 @@ class Locale
 	public static var languageJson:Dynamic = {};
 	public static var localeName:String = '';
 
-	public static function initalizeLocale(language:String):Void
+	public static function initalizeLocale(?lang:String):Void
 	{
 		final localeSave:Dynamic = languageJson;
+                final language:String = (lang != null) ? lang : localeName;
 
 		languageJson = Json.parse(FileManager.readFile(FileManager.getDataFile('locale/$language.json')));
 
