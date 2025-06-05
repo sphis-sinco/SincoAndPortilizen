@@ -2,15 +2,10 @@ package sap.localization;
 
 class Locale
 {
-	public function new(starting_locale:String)
-	{
-		initalizeLocale(starting_locale);
-	}
+	public static var languageJson:Dynamic = {};
+	public static var localeName:String = '';
 
-	public var languageJson:Dynamic = {};
-	public var localeName:String = '';
-
-	public function initalizeLocale(language:String):Void
+	public static function initalizeLocale(language:String):Void
 	{
 		final localeSave:Dynamic = languageJson;
 
@@ -38,11 +33,10 @@ class Locale
 				FileManager.LOCALIZED_ASSET_SUFFIX = '';
 			else
 				FileManager.LOCALIZED_ASSET_SUFFIX = localeAssetSuffix;
-
 		}
 	}
 
-	public function getPhrase(field:String, fallback:String):String
+	public static function getPhrase(field:String, fallback:String):String
 	{
 		if (Reflect.field(languageJson, field) != null)
 			return Reflect.field(languageJson, field);
