@@ -404,29 +404,6 @@ class Stage5 extends State
 	}
 
 	/**
-	 * Returns a rim lighting shader with an altMask according to the character you want
-	 * @param char The character shadermask you would like
-	 * @return DropShadowShader
-	 */
-	public static function getRimLighting(char:String = null):DropShadowShader
-	{
-		var rim:DropShadowShader = new DropShadowShader();
-		rim.setAdjustColor(-25, -5, 0, 0);
-		rim.color = 0xFF445664;
-		rim.antialiasAmt = 0;
-		rim.distance = 10;
-
-		rim.angle = 90;
-		rim.maskThreshold = 1;
-		if (char != null)
-		{
-			rim.useAltMask = true;
-			rim.loadAltMask(FileManager.getImageFile('gameplay/port stages/Stage5${char}-ShaderMask'));
-		}
-		return rim;
-	}
-
-	/**
 	 * This initalizes the attack sprites
 	 */
 	function initializeAttacks()

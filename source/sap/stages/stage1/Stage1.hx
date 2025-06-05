@@ -4,7 +4,6 @@ import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import funkin.graphics.shaders.DropShadowShader;
 import sap.results.ResultsMenu;
 class Stage1 extends State
 {
@@ -119,19 +118,6 @@ class Stage1 extends State
 		sinco.y += sinco.height * 4;
 		sinco.x -= sinco.width * 4;
 		add(sinco);
-
-		var rim:DropShadowShader = new DropShadowShader();
-		rim.setAdjustColor(-66, -10, 24, -23);
-		rim.color = 0xFF373234;
-		rim.antialiasAmt = 0;
-		rim.distance = 5;
-
-		rim.angle = 90;
-		rim.maskThreshold = 1;
-		rim.useAltMask = true;
-		rim.loadAltMask(FileManager.getImageFile('gameplay/sinco stages/Stage1Sinco-ShaderMask'));
-
-		// sinco.shader = rim;
 
 		SINCO_POINT = new FlxPoint(0, 0);
 		SINCO_POINT.set(sinco.x, sinco.y);
