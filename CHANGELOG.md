@@ -2,6 +2,8 @@
 ## 0.6.0a - 6/??/2025
 ### Removed
 - Intro Cutscene
+### Changed
+- Locale system
 ### Fixed
 - (Web only) Worldmap crash when switching to Sidebit mode
 
