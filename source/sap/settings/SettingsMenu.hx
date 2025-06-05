@@ -123,7 +123,16 @@ class SettingsMenu extends FlxSubState
 		switch (SELECTED_SETTING)
 		{
 			case 'language':
-				Locale.initalizeLocale();
+                                var newlang:String = Locale.localeName;
+
+                                switch (newlang)
+                                {
+                                        case 'english': newlang = 'spanish';
+                                        case 'spanish': newlang = 'portuguese';
+                                        case 'portuguese': newlang = 'english';
+                                }
+
+				Locale.initalizeLocale(newlang);
 				MainMenu.set_menuboxtexts(MainMenu.public_menutextsSelection);
 
 				FileManager.writeToPath('cur_lang.txt', Locale.localeName);
