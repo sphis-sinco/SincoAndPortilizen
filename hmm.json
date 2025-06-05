@@ -40,11 +40,6 @@
       "version": null
     },
     {
-      "name": "hscriptPos",
-      "type": "haxelib",
-      "version": null
-    },
-    {
       "name": "thx.semver",
       "type": "haxelib",
       "version": null
