@@ -1,4 +1,4 @@
-# Alpha [SEASON 2]
+# Alpha
 ## 0.6.0a - 6/??/2025
 ### Removed
 - Intro Cutscene
@@ -7,7 +7,6 @@
 ### Fixed
 - (Web only) Worldmap crash when switching to Sidebit mode
 
-# Alpha [SEASON 1]
 ## 0.5.3a - 6/4/2025
 ### Fixed
 - (Desktop only) Json crashes
