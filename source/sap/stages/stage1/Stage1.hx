@@ -196,6 +196,8 @@ class Stage1 extends State
 	{
 		super.update(elapsed);
 
+		Global.playMusic('LikeBrothers');
+		
 		updateHealthIndicators();
 
 		if (getOsinJumpCondition())

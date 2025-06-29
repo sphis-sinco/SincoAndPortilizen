@@ -3,6 +3,7 @@
 
 ## 0.1b - 7/??/2025
 ### Added
+- Stage 1 OST Song: Like Brothers
 - CHANGELOG_MENU Build flag
 - Changelog Menu
 ### Removed
