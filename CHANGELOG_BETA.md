@@ -3,7 +3,7 @@
 - Stage 2 OST Song: Teen Prodigy
 <version>
 
-## 0.1b - 7/??/2025
+## 0.1b (Pitstop 3 - Sidebit 2) - 7/??/2025
 ### Added
 - **Level pausing (Issue #15)**
 - "Clear save" option in the settings menu

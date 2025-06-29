@@ -1,7 +1,6 @@
 package sap.stages.sidebit1;
 
 import sap.stages.sidebit1.SB1Port.SB1PortAIState;
-import sap.title.TitleState;
 
 class Sidebit1 extends PausableState
 {
