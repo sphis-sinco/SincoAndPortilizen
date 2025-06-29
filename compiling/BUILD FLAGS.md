@@ -52,6 +52,8 @@ These do things. Lmao!
 
 - `SIDEBIT_MENU`: Sends you to the `SidebitSelect` state
 
+- `CHANGELOG_MENU`: Sends you to the `ChangelogMenu` state
+
 ## Language Flags
 - `CNGLA_TRACES`: Allows the console to print out what localized assets it could not get
 - `FORCED_ENGLISH_LANGUAGE`: Forces your language to English

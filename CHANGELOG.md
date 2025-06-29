@@ -1,5 +1,8 @@
 ## 0.1b - 7/??/2025
 ## Added
+- `CHANGELOG_MENU` Build flag
+- ChangelogMenu
+
 ### Removed
 - Intro Cutscene
 ### Changed

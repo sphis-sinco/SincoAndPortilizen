@@ -192,6 +192,9 @@ class InitState extends FlxState
 		#elseif SIDEBIT_MENU
 		switchToState(new sap.sidebitmenu.SidebitSelect(), 'Sidebit Select');
 		return;
+		#elseif CHANGELOG_MENU
+		switchToState(new sap.changelog.ChangelogMenu(), 'Changelog Menu');
+		return;
 		#end
 
 		trace('Starting game regularly');
