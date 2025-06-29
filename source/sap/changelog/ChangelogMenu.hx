@@ -68,8 +68,6 @@ class ChangelogMenu extends State
 			changelogText.applyMarkup(changelogText.text, [new FlxTextFormatMarkerPair(markdown, '$')]);
 		}
 
-		FAKEchangelogText.setPosition(changelogText.x, changelogText.y);
-
 		if (paper.animation.finished && paper.animation.name != 'idle')
 		{
 			switch (paper.animation.name)
@@ -123,5 +121,7 @@ class ChangelogMenu extends State
 				changelogText.y = math;
 			}
 		}
+		
+		FAKEchangelogText.setPosition(changelogText.x, changelogText.y);
 	}
 }
