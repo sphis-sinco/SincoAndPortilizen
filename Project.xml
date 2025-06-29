@@ -39,7 +39,7 @@
 
         <assets path="assets" />
         <assets path="cur_lang.txt" />
-        <assets path="CHANGELOG.md" />
+        <assets path="CHANGELOG_BETA.md" rename="CHANGELOG.md" />
 
         <!-- English (US) -->
         <language name="en-US" />
