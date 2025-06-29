@@ -170,6 +170,8 @@ class SettingsMenu extends FlxSubState
 				SaveManager.clearSave();
 				SaveManager.setupSave();
 				SaveManager.save();
+				MainMenu.inSubstate = false;
+				FlxG.resetGame();
 		}
 
 		saveValuesUpdate();
