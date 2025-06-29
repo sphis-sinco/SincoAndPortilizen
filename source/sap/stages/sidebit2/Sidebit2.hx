@@ -12,8 +12,20 @@ class Sidebit2 extends PausableState
 		DIFFICULTY_JSON = FileManager.getJSON(FileManager.getDataFile('stages/sidebit2/${difficulty}.json'));
         }
 
+        public static var PLAYER:Sidebit2Character;
+        public static var OPPONENT:Sidebit2Character;
+
         override function create() {
                 super.create();
+
+                PLAYER = new Sidebit2Character('port');
+                OPPONENT = new Sidebit2Character('osin');
+
+                PLAYER.setPosition(-118.5, 216.4);
+                OPPONENT.setPosition(387.7, 128);
+
+                add(PLAYER);
+                add(OPPONENT);
         }
 
         override function postCreate() {
