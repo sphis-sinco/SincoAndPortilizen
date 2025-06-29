@@ -175,7 +175,7 @@ class ModFolderManager
 			}
 			else
 			{
-				ENABLED_MODS.push(folder);
+				DISABLED_MODS.push(folder);
 			}
 		}
 	}

@@ -12,6 +12,7 @@
 ### Removed
 - Intro Cutscene
 ### Changed
+- Mods no longer are enabled by default when loaded
 - Mod API version is 1.5
         - Version is a valid variable
 - The main menu music 22 has been replaced with Lado.
