@@ -4,7 +4,7 @@
 - Intro Cutscene
 ### Changed
 - Version system is now the same as [Creative](https://sphis-sinco.itch.io/creative)
-- Version system is softcoded
+- Version system is [softcoded](/assets/scripts/Version.hx)
 - Locale system
 ### Fixed
 - (Web only) Worldmap crash when switching to Sidebit mode
