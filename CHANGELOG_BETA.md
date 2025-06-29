@@ -28,7 +28,7 @@
 - Version system is softcoded
 - Locale system
 ### Fixed
-- When resetinting stages 1, and 4 the jump variables should be initalized
+- When reseting stages 1, and 4 the jump variables should be initalized
 - Sidebit 1 cutscenes
 - "The OC of today" Medal unlock condition (was flipped basically)
 - (Web only) Worldmap crash when switching to Sidebit mode
