@@ -1,9 +1,10 @@
 # Beta
 <version>
+
 ## 0.1b - 7/??/2025
 ### Added
 - CHANGELOG_MENU Build flag
-- ChangelogMenu
+- Changelog Menu
 ### Removed
 - Intro Cutscene
 ### Changed
