@@ -69,11 +69,12 @@ class ChangelogMenu extends State
 				}
 			}
 
-			FAKEchangelogText.text = changelogText.text.replace('$', '');
+			FAKEchangelogText.text = changelogText.text.replace('$', '').replace('*', '');
 
-			var markdown:FlxTextFormat = new FlxTextFormat(FlxColor.BLUE, true);
+			var headers:FlxTextFormat = new FlxTextFormat(FlxColor.BLUE, true);
+			var bold:FlxTextFormat = new FlxTextFormat(FlxColor.BLACK, true);
 
-			changelogText.applyMarkup(changelogText.text, [new FlxTextFormatMarkerPair(markdown, '$')]);
+			changelogText.applyMarkup(changelogText.text, [new FlxTextFormatMarkerPair(headers, '$'),new FlxTextFormatMarkerPair(bold, '**')]);
 		}
 
 		if (paper.animation.finished && paper.animation.name != 'idle')

@@ -3,7 +3,7 @@ package sap.stages.sidebit1;
 import sap.stages.sidebit1.SB1Port.SB1PortAIState;
 import sap.title.TitleState;
 
-class Sidebit1 extends State
+class Sidebit1 extends PausableState
 {
 	public static var DIFFICULTY:String;
 	public static var DIFFICULTY_JSON:Sidebit1DifficultyJson;
@@ -34,7 +34,7 @@ class Sidebit1 extends State
 
 	override public function new(difficulty:String)
 	{
-		super();
+		super(false);
 
 		DIFFICULTY = difficulty;
 		DIFFICULTY_JSON = FileManager.getJSON(FileManager.getDataFile('stages/sidebit1/${difficulty}.json'));
@@ -314,9 +314,17 @@ class Sidebit1 extends State
 		super.update(elapsed);
 		FlxG.watch.addQuick('port frame index', PORTILIZEN.animation.frameIndex);
 
+		if (Global.keyJustReleased(ESCAPE) && SINCO_HEALTH >= 1 && PORTILIZEN_HEALTH >= 1)
+		{
+			togglePaused();
+		}
+
+		PORTILIZEN.animation.paused = paused;
+		SINCO.animation.paused = paused;
+
 		updateHealthIndicators();
 
-		if (Global.keyJustReleased(SPACE) && ABILITY_CAN_DODGE)
+		if (Global.keyJustReleased(SPACE) && ABILITY_CAN_DODGE && !paused)
 		{
 			disableAbilities();
 			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
@@ -324,7 +332,7 @@ class Sidebit1 extends State
 			SINCO.y += 85;
 			SINCO.animation.play('dodge');
 		}
-		else if (Global.keyJustReleased(LEFT) && ABILITY_CAN_ATTACK)
+		else if (Global.keyJustReleased(LEFT) && ABILITY_CAN_ATTACK && !paused)
 		{
 			disableAbilities();
 			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
@@ -332,13 +340,13 @@ class Sidebit1 extends State
 			SINCO.animation.play('attack');
 		}
 
-		if (Global.keyJustReleased(R))
+		if (Global.keyJustReleased(R) && !paused)
 		{
 			Global.switchState(new Sidebit1(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
 
-		if (PORTILIZEN.animation.frameIndex > 10 && PORTILIZEN.animation.frameIndex < 19)
+		if (PORTILIZEN.animation.frameIndex > 10 && PORTILIZEN.animation.frameIndex < 19 && !paused)
 		{
 			if (PORTILIZEN.State != ATTACK)
 				return;

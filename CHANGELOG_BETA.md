@@ -5,14 +5,18 @@
 
 ## 0.1b - 7/??/2025
 ### Added
+- **Level pausing (Issue #15)**
 - "Clear save" option in the settings menu
-- Stage 4 OST Song: Inner Hardware
-- Stage 1 OST Song: Like Brothers
+- **Stage 4 OST Song: Inner Hardware**
+- **Stage 1 OST Song: Like Brothers**
 - CHANGELOG_MENU Build flag
-- Changelog Menu
+- **Changelog Menu**
 ### Removed
 - Intro Cutscene
 ### Changed
+- Sidebit 1 post-cutscene
+- Sidebit 1 pre-cutscene is a sparrow cutscene
+- Adjusted time when you can't attack Osin in stage 1
 - Mods no longer are enabled by default when loaded
 - Mod API version is 1.5
         - Version is a valid variable
@@ -24,4 +28,6 @@
 - Version system is softcoded
 - Locale system
 ### Fixed
+- Sidebit 1 cutscenes
+- "The OC of today" Medal unlock condition (was flipped basically)
 - (Web only) Worldmap crash when switching to Sidebit mode

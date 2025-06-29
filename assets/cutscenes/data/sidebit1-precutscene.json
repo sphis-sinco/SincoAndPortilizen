@@ -1,0 +1,21 @@
+{
+        "type": "sparrow",
+
+        "assetPath": "sidebit1/pre-sidebit1_sparrow",
+
+        "parts": 4,
+
+        "symbol_names": [
+                "animation piece 1",
+                "animation piece 2",
+                "animation piece 3",
+                "animation piece 4"
+        ],
+
+        "offsets": [
+                [-70, 150],
+                [-120, 200],
+                [-200, 30],
+                [-105, -195]
+        ]
+}

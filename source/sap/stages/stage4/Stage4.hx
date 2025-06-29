@@ -5,7 +5,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import sap.results.ResultsMenu;
 
-class Stage4 extends State
+class Stage4 extends PausableState
 {
 	public static var port:PortS4;
 	public static var enemy:EnemyS4;
@@ -24,7 +24,7 @@ class Stage4 extends State
 
 	override public function new(difficulty:String):Void
 	{
-		super();
+		super(false);
 
 		RUNNING = true;
 
@@ -102,17 +102,25 @@ class Stage4 extends State
 	{
 		Global.playMusic('InnerHardware');
 
-		if (Global.keyJustReleased(SPACE) && !portJumping)
+		if (Global.keyJustReleased(ESCAPE) && Std.parseInt(timerText.text) >= 1)
+		{
+			togglePaused();
+		}
+
+		port.animation.paused = paused;
+		enemy.animation.paused = paused;
+
+		if (Global.keyJustReleased(SPACE) && !portJumping && !paused)
 		{
 			portPreJump();
 		}
 
-		if (Global.keyJustReleased(R))
+		if (Global.keyJustReleased(R) && !paused)
 		{
 			Global.switchState(new Stage4(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
 		}
-		if (enemyAttackCondition())
+		if (enemyAttackCondition() && !paused)
 		{
 			enemyCanAttack = false;
 			enemyCharge();

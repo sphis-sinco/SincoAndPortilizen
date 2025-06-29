@@ -1,4 +1,4 @@
-import sap.stages.sidebit1.Sidebit1IntroCutsceneAtlas;
+import sap.stages.sidebit1.Sidebit1IntroCutscene;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
@@ -17,14 +17,14 @@ function worldmapSelection(character:String, selection:Int, sidebitMode:Bool)
 			if (selection == 4 && !sidebitMode)
 				Global.switchState(new Stage4(difficulty));
 			else if (selection == 1 && sidebitMode)
-				Global.switchState(new Sidebit1IntroCutsceneAtlas(difficulty));
+				Global.switchState(new Sidebit1IntroCutscene(difficulty));
 			else if (selection == 5 && !sidebitMode)
 				Global.switchState(new Stage5(difficulty));
 		case 'sinco':
 			if (selection == 1 && !sidebitMode)
 				Global.switchState(new Stage1(difficulty));
 			else if (selection == 1 && sidebitMode)
-				Global.switchState(new Sidebit1IntroCutsceneAtlas(difficulty));
+				Global.switchState(new Sidebit1IntroCutscene(difficulty));
 			else if (selection == 2 && !sidebitMode)
 				Global.switchState(new Stage2(difficulty));
 

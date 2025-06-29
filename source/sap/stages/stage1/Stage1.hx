@@ -1,11 +1,13 @@
 package sap.stages.stage1;
 
+import sap.credits.CreditsSubState;
 import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import sap.results.ResultsMenu;
-class Stage1 extends State
+
+class Stage1 extends PausableState
 {
 	public static var RACE_TRACK:FlxSprite;
 
@@ -36,7 +38,7 @@ class Stage1 extends State
 
 	override public function new(difficulty:String):Void
 	{
-		super();
+		super(false);
 
 		RUNNING = true;
 
@@ -84,14 +86,14 @@ class Stage1 extends State
 		}
 	}
 
+	var sparrowBG = new SparrowSprite('gameplay/sinco stages/StageOneBackground');
+
 	override function create():Void
 	{
 		super.create();
 
 		sinco = new Sinco();
 		osin = new Osin();
-
-		var sparrowBG = new SparrowSprite('gameplay/sinco stages/StageOneBackground');
 
 		sparrowBG.addAnimationByPrefix('actualstagebg', 'actualstagebg', 24);
 		sparrowBG.animation.play('actualstagebg');
@@ -196,16 +198,24 @@ class Stage1 extends State
 	{
 		super.update(elapsed);
 
+		if (Global.keyJustReleased(ESCAPE) && SINCO_HEALTH >= 1 && OSIN_HEALTH >= 1)
+		{
+			togglePaused();
+		}
+
+		sinco.animation.paused = paused;
+		osin.animation.paused = paused;
+
 		Global.playMusic('LikeBrothers');
-		
+
 		updateHealthIndicators();
 
-		if (getOsinJumpCondition())
+		if (getOsinJumpCondition() && !paused)
 		{
 			osinJumpWait();
 		}
 
-		if (OSIN_HEALTH >= 1)
+		if (OSIN_HEALTH >= 1 && !paused)
 		{
 			playerControls();
 		}
@@ -294,6 +304,7 @@ class Stage1 extends State
 
 	public static function osinWarning():Void
 	{
+		ABILITY_CAN_ATTACK_PLAYER = false;
 		osin.animation.play(StageGlobals.JUMP_KEYWORD);
 		FlxTween.tween(osin, {y: OSIN_POINT.y - 150}, FlxG.random.float(0.5, 1), {
 			onComplete: _tween ->
@@ -305,7 +316,6 @@ class Stage1 extends State
 
 	public static function osinJump():Void
 	{
-		ABILITY_CAN_ATTACK_PLAYER = false;
 		osin.animation.play(StageGlobals.JUMP_KEYWORD);
 		Global.playSoundEffect('gameplay/sinco-jump');
 		FlxTween.tween(osin, {x: SINCO_POINT.x, y: SINCO_POINT.y}, OSIN_JUMP_SPEED, {
@@ -485,4 +495,12 @@ class Stage1 extends State
 	}
 
 	public static var PLAYED_DEATH_SFX:Bool = false;
+
+	override function togglePaused()
+	{
+		super.togglePaused();
+
+		sparrowBG.animation.paused = paused;
+		RACE_TRACK.animation.paused = paused;
+	}
 }

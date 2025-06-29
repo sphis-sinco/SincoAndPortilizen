@@ -10,7 +10,7 @@ import sap.settings.SettingsMenu;
 import sap.stages.Combo;
 import sap.stages.PaulPortGameOver;
 import sap.stages.sidebit1.Sidebit1;
-import sap.stages.sidebit1.Sidebit1IntroCutsceneAtlas;
+import sap.stages.sidebit1.Sidebit1IntroCutscene;
 import sap.stages.sidebit1.Sidebit1PostCutsceneAtlas;
 import sap.stages.stage1.Osin;
 import sap.stages.stage1.PostStage1Cutscene;

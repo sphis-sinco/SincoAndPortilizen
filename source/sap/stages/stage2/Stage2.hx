@@ -2,7 +2,7 @@ package sap.stages.stage2;
 
 import sap.stages.stage2.PostStage2Cutscene;
 
-class Stage2 extends State
+class Stage2 extends PausableState
 {
 	public static var bg:FlxSprite;
 
@@ -29,7 +29,7 @@ class Stage2 extends State
 
 	override public function new(difficulty:String):Void
 	{
-		super();
+		super(false);
 
 		RUNNING = true;
 
@@ -271,9 +271,16 @@ class Stage2 extends State
 
 		// Global.playMusic('TeenProdigy');
 
+		if (Global.keyJustReleased(ESCAPE) && Std.parseInt(timerText.text) >= 1)
+		{
+			togglePaused();
+		}
+
+		sinco.animation.paused = paused;
+
 		updateHealthIndicators();
 
-		if (Global.keyJustReleased(SPACE) && sinco.animation.name != StageGlobals.JUMP_KEYWORD)
+		if (Global.keyJustReleased(SPACE) && sinco.animation.name != StageGlobals.JUMP_KEYWORD && !paused)
 		{
 			sinco.animation.play(StageGlobals.JUMP_KEYWORD);
 			Global.playSoundEffect('gameplay/sinco-jump');
@@ -291,7 +298,7 @@ class Stage2 extends State
 				});
 		}
 
-		if (Global.keyJustReleased(R))
+		if (Global.keyJustReleased(R) && !paused)
 		{
 			Global.switchState(new Stage2(DIFFICULTY));
 			FlxG.camera.flash(FlxColor.WHITE, .25, null, true);
@@ -304,5 +311,9 @@ class Stage2 extends State
 		PROGRESS_BAR.percent = (TEMPO_CITY_HEALTH / diffJson.tempo_city_max_health) * 100;
 		INFO_TEXTFIELD.text = INFO_TEXT;
 		INFO_TEXTFIELD.screenCenter(X);
+	}
+
+	override function togglePaused() {
+		super.togglePaused();
 	}
 }

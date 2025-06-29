@@ -1,6 +1,7 @@
 package sap.stages.stage5;
 
-class Stage5 extends State
+// Why is this so documented XD
+class Stage5 extends PausableState
 {
 	/**
 	 *  This allows for offset editing when needed
@@ -129,7 +130,7 @@ class Stage5 extends State
 
 	override public function new(difficulty:String)
 	{
-		super();
+		super(false);
 
 		DIFFICULTY = difficulty;
 		DIFFICULTY_JSON = FileManager.getJSON(FileManager.getDataFile('stages/stage5/${DIFFICULTY}.json'));
@@ -269,6 +270,11 @@ class Stage5 extends State
 		FlxG.watch.addQuick('Opponent charge tick', OPPONENT_CHARGE_TICK);
 		FlxG.watch.addQuick('Opponent pause tick', OPPONENT_PAUSE_TICK);
 
+		if (Global.keyJustReleased(ESCAPE) && Std.parseInt(TIMER_TEXT.text) >= 1 && !EDITOR_MODE)
+		{
+			togglePaused();
+		}
+
                 if (Std.parseInt(TIMER_TEXT.text) < 0)
                 {
                         TIMER_TEXT.text = '0';
@@ -276,7 +282,7 @@ class Stage5 extends State
 
 		if (EDITOR_MODE)
 			editorModeTick();
-		else if (!IN_CUTSCENE)
+		else if (!IN_CUTSCENE && !paused)
 		{
 			OBJ_PLAYER_ATTACK.setPosition(OBJ_PLAYER.x + ((OBJ_PLAYER.animation.name == 'intro') ? 32 : 0),
 				OBJ_PLAYER.y - (OBJ_PLAYER_ATTACK.height * ((OBJ_PLAYER_ATTACK.scale.y / 4) + 1)) * 2);

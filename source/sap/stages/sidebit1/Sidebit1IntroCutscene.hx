@@ -1,19 +1,22 @@
 package sap.stages.sidebit1;
 
+import sap.cutscenes.SparrowCutscene;
 import sap.title.TitleState;
 
-class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
+class Sidebit1IntroCutscene extends SparrowCutscene
 {
-	public static var BG:FlxSprite;
-
+	public var BG:BlankBG;
 	public var DIFFICULTY:String = 'normal';
 
-	override public function new(diff:String)
+	override public function new(difficulty:String = 'normal')
 	{
-		super('sidebit1-precutscene-atlas');
-
-		DIFFICULTY = diff;
+		super('sidebit1-precutscene');
 		Global.playSoundEffect('SideBit1_IntroCutscene', CUTSCENES);
+
+		BG = new BlankBG();
+		add(BG);
+
+		DIFFICULTY = difficulty;
 	}
 
 	override function create()
@@ -21,9 +24,16 @@ class Sidebit1IntroCutsceneAtlas extends AtlasCutscene
 		super.create();
 	}
 
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+	}
+
 	override function cutsceneEvent(animation:String)
 	{
 		super.cutsceneEvent(animation);
+
+		switch (animation) {}
 	}
 
 	override function cutsceneEnded(?skipped_cutscene:Bool)

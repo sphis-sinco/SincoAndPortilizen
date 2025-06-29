@@ -80,7 +80,8 @@ class ResultsMenu extends FlxState
 		RESULTS_BG.color = 0x999999;
 		RESULTS_BG.screenCenter(XY);
 
-		FlxG.sound.music.stop();
+		if (FlxG.sound.music != null)
+			FlxG.sound.music.stop();
 
 		super();
 	}
@@ -148,7 +149,7 @@ class ResultsMenu extends FlxState
 
 				add(MedalData.unlockMedal('The consistentless'));
 
-				if (Sidebit1.PORTILIZEN_HEALTH == 0)
+				if (Sidebit1.SINCO_HEALTH == 0)
 				{
 					add(MedalData.unlockMedal('The OC of today'));
 				}
