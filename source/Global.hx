@@ -111,11 +111,11 @@ class Global
 	}
 
 	/**
-	 * Plays the main music for menus (22) if its null, and if there is no music playing
+	 * Plays the main music for menus (Lado) if its null, and if there is no music playing
 	 */
 	public static function playMenuMusic(?posinfo:PosInfos):Void
 	{
-		playMusic('22', posinfo);
+		playMusic('Lado', posinfo);
 	}
 
 	/**
