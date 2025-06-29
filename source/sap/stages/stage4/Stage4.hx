@@ -32,6 +32,8 @@ class Stage4 extends PausableState
 		diffJson = FileManager.getJSON(FileManager.getDataFile('stages/stage4/${difficulty}.json'));
 
 		start_timer = diffJson.start_timer;
+
+		portJumping = false;
 	}
 
 	override function create():Void

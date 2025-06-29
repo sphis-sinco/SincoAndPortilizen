@@ -48,6 +48,8 @@ class Stage1 extends PausableState
 		SINCO_MAX_HEALTH = diffJson.player_max_health;
 		OSIN_MAX_HEALTH = diffJson.opponent_max_health;
 
+		ABILITY_CAN_ATTACK_PLAYER = true;
+
 		final combo_poses_filepath:String = FileManager.getDataFile('stages/stage1/combo_poses.txt');
 
 		if (FileManager.exists(combo_poses_filepath))
