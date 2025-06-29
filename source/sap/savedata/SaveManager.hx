@@ -5,6 +5,23 @@ import sap.settings.SettingsMenu;
 class SaveManager
 {
 	/**
+	 * This makes sure there are null values
+	 */
+	public static function clearSave():Void
+	{
+		// just the base thing
+		FlxG.save.data.language = null;
+		FlxG.save.data.settings = null;
+		FlxG.save.data.results = null;
+		FlxG.save.data.gameplaystatus = null;
+		FlxG.save.data.medals = null;
+		FlxG.save.data.unlocked_characters = null;
+		FlxG.save.data.enabled_mods = null;
+
+		SettingsMenu.window_res(getSettings().window_res);
+		SettingsMenu.new_windowres = getSettings().window_res;
+	}
+	/**
 	 * This makes sure there are no null values
 	 */
 	public static function setupSave():Void

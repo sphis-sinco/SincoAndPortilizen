@@ -80,6 +80,8 @@ class ResultsMenu extends FlxState
 		RESULTS_BG.color = 0x999999;
 		RESULTS_BG.screenCenter(XY);
 
+		FlxG.sound.music.stop();
+
 		super();
 	}
 

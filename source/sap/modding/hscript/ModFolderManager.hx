@@ -98,9 +98,11 @@ class ModFolderManager
 	public static function toggleMod(modName:String):Void
 	{
 		if (ENABLED_MODS.contains(modName))
+		{
 			disableMod(modName);
-		else
-			enableMod(modName);
+			return;
+		}
+		enableMod(modName);
 	}
 
 	public static function sortModArrays():Void
@@ -112,6 +114,7 @@ class ModFolderManager
 		DISABLED_MODS.sort(sortFunc);
 
 		FlxG.save.data.enabled_mods = ENABLED_MODS;
+		SaveManager.save();
 		ScriptManager.loadScripts();
 	}
 
@@ -164,13 +167,13 @@ class ModFolderManager
 			MODS.push(folder);
 			if (SaveManager.getEnabledMods() != null)
 			{
-				if (!SaveManager.getEnabledMods().contains(folder))
+				if (SaveManager.getEnabledMods().contains(folder))
 				{
-					DISABLED_MODS.push(folder);
+					ENABLED_MODS.push(folder);
 				}
 				else
 				{
-					ENABLED_MODS.push(folder);
+					DISABLED_MODS.push(folder);
 				}
 			}
 			else

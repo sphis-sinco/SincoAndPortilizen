@@ -70,6 +70,8 @@ class SettingsMenu extends FlxSubState
 		newSaveValue('download latest traces', null);
 		#end
 		#end
+
+		newSaveValue('clear save', null);
 	}
 
 	public static function newSaveValue(name:String, value:Any):Void
@@ -164,6 +166,10 @@ class SettingsMenu extends FlxSubState
 				// funkin.util.FileUtil.createDirIfNotExists('trace_downloads');
 				FileManager.writeToPath('trace_downloads/download-${timestamp}.log', AnsiTrace.neatTraceList());
 			#end
+			case 'clear save':
+				SaveManager.clearSave();
+				SaveManager.setupSave();
+				SaveManager.save();
 		}
 
 		saveValuesUpdate();

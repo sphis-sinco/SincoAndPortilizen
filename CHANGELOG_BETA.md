@@ -1,11 +1,12 @@
 # Beta
 ## Unreleased
-- Stage 2 OST Song: TeenProdigy
+- Stage 2 OST Song: Teen Prodigy
 <version>
 
 ## 0.1b - 7/??/2025
 ### Added
-- Stage 4 OST Song: InnerHardware
+- "Clear save" option in the settings menu
+- Stage 4 OST Song: Inner Hardware
 - Stage 1 OST Song: Like Brothers
 - CHANGELOG_MENU Build flag
 - Changelog Menu
