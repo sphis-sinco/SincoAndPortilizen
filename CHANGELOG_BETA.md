@@ -8,6 +8,8 @@
 ### Removed
 - Intro Cutscene
 ### Changed
+- Mod API version is 1.5
+        - Version is a valid variable
 - The main menu music 22 has been replaced with Lado.
 - Beta changelog format
 - The changelog has been split for every section of production

@@ -1,7 +1,11 @@
 package sap.changelog;
 
+import sap.title.TitleState;
+
 class ChangelogMenu extends State
 {
+	public static var instance:ChangelogMenu;
+
 	public var paper:SparrowSprite;
 	public var changelogText:FlxText;
 	public var FAKEchangelogText:FlxText;
@@ -16,6 +20,8 @@ class ChangelogMenu extends State
 		paper = new SparrowSprite('changelog/ChangelogPaper');
 		paper.addAnimationByPrefix('grab', 'grab', 24, false);
 		paper.addAnimationByPrefix('open', 'open', 24, false);
+		paper.addAnimationByPrefix('grab-rev', 'grab', 24, false);
+		paper.addAnimationByPrefix('open-rev', 'open', 24, false);
 		paper.addAnimationByPrefix('idle', 'idle', 24, false);
 		paper.playAnimation('grab');
 		Global.scaleSprite(paper, -2);
@@ -30,6 +36,8 @@ class ChangelogMenu extends State
 		changelogText.color = FlxColor.BLACK;
 		changelogText.alpha = 0;
 		add(changelogText);
+		
+		instance = this;
 	}
 
 	override function update(elapsed:Float)
@@ -72,6 +80,10 @@ class ChangelogMenu extends State
 		{
 			switch (paper.animation.name)
 			{
+				case 'grab-rev':
+					Global.switchState(new TitleState());
+				case 'open-rev':
+					paper.playAnimation('grab-rev');
 				case 'grab':
 					paper.playAnimation('open');
 				case 'open':
@@ -121,7 +133,15 @@ class ChangelogMenu extends State
 				changelogText.y = math;
 			}
 		}
-		
 		FAKEchangelogText.setPosition(changelogText.x, changelogText.y);
+
+		if (Global.keyPressed(ESCAPE))
+		{
+			changelogText.y -= CHANGELOG_MOVE;
+			if (changelogText.y < math)
+			{
+				changelogText.y = math;
+			}
+		}
 	}
 }
