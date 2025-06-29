@@ -100,6 +100,8 @@ class Stage4 extends State
 
 	override function update(elapsed:Float):Void
 	{
+		Global.playMusic('InnerHardware');
+
 		if (Global.keyJustReleased(SPACE) && !portJumping)
 		{
 			portPreJump();

@@ -269,7 +269,7 @@ class Stage2 extends State
 	{
 		super.update(elapsed);
 
-		Global.playMusic('LikeBrothers');
+		// Global.playMusic('TeenProdigy');
 
 		updateHealthIndicators();
 

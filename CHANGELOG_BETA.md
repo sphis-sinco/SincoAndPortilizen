@@ -1,8 +1,11 @@
 # Beta
+## Unreleased
+- Stage 2 OST Song: TeenProdigy
 <version>
 
 ## 0.1b - 7/??/2025
 ### Added
+- Stage 4 OST Song: InnerHardware
 - Stage 1 OST Song: Like Brothers
 - CHANGELOG_MENU Build flag
 - Changelog Menu
