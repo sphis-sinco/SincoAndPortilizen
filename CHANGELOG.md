@@ -1,7 +1,5 @@
-# Alpha
-## 0.6.0a - 7/??/2025
+## 0.1b - 7/??/2025
 ## Added
-- (Modding) New script function: `StateReset(elapsed:Float)`
 ### Removed
 - Intro Cutscene
 ### Changed
@@ -9,6 +7,7 @@
 ### Fixed
 - (Web only) Worldmap crash when switching to Sidebit mode
 
+# Alpha
 ## 0.5.3a - 6/4/2025
 ### Fixed
 - (Desktop only) Json crashes

@@ -49,11 +49,5 @@ class State extends FlxState
 			ScriptManager.callScript('GameRestart', [elapsed]);
                         FlxG.resetGame();
 		}
-
-		if (controlPressed && altPressed && shiftPressed && f1Pressed)
-		{
-			ScriptManager.callScript('StateReset', [elapsed]);
-                        FlxG.resetState();
-		}
 	}
 }
