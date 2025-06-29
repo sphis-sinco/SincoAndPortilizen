@@ -18,14 +18,14 @@ class Global
 
 	public static var VERSION_FULL(get, never):String;
 
-	static function get_VERSION():String
+	public static dynamic function get_VERSION():String
 	{
-		return Application.VERSION;
+		return Version.generateVersionString();
 	}
 
 	static function get_VERSION_FULL():String
 	{
-		var version:String = Application.VERSION;
+		var version:String = VERSION;
 
 		if (SLGame.isDebug)
 		{

@@ -3,6 +3,8 @@
 ### Removed
 - Intro Cutscene
 ### Changed
+- Version system is now the same as [Creative](https://sphis-sinco.itch.io/creative)
+- Version system is softcodable now
 - Locale system
 ### Fixed
 - (Web only) Worldmap crash when switching to Sidebit mode

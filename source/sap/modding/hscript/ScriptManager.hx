@@ -76,6 +76,8 @@ class ScriptManager
 
 		setScript('BlankBG', BlankBG);
 
+		setScript('Version', Version);
+
 		// functions
 		setScript('UnlockMedal', function(medal:String):Medal
 		{
