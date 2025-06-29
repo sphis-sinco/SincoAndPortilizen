@@ -269,6 +269,8 @@ class Stage2 extends State
 	{
 		super.update(elapsed);
 
+		Global.playMusic('LikeBrothers');
+
 		updateHealthIndicators();
 
 		if (Global.keyJustReleased(SPACE) && sinco.animation.name != StageGlobals.JUMP_KEYWORD)
