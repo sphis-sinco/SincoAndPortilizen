@@ -161,8 +161,8 @@ class SettingsMenu extends FlxSubState
 			case 'download latest traces':
 				final timestamp:String = funkin.util.DateUtil.generateTimestamp();
 				trace('Downloading latest traces (${timestamp})');
-				funkin.util.FileUtil.createDirIfNotExists('trace_downloads');
-				File.saveContent('trace_downloads/download-${timestamp}.log', AnsiTrace.neatTraceList());
+				// funkin.util.FileUtil.createDirIfNotExists('trace_downloads');
+				FileManager.writeToPath('trace_downloads/download-${timestamp}.log', AnsiTrace.neatTraceList());
 			#end
 		}
 

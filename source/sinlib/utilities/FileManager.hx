@@ -324,7 +324,31 @@ class FileManager
 		#if sys
 		if (path.length > 0)
 		{
+			var prevDir:String = '';
+			for (dir in path.split('/'))
+			{
+				if (!exists(prevDir))
+				{
+					FileSystem.createDirectory(prevDir);
+				}
+
+				if (!readDirectory(prevDir).contains(dir) || prevDir == '')
+				{
+					FileSystem.createDirectory(dir);
+					trace('creating $prevDir$dir');
+				}
+
+
+				prevDir += dir + '/';
+			}
+
+			if (!exists(path))
+			{
+				File.write(path, false);
+				trace('generating $path');
+			}
 			File.saveContent(path, content);
+			trace('writing to $path');
 		}
 		else
 		{
