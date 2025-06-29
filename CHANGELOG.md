@@ -3,6 +3,7 @@
 ### Removed
 - Intro Cutscene
 ### Changed
+- FileManager's `writeToPath` function has been improved
 - Version system is now the same as [Creative](https://sphis-sinco.itch.io/creative)
 - Version system is [softcoded](/assets/scripts/Version.hx)
 - Locale system
