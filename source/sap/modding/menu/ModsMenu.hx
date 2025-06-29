@@ -60,7 +60,6 @@ class ModsMenu extends FlxSubState
 			FlxG.save.data.enabled_mods = ModFolderManager.ENABLED_MODS;
 			SaveManager.save();
 			close();
-			FlxG.resetState();
 		}
 
 		if (Global.anyKeysPressed([UP, DOWN]) && Global.keyPressed(SHIFT))
