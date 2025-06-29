@@ -14,5 +14,8 @@ function CASLCrash(elapsed:Float) {}
 // Ctrl+Alt+Shift+F5 restart
 function GameRestart(elapsed:Float) {}
 
+// Ctrl+Alt+Shift+F1 state restart
+function StateReset(elapsed:Float) {}
+
 // Called by the worldmap
 function worldmapSelection(character:String, selection:Int, sidebitMode:Bool) {}

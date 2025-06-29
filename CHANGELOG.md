@@ -1,5 +1,7 @@
 # Alpha
-## 0.6.0a - 6/??/2025
+## 0.6.0a - 7/??/2025
+## Added
+- (Modding) New script function: `StateReset(elapsed:Float)`
 ### Removed
 - Intro Cutscene
 ### Changed

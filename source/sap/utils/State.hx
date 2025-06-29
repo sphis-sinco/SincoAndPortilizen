@@ -36,6 +36,7 @@ class State extends FlxState
 		final shiftPressed:Bool = Global.keyPressed(SHIFT);
 		final lPressed:Bool = Global.keyPressed(L);
 		final f5Pressed:Bool = Global.keyPressed(F5);
+		final f1Pressed:Bool = Global.keyPressed(F1);
 
 		if (controlPressed && altPressed && shiftPressed && lPressed)
 		{
@@ -47,6 +48,12 @@ class State extends FlxState
 		{
 			ScriptManager.callScript('GameRestart', [elapsed]);
                         FlxG.resetGame();
+		}
+
+		if (controlPressed && altPressed && shiftPressed && f1Pressed)
+		{
+			ScriptManager.callScript('StateReset', [elapsed]);
+                        FlxG.resetState();
 		}
 	}
 }
