@@ -325,17 +325,19 @@ class FileManager
 		if (path.length > 0)
 		{
 			var prevDir:String = '';
+			
 			for (dir in path.split('/'))
 			{
-				if (!exists(prevDir))
+				if (!readDirectory('').contains(prevDir) && prevDir != '')
 				{
 					FileSystem.createDirectory(prevDir);
+					trace('creating $prevDir');
 				}
 
-				if (!readDirectory(prevDir).contains(dir) || prevDir == '')
+				if (!readDirectory(prevDir).contains(dir) && !dir.contains('.'))
 				{
 					FileSystem.createDirectory(dir);
-					trace('creating $prevDir$dir');
+					trace('creating $dir');
 				}
 
 
@@ -347,6 +349,7 @@ class FileManager
 				File.write(path, false);
 				trace('generating $path');
 			}
+
 			File.saveContent(path, content);
 			trace('writing to $path');
 		}
