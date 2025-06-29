@@ -6,6 +6,15 @@ import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
 import sap.title.TitleState;
 
+function initalizeMod()
+{
+	Version.MajorVersion = 1;
+	Version.MinorVersion = 1;
+	Version.PatchVersion = 0;
+	Version.HotfixVersion = 1;
+	Version.Suffix = '';
+}
+
 function statePostCreate()
 {
 	var curState:String = Global.getCurrentState();
@@ -19,7 +28,6 @@ function statePostCreate()
 		TitleState.CHARACTER_RING_CHARS_SHADER.hue = 255;
 		TitleState.MINI_SINCO.shader = coolShader;
 		TitleState.MINI_PORTILIZEN.shader = coolShader;
-                TitleState.VERSION_TEXT.text = 'Sinco\'s cool mod v1.1';
 	}
 	else if (curState == 'MainMenu' || curState == 'PlayMenu')
 	{
