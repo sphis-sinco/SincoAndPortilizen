@@ -14,6 +14,7 @@ class PausableState extends State
 	}
 
 	public static var overlay:BlankBG;
+	public static var pauseText:FlxText;
 
 	override function create():Void
 	{
@@ -43,13 +44,21 @@ class PausableState extends State
 		paused = !paused;
 
 		if (!paused)
+		{
 			overlay.destroy();
+			pauseText.destroy();
+		}
 		else
 		{
 			overlay = new BlankBG();
 			overlay.color = 0x000000;
 			overlay.alpha = 0.5;
 			add(overlay);
+
+			pauseText = new FlxText(0, 0, 0, "Paused", 64);
+			pauseText.screenCenter(XY);
+			// pauseText.y = pauseText.size * 2;
+			add(pauseText);
 		}
 	}
 }
