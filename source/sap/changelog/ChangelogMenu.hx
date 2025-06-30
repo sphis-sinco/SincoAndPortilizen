@@ -1,5 +1,6 @@
 package sap.changelog;
 
+import sap.mainmenu.MainMenu;
 import sap.title.TitleState;
 
 class ChangelogMenu extends State
@@ -145,11 +146,7 @@ class ChangelogMenu extends State
 
 		if (Global.keyPressed(ESCAPE))
 		{
-			changelogText.y -= CHANGELOG_MOVE;
-			if (changelogText.y < math)
-			{
-				changelogText.y = math;
-			}
+			Global.switchState(new MainMenu());
 		}
 	}
 }
