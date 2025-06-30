@@ -1,5 +1,6 @@
 # Beta
 ## Unreleased
+- Stage 5 OST Song: Family Rivalry
 - Stage 2 OST Song: Teen Prodigy
 <version>
 
