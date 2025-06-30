@@ -75,7 +75,7 @@ class ChangelogMenu extends State
 			FAKEchangelogText.text = changelogText.text.replace('$', '').replace('*', '');
 
 			var headers:FlxTextFormat = new FlxTextFormat(FlxColor.BLUE, true);
-			var bold:FlxTextFormat = new FlxTextFormat(FlxColor.BLACK, true);
+			var bold:FlxTextFormat = new FlxTextFormat(FlxColor.GREEN, true);
 
 			changelogText.applyMarkup(changelogText.text, [
 				new FlxTextFormatMarkerPair(headers, '$'),
