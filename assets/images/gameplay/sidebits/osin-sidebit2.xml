@@ -24,8 +24,16 @@
 	<SubTexture name="osin idle0011" x="3128" y="706" width="425" height="581" frameX="-33" frameY="-14" frameWidth="492" frameHeight="612"/>
 	<SubTexture name="osin idle0012" x="3561" y="706" width="445" height="571" frameX="-28" frameY="-14" frameWidth="492" frameHeight="612"/>
 	<SubTexture name="osin idle0013" x="4" y="1312" width="460" height="547" frameX="-13" frameY="-14" frameWidth="492" frameHeight="612"/>
-	<SubTexture name="osin punch0000" x="472" y="1312" width="511" height="551" frameX="0" frameY="0" frameWidth="589" frameHeight="551"/>
-	<SubTexture name="osin punch0001" x="991" y="1312" width="511" height="551" frameX="0" frameY="0" frameWidth="589" frameHeight="551"/>
-	<SubTexture name="osin punch0002" x="1510" y="1312" width="529" height="542" frameX="-60" frameY="-3" frameWidth="589" frameHeight="551"/>
-	<SubTexture name="osin punch0003" x="1510" y="1312" width="529" height="542" frameX="-60" frameY="-3" frameWidth="589" frameHeight="551"/>
+	<SubTexture name="osin punch0000" x="472" y="1312" width="714" height="609" frameX="-15" frameY="0" frameWidth="807" frameHeight="681"/>
+	<SubTexture name="osin punch0001" x="1194" y="1312" width="729" height="653" frameX="0" frameY="0" frameWidth="807" frameHeight="681"/>
+	<SubTexture name="osin punch0002" x="1931" y="1312" width="805" height="678" frameX="-2" frameY="-3" frameWidth="807" frameHeight="681"/>
+	<SubTexture name="osin punch0003" x="2744" y="1312" width="529" height="542" frameX="-278" frameY="-3" frameWidth="807" frameHeight="681"/>
+	<SubTexture name="osin wind-up0000" x="3281" y="1312" width="636" height="543" frameX="0" frameY="0" frameWidth="637" frameHeight="572"/>
+	<SubTexture name="osin wind-up0001" x="3281" y="1312" width="636" height="543" frameX="0" frameY="0" frameWidth="637" frameHeight="572"/>
+	<SubTexture name="osin wind-up0002" x="4" y="1998" width="529" height="533" frameX="-108" frameY="-6" frameWidth="637" frameHeight="572"/>
+	<SubTexture name="osin wind-up0003" x="541" y="1998" width="529" height="533" frameX="-108" frameY="-6" frameWidth="637" frameHeight="572"/>
+	<SubTexture name="osin wind-up0004" x="1078" y="1998" width="518" height="571" frameX="-116" frameY="-1" frameWidth="637" frameHeight="572"/>
+	<SubTexture name="osin wind-up0005" x="1604" y="1998" width="518" height="571" frameX="-116" frameY="-1" frameWidth="637" frameHeight="572"/>
+	<SubTexture name="osin wind-up0006" x="2130" y="1998" width="505" height="569" frameX="-129" frameY="-1" frameWidth="637" frameHeight="572"/>
+	<SubTexture name="osin wind-up0007" x="2643" y="1998" width="505" height="569" frameX="-129" frameY="-1" frameWidth="637" frameHeight="572"/>
 </TextureAtlas>

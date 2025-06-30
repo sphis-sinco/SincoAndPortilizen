@@ -14,7 +14,7 @@ class Sidebit2 extends PausableState
 		DIFFICULTY = difficulty;
 		DIFFICULTY_JSON = FileManager.getJSON(FileManager.getDataFile('stages/sidebit2/${difficulty}.json'));
 
-                OP_ATK_CHANCE = DIFFICULTY_JSON.op_attack_chance;
+		OP_ATK_CHANCE = DIFFICULTY_JSON.op_attack_chance;
 	}
 
 	public static var PLAYER:Sidebit2Character;
@@ -29,13 +29,36 @@ class Sidebit2 extends PausableState
 		PLAYER = new Sidebit2Character('port');
 		OPPONENT = new Sidebit2Character('osin');
 
+		OPPONENT.addAnimationByPrefix('wind-up', 'osin wind-up', 24, false);
+
 		PLAYER.setPosition(-200, 250);
 		OPPONENT.setPosition(250, 128);
 
 		add(OPPONENT);
 		add(PLAYER);
 
-                TUTORIAL_SHADER = new AdjustColorShader();
+		OPPONENT.animation.onFinish.add(animName -> {
+			switch (animName)
+			{
+				case 'wind-up':
+					OPPONENT.playAnimation('punch');
+					if (PLAYER.animation.name != 'block')
+						PLAYER.playAnimation('hit');
+
+				default:
+					OPPONENT.playAnimation('idle');
+			}
+		});
+
+		PLAYER.animation.onFinish.add(animName -> {
+			switch (animName)
+			{
+				default:
+					PLAYER.playAnimation('idle');
+			}
+		});
+
+		TUTORIAL_SHADER = new AdjustColorShader();
 		TUTORIAL_SHADER.brightness = -50;
 
 		var tutorial1:FlxSprite = new FlxSprite();
@@ -79,7 +102,14 @@ class Sidebit2 extends PausableState
 			togglePaused();
 		}
 
-		if (Global.anyKeysJustReleased([keys.attack, keys.block])) {}
+		if (!paused)
+		{
+			if (FlxG.random.bool(OP_ATK_CHANCE))
+			{
+				OPPONENT.playAnimation('wind-up');
+			}
+			if (Global.anyKeysJustReleased([keys.attack, keys.block])) {}
+		}
 		PLAYER.animation.paused = paused;
 		OPPONENT.animation.paused = paused;
 	}
