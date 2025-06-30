@@ -6,6 +6,8 @@ class Sidebit2 extends PausableState
 	public static var DIFFICULTY_JSON:Sidebit2DifficultyJson;
 
 	public static var OP_ATK_CHANCE:Float = 45;
+	public static var OP_ATK_TICK:Int = 500;
+	public static var OP_TICK:Int = 450;
 
 	override public function new(difficulty:String = 'normal')
 	{
@@ -30,27 +32,26 @@ class Sidebit2 extends PausableState
 		OPPONENT = new Sidebit2Character('osin');
 
 		OPPONENT.addAnimationByPrefix('wind-up', 'osin wind-up', 24, false);
-
-		PLAYER.setPosition(-200, 250);
-		OPPONENT.setPosition(250, 128);
+		OPPONENT.playAnimation('idle');
 
 		add(OPPONENT);
 		add(PLAYER);
 
-		OPPONENT.animation.onFinish.add(animName -> {
+		OPPONENT.animation.onFinish.add(animName ->
+		{
 			switch (animName)
 			{
 				case 'wind-up':
 					OPPONENT.playAnimation('punch');
-					if (PLAYER.animation.name != 'block')
-						PLAYER.playAnimation('hit');
+					if (PLAYER.animation.name != 'block') PLAYER.playAnimation('hit');
 
 				default:
 					OPPONENT.playAnimation('idle');
 			}
 		});
 
-		PLAYER.animation.onFinish.add(animName -> {
+		PLAYER.animation.onFinish.add(animName ->
+		{
 			switch (animName)
 			{
 				default:
@@ -97,20 +98,33 @@ class Sidebit2 extends PausableState
 	{
 		super.update(elapsed);
 
+		OP_TICK++;
+		FlxG.watch.addQuick('OP_TICK', OP_TICK);
+
 		if (Global.keyJustReleased(ESCAPE))
 		{
 			togglePaused();
 		}
 
+		PLAYER.setPosition(-200, 250);
+		OPPONENT.setPosition(250, 128);
+
+		switch(OPPONENT.animation.name)
+		{
+			case 'wind-up', 'punch':
+				OPPONENT.x -= 150;
+		}
+
 		if (!paused)
 		{
-			if (FlxG.random.bool(OP_ATK_CHANCE))
+			if (FlxG.random.bool(OP_ATK_CHANCE) && OPPONENT.animation.name == 'idle' && OP_TICK > OP_ATK_TICK)
 			{
+				OP_TICK = FlxG.random.int(0, Std.int(OP_ATK_TICK / 0.3));
 				OPPONENT.playAnimation('wind-up');
 			}
 			if (Global.anyKeysJustReleased([keys.attack, keys.block])) {}
 		}
-		PLAYER.animation.paused = paused;
-		OPPONENT.animation.paused = paused;
+		PLAYER.animation.paused = !paused;
+		OPPONENT.animation.paused = !paused;
 	}
 }
