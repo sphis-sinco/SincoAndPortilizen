@@ -21,11 +21,11 @@ class Sidebit2 extends PausableState
                 PLAYER = new Sidebit2Character('port');
                 OPPONENT = new Sidebit2Character('osin');
 
-                PLAYER.setPosition(-118.5, 216.4);
-                OPPONENT.setPosition(387.7, 128);
+                PLAYER.setPosition(-200, 250);
+                OPPONENT.setPosition(250, 128);
 
-                add(PLAYER);
                 add(OPPONENT);
+                add(PLAYER);
         }
 
         override function postCreate() {
@@ -39,6 +39,9 @@ class Sidebit2 extends PausableState
 		{
 			togglePaused();
 		}
+
+                PLAYER.animation.paused = paused;
+                OPPONENT.animation.paused = paused;
         }
         
 }
