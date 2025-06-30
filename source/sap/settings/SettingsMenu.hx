@@ -167,6 +167,10 @@ class SettingsMenu extends FlxSubState
 				FileManager.writeToPath('trace_downloads/download-${timestamp}.log', AnsiTrace.neatTraceList());
 			#end
 			case 'clear save':
+				WebSave.CHARACTERS = [];
+				WebSave.LEVELS_COMPLETE = [];
+				WebSave.MEDALS = [];
+
 				SaveManager.clearSave();
 				SaveManager.setupSave();
 				SaveManager.save();

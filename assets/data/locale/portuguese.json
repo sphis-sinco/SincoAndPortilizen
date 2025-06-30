@@ -21,5 +21,9 @@
   "play-back": "voltar",
   "settings-language": "linguagem",
   "settings-volume": "volume",
-  "settings-window-resolution": "resolução da janela"
+  "settings-window-resolution": "resolução da janela",
+
+  "settings-download-latest-traces": "download latest traces",
+  "settings-clear-save": "Limpar save",
+  "pauseable-pause": "Pausado"
 }

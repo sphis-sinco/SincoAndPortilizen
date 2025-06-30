@@ -5,6 +5,7 @@
 
 ## 0.1b (Pitstop 3 - Sidebit 2) - 7/??/2025
 ### Added
+- Spanish and Portuguese translations for the "download latest traces" option
 - **Level pausing (Issue #15)**
 - "Clear save" option in the settings menu
 - **Stage 4 OST Song: Inner Hardware**

@@ -55,7 +55,7 @@ class PausableState extends State
 			overlay.alpha = 0.5;
 			add(overlay);
 
-			pauseText = new FlxText(0, 0, 0, "Paused", 64);
+			pauseText = new FlxText(0, 0, 0, Global.getLocalizedPhrase('pauseable-pause'), 64);
 			pauseText.screenCenter(XY);
 			// pauseText.y = pauseText.size * 2;
 			add(pauseText);
