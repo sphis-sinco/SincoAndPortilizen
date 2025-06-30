@@ -44,7 +44,7 @@ class Worldmap extends State
 
 	public static function initSidebits():Void
 	{
-		SIDEBITS = ['sidebit1'];
+		SIDEBITS = ['sidebit1', 'sidebit2'];
 
 		var denied:Int = 0;
 
