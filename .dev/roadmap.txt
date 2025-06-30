@@ -1,0 +1,5 @@
+Pitstop 3 - Sidebit 2
+Destination 4 - Stage 3
+Destination 5 - Stage 6
+Pitstop 4 - Sidebit 3
+Destination 6 - Stage 7
