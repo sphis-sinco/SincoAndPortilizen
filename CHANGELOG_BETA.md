@@ -19,6 +19,7 @@
 ### Removed
 - Intro Cutscene
 ### Changed
+- The stage 5 timer text is black now for visability
 - Music tracks are now apart of the SPJC system
 - SparrowSprites have antialiasing set to enabled by default now
 - Sidebit 1 post-cutscene
