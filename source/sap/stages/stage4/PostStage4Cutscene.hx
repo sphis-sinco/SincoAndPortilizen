@@ -11,6 +11,6 @@ class PostStage4Cutscene extends PanelCutscene
 	{
 		super.finishedCutscene(cutscene_skipped);
 
-		Global.switchState(new Worldmap());
+		Global.switchState(new Worldmap('portilizen'));
 	}
 }

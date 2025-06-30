@@ -252,7 +252,7 @@ class Stage5 extends PausableState
 		{
 			Global.playSoundEffect('gameplay/attack-failed');
 			Global.switchState(new ResultsMenu((won) ? PLAYER_CHARGE : OPPONENT_CHARGE - PLAYER_CHARGE, (won) ? PLAYER_CHARGE : OPPONENT_CHARGE,
-				(won) ? new PostStage5Cutscene() : new Worldmap(), 'portilizen'));
+				(won) ? new PostStage5Cutscene() : new Worldmap('portilizen'), 'port'));
 		});
 	}
 
