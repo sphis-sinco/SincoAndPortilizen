@@ -89,9 +89,9 @@ class ChangelogMenu extends State
 			switch (paper.animation.name)
 			{
 				case 'grab-rev':
-					Global.switchState(new TitleState());
+					Global.switchState(new MainMenu());
 				case 'open-rev':
-					paper.playAnimation('grab-rev');
+					paper.playAnimation('grab-rev', false, true);
 				case 'grab':
 					paper.playAnimation('open');
 				case 'open':
@@ -99,7 +99,7 @@ class ChangelogMenu extends State
 					FlxTween.tween(changelogText, {alpha: 1.0}, 1.0, {
 						onComplete: tween ->
 						{
-							FAKEchangelogText.destroy();
+							FAKEchangelogText.visible = false;
 						}
 					});
 			}
@@ -146,7 +146,11 @@ class ChangelogMenu extends State
 
 		if (Global.keyPressed(ESCAPE))
 		{
-			Global.switchState(new MainMenu());
+			paper.playAnimation('open-rev', false, true);
+
+			FlxTween.cancelTweensOf(changelogText);
+			FAKEchangelogText.visible = true;
+			FlxTween.tween(changelogText, {alpha: 0.0}, 0.2);
 		}
 	}
 }
