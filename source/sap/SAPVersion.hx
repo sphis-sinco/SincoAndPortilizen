@@ -16,6 +16,6 @@ class SAPVersion
 		{
 			sha = sha.substring(0, 7);
 		}
-		return '${Global.GENERATED_BY.split('v')[0]} v${Global.VERSION_FULL} $sha';
+		return '${Global.GENERATED_BY.split('v')[0]}v${Global.VERSION_FULL} $sha';
 	}
 }
