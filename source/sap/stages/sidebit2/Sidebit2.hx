@@ -51,9 +51,17 @@ class Sidebit2 extends PausableState
 
 	public static var PROGRESS_BAR_GROUP:ProgressBarGroup;
 
+	var sparrowBG = new SparrowSprite('gameplay/sidebits/sidebit2_bg');
+
 	override function create()
 	{
 		super.create();
+
+		sparrowBG.addAnimationByPrefix('bg tilted', 'bg tilted', 24);
+		sparrowBG.animation.play('bg tilted');
+
+		sparrowBG.screenCenter();
+		add(sparrowBG);
 
 		PLAYER = new Sidebit2Character('port');
 		OPPONENT = new Sidebit2Character('osin');
@@ -262,5 +270,12 @@ class Sidebit2 extends PausableState
 				OPPONENT.x = OPPONENT_POINT.x;
 				OPPONENT.y = OPPONENT_POINT.y;
 		}
+	}
+
+	override function togglePaused()
+	{
+		super.togglePaused();
+
+		sparrowBG.animation.paused = paused;
 	}
 }

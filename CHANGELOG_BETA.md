@@ -18,6 +18,7 @@
 - CHANGELOG_MENU Build flag
 - **Changelog Menu**
 ### Removed
+- Unused texture atlas for the stage1 background
 - MASS MOD mentions
 - Intro Cutscene
 ### Changed
