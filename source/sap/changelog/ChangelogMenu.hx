@@ -37,13 +37,15 @@ class ChangelogMenu extends State
 		changelogText.color = FlxColor.BLACK;
 		changelogText.alpha = 0;
 		add(changelogText);
-		
+
 		instance = this;
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		Global.playMenuMusic();
 
 		if (changelogText.text != CHANGELOG[CHANGELOG_INDEX])
 		{
@@ -75,7 +77,10 @@ class ChangelogMenu extends State
 			var headers:FlxTextFormat = new FlxTextFormat(FlxColor.BLUE, true);
 			var bold:FlxTextFormat = new FlxTextFormat(FlxColor.BLACK, true);
 
-			changelogText.applyMarkup(changelogText.text, [new FlxTextFormatMarkerPair(headers, '$'),new FlxTextFormatMarkerPair(bold, '**')]);
+			changelogText.applyMarkup(changelogText.text, [
+				new FlxTextFormatMarkerPair(headers, '$'),
+				new FlxTextFormatMarkerPair(bold, '**')
+			]);
 		}
 
 		if (paper.animation.finished && paper.animation.name != 'idle')
@@ -91,7 +96,8 @@ class ChangelogMenu extends State
 				case 'open':
 					paper.playAnimation('idle');
 					FlxTween.tween(changelogText, {alpha: 1.0}, 1.0, {
-						onComplete: tween -> {
+						onComplete: tween ->
+						{
 							FAKEchangelogText.destroy();
 						}
 					});

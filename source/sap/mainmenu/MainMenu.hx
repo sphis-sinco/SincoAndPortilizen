@@ -1,5 +1,6 @@
 package sap.mainmenu;
 
+import sap.changelog.ChangelogMenu;
 import sap.credits.CreditsSubState;
 import sap.settings.SettingsMenu;
 import sap.title.TitleState;
@@ -14,7 +15,7 @@ class MainMenu extends State
 
 	public static var menuboxtexts:FlxTypedGroup<FlxText>;
 	public static var menutexts:Map<String, Array<String>> = [
-		'menu' => ['play', 'credits', 'settings', 'leave'],
+		'menu' => ['play', 'credits', 'settings', 'changelog', 'leave'],
 		'play' => ['new', 'continue', 'back']
 	];
 
@@ -40,7 +41,7 @@ class MainMenu extends State
 	override function create():Void
 	{
 		#if sys
-		var menuArr:Array<String> = ['play', 'credits', 'settings', #if sys 'medals', #end 'leave'];
+		var menuArr:Array<String> = ['play', 'credits', 'settings', #if sys 'medals', #end 'changelog', 'leave'];
 		if (ModFolderManager.MODS.length > 0)
 			menuArr.insert(4, 'mods');
 		menutexts.set('menu', menuArr);
@@ -58,7 +59,7 @@ class MainMenu extends State
 		add(gridbg);
 		add(sinco);
 		add(port);
-                
+
 		menuselectbox = new FlxSprite();
 		menuselectbox.makeGraphic(80, #if sys (ModFolderManager.MODS.length > 0) ? 104 : 80 #else 64 #end, FlxColor.BLACK);
 		Global.scaleSprite(menuselectbox, 0);
@@ -231,10 +232,11 @@ class MainMenu extends State
 		switch (PUBLIC_CUR_SELECTION)
 		{
 			case 0:
-				// this should not have the sticker transition
 				FlxG.switchState(PlayMenu.new);
-			#if sys case 5: #else case 3: #end
+			#if sys case 6: #else case 4: #end
 				Global.switchState(new TitleState());
+			#if sys case 5: #else case 3: #end
+				Global.switchState(new ChangelogMenu());
 		}
 	}
 
