@@ -27,6 +27,19 @@ class Sidebit2 extends PausableState
 		DIFFICULTY_JSON = FileManager.getJSON(FileManager.getDataFile('stages/sidebit2/${difficulty}.json'));
 
 		OP_ATK_CHANCE = DIFFICULTY_JSON.op_attack_chance;
+
+		PROGRESS_BAR_GROUP = new ProgressBarGroup({
+			player: 'Portilizen',
+			player_health: 10,
+			player_max_health: 10,
+			player_healthIcon: new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen'),
+
+			
+			opponent: 'Osin',
+			opponent_health: 10,
+			opponent_max_health: 10,
+			opponent_healthIcon: new HealthIcon('gameplay/sidebits/osin-healthicon', 'OsinScaledDown'),
+		});
 	}
 
 	public static var PLAYER:Sidebit2Character;
@@ -36,6 +49,8 @@ class Sidebit2 extends PausableState
 	public static var OPPONENT_POINT:FlxPoint;
 
 	public static var TUTORIAL_SHADER:AdjustColorShader;
+
+	public static var PROGRESS_BAR_GROUP:ProgressBarGroup;
 
 	override function create()
 	{
@@ -90,6 +105,8 @@ class Sidebit2 extends PausableState
 			playerAnimationPosition();
 		});
 
+		add(PROGRESS_BAR_GROUP);
+
 		TUTORIAL_SHADER = new AdjustColorShader();
 		TUTORIAL_SHADER.brightness = -50;
 
@@ -118,7 +135,7 @@ class Sidebit2 extends PausableState
 	override function postCreate()
 	{
 		super.postCreate();
-	}
+	}	
 
 	public static var keys:{attack:FlxKey, block:FlxKey} = {
 		attack: SPACE,
@@ -133,6 +150,9 @@ class Sidebit2 extends PausableState
 		FlxG.watch.addQuick('OP_ATK_TICK', OP_ATK_TICK);
 		FlxG.watch.addQuick('PLAYER_TICK', PLAYER_TICK);
 		FlxG.watch.addQuick('PLAYER_CAN_DO_THINGS_TICK', PLAYER_CAN_DO_THINGS_TICK);
+
+		PROGRESS_BAR_GROUP.updateHealthIndicators();
+		PROGRESS_BAR_GROUP.OPPONENT_HEALTH_ICON.y -= 24;
 
 		if (Global.keyJustReleased(ESCAPE))
 		{

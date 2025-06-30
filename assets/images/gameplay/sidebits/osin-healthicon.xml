@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="osin-healthicon.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="OsinScaledDown loss0000" x="4" y="107" width="74" height="97" frameX="0" frameY="0" frameWidth="87" frameHeight="97"/>
+	<SubTexture name="OsinScaledDown neutral0000" x="4" y="4" width="73" height="95"/>
+	<SubTexture name="OsinScaledDown toLoss0000" x="85" y="4" width="87" height="81" frameX="0" frameY="-10" frameWidth="87" frameHeight="97"/>
+	<SubTexture name="OsinScaledDown toLoss0001" x="85" y="4" width="87" height="81" frameX="0" frameY="-10" frameWidth="87" frameHeight="97"/>
+	<SubTexture name="OsinScaledDown toLoss0002" x="4" y="107" width="74" height="97" frameX="-9" frameY="0" frameWidth="87" frameHeight="97"/>
+	<SubTexture name="OsinScaledDown toLoss0003" x="4" y="107" width="74" height="97" frameX="-9" frameY="0" frameWidth="87" frameHeight="97"/>
+	<SubTexture name="OsinScaledDown toWin0000" x="86" y="107" width="75" height="95" frameX="0" frameY="-2" frameWidth="78" frameHeight="100"/>
+	<SubTexture name="OsinScaledDown toWin0001" x="86" y="107" width="75" height="95" frameX="0" frameY="-2" frameWidth="78" frameHeight="100"/>
+	<SubTexture name="OsinScaledDown toWin0002" x="169" y="107" width="77" height="100" frameX="-1" frameY="0" frameWidth="78" frameHeight="100"/>
+	<SubTexture name="OsinScaledDown toWin0003" x="169" y="107" width="77" height="100" frameX="-1" frameY="0" frameWidth="78" frameHeight="100"/>
+	<SubTexture name="OsinScaledDown win0000" x="169" y="107" width="77" height="100" frameX="0" frameY="0" frameWidth="78" frameHeight="100"/>
+</TextureAtlas>

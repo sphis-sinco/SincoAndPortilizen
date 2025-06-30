@@ -20,11 +20,11 @@ class Sidebit1 extends PausableState
 
 	public static var PROGRESS_BAR:FlxBar;
 
-	public static var SINCO_HEALTH:Float = 10;
-	public static var PORTILIZEN_HEALTH:Float = 10;
+	public static var SINCO_HEALTH:Int = 10;
+	public static var PORTILIZEN_HEALTH:Int = 10;
 
-	public static var SINCO_MAX_HEALTH:Float = 10;
-	public static var PORTILIZEN_MAX_HEALTH:Float = 10;
+	public static var SINCO_MAX_HEALTH:Int = 10;
+	public static var PORTILIZEN_MAX_HEALTH:Int = 10;
 
 	public static var CAN_DECREASE_SINCO_HEALTH:Bool = true;
 	public static var CAN_DECREASE_PORTILIZEN_HEALTH:Bool = true;
@@ -51,6 +51,21 @@ class Sidebit1 extends PausableState
 		PORTILIZEN_DODGE_CHANCE_UNFOCUSED = DIFFICULTY_JSON.opponent_dodge_chance_unfocused;
 		PORTILIZEN_DODGE_CHANCE_FOCUS = DIFFICULTY_JSON.opponent_dodge_chance_focused;
 
+		PROGRESS_BAR_GROUP = new ProgressBarGroup({
+			player: 'Sinco',
+			player_health: SINCO_HEALTH,
+			player_max_health: SINCO_MAX_HEALTH,
+			player_healthIcon: new HealthIcon('gameplay/sidebits/sinco-healthicon', 'Sinco'),
+			player_healthIcon_flipX: true,
+			
+			
+			opponent: 'Portilizen',
+			opponent_health: PORTILIZEN_HEALTH,
+			opponent_max_health: PORTILIZEN_MAX_HEALTH,
+			opponent_healthIcon: new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen'),
+			opponent_healthIcon_flipX: true
+		});
+
 		trace('Sidebit 1 (${DIFFICULTY})');
 	}
 
@@ -61,9 +76,7 @@ class Sidebit1 extends PausableState
 	public static var PORTILIZEN_DODGE_CHANCE_FOCUS:Float = 70;
 
 	public static var TUTORIAL_SHADER:AdjustColorShader;
-
-	public static var PLAYER_HEALTH_ICON:HealthIcon;
-	public static var OPPONENT_HEALTH_ICON:HealthIcon;
+	public static var PROGRESS_BAR_GROUP:ProgressBarGroup;
 
 	override function create()
 	{
@@ -261,22 +274,7 @@ class Sidebit1 extends PausableState
 			PORTILIZEN.playAnimation(PORTILIZEN.State);
 		});
 
-		PROGRESS_BAR = new FlxBar(0, 0, RIGHT_TO_LEFT, Std.int(FlxG.width / 2), 16, this, 'health', 0, 100, true);
-		add(PROGRESS_BAR);
-		PROGRESS_BAR.screenCenter(X);
-		PROGRESS_BAR.y = FlxG.height - PROGRESS_BAR.height - 64;
-		PROGRESS_BAR.createFilledBar(Random.dominantColor(SINCO), Random.dominantColor(PORTILIZEN), true, FlxColor.BLACK, 4);
-
-		INFO_TEXTFIELD = new FlxText(PROGRESS_BAR.x, PROGRESS_BAR.y + 16, 0, INFO_TEXT, 16);
-
-		PLAYER_HEALTH_ICON = new HealthIcon('gameplay/sidebits/sinco-healthicon', 'Sinco');
-		PLAYER_HEALTH_ICON.flipX = true;
-		OPPONENT_HEALTH_ICON = new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen');
-		OPPONENT_HEALTH_ICON.flipX = true;
-		add(PLAYER_HEALTH_ICON);
-		add(OPPONENT_HEALTH_ICON);
-
-		add(INFO_TEXTFIELD);
+		add(PROGRESS_BAR_GROUP);
 
 		TUTORIAL_SHADER = new AdjustColorShader();
 		TUTORIAL_SHADER.brightness = -50;
@@ -321,7 +319,9 @@ class Sidebit1 extends PausableState
 		PORTILIZEN.animation.paused = paused;
 		SINCO.animation.paused = paused;
 
-		updateHealthIndicators();
+		PROGRESS_BAR_GROUP.updateHealthIndicators();
+		PROGRESS_BAR_GROUP.PLAYER_HEALTH = SINCO_HEALTH;
+		PROGRESS_BAR_GROUP.OPPONENT_HEALTH = PORTILIZEN_HEALTH;
 
 		if (Global.keyJustReleased(SPACE) && ABILITY_CAN_DODGE && !paused)
 		{
@@ -372,77 +372,6 @@ class Sidebit1 extends PausableState
 		else if (SINCO_HEALTH == 0)
 			Global.switchState(new ResultsMenu(Std.int(PORTILIZEN_MAX_HEALTH - PORTILIZEN_HEALTH), Std.int(PORTILIZEN_MAX_HEALTH), new Worldmap()));
 	}
-
-	public static function updateHealthIndicators():Void
-	{
-		INFO_TEXT = 'Sinco: ${Global.getLocalizedPhrase('HP')}: $SINCO_HEALTH/$SINCO_MAX_HEALTH || Portilizen: ${Global.getLocalizedPhrase('HP')}: $PORTILIZEN_HEALTH/$PORTILIZEN_MAX_HEALTH';
-		PROGRESS_BAR.percent = (PORTILIZEN_HEALTH / PORTILIZEN_MAX_HEALTH) * 100;
-		INFO_TEXTFIELD.text = INFO_TEXT;
-		INFO_TEXTFIELD.screenCenter(X);
-
-		var percent:Float = MAXIMUM_PERCENT - PROGRESS_BAR.percent;
-
-		if (percent < 0)
-			percent = 0;
-
-		PLAYER_HEALTH_ICON.x = PROGRESS_BAR.x + ((percent * PROGRESS_BAR.pxPerPercent) - 32);
-		OPPONENT_HEALTH_ICON.x = PLAYER_HEALTH_ICON.x + POSITION_OFFSET;
-
-		PLAYER_HEALTH_ICON.y = PROGRESS_BAR.getGraphicMidpoint().y - 48;
-		OPPONENT_HEALTH_ICON.y = PLAYER_HEALTH_ICON.y - 4;
-
-		if (OPPONENT_HEALTH_ICON.animation.name.toLowerCase().contains('loss'))
-		{
-			OPPONENT_HEALTH_ICON.y = PLAYER_HEALTH_ICON.y + 4;
-		}
-
-		if (PORTILIZEN_HEALTH < WINNING_THRESHOLD)
-		{
-			if (PLAYER_HEALTH_ICON.animation.name == 'neutral' && PLAYER_HEALTH_ICON.animation.finished)
-				PLAYER_HEALTH_ICON.playAnimation('toWin');
-			else if (PLAYER_HEALTH_ICON.animation.name == 'toWin' && PLAYER_HEALTH_ICON.animation.finished)
-				PLAYER_HEALTH_ICON.playAnimation('win');
-
-			if (OPPONENT_HEALTH_ICON.animation.name == 'neutral' && OPPONENT_HEALTH_ICON.animation.finished)
-				OPPONENT_HEALTH_ICON.playAnimation('toLoss');
-			else if (OPPONENT_HEALTH_ICON.animation.name == 'toLoss' && OPPONENT_HEALTH_ICON.animation.finished)
-				OPPONENT_HEALTH_ICON.playAnimation('loss');
-		}
-		else if (PORTILIZEN_HEALTH > LOSING_THRESHOLD)
-		{
-			if (OPPONENT_HEALTH_ICON.animation.name == 'neutral' && OPPONENT_HEALTH_ICON.animation.finished)
-				OPPONENT_HEALTH_ICON.playAnimation('toWin');
-			else if (OPPONENT_HEALTH_ICON.animation.name == 'toWin' && OPPONENT_HEALTH_ICON.animation.finished)
-				OPPONENT_HEALTH_ICON.playAnimation('win');
-
-			if (PLAYER_HEALTH_ICON.animation.name == 'neutral' && PLAYER_HEALTH_ICON.animation.finished)
-				PLAYER_HEALTH_ICON.playAnimation('toLoss');
-			else if (PLAYER_HEALTH_ICON.animation.name == 'toLoss' && PLAYER_HEALTH_ICON.animation.finished)
-				PLAYER_HEALTH_ICON.playAnimation('loss');
-		}
-		else
-		{
-			if (OPPONENT_HEALTH_ICON.animation.name == 'win' && OPPONENT_HEALTH_ICON.animation.finished)
-				OPPONENT_HEALTH_ICON.playAnimation('toWin', false, true);
-			else if (OPPONENT_HEALTH_ICON.animation.name == 'loss' && OPPONENT_HEALTH_ICON.animation.finished)
-				OPPONENT_HEALTH_ICON.playAnimation('toLoss', false, true);
-			else
-				OPPONENT_HEALTH_ICON.playAnimation('neutral');
-
-			if (PLAYER_HEALTH_ICON.animation.name == 'win' && PLAYER_HEALTH_ICON.animation.finished)
-				PLAYER_HEALTH_ICON.playAnimation('toWin', false, true);
-			else if (PLAYER_HEALTH_ICON.animation.name == 'loss' && PLAYER_HEALTH_ICON.animation.finished)
-				PLAYER_HEALTH_ICON.playAnimation('toLoss', false, true);
-			else
-				PLAYER_HEALTH_ICON.playAnimation('neutral');
-		}
-	}
-
-	// These control health icon shit
-	static final MAXIMUM_PERCENT:Float = 100;
-	static final WINNING_THRESHOLD:Int = 3;
-	static final LOSING_THRESHOLD:Int = 7;
-	static final POSITION_OFFSET:Int = 64;
 
 	public static function disableAbilities():Void
 	{

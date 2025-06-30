@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="face-healthIcon.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Face loss0000" x="4" y="4" width="88" height="79"/>
+	<SubTexture name="Face neutral0000" x="4" y="4" width="88" height="79"/>
+	<SubTexture name="Face toLoss0000" x="4" y="4" width="88" height="79"/>
+	<SubTexture name="Face toWin0000" x="4" y="4" width="88" height="79"/>
+	<SubTexture name="Face win0000" x="4" y="4" width="88" height="79"/>
+</TextureAtlas>
