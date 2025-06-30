@@ -208,7 +208,7 @@ class Stage1 extends PausableState
 		sinco.animation.paused = paused;
 		osin.animation.paused = paused;
 
-		Global.playMusic('LikeBrothers');
+		Global.playMusic('LikeBrothers ${DIFFICULTY.toLowerCase() == 'extreme' ? '-exteme' : ''}');
 
 		updateHealthIndicators();
 
