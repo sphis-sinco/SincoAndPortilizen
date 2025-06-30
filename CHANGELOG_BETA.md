@@ -19,6 +19,7 @@
 ### Removed
 - Intro Cutscene
 ### Changed
+- Music tracks are now apart of the SPJC system
 - SparrowSprites have antialiasing set to enabled by default now
 - Sidebit 1 post-cutscene
 - Sidebit 1 pre-cutscene is a sparrow cutscene
