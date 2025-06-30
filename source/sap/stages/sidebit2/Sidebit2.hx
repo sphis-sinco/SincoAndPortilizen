@@ -130,7 +130,9 @@ class Sidebit2 extends PausableState
 		super.update(elapsed);
 
 		FlxG.watch.addQuick('OP_TICK', OP_TICK);
+		FlxG.watch.addQuick('OP_ATK_TICK', OP_ATK_TICK);
 		FlxG.watch.addQuick('PLAYER_TICK', PLAYER_TICK);
+		FlxG.watch.addQuick('PLAYER_CAN_DO_THINGS_TICK', PLAYER_CAN_DO_THINGS_TICK);
 
 		if (Global.keyJustReleased(ESCAPE))
 		{
