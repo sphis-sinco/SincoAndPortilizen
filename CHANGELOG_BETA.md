@@ -21,6 +21,7 @@
 - Adjusted time when you can't attack Osin in stage 1
 - Mods no longer are enabled by default when loaded
 - Mod API version is 1.5
+        - Global has a previousState variable
         - Version is a valid variable
 - The main menu music 22 has been replaced with Lado.
 - Beta changelog format
