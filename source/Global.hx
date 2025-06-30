@@ -1,5 +1,7 @@
 package;
 
+import sap.spjc.SongPlayer;
+
 class Global
 {
 	public static var previousState:String;
@@ -135,26 +137,22 @@ class Global
 	 */
 	public static function playMusic(filename:String, ?volume:Float = 1.0, ?loop:Bool = false, ?posinfo:PosInfos):Void
 	{
+		#if EXCESS_TRACES
 		final file:Array<String> = filename.split('/');
-
 		final musicinfo:String = '(volume: ${volume * 100}, ${(loop) ? 'looping' : 'not looping'})';
 		final originator:String = '| ${posInfoString(posinfo)}';
 
 		final tracelog:String = 'Trying to play music track: "${file[file.length - 1]}" ${musicinfo} ${originator}';
 
+		trace(tracelog);
+		#end
 		if (FlxG.sound.music != null)
 		{
 			if (!FlxG.sound.music.playing)
-			{
-				#if EXCESS_TRACES trace(tracelog); #end
-				FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
-			}
+				SongPlayer.playSong(filename, volume, loop);
 		}
 		else
-		{
-			#if EXCESS_TRACES trace(tracelog); #end
-			FlxG.sound.playMusic(FileManager.getSoundFile('music/$filename'), volume, loop);
-		}
+			SongPlayer.playSong(filename, volume, loop);
 	}
 
 	/**

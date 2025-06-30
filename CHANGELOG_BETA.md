@@ -5,6 +5,9 @@
 
 ## 0.1b (Pitstop 3 - Sidebit 2) - 7/??/2025
 ### Added
+- SongPlayer class
+  - When a song plays if there is a json then a text will display with song 
+  - I call this the SPJC system
 - **Stage 1 OST Song: Like Brothers (Extreme)**
 - Spanish and Portuguese translations for the "download latest traces" option
 - **Level pausing (Issue #15)**

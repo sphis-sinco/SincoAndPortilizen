@@ -74,11 +74,13 @@ class FileManager
 		if (exists(returnpath))
 		{
 			#if EXCESS_TRACES trace('Existing asset return path: ${returnpath}'); #end
-			return returnpath;
+		}
+		else
+		{
+			unfoundAsset(returnpath, posinfo);
 		}
 
-		unfoundAsset(returnpath, posinfo);
-		return '';
+		return returnpath;
 	}
 
 	public static inline function unfoundAsset(asset:String, ?posinfo:PosInfos):Void
@@ -325,7 +327,7 @@ class FileManager
 		if (path.length > 0)
 		{
 			var prevDir:String = '';
-			
+
 			for (dir in path.split('/'))
 			{
 				if (!readDirectory('').contains(prevDir) && prevDir != '')
@@ -339,7 +341,6 @@ class FileManager
 					FileSystem.createDirectory(dir);
 					trace('creating $dir');
 				}
-
 
 				prevDir += dir + '/';
 			}

@@ -81,7 +81,14 @@ class ResultsMenu extends FlxState
 		RESULTS_BG.screenCenter(XY);
 
 		if (FlxG.sound.music != null)
+		{
 			FlxG.sound.music.stop();
+		}
+
+		if (FlxG.sound != null)
+		{
+			FlxG.sound.destroy();
+		}
 
 		super();
 	}
@@ -155,7 +162,7 @@ class ResultsMenu extends FlxState
 				}
 			}
 
-                        SaveManager.save();
+			SaveManager.save();
 		});
 	}
 
