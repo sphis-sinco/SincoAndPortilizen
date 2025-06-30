@@ -168,11 +168,14 @@ class Sidebit2 extends PausableState
 					if (FlxG.random.bool(OP_DEF_CHANCE))
 					{
 						OPPONENT.playAnimation('block');
-						OP_TICK = FlxG.random.int(0, Std.int(OP_ATK_CHANCE / 1.1));
+						OP_TICK = FlxG.random.int(0, Std.int(OP_ATK_CHANCE / 1.5));
 					}
 					else
 					{
 						OPPONENT.playAnimation('hit');
+						OP_DEF_CHANCE = FlxG.random.float(OP_DEF_CHANCE_DIDNT_HIT / 2, OP_DEF_CHANCE_DIDNT_HIT);
+						OP_ATK_TICK = FlxG.random.int(0, Std.int(OP_ATK_CHANCE / 1.1));
+						PLAYER_TICK = FlxG.random.int(0, PLAYER_CAN_DO_THINGS_TICK);
 					}
 
 					PLAYER.playAnimation('punch');
