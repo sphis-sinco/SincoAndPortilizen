@@ -34,7 +34,6 @@ class Sidebit2 extends PausableState
 			player_max_health: 10,
 			player_healthIcon: new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen'),
 
-			
 			opponent: 'Osin',
 			opponent_health: 10,
 			opponent_max_health: 10,
@@ -81,6 +80,7 @@ class Sidebit2 extends PausableState
 					if (PLAYER.animation.name != 'block')
 					{
 						PLAYER.playAnimation('hit');
+						PROGRESS_BAR_GROUP.PLAYER_HEALTH -= 1;
 						OP_DEF_CHANCE = OP_DEF_CHANCE_DID_HIT;
 					}
 
@@ -135,7 +135,7 @@ class Sidebit2 extends PausableState
 	override function postCreate()
 	{
 		super.postCreate();
-	}	
+	}
 
 	public static var keys:{attack:FlxKey, block:FlxKey} = {
 		attack: SPACE,
@@ -193,6 +193,7 @@ class Sidebit2 extends PausableState
 					else
 					{
 						OPPONENT.playAnimation('hit');
+						PROGRESS_BAR_GROUP.OPPONENT_HEALTH -= 1;
 						OP_DEF_CHANCE = FlxG.random.float(OP_DEF_CHANCE_DIDNT_HIT / 2, OP_DEF_CHANCE_DIDNT_HIT);
 						OP_ATK_TICK = FlxG.random.int(0, Std.int(OP_ATK_CHANCE / 1.1));
 						PLAYER_TICK = FlxG.random.int(0, PLAYER_CAN_DO_THINGS_TICK);
@@ -211,6 +212,17 @@ class Sidebit2 extends PausableState
 				PLAYER.playAnimation('idle');
 
 			playerAnimationPosition();
+		}
+
+		if (PROGRESS_BAR_GROUP.OPPONENT_HEALTH < 1)
+		{
+			Global.switchState(new ResultsMenu(Std.int(PROGRESS_BAR_GROUP.PLAYER_MAX_HEALTH - PROGRESS_BAR_GROUP.PLAYER_HEALTH),
+				Std.int(PROGRESS_BAR_GROUP.PLAYER_MAX_HEALTH), new Worldmap(), 'port'));
+		}
+		else if (PROGRESS_BAR_GROUP.PLAYER_HEALTH < 1)
+		{
+			Global.switchState(new ResultsMenu(Std.int(PROGRESS_BAR_GROUP.OPPONENT_MAX_HEALTH - PROGRESS_BAR_GROUP.OPPONENT_HEALTH),
+				Std.int(PROGRESS_BAR_GROUP.OPPONENT_MAX_HEALTH), new Worldmap(), 'port'));
 		}
 
 		opponentAnimationPosition();
