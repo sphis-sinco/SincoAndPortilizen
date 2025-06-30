@@ -26,6 +26,7 @@ class ChangelogMenu extends State
 		paper.playAnimation('grab');
 		Global.scaleSprite(paper, -2);
 		paper.screenCenter();
+		paper.antialiasing = false;
 		add(paper);
 
 		FAKEchangelogText = new FlxText(64, 32, 640 - 64 * 1.5, '', 16);

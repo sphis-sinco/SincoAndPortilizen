@@ -8,6 +8,7 @@ class SparrowSprite extends FlxSprite
 	{
 		super(X, Y);
 
+                antialiasing = true;
 		frames = FileManager.getSparrowAtlas(Imagepath, PATH_TYPE);
 	}
 

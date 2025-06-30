@@ -14,6 +14,7 @@
 ### Removed
 - Intro Cutscene
 ### Changed
+- SparrowSprites have antialiasing set to enabled by default now
 - Sidebit 1 post-cutscene
 - Sidebit 1 pre-cutscene is a sparrow cutscene
 - Adjusted time when you can't attack Osin in stage 1

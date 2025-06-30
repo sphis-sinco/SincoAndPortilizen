@@ -7,7 +7,10 @@ class Sidebit2 extends PausableState
 
 	public static var OP_ATK_CHANCE:Float = 45;
 	public static var OP_ATK_TICK:Int = 500;
-	public static var OP_TICK:Int = 450;
+	public static var OP_ATK_TICK_RAND_MIN:Int = 200;
+	public static var OP_ATK_TICK_RAND_MAX:Int = 500;
+
+	public static var OP_TICK:Int = 0;
 
 	override public function new(difficulty:String = 'normal')
 	{
@@ -98,7 +101,6 @@ class Sidebit2 extends PausableState
 	{
 		super.update(elapsed);
 
-		OP_TICK++;
 		FlxG.watch.addQuick('OP_TICK', OP_TICK);
 
 		if (Global.keyJustReleased(ESCAPE))
@@ -109,22 +111,28 @@ class Sidebit2 extends PausableState
 		PLAYER.setPosition(-200, 250);
 		OPPONENT.setPosition(250, 128);
 
-		switch(OPPONENT.animation.name)
-		{
-			case 'wind-up', 'punch':
-				OPPONENT.x -= 150;
-		}
-
 		if (!paused)
 		{
+			OP_TICK++;
 			if (FlxG.random.bool(OP_ATK_CHANCE) && OPPONENT.animation.name == 'idle' && OP_TICK > OP_ATK_TICK)
 			{
-				OP_TICK = FlxG.random.int(0, Std.int(OP_ATK_TICK / 0.3));
+				OP_TICK = 0;
+				OP_ATK_TICK = FlxG.random.int(OP_ATK_TICK_RAND_MIN, OP_ATK_TICK_RAND_MAX);
 				OPPONENT.playAnimation('wind-up');
 			}
 			if (Global.anyKeysJustReleased([keys.attack, keys.block])) {}
 		}
-		PLAYER.animation.paused = !paused;
-		OPPONENT.animation.paused = !paused;
+
+		switch (OPPONENT.animation.name)
+		{
+			case 'wind-up':
+				OPPONENT.x -= 150;
+
+			case 'punch':
+				OPPONENT.x -= 150 * 2;
+		}
+
+		PLAYER.animation.paused = paused;
+		OPPONENT.animation.paused = paused;
 	}
 }

@@ -19,7 +19,7 @@ class CharacterSelect extends State
 
 	public static function init()
 	{
-                final hardcoded_charList:Array<String> = ['portilizen', 'sinco'];
+		final hardcoded_charList:Array<String> = ['portilizen', 'sinco'];
 
 		CHARACTER_LIST = [];
 		#if !html5
@@ -38,10 +38,11 @@ class CharacterSelect extends State
 				CHARACTER_LIST.push(name);
 			}
 		}, {
-                        errFunc: function() {
-                                CHARACTER_LIST = hardcoded_charList;
-                        }
-                });
+				errFunc: function()
+				{
+					CHARACTER_LIST = hardcoded_charList;
+				}
+		});
 		#else
 		CHARACTER_LIST = hardcoded_charList;
 		#end
@@ -174,7 +175,8 @@ class CharSelector extends SparrowSprite
 		addAnimationByPrefix('cant-select', 'cant-select', 24, false);
 
 		playAnimation('idle');
-
+		antialiasing = false;
+		
 		Global.scaleSprite(this, 1);
 	}
 }
