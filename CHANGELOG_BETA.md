@@ -18,6 +18,7 @@
 - CHANGELOG_MENU Build flag
 - **Changelog Menu**
 ### Removed
+- MASS MOD mentions
 - Intro Cutscene
 ### Changed
 - The stage 5 timer text is black now for visability

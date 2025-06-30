@@ -27,8 +27,6 @@
         <section unless="DEFAULT_DIRECTORY">
                 <set name="BUILD_DIR" value="${BUILD_DIR}/CNGLA_TRACES" if="CNGLA_TRACES" />
 
-                <set name="BUILD_DIR" value="${BUILD_DIR}/mass_mod" if="MASS_MOD" />
-
                 <set name="BUILD_DIR" value="${BUILD_DIR}/forced_english"
                         if="FORCED_ENGLISH_LANGUAGE" />
                 <set name="BUILD_DIR" value="${BUILD_DIR}/spanish" if="SPANISH_LANGUAGE" />
