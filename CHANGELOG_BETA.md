@@ -4,7 +4,7 @@
 - Stage 2 OST Song: Teen Prodigy
 <version>
 
-## 0.1b (Pitstop 3 - Sidebit 2) - 7/??/2025
+## 0.1b (Pitstop 3 - Sidebit 2) - 7/1/2025
 ### Added
 - SongPlayer class
   - When a song plays if there is a json then a text will display with song 
