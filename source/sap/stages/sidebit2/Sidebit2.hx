@@ -32,6 +32,9 @@ class Sidebit2 extends PausableState
 	public static var PLAYER:Sidebit2Character;
 	public static var OPPONENT:Sidebit2Character;
 
+	public static var PLAYER_POINT:FlxPoint;
+	public static var OPPONENT_POINT:FlxPoint;
+
 	public static var TUTORIAL_SHADER:AdjustColorShader;
 
 	override function create()
@@ -43,6 +46,12 @@ class Sidebit2 extends PausableState
 
 		OPPONENT.addAnimationByPrefix('wind-up', 'osin wind-up', 24, false);
 		OPPONENT.playAnimation('idle');
+
+		PLAYER_POINT = new FlxPoint(0, 0);
+		PLAYER_POINT.set(-200, 250);
+
+		OPPONENT_POINT = new FlxPoint(0, 0);
+		OPPONENT_POINT.set(250, 128);
 
 		add(OPPONENT);
 		add(PLAYER);
@@ -63,6 +72,8 @@ class Sidebit2 extends PausableState
 				default:
 					OPPONENT.playAnimation('idle');
 			}
+
+			opponentAnimationPosition();
 		});
 
 		PLAYER.animation.onFinish.add(animName ->
@@ -75,6 +86,8 @@ class Sidebit2 extends PausableState
 				default:
 					PLAYER.playAnimation('idle');
 			}
+
+			playerAnimationPosition();
 		});
 
 		TUTORIAL_SHADER = new AdjustColorShader();
@@ -124,9 +137,6 @@ class Sidebit2 extends PausableState
 			togglePaused();
 		}
 
-		PLAYER.setPosition(-200, 250);
-		OPPONENT.setPosition(250, 128);
-
 		if (!paused)
 		{
 			OP_TICK++;
@@ -137,6 +147,7 @@ class Sidebit2 extends PausableState
 				OP_TICK = 0;
 				OP_ATK_TICK = FlxG.random.int(OP_ATK_TICK_RAND_MIN, OP_ATK_TICK_RAND_MAX);
 				OPPONENT.playAnimation('wind-up');
+				opponentAnimationPosition();
 				OP_DEF_CHANCE = FlxG.random.float(OP_DEF_CHANCE_DID_HIT, OP_DEF_CHANCE_DIDNT_HIT);
 			}
 
@@ -173,24 +184,46 @@ class Sidebit2 extends PausableState
 
 			if (PLAYER.animation.name == 'block' && !Global.keyPressed(keys.block))
 				PLAYER.playAnimation('idle');
+
+			playerAnimationPosition();
 		}
 
-		switch (OPPONENT.animation.name)
-		{
-			case 'wind-up':
-				OPPONENT.x -= 150;
-
-			case 'punch':
-				OPPONENT.x -= 200 * 2;
-		}
-
-		switch (PLAYER.animation.name)
-		{
-			case 'punch':
-				PLAYER.x += 150;
-		}
+		opponentAnimationPosition();
+		playerAnimationPosition();
 
 		PLAYER.animation.paused = paused;
 		OPPONENT.animation.paused = paused;
+	}
+
+	public function playerAnimationPosition()
+	{
+		switch (PLAYER.animation.name)
+		{
+			case 'punch':
+				PLAYER.x = PLAYER_POINT.x + 150;
+				PLAYER.y = PLAYER_POINT.y;
+
+			default:
+				PLAYER.x = PLAYER_POINT.x;
+				PLAYER.y = PLAYER_POINT.y;
+		}
+	}
+
+	public function opponentAnimationPosition()
+	{
+		switch (OPPONENT.animation.name)
+		{
+			case 'wind-up':
+				OPPONENT.x = OPPONENT_POINT.x - 150;
+				OPPONENT.y = OPPONENT_POINT.y;
+
+			case 'punch':
+				OPPONENT.x = OPPONENT_POINT.x - (150 * 2);
+				OPPONENT.y = OPPONENT_POINT.y;
+
+			default:
+				OPPONENT.x = OPPONENT_POINT.x;
+				OPPONENT.y = OPPONENT_POINT.y;
+		}
 	}
 }
