@@ -36,6 +36,7 @@
 - Version system is softcoded
 - Locale system
 ### Fixed
+- When going to the worldmap, portilization levels use the right character json
 - When reseting stages 1, and 4 the jump variables should be initalized
 - Sidebit 1 cutscenes
 - "The OC of today" Medal unlock condition (was flipped basically)

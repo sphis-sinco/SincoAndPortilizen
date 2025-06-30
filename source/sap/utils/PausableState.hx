@@ -33,6 +33,17 @@ class PausableState extends State
 			togglePaused();
 		}
 
+		if (Global.keyJustReleased(SPACE) && paused)
+		{
+			switch (Global.getCurrentState())
+			{
+				default:
+					Global.switchState(new Worldmap());
+				case 'Stage4', 'Stage5':
+					Global.switchState(new Worldmap('port'));
+			}
+		}
+
 		FlxTween.globalManager.active = !paused;
 		FlxTimer.globalManager.active = !paused;
 

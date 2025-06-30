@@ -196,9 +196,9 @@ class Stage4 extends PausableState
 		final good = Std.parseInt(timerText.text);
 		trace(good);
 		if (!win)
-			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new Worldmap(), "port"));
+			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new Worldmap(), "portilizen"));
 		else
-			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new PostStage4Cutscene(), "port"));
+			Global.switchState(new ResultsMenu(start_timer - good, start_timer, new PostStage4Cutscene(), "portilizen"));
 	}
 
 	public static function enemyRetreat():Void
