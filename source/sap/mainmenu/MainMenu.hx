@@ -80,6 +80,9 @@ class MainMenu extends State
 		super.create();
 
 		Global.changeDiscordRPCPresence('In the main menu', null);
+
+		if (Global.previousState == 'ChangelogMenu')
+			FlxG.camera.fade(FlxColor.BLACK, 1, true, () -> {});
 	}
 
 	public static var public_cycle:Int = 0;
@@ -236,7 +239,10 @@ class MainMenu extends State
 			#if sys case 6: #else case 4: #end
 				Global.switchState(new TitleState());
 			#if sys case 5: #else case 3: #end
-				Global.switchState(new ChangelogMenu());
+				FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
+				{
+					Global.switchState(new ChangelogMenu());
+				});
 		}
 	}
 

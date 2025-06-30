@@ -2,6 +2,8 @@ package;
 
 class Global
 {
+	public static var previousState:String;
+
 	public static var GENERATED_BY(get, set):String;
 
 	static function get_GENERATED_BY():String
@@ -256,6 +258,8 @@ class Global
 
 	public static function switchState(new_state:FlxState):Void
 	{
+		previousState = getCurrentState();
+
 		FlxG.switchState(() -> new_state);
 	}
 
