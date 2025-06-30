@@ -1,5 +1,7 @@
 package sap.spjc;
 
+import sap.title.TitleState;
+
 typedef SongSettings =
 {
 	var path:String;
@@ -10,8 +12,8 @@ typedef SongSettings =
 class SongPlayer
 {
 	public static var CURRENT_SONG:String = '';
-        
-        public static var playingFlxText:FlxText;
+
+	public static var playingFlxText:FlxText;
 
 	public static function playSong(filename:String = '', ?volume:Float = 1.0, ?loop:Bool = false)
 	{
@@ -30,34 +32,34 @@ class SongPlayer
 
 				if (songJson.songname != CURRENT_SONG)
 				{
-                                        trace('Could get asset: $filepath_json');
-                                        CURRENT_SONG = songJson.songname;
-                                        var playingText = 'Playing ${songJson.songname} by ${songJson.composors}';
+					trace('Could get asset: $filepath_json');
+					CURRENT_SONG = songJson.songname;
+					var playingText = 'Playing ${songJson.songname} by ${songJson.composors}';
 					trace(playingText);
 
-                                        playingFlxText = new FlxText(0,0,0,playingText, 16);
-                                        playingFlxText.screenCenter(X);
-                                        playingFlxText.y = 16;
+					playingFlxText = new FlxText(0, 0, 0, playingText, 16);
+					playingFlxText.screenCenter(X);
+					playingFlxText.y = FlxG.height - playingFlxText.height - 16;
+					playingFlxText.color = FlxColor.WHITE;
 
-                                        switch (Global.getCurrentState())
-                                        {
-                                                case 'Stage1', 'Stage2', 'Stage4', 'Stage5':
-                                                        playingFlxText.y = FlxG.height - playingFlxText.height - 16;
-                                                        playingFlxText.color = FlxColor.WHITE;
+					switch (Global.getCurrentState())
+					{
+						case 'TitleState':
+							playingFlxText.y = TitleState.CHARACTER_RING.y;
+						case 'Stage4':
+							playingFlxText.y = 16;
+					}
 
-                                                default:
-                                                        playingFlxText.color = FlxColor.BLACK;
-                                        }
+					FlxTween.tween(playingFlxText, {alpha: 0}, 2, {
+						startDelay: 2,
+						onComplete: tween ->
+						{
+							FlxG.state.remove(playingFlxText);
+							playingFlxText.destroy();
+						}
+					});
 
-                                        FlxTween.tween(playingFlxText, {alpha: 0}, 2, {
-                                                startDelay: 2,
-                                                onComplete: tween -> {
-                                                        FlxG.state.remove(playingFlxText);
-                                                        playingFlxText.destroy();
-                                                }
-                                        });
-
-                                        FlxG.state.add(playingFlxText);
+					FlxG.state.add(playingFlxText);
 				}
 
 				filepath = FileManager.getSoundFile('music/${songJson.path}');

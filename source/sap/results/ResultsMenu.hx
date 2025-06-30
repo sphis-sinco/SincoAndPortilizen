@@ -82,7 +82,7 @@ class ResultsMenu extends FlxState
 
 		if (FlxG.sound.music != null)
 		{
-			FlxG.sound.music.stop();
+			FlxG.sound.music.destroy();
 		}
 
 		if (FlxG.sound != null)
