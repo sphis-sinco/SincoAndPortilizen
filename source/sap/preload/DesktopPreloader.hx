@@ -6,6 +6,7 @@ class DesktopPreloader extends PreloaderBase
 	{
 		super();
 		platform = 'Desktop';
+		assetsToPreload = FileManager.getTypeArray('image', 'images', ['.png'], ['assets/cutscenes/images/']);
 	}
 
 	override public function texturePreload()

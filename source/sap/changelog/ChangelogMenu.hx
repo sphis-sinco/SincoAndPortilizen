@@ -77,10 +77,12 @@ class ChangelogMenu extends State
 
 			var headers:FlxTextFormat = new FlxTextFormat(FlxColor.BLUE, true);
 			var bold:FlxTextFormat = new FlxTextFormat(FlxColor.GREEN, true);
+			var idkwtic:FlxTextFormat = new FlxTextFormat(FlxColor.ORANGE, true);
 
 			changelogText.applyMarkup(changelogText.text, [
 				new FlxTextFormatMarkerPair(headers, '$'),
-				new FlxTextFormatMarkerPair(bold, '**')
+				new FlxTextFormatMarkerPair(bold, '**'),
+				new FlxTextFormatMarkerPair(idkwtic, '`')
 			]);
 		}
 

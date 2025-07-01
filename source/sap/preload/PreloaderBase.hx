@@ -28,8 +28,6 @@ class PreloaderBase extends State
 	{
 		super.create();
 
-		assetsToPreload = FileManager.getTypeArray('image', 'images', ['.png'], ['assets/cutscenes/images/']);
-
 		CTT = '${Global.GIT_VER} ${platform} Preloader';
 
 		currentTextureText.text = CTT;
@@ -41,10 +39,10 @@ class PreloaderBase extends State
 		#if desktop
 		preloadArts = [];
 
-		for (file in FileManager.readDirectory('assets/images/preloader'))
+		for (file in FileManager.getTypeArray('preloader image', 'images/preloader/', ['.png'], ['assets/images/preloader']))
 		{
-			if (file.endsWith('.png'))
-				preloadArts.push(file.replace('.png', ''));
+			if (!file.contains('web/'))
+				preloadArts.push(file.split('/')[file.split('/').length - 1].replace('.png', ''));
 		}
 		trace('Preloader artwork names: $preloadArts');
 		#end

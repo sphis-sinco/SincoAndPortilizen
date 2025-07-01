@@ -25,6 +25,7 @@
 - MASS MOD mentions
 - Intro Cutscene
 ### Changed
+- `getScriptArray` has been turned into `getTypeArray` in FileManager and can support any type now. (`getTypeArray`)
 - The stage 5 timer text is black now for visability
 - Music tracks are now apart of the SPJC system
 - SparrowSprites have antialiasing set to enabled by default now
@@ -33,6 +34,7 @@
 - Adjusted time when you can't attack Osin in stage 1
 - Mods no longer are enabled by default when loaded
 - Mod API version is 1.5
+        - FileManager has `getTypeArray` which is `getScriptArray` but with **any type**
         - Global has a previousState variable
         - Version is a valid variable
 - The main menu music 22 has been replaced with Lado.
