@@ -73,7 +73,7 @@ class ChangelogMenu extends State
 				}
 			}
 
-			FAKEchangelogText.text = changelogText.text.replace('$', '').replace('*', '');
+			FAKEchangelogText.text = changelogText.text.replace('$', '').replace('*', '').replace('`', '');
 
 			var headers:FlxTextFormat = new FlxTextFormat(FlxColor.BLUE, true);
 			var bold:FlxTextFormat = new FlxTextFormat(FlxColor.GREEN, true);
@@ -105,26 +105,6 @@ class ChangelogMenu extends State
 						}
 					});
 			}
-		}
-
-		if (Global.keyJustReleased(LEFT))
-		{
-			CHANGELOG_INDEX--;
-			if (CHANGELOG_INDEX < 1)
-			{
-				CHANGELOG_INDEX = 1;
-			}
-			changelogText.y = 32;
-		}
-
-		if (Global.keyJustReleased(RIGHT))
-		{
-			CHANGELOG_INDEX++;
-			if (CHANGELOG_INDEX == CHANGELOG.length)
-			{
-				CHANGELOG_INDEX--;
-			}
-			changelogText.y = 32;
 		}
 
 		var math = -changelogText.text.length * CHANGELOG_MOVE;
