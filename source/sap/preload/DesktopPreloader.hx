@@ -18,10 +18,10 @@ class DesktopPreloader extends PreloaderBase
 
 			#if (target.threaded)
 			sys.thread.Thread.create(() -> {
-				 trace('Caching $texturePath in a thread');
-				 Global.cacheTexture(texturePath);
-				 currentAssetIndex++;
-			 });
+				trace('Caching $texturePath in a thread');
+				Global.cacheTexture(texturePath);
+				currentAssetIndex++;
+			});
 			#else
 			Global.cacheTexture(texturePath);
 			currentAssetIndex++;
