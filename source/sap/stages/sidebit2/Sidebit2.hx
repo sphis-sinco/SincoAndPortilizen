@@ -28,15 +28,25 @@ class Sidebit2 extends PausableState
 
 		OP_ATK_CHANCE = DIFFICULTY_JSON.op_attack_chance;
 
+		OP_ATK_TICK = DIFFICULTY_JSON.op_atk_tick;
+		OP_ATK_TICK_RAND_MIN = DIFFICULTY_JSON.op_atk_tick_random_min;
+		OP_ATK_TICK_RAND_MAX = DIFFICULTY_JSON.op_atk_tick_random_max;
+
+		OP_DEF_CHANCE = DIFFICULTY_JSON.op_def_chance;
+		OP_DEF_CHANCE_DIDNT_HIT = DIFFICULTY_JSON.op_def_chance_didnt_hit;
+		OP_DEF_CHANCE_DID_HIT = DIFFICULTY_JSON.op_def_chance_did_hit;
+
+		PLAYER_CAN_DO_THINGS_TICK = DIFFICULTY_JSON.player_can_do_things_tick;
+
 		PROGRESS_BAR_GROUP = new ProgressBarGroup({
 			player: 'Portilizen',
-			player_health: 10,
-			player_max_health: 10,
+			player_health: DIFFICULTY_JSON.player_max_health,
+			player_max_health: DIFFICULTY_JSON.player_max_health,
 			player_healthIcon: new HealthIcon('gameplay/sidebits/port-healthicon', 'Portilizen'),
 
 			opponent: 'Osin',
-			opponent_health: 10,
-			opponent_max_health: 10,
+			opponent_health: DIFFICULTY_JSON.opponent_max_health,
+			opponent_max_health: DIFFICULTY_JSON.opponent_max_health,
 			opponent_healthIcon: new HealthIcon('gameplay/sidebits/osin-healthicon', 'OsinScaledDown'),
 		});
 	}
@@ -87,6 +97,7 @@ class Sidebit2 extends PausableState
 					OP_DEF_CHANCE = OP_DEF_CHANCE_DIDNT_HIT;
 					if (PLAYER.animation.name != 'block')
 					{
+						Global.playSoundEffect('gameplay/attack-failed');
 						PLAYER.playAnimation('hit');
 						PROGRESS_BAR_GROUP.PLAYER_HEALTH -= 1;
 						OP_DEF_CHANCE = OP_DEF_CHANCE_DID_HIT;
@@ -140,11 +151,6 @@ class Sidebit2 extends PausableState
 		});
 	}
 
-	override function postCreate()
-	{
-		super.postCreate();
-	}
-
 	public static var keys:{attack:FlxKey, block:FlxKey} = {
 		attack: SPACE,
 		block: LEFT
@@ -176,6 +182,7 @@ class Sidebit2 extends PausableState
 			{
 				OP_TICK = 0;
 				OP_ATK_TICK = FlxG.random.int(OP_ATK_TICK_RAND_MIN, OP_ATK_TICK_RAND_MAX);
+				Global.playSoundEffect('gameplay/attack-charge');
 				OPPONENT.playAnimation('wind-up');
 				opponentAnimationPosition();
 				OP_DEF_CHANCE = FlxG.random.float(OP_DEF_CHANCE_DID_HIT, OP_DEF_CHANCE_DIDNT_HIT);
@@ -200,6 +207,7 @@ class Sidebit2 extends PausableState
 					}
 					else
 					{
+						Global.playSoundEffect('gameplay/attack-failed');
 						OPPONENT.playAnimation('hit');
 						PROGRESS_BAR_GROUP.OPPONENT_HEALTH -= 1;
 						OP_DEF_CHANCE = FlxG.random.float(OP_DEF_CHANCE_DIDNT_HIT / 2, OP_DEF_CHANCE_DIDNT_HIT);

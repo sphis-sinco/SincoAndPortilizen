@@ -1,3 +1,15 @@
 {
-        "op_attack_chance": 45
+        "player_max_health": 10,
+        "player_can_do_things_tick": 100,
+
+        "opponent_max_health": 10,
+
+        "op_attack_chance": 45,
+        "op_atk_tick": 500,
+        "op_atk_tick_random_min": 200,
+        "op_atk_tick_random_max": 500,
+
+	"op_def_chance": 25,
+	"op_def_chance_didnt_hit": 40,
+	"op_def_chance_did_hit": 10
 }
