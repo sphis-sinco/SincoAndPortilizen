@@ -1,5 +1,7 @@
 package;
 
+import flixel.system.FlxAssets.FlxSoundAsset;
+import openfl.media.Sound;
 import flixel.graphics.FlxGraphic;
 import sap.spjc.SongPlayer;
 
@@ -367,7 +369,9 @@ class Global
 	 */
 	public static function preparePurgeCache():Void
 	{
+		previousCachedSounds = currentCachedSounds;
 		previousCachedTextures = currentCachedTextures;
+		currentCachedSounds = [];
 		currentCachedTextures = [];
 	}
 
@@ -383,5 +387,25 @@ class Global
 			graphic.destroy();
 			previousCachedTextures.remove(graphicKey);
 		}
+		// Everything that is in previousCachedSounds but not in currentCachedTextures should be destroyed.
+		for (soundKey in previousCachedSounds.keys())
+		{
+			var sound:FlxSound = new FlxSound().loadEmbedded(previousCachedSounds.get(soundKey));
+			if (sound == null)
+				continue;
+			// OpenFLAssets.cache.removeSound(soundKey);
+			FlxG.assets.list(SOUND).remove(soundKey);
+			sound.destroy();
+			previousCachedSounds.remove(soundKey);
+		}
+	}
+
+	
+	static var currentCachedSounds:Map<String, FlxSoundAsset> = [];
+	static var previousCachedSounds:Map<String, FlxSoundAsset> = [];
+
+	public static function cacheSound(key:String):Void
+	{
+		var sound:FlxSound = new FlxSound().loadEmbedded(FlxG.sound.cache(key));
 	}
 }
