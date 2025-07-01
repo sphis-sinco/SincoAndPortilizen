@@ -39,7 +39,7 @@
 - The changelog has been split for every section of production
 - FileManager's writeToPath function has been improved
 - Version system is now the same as Creative
-- Version system is softcoded
+- (Desktop only) Version system is softcoded
 - Locale system
 ### Fixed
 - When going to the worldmap, portilization levels use the right character json

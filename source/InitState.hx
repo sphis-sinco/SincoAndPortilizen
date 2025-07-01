@@ -88,9 +88,9 @@ class InitState extends FlxState
 		{
 			trace('OUTDATED');
 			Global.switchState(new OutdatedMenu());
-		} else {
-			Global.switchState(new #if html5 WebPreloader #else DesktopPreloader #end());
 		}
+		
+		Global.switchState(new #if html5 WebPreloader #else DesktopPreloader #end());
 
 		super.create();
 	}

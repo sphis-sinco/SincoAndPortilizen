@@ -6,7 +6,7 @@ class Worldmap extends State
 {
 	public static var SIDEBIT_MODE:Bool = false;
 	public static var SIDEBITS:Array<String> = [];
-        public static var SIDEBIT_JSONS:Array<Dynamic> = [];
+	public static var SIDEBIT_JSONS:Array<Dynamic> = [];
 
 	public static var CURRENT_PLAYER_CHARACTER:String = 'sinco';
 	public static var CURRENT_PLAYER_CHARACTER_JSON:PlayableCharacter = null;
@@ -44,15 +44,15 @@ class Worldmap extends State
 
 	public static function initSidebits():Void
 	{
-		SIDEBITS = ['sidebit1', 'sidebit2'];
+		SIDEBITS = [];
 
 		var denied:Int = 0;
 
-		final array:Array<String> = #if !html5 FileManager.readDirectory('assets/data/sidebits') #else SIDEBITS #end;
-		for (sidebit in array)
+		#if !html5
+		for (sidebit in FileManager.readDirectory('assets/data/sidebits'))
 		{
 			final sidebitName:String = sidebit.split('.')[0];
-			final sidebitJson = FileManager.getJSON(FileManager.getDataFile('sidebits/$sidebit.json'));
+			final sidebitJson = FileManager.getJSON(FileManager.getDataFile('sidebits/$sidebit'));
                         SIDEBIT_JSONS.push(sidebitJson);
 
 			if (SIDEBIT_MODE
@@ -65,6 +65,9 @@ class Worldmap extends State
                         if (denied == SIDEBIT_JSONS.length && SIDEBIT_MODE)
                                 switchModes();
 		}
+                #else
+                SIDEBITS = ['sidebit1', 'sidebit2'];
+                #end
 	}
 
 	override function create()
@@ -180,6 +183,9 @@ class Worldmap extends State
 	{
 		SIDEBIT_MODE = !SIDEBIT_MODE;
 		CURRENT_SELECTION = 0;
-		initSidebits();
+		if (SIDEBIT_MODE)
+			initSidebits();
+		else
+			init();
 	}
 }
