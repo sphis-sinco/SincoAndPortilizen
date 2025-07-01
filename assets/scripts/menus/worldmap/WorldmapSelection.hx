@@ -1,5 +1,4 @@
 import sap.stages.sidebit2.Sidebit2IntroCutscene;
-import sap.stages.sidebit1.Sidebit1IntroCutscene;
 import sap.stages.stage1.Stage1;
 import sap.stages.stage2.Stage2;
 import sap.stages.stage4.Stage4;
@@ -17,7 +16,7 @@ function worldmapSelection(character:String, selection:Int, sidebitMode:Bool)
 		case 'portilizen':
 			switch (selection)
 			{
-				case 1: if (sidebitMode) Global.switchState(new Sidebit1IntroCutscene(difficulty));
+				case 1: if (sidebitMode) Global.switchState(new sap.stages.sidebit1.Sidebit1IntroCutscene(difficulty));
 				case 2: if (sidebitMode) Global.switchState(new Sidebit2IntroCutscene(difficulty));
 				case 4: if (!sidebitMode) Global.switchState(new Stage4(difficulty));
 				case 5: if (!sidebitMode) Global.switchState(new Stage5(difficulty));
@@ -25,7 +24,7 @@ function worldmapSelection(character:String, selection:Int, sidebitMode:Bool)
 		case 'sinco':
 			switch (selection)
 			{
-				case 1: if (sidebitMode) Global.switchState(new Sidebit1IntroCutscene(difficulty)); else Global.switchState(new Stage1(difficulty));
+				case 1: if (sidebitMode) Global.switchState(new sap.stages.sidebit1.Sidebit1IntroCutscene(difficulty)); else Global.switchState(new Stage1(difficulty));
 				case 2: if (!sidebitMode) Global.switchState(new Stage2(difficulty));
 			}
 		default:

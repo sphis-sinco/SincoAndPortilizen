@@ -1,6 +1,5 @@
 package sap.modding.hscript;
 
-import sap.stages.sidebit2.Sidebit2IntroCutscene;
 import crowplexus.iris.Iris;
 import sinlib.utilities.FileManager.PathTypes;
 
@@ -55,7 +54,7 @@ class ScriptManager
 
 		setScript('Version', Version);
 
-		// setScript('Sidebit2IntroCutscene', Sidebit2IntroCutscene);
+		setScript('Sidebit1IntroCutscene', sap.stages.sidebit1.Sidebit1IntroCutscene);
 
 		// functions
 		setScript('UnlockMedal', function(medal:String):Medal
