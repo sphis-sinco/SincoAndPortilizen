@@ -224,13 +224,13 @@ class Sidebit2 extends PausableState
 
 		if (PROGRESS_BAR_GROUP.OPPONENT_HEALTH < 1)
 		{
-			Global.switchState(new ResultsMenu(Std.int(PROGRESS_BAR_GROUP.PLAYER_HEALTH), Std.int(PROGRESS_BAR_GROUP.PLAYER_MAX_HEALTH), new Worldmap(),
-				'port'));
+			Global.switchState(new ResultsMenu(Std.int(PROGRESS_BAR_GROUP.PLAYER_HEALTH), Std.int(PROGRESS_BAR_GROUP.PLAYER_MAX_HEALTH),
+				new Sidebit2EndCutscene(), 'port'));
 		}
 		else if (PROGRESS_BAR_GROUP.PLAYER_HEALTH < 1)
 		{
 			Global.switchState(new ResultsMenu(Std.int(PROGRESS_BAR_GROUP.OPPONENT_MAX_HEALTH - PROGRESS_BAR_GROUP.OPPONENT_HEALTH),
-				Std.int(PROGRESS_BAR_GROUP.OPPONENT_MAX_HEALTH), new Worldmap(), 'port'));
+				Std.int(PROGRESS_BAR_GROUP.OPPONENT_MAX_HEALTH), new Worldmap('portilizen'), 'port'));
 		}
 
 		opponentAnimationPosition();
