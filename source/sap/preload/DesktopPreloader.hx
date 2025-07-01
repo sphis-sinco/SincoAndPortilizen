@@ -56,7 +56,7 @@ class DesktopPreloader extends PreloaderBase
 
 			sys.thread.Thread.create(() ->
 			{
-				trace('Caching $texturePath in a thread \n');
+				// trace('Caching $texturePath in a thread \n');
 
 				Global.cacheTexture(texturePath, {
 					onComplete: () ->
@@ -68,13 +68,17 @@ class DesktopPreloader extends PreloaderBase
 					onFail: tpSplit ->
 					{
 						var shortpath = getShortPath(tpSplit);
-
 						msgFunc('Failed to preload ${shortpath}');
 					},
 					onSuccess: tpSplit ->
 					{
 						var shortpath = getShortPath(tpSplit);
 						msgFunc('${shortpath} was preloaded');
+					},
+					onStart: tpSplit ->
+					{
+						var shortpath = getShortPath(tpSplit);
+						msgFunc('${shortpath} is being preloaded');
 					}
 				});
 			});
