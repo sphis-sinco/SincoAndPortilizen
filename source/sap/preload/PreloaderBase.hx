@@ -41,11 +41,14 @@ class PreloaderBase extends State
 
 		for (file in FileManager.getTypeArray('preloader image', 'images/preloader/', ['.png'], ['assets/images/preloader/']))
 		{
-			if (!file.contains('web/'))
+			if (!file.contains('web/') && !file.contains('keoiki'))
 				preloadArts.push(file.split('/')[file.split('/').length - 1].replace('.png', ''));
 		}
 		trace('Preloader artwork names: $preloadArts');
 		#end
+
+		if (FlxG.random.bool(1 / 100000))
+			preloadArts = ['keoiki'];
 
 		randomPreloadArt();
 		add(preloadArt);
