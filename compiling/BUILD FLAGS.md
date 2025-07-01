@@ -30,8 +30,8 @@ These do things. Lmao!
 
 - `SIDEBIT_ONE`: Sends you to the first sidebit intro cutscene
 - `SIDEBIT_ONE_INSTANT`: Sends you to the first sidebit instantly
-
-- `SIDEBIT_TWO`: Sends you to the second sidebit
+- `SIDEBIT_TWO`: Sends you to the second sidebit intro cutscene
+- `SIDEBIT_TWO_INSTANT`: Sends you to the second sidebit instantly
 
 - `EASY_DIFFICULTY` (executes with a `STAGE_` flag or a `SIDEBIT_` flag): Sets the difficulty to easy
 - `HARD_DIFFICULTY` (executes with a `STAGE_` flag or a `SIDEBIT_` flag): Sets the difficulty to hard

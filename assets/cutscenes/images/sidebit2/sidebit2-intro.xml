@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sidebit2-intro.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Part 10000" x="4" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10001" x="712" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10002" x="1420" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10003" x="2128" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10004" x="2836" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10005" x="3544" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10006" x="4252" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10007" x="4960" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10008" x="5668" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10009" x="6376" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10010" x="7084" y="4" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10011" x="4" y="663" width="700" height="665"/>
+	<SubTexture name="Part 10012" x="712" y="663" width="700" height="665"/>
+	<SubTexture name="Part 10013" x="1420" y="663" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10014" x="2128" y="663" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10015" x="2836" y="663" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10016" x="3544" y="663" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10017" x="4252" y="663" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10018" x="4960" y="663" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10019" x="5668" y="663" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10020" x="6376" y="663" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10021" x="7084" y="663" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10022" x="4" y="1336" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 10023" x="712" y="1336" width="700" height="651" frameX="0" frameY="-14" frameWidth="700" frameHeight="665"/>
+	<SubTexture name="Part 20000" x="1420" y="1336" width="700" height="665"/>
+	<SubTexture name="Part 20001" x="2128" y="1336" width="700" height="665"/>
+	<SubTexture name="Part 20002" x="2836" y="1336" width="700" height="665"/>
+	<SubTexture name="Part 20003" x="3544" y="1336" width="700" height="665"/>
+	<SubTexture name="Part 20004" x="4252" y="1336" width="700" height="665"/>
+	<SubTexture name="Part 20005" x="4960" y="1336" width="700" height="665"/>
+	<SubTexture name="Part 20006" x="5668" y="1336" width="700" height="665"/>
+	<SubTexture name="Part 20007" x="6376" y="1336" width="700" height="665"/>
+	<SubTexture name="Part 20008" x="7084" y="1336" width="700" height="665"/>
+	<SubTexture name="Part 20009" x="4" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20010" x="712" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20011" x="1420" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20012" x="2128" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20013" x="2836" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20014" x="3544" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20015" x="4252" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20016" x="4960" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20017" x="5668" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20018" x="6376" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20019" x="7084" y="2009" width="700" height="665"/>
+	<SubTexture name="Part 20020" x="4" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 20021" x="712" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 20022" x="1420" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 20023" x="2128" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 20024" x="2836" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 20025" x="3544" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 20026" x="4252" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 20027" x="4960" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 30000" x="5668" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 30001" x="6376" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 30002" x="7084" y="2682" width="700" height="665"/>
+	<SubTexture name="Part 30003" x="4" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30004" x="712" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30005" x="1420" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30006" x="2128" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30007" x="2836" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30008" x="3544" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30009" x="4252" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30010" x="4960" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30011" x="5668" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30012" x="6376" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30013" x="7084" y="3355" width="700" height="665"/>
+	<SubTexture name="Part 30014" x="4" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30015" x="712" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30016" x="1420" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30017" x="2128" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30018" x="2836" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30019" x="3544" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30020" x="4252" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30021" x="4960" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30022" x="5668" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30023" x="6376" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30024" x="7084" y="4028" width="700" height="665"/>
+	<SubTexture name="Part 30025" x="4" y="4701" width="700" height="665"/>
+	<SubTexture name="Part 30026" x="712" y="4701" width="700" height="665"/>
+	<SubTexture name="Part 30027" x="1420" y="4701" width="700" height="665"/>
+</TextureAtlas>

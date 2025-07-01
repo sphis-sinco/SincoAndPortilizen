@@ -160,7 +160,7 @@ class Sidebit2 extends PausableState
 		FlxG.watch.addQuick('PLAYER_CAN_DO_THINGS_TICK', PLAYER_CAN_DO_THINGS_TICK);
 
 		PROGRESS_BAR_GROUP.updateHealthIndicators();
-		PROGRESS_BAR_GROUP.OPPONENT_HEALTH_ICON.y -= 24;
+		PROGRESS_BAR_GROUP.OPPONENT_HEALTH_ICON.y -= 12;
 
 		if (Global.keyJustReleased(ESCAPE))
 		{
@@ -224,8 +224,8 @@ class Sidebit2 extends PausableState
 
 		if (PROGRESS_BAR_GROUP.OPPONENT_HEALTH < 1)
 		{
-			Global.switchState(new ResultsMenu(Std.int(PROGRESS_BAR_GROUP.PLAYER_MAX_HEALTH - PROGRESS_BAR_GROUP.PLAYER_HEALTH),
-				Std.int(PROGRESS_BAR_GROUP.PLAYER_MAX_HEALTH), new Worldmap(), 'port'));
+			Global.switchState(new ResultsMenu(Std.int(PROGRESS_BAR_GROUP.PLAYER_HEALTH), Std.int(PROGRESS_BAR_GROUP.PLAYER_MAX_HEALTH), new Worldmap(),
+				'port'));
 		}
 		else if (PROGRESS_BAR_GROUP.PLAYER_HEALTH < 1)
 		{

@@ -190,6 +190,9 @@ class InitState extends FlxState
 		switchToState(new sap.stages.sidebit1.Sidebit1(difficulty), 'Sidebit 1');
 		return;
 		#elseif SIDEBIT_TWO
+		switchToState(new sap.stages.sidebit2.Sidebit2IntroCutscene(difficulty), 'Sidebit 2');
+		return;
+		#elseif SIDEBIT_TWO_INSTANT
 		switchToState(new sap.stages.sidebit2.Sidebit2(difficulty), 'Sidebit 2');
 		return;
 		#elseif SIDEBIT_MENU
