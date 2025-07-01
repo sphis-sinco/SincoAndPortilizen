@@ -7,7 +7,7 @@ class Sidebit2EndCutscene extends SparrowCutscene
 	override public function new()
 	{
 		super('sidebit2-postcutscene');
-		Global.playSoundEffect('SideBit2_EndCutscene', CUTSCENES);
+		Global.playSoundEffect('SideBit2_EndingCutscene', CUTSCENES);
 	}
 
 	override function cutsceneEnded(?skipped_cutscene:Bool)
