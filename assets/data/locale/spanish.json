@@ -25,5 +25,14 @@
 
   "settings-download-latest-traces": "descargar los últimos rastros",
   "settings-clear-save": "borrar guardar",
-  "pauseable-pause": "En pausa"
+  "pauseable-pause": "En pausa",
+
+  "preloader-desktop-preloader": "Precargador de escritorio",
+
+  "preloader-preloading": "Precarga",
+  "preloader-preload-start": "se está precargando",
+  "preloader-preload-failed": "Error en la precarga",
+  "preloader-preload-succeedded": "estaba precargado",
+
+  "preloader-web-preloader": "Precargador web"
 }
