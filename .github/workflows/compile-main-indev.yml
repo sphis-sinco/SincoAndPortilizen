@@ -60,8 +60,8 @@ jobs:
         with:
           name: linuxBuild
           path: export/release/linux/bin
-  buildhtml5:
-    runs-on: html5-latest
+  buildwindows:
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@main
@@ -76,9 +76,9 @@ jobs:
         with:
           path: |
             .haxelib/
-            export/release/html5/haxe/
-            export/release/html5/obj/
-          key: cache-build-html5
+            export/release/windows/haxe/
+            export/release/windows/obj/
+          key: cache-build-windows
 
       - name: Installing Libraries
         run: haxe --interp -cp ./actions/libs-installer -D analyzer-optimize -main Main
@@ -86,29 +86,29 @@ jobs:
         run: echo "${{github.run_id}}" > VERSION
 
       - name: Compile
-        run: haxelib run lime build html5
+        run: haxelib run lime build windows
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
         with:
-          script: await require('./actions/cache/clear-cache.js')({github, context}, 'cache-build-html5');
+          script: await require('./actions/cache/clear-cache.js')({github, context}, 'cache-build-windows');
 
       - name: Save Current Cache
         uses: actions/cache@main
         with:
-          key: cache-build-html5
+          key: cache-build-windows
           path: |
             .haxelib/
-            export/release/html5/haxe/
-            export/release/html5/obj/
+            export/release/windows/haxe/
+            export/release/windows/obj/
           restore-keys: |
-            cache-build-html5
+            cache-build-windows
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
-          name: html5Build
-          path: export/release/html5/bin
+          name: windowsBuild
+          path: export/release/windows/bin
   buildMac:
     runs-on: macos-13
 
