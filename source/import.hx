@@ -44,6 +44,7 @@ import sap.worldmap.*;
 import sap.worldmap.PlayableCharacter;
 import sinlib.*;
 import sinlib.utilities.*;
+import djFlixel.D as DJF;
 
 using StringTools;
 
