@@ -28,7 +28,7 @@ class PreloaderBase extends State
 	{
 		super.create();
 
-		CTT = '${Global.GIT_VER} ${platform} Preloader';
+		CTT = '${Global.GIT_VER} ${Global.getLocalizedPhrase('preloader-${platform.toLowerCase()}-preloader', '${platform} Preloader')}';
 
 		currentTextureText.text = CTT;
 		currentTextureText.fieldWidth = FlxG.width - (currentTextureText.x * 2);

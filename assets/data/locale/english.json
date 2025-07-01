@@ -25,5 +25,14 @@
 
   "settings-download-latest-traces": "download latest traces",
   "settings-clear-save": "clear save",
-  "pauseable-pause": "Paused"
+  "pauseable-pause": "Paused",
+
+  "preloader-desktop-preloader": "Desktop Preloader",
+
+  "preloader-preloading": "Preloading",
+  "preloader-preload-start": "is being preloaded",
+  "preloader-preload-failed": "Failed to preload",
+  "preloader-preload-succeedded": "was preloaded",
+
+  "preloader-web-preloader": "Web Preloader"
 }

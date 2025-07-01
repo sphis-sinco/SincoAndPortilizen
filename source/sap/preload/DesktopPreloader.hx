@@ -52,7 +52,7 @@ class DesktopPreloader extends PreloaderBase
 			}
 
 			#if (target.threaded)
-			addToCTT('Preloading...');
+			addToCTT('${Global.getLocalizedPhrase('preloader-preloading', 'Preloading')}...');
 
 			sys.thread.Thread.create(() ->
 			{
@@ -68,17 +68,17 @@ class DesktopPreloader extends PreloaderBase
 					onFail: tpSplit ->
 					{
 						var shortpath = getShortPath(tpSplit);
-						msgFunc('Failed to preload ${shortpath}');
+						msgFunc('${Global.getLocalizedPhrase('preloader-preload-failed', 'is being preloaded')} ${shortpath}');
 					},
 					onSuccess: tpSplit ->
 					{
 						var shortpath = getShortPath(tpSplit);
-						msgFunc('${shortpath} was preloaded');
+						msgFunc('${shortpath} ${Global.getLocalizedPhrase('preloader-preload-succeedded', 'was preloaded')}');
 					},
 					onStart: tpSplit ->
 					{
 						var shortpath = getShortPath(tpSplit);
-						msgFunc('${shortpath} is being preloaded');
+						msgFunc('${shortpath} ${Global.getLocalizedPhrase('preloader-preload-start', 'is being preloaded')}');
 					}
 				});
 			});
