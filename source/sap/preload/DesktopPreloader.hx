@@ -6,14 +6,14 @@ class DesktopPreloader extends PreloaderBase
 	{
 		super();
 		platform = 'Desktop';
-		assetsToPreload = FileManager.getTypeArray('image', 'images', ['.png'], ['assets/cutscenes/images/']);
+		texturesToPreload = FileManager.getTypeArray('image', 'images', ['.png'], ['assets/cutscenes/images/']);
 	}
 
 	override public function texturePreload()
 	{
 		super.texturePreload();
 
-		for (texturePath in assetsToPreload)
+		for (texturePath in texturesToPreload)
 		{
 			currentTexture = texturePath;
 			var progress = '';
@@ -22,8 +22,8 @@ class DesktopPreloader extends PreloaderBase
 
 			var msgFunc:(message:String, ?addToCTTFunc:Bool) -> Void = (message:String, ?addToCTTFunc:Bool) ->
 			{
-				progress = '(${currentAssetIndex - 1}/${assetsToPreload.length})';
-				progress_percent = '${FlxMath.roundDecimal(((currentAssetIndex - 1) / assetsToPreload.length) * 100, 0)}%';
+				progress = '(${currentAssetIndex - 1}/${texturesToPreload.length})';
+				progress_percent = '${FlxMath.roundDecimal(((currentAssetIndex - 1) / texturesToPreload.length) * 100, 0)}%';
 				trace('Preload progress: $progress_percent $progress');
 
 				msg = message + ' $progress';
@@ -62,7 +62,7 @@ class DesktopPreloader extends PreloaderBase
 					onComplete: () ->
 					{
 						currentAssetIndex++;
-						// if (currentAssetIndex > assetsToPreload.length)
+						// if (currentAssetIndex > texturesToPreload.length)
 						// 	currentAssetIndex--;
 					},
 					onFail: tpSplit ->

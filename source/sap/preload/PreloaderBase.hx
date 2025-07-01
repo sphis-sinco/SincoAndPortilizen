@@ -6,7 +6,7 @@ class PreloaderBase extends State
 	public var preloadArts:Array<String> = [#if html5 'web/w(e)eber' #end];
 	public var preloadArt:FlxSprite = new FlxSprite();
 
-	public var assetsToPreload:Array<String> = [
+	public var texturesToPreload:Array<String> = [
 		FileManager.getImageFile('sidebit1/pre-sidebit1_sparrow', CUTSCENES),
 		FileManager.getImageFile('sidebit1/pre-sidebit1_atlas/spritemap1', CUTSCENES),
 		FileManager.getImageFile('sidebit1/post-sidebit1_atlas/spritemap1', CUTSCENES),
@@ -16,6 +16,11 @@ class PreloaderBase extends State
 		FileManager.getImageFile('gameplay/sinco stages/StageOneBackground'),
 	];
 	public var texturePreloadFinished:Bool = false;
+
+	public var soundsToPreload:Array<String> = [];
+	public var soundPreloadFinished:Bool = false;
+
+	public var PreloadFinished:Bool = false;
 
 	public var currentAssetIndex:Int = -1;
 
@@ -72,7 +77,7 @@ class PreloaderBase extends State
 		FlxG.watch.addQuick('currentAssetIndex', currentAssetIndex);
 		FlxG.watch.addQuick('currentTexture', currentTexture);
 
-		if (texturePreloadFinished)
+		if (PreloadFinished)
 		{
 			if (Global.keyJustReleased(ANY) && !Global.keyJustReleased(R) && Global.DEBUG_BUILD)
 				InitState.proceed();
@@ -81,7 +86,10 @@ class PreloaderBase extends State
 		}
 		else if (currentAssetIndex == 0)
 		{
-			texturePreload();
+			if (!texturePreloadFinished)
+				texturePreload();
+			else if (!soundPreloadFinished)
+				soundPreload();
 		}
 		else if (currentAssetIndex < 0)
 		{
@@ -92,18 +100,15 @@ class PreloaderBase extends State
 		if (Global.keyJustReleased(R))
 			randomPreloadArt();
 
-		if (currentAssetIndex >= assetsToPreload.length)
+		if (!texturePreloadFinished && currentAssetIndex > texturesToPreload.length)
+			texturePreloadFinished = true;
+		if (!soundPreloadFinished && currentAssetIndex > soundsToPreload.length)
+			soundPreloadFinished = true;
+
+		PreloadFinished = texturePreloadFinished && soundPreloadFinished;
+
+		if (PreloadFinished)
 		{
-			if (!texturePreloadFinished)
-			{
-				texturePreloadFinished = true;
-
-				if (Global.DEBUG_BUILD)
-				{
-					#if EXCESS_TRACES trace('Game is a debug build'); #end
-				}
-			}
-
 			if (Global.DEBUG_BUILD && !currentTextureText.text.contains('!'))
 			{
 				addToCTT('Preloading complete! Press anything (except R) to start');
@@ -114,6 +119,12 @@ class PreloaderBase extends State
 	public function texturePreload()
 	{
 		texturePreloadFinished = false;
+		currentAssetIndex = 1;
+	}
+
+	public function soundPreload()
+	{
+		soundPreloadFinished = false;
 		currentAssetIndex = 1;
 	}
 

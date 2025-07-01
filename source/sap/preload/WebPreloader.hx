@@ -11,10 +11,10 @@ class WebPreloader extends PreloaderBase
 	{
 		super.texturePreload();
 		
-		for (texturePath in assetsToPreload)
+		for (texturePath in texturesToPreload)
 		{
 			currentTexture = texturePath;
-			trace('Preload progress: ' + '${(currentAssetIndex / assetsToPreload.length) * 100}% ' + '(${currentAssetIndex}/${assetsToPreload.length})');
+			trace('Preload progress: ' + '${(currentAssetIndex / texturesToPreload.length) * 100}% ' + '(${currentAssetIndex}/${texturesToPreload.length})');
 
 			Assets.loadBitmapData(texturePath);
 
