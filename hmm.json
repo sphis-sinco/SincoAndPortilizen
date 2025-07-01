@@ -8,6 +8,11 @@
       "url": "https://github.com/Aidan63/linc_discord-rpc"
     },
     {
+      "name": "djflixel",
+      "type": "haxelib",
+      "version": null
+    },
+    {
       "name": "flixel",
       "type": "haxelib",
       "version": null
