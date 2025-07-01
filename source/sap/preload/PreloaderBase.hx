@@ -34,7 +34,7 @@ class PreloaderBase extends State
 		currentTextureText.fieldWidth = FlxG.width - (currentTextureText.x * 2);
 		add(currentTextureText);
 
-		currentTextureText.text += '\nPress anything (except R) to start preloading';
+		addToCTT('Press anything (except R) to start preloading');
 
 		#if desktop
 		preloadArts = [];
@@ -88,7 +88,35 @@ class PreloaderBase extends State
 
 		if (Global.keyJustReleased(R))
 			randomPreloadArt();
+
+		if (currentAssetIndex == assetsToPreload.length && !texturePreloadFinished)
+		{
+			if (!texturePreloadFinished)
+			{
+				texturePreloadFinished = true;
+
+				if (Global.DEBUG_BUILD)
+				{
+					#if EXCESS_TRACES trace('Game is a debug build'); #end
+				}
+			}
+
+			if (Global.DEBUG_BUILD && !currentTextureText.text.contains('!'))
+			{
+				addToCTT('Preloading complete! Press anything (except R) to start');
+			}
+		}
 	}
 
-	public function texturePreload() {}
+	public function texturePreload()
+	{
+		texturePreloadFinished = false;
+		currentAssetIndex = 1;
+	}
+
+	public function addToCTT(text:String)
+	{
+		currentTextureText.text = CTT;
+		currentTextureText.text += '\n$text';
+	}
 }

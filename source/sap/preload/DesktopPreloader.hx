@@ -2,38 +2,88 @@ package sap.preload;
 
 class DesktopPreloader extends PreloaderBase
 {
-	override public function new() {
+	override public function new()
+	{
 		super();
 		platform = 'Desktop';
 	}
 
 	override public function texturePreload()
 	{
-		texturePreloadFinished = false;
-		currentAssetIndex = 1;
+		super.texturePreload();
+
 		for (texturePath in assetsToPreload)
 		{
 			currentTexture = texturePath;
-			trace('Preload progress: ' + '${(currentAssetIndex / assetsToPreload.length) * 100}% ' + '(${currentAssetIndex}/${assetsToPreload.length})');
+			var progress = '';
+			var progress_percent = '';
+			var msg:String = '';
+
+			var msgFunc:(message:String, ?addToCTTFunc:Bool) -> Void = (message:String, ?addToCTTFunc:Bool) ->
+			{
+				progress = '(${currentAssetIndex - 1}/${assetsToPreload.length})';
+				progress_percent = '${FlxMath.roundDecimal(((currentAssetIndex - 1) / assetsToPreload.length) * 100, 0)}%';
+				trace('Preload progress: $progress_percent $progress\n');
+
+				msg = message + ' $progress';
+				trace(msg+'\n');
+				if (addToCTTFunc)
+					addToCTT(msg);
+			}
+
+			var getShortPath:(tpSplit:Array<String>) -> String = (tpSplit:Array<String>) ->
+			{
+				var path:String = '';
+
+				for (item in tpSplit)
+				{
+					switch (item)
+					{
+						case 'assets', 'images', 'cutscenes':
+							// NAH
+
+						default:
+							path += item + (item != tpSplit[tpSplit.length - 1] ? '/' : '');
+					}
+				}
+
+				return path;
+			}
 
 			#if (target.threaded)
-			sys.thread.Thread.create(() -> {
-				trace('Caching $texturePath in a thread');
-				Global.cacheTexture(texturePath);
-				currentAssetIndex++;
+			sys.thread.Thread.create(() ->
+			{
+				trace('Caching $texturePath in a thread \n');
+				addToCTT('Preloading...');
+
+				Global.cacheTexture(texturePath, {
+					onComplete: () ->
+					{
+						currentAssetIndex++;
+						// if (currentAssetIndex > assetsToPreload.length)
+						// 	currentAssetIndex--;
+					},
+					onFail: tpSplit ->
+					{
+						var shortpath = getShortPath(tpSplit);
+
+						msgFunc('Failed to preload ${shortpath}');
+					},
+					onSuccess: tpSplit ->
+					{
+						var shortpath = getShortPath(tpSplit);
+						msgFunc('${shortpath} was preloaded');
+					}
+				});
 			});
 			#else
-			Global.cacheTexture(texturePath);
-			currentAssetIndex++;
+			Global.cacheTexture(texturePath, {
+				onComplete: () ->
+				{
+					currentAssetIndex++;
+				}
+			});
 			#end
-		}
-		texturePreloadFinished = true;
-
-                currentTextureText.text = CTT;
-		if (Global.DEBUG_BUILD)
-		{
-			#if EXCESS_TRACES trace('Game is a debug build'); #end
-                        currentTextureText.text += '\nPreloading complete! Press anything (except R) to start';
 		}
 	}
 }

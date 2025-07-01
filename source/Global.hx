@@ -308,7 +308,8 @@ class Global
 	 * Ensure the texture with the given key is cached.
 	 * @param key The key of the texture to cache.
 	 */
-	public static function cacheTexture(key:String):Void
+	public static function cacheTexture(key:String,
+			?functions:{?onComplete:Void->Void, ?onFail:(tpSplit:Array<String>) -> Void, ?onSuccess:(tpSplit:Array<String>) -> Void}):Void
 	{
 		// We don't want to cache the same texture twice.
 		if (currentCachedTextures.exists(key))
@@ -325,7 +326,8 @@ class Global
 
 		// Else, texture is currently uncached.
 		var graphic:FlxGraphic = FlxGraphic.fromAssetKey(key, false, null, true);
-		if (graphic == null)
+		var fail = graphic == null;
+		if (fail)
 		{
 			FlxG.log.warn('Failed to cache graphic: $key');
 		}
@@ -335,6 +337,16 @@ class Global
 			graphic.persist = true;
 			currentCachedTextures.set(key, graphic);
 		}
+
+		var tpSplit:Array<String>;
+		tpSplit = key.split('/');
+
+		functions.onComplete();
+
+		if (fail)
+			functions.onFail(tpSplit);
+		else
+			functions.onSuccess(tpSplit);
 	}
 
 	/**
