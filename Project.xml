@@ -78,6 +78,8 @@
         <haxelib name="hscript" if="debug" />
         <haxelib name="hscript-iris" if="SCRIPT_FILES" />
 
+        <haxelib name="newgrounds" if="FEATURE_NEWGROUNDS"/>
+
         <!-- _________________________________ After _______________________________ -->
 
         <error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile" />

@@ -2,7 +2,7 @@ export/
 .haxelib/
 dump/
 NDA/
-source/NDA/
+source/nda/
 
 .DS_Store
 RECOVER_**.fla
