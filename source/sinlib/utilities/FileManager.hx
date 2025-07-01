@@ -130,35 +130,12 @@ class FileManager
 		return returnPath;
 	}
 
-	#if SCRIPT_FILES
-	/**
-	 * File extension for scripts
-	 */
-	public static var SCRIPT_EXT:String = 'lb1';
-
-	/**
-	 * Returns `assets/data/scripts/$file` if `SCRIPT_FILES_IN_DATA_FOLDER` otherwise returns `assets/scripts/$file` only if `SCRIPT_FILES` is enabled
-	 * @param file File
-	 * @param PATH_TYPE Assets folder
-	 * @return String
-	 */
-	public static function getScriptFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
-	{
-		var finalPath:Dynamic = 'scripts/$file'; // .$SCRIPT_EXT';
-
-		#if SCRIPT_FILES_IN_DATA_FOLDER
-		return getDataFile(finalPath, PATH_TYPE, posinfo);
-		#end
-
-		return getAssetFile(finalPath, PATH_TYPE, posinfo);
-	}
-
-	#if sys
-	public static function getScriptArray():Array<String>
+	public static function getTypeArray(type:String, type_folder:String, ext:Array<String>, paths:Array<String>):Array<String>
 	{
 		var arr:Array<String> = [];
-		var scriptPaths:Array<String> = ['assets/scripts/'];
-		var scriptExtensions:Array<String> = ['.hx', '.hxc'];
+		#if sys
+		var typePaths:Array<String> = paths;
+		var typeExtensions:Array<String> = ext;
 
 		var readFolder:Dynamic = function(folder:String, ogdir:String) {};
 
@@ -171,7 +148,7 @@ class FileManager
 			for (file in readDirectory('${ogdir}${folder}'))
 			{
 				final endsplitter:String = '${!folder.endsWith('/') && !file.startsWith('/') ? '/' : ''}';
-				for (extension in scriptExtensions)
+				for (extension in typeExtensions)
 				{
 					if (file.endsWith(extension))
 					{
@@ -225,23 +202,23 @@ class FileManager
 		for (folder in ModFolderManager.ENABLED_MODS)
 		{
 			#if EXCESS_TRACES
-			trace('Checking $folder for a scripts folder');
+			trace('Checking $folder for a $type_folder folder');
 			#end
 			final folder_read:Array<String> = readDirectory('${ModFolderManager.MODS_FOLDER}${folder}/');
 
-			if (folder_read.contains('scripts'))
+			if (folder_read.contains('$type_folder'))
 			{
 				#if EXCESS_TRACES
-				trace('$folder has a scripts folder');
+				trace('$folder has a $type_folder folder');
 				#end
-				scriptPaths.push('${ModFolderManager.MODS_FOLDER}${folder}/scripts/');
+				typePaths.push('${ModFolderManager.MODS_FOLDER}${folder}/$type_folder/');
 			}
 		}
 
-		for (path in scriptPaths)
+		for (path in typePaths)
 		{
 			#if EXCESS_TRACES
-			trace('reading scriptPath: $path');
+			trace('reading $type path: $path');
 			#end
 			readDir(path);
 		}
@@ -253,8 +230,41 @@ class FileManager
 			traceArr.push(split[split.length - 1]);
 		}
 
-		trace('Loaded script files: ${traceArr}');
+		trace('Loaded $type files: ${traceArr}');
+		#end
 		return arr;
+	}
+
+	#if SCRIPT_FILES
+	/**
+	 * File extension for scripts
+	 */
+	public static var SCRIPT_EXT:String = 'lb1';
+
+	/**
+	 * Returns `assets/data/scripts/$file` if `SCRIPT_FILES_IN_DATA_FOLDER` otherwise returns `assets/scripts/$file` only if `SCRIPT_FILES` is enabled
+	 * @param file File
+	 * @param PATH_TYPE Assets folder
+	 * @return String
+	 */
+	public static function getScriptFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
+	{
+		var finalPath:Dynamic = 'scripts/$file'; // .$SCRIPT_EXT';
+
+		#if SCRIPT_FILES_IN_DATA_FOLDER
+		return getDataFile(finalPath, PATH_TYPE, posinfo);
+		#end
+
+		return getAssetFile(finalPath, PATH_TYPE, posinfo);
+	}
+
+	#if sys
+	public static function getScriptArray():Array<String>
+	{
+		var typePaths:Array<String> = ['assets/scripts/'];
+		var typeExtensions:Array<String> = ['.hx', '.hxc'];
+
+		return getTypeArray('script', 'scripts', typeExtensions, typePaths);
 	}
 	#else
 	public static function getScriptArray():Array<String>

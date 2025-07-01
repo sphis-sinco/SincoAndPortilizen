@@ -28,6 +28,8 @@ class PreloaderBase extends State
 	{
 		super.create();
 
+		assetsToPreload = FileManager.getTypeArray('image', 'images', ['.png'], ['assets/cutscenes/images/']);
+
 		CTT = '${Global.GIT_VER} ${platform} Preloader';
 
 		currentTextureText.text = CTT;
