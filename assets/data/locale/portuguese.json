@@ -27,14 +27,14 @@
   "settings-clear-save": "Limpar save",
   "pauseable-pause": "Pausado",
 
-  "preloader-desktop-preloader": "Desktop Preloader",
+  "preloader-desktop-preloader": "Pré-carregador de Desktop",
 
-  "preloader-preloading": "Preloading",
-  "preloader-preload-start": "is being preloaded",
-  "preloader-preload-failed": "Failed to preload",
-  "preloader-preload-succeedded": "was preloaded",
+  "preloader-preloading": "Pré-carregando",
+  "preloader-preload-start": "está sendo pré-carregado",
+  "preloader-preload-failed": "Erro ao pré-carregar",
+  "preloader-preload-succeedded": "foi pré-carregado",
 
-  "preloader-start-text": "Press anything (except R) to start preloading",
-  
-  "preloader-web-preloader": "Web Preloader"
+  "preloader-start-text": "Aperte qualquer tecla (exceto R) para começar o pré-carregamento",
+
+  "preloader-web-preloader": "Pré-carregador de Web"
 }
