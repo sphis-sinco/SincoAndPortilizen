@@ -34,5 +34,7 @@
   "preloader-preload-failed": "Failed to preload",
   "preloader-preload-succeedded": "was preloaded",
 
+  "preloader-start-text": "Press anything (except R) to start preloading",
+  
   "preloader-web-preloader": "Web Preloader"
 }

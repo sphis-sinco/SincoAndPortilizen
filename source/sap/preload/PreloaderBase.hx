@@ -39,7 +39,7 @@ class PreloaderBase extends State
 		#if desktop
 		preloadArts = [];
 
-		for (file in FileManager.getTypeArray('preloader image', 'images/preloader/', ['.png'], ['assets/images/preloader']))
+		for (file in FileManager.getTypeArray('preloader image', 'images/preloader/', ['.png'], ['assets/images/preloader/']))
 		{
 			if (!file.contains('web/'))
 				preloadArts.push(file.split('/')[file.split('/').length - 1].replace('.png', ''));

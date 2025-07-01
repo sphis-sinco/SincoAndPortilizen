@@ -1,30 +1,7 @@
 package sap.modding.hscript;
 
+import sap.stages.sidebit2.Sidebit2IntroCutscene;
 import crowplexus.iris.Iris;
-import sap.credits.CreditsSubState;
-import sap.mainmenu.MainMenu;
-import sap.mainmenu.PlayMenu;
-import sap.results.Rank;
-import sap.results.ResultsChar;
-import sap.settings.SettingsMenu;
-import sap.stages.Combo;
-import sap.stages.PaulPortGameOver;
-import sap.stages.sidebit1.Sidebit1;
-import sap.stages.sidebit1.Sidebit1IntroCutscene;
-import sap.stages.sidebit1.Sidebit1PostCutsceneAtlas;
-import sap.stages.stage1.Osin;
-import sap.stages.stage1.PostStage1Cutscene;
-import sap.stages.stage1.Sinco;
-import sap.stages.stage1.Stage1;
-import sap.stages.stage2.PostStage2Cutscene;
-import sap.stages.stage2.Stage2;
-import sap.stages.stage2.Stage2Rock;
-import sap.stages.stage2.Stage2Sinco;
-import sap.stages.stage4.EnemyS4;
-import sap.stages.stage4.PortS4;
-import sap.stages.stage4.PostStage4Cutscene;
-import sap.stages.stage4.Stage4;
-import sap.title.TitleState;
 import sinlib.utilities.FileManager.PathTypes;
 
 // THANK YOU FNF-Doido-Engine
@@ -77,6 +54,8 @@ class ScriptManager
 		setScript('BlankBG', BlankBG);
 
 		setScript('Version', Version);
+
+		// setScript('Sidebit2IntroCutscene', Sidebit2IntroCutscene);
 
 		// functions
 		setScript('UnlockMedal', function(medal:String):Medal

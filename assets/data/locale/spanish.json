@@ -34,5 +34,7 @@
   "preloader-preload-failed": "Error en la precarga",
   "preloader-preload-succeedded": "estaba precargado",
 
+  "preloader-start-text": "Press anything (except R) to start preloading",
+  
   "preloader-web-preloader": "Precargador web"
 }
