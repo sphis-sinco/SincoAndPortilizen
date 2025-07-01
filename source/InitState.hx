@@ -40,7 +40,7 @@ class InitState extends FlxState
 
 			FlxG.sound.volume = FlxG.save.data.settings.volume;
 
-			#if web
+			#if html5
 			// pixel perfect render fix!
 			lime.app.Application.current.window.element.style.setProperty("image-rendering", "pixelated");
 			#end
@@ -89,7 +89,7 @@ class InitState extends FlxState
 			trace('OUTDATED');
 			Global.switchState(new OutdatedMenu());
 		} else {
-			Global.switchState(new #if web WebPreloader #else DesktopPreloader #end());
+			Global.switchState(new #if html5 WebPreloader #else DesktopPreloader #end());
 		}
 
 		super.create();
