@@ -1,5 +1,6 @@
 package;
 
+import sap.preload.WebPreloader;
 import sap.preload.DesktopPreloader;
 import flixel.system.debug.log.LogStyle;
 import flixel.util.typeLimit.NextState;
@@ -88,7 +89,7 @@ class InitState extends FlxState
 			trace('OUTDATED');
 			Global.switchState(new OutdatedMenu());
 		} else {
-			Global.switchState(new DesktopPreloader());
+			Global.switchState(new #if web WebPreloader #else DesktopPreloader #end());
 		}
 
 		super.create();

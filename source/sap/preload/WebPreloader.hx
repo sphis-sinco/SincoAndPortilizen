@@ -1,13 +1,13 @@
 package sap.preload;
 
-class DesktopPreloader extends PreloaderBase
+class WebPreloader extends PreloaderBase
 {
 	override public function new() {
 		super();
-		platform = 'Desktop';
+		platform = 'Web';
 	}
 
-	override public function texturePreload()
+        override public function texturePreload()
 	{
 		texturePreloadFinished = false;
 		currentAssetIndex = 1;
@@ -16,7 +16,7 @@ class DesktopPreloader extends PreloaderBase
 			currentTexture = texturePath;
 			trace('Preload progress: ' + '${(currentAssetIndex / assetsToPreload.length) * 100}% ' + '(${currentAssetIndex}/${assetsToPreload.length})');
 
-			Global.cacheTexture(texturePath);
+			Assets.loadBitmapData(texturePath);
 
 			currentAssetIndex++;
 		}
@@ -29,4 +29,5 @@ class DesktopPreloader extends PreloaderBase
                         currentTextureText.text += '\nPreloading complete! Press anything to start';
 		}
 	}
+
 }
