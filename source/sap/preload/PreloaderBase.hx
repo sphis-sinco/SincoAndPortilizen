@@ -89,7 +89,7 @@ class PreloaderBase extends State
 		if (Global.keyJustReleased(R))
 			randomPreloadArt();
 
-		if (currentAssetIndex == assetsToPreload.length && !texturePreloadFinished)
+		if (currentAssetIndex >= assetsToPreload.length)
 		{
 			if (!texturePreloadFinished)
 			{

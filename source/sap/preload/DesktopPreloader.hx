@@ -23,10 +23,10 @@ class DesktopPreloader extends PreloaderBase
 			{
 				progress = '(${currentAssetIndex - 1}/${assetsToPreload.length})';
 				progress_percent = '${FlxMath.roundDecimal(((currentAssetIndex - 1) / assetsToPreload.length) * 100, 0)}%';
-				trace('Preload progress: $progress_percent $progress\n');
+				trace('Preload progress: $progress_percent $progress');
 
 				msg = message + ' $progress';
-				trace(msg+'\n');
+				trace(msg);
 				if (addToCTTFunc)
 					addToCTT(msg);
 			}
@@ -51,10 +51,11 @@ class DesktopPreloader extends PreloaderBase
 			}
 
 			#if (target.threaded)
+			addToCTT('Preloading...');
+
 			sys.thread.Thread.create(() ->
 			{
 				trace('Caching $texturePath in a thread \n');
-				addToCTT('Preloading...');
 
 				Global.cacheTexture(texturePath, {
 					onComplete: () ->
