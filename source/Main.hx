@@ -1,5 +1,6 @@
 package;
 
+import sap.preload.DesktopPreloader;
 import funkin.util.logging.CrashHandler;
 
 class Main extends Sprite

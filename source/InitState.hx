@@ -1,5 +1,6 @@
 package;
 
+import sap.preload.DesktopPreloader;
 import flixel.system.debug.log.LogStyle;
 import flixel.util.typeLimit.NextState;
 import openfl.utils.AssetCache;
@@ -86,23 +87,8 @@ class InitState extends FlxState
 		{
 			trace('OUTDATED');
 			Global.switchState(new OutdatedMenu());
-		}
-
-		if (!Global.DEBUG_BUILD)
-		{
-			#if EXCESS_TRACES
-			trace('Game is not a debug build, auto-proceed');
-			#end
-			proceed();
-		}
-		else
-		{
-			#if EXCESS_TRACES
-			if (Global.DEBUG_BUILD)
-			{
-				trace('Game is a debug build');
-			}
-			#end
+		} else {
+			Global.switchState(new DesktopPreloader());
 		}
 
 		super.create();
@@ -110,9 +96,6 @@ class InitState extends FlxState
 
 	override public function update(elapsed:Float):Void
 	{
-		// when on debug builds you have to press something to stop
-		if (Global.keyJustReleased(ANY) && Global.DEBUG_BUILD)
-			proceed();
 
 		super.update(elapsed);
 	}
