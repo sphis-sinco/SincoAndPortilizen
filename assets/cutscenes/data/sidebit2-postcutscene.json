@@ -1,0 +1,17 @@
+{
+        "type": "sparrow",
+
+        "assetPath": "sidebit2/sidebit2-ending",
+
+        "parts": 2,
+
+        "symbol_names": [
+                "Part 1",
+                "Part 2"
+        ],
+
+        "offsets": [
+                [0, 0],
+                [0, 0]
+        ]
+}

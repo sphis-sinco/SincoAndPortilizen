@@ -12,6 +12,7 @@ class Sidebit2IntroCutscene extends SparrowCutscene
 		super('sidebit2-precutscene');
 
 		DIFFICULTY = difficulty;
+		Global.playSoundEffect('SideBit2_IntroCutscene', CUTSCENES);
 	}
 
 	override function cutsceneEnded(?skipped_cutscene:Bool)

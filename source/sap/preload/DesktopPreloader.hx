@@ -16,21 +16,18 @@ class DesktopPreloader extends State
 	public var currentAssetIndex:Int = (Global.DEBUG_BUILD) ? -1 : 0;
 
 	public var currentTexture:String = '';
+        public var CTT:String = '${Global.GIT_VER} Desktop Preloader';
 	public var currentTextureText:FlxText = new FlxText(10, 10, 0, '', 16);
 
 	override function create()
 	{
 		super.create();
 
-		currentTextureText.text = '${Global.GIT_VER} Desktop Preloader';
+		currentTextureText.text = CTT;
 		currentTextureText.fieldWidth = FlxG.width - (currentTextureText.x * 2);
 		add(currentTextureText);
 
-		if (Global.DEBUG_BUILD)
-		{
-			#if EXCESS_TRACES trace('Game is a debug build'); #end
-			currentTextureText.text += '\nDebug build: Press anything to start';
-		}
+		currentTextureText.text += '\nPress anything to start preloading';
 	}
 
 	override function update(elapsed:Float)
@@ -42,7 +39,8 @@ class DesktopPreloader extends State
 
 		if (texturePreloadFinished)
 		{
-			InitState.proceed();
+			if (Global.keyJustReleased(ANY) && Global.DEBUG_BUILD)
+                                InitState.proceed();
 		}
 		else if (currentAssetIndex == 0)
 		{
@@ -69,5 +67,12 @@ class DesktopPreloader extends State
 			currentAssetIndex++;
 		}
 		texturePreloadFinished = true;
+
+                currentTextureText.text = CTT;
+		if (Global.DEBUG_BUILD)
+		{
+			#if EXCESS_TRACES trace('Game is a debug build'); #end
+                        currentTextureText.text += '\nPreloading complete! Press anything to start';
+		}
 	}
 }
