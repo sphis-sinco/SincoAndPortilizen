@@ -2,9 +2,9 @@ name: Indev builds
 
 on:
   push:
-    branches: [ main-indev ]
+    branches: [main-indev]
   pull_request:
-    branches: [ main-indev ]
+    branches: [main-indev]
 
   workflow_dispatch:
 
@@ -17,7 +17,7 @@ jobs:
 
       - uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.3.6
+          haxe-version: 4.3.7
 
       - name: Restore Previous Cache
         id: cache-build-restore
@@ -54,21 +54,21 @@ jobs:
             cache-build-linux
 
       # - name: Tar files
-        # run: tar -zcvf Linux.tar.gz export/release/linux/bin
+      # run: tar -zcvf Linux.tar.gz export/release/linux/bin
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: linuxBuild
           path: export/release/linux/bin
-  buildWindows:
-    runs-on: windows-latest
+  buildhtml5:
+    runs-on: html5-latest
 
     steps:
       - uses: actions/checkout@main
 
       - uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.3.6
+          haxe-version: 4.3.7
 
       - name: Restore Previous Cache
         id: cache-build-restore
@@ -76,9 +76,9 @@ jobs:
         with:
           path: |
             .haxelib/
-            export/release/windows/haxe/
-            export/release/windows/obj/
-          key: cache-build-windows
+            export/release/html5/haxe/
+            export/release/html5/obj/
+          key: cache-build-html5
 
       - name: Installing Libraries
         run: haxe --interp -cp ./actions/libs-installer -D analyzer-optimize -main Main
@@ -86,29 +86,29 @@ jobs:
         run: echo "${{github.run_id}}" > VERSION
 
       - name: Compile
-        run: haxelib run lime build windows
+        run: haxelib run lime build html5
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
         with:
-          script: await require('./actions/cache/clear-cache.js')({github, context}, 'cache-build-windows');
+          script: await require('./actions/cache/clear-cache.js')({github, context}, 'cache-build-html5');
 
       - name: Save Current Cache
         uses: actions/cache@main
         with:
-          key: cache-build-windows
+          key: cache-build-html5
           path: |
             .haxelib/
-            export/release/windows/haxe/
-            export/release/windows/obj/
+            export/release/html5/haxe/
+            export/release/html5/obj/
           restore-keys: |
-            cache-build-windows
+            cache-build-html5
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
-          name: windowsBuild
-          path: export/release/windows/bin
+          name: html5Build
+          path: export/release/html5/bin
   buildMac:
     runs-on: macos-13
 
@@ -117,7 +117,7 @@ jobs:
 
       - uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.3.6
+          haxe-version: 4.3.7
 
       - name: Restore Previous Cache
         id: cache-build-restore
@@ -154,9 +154,58 @@ jobs:
             cache-build-mac
 
       # - name: Tar files
-        # run: tar -zcvf Mac.tar.gz export/release/macos/bin
+      # run: tar -zcvf Mac.tar.gz export/release/macos/bin
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
           name: macBuild
           path: export/release/macos/bin
+  buildWeb:
+    runs-on: web
+
+    steps:
+      - uses: actions/checkout@main
+
+      - uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.3.7
+
+      - name: Restore Previous Cache
+        id: cache-build-restore
+        uses: actions/cache/restore@main
+        with:
+          path: |
+            .haxelib/
+            export/release/html5/haxe/
+            export/release/html5/obj/
+          key: cache-build-html5
+
+      - name: Installing Libraries
+        run: haxe --interp -cp ./actions/libs-installer -D analyzer-optimize -main Main
+      - name: Create Version Tag
+        run: echo "${{github.run_id}}" > VERSION
+
+      - name: Compile
+        run: haxelib run lime build html5
+
+      - name: Clear Previous Cache
+        uses: actions/github-script@main
+        with:
+          script: await require('./actions/cache/clear-cache.js')({github, context}, 'cache-build-html5');
+
+      - name: Save Current Cache
+        uses: actions/cache@main
+        with:
+          key: cache-build-html5
+          path: |
+            .haxelib/
+            export/release/html5/haxe/
+            export/release/html5/obj/
+          restore-keys: |
+            cache-build-html5
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: html5Build
+          path: export/release/html5/bin
