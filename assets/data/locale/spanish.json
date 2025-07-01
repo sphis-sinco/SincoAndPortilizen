@@ -4,6 +4,7 @@
   "hp": "SALUD",
   "dodge": "ESQUIVAR",
   "tempo-city": "ciudad de ritmo",
+
   "rank-perfect": "perfecto",
   "rank-excellent": "excelente",
   "rank-great": "un gran trabajo",
@@ -11,14 +12,19 @@
   "rank-bad": "malo",
   "rank-awful": "horrible",
   "you-did": "LO HICISTE",
+
   "menu-play": "jugar",
   "menu-credits": "créditos",
   "menu-leave": "dejar",
   "menu-settings": "ajustes",
   "menu-medals": "medalhas",
+  "menu-mods": "modificaciones",
+  "menu-changelog": "registro de cambios",
+
   "play-new": "nuevo",
   "play-continue": "continuar",
   "play-back": "atrás",
+
   "settings-language": "idioma",
   "settings-volume": "volumen",
   "settings-window-resolution": "resolución de ventana",

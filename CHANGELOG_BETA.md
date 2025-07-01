@@ -4,6 +4,13 @@
 - Stage 2 OST Song: Teen Prodigy
 <version>
 
+## 0.1_01b - 7/1/2025
+### Fixed
+- Missing locale changes for "mods" and "changelog" in the main menu (Issue #39)
+- Medal text doesn't change when a locale does (Issue #38 / #40)
+
+<version>
+
 ## 0.1b (Pitstop 3 - Sidebit 2) - 7/1/2025
 ### Added
 - **Sidebit 2**

@@ -1,5 +1,6 @@
 package sap.settings;
 
+import sap.credits.CreditsSubState;
 import funkin.util.logging.AnsiTrace;
 import funkin.util.logging.CrashHandler;
 import sap.mainmenu.MainMenu;
@@ -136,6 +137,7 @@ class SettingsMenu extends FlxSubState
 
 				Locale.initalizeLocale(newlang);
 				MainMenu.set_menuboxtexts(MainMenu.public_menutextsSelection);
+				CreditsSubState.creditsJSONInit();
 
 				FileManager.writeToPath('cur_lang.txt', Locale.localeName);
 			case 'volume':

@@ -4,7 +4,7 @@ class Version {
         public static var MajorVersion:Int = 0;
 	public static var MinorVersion:Int = 1;
 	public static var PatchVersion:Int = 0;
-	public static var HotfixVersion:Int = 0;
+	public static var HotfixVersion:Int = 1;
         public static var Suffix:String = 'b';
 
         public static function generateVersionString(patch:Bool = true, hotfix:Bool = true, suffix:Bool = true)

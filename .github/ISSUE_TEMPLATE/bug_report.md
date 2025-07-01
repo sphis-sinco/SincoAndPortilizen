@@ -8,9 +8,9 @@ assignees: ''
 ---
 
 # Describe the bug
-A clear and concise description of what the bug is.
+A description on the bug is.
 
-# Step-by-step instructions to reproduce the bug
+# Instructions to reproduce the bug
 Steps to reproduce the behavior:
 1. Go to '...'
 2. Click on '....'
@@ -25,9 +25,7 @@ If applicable, add screenshots to help explain your problem.
 
 # Basic Information (please complete the following information as it may be a web or desktop-specific issue)
 <!-- If you are playing a github actions build say "gab-" and then the action number along with the first word in the workflow name (i.e gab-13-indev) for the game version field -->
- - OS (DOWNLOADED BUILDS): [e.g. iOS]
- - Browser (WEB): [e.g. chrome, safari]
- - Version: [e.g. 22]
+ - Platform: Desktop/Web
  - Game Version: 0.4.2a
 
 # Additional Information

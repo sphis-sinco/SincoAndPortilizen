@@ -4,6 +4,7 @@
   "hp": "HP",
   "dodge": "DESVIE",
   "tempo-city": "Cidade do Tempo",
+
   "rank-perfect": "perfeito",
   "rank-excellent": "excelente",
   "rank-great": "ótimo",
@@ -11,14 +12,19 @@
   "rank-bad": "ruim",
   "rank-awful": "horrível",
   "you-did": "VOCÊ FOI",
+
   "menu-play": "jogar",
   "menu-credits": "créditos",
   "menu-leave": "sair",
   "menu-settings": "configurações",
   "menu-medals": "medals",
+  "menu-mods": "mods",
+  "menu-changelog": "mudanças",
+
   "play-new": "novo",
   "play-continue": "continuar",
   "play-back": "voltar",
+
   "settings-language": "linguagem",
   "settings-volume": "volume",
   "settings-window-resolution": "resolução da janela",
