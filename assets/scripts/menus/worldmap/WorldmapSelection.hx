@@ -15,22 +15,19 @@ function worldmapSelection(character:String, selection:Int, sidebitMode:Bool)
 	switch (character.toLowerCase())
 	{
 		case 'portilizen':
-			if (selection == 4 && !sidebitMode)
-				Global.switchState(new Stage4(difficulty));
-			else if (selection == 1 && sidebitMode)
-				Global.switchState(new Sidebit1IntroCutscene(difficulty));
-			else if (selection == 2 && sidebitMode)
-				Global.switchState(new Sidebit2IntroCutscene(difficulty));
-			else if (selection == 5 && !sidebitMode)
-				Global.switchState(new Stage5(difficulty));
+			switch (selection)
+			{
+				case 1: if (sidebitMode) Global.switchState(new Sidebit1IntroCutscene(difficulty));
+				case 2: if (sidebitMode) Global.switchState(new Sidebit2IntroCutscene(difficulty));
+				case 4: if (!sidebitMode) Global.switchState(new Stage4(difficulty));
+				case 5: if (!sidebitMode) Global.switchState(new Stage5(difficulty));
+			}
 		case 'sinco':
-			if (selection == 1 && !sidebitMode)
-				Global.switchState(new Stage1(difficulty));
-			else if (selection == 1 && sidebitMode)
-				Global.switchState(new Sidebit1IntroCutscene(difficulty));
-			else if (selection == 2 && !sidebitMode)
-				Global.switchState(new Stage2(difficulty));
-
+			switch (selection)
+			{
+				case 1: if (sidebitMode) Global.switchState(new Sidebit1IntroCutscene(difficulty)); else Global.switchState(new Stage1(difficulty));
+				case 2: if (!sidebitMode) Global.switchState(new Stage2(difficulty));
+			}
 		default:
 			trace(character + ' has no implementation');
 	}
