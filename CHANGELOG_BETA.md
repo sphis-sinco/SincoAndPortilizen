@@ -7,7 +7,7 @@
 ## 0.1b (Pitstop 3 - Sidebit 2) - 7/1/2025
 ### Added
 - **Sidebit 2**
-- Asset preloading
+- (Desktop only) Asset preloading
 - SongPlayer class
   - When a song plays if there is a json then a text will display with song 
   - I call this the SPJC system
