@@ -13,7 +13,7 @@ class PreloaderBase extends State
 	];
 	public var texturePreloadFinished:Bool = false;
 
-	public var currentAssetIndex:Int = (Global.DEBUG_BUILD) ? -1 : 0;
+	public var currentAssetIndex:Int = -1;
 
 	public var currentTexture:String = '';
         public var platform:String;
