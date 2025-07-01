@@ -5,7 +5,11 @@
 <version>
 
 ## 0.1_01b - 7/1/2025
+### Changed
+- When the `spanish` locale is enabled, the mainmenu texts chage size
 ### Fixed
+- Clear save crash on web (Issue #41)
+- Incorrect sizing on mainmenu option box (Issue #40)
 - Missing locale changes for "mods" and "changelog" in the main menu (Issue #39)
 - Medal text doesn't change when a locale does (Issue #38 / #40)
 

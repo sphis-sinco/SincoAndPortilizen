@@ -17,9 +17,6 @@ class SaveManager
 		FlxG.save.data.medals = null;
 		FlxG.save.data.unlocked_characters = null;
 		FlxG.save.data.enabled_mods = null;
-
-		SettingsMenu.window_res(getSettings().window_res);
-		SettingsMenu.new_windowres = getSettings().window_res;
 	}
 	/**
 	 * This makes sure there are no null values

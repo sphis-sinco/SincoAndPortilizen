@@ -61,7 +61,7 @@ class MainMenu extends State
 		add(port);
 
 		menuselectbox = new FlxSprite();
-		menuselectbox.makeGraphic(80, #if sys (ModFolderManager.MODS.length > 0) ? 104 : 80 #else 64 #end, FlxColor.BLACK);
+		menuselectbox.makeGraphic(80, Std.int(64 * (menutexts.get(menutextsSelection).length / 4)), FlxColor.BLACK);
 		Global.scaleSprite(menuselectbox, 0);
 		menuselectbox.screenCenter();
 		add(menuselectbox);
@@ -174,7 +174,8 @@ class MainMenu extends State
 		for (text in menutexts.get(mapstring))
 		{
 			var texty:Float = menuselectbox.y - menuselectbox.height + (i * 48);
-			var newtext:FlxText = new FlxText(menuselectbox.x, texty, 0, Global.getLocalizedPhrase('$mapstring-$text', text), 32);
+			var newtext:FlxText = new FlxText(menuselectbox.x, texty, 0, Global.getLocalizedPhrase('$mapstring-$text', text),
+				(Locale.localeName.toLowerCase() == 'spanish' ? 16 : 32));
 			newtext.screenCenter(X);
 
 			newtext.alignment = CENTER;
