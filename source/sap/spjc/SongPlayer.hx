@@ -45,7 +45,8 @@ class SongPlayer
 					switch (Global.getCurrentState())
 					{
 						case 'TitleState':
-							playingFlxText.y = TitleState.CHARACTER_RING.y;
+							playingFlxText.y -= 64;
+							playingFlxText.color = FlxColor.BLACK;
 						case 'Stage4':
 							playingFlxText.y = 16;
 					}

@@ -26,7 +26,7 @@ class DesktopPreloader extends PreloaderBase
 		if (Global.DEBUG_BUILD)
 		{
 			#if EXCESS_TRACES trace('Game is a debug build'); #end
-                        currentTextureText.text += '\nPreloading complete! Press anything to start';
+                        currentTextureText.text += '\nPreloading complete! Press anything (except R) to start';
 		}
 	}
 }

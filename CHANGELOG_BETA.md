@@ -7,6 +7,7 @@
 ## 0.1b (Pitstop 3 - Sidebit 2) - 7/1/2025
 ### Added
 - **Sidebit 2**
+- Preloader artwork (easy to add more on desktop, and if you don't want antialiasing add "-px" to the end of the filename)
 - Asset preloading
 - SongPlayer class
   - When a song plays if there is a json then a text will display with song 
