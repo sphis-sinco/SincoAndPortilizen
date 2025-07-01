@@ -16,9 +16,16 @@ class DesktopPreloader extends PreloaderBase
 			currentTexture = texturePath;
 			trace('Preload progress: ' + '${(currentAssetIndex / assetsToPreload.length) * 100}% ' + '(${currentAssetIndex}/${assetsToPreload.length})');
 
+			#if (target.threaded)
+                         sys.thread.Thread.create(() -> {
+				 trace('Caching $texturePath in a thread');
+				 Global.cacheTexture(texturePath);
+				 currentAssetIndex++;
+			 });
+			#else
 			Global.cacheTexture(texturePath);
-
 			currentAssetIndex++;
+			#end
 		}
 		texturePreloadFinished = true;
 
