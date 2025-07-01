@@ -54,7 +54,8 @@ class ScriptManager
 
 		setScript('Version', Version);
 
-		setScript('Sidebit1IntroCutscene', sap.stages.sidebit1.Sidebit1IntroCutscene);
+		setScript('sap.stages.sidebit1.Sidebit1IntroCutscene', sap.stages.sidebit1.Sidebit1IntroCutscene);
+		setScript('sap.stages.sidebit2.Sidebit2IntroCutscene', sap.stages.sidebit2.Sidebit2IntroCutscene);
 
 		// functions
 		setScript('UnlockMedal', function(medal:String):Medal
