@@ -44,7 +44,7 @@ class PauseTesting extends PausableState
 	{
 		if (FlxG.keys.pressed.CONTROL)
 		{
-                        var different = (FlxG.keys.anyPressed([LEFT, DOWN, UP, RIGHT]));
+			var different = (FlxG.keys.anyPressed([LEFT, DOWN, UP, RIGHT]));
 
 			var suffix:String = '';
 			switch (index)
@@ -63,23 +63,31 @@ class PauseTesting extends PausableState
 			}
 
 			if (FlxG.keys.pressed.LEFT)
+			{
 				offsets[index][0] -= increase;
+				art.x -= increase;
+			}
 			if (FlxG.keys.pressed.RIGHT)
+			{
 				offsets[index][0] += increase;
+				art.x += increase;
+			}
 			if (FlxG.keys.pressed.UP)
+			{
 				offsets[index][1] -= increase;
+				art.y -= increase;
+			}
 			if (FlxG.keys.pressed.DOWN)
+			{
 				offsets[index][1] += increase;
+				art.y += increase;
+			}
 
-			FileManager.writeToPath('assets/images/pausemenu/${artStrings[index].replace('.png', '')}${suffix}.pao', '${offsets[index][0]}\n${offsets[index][1]}');
+			FileManager.writeToPath('assets/images/pausemenu/${artStrings[index].replace('.png', '')}${suffix}.pao',
+				'${offsets[index][0]}\n${offsets[index][1]}');
 
-			art.destroy();
-			art = artInit(index);
-			art.x += offsets[index][0];
-			art.y += offsets[index][1];
-			add(art);
-
-			if (different) trace('$index offsets: ${offsets[index]}');
+			if (different)
+				trace('$index offsets: ${offsets[index]}');
 			return;
 		}
 
@@ -90,7 +98,11 @@ class PauseTesting extends PausableState
 			artStrings[index] = allArts[artIndexes[index]];
 			trace('Toggled pause art $index to ${artEnabled[index] ? 'on' : 'off'}');
 
-                        getOffsets();
+			getOffsets();
+
+			art = artInit(index);
+			art.x += offsets[index][0];
+			art.y += offsets[index][1];
 
 			return;
 		}
