@@ -1,6 +1,5 @@
 package sap.settings;
 
-import funkin.api.newgrounds.NewgroundsClient;
 import sap.credits.CreditsSubState;
 import funkin.util.logging.AnsiTrace;
 import funkin.util.logging.CrashHandler;
@@ -71,10 +70,6 @@ class SettingsMenu extends FlxSubState
 		#if sys
 		newSaveValue('download latest traces', null);
 		#end
-		#end
-
-		#if FEATURE_NEWGROUNDS
-		newSaveValue('${(!NewgroundsClient.instance.isLoggedIn()) ? 'login to' : 'logout of'} newgrounds', null);
 		#end
 
 		newSaveValue('clear save', null);
@@ -183,22 +178,6 @@ class SettingsMenu extends FlxSubState
 				SaveManager.save();
 				MainMenu.inSubstate = false;
 				FlxG.resetGame();
-			case 'login to newgrounds':
-				NewgroundsClient.instance.login(function()
-				{
-					saveValuesUpdate();
-				}, function()
-				{
-					FlxG.log.warn("Newgrounds login failed!");
-				});
-			case 'logout of newgrounds':
-				NewgroundsClient.instance.logout(function()
-				{
-					saveValuesUpdate();
-				}, function()
-				{
-					FlxG.log.warn("Newgrounds logout failed!");
-				});
 		}
 
 		saveValuesUpdate();

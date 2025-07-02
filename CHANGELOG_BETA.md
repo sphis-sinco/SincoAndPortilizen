@@ -4,9 +4,11 @@
 - Stage 2 OST Song: Teen Prodigy
 <version>
 
-## 0.1.1b - 7/1/2025
+## 0.1_02b - 7/1/2025
 ### Added
-- **Newgrounds Login/Logout**
+- New preloader art
+### Removed
+- Web build
 ### Fixed
 - "The OC of today" Medal unlock condition (was flipped basically and I'm going insane)
 

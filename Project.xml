@@ -63,8 +63,6 @@
 
         <define name="DISCORDRPC" if="windows" unless="hl" />
 
-        <define name="FEATURE_NEWGROUNDS_AUTOLOGIN" if="FEATURE_NEWGROUNDS"/>
-
         <!-- _______________________________ Libraries ______________________________ -->
 
         <haxelib name="flixel" />
@@ -80,7 +78,6 @@
         <haxelib name="hscript" if="debug" />
         <haxelib name="hscript-iris" if="SCRIPT_FILES" />
 
-        <haxelib name="newgrounds" if="FEATURE_NEWGROUNDS"/>
         <haxelib name="json2object"/>
 
         <!-- _________________________________ After _______________________________ -->

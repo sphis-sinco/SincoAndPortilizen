@@ -38,16 +38,6 @@ class InitState extends FlxState
 				Discord.DiscordClient.shutdown();
 			#end
 
-			//
-			// NEWGROUNDS API SETUP
-			//
-			#if FEATURE_NEWGROUNDS
-			funkin.api.newgrounds.NewgroundsClient.instance.init();
-
-			if (io.newgrounds.NG.core.attemptingLogin)
-				io.newgrounds.NG.core.cancelLoginRequest();
-			#end
-
 			FlxG.sound.volume = FlxG.save.data.settings.volume;
 
 			#if html5

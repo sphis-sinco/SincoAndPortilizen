@@ -1,6 +1,5 @@
 package sap.savedata;
 
-import funkin.api.newgrounds.NewgroundsClient;
 import sap.settings.SettingsMenu;
 
 class SaveManager
@@ -18,13 +17,6 @@ class SaveManager
 		FlxG.save.data.medals = null;
 		FlxG.save.data.unlocked_characters = null;
 		FlxG.save.data.enabled_mods = null;
-
-		#if FEATURE_NEWGROUNDS
-		if (!NewgroundsClient.instance.isLoggedIn())
-			FlxG.save.data.ngSessionId = null;
-		#else
-		FlxG.save.data.ngSessionId = null;
-		#end
 	}
 
 	/**
@@ -45,7 +37,6 @@ class SaveManager
 		}
 		FlxG.save.data.unlocked_characters ??= getDefaultSave().unlocked_characters;
 		FlxG.save.data.enabled_mods ??= getDefaultSave().enabled_mods;
-		FlxG.save.data.ngSessionId ??= getDefaultSave().ngSessionId;
 
 		// run these functions to make sure no null vals
 		SavedSettings.setupSettings();
@@ -67,8 +58,7 @@ class SaveManager
 			gameplaystatus: GameplayStatus.returnDefaultGameplayStatus(),
 			medals: [],
 			unlocked_characters: [],
-			enabled_mods: [],
-			ngSessionId: null
+			enabled_mods: []
 		}
 	}
 
@@ -105,11 +95,6 @@ class SaveManager
 	public static function getEnabledMods():Dynamic
 	{
 		return FlxG.save.data.enabled_mods;
-	}
-
-	public static function getNgSessionId():Dynamic
-	{
-		return FlxG.save.data.ngSessionId;
 	}
 
 	public static function save():Void
