@@ -343,13 +343,17 @@ class FileManager
 				if (!readDirectory('').contains(prevDir) && prevDir != '')
 				{
 					FileSystem.createDirectory(prevDir);
+					#if EXCESS_TRACES
 					trace('creating $prevDir');
+					#end
 				}
 
 				if (!readDirectory(prevDir).contains(dir) && !dir.contains('.'))
 				{
 					FileSystem.createDirectory(dir);
+					#if EXCESS_TRACES
 					trace('creating $dir');
+					#end
 				}
 
 				prevDir += dir + '/';
@@ -358,11 +362,15 @@ class FileManager
 			if (!exists(path))
 			{
 				File.write(path, false);
+				#if EXCESS_TRACES
 				trace('generating $path');
+				#end
 			}
 
 			File.saveContent(path, content);
+			#if EXCESS_TRACES
 			trace('writing to $path');
+			#end
 		}
 		else
 		{

@@ -25,7 +25,7 @@ class CharacterSelect extends State
 		#if !html5
 		TryCatch.tryCatch(function()
 		{
-			for (file in FileManager.readDirectory('assets/data/playable_characters'))
+			for (file in FileManager.readDirectory('assets/data/playable_characters', ['.json']))
 			{
 				final name:String = file.split('.')[0];
 				final json:PlayableCharacter = PlayableCharacterManager.readPlayableCharacterJSON(name);

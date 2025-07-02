@@ -19,6 +19,8 @@ These do things. Lmao!
 - `NO_MODS`: When compiling with debug you don't get the debug_mods folder being transformed into the mods folder
 - `RECOMPILE_ON_ASSET_UPDATE` (enabled by default): Makes it so that when doing `-watch` and changing asset script files the game recompiles
 - `DO_NOT_RECOMPILE_ON_ASSET_UPDATE`: Disables `RECOMPILE_ON_ASSET_UPDATE`
+- `AUTO_PRELOAD`: Auto-preloads your game so you don't have to click anything
+- `AUTO_PRELOADER_START`: Auto-starts your game after preloading
 
 ## Start State Flags
 - `SKIP_TITLE`: Sends you to the Main Menu instantly instead of the Title Screen
@@ -55,6 +57,8 @@ These do things. Lmao!
 - `SIDEBIT_MENU`: Sends you to the `SidebitSelect` state
 
 - `CHANGELOG_MENU`: Sends you to the `ChangelogMenu` state
+
+- `PAUSE_TESTING`: Sends you to the `PauseTesting` state
 
 ## Language Flags
 - `CNGLA_TRACES`: Allows the console to print out what localized assets it could not get

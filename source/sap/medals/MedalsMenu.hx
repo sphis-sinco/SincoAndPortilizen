@@ -43,7 +43,7 @@ class MedalsMenu extends FlxSubState
                 #if EXCESS_TRACES
                 trace(MedalData.unlocked_medals);
                 #end
-		for (medal in FileSystem.readDirectory('assets/images/medals/awards'))
+		for (medal in FileManager.readDirectory('assets/images/medals/awards', ['.png']))
 		{
 			if (medal != 'award.png')
 			{

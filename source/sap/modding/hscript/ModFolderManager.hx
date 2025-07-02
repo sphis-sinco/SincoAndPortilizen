@@ -41,7 +41,7 @@ class ModFolderManager
 			#if EXCESS_TRACES
 			trace('${MODS_FOLDER}$folder');
 			#end
-			if (!folder.contains('.'))
+			if (FileSystem.isDirectory('${MODS_FOLDER}$folder'))
 			{
 				#if EXCESS_TRACES
 				trace('Potential mod folder: $folder');

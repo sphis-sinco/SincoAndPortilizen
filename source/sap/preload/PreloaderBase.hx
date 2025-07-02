@@ -22,7 +22,7 @@ class PreloaderBase extends State
 
 	public var PreloadFinished:Bool = false;
 
-	public var currentAssetIndex:Int = -1;
+	public var currentAssetIndex:Int = #if AUTO_PRELOAD 0 #else - 1 #end;
 
 	public var currentTexture:String = '';
 	public var platform:String;
@@ -81,34 +81,36 @@ class PreloaderBase extends State
 
 		if (PreloadFinished)
 		{
+			#if !AUTO_PRELOADER_START
 			if (Global.keyJustReleased(ANY) && !Global.keyJustReleased(R) && Global.DEBUG_BUILD)
 				InitState.proceed();
 			if (!Global.DEBUG_BUILD)
+			{
 				InitState.proceed();
+			}
+			#else
+			InitState.proceed();
+			#end
 		}
-		else if (currentAssetIndex == 0)
-		{
-			if (!texturePreloadFinished)
-				texturePreload();
-			else if (!soundPreloadFinished)
-				soundPreload();
-		}
-		else if (currentAssetIndex < 0)
-		{
-			if (Global.keyJustReleased(ANY) && !Global.keyJustReleased(R))
-				currentAssetIndex = 0;
-		}
-
+	else if (currentAssetIndex == 0)
+	{
+		if (!texturePreloadFinished)
+			texturePreload();
+		else if (!soundPreloadFinished)
+			soundPreload();
+	}
+	else if (currentAssetIndex < 0)
+	{
+		if (Global.keyJustReleased(ANY) && !Global.keyJustReleased(R))
+			currentAssetIndex = 0;
+	}
 		if (Global.keyJustReleased(R))
 			randomPreloadArt();
-
 		if (!texturePreloadFinished && currentAssetIndex > texturesToPreload.length)
 			texturePreloadFinished = true;
 		if (!soundPreloadFinished && currentAssetIndex > soundsToPreload.length)
 			soundPreloadFinished = true;
-
 		PreloadFinished = texturePreloadFinished && soundPreloadFinished;
-
 		if (PreloadFinished)
 		{
 			if (Global.DEBUG_BUILD && !currentTextureText.text.contains('!'))

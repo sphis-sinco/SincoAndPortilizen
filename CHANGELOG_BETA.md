@@ -5,6 +5,8 @@
 
 ## 0.1.1b - 7/2/2025
 ### Added
+- New build flags
+- Pause menu artwork
 - **Stage 5 OST Song: Family Rivalry**
 - New preloader art
 ### Removed

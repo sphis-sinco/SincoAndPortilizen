@@ -190,6 +190,9 @@ class InitState extends FlxState
 		#elseif CHANGELOG_MENU
 		switchToState(new sap.changelog.ChangelogMenu(), 'Changelog Menu');
 		return;
+		#elseif PAUSE_TESTING
+		switchToState(new sap.debug.PauseTesting(), 'Pause Debug Menu');
+		return;
 		#end
 
 		trace('Starting game regularly');

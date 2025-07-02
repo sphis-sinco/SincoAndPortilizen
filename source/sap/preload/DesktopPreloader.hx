@@ -24,10 +24,14 @@ class DesktopPreloader extends PreloaderBase
 			{
 				progress = '(${currentAssetIndex - 1}/${texturesToPreload.length})';
 				progress_percent = '${FlxMath.roundDecimal(((currentAssetIndex - 1) / texturesToPreload.length) * 100, 0)}%';
+				#if EXCESS_TRACES
 				trace('Preload progress: $progress_percent $progress');
+				#end
 
 				msg = message + ' $progress';
+				#if EXCESS_TRACES
 				trace(msg);
+				#end
 				if (addToCTTFunc)
 					addToCTT(msg);
 			}

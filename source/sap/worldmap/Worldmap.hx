@@ -51,7 +51,7 @@ class Worldmap extends State
 		var denied:Int = 0;
 
 		#if !html5
-		for (sidebit in FileManager.readDirectory('assets/data/sidebits'))
+		for (sidebit in FileManager.readDirectory('assets/data/sidebits', ['.json']))
 		{
 			final sidebitName:String = sidebit.split('.')[0];
 			final sidebitJson = FileManager.getJSON(FileManager.getDataFile('sidebits/$sidebit'));
