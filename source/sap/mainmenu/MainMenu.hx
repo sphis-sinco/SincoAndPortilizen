@@ -83,6 +83,8 @@ class MainMenu extends State
 
 		if (Global.previousState == 'ChangelogMenu')
 			FlxG.camera.fade(FlxColor.BLACK, 1, true, () -> {});
+
+		stickerTransitionClear();
 	}
 
 	public static var public_cycle:Int = 0;
@@ -222,7 +224,10 @@ class MainMenu extends State
 				}
 				else
 				{
-					Global.switchState(new TitleState());
+					FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
+					{
+						FlxG.switchState(ChangelogMenu.new);
+					});
 				}
 			}
 			#end
@@ -242,7 +247,7 @@ class MainMenu extends State
 			#if sys case 5: #else case 3: #end
 				FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
 				{
-					Global.switchState(new ChangelogMenu());
+					FlxG.switchState(ChangelogMenu.new);
 				});
 		}
 	}

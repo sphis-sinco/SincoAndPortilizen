@@ -1,6 +1,7 @@
 package;
 
 import funkin.ui.transition.StickerSubState;
+import funkin.ui.transition.StickerSubState.StickerShit;
 import funkin.ui.transition.StickerSubState.StickerSprite;
 import flixel.system.FlxAssets.FlxSoundAsset;
 import openfl.media.Sound;
@@ -289,7 +290,7 @@ class Global
 				oldStickers: oldStickersList
 			});
 
-			trace('Openning ${new_state}');
+			// trace('Openning ${new_state}');
 			FlxG.state.openSubState(stickerTransition);
 		}, {
 				errFunc: function()
@@ -449,13 +450,24 @@ class Global
 		var sound:FlxSound = new FlxSound().loadEmbedded(FlxG.sound.cache(key));
 	}
 
-	// TODO: Softcode these in maybe by reading the images folder
 	public static var RANDOM_STICKER_FOLDERS:Array<String> = ['sinco', 'misc'];
-	// TODO: Softcode this in maybe by reading the images folder and checking the sticker jsons
 	public static var RANDOM_STICKER_PACKS:Map<String, Array<String>> = [
 		'sinco' => ['all', 'set-1', 'set-2'],
 		'misc' => ['all', 'heros', 'villains', 'legendaries']
 	];
+
+	public static function initStickers()
+	{
+		RANDOM_STICKER_FOLDERS = [];
+		RANDOM_STICKER_PACKS = [];
+
+		RANDOM_STICKER_FOLDERS = FileManager.readDirectory('assets/stickers/images/');
+		for (folder in RANDOM_STICKER_FOLDERS)
+		{
+			var json:StickerShit = FileManager.getJSON(FileManager.getImageFile('${folder}/stickers.json', STICKERS).replace('.png', ''));
+			RANDOM_STICKER_PACKS.set(folder, json.stickerPacksArray);
+		}
+	}
 
 	public static function randomStickerFolder():String
 	{
@@ -464,19 +476,13 @@ class Global
 
 	public static function randomStickerPack(?folder:String):String
 	{
-		if (SLGame.isDebug)
-		{
-			trace('randomStickerPack: attempting to grab random sticker pack from "$folder"');
-		}
+		trace('randomStickerPack: attempting to grab random sticker pack from "$folder"');
 
 		var pack:String = 'all';
 		final nullCheck:Void->Void = function()
 		{
-			if (SLGame.isDebug)
-			{
-				trace('randomStickerPack: could not get random pack for ${folder}');
-				pack = 'all';
-			}
+			trace('randomStickerPack: could not get random pack for ${folder}');
+			pack = 'all';
 		};
 
 		if (folder != null)

@@ -91,7 +91,7 @@ class ChangelogMenu extends State
 			switch (paper.animation.name)
 			{
 				case 'grab-rev':
-					Global.switchState(new MainMenu());
+					FlxG.switchState(() -> new MainMenu());
 				case 'open-rev':
 					paper.playAnimation('grab-rev', false, true);
 				case 'grab':

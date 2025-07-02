@@ -14,5 +14,6 @@
     "villains": ["villains", "the hated"],
     "mix": ["the loved", "the hated"],
     "legendaries": ["legendary", "heros", "the loved"]
-  }
+  },
+  "stickerPacksArray": ["all", "heros", "villains", "mix", "legendaries"]
 }

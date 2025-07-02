@@ -1,5 +1,7 @@
 package sap.utils;
 
+import funkin.ui.transition.StickerSubState;
+
 class State extends FlxState
 {
 	override public function new():Void
@@ -47,7 +49,30 @@ class State extends FlxState
 		if (controlPressed && altPressed && shiftPressed && f5Pressed)
 		{
 			ScriptManager.callScript('GameRestart', [elapsed]);
-                        FlxG.resetGame();
+			FlxG.resetGame();
 		}
+	}
+
+	public function stickerTransitionClear()
+	{
+		if (StickerSubState.grpStickers.length > 0)
+			switchState(this, true);
+	}
+
+	public function switchState(new_state:FlxState, ?oldStickers:Bool = false, ?stickerSet:String = 'R', ?stickerPack:String = 'R')
+	{
+		var ss = stickerSet;
+		var sr = stickerPack;
+
+		if (ss == 'R')
+		{
+			ss = Global.randomStickerFolder();
+		}
+		if (sr == 'R')
+		{
+			sr = Global.randomStickerPack(ss);
+		}
+
+		Global.switchState(new_state, oldStickers, ss, sr);
 	}
 }

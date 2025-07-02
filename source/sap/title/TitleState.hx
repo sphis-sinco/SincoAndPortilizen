@@ -110,6 +110,8 @@ class TitleState extends State
 		{
 			add(MedalData.unlockMedal('Welcome'));
 		});
+
+		stickerTransitionClear();
 	}
 
 	override function postCreate()

@@ -24,6 +24,8 @@ class InitState extends FlxState
 
 	override public function create():Void
 	{
+		Global.initStickers();
+
 		folder = Global.randomStickerFolder();
 
 		Timer.measure(function()
@@ -192,7 +194,7 @@ class InitState extends FlxState
 
 		trace('Starting game regularly');
 
-		Global.switchState(new TitleState(), false, folder, Global.randomStickerPack(folder));
+		switchToState(new TitleState(), 'TitleState');
 	}
 
 	public static function switchToState(state:FlxState, stateName:String):Void

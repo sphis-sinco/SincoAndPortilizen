@@ -392,7 +392,7 @@ class StickerInfo
 
 	public function new(stickerSet:String):Void
 	{
-		var path = FileManager.getImageFile('${stickerSet}/stickers.json', STICKERS);
+		var path = FileManager.getImageFile('${stickerSet}/stickers.json', STICKERS).replace('.png', '');
 		var json = Json.parse(Assets.getText(path));
 
 		// doin this dipshit nonsense cuz i dunno how to deal with casting a json object with
@@ -447,5 +447,6 @@ typedef StickerShit =
 	artist:String,
 	stickers:Map<String, Array<String>>,
 	stickerPacks:Map<String, Array<String>>,
+	stickerPacksArray:Array<String>,
 	?pixel:Bool
 }

@@ -9,5 +9,6 @@
     "all": ["set-1", "set-2"],
     "set-1": ["set-1"],
     "set-2": ["set-2"]
-  }
+  },
+  "stickerPacksArray": ["all", "set-1", "set-2"]
 }

@@ -10,6 +10,7 @@
 ### Removed
 - Web build
 ### Fixed
+- Mainmenu changelog option sending you to the main menu when the mod option is gone
 - "The OC of today" Medal unlock condition (was flipped basically and I'm going insane)
 
 <version>
