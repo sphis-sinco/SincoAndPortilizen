@@ -3,14 +3,14 @@ package sap.debug;
 class PauseTesting extends PausableState
 {
 	var allArts:Array<String> = FileManager.readDirectory('assets/images/pausemenu/', ['.png']);
-	var artIndexes:Array<Int> = [0, 0, 0];
+	var artIndexes:Array<Int> = [0, 0];
 
 	override public function new()
 	{
 		super(true);
 
-		artEnabled = [true, false, false];
-		artStrings = ['', '', ''];
+		artEnabled = [false, false];
+		artStrings = ['', ''];
 	}
 
 	override function create()
@@ -52,12 +52,7 @@ class PauseTesting extends PausableState
 
 		if (FlxG.keys.justReleased.TWO)
 		{
-			artEvent(1, centerArt);
-		}
-
-		if (FlxG.keys.justReleased.THREE)
-		{
-			artEvent(2, rightArt);
+			artEvent(1, rightArt);
 		}
 	}
 }

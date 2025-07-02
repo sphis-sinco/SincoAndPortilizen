@@ -5,11 +5,10 @@ class PausableState extends State
 	public var paused:Bool = false;
 
 	public var leftArt:FlxSprite;
-	public var centerArt:FlxSprite;
 	public var rightArt:FlxSprite;
 
-	public var artEnabled:Array<Bool> = [false, false, false];
-	public var artStrings:Array<String> = ['', '', ''];
+	public var artEnabled:Array<Bool> = [false, false];
+	public var artStrings:Array<String> = ['', ''];
 
 	var builtin:Bool = false;
 
@@ -19,14 +18,12 @@ class PausableState extends State
 
 		artInit = function(index:Int)
 		{
-			var art = new FlxSprite().loadGraphic(FileManager.getImageFile('pausemenu/${artStrings[0]}'));
-			art.y = FlxG.height - art.height / 1.5;
+			var path = FileManager.getImageFile('pausemenu/${artStrings[index]}');
+			var art = new FlxSprite().loadGraphic(path);
+			if (!path.endsWith('-px'))
+				art.antialiasing = true;
+			// art.screenCenter();
 
-			art.x = art.width * 1.2;
-			if (index == 1)
-				art.screenCenter(X);
-			if (index == 2)
-				art.x = FlxG.width - art.width * 1.2;
 			return art;
 		}
 
@@ -99,8 +96,6 @@ class PausableState extends State
 
 			if (leftArt != null)
 				leftArt.destroy();
-			if (centerArt != null)
-				centerArt.destroy();
 			if (rightArt != null)
 				rightArt.destroy();
 		}
@@ -113,34 +108,24 @@ class PausableState extends State
 
 			pauseText = new FlxText(0, 0, 0, Global.getLocalizedPhrase('pauseable-pause'), 64);
 			pauseText.screenCenter(XY);
-			pauseText.y = pauseText.size * 2;
+			pauseText.y = pauseText.size * 1.5;
 			add(pauseText);
 
 			if (artEnabled[0])
 			{
 				leftArt = artInit(0);
 				add(leftArt);
-
-				leftArt.x = paoStuff(leftArt, 0, '-left')[0];
-				leftArt.y = paoStuff(leftArt, 0, '-left')[1];
 			}
 
 			if (artEnabled[1])
 			{
-				centerArt = artInit(1);
-				add(centerArt);
-
-				centerArt.x = paoStuff(centerArt, 2, '-center')[0];
-				centerArt.y = paoStuff(centerArt, 2, '-center')[1];
+				rightArt = artInit(1);
+				add(rightArt);
 			}
 
-			if (artEnabled[2])
+			if (rightArt.graphic == leftArt.graphic)
 			{
-				rightArt = artInit(2);
-				add(rightArt);
-
-				rightArt.x = paoStuff(rightArt, 2, '-right')[0];
-				rightArt.y = paoStuff(rightArt, 2, '-right')[1];
+				rightArt.flipX = true;
 			}
 		}
 	}
