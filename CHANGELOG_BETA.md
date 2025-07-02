@@ -1,18 +1,17 @@
 # Beta
 ## Unreleased
-- Stage 5 OST Song: Family Rivalry
 - Stage 2 OST Song: Teen Prodigy
 <version>
 
 ## 0.1.1b - 7/2/2025
 ### Added
+- **Stage 5 OST Song: Family Rivalry**
 - New preloader art
 ### Removed
 - Web build
 ### Fixed
 - Mainmenu changelog option sending you to the main menu when the mod option is gone
 - "The OC of today" Medal unlock condition (was flipped basically and I'm going insane)
-
 <version>
 
 ## 0.1_01b - 7/1/2025
@@ -23,7 +22,6 @@
 - Incorrect sizing on mainmenu option box (Issue #40)
 - Missing locale changes for "mods" and "changelog" in the main menu (Issue #39)
 - Medal text doesn't change when a locale does (Issue #38 / #40)
-
 <version>
 
 ## 0.1b (Pitstop 3 - Sidebit 2) - 7/1/2025

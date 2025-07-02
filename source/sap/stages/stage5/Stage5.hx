@@ -261,6 +261,8 @@ class Stage5 extends PausableState
 	{
 		super.update(elapsed);
 
+		Global.playMusic('FamilyRivalry');
+
 		FlxG.watch.addQuick('Player position', OBJ_PLAYER.getPosition());
 		FlxG.watch.addQuick('Opponent position', OBJ_OPPONENT.getPosition());
 
