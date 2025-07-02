@@ -35,6 +35,9 @@ class Sidebit1 extends PausableState
 	{
 		super(false);
 
+		artEnabled = [true, true];
+		artStrings = ['Sidebit1-portilizen', 'Sidebit1-sinco'];
+
 		DIFFICULTY = difficulty;
 		DIFFICULTY_JSON = FileManager.getJSON(FileManager.getDataFile('stages/sidebit1/${difficulty}.json'));
 
@@ -57,8 +60,7 @@ class Sidebit1 extends PausableState
 			player_max_health: SINCO_MAX_HEALTH,
 			player_healthIcon: new HealthIcon('gameplay/sidebits/sinco-healthicon', 'Sinco'),
 			player_healthIcon_flipX: true,
-			
-			
+
 			opponent: 'Portilizen',
 			opponent_health: PORTILIZEN_HEALTH,
 			opponent_max_health: PORTILIZEN_MAX_HEALTH,
@@ -110,7 +112,7 @@ class Sidebit1 extends PausableState
 				SINCO.x -= 160;
 
 				SINCO.playAnimation('attack-loop');
-                                Global.playSoundEffect('gameplay/attack');
+				Global.playSoundEffect('gameplay/attack');
 				FlxTween.tween(SINCO, {x: PORTILIZEN.x - 160}, SINCO_ATTACK_SPEED, {
 					onComplete: function(tween)
 					{
@@ -357,7 +359,8 @@ class Sidebit1 extends PausableState
 			SINCO.setPosition(SINCO_POINT.x, SINCO_POINT.y);
 			SINCO.x -= 25;
 			SINCO.y += 100;
-			if (SINCO.animation.name != 'hit') Global.hitHurt();
+			if (SINCO.animation.name != 'hit')
+				Global.hitHurt();
 			SINCO.playAnimation('hit');
 			if (CAN_DECREASE_SINCO_HEALTH)
 			{

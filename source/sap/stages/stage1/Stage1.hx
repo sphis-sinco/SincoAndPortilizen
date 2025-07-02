@@ -40,6 +40,9 @@ class Stage1 extends PausableState
 	{
 		super(false);
 
+		artEnabled = [true, true];
+		artStrings = ['Stage1-sinco', 'Stage1-osin'];
+
 		RUNNING = true;
 
 		DIFFICULTY = difficulty;

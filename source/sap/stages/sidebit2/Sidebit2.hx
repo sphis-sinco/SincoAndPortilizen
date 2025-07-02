@@ -23,6 +23,9 @@ class Sidebit2 extends PausableState
 	{
 		super(false);
 
+		artEnabled = [true, true];
+		artStrings = ['Sidebit2-portilizen', 'Sidebit2-osin'];
+
 		DIFFICULTY = difficulty;
 		DIFFICULTY_JSON = FileManager.getJSON(FileManager.getDataFile('stages/sidebit2/${difficulty}.json'));
 

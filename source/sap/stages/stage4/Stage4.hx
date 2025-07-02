@@ -34,6 +34,9 @@ class Stage4 extends PausableState
 		start_timer = diffJson.start_timer;
 
 		portJumping = false;
+
+		artEnabled = [true, true];
+		artStrings = ['Stage4-string-quest', 'Stage4-portilizen'];
 	}
 
 	override function create():Void

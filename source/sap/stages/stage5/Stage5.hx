@@ -148,6 +148,9 @@ class Stage5 extends PausableState
 		IN_CUTSCENE = false;
 
 		RUNNING = true;
+
+		artEnabled = [true, true];
+		artStrings = ['Stage5-STCS', 'Stage5-portilizen'];
 	}
 
 	override function create()
@@ -201,11 +204,11 @@ class Stage5 extends PausableState
 		PLAYER_CHARGE = OPPONENT_CHARGE = 0;
 		OPPONENT_CHARGE_TICK = OPPONENT_PAUSE_TICK = 0;
 
-                TIME_SECONDS = 0;
+		TIME_SECONDS = 0;
 
-                TIMER_TEXT = new FlxText(10, 64, 0, "60", 64);
+		TIMER_TEXT = new FlxText(10, 64, 0, "60", 64);
 		TIMER_TEXT.screenCenter(X);
-                TIMER_TEXT.alignment = CENTER;
+		TIMER_TEXT.alignment = CENTER;
 		TIMER_TEXT.color = FlxColor.BLACK;
 		add(TIMER_TEXT);
 		StageGlobals.waitSec(TIMER_SECONDS, TIME_SECONDS, TIMER_TEXT);
@@ -278,10 +281,10 @@ class Stage5 extends PausableState
 			togglePaused();
 		}
 
-                if (Std.parseInt(TIMER_TEXT.text) < 0)
-                {
-                        TIMER_TEXT.text = '0';
-                }
+		if (Std.parseInt(TIMER_TEXT.text) < 0)
+		{
+			TIMER_TEXT.text = '0';
+		}
 
 		if (EDITOR_MODE)
 			editorModeTick();

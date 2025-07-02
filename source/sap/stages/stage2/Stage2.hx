@@ -31,6 +31,9 @@ class Stage2 extends PausableState
 	{
 		super(false);
 
+		artEnabled = [true, false];
+		artStrings = ['Stage2-sinco', ''];
+
 		RUNNING = true;
 
 		DIFFICULTY = difficulty;
