@@ -1,5 +1,7 @@
 package;
 
+import funkin.ui.transition.StickerSubState;
+import funkin.ui.transition.StickerSubState.StickerSprite;
 import flixel.system.FlxAssets.FlxSoundAsset;
 import openfl.media.Sound;
 import flixel.graphics.FlxGraphic;
@@ -257,11 +259,46 @@ class Global
 		ScriptManager.setScript(name, value, allowOverride);
 	}
 
-	public static function switchState(new_state:FlxState):Void
+	public static function switchState(new_state:FlxState, ?oldStickers:Bool = false, ?stickerSet:String = 'sinco', ?stickerPack:String = 'all'):Void
 	{
 		previousState = getCurrentState();
 
-		FlxG.switchState(() -> new_state);
+		trace('switch');
+		TryCatch.tryCatch(function()
+		{
+			trace('initLOL');
+			var oldStickars:Array<StickerSprite> = [];
+
+			TryCatch.tryCatch(function()
+			{
+				for (sticker in StickerSubState.grpStickers.members)
+				{
+					// trace('new sticker');
+					oldStickars.push(sticker);
+				}
+			}, {
+					traceErr: true
+			});
+
+			var oldStickersList = (oldStickars != null) ? (oldStickars.length > 0 && oldStickers) ? oldStickars : null : null;
+
+			var stickerTransition = new funkin.ui.transition.StickerSubState({
+				targetState: state -> new_state,
+				stickerSet: stickerSet,
+				stickerPack: stickerPack,
+				oldStickers: oldStickersList
+			});
+
+			trace('Openning ${new_state}');
+			FlxG.state.openSubState(stickerTransition);
+		}, {
+				errFunc: function()
+				{
+					trace('flxG switch');
+					FlxG.switchState(() -> new_state);
+				},
+				traceErr: true
+		});
 	}
 
 	public static function anyKeysPressed(keys:Array<FlxKey>):Bool
@@ -310,13 +347,17 @@ class Global
 	 * Ensure the texture with the given key is cached.
 	 * @param key The key of the texture to cache.
 	 */
-	public static function cacheTexture(key:String,
-			?functions:{?onComplete:Void->Void, ?onFail:(tpSplit:Array<String>) -> Void, ?onSuccess:(tpSplit:Array<String>) -> Void, ?onStart:(tpSplit:Array<String>) -> Void}):Void
+	public static function cacheTexture(key:String, ?functions:
+		{
+			?onComplete:Void->Void,
+			?onFail:(tpSplit:Array<String>) -> Void,
+			?onSuccess:(tpSplit:Array<String>) -> Void,
+			?onStart:(tpSplit:Array<String>) -> Void
+		}):Void
 	{
-
 		var tpSplit:Array<String>;
 		tpSplit = key.split('/');
-		
+
 		// We don't want to cache the same texture twice.
 		if (currentCachedTextures.exists(key))
 			return;
@@ -400,12 +441,61 @@ class Global
 		}
 	}
 
-	
 	static var currentCachedSounds:Map<String, FlxSoundAsset> = [];
 	static var previousCachedSounds:Map<String, FlxSoundAsset> = [];
 
 	public static function cacheSound(key:String):Void
 	{
 		var sound:FlxSound = new FlxSound().loadEmbedded(FlxG.sound.cache(key));
+	}
+
+	// TODO: Softcode these in maybe by reading the images folder
+	public static var RANDOM_STICKER_FOLDERS:Array<String> = ['sinco', 'misc'];
+	// TODO: Softcode this in maybe by reading the images folder and checking the sticker jsons
+	public static var RANDOM_STICKER_PACKS:Map<String, Array<String>> = [
+		'sinco' => ['all', 'set-1', 'set-2'],
+		'misc' => ['all', 'heros', 'villains', 'legendaries']
+	];
+
+	public static function randomStickerFolder():String
+	{
+		return Global.RANDOM_STICKER_FOLDERS[FlxG.random.int(0, Global.RANDOM_STICKER_FOLDERS.length - 1)];
+	}
+
+	public static function randomStickerPack(?folder:String):String
+	{
+		if (SLGame.isDebug)
+		{
+			trace('randomStickerPack: attempting to grab random sticker pack from "$folder"');
+		}
+
+		var pack:String = 'all';
+		final nullCheck:Void->Void = function()
+		{
+			if (SLGame.isDebug)
+			{
+				trace('randomStickerPack: could not get random pack for ${folder}');
+				pack = 'all';
+			}
+		};
+
+		if (folder != null)
+		{
+			TryCatch.tryCatch(function()
+			{
+				if (!RANDOM_STICKER_PACKS.exists(folder))
+				{
+					trace('randomStickerPack: "${folder}" doesn\'t have a RANDOM_STICKER_PACKS entry');
+					return;
+				}
+
+				final packArray:Array<String> = RANDOM_STICKER_PACKS.get(folder);
+				pack = packArray[FlxG.random.int(0, packArray.length - 1)];
+			}, {
+					errFunc: nullCheck
+			});
+		}
+
+		return pack;
 	}
 }

@@ -20,8 +20,12 @@ import sap.title.TitleState;
 // This is initalization stuff + compiler condition flags
 class InitState extends FlxState
 {
+	static var folder:String = Global.randomStickerFolder();
+
 	override public function create():Void
 	{
+		folder = Global.randomStickerFolder();
+
 		Timer.measure(function()
 		{
 			trace('init');
@@ -90,7 +94,7 @@ class InitState extends FlxState
 			Global.switchState(new OutdatedMenu());
 		}
 
-		Global.switchState(new #if html5 WebPreloader #else DesktopPreloader #end());
+		switchToState(new DesktopPreloader(), 'Desktop Preloader');
 
 		super.create();
 	}
@@ -188,13 +192,13 @@ class InitState extends FlxState
 
 		trace('Starting game regularly');
 
-		Global.switchState(new TitleState());
+		Global.switchState(new TitleState(), false, folder, Global.randomStickerPack(folder));
 	}
 
 	public static function switchToState(state:FlxState, stateName:String):Void
 	{
 		trace('Moving to $stateName');
-		Global.switchState(state);
+		Global.switchState(state, false, folder, Global.randomStickerPack(folder));
 	}
 
 	public static function ModsInit():Void
