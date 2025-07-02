@@ -71,7 +71,7 @@ class PauseTesting extends PausableState
 			if (FlxG.keys.pressed.DOWN)
 				offsets[index][1] += increase;
 
-			FileManager.writeToPath('assets/images/pausemenu/${artStrings[index]}${suffix}.pao', '${offsets[index][0]}\n${offsets[index][1]}');
+			FileManager.writeToPath('assets/images/pausemenu/${artStrings[index].replace('.png', '')}${suffix}.pao', '${offsets[index][0]}\n${offsets[index][1]}');
 
 			art.destroy();
 			art = artInit(index);
