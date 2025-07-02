@@ -35,7 +35,7 @@ class PlayMenu extends MainMenu
 				worldmapSwitch();
 
 			case 2:
-				FlxG.switchState(() -> new MainMenu());
+				Global.switchState(new MainMenu(), false, '', '', false);
 		}
 	}
 }

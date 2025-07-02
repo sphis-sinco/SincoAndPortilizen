@@ -81,8 +81,8 @@ class MainMenu extends State
 
 		Global.changeDiscordRPCPresence('In the main menu', null);
 
-		if (Global.previousState == 'ChangelogMenu')
-			FlxG.camera.fade(FlxColor.BLACK, 1, true, () -> {});
+		// if (Global.previousState == 'ChangelogMenu')
+		//	FlxG.camera.fade(FlxColor.BLACK, 1, true, () -> {});
 
 		// stickerTransitionClear();
 	}
@@ -224,10 +224,7 @@ class MainMenu extends State
 				}
 				else
 				{
-					FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
-					{
-						FlxG.switchState(ChangelogMenu.new);
-					});
+					Global.switchState(new ChangelogMenu());
 				}
 			}
 			#end
@@ -241,14 +238,11 @@ class MainMenu extends State
 		switch (PUBLIC_CUR_SELECTION)
 		{
 			case 0:
-				FlxG.switchState(PlayMenu.new);
+				Global.switchState(new PlayMenu(), false, '', '', false);
 			#if sys case 6: #else case 4: #end
 				Global.switchState(new TitleState());
 			#if sys case 5: #else case 3: #end
-				FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
-				{
-					FlxG.switchState(ChangelogMenu.new);
-				});
+				Global.switchState(new ChangelogMenu());
 		}
 	}
 
