@@ -10,7 +10,6 @@ These do things. Lmao!
 - `DEFAULT_DIRECTORY`: Disables custom build directories besides the original ones
 - `EXCESS_TRACES`: Adds in traces that are unimportant
 - `PLAYTESTER_BUILD`: Adds in a "-playtest" to the end of the version string
-- `FEATURE_NEWGROUNDS` - Enables newgrounds only features
 
 ## QOL Flags
 - `DISABLE_ANNOYING_ERRORS`: Makes errors less annoying
