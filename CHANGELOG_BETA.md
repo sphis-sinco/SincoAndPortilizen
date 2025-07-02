@@ -4,6 +4,14 @@
 - Stage 2 OST Song: Teen Prodigy
 <version>
 
+## 0.1.1b - 7/1/2025
+### Added
+- **Newgrounds Login/Logout**
+### Fixed
+- "The OC of today" Medal unlock condition (was flipped basically and I'm going insane)
+
+<version>
+
 ## 0.1_01b - 7/1/2025
 ### Changed
 - When the `spanish` locale is enabled, the mainmenu texts chage size

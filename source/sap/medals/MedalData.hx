@@ -26,6 +26,7 @@ class MedalData
 		{
 			trace('New medal: ${actual_medal}');
 			unlocked_medals.push(actual_medal);
+
 			#if html5
 			WebSave.MEDALS = unlocked_medals;
 			#else

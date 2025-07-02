@@ -31,6 +31,10 @@
 
   "settings-download-latest-traces": "descargar los últimos rastros",
   "settings-clear-save": "borrar guardar",
+
+  "settings-login-to-newgrounds": "login to newgrounds",
+  "settings-logout-of-newgrounds": "logout of newgrounds",
+
   "pauseable-pause": "En pausa",
 
   "preloader-desktop-preloader": "Precargador de escritorio",

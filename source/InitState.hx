@@ -38,6 +38,16 @@ class InitState extends FlxState
 				Discord.DiscordClient.shutdown();
 			#end
 
+			//
+			// NEWGROUNDS API SETUP
+			//
+			#if FEATURE_NEWGROUNDS
+			funkin.api.newgrounds.NewgroundsClient.instance.init();
+
+			if (io.newgrounds.NG.core.attemptingLogin)
+				io.newgrounds.NG.core.cancelLoginRequest();
+			#end
+
 			FlxG.sound.volume = FlxG.save.data.settings.volume;
 
 			#if html5
@@ -89,7 +99,7 @@ class InitState extends FlxState
 			trace('OUTDATED');
 			Global.switchState(new OutdatedMenu());
 		}
-		
+
 		Global.switchState(new #if html5 WebPreloader #else DesktopPreloader #end());
 
 		super.create();
@@ -97,7 +107,6 @@ class InitState extends FlxState
 
 	override public function update(elapsed:Float):Void
 	{
-
 		super.update(elapsed);
 	}
 

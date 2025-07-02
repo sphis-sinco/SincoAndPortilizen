@@ -1,5 +1,6 @@
 package sap.settings;
 
+import funkin.api.newgrounds.NewgroundsClient;
 import sap.credits.CreditsSubState;
 import funkin.util.logging.AnsiTrace;
 import funkin.util.logging.CrashHandler;
@@ -72,6 +73,10 @@ class SettingsMenu extends FlxSubState
 		#end
 		#end
 
+		#if FEATURE_NEWGROUNDS
+		newSaveValue('${(!NewgroundsClient.instance.isLoggedIn()) ? 'login to' : 'logout of'} newgrounds', null);
+		#end
+
 		newSaveValue('clear save', null);
 	}
 
@@ -126,14 +131,14 @@ class SettingsMenu extends FlxSubState
 		switch (SELECTED_SETTING)
 		{
 			case 'language':
-                                var newlang:String = Locale.localeName;
+				var newlang:String = Locale.localeName;
 
-                                switch (newlang)
-                                {
-                                        case 'english': newlang = 'spanish';
-                                        case 'spanish': newlang = 'portuguese';
-                                        case 'portuguese': newlang = 'english';
-                                }
+				switch (newlang)
+				{
+					case 'english': newlang = 'spanish';
+					case 'spanish': newlang = 'portuguese';
+					case 'portuguese': newlang = 'english';
+				}
 
 				Locale.initalizeLocale(newlang);
 				MainMenu.set_menuboxtexts(MainMenu.public_menutextsSelection);
@@ -178,6 +183,22 @@ class SettingsMenu extends FlxSubState
 				SaveManager.save();
 				MainMenu.inSubstate = false;
 				FlxG.resetGame();
+			case 'login to newgrounds':
+				NewgroundsClient.instance.login(function()
+				{
+					saveValuesUpdate();
+				}, function()
+				{
+					FlxG.log.warn("Newgrounds login failed!");
+				});
+			case 'logout of newgrounds':
+				NewgroundsClient.instance.logout(function()
+				{
+					saveValuesUpdate();
+				}, function()
+				{
+					FlxG.log.warn("Newgrounds logout failed!");
+				});
 		}
 
 		saveValuesUpdate();

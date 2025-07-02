@@ -31,6 +31,10 @@
 
   "settings-download-latest-traces": "download latest traces",
   "settings-clear-save": "clear save",
+
+  "settings-login-to-newgrounds": "login to newgrounds",
+  "settings-logout-of-newgrounds": "logout of newgrounds",
+
   "pauseable-pause": "Paused",
 
   "preloader-desktop-preloader": "Desktop Preloader",

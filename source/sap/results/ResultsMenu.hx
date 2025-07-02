@@ -112,10 +112,16 @@ class ResultsMenu extends FlxState
 			if (Stage1.OSIN_HEALTH == 0 && Stage1.RUNNING)
 			{
 				add(MedalData.unlockMedal('Faker clash'));
+				#if FEATURE_NEWGROUNDS
+				funkin.api.newgrounds.Medals.award(FakerClash);
+				#end
 
 				if (Stage1.SINCO_HEALTH == Stage1.SINCO_MAX_HEALTH)
 				{
 					add(MedalData.unlockMedal('The original stands on top'));
+					#if FEATURE_NEWGROUNDS
+					funkin.api.newgrounds.Medals.award(TheOriginalStandsOntop);
+					#end
 				}
 
 				Stage1.RUNNING = false;
@@ -123,9 +129,15 @@ class ResultsMenu extends FlxState
 			else if (Stage2.time == 0 && Stage2.RUNNING)
 			{
 				add(MedalData.unlockMedal('Protector'));
+				#if FEATURE_NEWGROUNDS
+				funkin.api.newgrounds.Medals.award(Protector);
+				#end
 				if (Stage2.TEMPO_CITY_HEALTH == Stage2.diffJson.tempo_city_max_health)
 				{
 					add(MedalData.unlockMedal('True Protector'));
+					#if FEATURE_NEWGROUNDS
+					funkin.api.newgrounds.Medals.award(TrueProtector);
+					#end
 				}
 
 				Stage2.RUNNING = false;
@@ -133,6 +145,9 @@ class ResultsMenu extends FlxState
 			else if (Stage4.time == Stage4.start_timer && Stage4.RUNNING)
 			{
 				add(MedalData.unlockMedal('Dimensions reached'));
+				#if FEATURE_NEWGROUNDS
+				funkin.api.newgrounds.Medals.award(DimensionsReached);
+				#end
 
 				Stage4.RUNNING = false;
 			}
@@ -142,10 +157,16 @@ class ResultsMenu extends FlxState
 				final flashLength:Int = 2;
 
 				add(MedalData.unlockMedal('The OC of history'));
+				#if FEATURE_NEWGROUNDS
+				funkin.api.newgrounds.Medals.award(TheOCOfHistory);
+				#end
 				if (Stage5.PLAYER_CHARGE > Stage5.OPPONENT_CHARGE)
 				{
 					FlxG.camera.flash(FlxColor.PURPLE, flashLength);
 					add(MedalData.unlockMedal('Brothers split again'));
+					#if FEATURE_NEWGROUNDS
+					funkin.api.newgrounds.Medals.award(BrothersSplitAgain);
+					#end
 				}
 				else
 					FlxG.camera.flash(FlxColor.GREEN, flashLength);
@@ -155,10 +176,16 @@ class ResultsMenu extends FlxState
 				Sidebit1.RUNNING = false;
 
 				add(MedalData.unlockMedal('The consistentless'));
+				#if FEATURE_NEWGROUNDS
+				funkin.api.newgrounds.Medals.award(TheConsistentless);
+				#end
 
-				if (Sidebit1.SINCO_HEALTH == 0)
+				if (Sidebit1.PORTILIZEN_HEALTH == 0)
 				{
 					add(MedalData.unlockMedal('The OC of today'));
+					#if FEATURE_NEWGROUNDS
+					funkin.api.newgrounds.Medals.award(TheOCOfToday);
+					#end
 				}
 			}
 
