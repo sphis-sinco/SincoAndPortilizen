@@ -56,7 +56,7 @@ class State extends FlxState
 
 	public function stickerTransitionClear()
 	{
-		if (StickerSubState.grpStickers.length > 0)
+		if (StickerSubState.grpStickers != null && StickerSubState.grpStickers.length > 0)
 		{
 			switchState(this, true);
 			ScriptManager.callScript('stickerTransitionClear');

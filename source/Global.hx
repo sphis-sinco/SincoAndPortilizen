@@ -266,48 +266,49 @@ class Global
 		previousState = getCurrentState();
 
 		trace('switch');
-		if (stickers)
-		{
-			TryCatch.tryCatch(function()
+		/*if (stickers)
 			{
-				trace('initLOL');
-				var oldStickars:Array<StickerSprite> = [];
-
 				TryCatch.tryCatch(function()
 				{
-					for (sticker in StickerSubState.grpStickers.members)
+					trace('initLOL');
+					var oldStickars:Array<StickerSprite> = [];
+
+					TryCatch.tryCatch(function()
 					{
-						// trace('new sticker');
-						oldStickars.push(sticker);
-					}
+						for (sticker in StickerSubState.grpStickers.members)
+						{
+							// trace('new sticker');
+							oldStickars.push(sticker);
+						}
+					}, {
+							traceErr: true
+					});
+
+					var oldStickersList = (oldStickars != null) ? (oldStickars.length > 0 && oldStickers) ? oldStickars : null : null;
+
+					var stickerTransition = new funkin.ui.transition.StickerSubState({
+						targetState: state -> new_state,
+						stickerSet: stickerSet,
+						stickerPack: stickerPack,
+						oldStickers: oldStickersList
+					});
+
+					// trace('Openning ${new_state}');
+					FlxG.state.openSubState(stickerTransition);
 				}, {
+						errFunc: function()
+						{
+							trace('flxG switch');
+							FlxG.switchState(() -> new_state);
+						},
 						traceErr: true
 				});
-
-				var oldStickersList = (oldStickars != null) ? (oldStickars.length > 0 && oldStickers) ? oldStickars : null : null;
-
-				var stickerTransition = new funkin.ui.transition.StickerSubState({
-					targetState: state -> new_state,
-					stickerSet: stickerSet,
-					stickerPack: stickerPack,
-					oldStickers: oldStickersList
-				});
-
-				// trace('Openning ${new_state}');
-				FlxG.state.openSubState(stickerTransition);
-			}, {
-					errFunc: function()
-					{
-						trace('flxG switch');
-						FlxG.switchState(() -> new_state);
-					},
-					traceErr: true
-			});
-		}
-		else
-		{
-			FlxG.switchState(() -> new_state);
-		}
+			}
+			else
+			{
+				FlxG.switchState(() -> new_state);
+		}*/
+		FlxG.switchState(() -> new_state);
 	}
 
 	public static function anyKeysPressed(keys:Array<FlxKey>):Bool
