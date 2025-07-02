@@ -33,6 +33,8 @@ class Worldmap extends State
 
 		init();
 		initSidebits();
+
+		// stickerTransitionClear();
 	}
 
 	public static function init():Void

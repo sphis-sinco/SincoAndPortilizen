@@ -6,6 +6,7 @@
 
 ## 0.1_1b - 7/1/2025
 ### Added
+- Sticker transitions
 - New preloader art
 ### Removed
 - Web build

@@ -1,0 +1,14 @@
+{
+  "name": "portilizen",
+  "artist": "Sphis_Sinco",
+  "stickers": {
+    "set-1": ["port_1","port_2","port_3","port_4","port_5"],
+    "set-2": ["port_6","port_7","port_8","port_9","port_10"]
+  },
+  "stickerPacks": {
+    "all": ["set-1", "set-2"],
+    "set-1": ["set-1"],
+    "set-2": ["set-2"]
+  },
+  "stickerPacksArray": ["all", "set-1", "set-2"]
+}

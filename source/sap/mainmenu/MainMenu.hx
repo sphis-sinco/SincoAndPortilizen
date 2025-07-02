@@ -84,7 +84,7 @@ class MainMenu extends State
 		if (Global.previousState == 'ChangelogMenu')
 			FlxG.camera.fade(FlxColor.BLACK, 1, true, () -> {});
 
-		stickerTransitionClear();
+		// stickerTransitionClear();
 	}
 
 	public static var public_cycle:Int = 0;

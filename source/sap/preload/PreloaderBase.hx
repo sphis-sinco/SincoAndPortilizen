@@ -58,7 +58,7 @@ class PreloaderBase extends State
 		randomPreloadArt();
 		add(preloadArt);
 
-		stickerTransitionClear();
+		// stickerTransitionClear();
 	}
 
 	public function randomPreloadArt()

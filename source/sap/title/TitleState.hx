@@ -111,7 +111,7 @@ class TitleState extends State
 			add(MedalData.unlockMedal('Welcome'));
 		});
 
-		stickerTransitionClear();
+		// stickerTransitionClear();
 	}
 
 	override function postCreate()

@@ -26,6 +26,7 @@ class State extends FlxState
 	public function postCreate():Void
 	{
 		ScriptManager.callScript('statePostCreate');
+		stickerTransitionClear();
 	}
 
 	override function update(elapsed:Float):Void
@@ -56,7 +57,10 @@ class State extends FlxState
 	public function stickerTransitionClear()
 	{
 		if (StickerSubState.grpStickers.length > 0)
+		{
 			switchState(this, true);
+			ScriptManager.callScript('stickerTransitionClear');
+		}
 	}
 
 	public function switchState(new_state:FlxState, ?oldStickers:Bool = false, ?stickerSet:String = 'R', ?stickerPack:String = 'R')
