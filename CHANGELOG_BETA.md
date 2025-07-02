@@ -4,7 +4,7 @@
 - Stage 2 OST Song: Teen Prodigy
 <version>
 
-## 0.1_02b - 7/1/2025
+## 0.1_1b - 7/1/2025
 ### Added
 - New preloader art
 ### Removed
