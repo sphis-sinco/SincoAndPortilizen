@@ -35,7 +35,7 @@
 
         <source path="source" />
 
-        <assets path="assets" exclude="assets/stickers"/>
+        <assets path="assets" exclude="assets/exclude"/>
         <assets path="cur_lang.txt" />
         <assets path="CHANGELOG_BETA.md" rename="CHANGELOG.md" />
 
