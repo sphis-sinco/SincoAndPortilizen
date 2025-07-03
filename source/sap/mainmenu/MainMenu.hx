@@ -224,7 +224,7 @@ class MainMenu extends State
 				}
 				else
 				{
-					FlxG.camera.fade(FlxColor.BLACK, 1, true, () ->
+					FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
 					{
 						Global.switchState(new ChangelogMenu());
 					});
@@ -245,7 +245,7 @@ class MainMenu extends State
 			#if sys case 6: #else case 4: #end
 				Global.switchState(new TitleState());
 			#if sys case 5: #else case 3: #end
-				FlxG.camera.fade(FlxColor.BLACK, 1, true, () ->
+				FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
 				{
 					Global.switchState(new ChangelogMenu());
 				});
