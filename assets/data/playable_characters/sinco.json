@@ -2,7 +2,7 @@
         "character_display_name":"Sinco",
         "unlocked_when_loaded": true,
 
-        "levels": 2,
+        "levels": 3,
         "level_number_offset": 0,
         "has_sidebits": true,
         "sidebit_id": "sinco",

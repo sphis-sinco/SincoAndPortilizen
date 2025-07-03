@@ -15,17 +15,19 @@ function worldmapSelection(character:String, selection:Int, sidebitMode:Bool)
 		case 'portilizen':
 			switch (selection)
 			{
-				case 1: if (sidebitMode) Global.switchState(new sap.stages.sidebit1.Sidebit1IntroCutscene(difficulty), false, "portilizen", "all");
-				case 2: if (sidebitMode) Global.switchState(new sap.stages.sidebit2.Sidebit2IntroCutscene(difficulty), false, "portilizen", "all");
-				case 4: if (!sidebitMode) Global.switchState(new Stage4(difficulty), false, "portilizen", "all");
-				case 5: if (!sidebitMode) Global.switchState(new Stage5(difficulty), false, "portilizen", "all");
+				case 1: if (sidebitMode) Global.switchState(new sap.stages.sidebit1.Sidebit1IntroCutscene(difficulty));
+				case 2: if (sidebitMode) Global.switchState(new sap.stages.sidebit2.Sidebit2IntroCutscene(difficulty));
+				case 4: if (!sidebitMode) Global.switchState(new Stage4(difficulty));
+				case 5: if (!sidebitMode) Global.switchState(new Stage5(difficulty));
 			}
 		case 'sinco':
 			switch (selection)
 			{
-				case 1: if (sidebitMode) Global.switchState(new sap.stages.sidebit1.Sidebit1IntroCutscene(difficulty), false, "sinco",
-						"all"); else Global.switchState(new Stage1(difficulty), false, "sinco", "all");
-				case 2: if (!sidebitMode) Global.switchState(new Stage2(difficulty), false, "sinco", "all");
+				case 1:
+					if (sidebitMode) Global.switchState(new sap.stages.sidebit1.Sidebit1IntroCutscene(difficulty)); else
+						Global.switchState(new Stage1(difficulty), false, "sinco", "all");
+				case 2: if (!sidebitMode) Global.switchState(new Stage2(difficulty));
+				case 3: if (!sidebitMode) Global.switchState(new Stage2(difficulty));
 			}
 		default:
 			trace(character + ' has no implementation');
