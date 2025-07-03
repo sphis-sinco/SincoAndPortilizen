@@ -1,8 +1,5 @@
 package;
 
-import funkin.ui.transition.StickerSubState;
-import funkin.ui.transition.StickerSubState.StickerShit;
-import funkin.ui.transition.StickerSubState.StickerSprite;
 import flixel.system.FlxAssets.FlxSoundAsset;
 import openfl.media.Sound;
 import flixel.graphics.FlxGraphic;
@@ -265,49 +262,6 @@ class Global
 	{
 		previousState = getCurrentState();
 
-		trace('switch');
-		/*if (stickers)
-			{
-				TryCatch.tryCatch(function()
-				{
-					trace('initLOL');
-					var oldStickars:Array<StickerSprite> = [];
-
-					TryCatch.tryCatch(function()
-					{
-						for (sticker in StickerSubState.grpStickers.members)
-						{
-							// trace('new sticker');
-							oldStickars.push(sticker);
-						}
-					}, {
-							traceErr: true
-					});
-
-					var oldStickersList = (oldStickars != null) ? (oldStickars.length > 0 && oldStickers) ? oldStickars : null : null;
-
-					var stickerTransition = new funkin.ui.transition.StickerSubState({
-						targetState: state -> new_state,
-						stickerSet: stickerSet,
-						stickerPack: stickerPack,
-						oldStickers: oldStickersList
-					});
-
-					// trace('Openning ${new_state}');
-					FlxG.state.openSubState(stickerTransition);
-				}, {
-						errFunc: function()
-						{
-							trace('flxG switch');
-							FlxG.switchState(() -> new_state);
-						},
-						traceErr: true
-				});
-			}
-			else
-			{
-				FlxG.switchState(() -> new_state);
-		}*/
 		FlxG.switchState(() -> new_state);
 	}
 
@@ -457,60 +411,5 @@ class Global
 	public static function cacheSound(key:String):Void
 	{
 		var sound:FlxSound = new FlxSound().loadEmbedded(FlxG.sound.cache(key));
-	}
-
-	public static var RANDOM_STICKER_FOLDERS:Array<String> = ['sinco', 'misc'];
-	public static var RANDOM_STICKER_PACKS:Map<String, Array<String>> = [
-		'sinco' => ['all', 'set-1', 'set-2'],
-		'misc' => ['all', 'heros', 'villains', 'legendaries']
-	];
-
-	public static function initStickers()
-	{
-		RANDOM_STICKER_FOLDERS = [];
-		RANDOM_STICKER_PACKS = [];
-
-		RANDOM_STICKER_FOLDERS = FileManager.readDirectory('assets/stickers/images/');
-		for (folder in RANDOM_STICKER_FOLDERS)
-		{
-			var json:StickerShit = FileManager.getJSON(FileManager.getImageFile('${folder}/stickers.json', STICKERS).replace('.png', ''));
-			RANDOM_STICKER_PACKS.set(folder, json.stickerPacksArray);
-		}
-	}
-
-	public static function randomStickerFolder():String
-	{
-		return Global.RANDOM_STICKER_FOLDERS[FlxG.random.int(0, Global.RANDOM_STICKER_FOLDERS.length - 1)];
-	}
-
-	public static function randomStickerPack(?folder:String):String
-	{
-		trace('randomStickerPack: attempting to grab random sticker pack from "$folder"');
-
-		var pack:String = 'all';
-		final nullCheck:Void->Void = function()
-		{
-			trace('randomStickerPack: could not get random pack for ${folder}');
-			pack = 'all';
-		};
-
-		if (folder != null)
-		{
-			TryCatch.tryCatch(function()
-			{
-				if (!RANDOM_STICKER_PACKS.exists(folder))
-				{
-					trace('randomStickerPack: "${folder}" doesn\'t have a RANDOM_STICKER_PACKS entry');
-					return;
-				}
-
-				final packArray:Array<String> = RANDOM_STICKER_PACKS.get(folder);
-				pack = packArray[FlxG.random.int(0, packArray.length - 1)];
-			}, {
-					errFunc: nullCheck
-			});
-		}
-
-		return pack;
 	}
 }

@@ -20,14 +20,8 @@ import sap.title.TitleState;
 // This is initalization stuff + compiler condition flags
 class InitState extends FlxState
 {
-	static var folder:String = Global.randomStickerFolder();
-
 	override public function create():Void
 	{
-		Global.initStickers();
-
-		folder = Global.randomStickerFolder();
-
 		Timer.measure(function()
 		{
 			trace('init');
@@ -203,7 +197,7 @@ class InitState extends FlxState
 	public static function switchToState(state:FlxState, stateName:String):Void
 	{
 		trace('Moving to $stateName');
-		Global.switchState(state, false, folder, Global.randomStickerPack(folder));
+		Global.switchState(state);
 	}
 
 	public static function ModsInit():Void
