@@ -6,7 +6,7 @@ class LevelSelect extends FlxState
 	{
                 Global.changeDiscordRPCPresence('In the Level Select', null);
 
-		add(Global.dummyBG([226, 226, 226]));
+		add(Global.dummyBG([12, 12, 12]));
 
 		super.create();
 	}
