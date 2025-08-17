@@ -9,6 +9,7 @@ class LevelSelect extends FlxState
 
 	public var levelIcons:FlxTypedGroup<Spr>;
 	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres']; // tres is Sinco v Port
+        public var selectedLevel:Int = 0;
 
 	override function create()
 	{
@@ -38,6 +39,7 @@ class LevelSelect extends FlxState
 
 			levelIcon.scaleSpr();
 
+                        levelIcon.ID = i;
 			levelIcons.add(levelIcon);
 		}
 
@@ -55,9 +57,11 @@ class LevelSelect extends FlxState
 
 		for (icon in levelIcons.members)
 		{
+                        selectedLevel = -1;
 			icon.scaleSpr();
 			if (cursor.overlaps(icon))
 			{
+                                selectedLevel = icon.ID;
 				icon.scale.set(icon.scale.x - .1, icon.scale.y - .1);
 				cursor.animation.play('select');
 			}
