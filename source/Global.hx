@@ -55,7 +55,7 @@ class Global
 		trace('Save dump: ${FlxG.save.data}');
 	}
 
-	public static function scaleSprite(sprite:FlxSprite, ?addition:Int = 0):FlxSprite
+	public static function scaleSprite(sprite:FlxSprite, ?addition:Float = 0):FlxSprite
 	{
 		var returnsprite:FlxSprite = sprite;
 

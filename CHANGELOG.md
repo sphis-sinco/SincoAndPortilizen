@@ -4,6 +4,7 @@ Game remade from the ground up
 ### Changed
 - Hitboxes are updated automatically when scaled using `Global.scaleSprite`
 ### Added
+- Decimal scale offsets for `Global.scaleSprite`
 - Data merge from previous versions
 
 ## 0.1.1b - 7/2/2025
