@@ -13,7 +13,6 @@ class LevelSelect extends FlxState
 	override function create()
 	{
 		Global.changeDiscordRPCPresence('In the Level Select', null);
-		FlxG.mouse.visible = false;
 
 		add(Global.dummyBG([12, 12, 12]));
 
@@ -48,6 +47,8 @@ class LevelSelect extends FlxState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (FlxG.mouse.visible)
+                        FlxG.mouse.visible = false;
 
 		cursor.setPosition(FlxG.mouse.x, FlxG.mouse.y);
 		cursor.animation.play('idle');
