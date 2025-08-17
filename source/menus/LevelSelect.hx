@@ -31,7 +31,7 @@ class LevelSelect extends FlxState
 			var levelIcon:Spr = new Spr(-3.25);
 			levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/blank'));
 
-			levelIcon.x = 64 + (i * (128 + 64));
+			levelIcon.x = (64 + 32) + (i * (128 + 64));
 
 			levelIcon.screenCenter(Y);
 			levelIcon.y -= levelIcon.height * 1;
