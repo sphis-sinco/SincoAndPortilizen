@@ -1,6 +1,7 @@
 package menus;
 
-import sphis.Assets;
+import flixel.tweens.FlxTween;
+import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
 class LevelSelect extends FlxState
@@ -43,7 +44,12 @@ class LevelSelect extends FlxState
 			levelIcons.add(levelIcon);
 		}
 
-		super.create();
+                message.size = 32;
+                message.screenCenter();
+                message.alignment = 'center';
+                add(message);
+
+                super.create();
 	}
 
 	override function update(elapsed:Float)
@@ -68,5 +74,27 @@ class LevelSelect extends FlxState
 		}
 
 		FlxG.watch.addQuick('selectedLevel', selectedLevel);
+
+                if (selectedLevel > -1)
+                {
+                        var data:Dynamic;
+
+                        try {
+                                data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}');
+                        } catch(e) {
+                                data = null;
+                        }
+
+                        if (data == null)
+                        {
+                                message.text = 'Missing level file:\n\n"${levelNames[selectedLevel]}"';
+                                message.alpha = 1;
+                                message.screenCenter();
+                                FlxTween.cancelTweensOf(message);
+                                FlxTween.tween(message, {alpha: 0}, 1, { startDelay: 1 });
+                        }
+                }
 	}
+
+        public var message:FlxText = new FlxText();
 }
