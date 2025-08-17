@@ -6,7 +6,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 class LevelSelect extends FlxState
 {
         public var levelIcons:FlxTypedGroup<Spr>;
-        public var levelNames:Array<String> = ['string-quest', 'osin', 'tres'];
+        public var levelNames:Array<String> = ['string-quest', 'osin', 'tres']; // tres is Sinco v Port
 
 	override function create()
 	{
