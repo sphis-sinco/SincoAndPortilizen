@@ -1,12 +1,15 @@
 package menus;
 
+import flixel.util.FlxColor;
+
 class LevelSelect extends FlxState
 {
 	override function create()
 	{
-                var background:Spr = new Spr(spr -> {
-                        spr.makeGraphic(Std.int(640 / 4), Std.int(608 / 4), 0xe2e2e2);
-                });
+                var background:Spr = new Spr();
+                background.makeGraphic(160, 152, FlxColor.fromRGB(226, 226, 226));
+                background.scaleSpr();
+                background.screenCenter();
                 add(background);
 
 		super.create();

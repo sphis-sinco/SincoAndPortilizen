@@ -2,12 +2,14 @@ package backend;
 
 class Spr extends FlxSprite
 {
-	override public function new(init:Spr->Void, scaleOffset:Int = 0)
+	public var scaleOffset:Int = 0;
+
+	public function scaleSpr()
+		Global.scaleSprite(this, scaleOffset);
+
+	override public function new(scaleOffset:Int = 0)
 	{
 		super(0,0);
-
-		init(this);
-
-                Global.scaleSprite(this, scaleOffset);
+		this.scaleOffset = scaleOffset;
 	}
 }
