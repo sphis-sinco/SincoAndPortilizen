@@ -1,12 +1,34 @@
 package menus;
 
+import sphis.Assets;
+import flixel.group.FlxGroup.FlxTypedGroup;
+
 class LevelSelect extends FlxState
 {
+        public var levelIcons:FlxTypedGroup<Spr>;
+
 	override function create()
 	{
                 Global.changeDiscordRPCPresence('In the Level Select', null);
 
 		add(Global.dummyBG([12, 12, 12]));
+
+                levelIcons = new FlxTypedGroup<Spr>();
+                add(levelIcons);
+
+                for (i in 0...3) {
+                        var levelIcon:Spr = new Spr(-3);
+                        levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/blank'));
+                        
+                        levelIcon.x = 64 + (i * (128 + 64));
+
+                        levelIcon.screenCenter(Y);
+                        levelIcon.y -= levelIcon.height * 1;
+
+                        levelIcon.scaleSpr();
+
+                        levelIcons.add(levelIcon);
+                }
 
 		super.create();
 	}
