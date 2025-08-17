@@ -50,7 +50,7 @@ class LevelSelect extends FlxState
 		if (FlxG.mouse.visible)
                         FlxG.mouse.visible = false;
 
-		cursor.setPosition(FlxG.mouse.x, FlxG.mouse.y);
+		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
 
 		for (icon in levelIcons.members)
