@@ -1,6 +1,8 @@
 # Beta
 ## 0.2b - 7/2/2025
 Game remade from the ground up
+### Added
+- Data merge from previous versions
 
 ## 0.1.1b - 7/2/2025
 ### Added
