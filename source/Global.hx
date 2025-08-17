@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
 
 class Global
@@ -28,11 +29,28 @@ class Global
 	{
 		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
 		FlxG.save.bind(SAVE_SLOT, 'SAPTeam');
-		FlxG.save.mergeDataFrom('SINCOandPORT-SLOT-$slotsuffix', 'SAPTeam');
+
+		var mergeSave:FlxSave = new FlxSave();
+		mergeSave.bind('SINCOandPORT-SLOT-$slotsuffix', 'SAPTeam');
+
 		trace('Switched save slot to "$SAVE_SLOT"');
 
-		FlxG.save.data.volume ??= FlxG.save.data.settings.volume ?? 100;
-		FlxG.save.data.discord_rpc ??= FlxG.save.data.settings.discord_rpc ?? true;
+		if (mergeSave.data != null)
+		{
+			try
+			{
+				FlxG.save.data.volume ??= mergeSave.data.settings.volume;
+				FlxG.save.data.discord_rpc ??= mergeSave.data.settings.discord_rpc;
+				FlxG.save.data.levels_complete ??= mergeSave.data.gameplaystatus.levels_complete;
+				FlxG.save.data.medals ??= mergeSave.data.medals;
+			}
+			catch (e) {}
+		}
+
+		FlxG.save.data.volume ??= 100;
+		FlxG.save.data.discord_rpc ??= true;
+		FlxG.save.data.levels_complete ??= [];
+		FlxG.save.data.medals ??= [];
 
 		trace('Save dump: ${FlxG.save.data}');
 	}
