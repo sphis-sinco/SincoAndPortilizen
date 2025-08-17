@@ -1,6 +1,8 @@
 # Beta
 ## 0.2b - 7/2/2025
 Game remade from the ground up
+### Changed
+- Hitboxes are updated automatically when scaled using `Global.scaleSprite`
 ### Added
 - Data merge from previous versions
 
