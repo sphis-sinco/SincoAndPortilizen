@@ -53,8 +53,12 @@ class LevelSelect extends FlxState
 
 		for (icon in levelIcons.members)
 		{
+			icon.scaleSpr();
 			if (cursor.overlaps(icon))
+			{
+				icon.scale.set(icon.scale.x - .25, icon.scale.y - .25);
 				cursor.animation.play('select');
+			}
 		}
 	}
 }
