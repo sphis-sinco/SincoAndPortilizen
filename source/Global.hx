@@ -28,12 +28,13 @@ class Global
 	{
 		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
 		FlxG.save.bind(SAVE_SLOT, 'SAPTeam');
-
+		FlxG.save.mergeDataFrom('SINCOandPORT-SLOT-$slotsuffix', 'SAPTeam');
 		trace('Switched save slot to "$SAVE_SLOT"');
-		trace('Save dump: ${FlxG.save.data}');
 
-		FlxG.save.data.volume = 100;
-		FlxG.save.data.discord_rpc ??= true;
+		FlxG.save.data.volume ??= FlxG.save.data.settings.volume ?? 100;
+		FlxG.save.data.discord_rpc ??= FlxG.save.data.settings.discord_rpc ?? true;
+
+		trace('Save dump: ${FlxG.save.data}');
 	}
 
 	public static function scaleSprite(sprite:FlxSprite, ?addition:Int = 0):FlxSprite
