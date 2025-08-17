@@ -6,6 +6,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 class LevelSelect extends FlxState
 {
         public var levelIcons:FlxTypedGroup<Spr>;
+        public var levelNames:Array<String> = ['string-quest', 'osin', 'tres'];
 
 	override function create()
 	{
@@ -16,7 +17,7 @@ class LevelSelect extends FlxState
                 levelIcons = new FlxTypedGroup<Spr>();
                 add(levelIcons);
 
-                for (i in 0...3) {
+                for (i in 0...levelNames.length) {
                         var levelIcon:Spr = new Spr(-3);
                         levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/blank'));
                         
