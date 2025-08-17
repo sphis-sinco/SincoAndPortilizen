@@ -6,6 +6,9 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 class LevelSelect extends FlxState
 {
+	public var sinco:Spr;
+	public var port:Spr;
+
 	public var cursor:Spr;
 
 	public var levelIcons:FlxTypedGroup<Spr>;
@@ -26,7 +29,6 @@ class LevelSelect extends FlxState
 		cursor.animation.add('idle', [0], 24);
 		cursor.animation.add('select', [1], 24);
 		cursor.animation.play('idle');
-		add(cursor);
 
 		for (i in 0...levelNames.length)
 		{
@@ -43,6 +45,38 @@ class LevelSelect extends FlxState
 			levelIcon.ID = i;
 			levelIcons.add(levelIcon);
 		}
+
+                var console:Spr = new Spr(-2);
+                console.loadGraphic(Assets.getImagePath('levelSelect/console'));
+                console.screenCenter(X);
+                console.y = FlxG.height - console.height;
+
+                sinco = new Spr(-2);
+                port = new Spr(-2);
+
+                sinco.loadGraphic(Assets.getImagePath('levelSelect/chars/sinco'), true, 128, 128);
+                sinco.screenCenter(X);
+                sinco.y = FlxG.height - sinco.height;
+                add(sinco);
+
+                port.loadGraphic(Assets.getImagePath('levelSelect/chars/port'), true, 128, 128);
+                port.screenCenter(X);
+                port.y = FlxG.height - port.height;
+                add(port);
+
+                sinco.animation.add('idle', [0], 24);
+                sinco.animation.add('picked', [1], 24);
+                sinco.animation.add('not-picked', [2], 24);
+
+                port.animation.add('idle', [0], 24);
+                port.animation.add('picked', [1], 24);
+                port.animation.add('not-picked', [2], 24);
+
+                port.animation.play('idle');
+                sinco.animation.play('idle');
+
+                add(console);
+		add(cursor);
 
                 message.size = 32;
                 message.screenCenter();
