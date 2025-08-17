@@ -1,7 +1,6 @@
 {
 	"recommendations": [
 		"openfl.lime-vscode-extension",
-                "redhat.vscode-xml",
-                "vshaxe.haxe-checkstyle"
+                "redhat.vscode-xml"
 	]
 }
