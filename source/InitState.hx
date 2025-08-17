@@ -40,6 +40,7 @@ class InitState extends FlxState
 
 		super.create();
 
+		FlxG.mouse.cursor.visible = false;
 		switchToState(new menus.LevelSelect(), 'Level Select');
 	}
 
