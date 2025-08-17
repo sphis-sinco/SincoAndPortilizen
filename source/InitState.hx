@@ -40,7 +40,7 @@ class InitState extends FlxState
 
 		super.create();
 
-		// switchToState(new TitleState(), 'TitleState');
+		switchToState(new menus.LevelSelect(), 'Level Select');
 	}
 
 	override public function update(elapsed:Float):Void
