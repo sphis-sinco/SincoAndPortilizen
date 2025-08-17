@@ -1,5 +1,6 @@
 import backend.*;
 import flixel.*;
+import flixel.util.FlxColor;
 
 using StringTools;
 

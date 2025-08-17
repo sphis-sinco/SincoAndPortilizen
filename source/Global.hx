@@ -67,7 +67,7 @@ class Global
 		if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
 			FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
 
-	public static function changeDiscordRPCPresence(details:String, state:Null<String>):Void
+	public static function changeDiscordRPCPresence(details:String = null, state:Null<String>):Void
 	{
 		#if !DISCORDRPC
 		return;
@@ -103,4 +103,13 @@ class Global
 
 	public static function keyJustPressed(key:FlxKey):Bool
 		return anyKeysJustPressed([key]);
+
+	public static function dummyBG(colorRGB:Array<Int>):Spr
+	{
+		var background:Spr = new Spr();
+		background.makeGraphic(160, 152, FlxColor.fromRGB(colorRGB[0], colorRGB[1], colorRGB[2]));
+		background.scaleSpr();
+		background.screenCenter();
+		return background;
+	}
 }

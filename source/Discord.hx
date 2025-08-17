@@ -74,7 +74,7 @@ class DiscordClient
 			details: details,
 			state: state,
 			largeImageKey: 'icon',
-			largeImageText: Global.VERSION_FULL,
+			largeImageText: Global.GENERATED_BY,
 			smallImageKey: smallImageKey,
 			startTimestamp: Std.int(startTimestamp / 1000),
 			endTimestamp: Std.int(startTimestamp + Date.now().getTime() / 1000)
