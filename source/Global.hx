@@ -60,6 +60,7 @@ class Global
 		var returnsprite:FlxSprite = sprite;
 
 		returnsprite.scale.set(DEFAULT_IMAGE_SCALE_MULTIPLIER + addition, DEFAULT_IMAGE_SCALE_MULTIPLIER + addition);
+		returnsprite.updateHitbox();
 
 		return returnsprite;
 	}
