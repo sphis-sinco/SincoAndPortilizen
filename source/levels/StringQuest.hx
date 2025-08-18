@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.text.FlxText;
 import flixel.util.FlxCollision;
 import flixel.util.FlxTimer;
 import menus.LevelSelect;
@@ -24,10 +25,15 @@ class StringQuest extends PausableState
 
 	public var endlessMode:Bool = false;
 
+	public var timeStart:Int = 60;
+	public var timeLeft:Int = 0;
+
+	public var secondTimer:FlxTimer = new FlxTimer();
+
+	public var timeText:FlxText;
+
 	public function death()
-	{
 		Global.switchState(new LevelSelect());
-	}
 
 	override function create()
 	{
@@ -94,7 +100,20 @@ class StringQuest extends PausableState
 
 		if (!endlessMode)
 		{
-			FlxTimer.wait(60, () ->
+			timeLeft = timeStart;
+
+			timeText = new FlxText(0, 0, 0, Std.string(timeLeft), 32);
+			add(timeText);
+
+			secondTimer.start(1, timer ->
+			{
+				timeLeft--;
+
+				timeText.text = Std.string(timeLeft);
+				timeText.screenCenter();
+			}, timeStart);
+
+			FlxTimer.wait(timeStart, () ->
 			{
 				Global.switchState(new LevelSelect(true));
 				Global.beatLevel(1);
