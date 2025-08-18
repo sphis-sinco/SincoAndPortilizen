@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.math.FlxPoint;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -11,6 +12,7 @@ class StringQuest extends PausableState
 
 	public var port:Spr;
 
+	public var ogwingedEnemies:FlxTypedGroup<Spr>;
 	public var wingedEnemies:FlxTypedGroup<Spr>;
 
 	override function create()
@@ -22,6 +24,8 @@ class StringQuest extends PausableState
 
 		wingedEnemies = new FlxTypedGroup<Spr>();
 		add(wingedEnemies);
+
+		ogwingedEnemies = new FlxTypedGroup<Spr>();
 
 		var lastBlockY:Float = 0;
 		for (i in 0...levelLength)
@@ -47,10 +51,11 @@ class StringQuest extends PausableState
 			spr.animation.add('flap', [0, 1], 6);
 			spr.animation.play('flap');
 
-			spr.screenCenter();
-			spr.y -= i * (spr.height / 4) + 8;
-			spr.x -= i * spr.width + 8;
+			spr.setPosition(getWingedEnemyPos(i).x, getWingedEnemyPos(i).y);
 
+			spr.ID = i;
+
+			ogwingedEnemies.add(spr);
 			wingedEnemies.add(spr);
 		}
 
@@ -90,7 +95,7 @@ class StringQuest extends PausableState
 				onComplete: tween ->
 				{
 					port.animation.play('fall');
-					
+
 					FlxTween.tween(port, {y: port.y + port.height * 2}, 1, {
 						ease: FlxEase.sineIn,
 						onComplete: tween ->
@@ -101,5 +106,53 @@ class StringQuest extends PausableState
 				}
 			});
 		}
+
+		if (FlxG.random.bool(25))
+		{
+			var index = 0;
+			var i = 0;
+			for (wingEnemy in wingedEnemies.members)
+			{
+				if (FlxG.random.bool(5 + (i * 10))
+					&& wingEnemy.x == getWingedEnemyPos(wingEnemy.ID).x
+					&& wingEnemy.y == getWingedEnemyPos(wingEnemy.ID).y
+					&& port.animation.name == 'run')
+				{
+					i--;
+					final ogPos:FlxPoint = wingEnemy.getPosition();
+					FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 1, {
+						ease: FlxEase.sineOut,
+						onComplete: tween ->
+						{
+							FlxTween.tween(wingEnemy, {x: ogPos.x, y: ogPos.y}, 1, {
+								ease: FlxEase.sineIn,
+								onComplete: tween -> {}
+							});
+						}
+					});
+				}
+				else
+				{
+					i++;
+				}
+
+				index++;
+			}
+		}
+	}
+
+	public function getWingedEnemyPos(i:Int)
+	{
+		var spr:Spr = new Spr();
+		spr.loadGraphic(Assets.getImagePath('string-quest/WingedEnemy'), true, 64, 64);
+
+		spr.animation.add('flap', [0, 1], 6);
+		spr.animation.play('flap');
+
+		spr.screenCenter();
+		spr.y -= i * (spr.height / 4) + 8;
+		spr.x -= i * spr.width + 8;
+
+		return spr.getPosition();
 	}
 }
