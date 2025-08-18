@@ -135,7 +135,7 @@ class StringQuest extends PausableState
 			}
 		}
 
-		if (FlxG.random.bool(15) && enemiesAttacking < 3)
+		if (FlxG.random.bool(15) && enemiesAttacking < 2)
 		{
 			var index = 0;
 			var i = 1.1;
@@ -143,13 +143,14 @@ class StringQuest extends PausableState
 			{
 				if (FlxG.random.bool(5 * i)
 					&& wingEnemy.x == getWingedEnemyPos(wingEnemy.ID).x
-					&& wingEnemy.y == getWingedEnemyPos(wingEnemy.ID).y)
+					&& wingEnemy.y == getWingedEnemyPos(wingEnemy.ID).y
+					&& FlxG.random.bool(10.0))
 				{
 					i -= (i / 4);
 					final ogPos:FlxPoint = wingEnemy.getPosition();
 					enemiesAttacking++;
 					wingEnemy.animation.pause();
-					FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 1.5, {
+					FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 1, {
 						ease: FlxEase.sineOut,
 						onComplete: tween ->
 						{
