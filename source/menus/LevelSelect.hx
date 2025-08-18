@@ -295,12 +295,17 @@ class LevelSelect extends State
 					return;
 				}
 
-				Global.playSoundEffect('blipSelect');
-
 				if (cursor.x < (portPetX))
+				{
+					Global.playSoundEffect('sinco-pet');
+
 					sinco.animation.play('${sinco.animation.name.split('-')[0]}-pet');
+				}
 				else if (cursor.x > (portPetX))
+				{
+					Global.playSoundEffect('port-pet');
 					port.animation.play('${port.animation.name.split('-')[0]}-pet');
+				}
 			}
 		}
 	}
