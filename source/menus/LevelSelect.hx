@@ -136,6 +136,9 @@ class LevelSelect extends FlxState
 				message.screenCenter();
 				FlxTween.cancelTweensOf(message);
 				FlxTween.tween(message, {alpha: 0}, 1, {startDelay: 1});
+
+                                sinco.animation.play('not-picked');
+                                port.animation.play('not-picked');
 			}
 		}
 
