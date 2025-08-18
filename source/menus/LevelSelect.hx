@@ -85,14 +85,6 @@ class LevelSelect extends State
 						levelIcon.color = 0x4e0c6f;
 					if (data.sinco_level)
 						levelIcon.color = 0x4eb10c;
-
-					if (data.port_level && data.sinco_level)
-					{
-						if (FlxG.random.bool())
-							levelIcon.color = 0x4eb10c;
-						else
-							levelIcon.color = 0x4e0c6f;
-					}
 				}
 			}
 
@@ -174,9 +166,30 @@ class LevelSelect extends State
 			selectedLevel = -1;
 			for (icon in levelIcons.members)
 			{
+				var data:LevelData;
+
+				try
+				{
+					data = Assets.getFileJsonContent('levels/${levelNames[icon.ID]}.json');
+				}
+				catch (e)
+				{
+					data = null;
+				}
+
+				if (data != null)
+					if (!FlxG.save.data.colored_levelSelect)
+						if (data.port_level && data.sinco_level)
+							icon.color = 0x4eb10c;
+
 				icon.scaleSpr();
 				if (cursor.overlaps(icon))
 				{
+					if (data != null)
+						if (!FlxG.save.data.colored_levelSelect)
+							if (data.port_level && data.sinco_level)
+								icon.color = 0x4e0c6f;
+
 					selectedLevel = icon.ID;
 					icon.scale.set(icon.scale.x - .1, icon.scale.y - .1);
 					cursor.animation.play('select');
