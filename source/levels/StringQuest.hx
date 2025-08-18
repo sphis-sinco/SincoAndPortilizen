@@ -128,6 +128,8 @@ class StringQuest extends PausableState
 
 	override function update(elapsed:Float)
 	{
+		Global.playMenuMusic();
+		
 		super.update(elapsed);
 
 		for (block in levelBlocks)
