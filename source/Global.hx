@@ -12,7 +12,7 @@ class Global
 	public static var GENERATED_BY(get, set):String;
 
 	static function get_GENERATED_BY():String
-		return 'Sinco and Portilizen v${VERSION} (${Application.current.meta.get('build')})';
+		return 'Sinco and Portilizen v${VERSION}';
 
 	static function set_GENERATED_BY(value:String):String
 		return value;
