@@ -160,7 +160,14 @@ class LevelSelect extends State
 					if (data.sinco_level)
 						sinco.animation.play('picked');
 
-					startLevelTimer.start(1, timer -> {
+					switch (levelNames[selectedLevel].toLowerCase())
+					{
+						case 'string-quest':
+							flashMessage('String Quest');
+					}
+
+					startLevelTimer.start(1, timer ->
+					{
 						switch (levelNames[selectedLevel].toLowerCase())
 						{
 							case 'string-quest': Global.switchState(new StringQuest());
