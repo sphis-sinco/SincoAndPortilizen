@@ -123,7 +123,7 @@ class LevelSelect extends FlxState
 
 			try
 			{
-				data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}');
+				data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}.json');
 			}
 			catch (e)
 			{
