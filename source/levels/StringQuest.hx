@@ -53,7 +53,7 @@ class StringQuest extends PausableState
 		for (i in 0...5)
 		{
 			var spr:Spr = new Spr();
-			spr.loadGraphic(Assets.getImagePath('string-quest/WingedEnemy'), true, 64, 32);
+			spr.loadGraphic(Assets.getImagePath('string-quest/WingedEnemy'), true, 64, 64);
 
 			spr.animation.add('flap', [0, 1], 6);
 			spr.animation.play('flap');
