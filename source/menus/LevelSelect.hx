@@ -108,6 +108,8 @@ class LevelSelect extends FlxState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		Global.playMenuMusic();
+
 		if (FlxG.mouse.visible)
 			FlxG.mouse.visible = false;
 
