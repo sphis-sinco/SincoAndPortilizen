@@ -1,10 +1,12 @@
 package menus;
 
+import flixel.util.FlxCollision;
 import flixel.text.FlxText;
 
 class SettingsMenu extends State
 {
 	public var coloredLevelSelect:Spr;
+	public var discordRPC:Spr;
 
 	public var cursor:Spr;
 	public var selected:Int = -1;
@@ -23,6 +25,15 @@ class SettingsMenu extends State
 		coloredLevelSelect.setPosition(32, 32);
 		coloredLevelSelect.ID = 0;
 		add(coloredLevelSelect);
+
+		discordRPC = new Spr();
+		discordRPC.loadGraphic(Assets.getImagePath('settings/DiscordRPC'), true, 64, 64);
+		discordRPC.animation.add('false', [0]);
+		discordRPC.animation.add('true', [1]);
+		discordRPC.scaleSpr();
+		discordRPC.setPosition(coloredLevelSelect.x + coloredLevelSelect.width + 32, coloredLevelSelect.y);
+		discordRPC.ID = 1;
+		add(discordRPC);
 
 		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkeyballs', 16);
 		descriptionText.alignment = 'center';
@@ -44,30 +55,30 @@ class SettingsMenu extends State
 		cursor.animation.play('idle');
 
 		coloredLevelSelect.animation.play(Std.string(FlxG.save.data.colored_levelSelect));
+		discordRPC.animation.play(Std.string(FlxG.save.data.discord_rpc));
 
 		if (Global.keyJustReleased(ESCAPE))
 			Global.switchState(new LevelSelect());
 
 		descriptionText.text = '';
-		for (setting in [coloredLevelSelect])
+		for (setting in [coloredLevelSelect, discordRPC])
 		{
 			setting.scaleSpr();
-			if (cursor.overlaps(setting))
+			if (FlxCollision.pixelPerfectCheck(cursor, setting))
 			{
 				cursor.animation.play('select');
 
 				if (selected != setting.ID)
-				{
-					Global.playSoundEffect('blipSelect');
 					selected = setting.ID;
-				}
 
 				if (selected == setting.ID)
 				{
-					switch (setting)
+					switch (setting.ID)
 					{
-						case coloredLevelSelect:
+						case 0:
 							descriptionText.text = 'Colored Level Select (${(FlxG.save.data.colored_levelSelect) ? 'enabled' : 'disabled'}) - Enables Color on the Level Select';
+						case 1:
+							descriptionText.text = 'Discord RPC (${(FlxG.save.data.discord_rpc) ? 'enabled' : 'disabled'}) - Enables Rich Presence on Discord';
 					}
 				}
 
@@ -75,11 +86,17 @@ class SettingsMenu extends State
 
 				if (FlxG.mouse.justReleased)
 				{
-					switch (setting)
+					Global.playSoundEffect('blipSelect');
+
+					switch (setting.ID)
 					{
-						case coloredLevelSelect:
+						case 0:
 							FlxG.save.data.colored_levelSelect = !FlxG.save.data.colored_levelSelect;
+						case 1:
+							FlxG.save.data.discord_rpc = !FlxG.save.data.discord_rpc;
 					}
+
+					FlxG.save.flush();
 				}
 			}
 
