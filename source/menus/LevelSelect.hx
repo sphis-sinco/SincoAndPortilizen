@@ -133,9 +133,7 @@ class LevelSelect extends FlxState
 			sinco.animation.play('not-picked');
 			port.animation.play('not-picked');
 			if (data == null)
-			{
 				flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
-			}
 			else
 			{
 				if (!data.can_play)
