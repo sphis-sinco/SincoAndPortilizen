@@ -4,7 +4,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 class StringQuest extends PausableState
 {
-	public var levelLength:Int = 20;
+	public var levelLength:Int = 22;
 	public var levelBlocks:FlxTypedGroup<Spr>;
 
 	public var port:Spr;
@@ -28,22 +28,21 @@ class StringQuest extends PausableState
 			spr.loadGraphic(Assets.getImagePath('string-quest/block'));
 
 			spr.y = FlxG.height - spr.height;
-			if (i > 9)
+			if (i > 10)
 				spr.y -= spr.height;
-			spr.x = spr.width * (i - ((i > 9) ? 10 : 0));
+			spr.x = spr.width * (i - ((i > 10) ? 11 : 0));
 
 			lastBlockY = spr.y;
 
 			levelBlocks.add(spr);
 		}
 
-		
 		for (i in 0...5)
 		{
 			var spr:Spr = new Spr();
 			spr.loadGraphic(Assets.getImagePath('string-quest/WingedEnemy'), true, 64, 64);
 
-			spr.animation.add('flap', [0,1], 6);
+			spr.animation.add('flap', [0, 1], 6);
 			spr.animation.play('flap');
 
 			spr.screenCenter();
@@ -66,5 +65,18 @@ class StringQuest extends PausableState
 		add(port);
 
 		FlxG.sound.music.stop();
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		for (block in levelBlocks)
+		{
+			block.x -= 8;
+
+			if (block.x <= -block.width)
+				block.x = FlxG.width;
+		}
 	}
 }
