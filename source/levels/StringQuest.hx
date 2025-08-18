@@ -10,8 +10,6 @@ class StringQuest extends PausableState
 	override public function new()
 	{
 		super();
-
-		FlxG.sound.music.stop();
 	}
 
 	override function create()
@@ -30,5 +28,7 @@ class StringQuest extends PausableState
 			
 			levelBlocks.add(spr);
 		}
+
+		FlxG.sound.music.stop();
 	}
 }
