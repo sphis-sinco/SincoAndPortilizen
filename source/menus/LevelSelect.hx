@@ -1,6 +1,7 @@
 package menus;
 
 import levels.StringQuest;
+import levels.Osin;
 import flixel.util.FlxTimer;
 import backend.levelselect.LevelData;
 import flixel.tweens.FlxTween;
@@ -253,6 +254,8 @@ class LevelSelect extends State
 					{
 						case 'string-quest':
 							flashMessage('String Quest');
+						case 'osin':
+							flashMessage('Vs Osin');
 					}
 
 					Global.playSoundEffect('blipSelect');
@@ -262,6 +265,7 @@ class LevelSelect extends State
 						switch (levelNames[selectedLevel].toLowerCase())
 						{
 							case 'string-quest': Global.switchState(new StringQuest());
+							case 'osin': Global.switchState(new Osin());
 						}
 					});
 				}
