@@ -24,6 +24,7 @@ class LevelSelect extends State
 	public var creditsButton:Spr;
 
 	public var levelIcons:FlxTypedGroup<Spr>;
+	public var levelCrowns:FlxTypedGroup<Spr>;
 	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres']; // tres is Sinco v Port
 	public var selectedLevel:Int = 0;
 
@@ -41,6 +42,8 @@ class LevelSelect extends State
 	{
 		super.create();
 
+		levelCrowns = new FlxTypedGroup<Spr>();
+		add(levelCrowns);
 		levelIcons = new FlxTypedGroup<Spr>();
 		add(levelIcons);
 
@@ -53,7 +56,9 @@ class LevelSelect extends State
 		for (i in 0...levelNames.length)
 		{
 			var levelIcon:Spr = new Spr(-3);
+			var crown:Spr = new Spr(-3);
 			levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/blank'));
+			crown.loadGraphic(Assets.getImagePath('levelSelect/crown'));
 
 			var data:LevelData;
 
@@ -82,6 +87,8 @@ class LevelSelect extends State
 
 				if (FlxG.save.data.colored_levelSelect)
 				{
+					crown.color = 0xe2e25e;
+
 					if (data.port_level)
 						levelIcon.color = 0x4e0c6f;
 					if (data.sinco_level)
@@ -94,9 +101,17 @@ class LevelSelect extends State
 			levelIcon.screenCenter(Y);
 			levelIcon.y -= levelIcon.height * 1;
 
-			levelIcon.scaleSpr();
+			crown.setPosition(levelIcon.x, levelIcon.y);
 
+			levelIcon.scaleSpr();
+			crown.scaleSpr();
+
+			crown.ID = i;
 			levelIcon.ID = i;
+
+			crown.visible = FlxG.save.data.levels_complete.contains(i + 1);
+
+			levelCrowns.add(crown);
 			levelIcons.add(levelIcon);
 		}
 
@@ -212,6 +227,13 @@ class LevelSelect extends State
 					cursor.animation.play('select');
 				}
 			}
+		}
+
+		for (crown in levelCrowns.members)
+		{
+			crown.scaleSpr();
+			if (selectedLevel == crown.ID)
+				crown.scale.set(crown.scale.x - .1, crown.scale.y - .1);
 		}
 
 		FlxG.watch.addQuick('selectedLevel', selectedLevel);

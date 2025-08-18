@@ -1,6 +1,7 @@
 # Beta
 ## 1.1b (Beta Milestone 3) - 8/18/2025
 ### Added
+- A crown is added to the level cards when the level's been beat
 - `volume` argument (back) to `Global.playSoundEffect`
 - Pet sounds for Sinco and Portilizen
 - 2 new pet "animations" for Sinco and Portilizen on the Level Select for when they are/aren't picked
