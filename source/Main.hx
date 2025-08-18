@@ -13,12 +13,20 @@ class Main extends openfl.display.Sprite
 		// Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
 
-		#if (sys && debug)
+		// #if (sys && debug)
 		var sysPath = Sys.programPath().substring(0, Sys.programPath().indexOf('\\export')).replace('\\', '/');
 		sysPath += '/build';
 
 		File.saveContent(sysPath, Std.string(Global.BUILD + 1));
-		#end
+
+		if (!FileSystem.exists('prev-build')
+			|| FileSystem.exists('prev-build')
+			&& (File.getContent('prev-build') != File.getContent('build')))
+		{
+			File.saveContent('prev-build', Std.string(Global.BUILD));
+			File.saveContent('build', Std.string(Global.BUILD + 1));
+		}
+		// #end
 
 		trace(Global.GENERATED_BY);
 
