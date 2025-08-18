@@ -9,6 +9,8 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 class LevelSelect extends State
 {
+	final portPetX:Float = FlxG.width / 2.25;
+
 	public var startLevelTimer:FlxTimer;
 
 	public var sinco:Spr;
@@ -182,9 +184,9 @@ class LevelSelect extends State
 		if (port.animation.finished)
 			port.animation.play('idle');
 
-		if (cursor.x < FlxG.width / 2 && FlxG.mouse.justReleased && cursor.overlaps(console))
+		if (cursor.x < (portPetX) && FlxG.mouse.justReleased && cursor.overlaps(console))
 			sinco.animation.play('pet');
-		else if (cursor.x > FlxG.width / 2 && FlxG.mouse.justReleased && cursor.overlaps(console))
+		else if (cursor.x > (portPetX) && FlxG.mouse.justReleased && cursor.overlaps(console))
 			port.animation.play('pet');
 	}
 
