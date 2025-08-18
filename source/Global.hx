@@ -51,6 +51,7 @@ class Global
 		FlxG.save.data.discord_rpc ??= true;
 		FlxG.save.data.levels_complete ??= [];
 		FlxG.save.data.medals ??= [];
+		FlxG.save.data.colored_levelSelect ??= false;
 
 		trace('Save dump: ${FlxG.save.data}');
 	}
