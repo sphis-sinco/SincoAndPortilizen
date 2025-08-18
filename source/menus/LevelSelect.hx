@@ -280,14 +280,14 @@ class LevelSelect extends State
 
 			if (FlxG.mouse.justReleased)
 			{
-				Global.playSoundEffect('blipSelect');
-
 				if (cursor.y > FlxG.height - (console.height / 2))
 					return;
 				else
 				{
 					// switch menu here
 				}
+
+				Global.playSoundEffect('blipSelect');
 
 				if (cursor.x < (portPetX))
 					sinco.animation.play('pet');
