@@ -24,75 +24,33 @@
         <set name="BUILD_DIR" value="export/debug" if="debug" />
         <set name="BUILD_DIR" value="export/release" unless="debug" />
 
-        <section unless="DEFAULT_DIRECTORY">
-                <set name="BUILD_DIR" value="${BUILD_DIR}/CNGLA_TRACES" if="CNGLA_TRACES" />
-
-                <set name="BUILD_DIR" value="${BUILD_DIR}/forced_english"
-                        if="FORCED_ENGLISH_LANGUAGE" />
-                <set name="BUILD_DIR" value="${BUILD_DIR}/spanish" if="SPANISH_LANGUAGE" />
-                <set name="BUILD_DIR" value="${BUILD_DIR}/portuguese" if="PORTUGUESE_LANGUAGE" />
-        </section>
-
         <source path="source" />
 
-        <assets path="assets" />
-        <assets path="cur_lang.txt" />
-        <assets path="CHANGELOG_BETA.md" rename="CHANGELOG.md" />
-
-        <!-- English (US) -->
-        <language name="en-US" />
-        <!-- Standard spanish -->
-        <language name="es" />
-        <!-- Portuguese (Brazil) -->
-        <language name="pt-BR" />
+        <assets path="assets" exclude="assets/exclude" />
+        <assets path="CHANGELOG.md"/>
+        <assets path="version.txt"/>
+        <assets path="build"/>
 
         <!-- _____________________________ Custom Defines ___________________________ -->
 
-        <define name="openfl-enable-handle-error" /> <!-- Required for Crash Handler -->
-        <define name="SCRIPT_FILES" /> <!-- Required for Iris  -->
-        <define name="hscriptPos" /><!-- Iris related -->
-        <define name="RECOMPILE_ON_MOD_UPDATE" unless="DO_NOT_RECOMPILE_ON_MOD_UPDATE"/> <!-- Doing "-watch" with this means that if the mod folders are modified it recompiles -->
-        <define name="RECOMPILE_ON_ASSET_UPDATE" unless="DO_NOT_RECOMPILE_ON_ASSET_UPDATE"/> <!-- Doing "-watch" with this means that if the asset/scripts folders are modified it recompiles -->
-
-        <define name="DISABLE_ANNOYING_ERRORS" unless="ENABLE_ANNOYING_ERRORS" />
-        <define name="DISABLE_ANNOYING_WARNINGS" unless="ENABLE_ANNOYING_WARNINGS" />
-
-        <define name="DISABLE_PLUGINS" if="mobile" />
-
-        <define name="DISABLE_SCREENSHOTS" if="html5 || mobile || DISABLE_PLUGINS" />
-
         <define name="DISCORDRPC" if="windows" unless="hl" />
+
+	<!-- Turn on Crash Handler -->
+	<define name="CRASH_HANDLER"/>
 
         <!-- _______________________________ Libraries ______________________________ -->
 
         <haxelib name="flixel" />
         <haxelib name="flixel-addons" />
 
-        <haxelib name="flxgif" />
-        <haxelib name="flxanimate" />
-
-        <haxelib name="thx.semver" unless="DISABLE_SCREENSHOTS" />
+        <haxelib name="flixel-modding" />
+        <haxelib name="sphis" />
 
         <haxelib name="discord_rpc" if="DISCORDRPC" />
-
-        <haxelib name="hscript" if="debug" />
-        <haxelib name="hscript-iris" if="SCRIPT_FILES" />
 
         <!-- _________________________________ After _______________________________ -->
 
         <error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile" />
-
-        <assets path="mods" if="SCRIPT_FILES" />
-        <section if="SCRIPT_FILES">
-                <assets path="debug_mods" rename="mods" if="debug" unless="NO_MODS"/>
-        </section>
-
-        <section if="RECOMPILE_ON_MOD_UPDATE" unless="NO_MODS">
-                <source path="debug_mods" />
-                <source path="mods" />
-        </section>
-
-        <source path="assets" if="RECOMPILE_ON_ASSET_UPDATE" unless="DO_NOT_RECOMPILE_ON_ASSET_UPDATE"/>
 
         <!-- ______________________________ Haxedefines _____________________________ -->
 
@@ -110,7 +68,8 @@
 
         <!-- _________________________________ Icons _______________________________ -->
 
-        <!--Place custom nodes like icons here-->
+        <!--Place
+        custom nodes like icons here-->
         <icon path=".dev/AppIcons/AppIcon-16.png" size="16" />
         <icon path=".dev/AppIcons/AppIcon-32.png" size="32" />
         <icon path=".dev/AppIcons/AppIcon-64.png" size="64" />

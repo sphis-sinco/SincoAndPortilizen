@@ -18,31 +18,21 @@
       "version": null
     },
     {
-      "name": "flxanimate",
+      "name": "flixel-modding",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "hxcpp-debug-server",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "sphis",
       "type": "git",
       "dir": null,
-      "ref": "713d3de0e566d6cd54cde13711ab3e4f60f59f4b",
-      "url": "https://github.com/Dot-Stuff/flxanimate"
-    },
-    {
-      "name": "flxgif",
-      "type": "haxelib",
-      "version": null
-    },
-    {
-      "name": "hscript",
-      "type": "haxelib",
-      "version": null
-    },
-    {
-      "name": "hscript-iris",
-      "type": "haxelib",
-      "version": null
-    },
-    {
-      "name": "thx.semver",
-      "type": "haxelib",
-      "version": null
+      "ref": null,
+      "url": "https://github.com/sphis-sinco/sphis-haxelib"
     }
   ]
 }
