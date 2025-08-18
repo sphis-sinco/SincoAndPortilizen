@@ -33,6 +33,12 @@ class SettingsMenu extends State
 		discordRPC.scaleSpr();
 		discordRPC.setPosition(coloredLevelSelect.x + coloredLevelSelect.width + 32, coloredLevelSelect.y);
 		discordRPC.ID = 1;
+
+                discordRPC.color = 0x5e5ea0;
+                #if !DISCORDRPC
+                discordRPC.color = 0x4e4e4e;
+                #end
+                
 		add(discordRPC);
 
 		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkeyballs', 16);
@@ -66,7 +72,7 @@ class SettingsMenu extends State
 			Global.switchState(new LevelSelect());
 
 		descriptionText.text = '';
-		for (setting in [coloredLevelSelect, discordRPC])
+		for (setting in [coloredLevelSelect #if DiscordRPC, discordRPC #end])
 		{
 			setting.scaleSpr();
 			if (FlxCollision.pixelPerfectCheck(cursor, setting))
