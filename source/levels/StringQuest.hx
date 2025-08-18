@@ -23,6 +23,11 @@ class StringQuest extends PausableState
 
 	public var endlessMode:Bool = false;
 
+	var death:(Dynamic, Dynamic) -> Void = function(d1, d2)
+	{
+		Global.switchState(new LevelSelect());
+	};
+
 	override function create()
 	{
 		super.create();
@@ -198,15 +203,13 @@ class StringQuest extends PausableState
 								},
 								onUpdate: tween ->
 								{
-									if (wingEnemy.overlaps(port))
-										Global.switchState(new LevelSelect());
+									FlxG.collide(wingEnemy, port, death);
 								}
 							});
 						},
 						onUpdate: tween ->
 						{
-							if (wingEnemy.overlaps(port))
-								Global.switchState(new LevelSelect());
+							FlxG.collide(wingEnemy, port, death);
 						}
 					});
 				}
