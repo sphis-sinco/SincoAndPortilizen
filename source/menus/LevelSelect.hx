@@ -1,5 +1,6 @@
 package menus;
 
+import backend.levelselect.LevelData;
 import flixel.tweens.FlxTween;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -70,14 +71,14 @@ class LevelSelect extends FlxState
 		add(port);
 
 		sinco.animation.add('idle', [0], 24);
-		sinco.animation.add('picked', [1], 24);
-		sinco.animation.add('not-picked', [2], 24);
-		sinco.animation.add('pet', [3,3,3], 6, false);
+		sinco.animation.add('picked', [1, 1, 1, 1, 1], 1, false);
+		sinco.animation.add('not-picked', [2, 2, 2, 2, 2], 1, false);
+		sinco.animation.add('pet', [3, 3, 3], 6, false);
 
 		port.animation.add('idle', [0], 24);
-		port.animation.add('picked', [1], 24);
-		port.animation.add('not-picked', [2], 24);
-		port.animation.add('pet', [3,3,3], 6, false);
+		port.animation.add('picked', [1, 1, 1, 1, 1], 1, false);
+		port.animation.add('not-picked', [2, 2, 2, 2, 2], 1, false);
+		port.animation.add('pet', [3, 3, 3], 6, false);
 
 		port.animation.play('idle');
 		sinco.animation.play('idle');
@@ -118,7 +119,7 @@ class LevelSelect extends FlxState
 
 		if (selectedLevel > -1)
 		{
-			var data:Dynamic;
+			var data:LevelData;
 
 			try
 			{
@@ -129,21 +130,30 @@ class LevelSelect extends FlxState
 				data = null;
 			}
 
+			sinco.animation.play('not-picked');
+			port.animation.play('not-picked');
 			if (data == null)
 			{
-				message.text = 'Missing level file:\n\n"${levelNames[selectedLevel]}"';
-				message.alpha = 1;
-				message.screenCenter();
-				FlxTween.cancelTweensOf(message);
-				FlxTween.tween(message, {alpha: 0}, 1, {startDelay: 1});
-
-                                sinco.animation.play('not-picked');
-                                port.animation.play('not-picked');
+				flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
+			}
+			else
+			{
+				if (!data.can_play)
+					flashMessage('Can\'t play');
+				else
+				{
+					if (data.port_level)
+						port.animation.play('picked');
+					if (data.sinco_level)
+						sinco.animation.play('picked');
+				}
 			}
 		}
 
-                if (sinco.animation.finished) sinco.animation.play('idle');
-                if (port.animation.finished) port.animation.play('idle');
+		if (sinco.animation.finished)
+			sinco.animation.play('idle');
+		if (port.animation.finished)
+			port.animation.play('idle');
 
 		if (cursor.x < FlxG.width / 2 && FlxG.mouse.justReleased && cursor.overlaps(console))
 			sinco.animation.play('pet');
@@ -152,4 +162,13 @@ class LevelSelect extends FlxState
 	}
 
 	public var message:FlxText = new FlxText();
+
+	public function flashMessage(msg:String)
+	{
+		message.text = msg;
+		message.alpha = 1;
+		message.screenCenter();
+		FlxTween.cancelTweensOf(message);
+		FlxTween.tween(message, {alpha: 0}, 1, {startDelay: 1});
+	}
 }
