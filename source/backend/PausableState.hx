@@ -30,7 +30,10 @@ class PausableState extends State
 			togglePaused();
 
 		if (Global.keyJustReleased(SPACE) && paused)
+		{
+			paused = false;
 			Global.switchState(new LevelSelect());
+		}
 
 		FlxTween.globalManager.active = !paused;
 		FlxTimer.globalManager.active = !paused;

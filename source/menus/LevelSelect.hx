@@ -167,7 +167,7 @@ class LevelSelect extends State
 		message.alignment = 'center';
 		add(message);
 
-		startLevelTimer = new FlxTimer(FlxTimer.globalManager);
+		startLevelTimer = new FlxTimer();
 
 		creditsButton = new Spr(-3);
 		creditsButton.loadGraphic(Assets.getImagePath('levelSelect/credits'));
@@ -282,7 +282,8 @@ class LevelSelect extends State
 
 					Global.playSoundEffect('blipSelect');
 
-					startLevelTimer.start(1, timer ->
+					startLevelTimer.start(10);
+					FlxTimer.wait(1, () ->
 					{
 						switch (levelNames[selectedLevel].toLowerCase())
 						{

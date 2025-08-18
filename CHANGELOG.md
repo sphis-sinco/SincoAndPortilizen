@@ -1,5 +1,7 @@
 # Beta
 ## 1.1b (Beta Milestone 3) - 8/18/2025
+### Fixed
+- Fixed all timers and tweens being disabled when going back to the level select after pausing in a level
 ### Added
 - A crown is added to the level cards when the level's been beat
 - `volume` argument (back) to `Global.playSoundEffect`
