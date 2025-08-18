@@ -45,7 +45,7 @@ class DiscordClient
 			details: "Starting the Game..",
 			state: null,
 			largeImageKey: 'icon',
-			largeImageText: Global.VERSION_FULL
+			largeImageText: Global.GENERATED_BY
 		});
 	}
 

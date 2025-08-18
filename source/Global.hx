@@ -95,7 +95,7 @@ class Global
 		#if !DISCORDRPC
 		return;
 		#else
-		trace('Discord presence is being changed (details: ${details}, state: ${state}) | ${posInfoString(posinfo)}');
+		trace('Discord presence is being changed (details: ${details}, state: ${state})');
 		DiscordClient.changePresence(details, state);
 		#end
 	}
