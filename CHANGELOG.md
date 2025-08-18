@@ -10,7 +10,7 @@ Game remade from the (almost) ground up
 - The Game Version text file is included in compiled builds now
 - Hitboxes are updated automatically when scaled using `Global.scaleSprite`
 ### Added
-- Build file and build number, currently at 4 (this is just a random one cuz I've seen too many videos on windows development and the build numbers interested me)
+- Build file and build number, currently at 5 (this is just a random one cuz I've seen too many videos on windows development and the build numbers interested me)
 - Overhauled String Quest Level
 - Overhauled Level Select
 - Decimal scale offsets for `Global.scaleSprite`

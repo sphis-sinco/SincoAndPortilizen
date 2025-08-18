@@ -20,6 +20,8 @@ class Main extends openfl.display.Sprite
 		File.saveContent(sysPath, Std.string(Global.BUILD + 1));
 		#end
 
+		trace(Global.GENERATED_BY);
+
 		super();
 		addChild(new FlxGame(0, 0, InitState));
 	}
