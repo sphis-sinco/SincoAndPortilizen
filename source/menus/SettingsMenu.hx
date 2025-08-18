@@ -47,10 +47,19 @@ class SettingsMenu extends State
 				if (selected != setting.ID)
 				{
 					Global.playSoundEffect('blipSelect');
-                                        selected = setting.ID;
+					selected = setting.ID;
 				}
 
 				setting.scale.set(setting.scale.x - .1, setting.scale.y - .1);
+
+				if (FlxG.mouse.justReleased)
+				{
+					switch (setting)
+					{
+						case coloredLevelSelect:
+							FlxG.save.data.colored_levelSelect = !FlxG.save.data.colored_levelSelect;
+					}
+				}
 			}
 
 			if (cursor.animation.name != 'select')
