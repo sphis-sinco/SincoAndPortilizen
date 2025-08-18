@@ -7,6 +7,8 @@ class InitState extends FlxState
 {
 	override public function create():Void
 	{
+		super.create();
+	
 		Global.change_saveslot((#if debug true #else false #end) ? 'debug' : 'release');
 
 		#if DISCORDRPC
@@ -37,8 +39,6 @@ class InitState extends FlxState
 		FlxG.sound.volumeUpKeys = [];
 		FlxG.sound.volumeDownKeys = [];
 		FlxG.sound.muteKeys = [];
-
-		super.create();
 
 		switchToState(new menus.LevelSelect(), 'Level Select');
 	}

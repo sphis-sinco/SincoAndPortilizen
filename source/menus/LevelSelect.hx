@@ -23,6 +23,8 @@ class LevelSelect extends State
 
 	override function create()
 	{
+		super.create();
+
 		Global.changeDiscordRPCPresence('In the Level Select', null);
 
 		levelIcons = new FlxTypedGroup<Spr>();
@@ -99,8 +101,6 @@ class LevelSelect extends State
 		add(message);
 
 		startLevelTimer = new FlxTimer(FlxTimer.globalManager);
-
-		super.create();
 	}
 
 	override function update(elapsed:Float)
