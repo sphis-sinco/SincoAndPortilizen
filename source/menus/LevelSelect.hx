@@ -1,5 +1,6 @@
 package menus;
 
+import flixel.util.FlxTimer;
 import backend.levelselect.LevelData;
 import flixel.tweens.FlxTween;
 import flixel.text.FlxText;
@@ -7,6 +8,8 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 class LevelSelect extends FlxState
 {
+	public var startLevelTimer:FlxTimer;
+
 	public var sinco:Spr;
 	public var port:Spr;
 
@@ -91,6 +94,8 @@ class LevelSelect extends FlxState
 		message.alignment = 'center';
 		add(message);
 
+		startLevelTimer = new FlxTimer(FlxTimer.globalManager);
+
 		super.create();
 	}
 
@@ -100,7 +105,8 @@ class LevelSelect extends FlxState
 		if (FlxG.mouse.visible)
 			FlxG.mouse.visible = false;
 
-		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
+		if (!startLevelTimer.active)
+			cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
 
 		selectedLevel = -1;
@@ -117,36 +123,36 @@ class LevelSelect extends FlxState
 
 		FlxG.watch.addQuick('selectedLevel', selectedLevel);
 
-		if (selectedLevel > -1)
+		if (!startLevelTimer.active && selectedLevel > -1 && FlxG.mouse.justReleased)
 		{
-			if (FlxG.mouse.justReleased)
+			var data:LevelData;
+
+			try
 			{
-				var data:LevelData;
+				data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}.json');
+			}
+			catch (e)
+			{
+				data = null;
+			}
 
-				try
-				{
-					data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}.json');
-				}
-				catch (e)
-				{
-					data = null;
-				}
-
-				sinco.animation.play('not-picked');
-				port.animation.play('not-picked');
-				if (data == null)
-					flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
+			sinco.animation.play('not-picked');
+			port.animation.play('not-picked');
+			if (data == null)
+				flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
+			else
+			{
+				if (!data.can_play)
+					flashMessage('Can\'t play');
 				else
 				{
-					if (!data.can_play)
-						flashMessage('Can\'t play');
-					else
-					{
-						if (data.port_level)
-							port.animation.play('picked');
-						if (data.sinco_level)
-							sinco.animation.play('picked');
-					}
+					if (data.port_level) port.animation.play('picked');
+					if (data.sinco_level) sinco.animation.play('picked');
+
+					startLevelTimer.start(1, timer -> {
+						/** switch statement for switching states
+						**/
+					});
 				}
 			}
 		}
