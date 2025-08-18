@@ -71,8 +71,8 @@ class Global
 			FlxG.sound.playMusic(Assets.getMusicPath(filename));
 	}
 
-	public static function playSoundEffect(name:String):Void
-		FlxG.sound.play(Assets.getSoundPath(name));
+	public static function playSoundEffect(name:String, volume:Float = 1.0):Void
+		FlxG.sound.play(Assets.getSoundPath(name), volume);
 
 	public static function hitHurt():Void
 		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(1, 4)}');

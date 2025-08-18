@@ -297,7 +297,7 @@ class LevelSelect extends State
 
 				if (cursor.x < (portPetX))
 				{
-					Global.playSoundEffect('sinco-pet');
+					Global.playSoundEffect('sinco-pet', 10);
 
 					sinco.animation.play('${sinco.animation.name.split('-')[0]}-pet');
 				}
