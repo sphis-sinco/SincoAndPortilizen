@@ -43,7 +43,7 @@ class InitState extends FlxState
 		var outdated:Bool = OutdatedCheck.checkForOutdatedVersion();
 		#if html5 outdated = false; #end
 
-		if (true)// && outdated && !menus.OutdatedMenu.BEGONE)
+		if (outdated && !menus.OutdatedMenu.BEGONE)
 		{
 			trace('OUTDATED');
 			switchToState(new menus.OutdatedMenu(), 'Outdated Menu');
