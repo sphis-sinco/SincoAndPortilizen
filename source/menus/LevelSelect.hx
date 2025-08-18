@@ -67,10 +67,16 @@ class LevelSelect extends State
 
 			if (data != null)
 			{
-				levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/locked'));
 				if (data.can_play)
 				{
-					levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/unknown'));
+					if (FlxG.save.data.levels_complete.contains(i + 1))
+						levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/${levelNames[selectedLevel]}'));
+					else
+						levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/unknown'));
+				}
+				else
+				{
+					levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/locked'));
 				}
 			}
 
