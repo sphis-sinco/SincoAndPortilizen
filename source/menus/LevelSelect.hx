@@ -194,18 +194,12 @@ class LevelSelect extends State
 							if (data.port_level && data.sinco_level)
 								icon.color = 0x4e0c6f;
 
-					if (!playedBlip && scaledDown != icon.ID)
-					{
-						playedBlip = true;
-						Global.playSoundEffect('blipSelect');
-					}
-					else
-					{
-						playedBlip = false;
-					}
-
 					selectedLevel = icon.ID;
 					icon.scale.set(icon.scale.x - .1, icon.scale.y - .1);
+
+					if (scaledDown != icon.ID)
+						Global.playSoundEffect('blipSelect');
+
 					scaledDown = icon.ID;
 					cursor.animation.play('select');
 				}
