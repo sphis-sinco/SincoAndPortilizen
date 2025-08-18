@@ -1,5 +1,6 @@
 package levels;
 
+import menus.LevelSelect;
 import flixel.math.FlxPoint;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -160,8 +161,18 @@ class StringQuest extends PausableState
 								onComplete: tween ->
 								{
 									enemiesAttacking--;
+								},
+								onUpdate: tween ->
+								{
+									if (wingEnemy.overlaps(port))
+										Global.switchState(new LevelSelect());
 								}
 							});
+						},
+						onUpdate: tween ->
+						{
+							if (wingEnemy.overlaps(port))
+								Global.switchState(new LevelSelect());
 						}
 					});
 				}
