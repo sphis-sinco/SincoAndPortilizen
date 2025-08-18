@@ -1,4 +1,6 @@
 # Beta
+## 1.1b (Beta Milestone 3) - 8/18/2025
+
 ## 1.0b (Beta Milestone 2) - 8/18/2025
 Game remade from the (almost) ground up
 **This version clears your save. Sorry, the Save data merge from previous versions was crashing the game**
