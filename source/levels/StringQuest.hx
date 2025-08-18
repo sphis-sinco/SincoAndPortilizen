@@ -12,6 +12,8 @@ class StringQuest extends PausableState
 
 	public var port:Spr;
 
+	var lastBlockY:Float = 0;
+
 	public var ogwingedEnemies:FlxTypedGroup<Spr>;
 	public var wingedEnemies:FlxTypedGroup<Spr>;
 
@@ -27,7 +29,6 @@ class StringQuest extends PausableState
 
 		ogwingedEnemies = new FlxTypedGroup<Spr>();
 
-		var lastBlockY:Float = 0;
 		for (i in 0...levelLength)
 		{
 			var spr:Spr = new Spr();
@@ -97,7 +98,7 @@ class StringQuest extends PausableState
 				{
 					port.animation.play('fall');
 
-					FlxTween.tween(port, {y: port.y + port.height * 2}, 1, {
+					FlxTween.tween(port, {y: lastBlockY - (port.height / 1.25)}, 1, {
 						ease: FlxEase.sineIn,
 						onComplete: tween ->
 						{
@@ -107,27 +108,29 @@ class StringQuest extends PausableState
 				}
 			});
 		}
-
-
-		if (Global.keyJustReleased(SPACE) && port.animation.name == 'jump')
+		else
 		{
-			port.animation.play('jump');
+			if (Global.keyJustReleased(SPACE) && port.animation.name == 'jump')
+			{
+				port.animation.play('double-jump');
 
-			FlxTween.tween(port, {y: port.y - port.height * 2}, 1, {
-				ease: FlxEase.sineOut,
-				onComplete: tween ->
-				{
-					port.animation.play('fall');
+				FlxTween.cancelTweensOf(port);
+				FlxTween.tween(port, {y: port.y - port.height * 2}, .25, {
+					ease: FlxEase.sineOut,
+					onComplete: tween ->
+					{
+						port.animation.play('fall');
 
-					FlxTween.tween(port, {y: port.y + port.height * 2}, 1, {
-						ease: FlxEase.sineIn,
-						onComplete: tween ->
-						{
-							port.animation.play('run');
-						}
-					});
-				}
-			});
+						FlxTween.tween(port, {y: lastBlockY - (port.height / 1.25)}, 2, {
+							ease: FlxEase.sineIn,
+							onComplete: tween ->
+							{
+								port.animation.play('run');
+							}
+						});
+					}
+				});
+			}
 		}
 
 		if (FlxG.random.bool(25))
