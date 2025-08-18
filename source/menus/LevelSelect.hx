@@ -72,12 +72,12 @@ class LevelSelect extends FlxState
 		sinco.animation.add('idle', [0], 24);
 		sinco.animation.add('picked', [1], 24);
 		sinco.animation.add('not-picked', [2], 24);
-		sinco.animation.add('pet', [3], 24, false);
+		sinco.animation.add('pet', [3,3,3], 6, false);
 
 		port.animation.add('idle', [0], 24);
 		port.animation.add('picked', [1], 24);
 		port.animation.add('not-picked', [2], 24);
-		port.animation.add('pet', [3], 24, false);
+		port.animation.add('pet', [3,3,3], 6, false);
 
 		port.animation.play('idle');
 		sinco.animation.play('idle');
@@ -138,6 +138,9 @@ class LevelSelect extends FlxState
 				FlxTween.tween(message, {alpha: 0}, 1, {startDelay: 1});
 			}
 		}
+
+                if (sinco.animation.finished) sinco.animation.play('idle');
+                if (port.animation.finished) port.animation.play('idle');
 
 		if (cursor.x < FlxG.width / 2 && FlxG.mouse.justReleased && cursor.overlaps(console))
 			sinco.animation.play('pet');
