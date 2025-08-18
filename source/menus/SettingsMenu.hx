@@ -26,7 +26,7 @@ class SettingsMenu extends State
 		coloredLevelSelect.ID = 0;
 		add(coloredLevelSelect);
 
-                pageCont.push(coloredLevelSelect);
+		pageCont.push(coloredLevelSelect);
 
 		discordRPC = new Spr();
 		discordRPC.loadGraphic(Assets.getImagePath('settings/DiscordRPC'), true, 64, 64);
@@ -39,8 +39,8 @@ class SettingsMenu extends State
 		discordRPC.color = 0x5e5ea0;
 		#if !DISCORDRPC
 		discordRPC.color = 0x4e4e4e;
-                #else
-                pageCont.push(coloredLevelSelect);
+		#else
+		pageCont.push(coloredLevelSelect);
 		#end
 
 		add(discordRPC);
@@ -59,16 +59,16 @@ class SettingsMenu extends State
 		if (FlxG.random.bool())
 		{
 			cursor.color = 0x4eb10c;
-                        Global.changeDiscordRPCPresence('Powering their options', 'Settings Menu'); // electricity = power. Shut up
+			Global.changeDiscordRPCPresence('Powering their options', 'Settings Menu'); // electricity = power. Shut up
 		}
 		else
 		{
 			cursor.color = 0x4e0c6f;
-                        Global.changeDiscordRPCPresence('Sabotaging their options', 'Settings Menu');
+			Global.changeDiscordRPCPresence('Sabotaging their options', 'Settings Menu');
 		}
 	}
 
-        public var pageCont:Array<Spr> = [];
+	public var pageCont:Array<Spr> = [];
 
 	override function update(elapsed:Float)
 	{
@@ -117,6 +117,14 @@ class SettingsMenu extends State
 							FlxG.save.data.colored_levelSelect = !FlxG.save.data.colored_levelSelect;
 						case 1:
 							FlxG.save.data.discord_rpc = !FlxG.save.data.discord_rpc;
+
+							if (FlxG.save.data.discord_rpc)
+							{
+								Discord.DiscordClient.initialize();
+								Global.changeDiscordRPCPresence('Re-enabled', 'Settings Menu');
+							}
+							else
+								Discord.DiscordClient.shutdown();
 					}
 
 					FlxG.save.flush();
