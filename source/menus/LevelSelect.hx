@@ -119,31 +119,34 @@ class LevelSelect extends FlxState
 
 		if (selectedLevel > -1)
 		{
-			var data:LevelData;
+			if (FlxG.mouse.justReleased)
+			{
+				var data:LevelData;
 
-			try
-			{
-				data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}.json');
-			}
-			catch (e)
-			{
-				data = null;
-			}
+				try
+				{
+					data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}.json');
+				}
+				catch (e)
+				{
+					data = null;
+				}
 
-			sinco.animation.play('not-picked');
-			port.animation.play('not-picked');
-			if (data == null)
-				flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
-			else
-			{
-				if (!data.can_play)
-					flashMessage('Can\'t play');
+				sinco.animation.play('not-picked');
+				port.animation.play('not-picked');
+				if (data == null)
+					flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
 				else
 				{
-					if (data.port_level)
-						port.animation.play('picked');
-					if (data.sinco_level)
-						sinco.animation.play('picked');
+					if (!data.can_play)
+						flashMessage('Can\'t play');
+					else
+					{
+						if (data.port_level)
+							port.animation.play('picked');
+						if (data.sinco_level)
+							sinco.animation.play('picked');
+					}
 				}
 			}
 		}
