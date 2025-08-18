@@ -45,6 +45,11 @@ class SettingsMenu extends State
 		cursor.animation.add('select', [1], 24);
 		cursor.animation.play('idle');
 		add(cursor);
+
+		if (FlxG.random.bool())
+			cursor.color = 0x4eb10c;
+		else
+			cursor.color = 0x4e0c6f;
 	}
 
 	override function update(elapsed:Float)
