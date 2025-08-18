@@ -284,7 +284,7 @@ class LevelSelect extends State
 					return;
 				else
 				{
-					// switch menu here
+					Global.switchState(new StringQuest());
 				}
 
 				Global.playSoundEffect('blipSelect');
