@@ -7,6 +7,7 @@ class SettingsMenu extends State
 {
 	public var coloredLevelSelect:Spr;
 	public var discordRPC:Spr;
+	public var volume:Spr;
 
 	public var cursor:Spr;
 	public var selected:Int = -1;
@@ -42,6 +43,27 @@ class SettingsMenu extends State
 		#end
 		pageCont.push(discordRPC);
 
+		volume = new Spr();
+		volume.loadGraphic(Assets.getImagePath('settings/Volume'), true, 64, 64);
+		volume.animation.add('100', [10]);
+		volume.animation.add('90', [9]);
+		volume.animation.add('80', [8]);
+		volume.animation.add('70', [7]);
+		volume.animation.add('60', [6]);
+		volume.animation.add('50', [5]);
+		volume.animation.add('40', [4]);
+		volume.animation.add('30', [3]);
+		volume.animation.add('20', [2]);
+		volume.animation.add('10', [1]);
+		volume.animation.add('0', [0]);
+		volume.scaleSpr();
+		volume.setPosition(coloredLevelSelect.x, coloredLevelSelect.y + coloredLevelSelect.height + 32);
+		volume.ID = 2;
+		add(volume);
+
+		pageCont.push(volume);
+		lowerPageCont.push(volume);
+
 		add(discordRPC);
 
 		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkeyballs', 16);
@@ -68,6 +90,7 @@ class SettingsMenu extends State
 	}
 
 	public var pageCont:Array<Spr> = [];
+	public var lowerPageCont:Array<Spr> = [];
 
 	override function update(elapsed:Float)
 	{
@@ -82,6 +105,7 @@ class SettingsMenu extends State
 		#else
 		discordRPC.animation.play(Std.string(false));
 		#end
+		volume.animation.play(Std.string(FlxG.save.data.volume * 100));
 
 		if (Global.keyJustReleased(ESCAPE))
 			Global.switchState(new LevelSelect());
@@ -104,9 +128,14 @@ class SettingsMenu extends State
 						case 0:
 							descriptionText.text = 'Colored Level Select (${(FlxG.save.data.colored_levelSelect) ? 'enabled' : 'disabled'}) - Enables Color on the Level Select';
 						case 1:
-							descriptionText.text = 'Discord RPC (${#if DISCORDRPC (FlxG.save.data.discord_rpc) ? 'enabled' : 'disabled' #else 'unsupported' #end}) - Enables Rich Presence Support on Discord';
+							descriptionText.text = 'Discord RPC (${#if DISCORDRPC(FlxG.save.data.discord_rpc) ? 'enabled' : 'disabled' #else 'unsupported' #end}) - Enables Rich Presence Support on Discord';
+						case 2:
+							descriptionText.text = 'Volume (${FlxG.save.data.volume * 100}) - Sets the game volume';
 					}
 				}
+				descriptionText.y = 0;
+				if (lowerPageCont.contains(setting))
+					descriptionText.y = FlxG.height - descriptionText.height;
 
 				setting.scale.set(setting.scale.x - .1, setting.scale.y - .1);
 
@@ -132,10 +161,17 @@ class SettingsMenu extends State
 							#else
 							ps = false;
 							#end
+						case 2:
+							FlxG.sound.changeVolume(0.1);
+							if (FlxG.sound.volume >= 1)
+							{
+								FlxG.sound.changeVolume(-1);
+							}
+							FlxG.save.data.volume = FlxG.sound.volume;
 					}
 
-					if (ps) 
-					Global.playSoundEffect('blipSelect');
+					if (ps)
+						Global.playSoundEffect('blipSelect');
 
 					FlxG.save.flush();
 				}
