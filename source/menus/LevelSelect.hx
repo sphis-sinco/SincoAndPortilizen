@@ -24,9 +24,6 @@ class LevelSelect extends State
 	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres']; // tres is Sinco v Port
 	public var selectedLevel:Int = 0;
 
-	public var scaledDown:Int = 0;
-	public var playedBlip:Bool = false;
-
 	override public function new(beatLvl:Bool = false)
 	{
 		super();
@@ -198,11 +195,6 @@ class LevelSelect extends State
 
 					selectedLevel = icon.ID;
 					icon.scale.set(icon.scale.x - .1, icon.scale.y - .1);
-
-					if (scaledDown != icon.ID)
-						Global.playSoundEffect('blipSelect');
-
-					scaledDown = icon.ID;
 					cursor.animation.play('select');
 				}
 			}
@@ -243,6 +235,8 @@ class LevelSelect extends State
 						case 'string-quest':
 							flashMessage('String Quest');
 					}
+
+					Global.playSoundEffect('blipSelect');
 
 					startLevelTimer.start(1, timer ->
 					{
