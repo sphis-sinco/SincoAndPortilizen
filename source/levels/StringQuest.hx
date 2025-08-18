@@ -109,12 +109,15 @@ class StringQuest extends PausableState
 			timeText.screenCenter();
 			add(timeText);
 
+			Global.changeDiscordRPCPresence('Fighting the Winged Enemies', 'String Quest (${timeLeft} seconds remain)');
+
 			secondTimer.start(1, timer ->
 			{
 				timeLeft--;
 
 				timeText.text = Std.string(timeLeft);
 				timeText.screenCenter();
+				Global.changeDiscordRPCPresence('Fighting the Winged Enemies', 'String Quest (${timeLeft} seconds remain)');
 			}, timeStart);
 
 			FlxTimer.wait(timeStart, () ->
@@ -123,8 +126,8 @@ class StringQuest extends PausableState
 				Global.beatLevel(1);
 			});
 		}
-
-		Global.changeDiscordRPCPresence('Fighting the Winged Enemies', 'String Quest');
+		else
+			Global.changeDiscordRPCPresence('Fighting the Winged Enemies', 'String Quest');
 	}
 
 	var portMaxX:Float = 0;
@@ -195,7 +198,8 @@ class StringQuest extends PausableState
 
 	override function togglePaused()
 	{
-		if (timeLeft < 1 && !paused) return;
+		if (timeLeft < 1 && !paused)
+			return;
 
 		super.togglePaused();
 
