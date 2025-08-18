@@ -4,6 +4,7 @@ Game remade from the ground up
 ### Removed
 - All levels entirely from the game except for String Quest and Osin, though only String Quest is playable right now
 ### Changed
+- The Game Version text file is included in compiled builds now
 - Hitboxes are updated automatically when scaled using `Global.scaleSprite`
 ### Added
 - Overhauled String Quest Level
