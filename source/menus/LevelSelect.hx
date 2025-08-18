@@ -79,7 +79,7 @@ class LevelSelect extends State
 				else
 					levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/locked'));
 
-				if (!FlxG.save.data.colored_levelSelect)
+				if (FlxG.save.data.colored_levelSelect)
 				{
 					if (data.port_level)
 						levelIcon.color = 0x4e0c6f;
@@ -178,7 +178,7 @@ class LevelSelect extends State
 				}
 
 				if (data != null)
-					if (!FlxG.save.data.colored_levelSelect)
+					if (FlxG.save.data.colored_levelSelect)
 						if (data.port_level && data.sinco_level)
 							icon.color = 0x4eb10c;
 
@@ -186,7 +186,7 @@ class LevelSelect extends State
 				if (cursor.overlaps(icon))
 				{
 					if (data != null)
-						if (!FlxG.save.data.colored_levelSelect)
+						if (FlxG.save.data.colored_levelSelect)
 							if (data.port_level && data.sinco_level)
 								icon.color = 0x4e0c6f;
 
