@@ -39,9 +39,8 @@ class SettingsMenu extends State
 		discordRPC.color = 0x5e5ea0;
 		#if !DISCORDRPC
 		discordRPC.color = 0x4e4e4e;
-		#else
-		pageCont.push(coloredLevelSelect);
 		#end
+		pageCont.push(discordRPC);
 
 		add(discordRPC);
 
@@ -78,7 +77,11 @@ class SettingsMenu extends State
 		cursor.animation.play('idle');
 
 		coloredLevelSelect.animation.play(Std.string(FlxG.save.data.colored_levelSelect));
+		#if DISCORDRPC
 		discordRPC.animation.play(Std.string(FlxG.save.data.discord_rpc));
+		#else
+		discordRPC.animation.play(Std.string(false));
+		#end
 
 		if (Global.keyJustReleased(ESCAPE))
 			Global.switchState(new LevelSelect());
@@ -101,7 +104,7 @@ class SettingsMenu extends State
 						case 0:
 							descriptionText.text = 'Colored Level Select (${(FlxG.save.data.colored_levelSelect) ? 'enabled' : 'disabled'}) - Enables Color on the Level Select';
 						case 1:
-							descriptionText.text = 'Discord RPC (${(FlxG.save.data.discord_rpc) ? 'enabled' : 'disabled'}) - Enables Rich Presence on Discord';
+							descriptionText.text = 'Discord RPC (${(#if DISCORDRPC FlxG.save.data.discord_rpc #else false #end) ? 'enabled' : 'disabled'}) - Enables Rich Presence on Discord';
 					}
 				}
 
@@ -116,9 +119,9 @@ class SettingsMenu extends State
 						case 0:
 							FlxG.save.data.colored_levelSelect = !FlxG.save.data.colored_levelSelect;
 						case 1:
+							#if DISCORDRPC
 							FlxG.save.data.discord_rpc = !FlxG.save.data.discord_rpc;
 
-							#if DISCORDRPC
 							if (FlxG.save.data.discord_rpc)
 							{
 								Discord.DiscordClient.initialize();
