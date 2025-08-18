@@ -1,5 +1,6 @@
 package menus;
 
+import levels.StringQuest;
 import flixel.util.FlxTimer;
 import backend.levelselect.LevelData;
 import flixel.tweens.FlxTween;
@@ -160,8 +161,10 @@ class LevelSelect extends State
 						sinco.animation.play('picked');
 
 					startLevelTimer.start(1, timer -> {
-						/** switch statement for switching states
-						**/
+						switch (levelNames[selectedLevel].toLowerCase())
+						{
+							case 'string-quest': Global.switchState(new StringQuest());
+						}
 					});
 				}
 			}
