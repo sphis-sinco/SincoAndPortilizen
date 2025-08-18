@@ -3,13 +3,8 @@ name: Auto-compiled builds (Web)
 on:
         push:
                 branches-ignore: [randomBranchName]
-                paths:
-                        - "**.hx"
         pull_request:
                 branches-ignore: [randomBranchName]
-                paths:
-                        - "**.hx"
-
         workflow_dispatch:
 
 jobs:
