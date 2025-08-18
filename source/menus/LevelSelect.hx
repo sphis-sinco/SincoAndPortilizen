@@ -150,6 +150,8 @@ class LevelSelect extends State
 
 		startLevelTimer = new FlxTimer(FlxTimer.globalManager);
 
+		add(new FlxText(3, FlxG.height - 32, FlxG.width, Global.GENERATED_BY, 16));
+
 		Global.changeDiscordRPCPresence('In the Level Select', 'Level Select');
 	}
 
