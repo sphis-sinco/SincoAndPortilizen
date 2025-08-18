@@ -6,7 +6,7 @@ import flixel.tweens.FlxTween;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
-class LevelSelect extends FlxState
+class LevelSelect extends State
 {
 	public var startLevelTimer:FlxTimer;
 
@@ -24,8 +24,6 @@ class LevelSelect extends FlxState
 	override function create()
 	{
 		Global.changeDiscordRPCPresence('In the Level Select', null);
-
-		add(Global.dummyBG([12, 12, 12]));
 
 		levelIcons = new FlxTypedGroup<Spr>();
 		add(levelIcons);
