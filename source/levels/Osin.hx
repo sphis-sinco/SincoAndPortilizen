@@ -11,6 +11,9 @@ class Osin extends PausableState
 	public var moving:Bool = false;
 
         public var osin:Spr;
+        public var sinco:Spr;
+
+        public var tileY:Float = 0;
 
 	override function create()
 	{
@@ -27,6 +30,8 @@ class Osin extends PausableState
 			spr.y = FlxG.height - spr.height;
 			spr.x = spr.width * i;
 
+                        tileY = spr.y;
+
 			levelTiles.add(spr);
 		}
 
@@ -42,6 +47,19 @@ class Osin extends PausableState
                 osin.x -= osin.width * 2;
 
                 add(osin);
+
+                sinco = new Spr();
+                sinco.loadGraphic(Assets.getImagePath('osin/sinco'), true, 128, 128);
+                sinco.animation.add('idle', [0]);
+                sinco.animation.add('jump', [1]);
+                sinco.animation.add('die', [2]);
+
+                sinco.animation.play('idle');
+
+                sinco.screenCenter();
+                sinco.y = tileY - sinco.height;
+
+                add(sinco);
 	}
 
 	override function update(elapsed:Float)
