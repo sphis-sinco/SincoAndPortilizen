@@ -71,22 +71,24 @@ class SettingsMenu extends State
 		add(descriptionText);
 
 		cursor = new Spr(-3);
-		cursor.loadGraphic(Assets.getImagePath('levelSelect/cursor'), true, 64, 64);
-		cursor.animation.add('idle', [0], 24);
-		cursor.animation.add('select', [1], 24);
-		cursor.animation.play('idle');
-		add(cursor);
 
 		if (FlxG.random.bool())
 		{
+			cursor.loadGraphic(Assets.getImagePath('settings/cursors/sinco'), true, 64, 64);
 			cursor.color = 0x4eb10c;
 			Global.changeDiscordRPCPresence('Powering their options', 'Settings Menu'); // electricity = power. Shut up
 		}
 		else
 		{
+			cursor.loadGraphic(Assets.getImagePath('settings/cursors/port'), true, 64, 64);
 			cursor.color = 0x4e0c6f;
 			Global.changeDiscordRPCPresence('Sabotaging their options', 'Settings Menu');
 		}
+
+		cursor.animation.add('idle', [0], 24);
+		cursor.animation.add('select', [1], 24);
+		cursor.animation.play('idle');
+		add(cursor);
 	}
 
 	public var pageCont:Array<Spr> = [];
