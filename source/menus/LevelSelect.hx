@@ -28,8 +28,10 @@ class LevelSelect extends State
 	{
 		super();
 
-		if (beatLvl)
-			Global.camflash(0x6ff34e, 2);
+		/**
+		 * if (beatLvl)
+		 *	Global.camflash(0x6ff34e, 2);
+		**/
 	}
 
 	override function create()
