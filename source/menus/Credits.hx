@@ -3,10 +3,8 @@ package menus;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
-class CreditsSubState extends State
+class Credits extends State
 {
-	public static var overlay:Spr;
-
 	public static var credits:Array<String>;
 
 	public static var creditsText:FlxTypedGroup<FlxText>;
@@ -14,11 +12,8 @@ class CreditsSubState extends State
 
 	override function create():Void
 	{
+                creditsInit();
 		super.create();
-
-		overlay = Global.dummyBG([12,12,12]);
-		overlay.alpha = 0.5;
-		add(overlay);
 
 		creditsText = new FlxTypedGroup<FlxText>();
 		add(creditsText);
@@ -27,17 +22,18 @@ class CreditsSubState extends State
 		var i:Int = 0;
 		for (credit in credits)
 		{
-			var text:FlxText = new FlxText(0, cur_y, 0, credit, 32);
+                        trace(credit);
+			var text:FlxText = new FlxText(0, cur_y, FlxG.width, credit, 24);
 			text.alignment = CENTER;
 			text.screenCenter(X);
-			text.color = FlxColor.fromRGB(12,12,12);
+			text.color = FlxColor.fromRGB(226,226,226);
 			text.ID = i;
 			i++;
 
 			creditsText.add(text);
 
-			cur_y += 32;
-			totalSpacing += 32;
+			cur_y += Std.int(text.height) + text.size + 8;
+			totalSpacing += Std.int(text.height) + text.size + 8;
 		}
 	}
 

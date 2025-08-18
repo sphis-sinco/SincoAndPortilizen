@@ -20,6 +20,8 @@ class LevelSelect extends State
 
 	public var cursor:Spr;
 
+	public var creditsButton:Spr;
+
 	public var levelIcons:FlxTypedGroup<Spr>;
 	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres']; // tres is Sinco v Port
 	public var selectedLevel:Int = 0;
@@ -147,6 +149,13 @@ class LevelSelect extends State
 
 		startLevelTimer = new FlxTimer(FlxTimer.globalManager);
 
+		creditsButton = new Spr(-3);
+		creditsButton.loadGraphic(Assets.getImagePath('levelSelect/credits'));
+		creditsButton.setPosition(FlxG.width - creditsButton.width - 32, FlxG.height - creditsButton.height - 32);
+		creditsButton.ID = levelNames.length;
+		levelNames.push('credits');
+		levelIcons.add(creditsButton);
+
 		add(new FlxText(3, FlxG.height - 32, FlxG.width, Global.VERSION, 16));
 
 		Global.changeDiscordRPCPresence('In the Level Select', 'Level Select');
@@ -204,6 +213,11 @@ class LevelSelect extends State
 
 		if (!startLevelTimer.active && selectedLevel > -1 && FlxG.mouse.justReleased)
 		{
+			if (levelNames[selectedLevel] == 'credits') {
+				Global.switchState(new Credits());
+				return;
+			}
+
 			var data:LevelData;
 
 			try
