@@ -7,9 +7,6 @@ class StringQuest extends PausableState
 	public var levelLength:Int = 20;
 	public var levelBlocks:FlxTypedGroup<Spr>;
 
-	override public function new()
-		super();
-
 	override function create()
 	{
 		super.create();
