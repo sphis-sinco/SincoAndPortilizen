@@ -22,7 +22,6 @@ class Credits extends State
 		var i:Int = 0;
 		for (credit in credits)
 		{
-                        trace(credit);
 			var text:FlxText = new FlxText(0, cur_y, FlxG.width, credit, 24);
 			text.alignment = CENTER;
 			text.screenCenter(X);
