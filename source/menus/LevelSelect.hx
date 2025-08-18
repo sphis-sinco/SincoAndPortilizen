@@ -184,10 +184,16 @@ class LevelSelect extends State
 		if (port.animation.finished)
 			port.animation.play('idle');
 
-		if (cursor.x < (portPetX) && FlxG.mouse.justReleased && cursor.overlaps(console))
-			sinco.animation.play('pet');
-		else if (cursor.x > (portPetX) && FlxG.mouse.justReleased && cursor.overlaps(console))
-			port.animation.play('pet');
+		if (cursor.overlaps(console))
+		{
+			cursor.animation.play('select');
+
+			if (FlxG.mouse.justReleased)
+				if (cursor.x < (portPetX))
+					sinco.animation.play('pet');
+				else if (cursor.x > (portPetX))
+					port.animation.play('pet');
+		}
 	}
 
 	public var message:FlxText = new FlxText();
