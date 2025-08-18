@@ -33,6 +33,9 @@
 
         <define name="DISCORDRPC" if="windows" unless="hl" />
 
+	<!-- Turn on Crash Handler -->
+	<define name="CRASH_HANDLER"/>
+
         <!-- _______________________________ Libraries ______________________________ -->
 
         <haxelib name="flixel" />
