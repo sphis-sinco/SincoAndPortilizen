@@ -33,7 +33,10 @@ class StringQuest extends PausableState
 	public var timeText:FlxText;
 
 	public function death()
+	{
 		Global.switchState(new LevelSelect());
+		Global.playSoundEffect('gameplay/dead');
+	}
 
 	override function create()
 	{
@@ -129,7 +132,7 @@ class StringQuest extends PausableState
 	override function update(elapsed:Float)
 	{
 		Global.playMenuMusic();
-		
+
 		super.update(elapsed);
 
 		for (block in levelBlocks)
@@ -156,9 +159,7 @@ class StringQuest extends PausableState
 		}
 
 		if (Global.keyJustReleased(SPACE) && port.animation.name == 'run')
-		{
 			jump();
-		}
 		else if (Global.keyJustReleased(SPACE) && port.animation.name == 'jump')
 			doubleJump();
 
@@ -252,6 +253,10 @@ class StringQuest extends PausableState
 						port.animation.play('run');
 					}
 				});
+			},
+			onStart: tween ->
+			{
+				Global.playSoundEffect('gameplay/jump');
 			}
 		});
 	}

@@ -24,6 +24,9 @@ class LevelSelect extends State
 	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres']; // tres is Sinco v Port
 	public var selectedLevel:Int = 0;
 
+	public var scaledDown:Int = 0;
+	public var playedBlip:Bool = false;
+
 	override public function new(beatLvl:Bool = false)
 	{
 		super();
@@ -163,6 +166,7 @@ class LevelSelect extends State
 
 		if (!startLevelTimer.active)
 		{
+			final psl = selectedLevel;
 			selectedLevel = -1;
 			for (icon in levelIcons.members)
 			{
@@ -190,8 +194,19 @@ class LevelSelect extends State
 							if (data.port_level && data.sinco_level)
 								icon.color = 0x4e0c6f;
 
+					if (!playedBlip && scaledDown != icon.ID)
+					{
+						playedBlip = true;
+						Global.playSoundEffect('blipSelect');
+					}
+					else
+					{
+						playedBlip = false;
+					}
+
 					selectedLevel = icon.ID;
 					icon.scale.set(icon.scale.x - .1, icon.scale.y - .1);
+					scaledDown = icon.ID;
 					cursor.animation.play('select');
 				}
 			}
@@ -264,10 +279,14 @@ class LevelSelect extends State
 			cursor.animation.play('select');
 
 			if (FlxG.mouse.justReleased)
+			{
+				Global.playSoundEffect('blipSelect');
+
 				if (cursor.x < (portPetX))
 					sinco.animation.play('pet');
 				else if (cursor.x > (portPetX))
 					port.animation.play('pet');
+			}
 		}
 	}
 
