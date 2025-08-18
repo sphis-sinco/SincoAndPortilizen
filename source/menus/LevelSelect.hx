@@ -88,7 +88,7 @@ class LevelSelect extends State
 				}
 			}
 
-			levelIcon.x = (64 + 32) + (i * (128 + 64));
+			levelIcon.x = (64 + 0) + (i * (128 + 64));
 
 			levelIcon.screenCenter(Y);
 			levelIcon.y -= levelIcon.height * 1;

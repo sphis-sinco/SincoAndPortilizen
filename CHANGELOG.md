@@ -1,5 +1,7 @@
 # Beta
 ## 1.1b (Beta Milestone 3) - 8/18/2025
+### Changed
+- shifted level icons over to the left by a few pixels
 
 ## 1.0b (Beta Milestone 2) - 8/18/2025
 Game remade from the (almost) ground up
