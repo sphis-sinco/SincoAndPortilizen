@@ -15,6 +15,7 @@ class Osin extends PausableState
 	public var sinco:Spr;
 
 	public var tileY:Float = 0;
+	public var osinTargX:Float = 0;
 
 	override function create()
 	{
@@ -46,6 +47,7 @@ class Osin extends PausableState
 
 		osin.screenCenter();
 		osin.x -= osin.width * 2;
+		osinTargX = osin.x;
 
 		add(osin);
 
@@ -72,6 +74,17 @@ class Osin extends PausableState
 		if (Global.keyJustReleased(SPACE) && !paused && !moving)
 		{
 			moving = true;
+
+			FlxTween.cancelTweensOf(osin);
+			FlxTween.tween(osin, {x: osinTargX - osin.width * 6}, 1, {
+				ease: FlxEase.sineOut,
+				onComplete: tween ->
+				{
+					FlxTween.tween(osin, {x: osinTargX}, 1, {
+						ease: FlxEase.sineIn,
+					});
+				}
+			});
 
 			sinco.animation.play('jump');
 
