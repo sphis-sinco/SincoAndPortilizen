@@ -135,7 +135,7 @@ class StringQuest extends PausableState
 			}
 		}
 
-		if (FlxG.random.bool(15) && enemiesAttacking <= 2)
+		if (FlxG.random.bool(15) && enemiesAttacking < 3)
 		{
 			var index = 0;
 			var i = 1.1;
@@ -143,8 +143,7 @@ class StringQuest extends PausableState
 			{
 				if (FlxG.random.bool(5 * i)
 					&& wingEnemy.x == getWingedEnemyPos(wingEnemy.ID).x
-					&& wingEnemy.y == getWingedEnemyPos(wingEnemy.ID).y
-					&& ((port.animation.name != 'jump' && port.animation.name != 'fall') && FlxG.random.bool(25.0)))
+					&& wingEnemy.y == getWingedEnemyPos(wingEnemy.ID).y)
 				{
 					i -= (i / 4);
 					final ogPos:FlxPoint = wingEnemy.getPosition();
