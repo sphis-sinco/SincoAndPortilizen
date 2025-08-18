@@ -289,7 +289,7 @@ class LevelSelect extends State
 
 			if (FlxG.mouse.justReleased)
 			{
-				if (cursor.y > FlxG.height - (console.height / 2))
+				if (cursor.y > FlxG.height - (console.height / 2) + 32)
 				{
 					Global.switchState(new SettingsMenu());
 					return;
