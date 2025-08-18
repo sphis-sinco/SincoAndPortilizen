@@ -1,5 +1,7 @@
 package levels;
 
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
 class StringQuest extends PausableState
@@ -77,6 +79,27 @@ class StringQuest extends PausableState
 
 			if (block.x <= -block.width)
 				block.x = FlxG.width;
+		}
+
+		if (Global.keyJustReleased(SPACE) && port.animation.name == 'run')
+		{
+			port.animation.play('jump');
+
+			FlxTween.tween(port, {y: port.y - port.height * 2}, 1, {
+				ease: FlxEase.sineOut,
+				onComplete: tween ->
+				{
+					port.animation.play('fall');
+					
+					FlxTween.tween(port, {y: port.y + port.height * 2}, 1, {
+						ease: FlxEase.sineIn,
+						onComplete: tween ->
+						{
+							port.animation.play('run');
+						}
+					});
+				}
+			});
 		}
 	}
 }
