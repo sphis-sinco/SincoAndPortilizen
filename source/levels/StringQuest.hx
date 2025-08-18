@@ -41,8 +41,7 @@ class StringQuest extends PausableState
 
 		port.screenCenter(X);
 		port.x += port.width * 2;
-		port.y = lastBlockY - (port.height / 4);
-
+		port.y = lastBlockY - (port.height / 1.25);
 		add(port);
 
 		FlxG.sound.music.stop();
