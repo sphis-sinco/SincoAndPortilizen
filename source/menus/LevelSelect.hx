@@ -105,19 +105,21 @@ class LevelSelect extends FlxState
 		if (FlxG.mouse.visible)
 			FlxG.mouse.visible = false;
 
-		if (!startLevelTimer.active)
-			cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
+		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
 
-		selectedLevel = -1;
-		for (icon in levelIcons.members)
+		if (!startLevelTimer.active)
 		{
-			icon.scaleSpr();
-			if (cursor.overlaps(icon))
+			selectedLevel = -1;
+			for (icon in levelIcons.members)
 			{
-				selectedLevel = icon.ID;
-				icon.scale.set(icon.scale.x - .1, icon.scale.y - .1);
-				cursor.animation.play('select');
+				icon.scaleSpr();
+				if (cursor.overlaps(icon))
+				{
+					selectedLevel = icon.ID;
+					icon.scale.set(icon.scale.x - .1, icon.scale.y - .1);
+					cursor.animation.play('select');
+				}
 			}
 		}
 
@@ -146,8 +148,10 @@ class LevelSelect extends FlxState
 					flashMessage('Can\'t play');
 				else
 				{
-					if (data.port_level) port.animation.play('picked');
-					if (data.sinco_level) sinco.animation.play('picked');
+					if (data.port_level)
+						port.animation.play('picked');
+					if (data.sinco_level)
+						sinco.animation.play('picked');
 
 					startLevelTimer.start(1, timer -> {
 						/** switch statement for switching states
