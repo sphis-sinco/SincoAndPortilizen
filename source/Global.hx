@@ -67,7 +67,7 @@ class Global
 	}
 
 	public static function playMenuMusic():Void
-		playMusic('Lado');
+		playMusic('MenuTracks/Lado');
 
 	public static function playMusic(filename:String):Void
 	{
