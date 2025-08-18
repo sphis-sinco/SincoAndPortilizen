@@ -6,7 +6,7 @@ class OutdatedCheck
 
 	public static var GIT_USER:String = 'sphis-Sinco';
 	public static var GIT_REPO:String = 'SincoAndPortilizen';
-	public static var GIT_BRANCH:String = #if debug 'main' #else 'main' #end;
+	public static var GIT_BRANCH:String = #if debug 'main-indev' #else 'main' #end;
 	public static var GIT_FILE:String = 'version';
 
 	public static var LATEST_VERSION:String = '';
