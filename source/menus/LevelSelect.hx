@@ -281,11 +281,8 @@ class LevelSelect extends State
 			if (FlxG.mouse.justReleased)
 			{
 				if (cursor.y > FlxG.height - (console.height / 2))
-					return;
-				else
-				{
 					Global.switchState(new StringQuest());
-				}
+					return;
 
 				Global.playSoundEffect('blipSelect');
 
