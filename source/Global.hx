@@ -1,5 +1,6 @@
 package;
 
+import lime.app.Application;
 import lime.utils.Assets;
 import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
@@ -11,7 +12,7 @@ class Global
 	public static var GENERATED_BY(get, set):String;
 
 	static function get_GENERATED_BY():String
-		return 'Sinco and Portilizen v${VERSION}';
+		return 'Sinco and Portilizen v${VERSION} (${Application.current.meta.get('build')})';
 
 	static function set_GENERATED_BY(value:String):String
 		return value;
