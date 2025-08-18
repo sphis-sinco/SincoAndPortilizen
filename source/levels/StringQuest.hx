@@ -63,6 +63,7 @@ class StringQuest extends PausableState
 		port.loadGraphic(Assets.getImagePath('string-quest/Port'), true, 64, 64);
 		port.animation.add('run', [0, 1, 2, 3], 6, true);
 		port.animation.add('jump', [4], 24);
+		port.animation.add('double-jump', [6], 24);
 		port.animation.add('fall', [5], 24);
 		port.animation.play('run');
 
@@ -87,6 +88,28 @@ class StringQuest extends PausableState
 		}
 
 		if (Global.keyJustReleased(SPACE) && port.animation.name == 'run')
+		{
+			port.animation.play('jump');
+
+			FlxTween.tween(port, {y: port.y - port.height * 2}, 1, {
+				ease: FlxEase.sineOut,
+				onComplete: tween ->
+				{
+					port.animation.play('fall');
+
+					FlxTween.tween(port, {y: port.y + port.height * 2}, 1, {
+						ease: FlxEase.sineIn,
+						onComplete: tween ->
+						{
+							port.animation.play('run');
+						}
+					});
+				}
+			});
+		}
+
+
+		if (Global.keyJustReleased(SPACE) && port.animation.name == 'jump')
 		{
 			port.animation.play('jump');
 
