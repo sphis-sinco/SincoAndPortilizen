@@ -103,6 +103,7 @@ class StringQuest extends PausableState
 			timeLeft = timeStart;
 
 			timeText = new FlxText(0, 0, 0, Std.string(timeLeft), 32);
+			timeText.screenCenter();
 			add(timeText);
 
 			secondTimer.start(1, timer ->
