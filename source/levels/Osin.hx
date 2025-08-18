@@ -6,7 +6,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 class Osin extends PausableState
 {
-	public var levelLength:Int = 11;
+	public var levelLength:Int = 20;
 	public var levelTiles:FlxTypedGroup<Spr>;
 
 	public var moving:Bool = false;
@@ -95,11 +95,11 @@ class Osin extends PausableState
 
 			for (tile in levelTiles)
 			{
-				FlxTween.tween(tile, {x: tile.x - tile.width}, 1, {
+				FlxTween.tween(tile, {x: tile.x - (tile.width * 6)}, 1, {
 					onComplete: tween ->
 					{
-						if (tile.x <= -tile.width)
-							tile.x = FlxG.width;
+						if (tile.x <= -(tile.width * 4))
+							tile.x += (tile.width * levelLength);
 
 						if (levelTiles.members[levelTiles.members.length - 1] == tile)
 							moving = false;
