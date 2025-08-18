@@ -133,48 +133,10 @@ class StringQuest extends PausableState
 
 		if (Global.keyJustReleased(SPACE) && port.animation.name == 'run')
 		{
-			port.animation.play('jump');
-
-			FlxTween.tween(port, {y: port.y - port.height * 2}, 1, {
-				ease: FlxEase.sineOut,
-				onComplete: tween ->
-				{
-					port.animation.play('fall');
-
-					FlxTween.tween(port, {y: lastBlockY - (port.height / 1.25)}, 1, {
-						ease: FlxEase.sineIn,
-						onComplete: tween ->
-						{
-							port.animation.play('run');
-						}
-					});
-				}
-			});
+			jump();
 		}
-		else
-		{
-			if (Global.keyJustReleased(SPACE) && port.animation.name == 'jump')
-			{
-				port.animation.play('double-jump');
-
-				FlxTween.cancelTweensOf(port);
-				FlxTween.tween(port, {y: port.y - port.height * 2}, .25, {
-					ease: FlxEase.sineOut,
-					onComplete: tween ->
-					{
-						port.animation.play('fall');
-
-						FlxTween.tween(port, {y: lastBlockY - (port.height / 1.25)}, 2, {
-							ease: FlxEase.sineIn,
-							onComplete: tween ->
-							{
-								port.animation.play('run');
-							}
-						});
-					}
-				});
-			}
-		}
+		else if (Global.keyJustReleased(SPACE) && port.animation.name == 'jump')
+			doubleJump();
 
 		if (FlxG.random.bool(15) && enemiesAttacking < 2)
 		{
@@ -188,33 +150,7 @@ class StringQuest extends PausableState
 					&& FlxG.random.bool(10.0))
 				{
 					i -= (i / 4);
-					final ogPos:FlxPoint = wingEnemy.getPosition();
-					enemiesAttacking++;
-					wingEnemy.animation.pause();
-					FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 1, {
-						ease: FlxEase.sineOut,
-						onComplete: tween ->
-						{
-							wingEnemy.animation.play('flap');
-							FlxTween.tween(wingEnemy, {x: ogPos.x, y: ogPos.y}, .5, {
-								ease: FlxEase.sineIn,
-								onComplete: tween ->
-								{
-									enemiesAttacking--;
-								},
-								onUpdate: tween ->
-								{
-									if (FlxCollision.pixelPerfectCheck(wingEnemy, port))
-										death();
-								}
-							});
-						},
-						onUpdate: tween ->
-						{
-							if (FlxCollision.pixelPerfectCheck(wingEnemy, port))
-								death();
-						}
-					});
+					enemyAttack(wingEnemy);
 				}
 				else
 				{
@@ -242,5 +178,79 @@ class StringQuest extends PausableState
 		spr.x -= ((i * spr.width) / 2) + (spr.width * 2);
 
 		return spr.getPosition();
+	}
+
+	public function enemyAttack(wingEnemy:Spr)
+	{
+		final ogPos:FlxPoint = wingEnemy.getPosition();
+		enemiesAttacking++;
+		wingEnemy.animation.pause();
+		FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 1, {
+			ease: FlxEase.sineOut,
+			onComplete: tween ->
+			{
+				wingEnemy.animation.play('flap');
+				FlxTween.tween(wingEnemy, {x: ogPos.x, y: ogPos.y}, .5, {
+					ease: FlxEase.sineIn,
+					onComplete: tween ->
+					{
+						enemiesAttacking--;
+					},
+					onUpdate: tween ->
+					{
+						if (FlxCollision.pixelPerfectCheck(wingEnemy, port))
+							death();
+					}
+				});
+			},
+			onUpdate: tween ->
+			{
+				if (FlxCollision.pixelPerfectCheck(wingEnemy, port))
+					death();
+			}
+		});
+	}
+
+	public function jump()
+	{
+		port.animation.play('jump');
+
+		FlxTween.tween(port, {y: port.y - port.height * 2}, 1, {
+			ease: FlxEase.sineOut,
+			onComplete: tween ->
+			{
+				port.animation.play('fall');
+
+				FlxTween.tween(port, {y: lastBlockY - (port.height / 1.25)}, 1, {
+					ease: FlxEase.sineIn,
+					onComplete: tween ->
+					{
+						port.animation.play('run');
+					}
+				});
+			}
+		});
+	}
+
+	public function doubleJump()
+	{
+		port.animation.play('double-jump');
+
+		FlxTween.cancelTweensOf(port);
+		FlxTween.tween(port, {y: port.y - port.height * 2}, .25, {
+			ease: FlxEase.sineOut,
+			onComplete: tween ->
+			{
+				port.animation.play('fall');
+
+				FlxTween.tween(port, {y: lastBlockY - (port.height / 1.25)}, 2, {
+					ease: FlxEase.sineIn,
+					onComplete: tween ->
+					{
+						port.animation.play('run');
+					}
+				});
+			}
+		});
 	}
 }
