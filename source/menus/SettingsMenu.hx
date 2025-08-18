@@ -26,6 +26,8 @@ class SettingsMenu extends State
 		coloredLevelSelect.ID = 0;
 		add(coloredLevelSelect);
 
+                pageCont.push(coloredLevelSelect);
+
 		discordRPC = new Spr();
 		discordRPC.loadGraphic(Assets.getImagePath('settings/DiscordRPC'), true, 64, 64);
 		discordRPC.animation.add('false', [0]);
@@ -37,6 +39,8 @@ class SettingsMenu extends State
 		discordRPC.color = 0x5e5ea0;
 		#if !DISCORDRPC
 		discordRPC.color = 0x4e4e4e;
+                #else
+                pageCont.push(coloredLevelSelect);
 		#end
 
 		add(discordRPC);
@@ -64,6 +68,8 @@ class SettingsMenu extends State
 		}
 	}
 
+        public var pageCont:Array<Spr> = [];
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -78,7 +84,7 @@ class SettingsMenu extends State
 			Global.switchState(new LevelSelect());
 
 		descriptionText.text = '';
-		for (setting in [coloredLevelSelect #if DiscordRPC, discordRPC #end])
+		for (setting in pageCont)
 		{
 			setting.scaleSpr();
 			if (FlxCollision.pixelPerfectCheck(cursor, setting))
