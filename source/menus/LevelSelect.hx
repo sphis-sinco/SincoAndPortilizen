@@ -122,13 +122,17 @@ class LevelSelect extends State
 
 		sinco.animation.add('idle', [0], 24);
 		sinco.animation.add('picked', [1, 1, 1, 1, 1], 1, false);
-		sinco.animation.add('not-picked', [2, 2, 2, 2, 2], 1, false);
-		sinco.animation.add('pet', [3, 3, 3], 6, false);
+		sinco.animation.add('notpicked', [2, 2, 2, 2, 2], 1, false);
+		sinco.animation.add('idle-pet', [3, 3, 3], 6, false);
+		sinco.animation.add('picked-pet', [4, 4, 4], 6, false);
+		sinco.animation.add('notpicked-pet', [5, 5, 5], 6, false);
 
 		port.animation.add('idle', [0], 24);
 		port.animation.add('picked', [1, 1, 1, 1, 1], 1, false);
-		port.animation.add('not-picked', [2, 2, 2, 2, 2], 1, false);
-		port.animation.add('pet', [3, 3, 3], 6, false);
+		port.animation.add('notpicked', [2, 2, 2, 2, 2], 1, false);
+		port.animation.add('idle-pet', [3, 3, 3], 6, false);
+		port.animation.add('picked-pet', [4, 4, 4], 6, false);
+		port.animation.add('notpicked-pet', [5, 5, 5], 6, false);
 
 		port.animation.play('idle');
 		sinco.animation.play('idle');
@@ -213,7 +217,8 @@ class LevelSelect extends State
 
 		if (!startLevelTimer.active && selectedLevel > -1 && FlxG.mouse.justReleased)
 		{
-			if (levelNames[selectedLevel] == 'credits') {
+			if (levelNames[selectedLevel] == 'credits')
+			{
 				Global.switchState(new Credits());
 				return;
 			}
@@ -229,8 +234,8 @@ class LevelSelect extends State
 				data = null;
 			}
 
-			sinco.animation.play('not-picked');
-			port.animation.play('not-picked');
+			sinco.animation.play('notpicked');
+			port.animation.play('notpicked');
 			if (data == null)
 				flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
 			else
@@ -293,9 +298,9 @@ class LevelSelect extends State
 				Global.playSoundEffect('blipSelect');
 
 				if (cursor.x < (portPetX))
-					sinco.animation.play('pet');
+					sinco.animation.play('${sinco.animation.name.split('-')[0]}-pet');
 				else if (cursor.x > (portPetX))
-					port.animation.play('pet');
+					port.animation.play('${port.animation.name.split('-')[0]}-pet');
 			}
 		}
 	}
