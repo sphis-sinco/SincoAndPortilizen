@@ -78,6 +78,22 @@ class LevelSelect extends State
 					}
 				else
 					levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/locked'));
+
+				if (!FlxG.save.data.colored_levelSelect)
+				{
+					if (data.port_level)
+						levelIcon.color = 0x4e0c6f;
+					if (data.sinco_level)
+						levelIcon.color = 0x4eb10c;
+
+					if (data.port_level && data.sinco_level)
+					{
+						if (FlxG.random.bool())
+							levelIcon.color = 0x4eb10c;
+						else
+							levelIcon.color = 0x4e0c6f;
+					}
+				}
 			}
 
 			levelIcon.x = (64 + 32) + (i * (128 + 64));
