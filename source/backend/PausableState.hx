@@ -50,6 +50,7 @@ class PausableState extends State
 		else
 		{
 			overlay = Global.dummyBG([12, 12, 12]);
+			overlay.alpha = 0.5;
 			add(overlay);
 
 			pauseText = new FlxText(0, 0, 0, 'PAUSED\n\n[SPACE] to go to the Level Select', 64);
