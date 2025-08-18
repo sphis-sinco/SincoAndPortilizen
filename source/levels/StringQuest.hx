@@ -47,7 +47,7 @@ class StringQuest extends PausableState
 			spr.animation.play('flap');
 
 			spr.screenCenter();
-			spr.y -= i * spr.height + 8;
+			spr.y -= i * (spr.height / 4) + 8;
 			spr.x -= i * spr.width + 8;
 
 			wingedEnemies.add(spr);
