@@ -34,11 +34,11 @@ class SettingsMenu extends State
 		discordRPC.setPosition(coloredLevelSelect.x + coloredLevelSelect.width + 32, coloredLevelSelect.y);
 		discordRPC.ID = 1;
 
-                discordRPC.color = 0x5e5ea0;
-                #if !DISCORDRPC
-                discordRPC.color = 0x4e4e4e;
-                #end
-                
+		discordRPC.color = 0x5e5ea0;
+		#if !DISCORDRPC
+		discordRPC.color = 0x4e4e4e;
+		#end
+
 		add(discordRPC);
 
 		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkeyballs', 16);
@@ -53,9 +53,15 @@ class SettingsMenu extends State
 		add(cursor);
 
 		if (FlxG.random.bool())
+		{
 			cursor.color = 0x4eb10c;
+                        Global.changeDiscordRPCPresence('Powering their options', 'Settings Menu'); // electricity = power. Shut up
+		}
 		else
+		{
 			cursor.color = 0x4e0c6f;
+                        Global.changeDiscordRPCPresence('Sabotaging their options', 'Settings Menu');
+		}
 	}
 
 	override function update(elapsed:Float)
