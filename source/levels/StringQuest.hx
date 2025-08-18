@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.util.FlxTimer;
 import menus.LevelSelect;
 import flixel.math.FlxPoint;
 import flixel.tweens.FlxEase;
@@ -19,6 +20,8 @@ class StringQuest extends PausableState
 
 	public var ogwingedEnemies:FlxTypedGroup<Spr>;
 	public var wingedEnemies:FlxTypedGroup<Spr>;
+
+	public var endlessMode:Bool = false;
 
 	override function create()
 	{
@@ -77,6 +80,14 @@ class StringQuest extends PausableState
 		add(port);
 
 		FlxG.sound.music.stop();
+
+		if (!endlessMode)
+		{
+			FlxTimer.wait(2, () -> {
+				Global.switchState(new LevelSelect(true));
+				Global.beatLevel(1);
+			});
+		}
 	}
 
 	override function update(elapsed:Float)

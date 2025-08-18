@@ -24,6 +24,14 @@ class LevelSelect extends State
 	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres']; // tres is Sinco v Port
 	public var selectedLevel:Int = 0;
 
+	override public function new(beatLvl:Bool = false)
+	{
+		super();
+
+		if (beatLvl)
+			Global.camflash(0x6ff34e, 2);
+	}
+
 	override function create()
 	{
 		super.create();

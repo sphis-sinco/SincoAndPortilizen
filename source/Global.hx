@@ -87,8 +87,8 @@ class Global
 		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(1, 4)}');
 
 	public static function beatLevel(lvl:Int = 1):Void
-		if (!FlxG.save.data.gameplaystatus.levels_complete.contains(lvl))
-			FlxG.save.data.gameplaystatus.levels_complete.push(lvl);
+		if (!FlxG.save.data.levels_complete.contains(lvl))
+			FlxG.save.data.levels_complete.push(lvl);
 
 	public static function changeDiscordRPCPresence(details:String = null, state:Null<String>):Void
 	{
@@ -135,4 +135,7 @@ class Global
 		background.screenCenter();
 		return background;
 	}
+
+	public static function camflash(Color:FlxColor = FlxColor.WHITE, Duration:Float = 1, ?OnComplete:Void->Void, Force:Bool = false)
+		FlxG.state.camera.flash(Color, Duration, OnComplete, Force);
 }
