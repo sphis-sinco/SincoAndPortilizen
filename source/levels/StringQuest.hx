@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.util.FlxCollision;
 import flixel.util.FlxTimer;
 import menus.LevelSelect;
 import flixel.math.FlxPoint;
@@ -23,10 +24,10 @@ class StringQuest extends PausableState
 
 	public var endlessMode:Bool = false;
 
-	var death:(Dynamic, Dynamic) -> Void = function(d1, d2)
+	public function death()
 	{
 		Global.switchState(new LevelSelect());
-	};
+	}
 
 	override function create()
 	{
@@ -203,13 +204,15 @@ class StringQuest extends PausableState
 								},
 								onUpdate: tween ->
 								{
-									FlxG.collide(wingEnemy, port, death);
+									if (FlxCollision.pixelPerfectCheck(wingEnemy, port))
+										death();
 								}
 							});
 						},
 						onUpdate: tween ->
 						{
-							FlxG.collide(wingEnemy, port, death);
+							if (FlxCollision.pixelPerfectCheck(wingEnemy, port))
+								death();
 						}
 					});
 				}
