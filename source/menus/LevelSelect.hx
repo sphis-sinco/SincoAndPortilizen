@@ -9,6 +9,8 @@ class LevelSelect extends FlxState
 	public var sinco:Spr;
 	public var port:Spr;
 
+	var console:Spr;
+
 	public var cursor:Spr;
 
 	public var levelIcons:FlxTypedGroup<Spr>;
@@ -24,7 +26,7 @@ class LevelSelect extends FlxState
 		levelIcons = new FlxTypedGroup<Spr>();
 		add(levelIcons);
 
-		cursor = new Spr(-3.5);
+		cursor = new Spr(-3);
 		cursor.loadGraphic(Assets.getImagePath('levelSelect/cursor'), true, 64, 64);
 		cursor.animation.add('idle', [0], 24);
 		cursor.animation.add('select', [1], 24);
@@ -46,46 +48,49 @@ class LevelSelect extends FlxState
 			levelIcons.add(levelIcon);
 		}
 
-                var console:Spr = new Spr(-2);
-                console.loadGraphic(Assets.getImagePath('levelSelect/console'));
-                console.screenCenter(X);
-                console.y = FlxG.height - console.height;
+		console = new Spr(-2);
+		console.loadGraphic(Assets.getImagePath('levelSelect/console'));
+		console.scaleSpr();
+		console.screenCenter(X);
+		console.y = FlxG.height - console.height;
 
-                sinco = new Spr(-2);
-                port = new Spr(-2);
+		sinco = new Spr(-2);
+		port = new Spr(-2);
 
-                sinco.loadGraphic(Assets.getImagePath('levelSelect/chars/sinco'), true, 128, 128);
-                sinco.screenCenter(X);
-                sinco.y = FlxG.height - sinco.height;
-                add(sinco);
+		sinco.loadGraphic(Assets.getImagePath('levelSelect/chars/sinco'), true, 128, 128);
+		sinco.scaleSpr();
+		sinco.screenCenter(X);
+		sinco.y = FlxG.height - sinco.height;
+		add(sinco);
 
-                port.loadGraphic(Assets.getImagePath('levelSelect/chars/port'), true, 128, 128);
-                port.screenCenter(X);
-                port.y = FlxG.height - port.height;
-                add(port);
+		port.loadGraphic(Assets.getImagePath('levelSelect/chars/port'), true, 128, 128);
+		port.scaleSpr();
+		port.screenCenter(X);
+		port.y = FlxG.height - port.height;
+		add(port);
 
-                sinco.animation.add('idle', [0], 24);
-                sinco.animation.add('picked', [1], 24);
-                sinco.animation.add('not-picked', [2], 24);
-                sinco.animation.add('pet', [3], 24, false);
+		sinco.animation.add('idle', [0], 24);
+		sinco.animation.add('picked', [1], 24);
+		sinco.animation.add('not-picked', [2], 24);
+		sinco.animation.add('pet', [3], 24, false);
 
-                port.animation.add('idle', [0], 24);
-                port.animation.add('picked', [1], 24);
-                port.animation.add('not-picked', [2], 24);
-                port.animation.add('pet', [3], 24, false);
+		port.animation.add('idle', [0], 24);
+		port.animation.add('picked', [1], 24);
+		port.animation.add('not-picked', [2], 24);
+		port.animation.add('pet', [3], 24, false);
 
-                port.animation.play('idle');
-                sinco.animation.play('idle');
+		port.animation.play('idle');
+		sinco.animation.play('idle');
 
-                add(console);
+		add(console);
 		add(cursor);
 
-                message.size = 32;
-                message.screenCenter();
-                message.alignment = 'center';
-                add(message);
+		message.size = 32;
+		message.screenCenter();
+		message.alignment = 'center';
+		add(message);
 
-                super.create();
+		super.create();
 	}
 
 	override function update(elapsed:Float)
@@ -111,31 +116,34 @@ class LevelSelect extends FlxState
 
 		FlxG.watch.addQuick('selectedLevel', selectedLevel);
 
-                if (selectedLevel > -1)
-                {
-                        var data:Dynamic;
+		if (selectedLevel > -1)
+		{
+			var data:Dynamic;
 
-                        try {
-                                data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}');
-                        } catch(e) {
-                                data = null;
-                        }
+			try
+			{
+				data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}');
+			}
+			catch (e)
+			{
+				data = null;
+			}
 
-                        if (data == null)
-                        {
-                                message.text = 'Missing level file:\n\n"${levelNames[selectedLevel]}"';
-                                message.alpha = 1;
-                                message.screenCenter();
-                                FlxTween.cancelTweensOf(message);
-                                FlxTween.tween(message, {alpha: 0}, 1, { startDelay: 1 });
-                        }
-                }
+			if (data == null)
+			{
+				message.text = 'Missing level file:\n\n"${levelNames[selectedLevel]}"';
+				message.alpha = 1;
+				message.screenCenter();
+				FlxTween.cancelTweensOf(message);
+				FlxTween.tween(message, {alpha: 0}, 1, {startDelay: 1});
+			}
+		}
 
-		if (cursor.overlaps(sinco) && FlxG.mouse.justReleased)
-                        sinco.animation.play('pet');
-		else if (cursor.overlaps(port) && FlxG.mouse.justReleased)
-                        port.animation.play('pet');
+		if (cursor.x < FlxG.width / 2 && FlxG.mouse.justReleased && cursor.overlaps(console))
+			sinco.animation.play('pet');
+		else if (cursor.x > FlxG.width / 2 && FlxG.mouse.justReleased && cursor.overlaps(console))
+			port.animation.play('pet');
 	}
 
-        public var message:FlxText = new FlxText();
+	public var message:FlxText = new FlxText();
 }
