@@ -86,6 +86,9 @@ class LevelSelect extends FlxState
 		port.animation.play('idle');
 		sinco.animation.play('idle');
 
+		sinco.color = 0x4eb10c;
+		port.color = 0x4e0c6f;
+
 		add(console);
 		add(cursor);
 
