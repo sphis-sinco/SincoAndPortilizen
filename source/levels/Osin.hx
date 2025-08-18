@@ -79,11 +79,12 @@ class Osin extends PausableState
 				ease: FlxEase.sineOut,
 				onComplete: tween ->
 				{
-					FlxTween.tween(sinco, {y: tileY - sinco.height + 32}, .5, {
+					FlxTween.tween(sinco, {y: tileY - sinco.height + 32}, .6, {
 						ease: FlxEase.sineIn,
 						onComplete: tween ->
 						{
 							sinco.animation.play('idle');
+							moving = false;
 						}
 					});
 				},
@@ -100,9 +101,6 @@ class Osin extends PausableState
 					{
 						if (tile.x <= -(tile.width * 4))
 							tile.x += (tile.width * levelLength);
-
-						if (levelTiles.members[levelTiles.members.length - 1] == tile)
-							moving = false;
 					}
 				});
 			}
