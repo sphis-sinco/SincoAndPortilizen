@@ -9,7 +9,8 @@ class Main extends openfl.display.Sprite
 	public function new():Void
 	{
 		#if CRASH_HANDLER
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+		trace('Crash handler temp-disabled');
+		// Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
 
 		super();
