@@ -1,11 +1,15 @@
 package menus;
 
+import flixel.text.FlxText;
+
 class SettingsMenu extends State
 {
 	public var coloredLevelSelect:Spr;
 
 	public var cursor:Spr;
 	public var selected:Int = -1;
+
+	public var descriptionText:FlxText;
 
 	override function create()
 	{
@@ -19,6 +23,10 @@ class SettingsMenu extends State
 		coloredLevelSelect.setPosition(32, 32);
 		coloredLevelSelect.ID = 0;
 		add(coloredLevelSelect);
+
+		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkeyballs', 16);
+		descriptionText.alignment = 'center';
+		add(descriptionText);
 
 		cursor = new Spr(-3);
 		cursor.loadGraphic(Assets.getImagePath('levelSelect/cursor'), true, 64, 64);
@@ -40,6 +48,7 @@ class SettingsMenu extends State
 		if (Global.keyJustReleased(ESCAPE))
 			Global.switchState(new LevelSelect());
 
+		descriptionText.text = '';
 		for (setting in [coloredLevelSelect])
 		{
 			setting.scaleSpr();
@@ -51,6 +60,15 @@ class SettingsMenu extends State
 				{
 					Global.playSoundEffect('blipSelect');
 					selected = setting.ID;
+				}
+
+				if (selected == setting.ID)
+				{
+					switch (setting)
+					{
+						case coloredLevelSelect:
+							descriptionText.text = 'Colored Level Select (${(FlxG.save.data.colored_levelSelect) ? 'enabled' : 'disabled'}) - Enables Color on the Level Select';
+					}
 				}
 
 				setting.scale.set(setting.scale.x - .1, setting.scale.y - .1);
