@@ -4,12 +4,14 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 class StringQuest extends PausableState
 {
-	public var levelLength:Int = 4;
+	public var levelLength:Int = 10;
 	public var levelBlocks:FlxTypedGroup<Spr>;
 
 	override public function new()
 	{
 		super();
+
+		FlxG.sound.music.stop();
 	}
 
 	override function create()
