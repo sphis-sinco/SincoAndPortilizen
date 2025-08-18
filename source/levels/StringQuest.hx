@@ -137,6 +137,9 @@ class StringQuest extends PausableState
 
 		for (block in levelBlocks)
 		{
+			if (paused)
+				return;
+
 			block.x -= 8;
 
 			if (block.x <= -block.width)
@@ -163,7 +166,7 @@ class StringQuest extends PausableState
 		else if (Global.keyJustReleased(SPACE) && port.animation.name == 'jump')
 			doubleJump();
 
-		if (FlxG.random.bool(15) && enemiesAttacking < 2)
+		if (!paused && FlxG.random.bool(15) && enemiesAttacking < 2)
 		{
 			var index = 0;
 			var i = 1.1;
@@ -190,6 +193,17 @@ class StringQuest extends PausableState
 			enemiesAttacking = 0;
 	}
 
+	override function togglePaused()
+	{
+		if (timeLeft < 1 && !paused) return;
+
+		super.togglePaused();
+
+		for (wingEnemy in wingedEnemies.members)
+			wingEnemy.animation.paused = paused;
+		port.animation.paused = paused;
+	}
+
 	public function getWingedEnemyPos(i:Int)
 	{
 		var spr:Spr = new Spr();
@@ -209,7 +223,7 @@ class StringQuest extends PausableState
 	{
 		final ogPos:FlxPoint = wingEnemy.getPosition();
 		enemiesAttacking++;
-		wingEnemy.animation.pause();
+		// wingEnemy.animation.pause();
 		FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 1, {
 			ease: FlxEase.sineOut,
 			onComplete: tween ->
