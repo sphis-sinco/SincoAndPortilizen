@@ -72,10 +72,12 @@ class StringQuest extends PausableState
 		port.animation.add('jump', [4], 24);
 		port.animation.add('double-jump', [6], 24);
 		port.animation.add('fall', [5], 24);
+		port.animation.add('skid', [7], 24);
 		port.animation.play('run');
 
 		port.screenCenter(X);
 		port.x += port.width * 2;
+		portMaxX = port.x;
 		port.y = lastBlockY - (port.height / 1.25);
 		add(port);
 
@@ -83,12 +85,15 @@ class StringQuest extends PausableState
 
 		if (!endlessMode)
 		{
-			FlxTimer.wait(60, () -> {
+			FlxTimer.wait(60, () ->
+			{
 				Global.switchState(new LevelSelect(true));
 				Global.beatLevel(1);
 			});
 		}
 	}
+
+	var portMaxX:Float = 0;
 
 	override function update(elapsed:Float)
 	{
@@ -100,6 +105,21 @@ class StringQuest extends PausableState
 
 			if (block.x <= -block.width)
 				block.x = FlxG.width;
+		}
+
+		if (Global.keyPressed(LEFT))
+		{
+			port.x -= 8;
+
+			if (port.x < (port.width * 4))
+				port.x = port.width * 4;
+		}
+		else if (Global.keyPressed(RIGHT))
+		{
+			port.x += 8;
+
+			if (port.x > portMaxX)
+				port.x = portMaxX;
 		}
 
 		if (Global.keyJustReleased(SPACE) && port.animation.name == 'run')
