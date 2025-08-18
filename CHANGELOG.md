@@ -6,6 +6,7 @@ Game remade from the (almost) ground up
 ### Removed
 - All levels entirely from the game except for String Quest and Osin, though only String Quest is playable right now
 ### Changed
+- Discord RPC says "Ready" when ready instead of "Starting the Game"
 - The Game Version text file is included in compiled builds now
 - Hitboxes are updated automatically when scaled using `Global.scaleSprite`
 ### Added

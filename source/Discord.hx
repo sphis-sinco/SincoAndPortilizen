@@ -42,7 +42,7 @@ class DiscordClient
 	static function onReady():Void
 	{
 		DiscordRpc.presence({
-			details: "Starting the Game..",
+			details: "Ready",
 			state: null,
 			largeImageKey: 'icon',
 			largeImageText: Global.GENERATED_BY
