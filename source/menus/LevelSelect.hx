@@ -186,6 +186,16 @@ class LevelSelect extends State
 
 		if (cursor.overlaps(console))
 		{
+			var pos = (console.y + console.height / 4);
+
+			if (cursor.y < (pos - 64))
+				return;
+			else
+			{
+				if (cursor.x > (portPetX) && cursor.y < pos)
+					return;
+			}
+
 			cursor.animation.play('select');
 
 			if (FlxG.mouse.justReleased)
