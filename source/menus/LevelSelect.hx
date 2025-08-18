@@ -58,7 +58,7 @@ class LevelSelect extends State
 
 			try
 			{
-				data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}.json');
+				data = Assets.getFileJsonContent('levels/${levelNames[i]}.json');
 			}
 			catch (e)
 			{
@@ -70,7 +70,7 @@ class LevelSelect extends State
 				if (data.can_play)
 					try
 					{
-						levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/${levelNames[selectedLevel]}'));
+						levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/${levelNames[i]}'));
 					}
 					catch (e)
 					{
