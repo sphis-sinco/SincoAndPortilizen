@@ -8,9 +8,7 @@ class StringQuest extends PausableState
 	public var levelBlocks:FlxTypedGroup<Spr>;
 
 	override public function new()
-	{
 		super();
-	}
 
 	override function create()
 	{
@@ -19,14 +17,16 @@ class StringQuest extends PausableState
 		levelBlocks = new FlxTypedGroup<Spr>();
 		add(levelBlocks);
 
-		for (i in 0...levelLength) {
+		for (i in 0...levelLength)
+		{
 			var spr:Spr = new Spr();
 			spr.loadGraphic(Assets.getImagePath('string-quest/block'));
-			
+
 			spr.y = FlxG.height - spr.height;
-			if (i > 9) spr.y -= spr.height;
+			if (i > 9)
+				spr.y -= spr.height;
 			spr.x = spr.width * (i - ((i > 9) ? 10 : 0));
-			
+
 			levelBlocks.add(spr);
 		}
 
