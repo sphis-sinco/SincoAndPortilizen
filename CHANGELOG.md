@@ -1,6 +1,7 @@
 # Beta
 ## 1.0b - 8/18/2025
-Game remade from the ground up
+Game remade from the (almost) ground up
+
 ### Removed
 - All levels entirely from the game except for String Quest and Osin, though only String Quest is playable right now
 ### Changed
