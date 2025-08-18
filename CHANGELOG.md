@@ -1,5 +1,5 @@
 # Beta
-## 0.2b - 7/2/2025
+## 1.0b - 8/18/2025
 Game remade from the ground up
 ### Removed
 - All levels entirely from the game except for String Quest and Osin, though only String Quest is playable right now
@@ -9,7 +9,7 @@ Game remade from the ground up
 - Overhauled String Quest Level
 - Overhauled Level Select
 - Decimal scale offsets for `Global.scaleSprite`
-- Data merge from previous versions
+- Save data merge from previous versions
 
 ## 0.1.1b - 7/2/2025
 ### Added
