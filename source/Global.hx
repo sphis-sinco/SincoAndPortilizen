@@ -44,7 +44,10 @@ class Global
 				FlxG.save.data.levels_complete ??= mergeSave.data.gameplaystatus.levels_complete;
 				FlxG.save.data.medals ??= mergeSave.data.medals;
 			}
-			catch (e) {}
+			catch (e)
+			{
+				trace(e);
+			}
 		}
 
 		FlxG.save.data.volume ??= 100;
