@@ -1,5 +1,9 @@
 package levels;
 
-class StringQuest extends State {
-        
+class StringQuest extends PausableState
+{
+	override public function new()
+	{
+		super();
+	}
 }
