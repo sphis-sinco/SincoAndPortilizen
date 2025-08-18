@@ -73,13 +73,15 @@ class Global
 	{
 		if (FlxG.sound.music != null)
 		{
-			if (!FlxG.sound.music.playing) {}
+			if (!FlxG.sound.music.playing)
+				FlxG.sound.playMusic(Assets.getMusicPath(filename));
 		}
-		else {}
+		else
+			FlxG.sound.playMusic(Assets.getMusicPath(filename));
 	}
 
 	public static function playSoundEffect(name:String):Void
-		FlxG.sound.play('');
+		FlxG.sound.play(Assets.getSoundPath(name));
 
 	public static function hitHurt():Void
 		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(1, 4)}');
