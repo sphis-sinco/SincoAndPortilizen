@@ -24,7 +24,7 @@ class LevelSelect extends FlxState
 		levelIcons = new FlxTypedGroup<Spr>();
 		add(levelIcons);
 
-		cursor = new Spr(-3);
+		cursor = new Spr(-3.5);
 		cursor.loadGraphic(Assets.getImagePath('levelSelect/cursor'), true, 64, 64);
 		cursor.animation.add('idle', [0], 24);
 		cursor.animation.add('select', [1], 24);
@@ -67,10 +67,12 @@ class LevelSelect extends FlxState
                 sinco.animation.add('idle', [0], 24);
                 sinco.animation.add('picked', [1], 24);
                 sinco.animation.add('not-picked', [2], 24);
+                sinco.animation.add('pet', [3], 24, false);
 
                 port.animation.add('idle', [0], 24);
                 port.animation.add('picked', [1], 24);
                 port.animation.add('not-picked', [2], 24);
+                port.animation.add('pet', [3], 24, false);
 
                 port.animation.play('idle');
                 sinco.animation.play('idle');
@@ -128,6 +130,11 @@ class LevelSelect extends FlxState
                                 FlxTween.tween(message, {alpha: 0}, 1, { startDelay: 1 });
                         }
                 }
+
+		if (cursor.overlaps(sinco) && FlxG.mouse.justReleased)
+                        sinco.animation.play('pet');
+		else if (cursor.overlaps(port) && FlxG.mouse.justReleased)
+                        port.animation.play('pet');
 	}
 
         public var message:FlxText = new FlxText();
