@@ -38,8 +38,6 @@ class LevelSelect extends State
 	{
 		super.create();
 
-		Global.changeDiscordRPCPresence('In the Level Select', null);
-
 		levelIcons = new FlxTypedGroup<Spr>();
 		add(levelIcons);
 
@@ -148,6 +146,8 @@ class LevelSelect extends State
 		add(message);
 
 		startLevelTimer = new FlxTimer(FlxTimer.globalManager);
+
+		Global.changeDiscordRPCPresence('In the Level Select', 'Level Select');
 	}
 
 	override function update(elapsed:Float)

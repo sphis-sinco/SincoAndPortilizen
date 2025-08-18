@@ -120,6 +120,8 @@ class StringQuest extends PausableState
 				Global.beatLevel(1);
 			});
 		}
+
+		Global.changeDiscordRPCPresence('Fighting the Winged Enemies', 'String Quest');
 	}
 
 	var portMaxX:Float = 0;
