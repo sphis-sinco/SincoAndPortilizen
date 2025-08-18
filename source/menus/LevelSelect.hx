@@ -54,6 +54,26 @@ class LevelSelect extends State
 			var levelIcon:Spr = new Spr(-3);
 			levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/blank'));
 
+			var data:LevelData;
+
+			try
+			{
+				data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}.json');
+			}
+			catch (e)
+			{
+				data = null;
+			}
+
+			if (data != null)
+			{
+				levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/locked'));
+				if (data.can_play)
+				{
+					levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/unknown'));
+				}
+			}
+
 			levelIcon.x = (64 + 32) + (i * (128 + 64));
 
 			levelIcon.screenCenter(Y);
