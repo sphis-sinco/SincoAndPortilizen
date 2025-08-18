@@ -53,7 +53,7 @@ class PausableState extends State
 			overlay.alpha = 0.5;
 			add(overlay);
 
-			pauseText = new FlxText(0, 0, 0, 'PAUSED\n\n[SPACE] to go to the Level Select', 64);
+			pauseText = new FlxText(0, 0, 0, 'PAUSED\n\n[SPACE] to go to the Level Select', 32);
 			pauseText.alignment = 'center';
 			pauseText.screenCenter(XY);
 			add(pauseText);
