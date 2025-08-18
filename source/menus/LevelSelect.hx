@@ -276,13 +276,18 @@ class LevelSelect extends State
 					return;
 			}
 
-			if (cursor.y > FlxG.height - (console.height / 2)) return;
-
 			cursor.animation.play('select');
 
 			if (FlxG.mouse.justReleased)
 			{
 				Global.playSoundEffect('blipSelect');
+
+				if (cursor.y > FlxG.height - (console.height / 2))
+					return;
+				else
+				{
+					// switch menu here
+				}
 
 				if (cursor.x < (portPetX))
 					sinco.animation.play('pet');
