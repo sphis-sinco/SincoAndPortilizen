@@ -40,6 +40,16 @@ class InitState extends FlxState
 		FlxG.sound.volumeDownKeys = [];
 		FlxG.sound.muteKeys = [];
 
+		var outdated:Bool = OutdatedCheck.checkForOutdatedVersion();
+		#if html5 outdated = false; #end
+
+		if (true)// && outdated && !menus.OutdatedMenu.BEGONE)
+		{
+			trace('OUTDATED');
+			switchToState(new menus.OutdatedMenu(), 'Outdated Menu');
+			return;
+		}
+
 		switchToState(new menus.LevelSelect(), 'Level Select');
 	}
 

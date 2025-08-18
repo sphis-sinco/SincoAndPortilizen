@@ -1,5 +1,6 @@
 package;
 
+import lime.utils.Assets;
 import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
 
@@ -18,7 +19,7 @@ class Global
 	public static var VERSION(get, never):String;
 
 	public static dynamic function get_VERSION():String
-		return '0.2b';
+		return Assets.getText('version.txt');
 
 	public static var DEFAULT_IMAGE_SCALE_MULTIPLIER:Int = 4;
 

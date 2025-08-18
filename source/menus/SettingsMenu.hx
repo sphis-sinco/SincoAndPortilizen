@@ -118,6 +118,7 @@ class SettingsMenu extends State
 						case 1:
 							FlxG.save.data.discord_rpc = !FlxG.save.data.discord_rpc;
 
+							#if DISCORDRPC
 							if (FlxG.save.data.discord_rpc)
 							{
 								Discord.DiscordClient.initialize();
@@ -125,12 +126,11 @@ class SettingsMenu extends State
 							}
 							else
 								Discord.DiscordClient.shutdown();
+							#end
 					}
-
 					FlxG.save.flush();
 				}
 			}
-
 			if (cursor.animation.name != 'select')
 				selected = -1;
 		}
