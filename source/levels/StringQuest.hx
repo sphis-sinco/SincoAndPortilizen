@@ -96,7 +96,7 @@ class StringQuest extends PausableState
 		port.updateHitbox();
 		add(port);
 
-		FlxG.sound.music.stop();
+		// FlxG.sound.music.stop();
 
 		if (!endlessMode)
 		{
