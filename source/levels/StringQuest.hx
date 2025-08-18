@@ -62,6 +62,8 @@ class StringQuest extends PausableState
 
 			spr.ID = i;
 
+			spr.updateHitbox();
+
 			ogwingedEnemies.add(spr);
 			wingedEnemies.add(spr);
 		}
@@ -79,6 +81,7 @@ class StringQuest extends PausableState
 		port.x += port.width * 2;
 		portMaxX = port.x;
 		port.y = lastBlockY - (port.height / 1.25);
+		port.updateHitbox();
 		add(port);
 
 		FlxG.sound.music.stop();
