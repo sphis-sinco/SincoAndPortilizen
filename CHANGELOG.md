@@ -6,6 +6,7 @@ Game remade from the ground up
 ### Changed
 - Hitboxes are updated automatically when scaled using `Global.scaleSprite`
 ### Added
+- Overhauled String Quest Level
 - Overhauled Level Select
 - Decimal scale offsets for `Global.scaleSprite`
 - Data merge from previous versions
