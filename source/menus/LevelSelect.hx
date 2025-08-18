@@ -276,6 +276,8 @@ class LevelSelect extends State
 					return;
 			}
 
+			if (cursor.y > FlxG.height - (console.height / 2)) return;
+
 			cursor.animation.play('select');
 
 			if (FlxG.mouse.justReleased)
