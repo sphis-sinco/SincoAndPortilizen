@@ -37,6 +37,9 @@ class SettingsMenu extends State
 
 		coloredLevelSelect.animation.play(Std.string(FlxG.save.data.colored_levelSelect));
 
+		if (Global.keyJustReleased(ESCAPE))
+			Global.switchState(new LevelSelect());
+
 		for (setting in [coloredLevelSelect])
 		{
 			setting.scaleSpr();
