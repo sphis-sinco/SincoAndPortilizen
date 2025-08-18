@@ -104,7 +104,7 @@ class SettingsMenu extends State
 						case 0:
 							descriptionText.text = 'Colored Level Select (${(FlxG.save.data.colored_levelSelect) ? 'enabled' : 'disabled'}) - Enables Color on the Level Select';
 						case 1:
-							descriptionText.text = 'Discord RPC (${(#if DISCORDRPC FlxG.save.data.discord_rpc #else false #end) ? 'enabled' : 'disabled'}) - Enables Rich Presence on Discord';
+							descriptionText.text = 'Discord RPC (${#if DISCORDRPC (FlxG.save.data.discord_rpc) ? 'enabled' : 'disabled' #else 'unsupported' #end}) - Enables Rich Presence Support on Discord';
 					}
 				}
 
@@ -112,7 +112,7 @@ class SettingsMenu extends State
 
 				if (FlxG.mouse.justReleased)
 				{
-					Global.playSoundEffect('blipSelect');
+					var ps = true;
 
 					switch (setting.ID)
 					{
@@ -129,8 +129,14 @@ class SettingsMenu extends State
 							}
 							else
 								Discord.DiscordClient.shutdown();
+							#else
+							ps = false;
 							#end
 					}
+
+					if (ps) 
+					Global.playSoundEffect('blipSelect');
+
 					FlxG.save.flush();
 				}
 			}
