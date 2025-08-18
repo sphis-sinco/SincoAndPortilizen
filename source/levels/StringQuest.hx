@@ -14,6 +14,8 @@ class StringQuest extends PausableState
 
 	var lastBlockY:Float = 0;
 
+	public var enemiesAttacking:Int = 0;
+
 	public var ogwingedEnemies:FlxTypedGroup<Spr>;
 	public var wingedEnemies:FlxTypedGroup<Spr>;
 
@@ -133,25 +135,32 @@ class StringQuest extends PausableState
 			}
 		}
 
-		if (FlxG.random.bool(25))
+		if (FlxG.random.bool(15) && enemiesAttacking <= 2)
 		{
 			var index = 0;
-			var i = 1.0;
+			var i = 1.1;
 			for (wingEnemy in wingedEnemies.members)
 			{
 				if (FlxG.random.bool(5 * i)
 					&& wingEnemy.x == getWingedEnemyPos(wingEnemy.ID).x
-					&& wingEnemy.y == getWingedEnemyPos(wingEnemy.ID).y)
+					&& wingEnemy.y == getWingedEnemyPos(wingEnemy.ID).y
+					&& ((port.animation.name != 'jump' && port.animation.name != 'fall') && FlxG.random.bool(25.0)))
 				{
-					i /= i;
+					i -= (i / 4);
 					final ogPos:FlxPoint = wingEnemy.getPosition();
-					FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 2, {
+					enemiesAttacking++;
+					wingEnemy.animation.pause();
+					FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 1.5, {
 						ease: FlxEase.sineOut,
 						onComplete: tween ->
 						{
-							FlxTween.tween(wingEnemy, {x: ogPos.x, y: ogPos.y}, 2, {
+							wingEnemy.animation.play('flap');
+							FlxTween.tween(wingEnemy, {x: ogPos.x, y: ogPos.y}, .5, {
 								ease: FlxEase.sineIn,
-								onComplete: tween -> {}
+								onComplete: tween ->
+								{
+									enemiesAttacking--;
+								}
 							});
 						}
 					});
@@ -164,6 +173,9 @@ class StringQuest extends PausableState
 				index++;
 			}
 		}
+
+		if (enemiesAttacking < 0)
+			enemiesAttacking = 0;
 	}
 
 	public function getWingedEnemyPos(i:Int)
@@ -176,7 +188,7 @@ class StringQuest extends PausableState
 
 		spr.screenCenter();
 		spr.y -= i * (spr.height / 4) + 8;
-		spr.x -= i * spr.width + 8;
+		spr.x -= i * spr.width - i * 8;
 
 		return spr.getPosition();
 	}
