@@ -31,31 +31,6 @@ class Global
 		FlxG.save.bind(SAVE_SLOT, 'SAPTeam');
 		trace('Switched save slot to "$SAVE_SLOT"');
 
-		try
-		{
-			var mergeSave:FlxSave = new FlxSave();
-			mergeSave.bind('SINCOandPORT-SLOT-$slotsuffix', 'SAPTeam');
-			
-			if (mergeSave.data != null)
-			{
-				try
-				{
-					FlxG.save.data.volume ??= mergeSave.data.settings.volume;
-					FlxG.save.data.discord_rpc ??= mergeSave.data.settings.discord_rpc;
-					FlxG.save.data.levels_complete ??= mergeSave.data.gameplaystatus.levels_complete;
-					FlxG.save.data.medals ??= mergeSave.data.medals;
-				}
-				catch (e)
-				{
-					trace(e);
-				}
-			}
-		}
-		catch (e)
-		{
-			trace(e);
-		}
-
 		FlxG.save.data.volume ??= 100;
 		FlxG.save.data.discord_rpc ??= true;
 		FlxG.save.data.levels_complete ??= [];
