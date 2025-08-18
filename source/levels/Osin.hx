@@ -10,6 +10,8 @@ class Osin extends PausableState
 
 	public var moving:Bool = false;
 
+        public var osin:Spr;
+
 	override function create()
 	{
 		super.create();
@@ -27,6 +29,19 @@ class Osin extends PausableState
 
 			levelTiles.add(spr);
 		}
+
+                osin = new Spr();
+                osin.loadGraphic(Assets.getImagePath('osin/osin'), true, 128, 128);
+                osin.animation.add('idle', [0]);
+                osin.animation.add('prep', [1]);
+                osin.animation.add('attack', [2,3,4], 30, false);
+
+                osin.animation.play('idle');
+
+                osin.screenCenter();
+                osin.x -= osin.width * 2;
+
+                add(osin);
 	}
 
 	override function update(elapsed:Float)
