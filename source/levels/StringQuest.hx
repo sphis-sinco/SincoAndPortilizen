@@ -277,6 +277,8 @@ class StringQuest extends PausableState
 
 	public function doubleJump()
 	{
+		return;
+
 		port.animation.play('double-jump');
 
 		FlxTween.cancelTweensOf(port);
