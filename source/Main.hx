@@ -13,13 +13,19 @@ class Main extends openfl.display.Sprite
 		// Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
 
+		#if (sys && debug)
+		var sysPath = Sys.programPath().substring(0, Sys.programPath().indexOf('\\export')).replace('\\', '/');
+		sysPath += '/build';
+
+		File.saveContent(sysPath, Std.string(Global.BUILD + 1));
+		#end
+
 		super();
 		addChild(new FlxGame(0, 0, InitState));
 	}
 
 	// Code was entirely made by sqirra-rng for their fnf engine named 'Izzy Engine', big props to them!!!
 	// very cool person for real they don't get enough credit for their work
-
 	// several modifs made obv
 	#if CRASH_HANDLER
 	function onCrash(e:UncaughtErrorEvent):Void

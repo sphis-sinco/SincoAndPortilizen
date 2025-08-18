@@ -156,7 +156,7 @@ class LevelSelect extends State
 		levelNames.push('credits');
 		levelIcons.add(creditsButton);
 
-		add(new FlxText(3, FlxG.height - 32, FlxG.width, Global.VERSION, 16));
+		add(new FlxText(3, FlxG.height - 32, FlxG.width, 'v${Global.VERSION} (b${Global.BUILD})', 16));
 
 		Global.changeDiscordRPCPresence('In the Level Select', 'Level Select');
 	}

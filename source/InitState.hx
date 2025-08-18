@@ -53,11 +53,6 @@ class InitState extends FlxState
 		switchToState(new menus.LevelSelect(), 'Level Select');
 	}
 
-	override public function update(elapsed:Float):Void
-	{
-		super.update(elapsed);
-	}
-
 	public static function switchToState(state:FlxState, stateName:String):Void
 	{
 		trace('Moving to $stateName');

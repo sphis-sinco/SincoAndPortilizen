@@ -12,7 +12,7 @@ class Global
 	public static var GENERATED_BY(get, set):String;
 
 	static function get_GENERATED_BY():String
-		return 'Sinco and Portilizen v${VERSION}';
+		return 'Sinco and Portilizen v${VERSION} (b${BUILD})';
 
 	static function set_GENERATED_BY(value:String):String
 		return value;
@@ -21,6 +21,11 @@ class Global
 
 	public static dynamic function get_VERSION():String
 		return Assets.getText('version.txt');
+
+	public static var BUILD(get, never):Int;
+
+	public static dynamic function get_BUILD():Int
+		return Std.parseInt(Assets.getText('build'));
 
 	public static var DEFAULT_IMAGE_SCALE_MULTIPLIER:Int = 4;
 
