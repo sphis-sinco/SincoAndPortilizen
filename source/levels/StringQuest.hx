@@ -188,7 +188,7 @@ class StringQuest extends PausableState
 
 		spr.screenCenter();
 		spr.y -= i * (spr.height / 4) + 8;
-		spr.x -= i * spr.width - i * 8;
+		spr.x -= ((i * spr.width) / 2) + (spr.width * 2);
 
 		return spr.getPosition();
 	}
