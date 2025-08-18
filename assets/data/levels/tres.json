@@ -2,5 +2,5 @@
         "port_level": true,
         "sinco_level": true,
 
-        "can_play": true
+        "can_play": false
 }
