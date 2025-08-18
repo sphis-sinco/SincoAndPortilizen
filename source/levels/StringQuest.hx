@@ -115,17 +115,16 @@ class StringQuest extends PausableState
 			{
 				if (FlxG.random.bool(5 * i)
 					&& wingEnemy.x == getWingedEnemyPos(wingEnemy.ID).x
-					&& wingEnemy.y == getWingedEnemyPos(wingEnemy.ID).y
-					&& (port.animation.name == 'run' && !FlxG.random.bool(15 * i)))
+					&& wingEnemy.y == getWingedEnemyPos(wingEnemy.ID).y)
 				{
 					i /= i;
 					final ogPos:FlxPoint = wingEnemy.getPosition();
-					FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 1, {
-						ease: FlxEase.sineIn,
+					FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 2, {
+						ease: FlxEase.sineOut,
 						onComplete: tween ->
 						{
-							FlxTween.tween(wingEnemy, {x: ogPos.x, y: ogPos.y}, 1, {
-								ease: FlxEase.sineOut,
+							FlxTween.tween(wingEnemy, {x: ogPos.x, y: ogPos.y}, 2, {
+								ease: FlxEase.sineIn,
 								onComplete: tween -> {}
 							});
 						}
@@ -136,7 +135,6 @@ class StringQuest extends PausableState
 					i *= i;
 				}
 
-				trace(i);
 				index++;
 			}
 		}
