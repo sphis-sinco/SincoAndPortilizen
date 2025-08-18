@@ -74,7 +74,7 @@ class Global
 		if (!FlxG.save.data.levels_complete.contains(lvl))
 			FlxG.save.data.levels_complete.push(lvl);
 
-	public static function changeDiscordRPCPresence(details:String = null, state:Null<String>):Void
+	public static function changeDiscordRPCPresence(state:String = null, details:Null<String> = null):Void
 	{
 		#if !DISCORDRPC
 		return;
