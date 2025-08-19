@@ -5,6 +5,7 @@ import flixel.math.FlxPoint;
 
 class Tres extends PausableState
 {
+	public var tdm2:Spr;
 	public var sinco:Spr;
 	public var port:Spr;
 
@@ -24,6 +25,17 @@ class Tres extends PausableState
 	override function create()
 	{
 		super.create();
+
+                tdm2 = new Spr(-3.5);
+                tdm2.loadGraphic(Assets.getImagePath('tres/TDM2'), true, 320, 204);
+                tdm2.animation.add('idle', [0]);
+                tdm2.animation.add('attack-pre', [0,0,1,2,2,3], 15, false);
+                tdm2.animation.add('attack', [4]);
+                tdm2.animation.add('attack-post', [4,4,5,6,6,7,0], 15, false);
+                tdm2.scaleSpr();
+                tdm2.screenCenter();
+                tdm2.animation.play('idle');
+                add(tdm2);
 
 		portParticles = new FlxTypedGroup<Spr>();
 		add(portParticles);
