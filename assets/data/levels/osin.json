@@ -2,5 +2,7 @@
         "port_level": false,
         "sinco_level": true,
 
-        "can_play": true
+        "can_play": true,
+
+        "color": [144, 12, 45]
 }

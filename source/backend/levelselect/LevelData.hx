@@ -6,6 +6,6 @@ typedef LevelData =
 	var sinco_level:Bool;
 	var can_play:Bool;
 
-	var ?color:Array<String>;
-	var ?hover_color:Array<String>;
+	var ?color:Array<Int>;
+	var ?hover_color:Array<Int>;
 }

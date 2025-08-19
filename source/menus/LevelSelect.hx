@@ -95,6 +95,9 @@ class LevelSelect extends State
 						levelIcon.color = 0x4e0c6f;
 					if (data.sinco_level)
 						levelIcon.color = 0x4eb10c;
+
+					if (data.color != null && data.color.length >= 3)
+						levelIcon.color = FlxColor.fromRGB(data.color[0], data.color[1], data.color[2]);
 				}
 			}
 
@@ -209,17 +212,29 @@ class LevelSelect extends State
 				}
 
 				if (data != null)
+				{
 					if (FlxG.save.data.colored_levelSelect)
-						if (data.port_level && data.sinco_level)
+					{
+						if (data.port_level && data.sinco_level && (data.color == null || data.color.length < 3))
 							icon.color = 0x4eb10c;
+					}
+				}
 
 				icon.scaleSpr();
 				if (cursor.overlaps(icon))
 				{
 					if (data != null)
 						if (FlxG.save.data.colored_levelSelect)
+						{
 							if (data.port_level && data.sinco_level)
 								icon.color = 0x4e0c6f;
+
+							if (data.color != null && data.color.length >= 3)
+								icon.color = FlxColor.fromRGB(data.color[0], data.color[1], data.color[2]);
+
+							if (data.hover_color != null && data.hover_color.length >= 3)
+								icon.color = FlxColor.fromRGB(data.hover_color[0], data.hover_color[1], data.hover_color[2]);
+						}
 
 					selectedLevel = icon.ID;
 					icon.scale.set(icon.scale.x - .1, icon.scale.y - .1);

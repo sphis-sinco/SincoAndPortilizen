@@ -1,6 +1,8 @@
 # Beta
 ## 3b (Beta Milestone 4) - 8/20/2025
 ### Added
+- Levels can now have a custom hover color defined in their json file
+- Levels can now have a custom color defined in their json file
 - **NEW OST TRACK: TRES**
 - **LEVEL 3: TRES**
 ### Fixed
