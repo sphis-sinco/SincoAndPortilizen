@@ -25,7 +25,7 @@ class LevelSelect extends State
 
 	public var levelIcons:FlxTypedGroup<Spr>;
 	public var levelCrowns:FlxTypedGroup<Spr>;
-	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres']; // tres is Sinco v Port
+	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres'];
 	public var selectedLevel:Int = 0;
 
 	override public function new(beatLvl:Bool = false)
