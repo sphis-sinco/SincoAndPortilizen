@@ -27,7 +27,7 @@ class Tres extends PausableState
 
 	public var portParticles:FlxTypedGroup<Spr>;
 
-	public var selectedHero:Int = 0;
+	public var selectedHero:Int = FlxG.random.int(0, 1);
 
 	public var enemyAttacking:Bool = false;
 	public var enemyCooldown:Int = 320;
@@ -128,8 +128,8 @@ class Tres extends PausableState
 		else
 			Global.changeDiscordRPCPresence('Fighting the mad-man', 'Tres');
 
-                FlxG.sound.music.stop();
-                Global.playMusic('StageTracks/Tres');
+		FlxG.sound.music.stop();
+		Global.playMusic('StageTracks/Tres');
 		FlxG.sound.music.fadeIn(1);
 	}
 
@@ -140,7 +140,7 @@ class Tres extends PausableState
 	{
 		super.update(elapsed);
 
-                Global.playMusic('StageTracks/Tres');
+		Global.playMusic('StageTracks/Tres');
 
 		if (!paused)
 			switch (selectedHero)
