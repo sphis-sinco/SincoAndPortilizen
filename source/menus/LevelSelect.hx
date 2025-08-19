@@ -184,6 +184,16 @@ class LevelSelect extends State
 		add(new FlxText(3, FlxG.height - 32, FlxG.width, 'v${Global.VERSION} (b${Global.BUILD})', 16));
 
 		Global.changeDiscordRPCPresence('In the Level Select', 'Level Select');
+
+		if (Global.previousState == 'Tres')
+		{
+			FlxG.sound.music.fadeOut(.25, 0, tween ->
+			{
+				FlxG.sound.music.stop();
+				Global.playMenuMusic();
+				FlxG.sound.music.fadeIn(.25);
+			});
+		}
 	}
 
 	override function update(elapsed:Float)
