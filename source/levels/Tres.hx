@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.text.FlxText;
 import menus.LevelSelect;
 import flixel.util.FlxCollision;
 import flixel.tweens.FlxEase;
@@ -31,6 +32,13 @@ class Tres extends PausableState
 	public var enemyAttacking:Bool = false;
 	public var enemyCooldown:Int = 320;
 	public var enemyAttacks:FlxTypedGroup<Spr>;
+
+	public var endlessMode:Bool = false;
+
+	public var timeStart:Int = 60;
+	public var timeLeft:Int = 0;
+	public var secondTimer:FlxTimer = new FlxTimer();
+	public var timeText:FlxText;
 
 	override function create()
 	{
@@ -91,6 +99,34 @@ class Tres extends PausableState
 				}
 			});
 		});
+
+		if (!endlessMode)
+		{
+			timeLeft = timeStart;
+
+			timeText = new FlxText(0, 0, 0, Std.string(timeLeft), 32);
+			timeText.screenCenter();
+			add(timeText);
+
+			Global.changeDiscordRPCPresence('Fighting the mad-man', 'Tres (${timeLeft} seconds remain)');
+
+			secondTimer.start(1, timer ->
+			{
+				timeLeft--;
+
+				timeText.text = Std.string(timeLeft);
+				timeText.screenCenter();
+				Global.changeDiscordRPCPresence('Fighting the mad-man', 'Tres (${timeLeft} seconds remain)');
+			}, timeStart);
+
+			FlxTimer.wait(timeStart, () ->
+			{
+				Global.beatLevel(2);
+				Global.switchState(new LevelSelect(true));
+			});
+		}
+		else
+			Global.changeDiscordRPCPresence('Fighting the mad-man', 'Tres');
 	}
 
 	final playerSpeed:Float = 10;
@@ -160,52 +196,51 @@ class Tres extends PausableState
 			}
 		}
 
-		if (FlxG.random.bool(FlxG.random.float(0, 25)) && enemyCooldown < 1)
+		if (FlxG.random.bool(FlxG.random.float(0, 25)) && enemyCooldown < 1 && !paused)
 		{
 			enemyCooldown = FlxG.random.int(160, 320);
 
 			if (!enemyAttacking)
-			{
-				enemyAttacking = true;
-				tdm2.animation.play('attack-pre');
-				FlxTween.tween(tdm2, {x: tdm2.width / 3}, (1 / 6) * 6, {
-					ease: FlxEase.smoothStepInOut,
-					onComplete: tween ->
+				return;
+			enemyAttacking = true;
+			tdm2.animation.play('attack-pre');
+			FlxTween.tween(tdm2, {x: tdm2.width / 3}, (1 / 6) * 6, {
+				ease: FlxEase.smoothStepInOut,
+				onComplete: tween ->
+				{
+					tdm2.animation.play('attack');
+					var ogammoCount:Int = FlxG.random.int(2, 5);
+					var ammoCount:Int = ogammoCount;
+
+					while (ammoCount > 0)
 					{
-						tdm2.animation.play('attack');
-						var ogammoCount:Int = FlxG.random.int(2, 5);
-						var ammoCount:Int = ogammoCount;
+						var attack = new Spr(-2);
+						attack.loadGraphic(Assets.getImagePath('tres/TDM2Attack'));
+						attack.scaleSpr();
+						attack.screenCenter();
+						attack.x += attack.width * 3.5;
+						attack.y += attack.height * 1.5;
 
-						while (ammoCount > 0)
-						{
-							var attack = new Spr(-2);
-							attack.loadGraphic(Assets.getImagePath('tres/TDM2Attack'));
-							attack.scaleSpr();
-							attack.screenCenter();
-							attack.x += attack.width * 3.5;
-							attack.y += attack.height * 1.5;
+						attack.acceleration.x = FlxG.random.int(-100, -80);
+						attack.acceleration.y = FlxG.random.int(-150, 150);
 
-							attack.acceleration.x = FlxG.random.int(-100, -80);
-							attack.acceleration.y = FlxG.random.int(-150, 150);
+						enemyAttacks.add(attack);
 
-							enemyAttacks.add(attack);
-
-							ammoCount--;
-						}
-
-						FlxTimer.wait(0.1 * ogammoCount, () ->
-						{
-							FlxTween.tween(tdm2, {x: enemyPos.x});
-							tdm2.animation.play('attack-post');
-							FlxTimer.wait((1 / 15) * 7, () ->
-							{
-								tdm2.animation.play('idle');
-								enemyAttacking = false;
-							});
-						});
+						ammoCount--;
 					}
-				});
-			}
+
+					FlxTimer.wait(0.1 * ogammoCount, () ->
+					{
+						FlxTween.tween(tdm2, {x: enemyPos.x});
+						tdm2.animation.play('attack-post');
+						FlxTimer.wait((1 / 15) * 7, () ->
+						{
+							tdm2.animation.play('idle');
+							enemyAttacking = false;
+						});
+					});
+				}
+			});
 		}
 
 		if (enemyCooldown > 0)
@@ -220,12 +255,12 @@ class Tres extends PausableState
 			if (FlxCollision.pixelPerfectCheck(bullet, player))
 				Global.switchState(new LevelSelect());
 
-			if (bullet.x < -bullet.width)
-			{
-				bullet.color = 0xff0000;
-				enemyAttacks.members.remove(bullet);
-				bullet.destroy();
-			}
+			if (bullet.x > -bullet.width)
+				return;
+                        
+			bullet.color = 0xff0000;
+			enemyAttacks.members.remove(bullet);
+			bullet.destroy();
 		}
 	}
 
