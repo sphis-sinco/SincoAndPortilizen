@@ -57,19 +57,20 @@ class Tres extends PausableState
 	{
 		super.update(elapsed);
 
-		switch (selectedHero)
-		{
-			case 0:
-				sinco.x += (((sincoSCPos.x + sincoPlayerPos.x) - sinco.x) / setPosSpeed);
-				sinco.y += (((sincoSCPos.y + sincoPlayerPos.y) - sinco.y) / setPosSpeed);
-				port.x += ((portRPos.x - port.x) / setPosSpeed);
-				port.y += ((portRPos.y - port.y) / setPosSpeed);
-			case 1:
-				sinco.x += ((sincoRPos.x - sinco.x) / setPosSpeed);
-				sinco.y += ((sincoRPos.y - sinco.y) / setPosSpeed);
-				port.x += (((portSCPos.x + portPlayerPos.x) - port.x) / setPosSpeed);
-				port.y += (((portSCPos.y + portPlayerPos.y) - port.y) / setPosSpeed);
-		}
+		if (!paused)
+			switch (selectedHero)
+			{
+				case 0:
+					sinco.x += (((sincoSCPos.x + sincoPlayerPos.x) - sinco.x) / setPosSpeed);
+					sinco.y += (((sincoSCPos.y + sincoPlayerPos.y) - sinco.y) / setPosSpeed);
+					port.x += ((portRPos.x - port.x) / setPosSpeed);
+					port.y += ((portRPos.y - port.y) / setPosSpeed);
+				case 1:
+					sinco.x += ((sincoRPos.x - sinco.x) / setPosSpeed);
+					sinco.y += ((sincoRPos.y - sinco.y) / setPosSpeed);
+					port.x += (((portSCPos.x + portPlayerPos.x) - port.x) / setPosSpeed);
+					port.y += (((portSCPos.y + portPlayerPos.y) - port.y) / setPosSpeed);
+			}
 
 		if (Global.keyJustReleased(Z))
 		{
@@ -79,9 +80,10 @@ class Tres extends PausableState
 			selectedHero = (selectedHero == 1) ? 0 : 1;
 		}
 
-		movementCheck();
+		if (!paused)
+			movementCheck();
 
-		if (FlxG.random.bool(FlxG.random.float(80, 100)))
+		if (FlxG.random.bool(FlxG.random.float(80, 100)) && !paused)
 		{
 			var particle = new Spr(-3);
 
@@ -98,6 +100,9 @@ class Tres extends PausableState
 
 		for (particle in portParticles)
 		{
+			if (paused)
+				return;
+
 			particle.x += ((port.getGraphicMidpoint().x - particle.x) / (setPosSpeed / 2));
 			particle.y += ((port.getGraphicMidpoint().y - particle.y) / (setPosSpeed / 2));
 
