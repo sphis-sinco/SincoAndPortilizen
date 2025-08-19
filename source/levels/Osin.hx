@@ -221,7 +221,6 @@ class Osin extends PausableState
 		for (ball in osinsBalls)
 		{
 			FlxTween.tween(ball, {x: sinco.x, y: sinco.y, alpha: 0}, 1, {
-				ease: FlxEase.sineOut,
 				onUpdate: tween ->
 				{
 					if (FlxCollision.pixelPerfectCheck(ball, sinco))
