@@ -1,5 +1,5 @@
 # Beta
-## 1.1b (Beta Milestone 3) - 8/19/2025
+## 2b (Beta Milestone 3) - 8/19/2025
 ### Removed
 - Tweening for the Winged Enemy in Level 1
 ### Fixed
@@ -21,7 +21,7 @@
 - Slightly bigger region for clicking on port and sinco to pet them
 - shifted level icons over to the left by a few pixels
 
-## 1.0b (Beta Milestone 2) - 8/18/2025
+## 1b (Beta Milestone 2) - 8/18/2025
 Game remade from the (almost) ground up
 **This version clears your save. Sorry, the Save data merge from previous versions was crashing the game**
 
