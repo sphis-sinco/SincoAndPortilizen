@@ -26,7 +26,7 @@ class Tres extends PausableState
 	{
 		super.create();
 
-                tdm2 = new Spr(-3.5);
+                tdm2 = new Spr(-1);
                 tdm2.loadGraphic(Assets.getImagePath('tres/TDM2'), true, 320, 204);
                 tdm2.animation.add('idle', [0]);
                 tdm2.animation.add('attack-pre', [0,0,1,2,2,3], 15, false);
