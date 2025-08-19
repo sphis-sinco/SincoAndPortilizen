@@ -104,8 +104,8 @@ class Tres extends PausableState
 		{
 			timeLeft = timeStart;
 
-			timeText = new FlxText(0, 0, 0, Std.string(timeLeft), 32);
-			timeText.screenCenter();
+			timeText = new FlxText(0, 32, 0, Std.string(timeLeft), 32);
+			timeText.screenCenter(X);
 			add(timeText);
 
 			Global.changeDiscordRPCPresence('Fighting the mad-man', 'Tres (${timeLeft} seconds remain)');
@@ -115,7 +115,7 @@ class Tres extends PausableState
 				timeLeft--;
 
 				timeText.text = Std.string(timeLeft);
-				timeText.screenCenter();
+				timeText.screenCenter(X);
 				Global.changeDiscordRPCPresence('Fighting the mad-man', 'Tres (${timeLeft} seconds remain)');
 			}, timeStart);
 
