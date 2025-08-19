@@ -115,9 +115,10 @@ class Osin extends PausableState
 		else
 			Global.changeDiscordRPCPresence('Avoiding the Copy-cat', 'Vs Osin');
 
-                mexicanStandoff.start(FlxG.random.float(0, 5), timer -> {
-                        enemyAttack();
-                });
+		mexicanStandoff.start(FlxG.random.float(0, 5), timer ->
+		{
+			enemyAttack();
+		});
 	}
 
 	override function update(elapsed:Float)
@@ -128,7 +129,8 @@ class Osin extends PausableState
 
 		if (Global.keyJustReleased(SPACE) && !paused && !moving)
 		{
-                        if (mexicanStandoff.active) mexicanStandoff.cancel();
+			if (mexicanStandoff.active)
+				mexicanStandoff.cancel();
 
 			moving = true;
 
@@ -205,7 +207,7 @@ class Osin extends PausableState
 		enemyAttacking = true;
 		osin.animation.play('prep');
 
-		spawnBalls(FlxG.random.int(4, 16));
+		spawnBalls(FlxG.random.int(2, 5));
 
 		osinAttackTimer.start(FlxG.random.float(0.5, 1), timer ->
 		{
@@ -220,7 +222,8 @@ class Osin extends PausableState
 
 		for (ball in osinsBalls)
 		{
-			FlxTween.tween(ball, {x: sinco.x, y: sinco.y, alpha: 0}, 1, {
+			FlxTween.tween(ball, {x: sinco.getGraphicMidpoint().x - ball.width, y: sinco.getGraphicMidpoint().y, alpha: 0}, 1, {
+				ease: FlxEase.sineInOut,
 				onUpdate: tween ->
 				{
 					if (FlxCollision.pixelPerfectCheck(ball, sinco))
@@ -257,11 +260,11 @@ class Osin extends PausableState
 			osinsBalls.add(testicle);
 
 			rextraY = extraY; // + (testicle.height * Std.int((i / 8)));
-			// rextraX = -(Std.int((i / 8)) * testicle.width);
+			rextraX = i * .5; // -(Std.int((i / 8)) * testicle.width);
 
 			testicle.setPosition(osin.getGraphicMidpoint().x, osin.getGraphicMidpoint().y);
 
-			FlxTween.tween(testicle, {x: ((i + 1) * testicle.width) + (8 * (i + 1)) + rextraX, y: testicle.height * 2 + rextraY}, .25, {
+			FlxTween.tween(testicle, {x: ((i + 1) * testicle.width) + rextraX, y: testicle.height * 2 + rextraY}, .25, {
 				ease: FlxEase.sineInOut
 			});
 
