@@ -1,5 +1,6 @@
 package menus;
 
+import flixel.math.FlxPoint;
 import flixel.util.FlxCollision;
 import flixel.text.FlxText;
 
@@ -8,6 +9,8 @@ class SettingsMenu extends State
 	public var coloredLevelSelect:Spr;
 	public var discordRPC:Spr;
 	public var volume:Spr;
+	public var clearSave:Spr;
+	public static var clearSavePos:FlxPoint;
 
 	public var cursor:Spr;
 	public var selected:Int = -1;
@@ -42,6 +45,7 @@ class SettingsMenu extends State
 		discordRPC.color = 0x4e4e4e;
 		#end
 		pageCont.push(discordRPC);
+		add(discordRPC);
 
 		volume = new Spr();
 		volume.loadGraphic(Assets.getImagePath('settings/Volume'), true, 64, 64);
@@ -64,7 +68,16 @@ class SettingsMenu extends State
 		pageCont.push(volume);
 		lowerPageCont.push(volume);
 
-		add(discordRPC);
+		clearSave = new Spr();
+		clearSave.loadGraphic(Assets.getImagePath('settings/ClearSave'));
+		clearSave.scaleSpr();
+		clearSave.setPosition(discordRPC.x, volume.y);
+		clearSave.ID = 3;
+		add(clearSave);
+		clearSavePos = new FlxPoint(clearSave.x, clearSave.y);
+
+		pageCont.push(clearSave);
+		lowerPageCont.push(clearSave);
 
 		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkeyballs', 16);
 		descriptionText.alignment = 'center';
@@ -134,6 +147,8 @@ class SettingsMenu extends State
 							descriptionText.text = 'Discord RPC (${#if DISCORDRPC(FlxG.save.data.discord_rpc) ? 'enabled' : 'disabled' #else 'unsupported' #end}) - Enables Rich Presence Support on Discord';
 						case 2:
 							descriptionText.text = 'Volume (${FlxG.save.data.volume * 100}) - Sets the game volume';
+						case 3:
+							descriptionText.text = 'Clear Save - You will lose everything you hold dear to you in this game.';
 					}
 				}
 				descriptionText.y = 0;
@@ -171,6 +186,8 @@ class SettingsMenu extends State
 								FlxG.sound.changeVolume(-1);
 							}
 							FlxG.save.data.volume = FlxG.sound.volume;
+						case 3:
+							Global.switchState(new ClearSaveScreen());
 					}
 
 					if (ps)

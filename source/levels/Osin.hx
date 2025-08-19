@@ -109,8 +109,8 @@ class Osin extends PausableState
 
 			FlxTimer.wait(timeStart, () ->
 			{
-				Global.switchState(new LevelSelect(true));
 				Global.beatLevel(2);
+				Global.switchState(new LevelSelect(true));
 			});
 		}
 		else

@@ -122,8 +122,8 @@ class StringQuest extends PausableState
 
 			FlxTimer.wait(timeStart, () ->
 			{
-				Global.switchState(new LevelSelect(true));
 				Global.beatLevel(1);
+				Global.switchState(new LevelSelect(true));
 			});
 		}
 		else

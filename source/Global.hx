@@ -28,10 +28,12 @@ class Global
 
 	public static var SAVE_SLOT:Dynamic = 1;
 	public static var SAVE_SLOT_PREFIX:String = 'SAP';
+	public static var SAVE_SLOT_SUFFIX:Dynamic = 1;
 
 	public static function change_saveslot(slotsuffix:Dynamic = 1):Void
 	{
-		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$slotsuffix';
+		SAVE_SLOT_SUFFIX = slotsuffix;
+		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$SAVE_SLOT_SUFFIX';
 		FlxG.save.bind(SAVE_SLOT, 'SAPTeam');
 		trace('Switched save slot to "$SAVE_SLOT"');
 
