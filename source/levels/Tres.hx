@@ -141,6 +141,8 @@ class Tres extends PausableState
 	{
 		super.update(elapsed);
 
+                tdm2.animation.paused = paused;
+
 		Global.playMusic('StageTracks/Tres');
 
 		if (!paused)
