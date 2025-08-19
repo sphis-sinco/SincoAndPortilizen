@@ -92,10 +92,6 @@ class Osin extends PausableState
 			osin.animation.play('idle');
 			FlxTween.tween(osin, {x: osinTargX - osin.width * 6}, 1, {
 				ease: FlxEase.sineOut,
-				onStart: tween ->
-				{
-					spawnBalls(FlxG.random.int(1, 2));
-				},
 				onComplete: tween ->
 				{
 					FlxTween.tween(osin, {x: osinTargX}, 1, {
