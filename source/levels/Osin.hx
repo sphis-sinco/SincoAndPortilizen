@@ -211,8 +211,8 @@ class Osin extends PausableState
 			testicle.scaleSpr();
 			osinsBalls.add(testicle);
 
-                        rextraY = extraY + (testicle.height * Std.int((i / 8)));
-                        rextraX = -(Std.int((i / 8)) * testicle.width);
+                        rextraY = extraY; // + (testicle.height * Std.int((i / 8)));
+                        // rextraX = -(Std.int((i / 8)) * testicle.width);
 
 			testicle.setPosition(osin.getGraphicMidpoint().x, osin.getGraphicMidpoint().y);
 
