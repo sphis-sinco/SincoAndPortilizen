@@ -216,7 +216,7 @@ class Tres extends PausableState
 				onComplete: tween ->
 				{
 					tdm2.animation.play('attack');
-					var ogammoCount:Int = FlxG.random.int(2, 5);
+					var ogammoCount:Int = FlxG.random.int(5, 20);
 					var ammoCount:Int = ogammoCount;
 
 					while (ammoCount > 0)
@@ -228,8 +228,8 @@ class Tres extends PausableState
 						attack.x += attack.width * 3.5;
 						attack.y += attack.height * 1.5;
 
-						attack.acceleration.x = FlxG.random.int(-100, -80);
-						attack.acceleration.y = FlxG.random.int(-150, 150);
+						attack.acceleration.x = FlxG.random.int(-200, -80);
+						attack.acceleration.y = FlxG.random.int(-300, 300);
 
 						enemyAttacks.add(attack);
 
