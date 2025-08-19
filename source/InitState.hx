@@ -18,7 +18,12 @@ class InitState extends FlxState
 			Discord.DiscordClient.shutdown();
 		#end
 
-		FlxG.sound.volume = FlxG.save.data.volume;
+		if (FlxG.save.data.volume != null)
+			FlxG.sound.volume = FlxG.save.data.volume;
+		else 
+			FlxG.sound.volume = 1;
+
+		FlxG.sound.showSoundTray(false);
 
 		#if html5
 		// pixel perfect render fix!

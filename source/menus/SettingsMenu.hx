@@ -108,7 +108,7 @@ class SettingsMenu extends State
 		#else
 		discordRPC.animation.play(Std.string(false));
 		#end
-		volume.animation.play(Std.string(FlxG.save.data.volume * 100));
+		volume.animation.play(Std.string(FlxG.sound.volume * 100));
 
 		if (Global.keyJustReleased(ESCAPE))
 			Global.switchState(new LevelSelect());
