@@ -127,6 +127,8 @@ class Tres extends PausableState
 		}
 		else
 			Global.changeDiscordRPCPresence('Fighting the mad-man', 'Tres');
+
+		FlxG.sound.music.fadeIn(1);
 	}
 
 	final playerSpeed:Float = 10;

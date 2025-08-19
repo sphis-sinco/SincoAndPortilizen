@@ -294,7 +294,6 @@ class LevelSelect extends State
 								FlxG.sound.music.fadeOut(1, 0, tween ->
 								{
 									FlxG.sound.music.stop();
-									FlxG.sound.music.fadeIn(0, 0, 1);
 									Global.switchState(new Tres());
 								});
 						}
