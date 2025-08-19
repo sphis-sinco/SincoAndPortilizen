@@ -1,5 +1,6 @@
 package;
 
+import lime.app.Application;
 import openfl.Lib;
 import haxe.CallStack;
 import openfl.events.UncaughtErrorEvent;
@@ -29,6 +30,10 @@ class Main extends openfl.display.Sprite
 		#end
 
 		trace(Global.GENERATED_BY);
+
+		Application.current.onExit.add(i -> {
+			FlxG.save.flush();
+		}, true);
 
 		super();
 		addChild(new FlxGame(0, 0, InitState));
