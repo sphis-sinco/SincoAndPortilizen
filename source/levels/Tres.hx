@@ -72,7 +72,7 @@ class Tres extends PausableState
 					port.y += (((portSCPos.y + portPlayerPos.y) - port.y) / setPosSpeed);
 			}
 
-		if (Global.keyJustReleased(Z))
+		if (Global.keyJustReleased(Z) && !paused)
 		{
 			sincoPlayerPos = new FlxPoint();
 			portPlayerPos = new FlxPoint();
