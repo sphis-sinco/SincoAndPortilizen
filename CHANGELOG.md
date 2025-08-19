@@ -16,6 +16,7 @@
 - Pet sounds for Sinco and Portilizen
 - 2 new pet "animations" for Sinco and Portilizen on the Level Select for when they are/aren't picked
 ### Changed
+- Updated App Icons
 - In debug builds the `build` file is changed along with the `build` file in the source-code
 - Slightly bigger region for clicking on port and sinco to pet them
 - shifted level icons over to the left by a few pixels
