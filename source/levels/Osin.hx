@@ -201,7 +201,7 @@ class Osin extends PausableState
 		}
 
                 var rextraY = extraY;
-
+                var rextraX = 0.0;
 
 		while (i > 0)
 		{
@@ -211,11 +211,12 @@ class Osin extends PausableState
 			testicle.scaleSpr();
 			osinsBalls.add(testicle);
 
-                        rextraY = extraY + (testicle.height * Std.int((i % 8)));
+                        rextraY = extraY + (testicle.height * Std.int((i / 8)));
+                        rextraX = -(Std.int((i / 8)) * testicle.width);
 
 			testicle.setPosition(osin.getGraphicMidpoint().x, osin.getGraphicMidpoint().y);
 
-			FlxTween.tween(testicle, {x: ((i + 1) * testicle.width) + (8 * (i + 1)), y: testicle.height * 2 + rextraY}, .25, {
+			FlxTween.tween(testicle, {x: ((i + 1) * testicle.width) + (8 * (i + 1)) + rextraX, y: testicle.height * 2 + rextraY}, .25, {
 				ease: FlxEase.sineInOut
 			});
 
