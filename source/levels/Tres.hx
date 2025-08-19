@@ -35,7 +35,7 @@ class Tres extends PausableState
 
 	public var endlessMode:Bool = false;
 
-	public var timeStart:Int = 60;
+	public var timeStart:Int = 120;
 	public var timeLeft:Int = 0;
 	public var secondTimer:FlxTimer = new FlxTimer();
 	public var timeText:FlxText;
