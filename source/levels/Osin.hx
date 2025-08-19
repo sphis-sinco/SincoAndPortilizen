@@ -1,5 +1,8 @@
 package levels;
 
+import menus.LevelSelect;
+import flixel.util.FlxCollision;
+import flixel.util.FlxTimer;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -12,10 +15,12 @@ class Osin extends PausableState
 	public var moving:Bool = false;
 
 	public var osin:Spr;
+	public var osinsBalls:FlxTypedGroup<Spr>;
 	public var sinco:Spr;
 
 	public var tileY:Float = 0;
 	public var osinTargX:Float = 0;
+	public var enemyAttacking:Bool = false;
 
 	override function create()
 	{
@@ -41,15 +46,23 @@ class Osin extends PausableState
 		osin.loadGraphic(Assets.getImagePath('osin/osin'), true, 128, 128);
 		osin.animation.add('idle', [0]);
 		osin.animation.add('prep', [1]);
-		osin.animation.add('attack', [2, 3, 4], 30, false);
+		osin.animation.add('attack', [2, 3, 3, 4, 4, 4, 4], 30, false);
 
-		osin.animation.play('idle');
+		osin.animation.onFinish.add(animName ->
+		{
+			osin.animation.play('idle');
+		});
+
+		osin.animation.play('attack');
 
 		osin.screenCenter();
 		osin.x -= osin.width * 2;
 		osinTargX = osin.x;
 
 		add(osin);
+
+		osinsBalls = new FlxTypedGroup<Spr>();
+		add(osinsBalls);
 
 		sinco = new Spr();
 		sinco.loadGraphic(Assets.getImagePath('osin/sinco'), true, 128, 128);
@@ -76,12 +89,17 @@ class Osin extends PausableState
 			moving = true;
 
 			FlxTween.cancelTweensOf(osin);
+			osin.animation.play('idle');
 			FlxTween.tween(osin, {x: osinTargX - osin.width * 6}, 1, {
 				ease: FlxEase.sineOut,
 				onComplete: tween ->
 				{
 					FlxTween.tween(osin, {x: osinTargX}, 1, {
 						ease: FlxEase.sineIn,
+						onComplete: tween ->
+						{
+							enemyAttack();
+						}
 					});
 				}
 			});
@@ -114,9 +132,82 @@ class Osin extends PausableState
 					{
 						if (tile.x <= -(tile.width * 4))
 							tile.x += (tile.width * levelLength);
+					},
+					onUpdate: tween ->
+					{
+						for (ball in osinsBalls)
+							ball.x -= 1;
 					}
 				});
 			}
+		}
+	}
+
+	public var osinAttackTimer:FlxTimer = new FlxTimer();
+
+	public function enemyAttack()
+	{
+		if (enemyAttacking)
+		{
+			osinAttackTimer.cancel();
+			enemyActualAttack();
+
+			return;
+		}
+
+		enemyAttacking = true;
+		osin.animation.play('prep');
+
+		var i = FlxG.random.int(4, 8);
+		var extraY = 0.0;
+		if (osinsBalls.members.length > 0)
+		{
+			for (ball in osinsBalls.members)
+				if (!(extraY >= ball.y))
+					extraY += ball.height;
+		}
+		while (i > 0)
+		{
+			var testicle = new Spr();
+			testicle.loadGraphic(Assets.getImagePath('osin/osinAttack'));
+			testicle.scaleSpr();
+			osinsBalls.add(testicle);
+
+			testicle.setPosition(osin.getGraphicMidpoint().x, osin.getGraphicMidpoint().y);
+
+			FlxTween.tween(testicle, {x: ((i + 1) * testicle.width) + (8 * (i + 1)), y: testicle.height * 2 + extraY}, .25, {
+				ease: FlxEase.sineInOut
+			});
+
+			i--;
+		}
+
+		osinAttackTimer.start(FlxG.random.float(0.5, 1), timer ->
+		{
+			enemyActualAttack();
+		});
+	}
+
+	public function enemyActualAttack()
+	{
+		enemyAttacking = false;
+		osin.animation.play('attack');
+
+		for (ball in osinsBalls)
+		{
+			FlxTween.tween(ball, {x: sinco.x, y: FlxG.height * 2}, 1, {
+				ease: FlxEase.sineOut,
+				onUpdate: tween ->
+				{
+					if (FlxCollision.pixelPerfectCheck(ball, sinco))
+						Global.switchState(new LevelSelect());
+				},
+				onComplete: tween ->
+				{
+					osinsBalls.members.remove(ball);
+					ball.destroy();
+				}
+			});
 		}
 	}
 }
