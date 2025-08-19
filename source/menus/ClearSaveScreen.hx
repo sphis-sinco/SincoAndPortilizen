@@ -86,7 +86,7 @@ class ClearSaveScreen extends State
 					{
 						FlxTween.tween(no, {alpha: 0}, 1);
 						confirmationText.text = 'Hope you meant it.';
-						// FlxG.save.data = {};
+						FlxG.save.erase();
 						Global.change_saveslot(Global.SAVE_SLOT_SUFFIX);
 					}
 					else if (button == no)

@@ -7,6 +7,7 @@
 - Settings menu will now properly allow the menu music to loop in the background
 - Fixed all timers and tweens being disabled when going back to the level select after pausing in a level
 ### Added
+- Clear Save Setting
 - **LEVEL 2: OSIN**
 - Credits menu
 - Different cursors for Sinco and Port for the settings menu
