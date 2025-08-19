@@ -8,4 +8,11 @@ class State extends FlxState
 
 		add(Global.dummyBG([12, 12, 12]));
 	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		FlxG.mouse.visible = false;
+	}
 }
