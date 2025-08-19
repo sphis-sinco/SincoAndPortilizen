@@ -38,6 +38,7 @@ class Credits extends State
 
 	override function update(elapsed:Float):Void
 	{
+		Global.playMenuMusic();
 		super.update(elapsed);
 
 		if (Global.keyJustReleased(ESCAPE))

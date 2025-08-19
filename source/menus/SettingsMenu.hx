@@ -96,6 +96,7 @@ class SettingsMenu extends State
 
 	override function update(elapsed:Float)
 	{
+		Global.playMenuMusic();
 		super.update(elapsed);
 
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
