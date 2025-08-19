@@ -228,8 +228,8 @@ class Tres extends PausableState
 						attack.x += attack.width * 3.5;
 						attack.y += attack.height * 1.5;
 
-						attack.acceleration.x = FlxG.random.int(-200, -80);
-						attack.acceleration.y = FlxG.random.int(-300, 300);
+						attack.acceleration.x = FlxG.random.int(-200, -80) * 10;
+						attack.acceleration.y = FlxG.random.int(-300, 300) * 10;
 
 						enemyAttacks.add(attack);
 
