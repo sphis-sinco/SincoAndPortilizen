@@ -124,21 +124,24 @@ class Osin extends PausableState
 		{
 			moving = true;
 
-			FlxTween.cancelTweensOf(osin);
-			osin.animation.play('idle');
-			FlxTween.tween(osin, {x: osinTargX - osin.width * 6}, 1, {
-				ease: FlxEase.sineOut,
-				onComplete: tween ->
-				{
-					FlxTween.tween(osin, {x: osinTargX}, 1, {
-						ease: FlxEase.sineIn,
-						onComplete: tween ->
-						{
-							enemyAttack();
-						}
-					});
-				}
-			});
+			if (!(FlxG.random.bool(75) && osin.x != osinTargX))
+			{
+				FlxTween.cancelTweensOf(osin);
+				osin.animation.play('idle');
+				FlxTween.tween(osin, {x: osinTargX - osin.width * 6}, 1, {
+					ease: FlxEase.sineOut,
+					onComplete: tween ->
+					{
+						FlxTween.tween(osin, {x: osinTargX}, 1, {
+							ease: FlxEase.sineIn,
+							onComplete: tween ->
+							{
+								enemyAttack();
+							}
+						});
+					}
+				});
+			}
 
 			sinco.animation.play('jump');
 
