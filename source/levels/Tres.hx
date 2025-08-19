@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxPoint;
 
 class Tres extends PausableState
@@ -16,11 +17,16 @@ class Tres extends PausableState
 	public var sincoPlayerPos:FlxPoint;
 	public var portPlayerPos:FlxPoint;
 
+	public var portParticles:FlxTypedGroup<Spr>;
+
 	public var selectedHero:Int = 0;
 
 	override function create()
 	{
 		super.create();
+
+		portParticles = new FlxTypedGroup<Spr>();
+		add(portParticles);
 
 		sinco = new Spr();
 		sinco.loadGraphic(Assets.getImagePath('tres/superSinco'));
@@ -74,6 +80,38 @@ class Tres extends PausableState
 		}
 
 		movementCheck();
+
+		if (FlxG.random.bool(FlxG.random.float(80, 100)))
+		{
+			var particle = new Spr(-3);
+
+			particle.loadGraphic(Assets.getImagePath('tres/superPortParticles'), true, 32, 32);
+			particle.animation.add('particles', [0, 1, 2, 3], 0);
+			particle.animation.randomFrame();
+
+			particle.scaleSpr();
+
+			particle.setPosition(port.getGraphicMidpoint().x, port.getGraphicMidpoint().y);
+
+			portParticles.add(particle);
+		}
+
+		for (particle in portParticles)
+		{
+			particle.x += ((port.getGraphicMidpoint().x - particle.x) / (setPosSpeed / 2));
+			particle.y += ((port.getGraphicMidpoint().y - particle.y) / (setPosSpeed / 2));
+
+			particle.x -= FlxG.random.float((particle.height / 10), particle.height * 2);
+			particle.y += FlxG.random.float(-(particle.height / 4), particle.height / 4);
+
+			particle.alpha -= (1 / FlxG.random.float(1, 15));
+
+			if (particle.alpha <= 0)
+			{
+				portParticles.members.remove(particle);
+				particle.destroy();
+			}
+		}
 	}
 
 	public function movementCheck()
