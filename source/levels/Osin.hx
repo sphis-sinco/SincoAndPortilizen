@@ -30,6 +30,8 @@ class Osin extends PausableState
 	public var secondTimer:FlxTimer = new FlxTimer();
 	public var timeText:FlxText;
 
+	public var mexicanStandoff:FlxTimer = new FlxTimer();
+
 	override function create()
 	{
 		super.create();
@@ -112,6 +114,10 @@ class Osin extends PausableState
 		}
 		else
 			Global.changeDiscordRPCPresence('Avoiding the Copy-cat', 'Vs Osin');
+
+                mexicanStandoff.start(FlxG.random.float(0, 5), timer -> {
+                        enemyAttack();
+                });
 	}
 
 	override function update(elapsed:Float)
@@ -122,6 +128,8 @@ class Osin extends PausableState
 
 		if (Global.keyJustReleased(SPACE) && !paused && !moving)
 		{
+                        if (mexicanStandoff.active) mexicanStandoff.cancel();
+
 			moving = true;
 
 			if (!(FlxG.random.bool(75) && osin.x != osinTargX))
