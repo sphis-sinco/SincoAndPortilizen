@@ -255,12 +255,12 @@ class Tres extends PausableState
 			if (FlxCollision.pixelPerfectCheck(bullet, player))
 				Global.switchState(new LevelSelect());
 
-			if (bullet.x > -bullet.width)
-				return;
-                        
-			bullet.color = 0xff0000;
-			enemyAttacks.members.remove(bullet);
-			bullet.destroy();
+			if (bullet.x < -bullet.width)
+			{
+				bullet.color = 0xff0000;
+				enemyAttacks.members.remove(bullet);
+				bullet.destroy();
+			}
 		}
 	}
 
