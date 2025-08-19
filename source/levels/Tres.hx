@@ -122,28 +122,23 @@ class Tres extends PausableState
 			}
 		}
 
-		final xbr = FlxG.width / 2;
-		final ybd = FlxG.height / 2;
-                
-		var xbl = sincoRPos.x;
-		var ybu = sincoRPos.y;
+		var playerPos = sincoPlayerPos;
+		if (selectedHero == 1)
+			playerPos = portPlayerPos;
 
-		if (sincoPlayerPos.x >= xbr && selectedHero == 0)
-			sincoPlayerPos.x = xbr;
-		if (sincoPlayerPos.x <= xbl && selectedHero == 0)
-			sincoPlayerPos.x = xbl;
-		if (sincoPlayerPos.y >= ybd && selectedHero == 0)
-			sincoPlayerPos.y = ybd;
-		if (sincoPlayerPos.y <= ybu && selectedHero == 0)
-			sincoPlayerPos.y = ybu;
+		var bindLeft = -(FlxG.width / 2);
+		var bindUp = -(FlxG.height / 2);
+		var bindDown = FlxG.height / 2;
+		var bindRight = FlxG.width / 8;
 
-		if (portPlayerPos.x >= xbr && selectedHero == 1)
-			portPlayerPos.x = xbr;
-		if (portPlayerPos.x <= xbl && selectedHero == 1)
-			portPlayerPos.x = xbl;
-		if (portPlayerPos.y >= ybd && selectedHero == 1)
-			portPlayerPos.y = ybd;
-		if (portPlayerPos.y <= ybu && selectedHero == 1)
-			portPlayerPos.y = ybu;
+		if (playerPos.x >= bindRight)
+			playerPos.x = bindRight;
+		if (playerPos.x <= bindLeft)
+			playerPos.x = bindLeft;
+
+		if (playerPos.y >= bindDown)
+			playerPos.y = bindDown;
+		if (playerPos.y <= bindUp)
+			playerPos.y = bindUp;
 	}
 }
