@@ -114,7 +114,11 @@ class LevelSelect extends State
 			crown.ID = i;
 			levelIcon.ID = i;
 
+			#if !html5
 			crown.visible = FlxG.save.data.levels_complete.contains(i + 1);
+			#else
+			crown.visible = WebSave.levels_complete.contains(i + 1);
+			#end
 
 			levelCrowns.add(crown);
 			levelIcons.add(levelIcon);

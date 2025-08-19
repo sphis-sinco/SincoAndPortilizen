@@ -1,11 +1,13 @@
 # Beta
-## 3b (Beta Milestone 4) - 8/20/2025
+## 3b (Beta Milestone 4) - 8/19/2025
 ### Added
 - Levels can now have a custom hover color defined in their json file
 - Levels can now have a custom color defined in their json file
 - **NEW OST TRACK: TRES**
 - **LEVEL 3: TRES**
 ### Fixed
+- The volume setting is made up-to-date with the actual volume value
+- Crashes on web related to save data
 - The default flixel cursor is no longer seen in the splash screen
 
 ## 2b (Beta Milestone 3) - 8/19/2025

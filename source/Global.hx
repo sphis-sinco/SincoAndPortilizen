@@ -77,8 +77,15 @@ class Global
 		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(1, 4)}');
 
 	public static function beatLevel(lvl:Int = 1):Void
+	{
+		#if !html5
 		if (!FlxG.save.data.levels_complete.contains(lvl))
 			FlxG.save.data.levels_complete.push(lvl);
+		#end
+
+		if (!WebSave.levels_complete.contains(lvl))
+			WebSave.levels_complete.push(lvl);
+	}
 
 	public static function changeDiscordRPCPresence(state:String = null, details:Null<String> = null):Void
 	{

@@ -47,7 +47,6 @@ class ClearSaveScreen extends State
 		confirmationText.size = 16;
 		add(confirmationText);
 
-		
 		cursor = new Spr(-3);
 
 		if (SettingsMenu.cursorSkin == 2)
@@ -60,7 +59,7 @@ class ClearSaveScreen extends State
 			cursor.loadGraphic(Assets.getImagePath('settings/cursors/port'), true, 64, 64);
 			cursor.color = 0x4e0c6f;
 		}
-		
+
 		cursor.animation.add('idle', [0], 24);
 		cursor.animation.add('select', [1], 24);
 		cursor.animation.play('idle');
@@ -105,6 +104,12 @@ class ClearSaveScreen extends State
 						FlxTween.tween(no, {alpha: 0}, 1);
 						confirmationText.text = 'Hope you meant it.';
 						FlxG.save.erase();
+						
+						WebSave.volume = 1;
+						WebSave.levels_complete = [];
+						WebSave.medals = [];
+						WebSave.colored_levelSelect = false;
+
 						Global.change_saveslot(Global.SAVE_SLOT_SUFFIX);
 					}
 					else if (button == no)
@@ -112,8 +117,14 @@ class ClearSaveScreen extends State
 						FlxTween.tween(yes, {alpha: 0}, 1);
 						confirmationText.text = 'Good choice';
 
+						#if !html5
 						if (FlxG.save.data.levels_complete.contains(2))
+						#else
+						if (WebSave.levels_complete.contains(2))
+						#end
+						{
 							confirmationText.text += '\nI wouldn\'t either.';
+						}
 					}
 
 					if (ps)
@@ -121,6 +132,8 @@ class ClearSaveScreen extends State
 
 					Global.switchState(new SettingsMenu());
 					FlxG.save.flush();
+
+					FlxG.sound.volume = FlxG.save.data.volume;
 				}
 			}
 		}

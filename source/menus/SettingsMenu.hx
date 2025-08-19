@@ -1,5 +1,6 @@
 package menus;
 
+import flixel.math.FlxMath;
 import flixel.tweens.FlxTween;
 import flixel.math.FlxPoint;
 import flixel.util.FlxCollision;
@@ -140,7 +141,7 @@ class SettingsMenu extends State
 		#else
 		discordRPC.animation.play(Std.string(false));
 		#end
-		volume.animation.play(Std.string(FlxG.sound.volume * 100));
+		volume.animation.play(Std.string(FlxMath.roundDecimal(FlxG.sound.volume * 100, 0)));
 
 		if (Global.keyJustReleased(ESCAPE))
 			Global.switchState(new LevelSelect());
@@ -165,7 +166,7 @@ class SettingsMenu extends State
 						case 1:
 							descriptionText.text = 'Discord RPC (${#if DISCORDRPC(FlxG.save.data.discord_rpc) ? 'enabled' : 'disabled' #else 'unsupported' #end}) - Enables Rich Presence Support on Discord';
 						case 2:
-							descriptionText.text = 'Volume (${FlxG.save.data.volume * 100}) - Sets the game volume';
+							descriptionText.text = 'Volume (${FlxMath.roundDecimal(FlxG.sound.volume * 100, 0)}) - Sets the game volume';
 						case 3:
 							descriptionText.text = 'Clear Save - You will lose everything you hold dear to you in this game.';
 					}
@@ -204,7 +205,11 @@ class SettingsMenu extends State
 							{
 								FlxG.sound.changeVolume(-1);
 							}
+							#if !html5
 							FlxG.save.data.volume = FlxG.sound.volume;
+							#else
+							WebSave.volume = FlxG.sound.volume;
+							#end
 						case 3:
 							FlxG.sound.music.fadeOut(1, 0, tween ->
 							{
