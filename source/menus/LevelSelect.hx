@@ -293,17 +293,7 @@ class LevelSelect extends State
 						{
 							case 'string-quest': Global.switchState(new StringQuest());
 							case 'osin': Global.switchState(new Osin());
-							case 'tres':
-								FlxTimer.wait(1, () ->
-								{
-									FlxTween.tween(FlxG.camera, {zoom: 2.0, x: -(64 + (2 * (128 + 64)))}, 2, {
-										ease: FlxEase.sineInOut,
-										onComplete: tween ->
-										{
-											Global.switchState(new Tres());
-										}
-									});
-								});
+							case 'tres': Global.switchState(new Tres());
 						}
 					});
 				}
