@@ -3,6 +3,7 @@
 ### Removed
 - Tweening for the Winged Enemy in Level 1
 ### Fixed
+- Volume 10000
 - Issues with reading the `build` file on desktop platforms
 - Settings menu will now properly allow the menu music to loop in the background
 - Fixed all timers and tweens being disabled when going back to the level select after pausing in a level

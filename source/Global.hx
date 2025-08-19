@@ -37,7 +37,7 @@ class Global
 		FlxG.save.bind(SAVE_SLOT, 'SAPTeam');
 		trace('Switched save slot to "$SAVE_SLOT"');
 
-		FlxG.save.data.volume ??= 100;
+		FlxG.save.data.volume ??= 1;
 		FlxG.save.data.discord_rpc ??= true;
 		FlxG.save.data.levels_complete ??= [];
 		FlxG.save.data.medals ??= [];
