@@ -158,7 +158,7 @@ class Osin extends PausableState
 		enemyAttacking = true;
 		osin.animation.play('prep');
 
-		spawnBalls(FlxG.random.int(4, 8));
+		spawnBalls(FlxG.random.int(4, 16));
 
 		osinAttackTimer.start(FlxG.random.float(0.5, 1), timer ->
 		{
@@ -199,16 +199,23 @@ class Osin extends PausableState
 				if (!(extraY >= ball.y))
 					extraY += ball.height;
 		}
+
+                var rextraY = extraY;
+
+
 		while (i > 0)
 		{
+
 			var testicle = new Spr();
 			testicle.loadGraphic(Assets.getImagePath('osin/osinAttack'));
 			testicle.scaleSpr();
 			osinsBalls.add(testicle);
 
+                        rextraY = extraY + (testicle.height * Std.int((i % 8)));
+
 			testicle.setPosition(osin.getGraphicMidpoint().x, osin.getGraphicMidpoint().y);
 
-			FlxTween.tween(testicle, {x: ((i + 1) * testicle.width) + (8 * (i + 1)), y: testicle.height * 2 + extraY}, .25, {
+			FlxTween.tween(testicle, {x: ((i + 1) * testicle.width) + (8 * (i + 1)), y: testicle.height * 2 + rextraY}, .25, {
 				ease: FlxEase.sineInOut
 			});
 
