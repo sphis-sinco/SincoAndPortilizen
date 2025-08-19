@@ -128,6 +128,7 @@ class Tres extends PausableState
 		else
 			Global.changeDiscordRPCPresence('Fighting the mad-man', 'Tres');
 
+                FlxG.sound.music.stop();
                 Global.playMusic('StageTracks/Tres');
 		FlxG.sound.music.fadeIn(1);
 	}
