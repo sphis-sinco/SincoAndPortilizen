@@ -290,7 +290,13 @@ class LevelSelect extends State
 						{
 							case 'string-quest': Global.switchState(new StringQuest());
 							case 'osin': Global.switchState(new Osin());
-							case 'tres': Global.switchState(new Tres());
+							case 'tres':
+								FlxG.sound.music.fadeOut(1, 0, tween ->
+								{
+									FlxG.sound.music.stop();
+									FlxG.sound.music.fadeIn(0, 0, 1);
+									Global.switchState(new Tres());
+								});
 						}
 					});
 				}
