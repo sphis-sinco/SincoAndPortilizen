@@ -1,5 +1,7 @@
 package levels;
 
+import menus.LevelSelect;
+import flixel.util.FlxCollision;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
@@ -18,14 +20,16 @@ class Tres extends PausableState
 	public var sincoRPos:FlxPoint;
 	public var portRPos:FlxPoint;
 
-	public var sincoPlayerPos:FlxPoint;
-	public var portPlayerPos:FlxPoint;
+	public var playerPos:FlxPoint;
+	public var enemyPos:FlxPoint;
 
 	public var portParticles:FlxTypedGroup<Spr>;
 
 	public var selectedHero:Int = 0;
 
 	public var enemyAttacking:Bool = false;
+	public var enemyCooldown:Int = 320;
+	public var enemyAttacks:FlxTypedGroup<Spr>;
 
 	override function create()
 	{
@@ -40,6 +44,7 @@ class Tres extends PausableState
 		tdm2.scaleSpr();
 		tdm2.screenCenter();
 		tdm2.animation.play('idle');
+		enemyPos = new FlxPoint(tdm2.x, tdm2.y);
 		add(tdm2);
 
 		portParticles = new FlxTypedGroup<Spr>();
@@ -49,7 +54,7 @@ class Tres extends PausableState
 		sinco.loadGraphic(Assets.getImagePath('tres/superSinco'));
 		sinco.screenCenter();
 		sincoSCPos = new FlxPoint(sinco.x, sinco.y);
-		sinco.x -= sinco.width;
+		sinco.x -= (sinco.width * 2);
 		sinco.y -= sinco.height;
 		add(sinco);
 		sincoRPos = new FlxPoint(sinco.x, sinco.y);
@@ -58,13 +63,15 @@ class Tres extends PausableState
 		port.loadGraphic(Assets.getImagePath('tres/superPort'));
 		port.screenCenter();
 		portSCPos = new FlxPoint(port.x, port.y);
-		port.x -= (port.width * 2);
+		port.x -= (port.width * 3);
 		port.y += (port.height * 2);
 		add(port);
 		portRPos = new FlxPoint(port.x, port.y);
 
-		sincoPlayerPos = new FlxPoint();
-		portPlayerPos = new FlxPoint();
+		playerPos = new FlxPoint();
+
+		enemyAttacks = new FlxTypedGroup<Spr>();
+		add(enemyAttacks);
 	}
 
 	final playerSpeed:Float = 10;
@@ -78,21 +85,20 @@ class Tres extends PausableState
 			switch (selectedHero)
 			{
 				case 0:
-					sinco.x += (((sincoSCPos.x + sincoPlayerPos.x) - sinco.x) / setPosSpeed);
-					sinco.y += (((sincoSCPos.y + sincoPlayerPos.y) - sinco.y) / setPosSpeed);
+					sinco.x += (((sincoSCPos.x + playerPos.x) - sinco.x) / setPosSpeed);
+					sinco.y += (((sincoSCPos.y + playerPos.y) - sinco.y) / setPosSpeed);
 					port.x += ((portRPos.x - port.x) / setPosSpeed);
 					port.y += ((portRPos.y - port.y) / setPosSpeed);
 				case 1:
 					sinco.x += ((sincoRPos.x - sinco.x) / setPosSpeed);
 					sinco.y += ((sincoRPos.y - sinco.y) / setPosSpeed);
-					port.x += (((portSCPos.x + portPlayerPos.x) - port.x) / setPosSpeed);
-					port.y += (((portSCPos.y + portPlayerPos.y) - port.y) / setPosSpeed);
+					port.x += (((portSCPos.x + playerPos.x) - port.x) / setPosSpeed);
+					port.y += (((portSCPos.y + playerPos.y) - port.y) / setPosSpeed);
 			}
 
 		if (Global.keyJustReleased(Z) && !paused)
 		{
-			sincoPlayerPos = new FlxPoint();
-			portPlayerPos = new FlxPoint();
+			// playerPos = new FlxPoint();
 
 			selectedHero = (selectedHero == 1) ? 0 : 1;
 		}
@@ -135,8 +141,10 @@ class Tres extends PausableState
 			}
 		}
 
-		if (FlxG.random.bool(25))
+		if (FlxG.random.bool(FlxG.random.float(0, 25)) && enemyCooldown < 1)
 		{
+			enemyCooldown = FlxG.random.int(160, 320);
+
 			if (!enemyAttacking)
 			{
 				enemyAttacking = true;
@@ -151,21 +159,54 @@ class Tres extends PausableState
 
 						while (ammoCount > 0)
 						{
+							var attack = new Spr(-2);
+							attack.loadGraphic(Assets.getImagePath('tres/TDM2Attack'));
+							attack.scaleSpr();
+							attack.screenCenter();
+							attack.x += attack.width * 3.5;
+							attack.y += attack.height * 1.5;
+
+							attack.acceleration.x = FlxG.random.int(-100, -80);
+							attack.acceleration.y = FlxG.random.int(-25, 25);
+
+							enemyAttacks.add(attack);
+
 							ammoCount--;
 						}
-                                                
+
 						FlxTimer.wait(0.1 * ogammoCount, () ->
 						{
-							FlxTween.tween(tdm2, {x: 0});
+							FlxTween.tween(tdm2, {x: enemyPos.x});
 							tdm2.animation.play('attack-post');
 							FlxTimer.wait((1 / 15) * 7, () ->
 							{
 								tdm2.animation.play('idle');
+								enemyAttacking = false;
 							});
 						});
 					}
 				});
 			}
+		}
+
+		if (enemyCooldown > 0)
+			enemyCooldown--;
+
+		for (bullet in enemyAttacks)
+		{
+			var player = sinco;
+			if (selectedHero == 1)
+				player = port;
+
+			if (FlxCollision.pixelPerfectCheck(bullet, player))
+				Global.switchState(new LevelSelect());
+
+                        if (bullet.x < -bullet.width)
+                        {
+                                bullet.color = 0xff0000;
+                                enemyAttacks.members.remove(bullet);
+                                bullet.destroy();
+                        }
 		}
 	}
 
@@ -176,9 +217,9 @@ class Tres extends PausableState
 			switch (selectedHero)
 			{
 				case 0:
-					sincoPlayerPos.x -= playerSpeed;
+					playerPos.x -= playerSpeed;
 				case 1:
-					portPlayerPos.x -= playerSpeed;
+					playerPos.x -= playerSpeed;
 			}
 		}
 
@@ -187,9 +228,9 @@ class Tres extends PausableState
 			switch (selectedHero)
 			{
 				case 0:
-					sincoPlayerPos.x += playerSpeed;
+					playerPos.x += playerSpeed;
 				case 1:
-					portPlayerPos.x += playerSpeed;
+					playerPos.x += playerSpeed;
 			}
 		}
 
@@ -198,9 +239,9 @@ class Tres extends PausableState
 			switch (selectedHero)
 			{
 				case 0:
-					sincoPlayerPos.y -= playerSpeed;
+					playerPos.y -= playerSpeed;
 				case 1:
-					portPlayerPos.y -= playerSpeed;
+					playerPos.y -= playerSpeed;
 			}
 		}
 
@@ -209,15 +250,11 @@ class Tres extends PausableState
 			switch (selectedHero)
 			{
 				case 0:
-					sincoPlayerPos.y += playerSpeed;
+					playerPos.y += playerSpeed;
 				case 1:
-					portPlayerPos.y += playerSpeed;
+					playerPos.y += playerSpeed;
 			}
 		}
-
-		var playerPos = sincoPlayerPos;
-		if (selectedHero == 1)
-			playerPos = portPlayerPos;
 
 		var bindLeft = -(FlxG.width / 2);
 		var bindUp = -(FlxG.height / 2);
