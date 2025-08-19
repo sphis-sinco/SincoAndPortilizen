@@ -35,6 +35,7 @@ class Osin extends PausableState
 	override function create()
 	{
 		super.create();
+		add(Global.dummyBG([12, 12, 45]));
 
 		levelTiles = new FlxTypedGroup<Spr>();
 		add(levelTiles);
