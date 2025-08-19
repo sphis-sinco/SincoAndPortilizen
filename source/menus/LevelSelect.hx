@@ -1,5 +1,7 @@
 package menus;
 
+import flixel.tweens.FlxEase;
+import levels.Tres;
 import levels.StringQuest;
 import levels.Osin;
 import flixel.util.FlxTimer;
@@ -278,6 +280,8 @@ class LevelSelect extends State
 							flashMessage('String Quest');
 						case 'osin':
 							flashMessage('Vs Osin');
+						case 'tres':
+							flashMessage('Tres');
 					}
 
 					Global.playSoundEffect('blipSelect');
@@ -289,6 +293,17 @@ class LevelSelect extends State
 						{
 							case 'string-quest': Global.switchState(new StringQuest());
 							case 'osin': Global.switchState(new Osin());
+							case 'tres':
+								FlxTimer.wait(1, () ->
+								{
+									FlxTween.tween(FlxG.camera, {zoom: 2.0, x: -(64 + (2 * (128 + 64)))}, 2, {
+										ease: FlxEase.sineInOut,
+										onComplete: tween ->
+										{
+											Global.switchState(new Tres());
+										}
+									});
+								});
 						}
 					});
 				}
