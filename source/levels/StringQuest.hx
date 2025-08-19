@@ -229,12 +229,10 @@ class StringQuest extends PausableState
 		enemiesAttacking++;
 		// wingEnemy.animation.pause();
 		FlxTween.tween(wingEnemy, {x: port.x, y: port.y}, 1, {
-			ease: FlxEase.sineOut,
 			onComplete: tween ->
 			{
 				wingEnemy.animation.play('flap');
 				FlxTween.tween(wingEnemy, {x: ogPos.x, y: ogPos.y}, .5, {
-					ease: FlxEase.sineIn,
 					onComplete: tween ->
 					{
 						enemiesAttacking--;

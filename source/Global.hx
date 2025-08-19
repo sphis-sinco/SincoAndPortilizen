@@ -1,8 +1,5 @@
 package;
 
-import lime.app.Application;
-import lime.utils.Assets;
-import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
 
 class Global
@@ -20,12 +17,12 @@ class Global
 	public static var VERSION(get, never):String;
 
 	public static dynamic function get_VERSION():String
-		return Assets.getText('version.txt');
+		return lime.utils.Assets.getText('version.txt');
 
 	public static var BUILD(get, never):Int;
 
 	public static dynamic function get_BUILD():Int
-		return Std.parseInt(Assets.getText('build'));
+		return Std.parseInt(Assets.getFileTextContent('build.txt', false));
 
 	public static var DEFAULT_IMAGE_SCALE_MULTIPLIER:Int = 4;
 

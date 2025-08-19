@@ -1,6 +1,9 @@
 # Beta
 ## 1.1b (Beta Milestone 3) - 8/18/2025
+### Removed
+- Tweening for the Winged Enemy in Level 1
 ### Fixed
+- Issues with reading the `build` file on desktop platforms
 - Settings menu will now properly allow the menu music to loop in the background
 - Fixed all timers and tweens being disabled when going back to the level select after pausing in a level
 ### Added

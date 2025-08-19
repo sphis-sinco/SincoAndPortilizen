@@ -21,10 +21,10 @@ class Main extends openfl.display.Sprite
 
 		if (!FileSystem.exists('prev-build')
 			|| FileSystem.exists('prev-build')
-			&& (File.getContent('prev-build') != File.getContent('build')))
+			&& (File.getContent('prev-build') != File.getContent('assets/build.txt')))
 		{
 			File.saveContent('prev-build', Std.string(Global.BUILD));
-			File.saveContent('build', Std.string(Global.BUILD + 1));
+			File.saveContent('assets/build.txt', Std.string(Global.BUILD + 1));
 		}
 		#end
 

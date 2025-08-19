@@ -29,7 +29,7 @@
         <assets path="assets" exclude="assets/exclude" />
         <assets path="CHANGELOG.md"/>
         <assets path="version.txt"/>
-        <assets path="build"/>
+        <assets path="build" rename="assets/build.txt"/>
 
         <!-- _____________________________ Custom Defines ___________________________ -->
 
