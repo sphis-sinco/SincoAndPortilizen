@@ -200,10 +200,11 @@ class Tres extends PausableState
 
 		if (FlxG.random.bool(FlxG.random.float(0, 25)) && enemyCooldown < 1 && !paused)
 		{
+			if (enemyAttacking)
+				return;
+                        
 			enemyCooldown = FlxG.random.int(160, 320);
 
-			if (!enemyAttacking)
-				return;
 			enemyAttacking = true;
 			tdm2.animation.play('attack-pre');
 			FlxTween.tween(tdm2, {x: tdm2.width / 3}, (1 / 6) * 6, {
