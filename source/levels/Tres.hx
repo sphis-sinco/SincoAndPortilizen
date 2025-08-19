@@ -13,6 +13,7 @@ class Tres extends PausableState
 	public var tdm2:Spr;
 	public var sinco:Spr;
 	public var port:Spr;
+	public var instructions:Spr;
 
 	public var sincoSCPos:FlxPoint;
 	public var portSCPos:FlxPoint;
@@ -72,6 +73,24 @@ class Tres extends PausableState
 
 		enemyAttacks = new FlxTypedGroup<Spr>();
 		add(enemyAttacks);
+
+		instructions = new Spr();
+		instructions.loadGraphic(Assets.getImagePath('tres/swapInstruction'), true, 256, 256);
+		instructions.animation.add('animate', [0, 1], 4);
+		instructions.animation.play('animate');
+		instructions.screenCenter();
+		add(instructions);
+
+		FlxTimer.wait(2, () ->
+		{
+			FlxTween.tween(instructions, {alpha: 0}, 1, {
+				ease: FlxEase.smoothStepInOut,
+				onComplete: tween ->
+				{
+					instructions.destroy();
+				}
+			});
+		});
 	}
 
 	final playerSpeed:Float = 10;
@@ -167,7 +186,7 @@ class Tres extends PausableState
 							attack.y += attack.height * 1.5;
 
 							attack.acceleration.x = FlxG.random.int(-100, -80);
-							attack.acceleration.y = FlxG.random.int(-25, 25);
+							attack.acceleration.y = FlxG.random.int(-150, 150);
 
 							enemyAttacks.add(attack);
 
@@ -201,12 +220,12 @@ class Tres extends PausableState
 			if (FlxCollision.pixelPerfectCheck(bullet, player))
 				Global.switchState(new LevelSelect());
 
-                        if (bullet.x < -bullet.width)
-                        {
-                                bullet.color = 0xff0000;
-                                enemyAttacks.members.remove(bullet);
-                                bullet.destroy();
-                        }
+			if (bullet.x < -bullet.width)
+			{
+				bullet.color = 0xff0000;
+				enemyAttacks.members.remove(bullet);
+				bullet.destroy();
+			}
 		}
 	}
 
