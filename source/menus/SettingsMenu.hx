@@ -1,5 +1,6 @@
 package menus;
 
+import flixel.tweens.FlxTween;
 import flixel.math.FlxPoint;
 import flixel.util.FlxCollision;
 import flixel.text.FlxText;
@@ -10,7 +11,10 @@ class SettingsMenu extends State
 	public var discordRPC:Spr;
 	public var volume:Spr;
 	public var clearSave:Spr;
+
 	public static var clearSavePos:FlxPoint;
+
+	public static var cursorSkin:Int;
 
 	public var cursor:Spr;
 	public var selected:Int = -1;
@@ -87,12 +91,14 @@ class SettingsMenu extends State
 
 		if (FlxG.random.bool())
 		{
+			cursorSkin = 2;
 			cursor.loadGraphic(Assets.getImagePath('settings/cursors/sinco'), true, 64, 64);
 			cursor.color = 0x4eb10c;
 			Global.changeDiscordRPCPresence('Powering their options', 'Settings Menu'); // electricity = power. Shut up
 		}
 		else
 		{
+			cursorSkin = 1;
 			cursor.loadGraphic(Assets.getImagePath('settings/cursors/port'), true, 64, 64);
 			cursor.color = 0x4e0c6f;
 			Global.changeDiscordRPCPresence('Sabotaging their options', 'Settings Menu');
@@ -102,6 +108,19 @@ class SettingsMenu extends State
 		cursor.animation.add('select', [1], 24);
 		cursor.animation.play('idle');
 		add(cursor);
+
+		if (Global.previousState == 'ClearSaveScreen')
+		{
+			FlxG.sound.music.fadeIn(1);
+
+			coloredLevelSelect.alpha = 0;
+			discordRPC.alpha = 0;
+			volume.alpha = 0;
+
+			FlxTween.tween(coloredLevelSelect, {alpha: 1}, 1);
+			FlxTween.tween(discordRPC, {alpha: 1}, 1);
+			FlxTween.tween(volume, {alpha: 1}, 1);
+		}
 	}
 
 	public var pageCont:Array<Spr> = [];
@@ -187,7 +206,14 @@ class SettingsMenu extends State
 							}
 							FlxG.save.data.volume = FlxG.sound.volume;
 						case 3:
-							Global.switchState(new ClearSaveScreen());
+							FlxG.sound.music.fadeOut(1, 0, tween ->
+							{
+								Global.switchState(new ClearSaveScreen());
+							});
+
+							FlxTween.tween(coloredLevelSelect, {alpha: 0}, 1);
+							FlxTween.tween(discordRPC, {alpha: 0}, 1);
+							FlxTween.tween(volume, {alpha: 0}, 1);
 					}
 
 					if (ps)

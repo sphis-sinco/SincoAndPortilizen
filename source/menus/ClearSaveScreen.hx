@@ -47,8 +47,20 @@ class ClearSaveScreen extends State
 		confirmationText.size = 16;
 		add(confirmationText);
 
+		
 		cursor = new Spr(-3);
-		cursor.loadGraphic(Assets.getImagePath('levelSelect/cursor'), true, 64, 64);
+
+		if (SettingsMenu.cursorSkin == 2)
+		{
+			cursor.loadGraphic(Assets.getImagePath('settings/cursors/sinco'), true, 64, 64);
+			cursor.color = 0x4eb10c;
+		}
+		else
+		{
+			cursor.loadGraphic(Assets.getImagePath('settings/cursors/port'), true, 64, 64);
+			cursor.color = 0x4e0c6f;
+		}
+		
 		cursor.animation.add('idle', [0], 24);
 		cursor.animation.add('select', [1], 24);
 		cursor.animation.play('idle');
@@ -56,7 +68,13 @@ class ClearSaveScreen extends State
 
 		Global.changeDiscordRPCPresence('Contemplating everything they went through.', 'Settings Menu / Clear Save Screen');
 
-		FlxG.sound.music.fadeOut(1, 0);
+		yes.alpha = 0;
+		no.alpha = 0;
+		confirmationText.alpha = 0;
+
+		FlxTween.tween(yes, {alpha: 1}, 1);
+		FlxTween.tween(no, {alpha: 1}, 1);
+		FlxTween.tween(confirmationText, {alpha: 1}, 1);
 	}
 
 	override function update(elapsed:Float)
@@ -101,10 +119,7 @@ class ClearSaveScreen extends State
 					if (ps)
 						Global.playSoundEffect('blipSelect');
 
-					FlxG.sound.music.fadeIn(1, 0, 100, tween ->
-					{
-						Global.switchState(new SettingsMenu());
-					});
+					Global.switchState(new SettingsMenu());
 					FlxG.save.flush();
 				}
 			}
