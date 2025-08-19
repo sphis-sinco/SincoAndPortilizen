@@ -3,6 +3,7 @@
 ### Fixed
 - Fixed all timers and tweens being disabled when going back to the level select after pausing in a level
 ### Added
+- **LEVEL 2: OSIN**
 - Different cursors for Sinco and Port for the settings menu
 - Volume Setting (how the hell did I forget this?)
 - A crown is added to the level cards when the level's been beat
