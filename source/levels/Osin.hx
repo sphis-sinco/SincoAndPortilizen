@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.text.FlxText;
 import menus.LevelSelect;
 import flixel.util.FlxCollision;
 import flixel.util.FlxTimer;
@@ -21,6 +22,13 @@ class Osin extends PausableState
 	public var tileY:Float = 0;
 	public var osinTargX:Float = 0;
 	public var enemyAttacking:Bool = false;
+
+	public var endlessMode:Bool = false;
+
+	public var timeStart:Int = 60;
+	public var timeLeft:Int = 0;
+	public var secondTimer:FlxTimer = new FlxTimer();
+	public var timeText:FlxText;
 
 	override function create()
 	{
@@ -76,6 +84,34 @@ class Osin extends PausableState
 		sinco.y = tileY - sinco.height + 32;
 
 		add(sinco);
+
+		if (!endlessMode)
+		{
+			timeLeft = timeStart;
+
+			timeText = new FlxText(0, 0, 0, Std.string(timeLeft), 32);
+			timeText.screenCenter();
+			add(timeText);
+
+			Global.changeDiscordRPCPresence('Avoiding the Copy-cat', 'Vs Osin (${timeLeft} seconds remain)');
+
+			secondTimer.start(1, timer ->
+			{
+				timeLeft--;
+
+				timeText.text = Std.string(timeLeft);
+				timeText.screenCenter();
+				Global.changeDiscordRPCPresence('Avoiding the Copy-cat', 'Vs Osin (${timeLeft} seconds remain)');
+			}, timeStart);
+
+			FlxTimer.wait(timeStart, () ->
+			{
+				Global.switchState(new LevelSelect(true));
+				Global.beatLevel(1);
+			});
+		}
+		else
+			Global.changeDiscordRPCPresence('Avoiding the Copy-cat', 'Vs Osin');
 	}
 
 	override function update(elapsed:Float)
@@ -200,19 +236,18 @@ class Osin extends PausableState
 					extraY += ball.height;
 		}
 
-                var rextraY = extraY;
-                var rextraX = 0.0;
+		var rextraY = extraY;
+		var rextraX = 0.0;
 
 		while (i > 0)
 		{
-
 			var testicle = new Spr();
 			testicle.loadGraphic(Assets.getImagePath('osin/osinAttack'));
 			testicle.scaleSpr();
 			osinsBalls.add(testicle);
 
-                        rextraY = extraY; // + (testicle.height * Std.int((i / 8)));
-                        // rextraX = -(Std.int((i / 8)) * testicle.width);
+			rextraY = extraY; // + (testicle.height * Std.int((i / 8)));
+			// rextraX = -(Std.int((i / 8)) * testicle.width);
 
 			testicle.setPosition(osin.getGraphicMidpoint().x, osin.getGraphicMidpoint().y);
 
