@@ -1,5 +1,8 @@
 package levels;
 
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxPoint;
 
@@ -22,20 +25,22 @@ class Tres extends PausableState
 
 	public var selectedHero:Int = 0;
 
+	public var enemyAttacking:Bool = false;
+
 	override function create()
 	{
 		super.create();
 
-                tdm2 = new Spr(-1);
-                tdm2.loadGraphic(Assets.getImagePath('tres/TDM2'), true, 320, 204);
-                tdm2.animation.add('idle', [0]);
-                tdm2.animation.add('attack-pre', [0,0,1,2,2,3], 15, false);
-                tdm2.animation.add('attack', [4]);
-                tdm2.animation.add('attack-post', [4,4,5,6,6,7,0], 15, false);
-                tdm2.scaleSpr();
-                tdm2.screenCenter();
-                tdm2.animation.play('idle');
-                add(tdm2);
+		tdm2 = new Spr(-1);
+		tdm2.loadGraphic(Assets.getImagePath('tres/TDM2'), true, 320, 204);
+		tdm2.animation.add('idle', [0]);
+		tdm2.animation.add('attack-pre', [0, 0, 1, 2, 2, 3], 6, false);
+		tdm2.animation.add('attack', [4]);
+		tdm2.animation.add('attack-post', [4, 4, 5, 6, 6, 7, 0], 15, false);
+		tdm2.scaleSpr();
+		tdm2.screenCenter();
+		tdm2.animation.play('idle');
+		add(tdm2);
 
 		portParticles = new FlxTypedGroup<Spr>();
 		add(portParticles);
@@ -127,6 +132,39 @@ class Tres extends PausableState
 			{
 				portParticles.members.remove(particle);
 				particle.destroy();
+			}
+		}
+
+		if (FlxG.random.bool(25))
+		{
+			if (!enemyAttacking)
+			{
+				enemyAttacking = true;
+				tdm2.animation.play('attack-pre');
+				FlxTween.tween(tdm2, {x: tdm2.width / 3}, (1 / 6) * 6, {
+					ease: FlxEase.smoothStepInOut,
+					onComplete: tween ->
+					{
+						tdm2.animation.play('attack');
+						var ogammoCount:Int = FlxG.random.int(2, 5);
+						var ammoCount:Int = ogammoCount;
+
+						while (ammoCount > 0)
+						{
+							ammoCount--;
+						}
+                                                
+						FlxTimer.wait(0.1 * ogammoCount, () ->
+						{
+							FlxTween.tween(tdm2, {x: 0});
+							tdm2.animation.play('attack-post');
+							FlxTimer.wait((1 / 15) * 7, () ->
+							{
+								tdm2.animation.play('idle');
+							});
+						});
+					}
+				});
 			}
 		}
 	}
