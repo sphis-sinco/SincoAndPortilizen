@@ -92,6 +92,10 @@ class Osin extends PausableState
 			osin.animation.play('idle');
 			FlxTween.tween(osin, {x: osinTargX - osin.width * 6}, 1, {
 				ease: FlxEase.sineOut,
+				onStart: tween ->
+				{
+					spawnBalls(FlxG.random.int(1, 2));
+				},
 				onComplete: tween ->
 				{
 					FlxTween.tween(osin, {x: osinTargX}, 1, {
@@ -158,7 +162,40 @@ class Osin extends PausableState
 		enemyAttacking = true;
 		osin.animation.play('prep');
 
-		var i = FlxG.random.int(4, 8);
+		spawnBalls(FlxG.random.int(4, 8));
+
+		osinAttackTimer.start(FlxG.random.float(0.5, 1), timer ->
+		{
+			enemyActualAttack();
+		});
+	}
+
+	public function enemyActualAttack()
+	{
+		enemyAttacking = false;
+		osin.animation.play('attack');
+
+		for (ball in osinsBalls)
+		{
+			FlxTween.tween(ball, {x: sinco.x, y: sinco.y, alpha: 0}, 1, {
+				ease: FlxEase.sineOut,
+				onUpdate: tween ->
+				{
+					if (FlxCollision.pixelPerfectCheck(ball, sinco))
+						Global.switchState(new LevelSelect());
+				},
+				onComplete: tween ->
+				{
+					osinsBalls.members.remove(ball);
+					ball.destroy();
+				}
+			});
+		}
+	}
+
+	public function spawnBalls(amount = 0)
+	{
+		var i = amount;
 		var extraY = 0.0;
 		if (osinsBalls.members.length > 0)
 		{
@@ -180,34 +217,6 @@ class Osin extends PausableState
 			});
 
 			i--;
-		}
-
-		osinAttackTimer.start(FlxG.random.float(0.5, 1), timer ->
-		{
-			enemyActualAttack();
-		});
-	}
-
-	public function enemyActualAttack()
-	{
-		enemyAttacking = false;
-		osin.animation.play('attack');
-
-		for (ball in osinsBalls)
-		{
-			FlxTween.tween(ball, {x: sinco.x, y: FlxG.height * 2}, 1, {
-				ease: FlxEase.sineOut,
-				onUpdate: tween ->
-				{
-					if (FlxCollision.pixelPerfectCheck(ball, sinco))
-						Global.switchState(new LevelSelect());
-				},
-				onComplete: tween ->
-				{
-					osinsBalls.members.remove(ball);
-					ball.destroy();
-				}
-			});
 		}
 	}
 }
