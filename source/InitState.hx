@@ -55,7 +55,7 @@ class InitState extends FlxState
 			return;
 		}
 
-		switchToState(new menus.LevelSelect(), 'Level Select');
+		switchToState(new Splash(), 'Splash');
 	}
 
 	public static function switchToState(state:FlxState, stateName:String):Void
