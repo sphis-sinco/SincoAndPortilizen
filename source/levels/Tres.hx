@@ -43,6 +43,7 @@ class Tres extends PausableState
 	override function create()
 	{
 		super.create();
+		add(Global.dummyBG([12, 12, 45]));
 
 		tdm2 = new Spr(-1);
 		tdm2.loadGraphic(Assets.getImagePath('tres/TDM2'), true, 320, 204);
