@@ -138,6 +138,8 @@ class Tres extends PausableState
 	{
 		super.update(elapsed);
 
+                Global.playMusic('StageTracks/Tres');
+
 		if (!paused)
 			switch (selectedHero)
 			{
@@ -202,7 +204,7 @@ class Tres extends PausableState
 		{
 			if (enemyAttacking)
 				return;
-                        
+
 			enemyCooldown = FlxG.random.int(160, 320);
 
 			enemyAttacking = true;
