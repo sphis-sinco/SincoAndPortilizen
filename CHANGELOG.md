@@ -1,5 +1,7 @@
 # Beta
 ## 3b (Beta Milestone 4) - 8/20/2025
+### Fixed
+- The default flixel cursor is no longer seen in the splash screen
 
 ## 2b (Beta Milestone 3) - 8/19/2025
 ### Removed

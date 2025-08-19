@@ -55,6 +55,7 @@ class InitState extends FlxState
 			return;
 		}
 
+		FlxG.mouse.visible = false;
 		switchToState(new Splash(), 'Splash');
 	}
 
