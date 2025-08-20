@@ -1,23 +1,48 @@
 package menus;
 
+import flixel.util.FlxCollision;
 import flixel.input.FlxSwipe;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
 class Credits extends State
 {
-	public static var credits:Array<String>;
+	public var credits:Array<String>;
 
-	public static var creditsText:FlxTypedGroup<FlxText>;
-	public static var totalSpacing:Int = 0;
+	public var creditsText:FlxTypedGroup<FlxText>;
+	public var totalSpacing:Int = 0;
+
+	public var directional_up:Spr;
+	public var directional_down:Spr;
 
 	override function create():Void
 	{
-                creditsInit();
+		creditsInit();
 		super.create();
 
 		creditsText = new FlxTypedGroup<FlxText>();
 		add(creditsText);
+
+		directional_up = new Spr(0);
+		directional_down = new Spr(0);
+
+		directional_up.scaleSpr();
+		directional_down.scaleSpr();
+
+		directional_up.loadGraphic(Assets.getImagePath('mobile/directional'));
+		directional_down.loadGraphic(Assets.getImagePath('mobile/directional'));
+		directional_down.flipY = true;
+
+		directional_up.screenCenter();
+		directional_down.screenCenter();
+
+		directional_up.x = directional_up.width;
+		directional_down.x = FlxG.width - (directional_down.width * 2);
+
+		#if MOBILE_BUILD
+		add(directional_up);
+		add(directional_down);
+		#end
 
 		var cur_y:Float = 10;
 		var i:Int = 0;
@@ -26,7 +51,7 @@ class Credits extends State
 			var text:FlxText = new FlxText(0, cur_y, FlxG.width, credit, #if MOBILE_BUILD 32 #else 24 #end);
 			text.alignment = CENTER;
 			text.screenCenter(X);
-			text.color = FlxColor.fromRGB(226,226,226);
+			text.color = FlxColor.fromRGB(226, 226, 226);
 			text.ID = i;
 			i++;
 
@@ -44,7 +69,7 @@ class Credits extends State
 
 		if (Global.keyJustReleased(ESCAPE))
 		{
-                        Global.switchState(new TitleScreen());
+			Global.switchState(new TitleScreen());
 		}
 
 		if (Global.anyKeysPressed([UP, DOWN]))
@@ -52,18 +77,39 @@ class Credits extends State
 			scroll((Global.keyPressed(UP)) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
 		}
 
-		for (swipe in FlxG.swipes)
+		/*
+			for (swipe in FlxG.swipes)
+			{
+				if (swipe.degrees > 0 && swipe.degrees < 181)
+					scroll(SCROLL_AMOUNT + swipe.distance);
+				if (swipe.degrees > 180 && swipe.degrees < 361)
+					scroll(-SCROLL_AMOUNT + swipe.distance);
+			}
+		 */
+
+		for (button in [directional_up, directional_down])
 		{
-			if (swipe.degrees > 0 && swipe.degrees < 181)
-				scroll(SCROLL_AMOUNT + swipe.distance);
-			if (swipe.degrees > 180 && swipe.degrees < 361)
-				scroll(-SCROLL_AMOUNT + swipe.distance);
+			button.scaleSpr();
+
+			if (FlxG.mouse.overlaps(button))
+			{
+				button.scale.set(button.scale.x - .1, button.scale.y - .1);
+
+				if (FlxG.mouse.pressed)
+					scroll((button == directional_up) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
+			}
+
+			directional_up.screenCenter();
+			directional_down.screenCenter();
+
+			directional_up.x = 32;
+			directional_down.x = FlxG.width - directional_down.width - 32;
 		}
 	}
 
-	public static var SCROLL_AMOUNT:Float = 10.0;
+	public var SCROLL_AMOUNT:Float = 10.0;
 
-	public static function scroll(Amount:Float):Void
+	public function scroll(Amount:Float):Void
 	{
 		for (text in creditsText)
 		{
@@ -77,7 +123,7 @@ class Credits extends State
 		}
 	}
 
-	public static function creditsInit():Void
+	public function creditsInit():Void
 	{
 		try
 		{
@@ -87,5 +133,5 @@ class Credits extends State
 		{
 			credits = ['$e'];
 		}
-        }
+	}
 }
