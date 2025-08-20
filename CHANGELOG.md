@@ -1,7 +1,7 @@
 # Beta
 ## 4.0.1 - 8/20/2025
 ### Fixed
-- Button sizes on non-mobile builds
+- Button sizes on web builds
 
 ## 4b (Beta Milestone 5) - 8/20/2025
 Mobile update:
