@@ -1,5 +1,7 @@
 # Beta
 ## 3.1b - 8/19/2025
+### Added
+- Title Screen
 
 ## 3b (Beta Milestone 4) - 8/19/2025
 ### Added
