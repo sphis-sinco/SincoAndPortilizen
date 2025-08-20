@@ -1,4 +1,6 @@
 # Beta
+## 3.1b - 8/19/2025
+
 ## 3b (Beta Milestone 4) - 8/19/2025
 ### Added
 - Levels can now have a custom hover color defined in their json file
