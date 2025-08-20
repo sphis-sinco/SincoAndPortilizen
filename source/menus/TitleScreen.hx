@@ -69,6 +69,7 @@ class TitleScreen extends State
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
 
+		cursor.visible = true;
 		for (button in [levelSelect, settings, creditsButton])
 		{
 			button.scaleSpr();
@@ -93,5 +94,9 @@ class TitleScreen extends State
 				}
 			}
 		}
+
+		#if MOBILE_BUILD
+		cursor.visible = false;
+		#end
 	}
 }

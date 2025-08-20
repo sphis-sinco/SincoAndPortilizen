@@ -1,7 +1,12 @@
 # Beta
 ## 4b (Beta Milestone 5) - 8/20/2025
 Mobile update
+### Fixed
+- The clear save screen confirmation text has the correct intended alignment
+- When leaving the Clear Save Screen you can now see the message
 ### Changed
+- When leaving the Clear Save Screen the confirmation text fades out
+- When leaving the Clear Save Screen all buttons fade out
 - Several UI elements are made bigger on mobile
 - `Global.dummyBG` will now generate a background that fits the window resolution
 ### Added
