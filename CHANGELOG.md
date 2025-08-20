@@ -5,6 +5,8 @@ This update adds *support* for mobile devices (idk about iOS but android works d
 
 ### New Contributors
 * @wonderinglostsoul44 made their first contribution in https://github.com/sphis-sinco/SincoAndPortilizen/pull/45
+### Removed
+- Error message related to compiling on mobile
 ### Fixed
 - Bullets in Tres will no longer move when the game is paused
 - The clear save screen confirmation text has the correct intended alignment
@@ -29,6 +31,7 @@ This update adds *support* for mobile devices (idk about iOS but android works d
 - Several UI elements are made bigger on mobile
 - `Global.dummyBG` will now generate a background that fits the window resolution
 ### Added
+- Mobile support
 - `InteractableSpr` class so that interactable sprite buttons are easier
 - `MOBILE_TESTING` define
 - `MOBILE_BUILD` define
