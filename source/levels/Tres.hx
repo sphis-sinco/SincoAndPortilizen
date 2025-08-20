@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import menus.LevelSelect;
 import flixel.util.FlxCollision;
@@ -45,7 +46,7 @@ class Tres extends PausableState
 		super.create();
 		add(Global.dummyBG([12, 12, 45]));
 
-		tdm2 = new Spr(-1);
+		tdm2 = new Spr(#if MOBILE_BUILD 1 #else - 1 #end);
 		tdm2.loadGraphic(Assets.getImagePath('tres/TDM2'), true, 320, 204);
 		tdm2.animation.add('idle', [0]);
 		tdm2.animation.add('attack-pre', [0, 0, 1, 2, 2, 3], 6, false);
@@ -60,20 +61,20 @@ class Tres extends PausableState
 		portParticles = new FlxTypedGroup<Spr>();
 		add(portParticles);
 
-		sinco = new Spr();
+		sinco = new Spr(#if MOBILE_BUILD 4 #else 0 #end);
 		sinco.loadGraphic(Assets.getImagePath('tres/superSinco'));
 		sinco.screenCenter();
 		sincoSCPos = new FlxPoint(sinco.x, sinco.y);
-		sinco.x -= (sinco.width * 2);
+		sinco.x -= (sinco.width * #if MOBILE_BUILD 35 #else 2 #end);
 		sinco.y -= sinco.height;
 		add(sinco);
 		sincoRPos = new FlxPoint(sinco.x, sinco.y);
 
-		port = new Spr();
+		port = new Spr(#if MOBILE_BUILD 4 #else 0 #end);
 		port.loadGraphic(Assets.getImagePath('tres/superPort'));
 		port.screenCenter();
 		portSCPos = new FlxPoint(port.x, port.y);
-		port.x -= (port.width * 3);
+		port.x -= (port.width * #if MOBILE_BUILD 35 #else 3 #end);
 		port.y += (port.height * 2);
 		add(port);
 		portRPos = new FlxPoint(port.x, port.y);
@@ -141,7 +142,7 @@ class Tres extends PausableState
 	{
 		super.update(elapsed);
 
-                tdm2.animation.paused = paused;
+		tdm2.animation.paused = paused;
 
 		Global.playMusic('StageTracks/Tres');
 
@@ -219,7 +220,7 @@ class Tres extends PausableState
 				onComplete: tween ->
 				{
 					tdm2.animation.play('attack');
-					var ogammoCount:Int = FlxG.random.int(5, 20);
+					var ogammoCount:Int = FlxG.random.int(#if MOBILE_BUILD 20, 50 #else 5, 20 #end);
 					var ammoCount:Int = ogammoCount;
 
 					while (ammoCount > 0)
@@ -228,18 +229,19 @@ class Tres extends PausableState
 						attack.loadGraphic(Assets.getImagePath('tres/TDM2Attack'));
 						attack.scaleSpr();
 						attack.screenCenter();
-						attack.x += attack.width * 3.5;
-						attack.y += attack.height * 1.5;
+						attack.x += attack.width * #if MOBILE_BUILD 2.75 #else 3.5 #end;
+						attack.y += attack.height * #if MOBILE_BUILD 2 #else 1.5 #end;
 
 						attack.acceleration.x = FlxG.random.int(-200, -80) * 2;
 						attack.acceleration.y = FlxG.random.int(-300, 300) * 2;
+						attack.moves = false;
 
 						enemyAttacks.add(attack);
 
 						ammoCount--;
 					}
 
-					FlxTimer.wait(0.1 * ogammoCount, () ->
+					FlxTimer.wait(0.1 * #if MOBILE_BUILD ogammoCount / 2 #else ogammoCount #end, () ->
 					{
 						FlxTween.tween(tdm2, {x: enemyPos.x});
 						tdm2.animation.play('attack-post');
@@ -258,6 +260,9 @@ class Tres extends PausableState
 
 		for (bullet in enemyAttacks)
 		{
+			if (!paused)
+				bullet.updateMotion(elapsed);
+
 			var player = sinco;
 			if (selectedHero == 1)
 				player = port;
@@ -277,48 +282,40 @@ class Tres extends PausableState
 	public function movementCheck()
 	{
 		if (Global.anyKeysPressed([LEFT, A]))
-		{
-			switch (selectedHero)
-			{
-				case 0:
-					playerPos.x -= playerSpeed;
-				case 1:
-					playerPos.x -= playerSpeed;
-			}
-		}
-
+			playerPos.x -= playerSpeed;
 		if (Global.anyKeysPressed([RIGHT, D]))
-		{
-			switch (selectedHero)
-			{
-				case 0:
-					playerPos.x += playerSpeed;
-				case 1:
-					playerPos.x += playerSpeed;
-			}
-		}
-
+			playerPos.x += playerSpeed;
 		if (Global.anyKeysPressed([UP, W]))
-		{
-			switch (selectedHero)
-			{
-				case 0:
-					playerPos.y -= playerSpeed;
-				case 1:
-					playerPos.y -= playerSpeed;
-			}
-		}
-
+			playerPos.y -= playerSpeed;
 		if (Global.anyKeysPressed([DOWN, S]))
-		{
-			switch (selectedHero)
+			playerPos.y += playerSpeed;
+
+		// #if !MOBILE_BUILD
+
+		/** for (swipe in FlxG.swipes)
 			{
-				case 0:
-					playerPos.y += playerSpeed;
-				case 1:
-					playerPos.y += playerSpeed;
-			}
+				final absdeg = Math.abs(Math.floor(swipe.degrees));
+
+				trace(absdeg);
+
+				if (absdeg >= 0 && absdeg < 90 || absdeg > 271 && absdeg <= 260)
+					playerPos.x += (playerSpeed + swipe.distance);
+
+				if (absdeg >= 90 && absdeg < 271)
+					playerPos.x -= (playerSpeed + swipe.distance);
+		} **/
+
+		if (selectedHero == 0)
+		{
+			playerPos.x = sincoSCPos.x - FlxG.mouse.x;
+			playerPos.y = sincoSCPos.y - FlxG.mouse.y;
 		}
+		else
+		{
+			playerPos.x = portSCPos.x - FlxG.mouse.x;
+			playerPos.y = portSCPos.y - FlxG.mouse.y;
+		}
+		// #end
 
 		var bindLeft = -(FlxG.width / 2);
 		var bindUp = -(FlxG.height / 2);

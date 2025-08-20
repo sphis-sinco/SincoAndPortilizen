@@ -11,7 +11,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 class StringQuest extends PausableState
 {
-	public var levelLength:Int = 22;
+	public var levelLength:Int = #if MOBILE_BUILD 44 #else 22 #end;
 	public var levelBlocks:FlxTypedGroup<Spr>;
 
 	public var port:Spr;
@@ -55,17 +55,19 @@ class StringQuest extends PausableState
 			var spr:Spr = new Spr();
 			spr.loadGraphic(Assets.getImagePath('string-quest/block'));
 
+			final increaseHeightValue = #if MOBILE_BUILD 1 #else 10 #end;
+
 			spr.y = FlxG.height - spr.height;
-			if (i > 10)
+			if (i > increaseHeightValue)
 				spr.y -= spr.height;
-			spr.x = spr.width * (i - ((i > 10) ? 11 : 0));
+			spr.x = spr.width * (i - ((i > increaseHeightValue) ? 11 : 0));
 
 			lastBlockY = spr.y;
 
 			levelBlocks.add(spr);
 		}
 
-		for (i in 0...5)
+		for (i in 0...#if MOBILE_BUILD 10 #else 5 #end)
 		{
 			var spr:Spr = new Spr();
 			spr.loadGraphic(Assets.getImagePath('string-quest/WingedEnemy'), true, 64, 64);
@@ -149,14 +151,14 @@ class StringQuest extends PausableState
 				block.x = FlxG.width;
 		}
 
-		if (Global.keyPressed(LEFT))
+		if (Global.keyPressed(LEFT) || (FlxG.mouse.x < port.x && FlxG.mouse.pressed))
 		{
 			port.x -= 8;
 
 			if (port.x < (port.width * 4))
 				port.x = port.width * 4;
 		}
-		else if (Global.keyPressed(RIGHT))
+		else if (Global.keyPressed(RIGHT) || (FlxG.mouse.x > port.x && FlxG.mouse.pressed))
 		{
 			port.x += 8;
 
@@ -164,12 +166,12 @@ class StringQuest extends PausableState
 				port.x = portMaxX;
 		}
 
-		if (Global.keyJustReleased(SPACE) && port.animation.name == 'run')
+		if ((Global.keyJustReleased(SPACE)) && port.animation.name == 'run')
 			jump();
-		else if (Global.keyJustReleased(SPACE) && port.animation.name == 'jump')
+		else if ((Global.keyJustReleased(SPACE)) && port.animation.name == 'jump')
 			doubleJump();
 
-		if (!paused && FlxG.random.bool(15) && enemiesAttacking < 2)
+		if (!paused && FlxG.random.bool(15) && enemiesAttacking < #if MOBILE_BUILD 6 #else 2 #end)
 		{
 			var index = 0;
 			var i = 1.1;

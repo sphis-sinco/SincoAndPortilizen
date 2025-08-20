@@ -13,6 +13,8 @@ class State extends FlxState
 	{
 		super.update(elapsed);
 
+		#if !MOBILE_TESTING
 		FlxG.mouse.visible = false;
+		#end
 	}
 }

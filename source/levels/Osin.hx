@@ -10,7 +10,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 class Osin extends PausableState
 {
-	public var levelLength:Int = 20;
+	public var levelLength:Int = 40;
 	public var levelTiles:FlxTypedGroup<Spr>;
 
 	public var moving:Bool = false;
@@ -128,7 +128,7 @@ class Osin extends PausableState
 
 		super.update(elapsed);
 
-		if (Global.keyJustReleased(SPACE) && !paused && !moving)
+		if ((Global.keyJustReleased(SPACE) || FlxG.mouse.justReleased) && !paused && !moving)
 		{
 			if (mexicanStandoff.active)
 				mexicanStandoff.cancel();
@@ -208,7 +208,7 @@ class Osin extends PausableState
 		enemyAttacking = true;
 		osin.animation.play('prep');
 
-		spawnBalls(FlxG.random.int(2, 5));
+		spawnBalls(FlxG.random.int(2, #if MOBILE_BUILD 10 #else 5 #end));
 
 		osinAttackTimer.start(FlxG.random.float(0.5, 1), timer ->
 		{
@@ -265,7 +265,7 @@ class Osin extends PausableState
 
 			testicle.setPosition(osin.getGraphicMidpoint().x, osin.getGraphicMidpoint().y);
 
-			FlxTween.tween(testicle, {x: ((i + 1) * testicle.width) + rextraX, y: testicle.height * 2 + rextraY}, .25, {
+			FlxTween.tween(testicle, {x: #if MOBILE_BUILD 256 #else 0 #end +  ((i + 1) * testicle.width) + rextraX, y: testicle.height * 2 + rextraY}, .25, {
 				ease: FlxEase.sineInOut
 			});
 

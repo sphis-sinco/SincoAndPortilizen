@@ -5,9 +5,17 @@ Mobile update
 ### New Contributors
 * @wonderinglostsoul44 made their first contribution in https://github.com/sphis-sinco/SincoAndPortilizen/pull/45
 ### Fixed
+- Bullets in Tres will no longer move when the game is paused
 - The clear save screen confirmation text has the correct intended alignment
 - When leaving the Clear Save Screen you can now see the message
 ### Changed
+- You can press and hold the screen (moving your finger OR MOUSE) to move in Tres
+- You can tap the screen to jump in Osin
+- You can press and hold the screen (moving your finger OR MOUSE) to move in String Quest
+- On mobile "Tres" will have the T-DM2 firing more bullets
+- On mobile "Osin" will have osin firing a max of 10 "bullets"
+- On mobile "String Quest" will have 10 enemies and 6 *can* be attacking at once
+- On mobile "String Quest" will have a bridge-like floor
 - You can tap the screen to leave the outdated screen
 - More accurate range to pet Sinco
 - All the functions and variables in the credits state are no longer static functions and or variables

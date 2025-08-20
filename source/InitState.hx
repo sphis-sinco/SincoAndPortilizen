@@ -70,7 +70,9 @@ class InitState extends FlxState
 			return;
 		}
 
+		#if !MOBILE_TESTING
 		FlxG.mouse.visible = false;
+		#end
 		switchToState(new Splash(), 'Splash');
 	}
 

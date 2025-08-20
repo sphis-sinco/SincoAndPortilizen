@@ -44,6 +44,8 @@ class Splash extends State
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		#if !MOBILE_TESTING
 		FlxG.mouse.visible = false;
+		#end
 	}
 }
