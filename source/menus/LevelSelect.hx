@@ -273,11 +273,15 @@ class LevelSelect extends State
 
 		sinco.overlap.add(() ->
 		{
+			if (cursor.y > FlxG.height - (console.height / 2) + 32)
+				sinco.scaleSpr();
 			if (cursor.x > (portPetX))
 				sinco.scaleSpr();
 		});
 		port.overlap.add(() ->
 		{
+			if (cursor.y > FlxG.height - (console.height / 2) + 32)
+				port.scaleSpr();
 			if (cursor.x < (portPetX))
 				port.scaleSpr();
 		});
