@@ -10,8 +10,8 @@ class ClearSaveScreen extends State
 	public var clearSave:Spr;
 	public var cursor:Spr;
 
-	public var yes:Spr;
-	public var no:Spr;
+	public var yes:InteractableSpr;
+	public var no:InteractableSpr;
 
 	public var confirmationText:FlxText;
 
@@ -25,22 +25,77 @@ class ClearSaveScreen extends State
 		clearSave.setPosition(SettingsMenu.clearSavePos.x, SettingsMenu.clearSavePos.y);
 		add(clearSave);
 
-		yes = new Spr(#if !MOBILE_BUILD - 2 #else 0 #end);
+		yes = new InteractableSpr('clearSave/buttons');
 		yes.loadGraphic(Assets.getImagePath('clearSave/buttons'), true, 64, 64);
 		yes.animation.add('yes', [0]);
 		yes.animation.play('yes');
+		yes.scaleOffset = #if !MOBILE_BUILD - 2 #else 0 #end;
 		yes.scaleSpr();
 		yes.screenCenter(XY);
 		yes.x -= yes.width;
-		add(yes);
 
-		no = new Spr(#if !MOBILE_BUILD - 2 #else 0 #end);
+		yes.desiredPosition = yes.getPosition();
+
+		yes.justReleased.add(() ->
+		{
+			FlxTween.tween(no, {alpha: 0}, 1);
+			FlxTween.tween(yes, {alpha: 0}, .5, {
+				startDelay: .5
+			});
+			confirmationText.text = 'Hope you meant it.';
+			FlxG.save.erase();
+
+			WebSave.volume = 1;
+			WebSave.levels_complete = [];
+			WebSave.medals = [];
+			WebSave.colored_levelSelect = false;
+
+			Global.change_saveslot(Global.SAVE_SLOT_SUFFIX);
+
+			leave();
+		});
+
+		add(yes);
+		yes.overlap.add(() ->
+		{
+			cursor.animation.play('select');
+		});
+
+		no = new InteractableSpr('clearSave/buttons');
 		no.loadGraphic(Assets.getImagePath('clearSave/buttons'), true, 64, 64);
 		no.animation.add('no', [1]);
 		no.animation.play('no');
+		no.scaleOffset = #if !MOBILE_BUILD - 2 #else 0 #end;
 		no.scaleSpr();
 		no.screenCenter(XY);
 		no.x += no.width;
+
+		no.desiredPosition = no.getPosition();
+
+		no.overlap.add(() ->
+		{
+			cursor.animation.play('select');
+		});
+
+		no.justReleased.add(() ->
+		{
+			FlxTween.tween(yes, {alpha: 0}, 1);
+			FlxTween.tween(no, {alpha: 0}, .5, {
+				startDelay: .5
+			});
+			confirmationText.text = 'Good choice';
+
+			#if !html5
+			if (FlxG.save.data.levels_complete.contains(2))
+			#else
+			if (WebSave.levels_complete.contains(2))
+			#end
+			{
+				confirmationText.text += '\nI wouldn\'t either.';
+			}
+
+			leave();
+		});
 		add(no);
 
 		confirmationText = new FlxText();
@@ -92,70 +147,22 @@ class ClearSaveScreen extends State
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
 
-		for (button in [yes, no])
-		{
-			button.scaleSpr();
-
-			if (FlxCollision.pixelPerfectCheck(cursor, button))
-			{
-				cursor.animation.play('select');
-
-				button.scale.set(button.scale.x - .1, button.scale.y - .1);
-
-				if (FlxG.mouse.justReleased)
-				{
-					var ps = true;
-
-					if (button == yes)
-					{
-						FlxTween.tween(no, {alpha: 0}, 1);
-						FlxTween.tween(yes, {alpha: 0}, .5, {
-							startDelay: .5
-						});
-						confirmationText.text = 'Hope you meant it.';
-						FlxG.save.erase();
-
-						WebSave.volume = 1;
-						WebSave.levels_complete = [];
-						WebSave.medals = [];
-						WebSave.colored_levelSelect = false;
-
-						Global.change_saveslot(Global.SAVE_SLOT_SUFFIX);
-					}
-					else if (button == no)
-					{
-						FlxTween.tween(yes, {alpha: 0}, 1);
-						FlxTween.tween(no, {alpha: 0}, .5, {
-							startDelay: .5
-						});
-						confirmationText.text = 'Good choice';
-
-						#if !html5
-						if (FlxG.save.data.levels_complete.contains(2))
-						#else
-						if (WebSave.levels_complete.contains(2))
-						#end
-						{
-							confirmationText.text += '\nI wouldn\'t either.';
-						}
-					}
-
-					if (ps)
-						Global.playSoundEffect('blipSelect');
-
-					FlxTween.tween(confirmationText, {alpha: 0}, 1);
-					FlxTimer.wait(1, () ->
-					{
-						Global.switchState(new SettingsMenu());
-					});
-					FlxG.save.flush();
-
-					FlxG.sound.volume = FlxG.save.data.volume;
-				}
-			}
-		}
-
 		confirmationText.screenCenter();
 		confirmationText.y -= (confirmationText.height * 4);
+	}
+
+	public function leave()
+	{
+		yes.justReleased.removeAll();
+		no.justReleased.removeAll();
+
+		FlxTween.tween(confirmationText, {alpha: 0}, 1);
+		FlxTimer.wait(1, () ->
+		{
+			Global.switchState(new SettingsMenu());
+		});
+		FlxG.save.flush();
+
+		FlxG.sound.volume = FlxG.save.data.volume;
 	}
 }

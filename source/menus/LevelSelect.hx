@@ -16,14 +16,14 @@ class LevelSelect extends State
 
 	public var startLevelTimer:FlxTimer;
 
-	public var sinco:Spr;
-	public var port:Spr;
+	public var sinco:InteractableSpr;
+	public var port:InteractableSpr;
 
 	var console:Spr;
 
 	public var cursor:Spr;
 
-	public var levelIcons:FlxTypedGroup<Spr>;
+	public var levelIcons:FlxTypedGroup<InteractableSpr>;
 	public var levelCrowns:FlxTypedGroup<Spr>;
 	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres'];
 	public var selectedLevel:Int = 0;
@@ -44,7 +44,7 @@ class LevelSelect extends State
 
 		levelCrowns = new FlxTypedGroup<Spr>();
 		add(levelCrowns);
-		levelIcons = new FlxTypedGroup<Spr>();
+		levelIcons = new FlxTypedGroup<InteractableSpr>();
 		add(levelIcons);
 
 		cursor = new Spr(-3);
@@ -55,9 +55,9 @@ class LevelSelect extends State
 
 		for (i in 0...levelNames.length)
 		{
-			var levelIcon:Spr = new Spr(#if MOBILE_BUILD - 2 #else - 3 #end);
+			var levelIcon:InteractableSpr = new InteractableSpr('levelSelect/level_icons/blank');
 			var crown:Spr = new Spr(#if MOBILE_BUILD - 2 #else - 3 #end);
-			levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/blank'));
+			levelIcon.scaleOffset = crown.scaleOffset;
 			crown.loadGraphic(Assets.getImagePath('levelSelect/crown'));
 
 			var data:LevelData;
@@ -122,18 +122,95 @@ class LevelSelect extends State
 			crown.visible = WebSave.levels_complete.contains(i + 1);
 			#end
 
+			levelIcon.overlap.add(() ->
+			{
+				if (data != null)
+					if (FlxG.save.data.colored_levelSelect)
+					{
+						if (data.port_level && data.sinco_level)
+							levelIcon.color = 0x4e0c6f;
+
+						if (data.color != null && data.color.length >= 3)
+							levelIcon.color = FlxColor.fromRGB(data.color[0], data.color[1], data.color[2]);
+
+						if (data.hover_color != null && data.hover_color.length >= 3)
+							levelIcon.color = FlxColor.fromRGB(data.hover_color[0], data.hover_color[1], data.hover_color[2]);
+					}
+			});
+
+			levelIcon.justReleased.add(() ->
+			{
+				if (!startLevelTimer.active && selectedLevel > -1)
+				{
+					var data:LevelData;
+
+					try
+					{
+						data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}.json');
+					}
+					catch (e)
+					{
+						data = null;
+					}
+
+					sinco.animation.play('notpicked');
+					port.animation.play('notpicked');
+					if (data == null)
+						flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
+					else
+					{
+						if (!data.can_play)
+							flashMessage('Can\'t play');
+						else
+						{
+							if (data.port_level)
+								port.animation.play('picked');
+							if (data.sinco_level)
+								sinco.animation.play('picked');
+
+							switch (levelNames[selectedLevel].toLowerCase())
+							{
+								case 'string-quest':
+									flashMessage('String Quest');
+								case 'osin':
+									flashMessage('Vs Osin');
+								case 'tres':
+									flashMessage('Tres');
+							}
+
+							Global.playSoundEffect('blipSelect');
+
+							startLevelTimer.start(10);
+							FlxTimer.wait(1, () ->
+							{
+								switch (levelNames[selectedLevel].toLowerCase())
+								{
+									case 'string-quest': Global.switchState(new StringQuest());
+									case 'osin': Global.switchState(new Osin());
+									case 'tres':
+										Global.switchState(new Tres());
+								}
+							});
+						}
+					}
+				}
+			});
+
 			levelCrowns.add(crown);
 			levelIcons.add(levelIcon);
+			levelIcon.desiredPosition = levelIcon.getPosition();
 		}
 
-		console = new Spr(#if MOBILE_BUILD 0 #else -2 #end);
+		console = new Spr(#if MOBILE_BUILD 0 #else - 2 #end);
 		console.loadGraphic(Assets.getImagePath('levelSelect/console'));
 		console.scaleSpr();
 		console.screenCenter(X);
 		console.y = FlxG.height - console.height;
 
-		sinco = new Spr(#if MOBILE_BUILD 0 #else -2 #end);
-		port = new Spr(#if MOBILE_BUILD 0 #else -2 #end);
+		sinco = new InteractableSpr('levelSelect/chars/sinco');
+		sinco.scaleOffset = #if MOBILE_BUILD 0 #else - 2 #end;
+		port = new InteractableSpr('levelSelect/chars/port');
+		port.scaleOffset = #if MOBILE_BUILD 0 #else - 2 #end;
 
 		sinco.loadGraphic(Assets.getImagePath('levelSelect/chars/sinco'), true, 128, 128);
 		sinco.scaleSpr();
@@ -164,6 +241,32 @@ class LevelSelect extends State
 		port.animation.play('idle');
 		sinco.animation.play('idle');
 
+		sinco.desiredPosition = sinco.getPosition();
+		port.desiredPosition = port.getPosition();
+
+		sinco.justReleased_soundPlay = false;
+		port.justReleased_soundPlay = false;
+
+		sinco.justReleased.add(() ->
+		{
+			if (cursor.x < (portPetX))
+			{
+				Global.playSoundEffect('sinco-pet', 10);
+
+				sinco.animation.play('${sinco.animation.name.split('-')[0]}-pet');
+			}
+		});
+
+		port.justReleased.add(() ->
+		{
+			if (cursor.x > (portPetX))
+			{
+				Global.playSoundEffect('port-pet', 10);
+
+				port.animation.play('${port.animation.name.split('-')[0]}-pet');
+			}
+		});
+
 		if (FlxG.save.data.colored_levelSelect)
 		{
 			sinco.color = 0x4eb10c;
@@ -187,14 +290,7 @@ class LevelSelect extends State
 		Global.changeDiscordRPCPresence('In the Level Select', 'Level Select');
 
 		if (Global.previousState == 'Tres')
-		{
-			FlxG.sound.music.fadeOut(.25, 0, tween ->
-			{
-				FlxG.sound.music.stop();
-				Global.playMenuMusic();
-				FlxG.sound.music.fadeIn(.25);
-			});
-		}
+			Global.fadeToMusic('MenuTracks/Lado', 1.0, .25, .25);
 
 		#if MOBILE_BUILD
 		add(new backend.mobile.BackButton(new TitleScreen()));
@@ -240,24 +336,9 @@ class LevelSelect extends State
 					}
 				}
 
-				icon.scaleSpr();
-				if (cursor.overlaps(icon))
+				if (FlxG.mouse.overlaps(icon))
 				{
-					if (data != null)
-						if (FlxG.save.data.colored_levelSelect)
-						{
-							if (data.port_level && data.sinco_level)
-								icon.color = 0x4e0c6f;
-
-							if (data.color != null && data.color.length >= 3)
-								icon.color = FlxColor.fromRGB(data.color[0], data.color[1], data.color[2]);
-
-							if (data.hover_color != null && data.hover_color.length >= 3)
-								icon.color = FlxColor.fromRGB(data.hover_color[0], data.hover_color[1], data.hover_color[2]);
-						}
-
 					selectedLevel = icon.ID;
-					icon.scale.set(icon.scale.x - .1, icon.scale.y - .1);
 					cursor.animation.play('select');
 				}
 			}
@@ -271,65 +352,6 @@ class LevelSelect extends State
 		}
 
 		FlxG.watch.addQuick('selectedLevel', selectedLevel);
-
-		if (!startLevelTimer.active && selectedLevel > -1 && FlxG.mouse.justReleased)
-		{
-			var data:LevelData;
-
-			try
-			{
-				data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}.json');
-			}
-			catch (e)
-			{
-				data = null;
-			}
-
-			sinco.animation.play('notpicked');
-			port.animation.play('notpicked');
-			if (data == null)
-				flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
-			else
-			{
-				if (!data.can_play)
-					flashMessage('Can\'t play');
-				else
-				{
-					if (data.port_level)
-						port.animation.play('picked');
-					if (data.sinco_level)
-						sinco.animation.play('picked');
-
-					switch (levelNames[selectedLevel].toLowerCase())
-					{
-						case 'string-quest':
-							flashMessage('String Quest');
-						case 'osin':
-							flashMessage('Vs Osin');
-						case 'tres':
-							flashMessage('Tres');
-					}
-
-					Global.playSoundEffect('blipSelect');
-
-					startLevelTimer.start(10);
-					FlxTimer.wait(1, () ->
-					{
-						switch (levelNames[selectedLevel].toLowerCase())
-						{
-							case 'string-quest': Global.switchState(new StringQuest());
-							case 'osin': Global.switchState(new Osin());
-							case 'tres':
-								FlxG.sound.music.fadeOut(1, 0, tween ->
-								{
-									FlxG.sound.music.stop();
-									Global.switchState(new Tres());
-								});
-						}
-					});
-				}
-			}
-		}
 
 		if (sinco.animation.finished)
 			sinco.animation.play('idle');
@@ -353,21 +375,6 @@ class LevelSelect extends State
 			}
 
 			cursor.animation.play('select');
-
-			if (FlxG.mouse.justReleased)
-			{
-				if (cursor.x < (portPetX))
-				{
-					Global.playSoundEffect('sinco-pet', 10);
-
-					sinco.animation.play('${sinco.animation.name.split('-')[0]}-pet');
-				}
-				else if (cursor.x > (portPetX))
-				{
-					Global.playSoundEffect('port-pet');
-					port.animation.play('${port.animation.name.split('-')[0]}-pet');
-				}
-			}
 		}
 	}
 

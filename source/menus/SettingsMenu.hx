@@ -8,10 +8,10 @@ import flixel.text.FlxText;
 
 class SettingsMenu extends State
 {
-	public var coloredLevelSelect:Spr;
-	public var discordRPC:Spr;
-	public var volume:Spr;
-	public var clearSave:Spr;
+	public var coloredLevelSelect:InteractableSpr;
+	public var discordRPC:InteractableSpr;
+	public var volume:InteractableSpr;
+	public var clearSave:InteractableSpr;
 
 	public static var clearSavePos:FlxPoint;
 
@@ -26,10 +26,11 @@ class SettingsMenu extends State
 	{
 		super.create();
 
-		coloredLevelSelect = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
+		coloredLevelSelect = new InteractableSpr('settings/ColoredLevelSelect');
 		coloredLevelSelect.loadGraphic(Assets.getImagePath('settings/ColoredLevelSelect'), true, 64, 64);
 		coloredLevelSelect.animation.add('false', [0]);
 		coloredLevelSelect.animation.add('true', [1]);
+		coloredLevelSelect.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
 		coloredLevelSelect.scaleSpr();
 		coloredLevelSelect.setPosition(32, 32);
 
@@ -43,10 +44,11 @@ class SettingsMenu extends State
 
 		pageCont.push(coloredLevelSelect);
 
-		discordRPC = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
+		discordRPC = new InteractableSpr('settings/DiscordRPC');
 		discordRPC.loadGraphic(Assets.getImagePath('settings/DiscordRPC'), true, 64, 64);
 		discordRPC.animation.add('false', [0]);
 		discordRPC.animation.add('true', [1]);
+		discordRPC.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
 		discordRPC.scaleSpr();
 		discordRPC.setPosition(coloredLevelSelect.x + coloredLevelSelect.width + 32, coloredLevelSelect.y);
 		discordRPC.ID = 1;
@@ -58,7 +60,7 @@ class SettingsMenu extends State
 		pageCont.push(discordRPC);
 		add(discordRPC);
 
-		volume = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
+		volume = new InteractableSpr('settings/Volume');
 		volume.loadGraphic(Assets.getImagePath('settings/Volume'), true, 64, 64);
 		volume.animation.add('100', [10]);
 		volume.animation.add('90', [9]);
@@ -71,6 +73,7 @@ class SettingsMenu extends State
 		volume.animation.add('20', [2]);
 		volume.animation.add('10', [1]);
 		volume.animation.add('0', [0]);
+		volume.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
 		volume.scaleSpr();
 		volume.setPosition(coloredLevelSelect.x, coloredLevelSelect.y + coloredLevelSelect.height + 32);
 		volume.ID = 2;
@@ -79,8 +82,9 @@ class SettingsMenu extends State
 		pageCont.push(volume);
 		lowerPageCont.push(volume);
 
-		clearSave = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
+		clearSave = new InteractableSpr('settings/ClearSave');
 		clearSave.loadGraphic(Assets.getImagePath('settings/ClearSave'));
+		clearSave.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
 		clearSave.scaleSpr();
 		clearSave.setPosition(discordRPC.x, volume.y);
 		clearSave.ID = 3;
@@ -138,10 +142,96 @@ class SettingsMenu extends State
 		#if MOBILE_BUILD
 		add(new backend.mobile.BackButton(new TitleScreen(), new FlxPoint(0, -64)));
 		#end
+
+		coloredLevelSelect.desiredPosition = coloredLevelSelect.getPosition();
+		discordRPC.desiredPosition = discordRPC.getPosition();
+		volume.desiredPosition = volume.getPosition();
+		clearSave.desiredPosition = clearSave.getPosition();
+
+		coloredLevelSelect.overlap.add(() ->
+		{
+			descriptionText.text = 'Colored Level Select (${(FlxG.save.data.colored_levelSelect) ? 'enabled' : 'disabled'}) - Enables Color on the Level Select';
+		});
+		discordRPC.overlap.add(() ->
+		{
+			descriptionText.text = 'Discord RPC (${#if DISCORDRPC(FlxG.save.data.discord_rpc) ? 'enabled' : 'disabled' #else 'unsupported' #end}) - Enables Rich Presence Support on Discord';
+		});
+		volume.overlap.add(() ->
+		{
+			descriptionText.text = 'Volume (${FlxMath.roundDecimal(FlxG.sound.volume * 100, 0)}) - Sets the game volume';
+		});
+		clearSave.overlap.add(() ->
+		{
+			descriptionText.text = 'Clear Save - You will lose everything you hold dear to you in this game.';
+		});
+
+		coloredLevelSelect.justReleased.add(() ->
+		{
+			FlxG.save.data.colored_levelSelect = !FlxG.save.data.colored_levelSelect;
+
+			FlxG.save.flush();
+		});
+
+		discordRPC.justReleased.add(() -> {
+			#if DISCORDRPC
+			discordRPC.justReleased_soundPlay = true;
+			FlxG.save.data.discord_rpc = !FlxG.save.data.discord_rpc;
+
+			if (FlxG.save.data.discord_rpc)
+			{
+				Discord.DiscordClient.initialize();
+				Global.changeDiscordRPCPresence('Re-enabled', 'Settings Menu');
+			}
+			else
+				Discord.DiscordClient.shutdown();
+			#else
+			discordRPC.justReleased_soundPlay = false;
+			#end
+
+			FlxG.save.flush();
+		});
+
+		volume.justReleased.add(() ->
+		{
+			FlxG.sound.changeVolume(0.1);
+			if (FlxG.sound.volume >= 1)
+			{
+				FlxG.sound.changeVolume(-1);
+			}
+			#if !html5
+			FlxG.save.data.volume = FlxG.sound.volume;
+			#else
+			WebSave.volume = FlxG.sound.volume;
+			#end
+
+			FlxG.save.flush();
+		});
+		volume.justReleased_soundPlay = false;
+
+		clearSave.justReleased.add(() ->
+		{
+			if (coloredLevelSelect.alpha == 1)
+			{
+				clearSave.justReleased_soundPlay = true;
+				FlxG.sound.music.fadeOut(1, 0, tween ->
+				{
+					Global.switchState(new ClearSaveScreen());
+				});
+
+				FlxTween.tween(coloredLevelSelect, {alpha: 0}, 1);
+				FlxTween.tween(discordRPC, {alpha: 0}, 1);
+				FlxTween.tween(volume, {alpha: 0}, 1);
+				FlxTween.tween(descriptionText, {alpha: 0}, 1);
+			}
+			else
+				clearSave.justReleased_soundPlay = false;
+			
+			FlxG.save.flush();
+		});
 	}
 
-	public var pageCont:Array<Spr> = [];
-	public var lowerPageCont:Array<Spr> = [];
+	public var pageCont:Array<InteractableSpr> = [];
+	public var lowerPageCont:Array<InteractableSpr> = [];
 
 	override function update(elapsed:Float)
 	{
@@ -167,7 +257,6 @@ class SettingsMenu extends State
 		descriptionText.text = '';
 		for (setting in pageCont)
 		{
-			setting.scaleSpr();
 			if (FlxCollision.pixelPerfectCheck(cursor, setting))
 			{
 				cursor.animation.play('select');
@@ -175,81 +264,11 @@ class SettingsMenu extends State
 				if (selected != setting.ID)
 					selected = setting.ID;
 
-				if (selected == setting.ID)
-				{
-					switch (setting.ID)
-					{
-						case 0:
-							descriptionText.text = 'Colored Level Select (${(FlxG.save.data.colored_levelSelect) ? 'enabled' : 'disabled'}) - Enables Color on the Level Select';
-						case 1:
-							descriptionText.text = 'Discord RPC (${#if DISCORDRPC(FlxG.save.data.discord_rpc) ? 'enabled' : 'disabled' #else 'unsupported' #end}) - Enables Rich Presence Support on Discord';
-						case 2:
-							descriptionText.text = 'Volume (${FlxMath.roundDecimal(FlxG.sound.volume * 100, 0)}) - Sets the game volume';
-						case 3:
-							descriptionText.text = 'Clear Save - You will lose everything you hold dear to you in this game.';
-					}
-				}
+				setting.overlap.dispatch();
+
 				descriptionText.y = 0;
 				if (lowerPageCont.contains(setting))
 					descriptionText.y = FlxG.height - descriptionText.height;
-
-				setting.scale.set(setting.scale.x - .1, setting.scale.y - .1);
-
-				if (FlxG.mouse.justReleased)
-				{
-					var ps = true;
-
-					switch (setting.ID)
-					{
-						case 0:
-							FlxG.save.data.colored_levelSelect = !FlxG.save.data.colored_levelSelect;
-						case 1:
-							#if DISCORDRPC
-							FlxG.save.data.discord_rpc = !FlxG.save.data.discord_rpc;
-
-							if (FlxG.save.data.discord_rpc)
-							{
-								Discord.DiscordClient.initialize();
-								Global.changeDiscordRPCPresence('Re-enabled', 'Settings Menu');
-							}
-							else
-								Discord.DiscordClient.shutdown();
-							#else
-							ps = false;
-							#end
-						case 2:
-							FlxG.sound.changeVolume(0.1);
-							if (FlxG.sound.volume >= 1)
-							{
-								FlxG.sound.changeVolume(-1);
-							}
-							#if !html5
-							FlxG.save.data.volume = FlxG.sound.volume;
-							#else
-							WebSave.volume = FlxG.sound.volume;
-							#end
-						case 3:
-							if (coloredLevelSelect.alpha == 1)
-							{
-								FlxG.sound.music.fadeOut(1, 0, tween ->
-								{
-									Global.switchState(new ClearSaveScreen());
-								});
-
-								FlxTween.tween(coloredLevelSelect, {alpha: 0}, 1);
-								FlxTween.tween(discordRPC, {alpha: 0}, 1);
-								FlxTween.tween(volume, {alpha: 0}, 1);
-								FlxTween.tween(descriptionText, {alpha: 0}, 1);
-							}
-							else
-								ps = false;
-					}
-
-					if (ps)
-						Global.playSoundEffect('blipSelect');
-
-					FlxG.save.flush();
-				}
 			}
 			if (cursor.animation.name != 'select')
 				selected = -1;

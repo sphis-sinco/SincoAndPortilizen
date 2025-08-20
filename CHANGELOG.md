@@ -9,7 +9,8 @@ Mobile update
 - The clear save screen confirmation text has the correct intended alignment
 - When leaving the Clear Save Screen you can now see the message
 ### Changed
-- You can press and hold the screen (moving your finger OR MOUSE) to move in Tres
+- The instructions for swapping are removed on mobile for Tres
+- On mobile in Tres the player moves differently
 - You can tap the screen to jump in Osin
 - You can press and hold the screen (moving your finger OR MOUSE) to move in String Quest
 - On mobile "Tres" will have the T-DM2 firing more bullets
@@ -26,6 +27,7 @@ Mobile update
 - Several UI elements are made bigger on mobile
 - `Global.dummyBG` will now generate a background that fits the window resolution
 ### Added
+- `InteractableSpr` class so that interactable sprite buttons are easier
 - `MOBILE_TESTING` define
 - `MOBILE_BUILD` define
 

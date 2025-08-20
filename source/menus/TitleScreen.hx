@@ -9,9 +9,9 @@ class TitleScreen extends State
 	public var logo:Spr;
 	public var logoSuffixes:Array<String> = ['', '-dj', '-paul'];
 
-	public var levelSelect:Spr;
-	public var settings:Spr;
-	public var creditsButton:Spr;
+	public var levelSelect:InteractableSpr;
+	public var settings:InteractableSpr;
+	public var creditsButton:InteractableSpr;
 
 	public var cursor:Spr;
 
@@ -32,31 +32,62 @@ class TitleScreen extends State
 		cursor.animation.add('select', [1], 24);
 		cursor.animation.play('idle');
 
-		creditsButton = new Spr(#if !MOBILE_BUILD - 3 #else 0 #end);
-		creditsButton.loadGraphic(Assets.getImagePath('levelSelect/credits'));
+		creditsButton = new InteractableSpr('levelSelect/credits');
+		creditsButton.scaleOffset = #if !MOBILE_BUILD - 3 #else 0 #end;
 		creditsButton.scaleSpr();
 		creditsButton.setPosition(FlxG.width - creditsButton.width - 32, FlxG.height - creditsButton.height - 32);
 		add(creditsButton);
 
-		levelSelect = new Spr(#if !MOBILE_BUILD - 2 #else 0 #end);
-		levelSelect.loadGraphic(Assets.getImagePath('title/levelSelect'));
+		levelSelect = new InteractableSpr('title/levelSelect');
+		levelSelect.scaleOffset = #if !MOBILE_BUILD - 2 #else 0 #end;
 		levelSelect.scaleSpr();
 		levelSelect.screenCenter();
 		levelSelect.x -= (levelSelect.width / 2);
 		levelSelect.y += (logo.height / 4);
 		add(levelSelect);
 
-		settings = new Spr(#if !MOBILE_BUILD - 2 #else 0 #end);
-		settings.loadGraphic(Assets.getImagePath('title/settings'));
+		settings = new InteractableSpr('title/settings');
+		settings.scaleOffset = #if !MOBILE_BUILD - 2 #else 0 #end;
 		settings.scaleSpr();
 		settings.screenCenter();
 		settings.x += (settings.width / 2);
 		settings.y += (logo.height / 4);
 		add(settings);
 
+		creditsButton.desiredPosition = creditsButton.getPosition();
+		levelSelect.desiredPosition = levelSelect.getPosition();
+		settings.desiredPosition = settings.getPosition();
+
+		#if MOBILE_BUILD
+		cursor.visible = false;
+		#end
+
+		var cursorAnimate = () ->
+		{
+			cursor.animation.play('select');
+		}
+
+		creditsButton.overlap.add(cursorAnimate);
+		levelSelect.overlap.add(cursorAnimate);
+		settings.overlap.add(cursorAnimate);
+
+		creditsButton.justReleased.add(() ->
+		{
+			Global.switchState(new Credits());
+		});
+		levelSelect.justReleased.add(() ->
+		{
+			Global.switchState(new LevelSelect());
+		});
+		settings.justReleased.add(() ->
+		{
+			Global.switchState(new SettingsMenu());
+		});
+
 		Global.changeDiscordRPCPresence('', 'Title Screen');
 
-		add(new FlxText(3, FlxG.height - #if !MOBILE_BUILD 32 #else 64 #end, FlxG.width, 'v${Global.VERSION} (b${Global.BUILD})', #if !MOBILE_BUILD 16 #else 32 #end));
+		add(new FlxText(3, FlxG.height - #if !MOBILE_BUILD 32 #else 64 #end, FlxG.width, 'v${Global.VERSION} (b${Global.BUILD})',
+			#if !MOBILE_BUILD 16 #else 32 #end));
 		add(cursor);
 	}
 
@@ -68,35 +99,5 @@ class TitleScreen extends State
 
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
-
-		cursor.visible = true;
-		for (button in [levelSelect, settings, creditsButton])
-		{
-			button.scaleSpr();
-
-			if (FlxCollision.pixelPerfectCheck(cursor, button))
-			{
-				cursor.animation.play('select');
-
-				button.scale.set(button.scale.x - .1, button.scale.y - .1);
-
-				if (FlxG.mouse.justReleased)
-				{
-					Global.playSoundEffect('blipSelect');
-
-					if (button == levelSelect)
-						Global.switchState(new LevelSelect());
-					if (button == settings)
-						Global.switchState(new SettingsMenu());
-
-					if (button == creditsButton)
-						Global.switchState(new Credits());
-				}
-			}
-		}
-
-		#if MOBILE_BUILD
-		cursor.visible = false;
-		#end
 	}
 }

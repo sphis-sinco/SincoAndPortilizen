@@ -89,7 +89,9 @@ class Tres extends PausableState
 		instructions.animation.add('animate', [0, 1], 4);
 		instructions.animation.play('animate');
 		instructions.screenCenter();
+		#if !MOBILE_BUILD
 		add(instructions);
+		#end
 
 		FlxTimer.wait(2, () ->
 		{
@@ -130,10 +132,8 @@ class Tres extends PausableState
 		else
 			Global.changeDiscordRPCPresence('Fighting the mad-man', 'Tres');
 
-		FlxG.sound.music.stop();
-		Global.playMusic('StageTracks/Tres');
-		FlxG.sound.music.fadeIn(1);
-		
+		Global.fadeToMusic('StageTracks/Tres', 1.0, 1, 1);
+
 		add(behindPauseButtonLayer);
 		#if MOBILE_BUILD
 		add(pauseButton);
@@ -295,8 +295,7 @@ class Tres extends PausableState
 		if (Global.anyKeysPressed([DOWN, S]))
 			playerPos.y += playerSpeed;
 
-		#if !MOBILE_BUILD
-
+		#if MOBILE_BUILD
 		/** for (swipe in FlxG.swipes)
 			{
 				final absdeg = Math.abs(Math.floor(swipe.degrees));
