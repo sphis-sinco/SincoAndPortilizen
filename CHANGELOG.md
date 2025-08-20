@@ -1,6 +1,7 @@
 # Live Release
 ## 1.0 - 8/20/2025
 The game is now to be known as complete
+
 # Beta
 ## 4.0.1 - 8/20/2025
 ### Fixed
