@@ -2,36 +2,26 @@ package backend.mobile;
 
 import flixel.math.FlxPoint;
 
-class BackButton extends Spr
+class BackButton extends InteractableSpr
 {
-	public var returnState:FlxState;
+	public var positionOffset:FlxPoint;
 
-        public var positionOffset:FlxPoint;
-
-	override public function new(myreturnstate:FlxState, mypositionOffset:FlxPoint = null)
+	override public function new(returnState:FlxState, mypositionOffset:FlxPoint = null)
 	{
-		super();
-		loadGraphic(Assets.getImagePath('mobile/back'));
+		super('mobile/back');
 
-		returnState = myreturnstate;
-                positionOffset = mypositionOffset ?? new FlxPoint();
+		positionOffset = mypositionOffset ?? new FlxPoint();
+
+		justReleased.add(() ->
+		{
+			Global.playSoundEffect('blipSelect');
+			Global.switchState(returnState);
+		});
 	}
 
 	override function update(elapsed:Float)
 	{
+		desiredPosition.set(FlxG.width - this.width + 32 + (positionOffset.x ?? 0), FlxG.height - this.height + 32 + (positionOffset.y ?? 0));
 		super.update(elapsed);
-
-		scaleSpr();
-		setPosition(FlxG.width - this.width + 32 + (positionOffset.x ?? 0), FlxG.height - this.height + 32 + (positionOffset.y ?? 0));
-		if (FlxG.mouse.overlaps(this))
-			scale.set(scale.x - .1, scale.y - .1)
-		else
-			scaleSpr();
-
-		if (FlxG.mouse.justReleased && FlxG.mouse.overlaps(this))
-		{
-			Global.playSoundEffect('blipSelect');
-			Global.switchState(returnState);
-		}
 	}
 }

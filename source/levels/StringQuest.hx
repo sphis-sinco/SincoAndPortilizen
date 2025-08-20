@@ -130,6 +130,11 @@ class StringQuest extends PausableState
 		}
 		else
 			Global.changeDiscordRPCPresence('Fighting the Winged Enemies', 'String Quest');
+
+		add(behindPauseButtonLayer);
+		#if MOBILE_BUILD
+		add(pauseButton);
+		#end
 	}
 
 	var portMaxX:Float = 0;

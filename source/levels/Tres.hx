@@ -133,6 +133,11 @@ class Tres extends PausableState
 		FlxG.sound.music.stop();
 		Global.playMusic('StageTracks/Tres');
 		FlxG.sound.music.fadeIn(1);
+		
+		add(behindPauseButtonLayer);
+		#if MOBILE_BUILD
+		add(pauseButton);
+		#end
 	}
 
 	final playerSpeed:Float = 10;

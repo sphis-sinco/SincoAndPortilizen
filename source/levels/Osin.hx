@@ -120,6 +120,11 @@ class Osin extends PausableState
 		{
 			enemyAttack();
 		});
+
+		add(behindPauseButtonLayer);
+		#if MOBILE_BUILD
+		add(pauseButton);
+		#end
 	}
 
 	override function update(elapsed:Float)
