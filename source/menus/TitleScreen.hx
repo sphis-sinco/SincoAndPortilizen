@@ -32,8 +32,9 @@ class TitleScreen extends State
 		cursor.animation.add('select', [1], 24);
 		cursor.animation.play('idle');
 
-		creditsButton = new Spr(-3);
+		creditsButton = new Spr(#if !MOBILE_BUILD -3 #else 0 #end);
 		creditsButton.loadGraphic(Assets.getImagePath('levelSelect/credits'));
+		creditsButton.scaleSpr();
 		creditsButton.setPosition(FlxG.width - creditsButton.width - 32, FlxG.height - creditsButton.height - 32);
 		add(creditsButton);
 

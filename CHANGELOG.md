@@ -2,6 +2,7 @@
 ## 4b (Beta Milestone 5) - 8/20/2025
 Mobile update
 ### Changed
+- The credits button is bigger on mobile
 - `Global.dummyBG` will now generate a background that fits the window resolution
 ### Added
 - `MOBILE_TESTING` define
