@@ -213,14 +213,19 @@ class SettingsMenu extends State
 							WebSave.volume = FlxG.sound.volume;
 							#end
 						case 3:
-							FlxG.sound.music.fadeOut(1, 0, tween ->
+							if (coloredLevelSelect.alpha == 1)
 							{
-								Global.switchState(new ClearSaveScreen());
-							});
+								FlxG.sound.music.fadeOut(1, 0, tween ->
+								{
+									Global.switchState(new ClearSaveScreen());
+								});
 
-							FlxTween.tween(coloredLevelSelect, {alpha: 0}, 1);
-							FlxTween.tween(discordRPC, {alpha: 0}, 1);
-							FlxTween.tween(volume, {alpha: 0}, 1);
+								FlxTween.tween(coloredLevelSelect, {alpha: 0}, 1);
+								FlxTween.tween(discordRPC, {alpha: 0}, 1);
+								FlxTween.tween(volume, {alpha: 0}, 1);
+							}
+							else
+								ps = false;
 					}
 
 					if (ps)
