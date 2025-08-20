@@ -34,7 +34,7 @@ jobs:
                           run: echo "${{github.run_id}}" > VERSION
 
                         - name: Compile
-                          run: haxelib run lime build html5 -debug -D MOBILE_TESTING
+                          run: haxelib run lime build html5 -debug
 
                         - name: Clear Previous Cache
                           uses: actions/github-script@main
