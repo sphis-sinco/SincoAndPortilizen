@@ -132,7 +132,7 @@ class Tres extends PausableState
 		else
 			Global.changeDiscordRPCPresence('Fighting the mad-man', 'Tres');
 
-		Global.fadeToMusic('StageTracks/Tres', 1.0, 1, 1);
+		Global.fadeToMusic('StageTracks/Tres', .25, 1, 1);
 
 		add(behindPauseButtonLayer);
 		#if MOBILE_BUILD
