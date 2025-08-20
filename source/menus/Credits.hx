@@ -96,7 +96,7 @@ class Credits extends State
 			{
 				button.scale.set(button.scale.x - .1, button.scale.y - .1);
 
-				if (FlxG.mouse.pressed)
+				if (FlxG.mouse.pressed && button.visible)
 					scroll((button == directional_up) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
 			}
 
