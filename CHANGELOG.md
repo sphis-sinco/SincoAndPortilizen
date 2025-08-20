@@ -1,5 +1,10 @@
 # Beta
 ## 3.1b - 8/19/2025
+### Changed
+- Leaving the settings menu will send you to the title screen
+- Leaving the credits menu will send you to the title screen
+- The credits button has been moved to the title screen
+- The console in the Level Select will no longer send you to the settings menu
 ### Added
 - Title Screen
 

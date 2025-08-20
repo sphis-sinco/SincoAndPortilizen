@@ -43,7 +43,7 @@ class Credits extends State
 
 		if (Global.keyJustReleased(ESCAPE))
 		{
-                        Global.switchState(new LevelSelect());
+                        Global.switchState(new TitleScreen());
 		}
 
 		if (Global.anyKeysPressed([UP, DOWN]))

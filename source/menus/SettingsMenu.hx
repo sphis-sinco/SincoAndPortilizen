@@ -144,7 +144,9 @@ class SettingsMenu extends State
 		volume.animation.play(Std.string(FlxMath.roundDecimal(FlxG.sound.volume * 100, 0)));
 
 		if (Global.keyJustReleased(ESCAPE))
-			Global.switchState(new LevelSelect());
+		{
+			Global.switchState(new TitleScreen());
+		}
 
 		descriptionText.text = '';
 		for (setting in pageCont)

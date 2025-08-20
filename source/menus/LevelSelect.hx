@@ -23,8 +23,6 @@ class LevelSelect extends State
 
 	public var cursor:Spr;
 
-	public var creditsButton:Spr;
-
 	public var levelIcons:FlxTypedGroup<Spr>;
 	public var levelCrowns:FlxTypedGroup<Spr>;
 	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres'];
@@ -178,15 +176,6 @@ class LevelSelect extends State
 
 		startLevelTimer = new FlxTimer();
 
-		creditsButton = new Spr(-3);
-		creditsButton.loadGraphic(Assets.getImagePath('levelSelect/credits'));
-		creditsButton.setPosition(FlxG.width - creditsButton.width - 32, FlxG.height - creditsButton.height - 32);
-		creditsButton.ID = levelNames.length;
-		levelNames.push('credits');
-		levelIcons.add(creditsButton);
-
-		add(new FlxText(3, FlxG.height - 32, FlxG.width, 'v${Global.VERSION} (b${Global.BUILD})', 16));
-
 		Global.changeDiscordRPCPresence('In the Level Select', 'Level Select');
 
 		if (Global.previousState == 'Tres')
@@ -204,6 +193,11 @@ class LevelSelect extends State
 	{
 		super.update(elapsed);
 		Global.playMenuMusic();
+		
+		if (Global.keyJustReleased(ESCAPE))
+		{
+			Global.switchState(new TitleScreen());
+		}
 
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
@@ -268,12 +262,6 @@ class LevelSelect extends State
 
 		if (!startLevelTimer.active && selectedLevel > -1 && FlxG.mouse.justReleased)
 		{
-			if (levelNames[selectedLevel] == 'credits')
-			{
-				Global.switchState(new Credits());
-				return;
-			}
-
 			var data:LevelData;
 
 			try
@@ -347,17 +335,15 @@ class LevelSelect extends State
 				if (cursor.x > (portPetX) && cursor.y < pos)
 					return;
 			}
+			if (cursor.y > FlxG.height - (console.height / 2) + 32)
+			{
+				return;
+			}
 
 			cursor.animation.play('select');
 
 			if (FlxG.mouse.justReleased)
 			{
-				if (cursor.y > FlxG.height - (console.height / 2) + 32)
-				{
-					Global.switchState(new SettingsMenu());
-					return;
-				}
-
 				if (cursor.x < (portPetX))
 				{
 					Global.playSoundEffect('sinco-pet', 10);
