@@ -90,7 +90,7 @@ class SettingsMenu extends State
 
 		cursor = new Spr(-3);
 
-		if (FlxG.random.bool())
+		if (FlxG.random.bool() && Global.previousState == 'TitleScreen' || cursorSkin == 2)
 		{
 			cursorSkin = 2;
 			cursor.loadGraphic(Assets.getImagePath('settings/cursors/sinco'), true, 64, 64);

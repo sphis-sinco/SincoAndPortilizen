@@ -1,5 +1,7 @@
 # Beta
 ## 3.1b - 8/19/2025
+### Fixed
+- When leaving the clear save screen the cursor will no longer change (if the proper condition was met)
 ### Changed
 - Leaving the settings menu will send you to the title screen
 - Leaving the credits menu will send you to the title screen
