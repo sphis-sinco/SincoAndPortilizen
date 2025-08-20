@@ -295,7 +295,7 @@ class Tres extends PausableState
 		if (Global.anyKeysPressed([DOWN, S]))
 			playerPos.y += playerSpeed;
 
-		// #if !MOBILE_BUILD
+		#if !MOBILE_BUILD
 
 		/** for (swipe in FlxG.swipes)
 			{
@@ -320,7 +320,7 @@ class Tres extends PausableState
 			playerPos.x = portSCPos.x - FlxG.mouse.x;
 			playerPos.y = portSCPos.y - FlxG.mouse.y;
 		}
-		// #end
+		#end
 
 		var bindLeft = -(FlxG.width / 2);
 		var bindUp = -(FlxG.height / 2);
