@@ -9,6 +9,15 @@ class Main extends openfl.display.Sprite
 {
 	public function new():Void
 	{
+		// Set the current working directory for Android and iOS devices
+		#if android
+		// On Android use External Files Dir.
+		Sys.setCwd(haxe.io.Path.addTrailingSlash(extension.androidtools.content.Context.getExternalFilesDir()));
+		#elseif ios
+		// On iOS use Documents Dir.
+		Sys.setCwd(haxe.io.Path.addTrailingSlash(lime.system.System.documentsDirectory));
+		#end
+
 		#if CRASH_HANDLER
 		trace('Crash handler temp-disabled');
 		// Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
@@ -31,7 +40,8 @@ class Main extends openfl.display.Sprite
 
 		trace(Global.GENERATED_BY);
 
-		Application.current.onExit.add(i -> {
+		Application.current.onExit.add(i ->
+		{
 			FlxG.save.flush();
 		}, true);
 

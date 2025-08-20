@@ -4,7 +4,6 @@ Mobile update
 
 ### New Contributors
 * @wonderinglostsoul44 made their first contribution in https://github.com/sphis-sinco/SincoAndPortilizen/pull/45
-
 ### Fixed
 - The clear save screen confirmation text has the correct intended alignment
 - When leaving the Clear Save Screen you can now see the message

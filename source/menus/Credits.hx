@@ -51,6 +51,14 @@ class Credits extends State
 		{
 			scroll((Global.keyPressed(UP)) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
 		}
+
+		for (swipe in FlxG.swipes)
+		{
+			if (swipe.degrees > 0 && swipe.degrees < 181)
+				scroll(SCROLL_AMOUNT + swipe.distance);
+			if (swipe.degrees > 180 && swipe.degrees < 361)
+				scroll(-SCROLL_AMOUNT + swipe.distance);
+		}
 	}
 
 	public static var SCROLL_AMOUNT:Float = 10.0;
