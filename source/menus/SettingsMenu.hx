@@ -117,10 +117,12 @@ class SettingsMenu extends State
 			coloredLevelSelect.alpha = 0;
 			discordRPC.alpha = 0;
 			volume.alpha = 0;
+			descriptionText.alpha = 0;
 
 			FlxTween.tween(coloredLevelSelect, {alpha: 1}, 1);
 			FlxTween.tween(discordRPC, {alpha: 1}, 1);
 			FlxTween.tween(volume, {alpha: 1}, 1);
+			FlxTween.tween(descriptionText, {alpha: 1}, 1);
 		}
 	}
 
@@ -223,6 +225,7 @@ class SettingsMenu extends State
 								FlxTween.tween(coloredLevelSelect, {alpha: 0}, 1);
 								FlxTween.tween(discordRPC, {alpha: 0}, 1);
 								FlxTween.tween(volume, {alpha: 0}, 1);
+								FlxTween.tween(descriptionText, {alpha: 0}, 1);
 							}
 							else
 								ps = false;

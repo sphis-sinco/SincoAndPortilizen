@@ -1,6 +1,7 @@
 # Beta
 ## 3.1b - 8/19/2025
 ### Fixed
+- When entering the clear save screen the description text will fade out too
 - When entering the clear save screen you can no longer press the clear save button
 - When leaving the clear save screen the cursor will no longer change (if the proper condition was met)
 ### Changed
