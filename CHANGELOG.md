@@ -1,5 +1,5 @@
 # Beta
-## 3.1.2b - 8/20/2025
+## 3.1.2b (desktop-only) - 8/20/2025
 ### Fixed
 - Null Access crash on desktop builds related to the `SAVESLOT_SUFFIX` define
 
