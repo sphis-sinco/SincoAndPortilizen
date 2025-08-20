@@ -267,6 +267,17 @@ class LevelSelect extends State
 			}
 		});
 
+		sinco.overlap.add(() ->
+		{
+			if (cursor.x > (portPetX))
+				sinco.scaleSpr();
+		});
+		port.overlap.add(() ->
+		{
+			if (cursor.x < (portPetX))
+				port.scaleSpr();
+		});
+
 		if (FlxG.save.data.colored_levelSelect)
 		{
 			sinco.color = 0x4eb10c;
