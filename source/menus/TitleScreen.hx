@@ -7,6 +7,7 @@ import flixel.text.FlxText;
 class TitleScreen extends State
 {
 	public var logo:Spr;
+	public var logoSuffixes:Array<String> = ['', '-dj', '-paul'];
 
 	public var levelSelect:Spr;
 	public var settings:Spr;
@@ -19,7 +20,7 @@ class TitleScreen extends State
 		super.create();
 
 		logo = new Spr(-3);
-		logo.loadGraphic(Assets.getImagePath('title/logo'));
+		logo.loadGraphic(Assets.getImagePath('title/logo${logoSuffixes[FlxG.random.int(0, logoSuffixes.length - 1)]}'));
 		logo.scaleSpr();
 		logo.screenCenter();
 		logo.y -= logo.height / 4;

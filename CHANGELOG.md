@@ -10,6 +10,7 @@
 - The credits button has been moved to the title screen
 - The console in the Level Select will no longer send you to the settings menu
 ### Added
+- `SAVESLOT_SUFFIX=` build define
 - Title Screen
 
 ## 3b (Beta Milestone 4) - 8/19/2025
