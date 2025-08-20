@@ -9,6 +9,7 @@ Mobile update
 - The clear save screen confirmation text has the correct intended alignment
 - When leaving the Clear Save Screen you can now see the message
 ### Changed
+- The default app icon is the 512x app icon
 - The instructions for swapping are removed on mobile for Tres
 - On mobile in Tres the player moves differently
 - You can tap the screen to jump in Osin

@@ -54,6 +54,9 @@ class Tres extends PausableState
 		tdm2.animation.add('attack-post', [4, 4, 5, 6, 6, 7, 0], 15, false);
 		tdm2.scaleSpr();
 		tdm2.screenCenter();
+		#if MOBILE_BUILD
+		tdm2.x = FlxG.width - tdm2.width;
+		#end
 		tdm2.animation.play('idle');
 		enemyPos = new FlxPoint(tdm2.x, tdm2.y);
 		add(tdm2);
@@ -233,9 +236,15 @@ class Tres extends PausableState
 						var attack = new Spr(-2);
 						attack.loadGraphic(Assets.getImagePath('tres/TDM2Attack'));
 						attack.scaleSpr();
-						attack.screenCenter();
-						attack.x += attack.width * #if MOBILE_BUILD 2.75 #else 3.5 #end;
-						attack.y += attack.height * #if MOBILE_BUILD 2 #else 1.5 #end;
+						attack.setPosition(tdm2.x, tdm2.y);
+						
+						#if MOBILE_BUILD
+						attack.x += attack.width * 6;
+						attack.y += attack.height * 10;
+						#else
+						attack.x += attack.width * 3;
+						attack.y += attack.height * 6;
+						#end
 
 						attack.acceleration.x = FlxG.random.int(-200, -80) * 2;
 						attack.acceleration.y = FlxG.random.int(-300, 300) * 2;
