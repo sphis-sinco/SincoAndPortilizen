@@ -1,6 +1,7 @@
 # Beta
 ## 4b (Beta Milestone 5) - 8/20/2025
-Mobile update
+Mobile update:
+This update adds *support* for mobile devices (idk about iOS but android works defenitely). But the mobile compiled build isn't on the itch.io page
 
 ### New Contributors
 * @wonderinglostsoul44 made their first contribution in https://github.com/sphis-sinco/SincoAndPortilizen/pull/45
