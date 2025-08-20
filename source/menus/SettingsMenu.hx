@@ -130,6 +130,10 @@ class SettingsMenu extends State
 			FlxTween.tween(volume, {alpha: 1}, 1);
 			FlxTween.tween(descriptionText, {alpha: 1}, 1);
 		}
+		
+		#if MOBILE_BUILD
+		add(new backend.mobile.BackButton(new TitleScreen(), new FlxPoint(0,-64)));
+		#end
 	}
 
 	public var pageCont:Array<Spr> = [];

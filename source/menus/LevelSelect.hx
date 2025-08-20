@@ -187,6 +187,10 @@ class LevelSelect extends State
 				FlxG.sound.music.fadeIn(.25);
 			});
 		}
+		
+		#if MOBILE_BUILD
+		add(new backend.mobile.BackButton(new TitleScreen()));
+		#end
 	}
 
 	override function update(elapsed:Float)

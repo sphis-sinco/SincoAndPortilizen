@@ -1,15 +1,20 @@
 package backend.mobile;
 
+import flixel.math.FlxPoint;
+
 class BackButton extends Spr
 {
 	public var returnState:FlxState;
 
-	override public function new(myreturnstate:FlxState)
+        public var positionOffset:FlxPoint;
+
+	override public function new(myreturnstate:FlxState, mypositionOffset:FlxPoint = null)
 	{
 		super();
 		loadGraphic(Assets.getImagePath('mobile/back'));
 
 		returnState = myreturnstate;
+                positionOffset = mypositionOffset ?? new FlxPoint();
 	}
 
 	override function update(elapsed:Float)
@@ -17,7 +22,7 @@ class BackButton extends Spr
 		super.update(elapsed);
 
 		scaleSpr();
-		setPosition(FlxG.width - this.width + 32, FlxG.height - this.height + 32);
+		setPosition(FlxG.width - this.width + 32 + (positionOffset.x ?? 0), FlxG.height - this.height + 32 + (positionOffset.y ?? 0));
 		if (FlxG.mouse.overlaps(this))
 			scale.set(scale.x - .1, scale.y - .1)
 		else
