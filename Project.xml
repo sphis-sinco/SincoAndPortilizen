@@ -55,7 +55,7 @@
 
         <!-- _________________________________ After _______________________________ -->
 
-        <error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile" />
+        <!-- <error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile" /> -->
 
         <!-- ______________________________ Haxedefines _____________________________ -->
 
