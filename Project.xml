@@ -51,6 +51,8 @@
         <haxelib name="flixel-modding" />
         <haxelib name="sphis" />
 
+        <haxelib name="extension-androidtools" if="android"/>
+
         <haxelib name="discord_rpc" if="DISCORDRPC" />
 
         <!-- _________________________________ After _______________________________ -->
