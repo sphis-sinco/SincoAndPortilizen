@@ -9,6 +9,16 @@
         <app preloader="flixel.system.FlxPreloader" />
         <set name="SWF_VERSION" value="11.8" />
 
+        <!-- _____________________________ Custom Defines ___________________________ -->
+
+        <define name="DISCORDRPC" if="windows" unless="hl" />
+
+	<!-- Turn on Crash Handler -->
+	<define name="CRASH_HANDLER"/>
+
+	<define name="MOBILE_BUILD" if="mobile"/>
+	<define name="MOBILE_BUILD" if="MOBILE_TESTING"/>
+
         <!-- ____________________________ Window Settings ___________________________ -->
 
         <!--These
@@ -17,7 +27,7 @@
 
         <window if="html5" resizable="true" />
         <window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
-        <window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
+        <window if="MOBILE_BUILD" orientation="landscape" fullscreen="true" width="0" height="0" />
 
         <!-- _____________________________ Path Settings ____________________________ -->
 
@@ -30,13 +40,6 @@
         <assets path="CHANGELOG.md"/>
         <assets path="version.txt"/>
         <assets path="build" rename="assets/build.txt"/>
-
-        <!-- _____________________________ Custom Defines ___________________________ -->
-
-        <define name="DISCORDRPC" if="windows" unless="hl" />
-
-	<!-- Turn on Crash Handler -->
-	<define name="CRASH_HANDLER"/>
 
         <!-- _______________________________ Libraries ______________________________ -->
 

@@ -1,6 +1,9 @@
 # Beta
 ## 4b (Beta Milestone 5) - 8/20/2025
 Mobile update
+### Added
+- `MOBILE_TESTING` define
+- `MOBILE_BUILD` define
 
 ## 3.1.2b (desktop-only) - 8/20/2025
 ### Fixed
