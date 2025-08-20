@@ -5,6 +5,7 @@ Mobile update
 - The clear save screen confirmation text has the correct intended alignment
 - When leaving the Clear Save Screen you can now see the message
 ### Changed
+- You can swipe to scroll on the credits
 - When leaving the Clear Save Screen the confirmation text fades out
 - When leaving the Clear Save Screen all buttons fade out
 - Several UI elements are made bigger on mobile

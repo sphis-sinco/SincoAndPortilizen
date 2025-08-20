@@ -13,11 +13,11 @@
 
         <define name="DISCORDRPC" if="windows" unless="hl" />
 
-	<!-- Turn on Crash Handler -->
-	<define name="CRASH_HANDLER"/>
+        <!-- Turn on Crash Handler -->
+        <define name="CRASH_HANDLER" />
 
-	<define name="MOBILE_BUILD" if="mobile"/>
-	<define name="MOBILE_BUILD" if="MOBILE_TESTING"/>
+        <define name="MOBILE_BUILD" if="mobile" />
+        <define name="MOBILE_BUILD" if="MOBILE_TESTING" />
 
         <!-- ____________________________ Window Settings ___________________________ -->
 
@@ -39,9 +39,9 @@
         <source path="source" />
 
         <assets path="assets" exclude="assets/exclude" />
-        <assets path="CHANGELOG.md"/>
-        <assets path="version.txt"/>
-        <assets path="build" rename="assets/build.txt"/>
+        <assets path="CHANGELOG.md" />
+        <assets path="version.txt" />
+        <assets path="build" rename="assets/build.txt" />
 
         <!-- _______________________________ Libraries ______________________________ -->
 
@@ -61,9 +61,7 @@
 
         <haxedef name="FLX_NO_HEALTH" />
 
-        <haxedef name="FLX_NO_MOUSE" if="mobile" />
-        <haxedef name="FLX_NO_KEYBOARD" if="mobile" />
-        <haxedef name="FLX_NO_TOUCH" if="desktop" />
+        <!-- <haxedef name="FLX_NO_MOUSE" if="mobile" /> <haxedef name="FLX_NO_KEYBOARD" if="mobile" /> <haxedef name="FLX_NO_TOUCH" if="desktop" /> -->
 
         <haxedef name="FLX_NO_DEBUG" unless="debug" />
 

@@ -1,5 +1,6 @@
 package menus;
 
+import flixel.input.FlxSwipe;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -22,7 +23,7 @@ class Credits extends State
 		var i:Int = 0;
 		for (credit in credits)
 		{
-			var text:FlxText = new FlxText(0, cur_y, FlxG.width, credit, 24);
+			var text:FlxText = new FlxText(0, cur_y, FlxG.width, credit, #if MOBILE_BUILD 32 #else 24 #end);
 			text.alignment = CENTER;
 			text.screenCenter(X);
 			text.color = FlxColor.fromRGB(226,226,226);
