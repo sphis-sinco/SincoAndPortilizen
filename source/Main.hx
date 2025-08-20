@@ -13,9 +13,9 @@ class Main extends openfl.display.Sprite
 		#if android
 		// On Android use External Files Dir.
 		Sys.setCwd(haxe.io.Path.addTrailingSlash(extension.androidtools.content.Context.getExternalFilesDir()));
-		#elseif ios
+		/*#elseif ios
 		// On iOS use Documents Dir.
-		Sys.setCwd(haxe.io.Path.addTrailingSlash(lime.system.System.documentsDirectory));
+		Sys.setCwd(haxe.io.Path.addTrailingSlash(lime.system.System.documentsDirectory));*/
 		#end
 
 		#if CRASH_HANDLER
