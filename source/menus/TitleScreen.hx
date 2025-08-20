@@ -4,7 +4,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxCollision;
 import flixel.text.FlxText;
 
-class ClearSaveScreen extends State
+class TitleScreen extends State
 {
 	public var logo:Spr;
 
@@ -21,7 +21,7 @@ class ClearSaveScreen extends State
 		add(logo);
 
 		cursor = new Spr(-3);
-		cursor.loadGraphic(Assets.getImagePath('levelSelect/cursors'), true, 64, 64);
+		cursor.loadGraphic(Assets.getImagePath('levelSelect/cursor'), true, 64, 64);
 		cursor.animation.add('idle', [0], 24);
 		cursor.animation.add('select', [1], 24);
 		cursor.animation.play('idle');
@@ -39,7 +39,7 @@ class ClearSaveScreen extends State
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
 
-		for (button in [])
+		for (button in [logo])
 		{
 			button.scaleSpr();
 
@@ -57,8 +57,5 @@ class ClearSaveScreen extends State
 				}
 			}
 		}
-
-		confirmationText.screenCenter();
-		confirmationText.y -= (confirmationText.height * 4);
 	}
 }

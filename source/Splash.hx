@@ -37,7 +37,7 @@ class Splash extends State
 		});
 		FlxTimer.wait(2, () ->
 		{
-			InitState.switchToState(new menus.LevelSelect(), 'Level Select');
+			InitState.switchToState(new menus.TitleScreen(), 'Title Screen');
 		});
 	}
 
