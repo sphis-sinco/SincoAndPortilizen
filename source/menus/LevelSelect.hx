@@ -249,6 +249,8 @@ class LevelSelect extends State
 
 		sinco.justReleased.add(() ->
 		{
+			if (cursor.y > FlxG.height - (console.height / 2) + 32)
+				return;
 			if (cursor.x < (portPetX))
 			{
 				Global.playSoundEffect('sinco-pet', 10);
@@ -259,6 +261,8 @@ class LevelSelect extends State
 
 		port.justReleased.add(() ->
 		{
+			if (cursor.y > FlxG.height - (console.height / 2) + 32)
+				return;
 			if (cursor.x > (portPetX))
 			{
 				Global.playSoundEffect('port-pet', 10);
