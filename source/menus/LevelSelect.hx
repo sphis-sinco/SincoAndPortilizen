@@ -56,7 +56,7 @@ class LevelSelect extends State
 		for (i in 0...levelNames.length)
 		{
 			var levelIcon:InteractableSpr = new InteractableSpr('levelSelect/level_icons/blank');
-			var crown:Spr = new Spr(#if MOBILE_BUILD - 2 #else - 3 #end);
+			var crown:Spr = new Spr(#if MOBILE_BUILD (-2) #else (-3) #end);
 			levelIcon.scaleOffset = crown.scaleOffset;
 			crown.loadGraphic(Assets.getImagePath('levelSelect/crown'));
 
@@ -201,16 +201,16 @@ class LevelSelect extends State
 			levelIcon.desiredPosition = levelIcon.getPosition();
 		}
 
-		console = new Spr(#if MOBILE_BUILD 0 #else - 2 #end);
+		console = new Spr(#if MOBILE_BUILD 0 #else (-2) #end);
 		console.loadGraphic(Assets.getImagePath('levelSelect/console'));
 		console.scaleSpr();
 		console.screenCenter(X);
 		console.y = FlxG.height - console.height;
 
 		sinco = new InteractableSpr('levelSelect/chars/sinco');
-		sinco.scaleOffset = #if MOBILE_BUILD 0 #else - 2 #end;
+		sinco.scaleOffset = #if MOBILE_BUILD 0 #else (-2) #end;
 		port = new InteractableSpr('levelSelect/chars/port');
-		port.scaleOffset = #if MOBILE_BUILD 0 #else - 2 #end;
+		port.scaleOffset = #if MOBILE_BUILD 0 #else (-2) #end;
 
 		sinco.loadGraphic(Assets.getImagePath('levelSelect/chars/sinco'), true, 128, 128);
 		sinco.scaleSpr();

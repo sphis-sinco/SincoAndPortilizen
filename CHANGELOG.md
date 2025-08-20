@@ -1,4 +1,8 @@
 # Beta
+## 4.0.1 - 8/20/2025
+### Fixed
+- Button sizes on non-mobile builds
+
 ## 4b (Beta Milestone 5) - 8/20/2025
 Mobile update:
 This update adds *support* for mobile devices (idk about iOS but android works defenitely). But the mobile compiled build isn't on the itch.io page

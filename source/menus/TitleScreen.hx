@@ -19,7 +19,7 @@ class TitleScreen extends State
 	{
 		super.create();
 
-		logo = new Spr(#if !MOBILE_BUILD - 3 #else - 2 #end);
+		logo = new Spr(#if !MOBILE_BUILD (-3) #else (-2) #end);
 		logo.loadGraphic(Assets.getImagePath('title/logo${logoSuffixes[FlxG.random.int(0, logoSuffixes.length - 1)]}'));
 		logo.scaleSpr();
 		logo.screenCenter();
@@ -33,13 +33,13 @@ class TitleScreen extends State
 		cursor.animation.play('idle');
 
 		creditsButton = new InteractableSpr('levelSelect/credits');
-		creditsButton.scaleOffset = #if !MOBILE_BUILD - 3 #else 0 #end;
+		creditsButton.scaleOffset = #if !MOBILE_BUILD (-3) #else 0 #end;
 		creditsButton.scaleSpr();
 		creditsButton.setPosition(FlxG.width - creditsButton.width - 32, FlxG.height - creditsButton.height - 32);
 		add(creditsButton);
 
 		levelSelect = new InteractableSpr('title/levelSelect');
-		levelSelect.scaleOffset = #if !MOBILE_BUILD - 2 #else 0 #end;
+		levelSelect.scaleOffset = #if !MOBILE_BUILD (-2) #else 0 #end;
 		levelSelect.scaleSpr();
 		levelSelect.screenCenter();
 		levelSelect.x -= (levelSelect.width / 2);
@@ -47,7 +47,7 @@ class TitleScreen extends State
 		add(levelSelect);
 
 		settings = new InteractableSpr('title/settings');
-		settings.scaleOffset = #if !MOBILE_BUILD - 2 #else 0 #end;
+		settings.scaleOffset = #if !MOBILE_BUILD (-2) #else 0 #end;
 		settings.scaleSpr();
 		settings.screenCenter();
 		settings.x += (settings.width / 2);

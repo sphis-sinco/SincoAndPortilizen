@@ -29,7 +29,7 @@ class ClearSaveScreen extends State
 		yes.loadGraphic(Assets.getImagePath('clearSave/buttons'), true, 64, 64);
 		yes.animation.add('yes', [0]);
 		yes.animation.play('yes');
-		yes.scaleOffset = #if !MOBILE_BUILD - 2 #else 0 #end;
+		yes.scaleOffset = #if !MOBILE_BUILD (-2) #else 0 #end;
 		yes.scaleSpr();
 		yes.screenCenter(XY);
 		yes.x -= yes.width;
@@ -65,7 +65,7 @@ class ClearSaveScreen extends State
 		no.loadGraphic(Assets.getImagePath('clearSave/buttons'), true, 64, 64);
 		no.animation.add('no', [1]);
 		no.animation.play('no');
-		no.scaleOffset = #if !MOBILE_BUILD - 2 #else 0 #end;
+		no.scaleOffset = #if !MOBILE_BUILD (-2) #else 0 #end;
 		no.scaleSpr();
 		no.screenCenter(XY);
 		no.x += no.width;
