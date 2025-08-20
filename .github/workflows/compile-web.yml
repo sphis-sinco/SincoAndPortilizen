@@ -24,8 +24,8 @@ jobs:
                           with:
                                   path: |
                                           .haxelib/
-                                          export/debug/html5/haxe/
-                                          export/debug/html5/obj/
+                                          export/release/html5/haxe/
+                                          export/release/html5/obj/
                                   key: cache-build-html5
 
                         - name: Installing Libraries
@@ -34,7 +34,7 @@ jobs:
                           run: echo "${{github.run_id}}" > VERSION
 
                         - name: Compile
-                          run: haxelib run lime build html5 -debug
+                          run: haxelib run lime build html5
 
                         - name: Clear Previous Cache
                           uses: actions/github-script@main
@@ -47,8 +47,8 @@ jobs:
                                   key: cache-build-html5
                                   path: |
                                           .haxelib/
-                                          export/debug/html5/haxe/
-                                          export/debug/html5/obj/
+                                          export/release/html5/haxe/
+                                          export/release/html5/obj/
                                   restore-keys: |
                                           cache-build-html5
 
@@ -56,4 +56,4 @@ jobs:
                           uses: actions/upload-artifact@main
                           with:
                                   name: webBuild
-                                  path: export/debug/html5/bin
+                                  path: export/release/html5/bin
