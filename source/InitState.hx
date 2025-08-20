@@ -10,10 +10,14 @@ class InitState extends FlxState
 	{
 		super.create();
 
+		#if !html5
 		if (Compiler.getDefine('SAVESLOT_SUFFIX').split('=').length <= 1)
 			Global.change_saveslot((#if debug true #else false #end) ? 'debug' : 'release');
 		else
 			Global.change_saveslot(Compiler.getDefine('SAVESLOT_SUFFIX').split('=')[0]);
+		#else
+		Global.change_saveslot((#if debug true #else false #end) ? 'debug' : 'release');
+		#end
 
 		#if DISCORDRPC
 		if (FlxG.save.data.discord_rpc)

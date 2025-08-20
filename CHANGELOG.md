@@ -1,4 +1,8 @@
 # Beta
+## 3.1.1b (web-only) - 8/20/2025
+### Fixed
+- Crash related to the `SAVESLOT_SUFFIX` define
+
 ## 3.1b - 8/19/2025
 ### Fixed
 - When entering the clear save screen the description text will fade out too
