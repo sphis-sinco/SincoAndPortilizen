@@ -1,10 +1,15 @@
 # Beta
 ## 4b (Beta Milestone 5) - 8/20/2025
 Mobile update
+
+### New Contributors
+* @wonderinglostsoul44 made their first contribution in https://github.com/sphis-sinco/SincoAndPortilizen/pull/45
+
 ### Fixed
 - The clear save screen confirmation text has the correct intended alignment
 - When leaving the Clear Save Screen you can now see the message
 ### Changed
+- Improved Global.hx by @wonderinglostsoul44 in https://github.com/sphis-sinco/SincoAndPortilizen/pull/45
 - You can swipe to scroll on the credits
 - When leaving the Clear Save Screen the confirmation text fades out
 - When leaving the Clear Save Screen all buttons fade out

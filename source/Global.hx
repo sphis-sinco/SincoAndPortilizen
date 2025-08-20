@@ -7,6 +7,7 @@ import flixel.input.keyboard.FlxKey;
 import flixel.util.FlxColor;
 import flixel.sound.FlxSound;
 import lime.utils.Assets as LimeAssets;
+
 using StringTools;
 
 /**
@@ -21,14 +22,15 @@ using StringTools;
  * - improved sprite scaling helpers (center/origin/pixel-perfect)
  * - safer current state detection
  */
-class Global {
+// Thank you wonderinglostsoul44
+class Global
+{
 	/** Name of the last state class before a switch. */
 	public static var previousState:String;
 
 	/* ───────────────────────────── App / Build Info ───────────────────────────── */
-
 	public static var GENERATED_BY(get, set):String;
-	static inline var _GENERATOR_PREFIX = "Sinco and Portilizen";
+	static inline var _GENERATOR_PREFIX = 'Sinco and Portilizen';
 	static var __versionCache:Null<String> = null;
 	static var __buildCache:Null<Int> = null;
 
@@ -40,86 +42,110 @@ class Global {
 
 	/** Human version string (read once & cached). */
 	public static var VERSION(get, never):String;
-	public static dynamic function get_VERSION():String {
-		if (__versionCache != null) return __versionCache;
-		var v = "0.0.0";
-		try {
+
+	public static dynamic function get_VERSION():String
+	{
+		if (__versionCache != null)
+			return __versionCache;
+		var v = '0.0.0';
+		try
+		{
 			// Prefer lime asset pipeline (works on native/HTML5)
-			if (LimeAssets.exists("version.txt")) {
-				v = LimeAssets.getText("version.txt").trim();
+			if (LimeAssets.exists('version.txt'))
+			{
+				v = LimeAssets.getText('version.txt').trim();
 			}
-		} catch (e:Dynamic) {}
+		}
+		catch (e:Dynamic) {}
 		__versionCache = v;
 		return v;
 	}
 
 	/** Numeric build (read once & cached). */
 	public static var BUILD(get, never):Int;
-	public static dynamic function get_BUILD():Int {
-		if (__buildCache != null) return __buildCache;
+
+	public static dynamic function get_BUILD():Int
+	{
+		if (__buildCache != null)
+			return __buildCache;
 		var b = 0;
-		try {
+		try
+		{
 			// Project-specific Assets helper may be present; fallback to lime
 			var raw:String = null;
 			#if (cpp || hl || neko || js)
-			try raw = Assets.getFileTextContent("build.txt", false) catch (_:Dynamic) {}
+			try
+				raw = Assets.getFileTextContent('build.txt', false)
+			catch (_:Dynamic) {}
 			#end
-			if (raw == null && LimeAssets.exists("build.txt")) raw = LimeAssets.getText("build.txt");
-			if (raw != null) {
+			if (raw == null && LimeAssets.exists('build.txt'))
+				raw = LimeAssets.getText('build.txt');
+			if (raw != null)
+			{
 				var parsed = Std.parseInt(raw.trim());
-				if (parsed != null) b = parsed;
+				if (parsed != null)
+					b = parsed;
 			}
-		} catch (e:Dynamic) {}
+		}
+		catch (e:Dynamic) {}
 		__buildCache = b;
 		return b;
 	}
 
 	/* ───────────────────────────── Visual Defaults ───────────────────────────── */
-
 	public static var DEFAULT_IMAGE_SCALE_MULTIPLIER:Float = 4.0;
 
 	/* ───────────────────────────── Save Slot System ──────────────────────────── */
-
 	public static var SAVE_SLOT:Dynamic = 1;
-	public static var SAVE_SLOT_PREFIX:String = "SAP";
+	public static var SAVE_SLOT_PREFIX:String = 'SAP';
 	public static var SAVE_SLOT_SUFFIX:Dynamic = 1;
 
 	/**
 	 * Bind a new save slot and ensure default keys exist.
 	 * @param slotsuffix e.g. profile index (1..N) or string tag
 	 */
-	public static function change_saveslot(slotsuffix:Dynamic = 1):Void {
+	public static function change_saveslot(slotsuffix:Dynamic = 1):Void
+	{
 		SAVE_SLOT_SUFFIX = slotsuffix;
 		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$SAVE_SLOT_SUFFIX';
-		FlxG.save.bind(SAVE_SLOT, "SAPTeam");
+		FlxG.save.bind(SAVE_SLOT, 'SAPTeam');
 		trace('Switched save slot to "$SAVE_SLOT"');
 
 		// Initialize defaults once
 		var d:Dynamic = FlxG.save.data;
-		if (d.volume == null) d.volume = 1.0;
-		if (d.discord_rpc == null) d.discord_rpc = true;
-		if (d.levels_complete == null) d.levels_complete = [];
-		if (d.medals == null) d.medals = [];
-		if (d.colored_levelSelect == null) d.colored_levelSelect = false;
+		if (d.volume == null)
+			d.volume = 1.0;
+		if (d.discord_rpc == null)
+			d.discord_rpc = true;
+		if (d.levels_complete == null)
+			d.levels_complete = [];
+		if (d.medals == null)
+			d.medals = [];
+		if (d.colored_levelSelect == null)
+			d.colored_levelSelect = false;
 
 		// Persist immediately to avoid data loss if the app closes early
-		try FlxG.save.flush() catch (_:Dynamic) {}
+		try
+			FlxG.save.flush()
+		catch (_:Dynamic) {}
 
 		trace('Save dump: ${FlxG.save.data}');
 	}
 
 	/* ───────────────────────────── Sprite Helpers ────────────────────────────── */
-
 	/**
 	 * Scale a sprite by DEFAULT_IMAGE_SCALE_MULTIPLIER plus optional addition.
 	 * Optionally centers origin and performs pixel-perfect rounding after scaling.
 	 */
-	public static function scaleSprite(sprite:FlxSprite, ?addition:Float = 0, centerOrigin:Bool = true, pixelPerfect:Bool = true):FlxSprite {
+	public static function scaleSprite(sprite:FlxSprite, ?addition:Float = 0, centerOrigin:Bool = true, pixelPerfect:Bool = true):FlxSprite
+	{
 		var s = DEFAULT_IMAGE_SCALE_MULTIPLIER + (addition != null ? addition : 0);
 		sprite.scale.set(s, s);
-		if (centerOrigin) sprite.centerOrigin();
+		if (centerOrigin)
+			sprite.centerOrigin();
 		sprite.updateHitbox();
-		if (pixelPerfect) {
+		if (pixelPerfect)
+		{
 			sprite.x = Math.fround(sprite.x);
 			sprite.y = Math.fround(sprite.y);
 		}
@@ -129,34 +155,41 @@ class Global {
 	/**
 	 * Scale sprite to *fit height* (preserve aspect), then update hitbox.
 	 */
-	public static function scaleSpriteToHeight(sprite:FlxSprite, targetHeight:Float, centerOrigin:Bool = true):FlxSprite {
-		if (sprite.frameHeight <= 0) return sprite;
+	public static function scaleSpriteToHeight(sprite:FlxSprite, targetHeight:Float, centerOrigin:Bool = true):FlxSprite
+	{
+		if (sprite.frameHeight <= 0)
+			return sprite;
 		var s = targetHeight / sprite.frameHeight;
 		sprite.scale.set(s, s);
-		if (centerOrigin) sprite.centerOrigin();
+		if (centerOrigin)
+			sprite.centerOrigin();
 		sprite.updateHitbox();
 		return sprite;
 	}
 
 	/* ───────────────────────────── Music / SFX Helpers ───────────────────────── */
-
 	// Track last requested music path to avoid redundant restarts
 	static var __lastMusicId:String = null;
 
 	public static function playMenuMusic():Void
-		playMusic("MenuTracks/Lado");
+		playMusic('MenuTracks/Lado');
 
 	/**
 	 * Play a music track if nothing is playing; does not force a restart.
 	 */
-	public static function playMusic(filename:String):Void {
+	public static function playMusic(filename:String):Void
+	{
 		var path = Assets.getMusicPath(filename);
-		if (FlxG.sound.music != null) {
-			if (!FlxG.sound.music.playing) {
+		if (FlxG.sound.music != null)
+		{
+			if (!FlxG.sound.music.playing)
+			{
 				__lastMusicId = path;
 				FlxG.sound.playMusic(path);
 			}
-		} else {
+		}
+		else
+		{
 			__lastMusicId = path;
 			FlxG.sound.playMusic(path);
 		}
@@ -170,18 +203,22 @@ class Global {
 	 * @param fadeIn seconds to fade in new music
 	 * @param onlyIfDifferent if true, will not restart same track
 	 */
-	public static function fadeToMusic(filename:String, volume:Float = 1.0, fadeOut:Float = 0.35, fadeIn:Float = 0.5, onlyIfDifferent:Bool = true):Void {
+	public static function fadeToMusic(filename:String, volume:Float = 1.0, fadeOut:Float = 0.35, fadeIn:Float = 0.5, onlyIfDifferent:Bool = true):Void
+	{
 		var path = Assets.getMusicPath(filename);
-		if (onlyIfDifferent && __lastMusicId == path && FlxG.sound.music != null && FlxG.sound.music.playing) {
+		if (onlyIfDifferent && __lastMusicId == path && FlxG.sound.music != null && FlxG.sound.music.playing)
+		{
 			// Update volume if needed but avoid restart
 			FlxG.sound.music.volume = volume;
 			return;
 		}
 
-		var startNew = function() {
+		var startNew = function()
+		{
 			__lastMusicId = path;
 			FlxG.sound.playMusic(path, volume, true);
-			if (fadeIn > 0 && FlxG.sound.music != null) {
+			if (fadeIn > 0 && FlxG.sound.music != null)
+			{
 				var m = FlxG.sound.music;
 				var old = m.volume;
 				m.volume = 0;
@@ -189,9 +226,12 @@ class Global {
 			}
 		};
 
-		if (FlxG.sound.music != null && FlxG.sound.music.playing && fadeOut > 0) {
+		if (FlxG.sound.music != null && FlxG.sound.music.playing && fadeOut > 0)
+		{
 			FlxG.sound.music.fadeOut(fadeOut, function(_) startNew());
-		} else {
+		}
+		else
+		{
 			startNew();
 		}
 	}
@@ -208,18 +248,22 @@ class Global {
 	/**
 	 * Global master volume helper with clamping and save persistence.
 	 */
-	public static function setMasterVolume(vol:Float):Void {
+	public static function setMasterVolume(vol:Float):Void
+	{
 		var v = Math.max(0, Math.min(1, vol));
 		FlxG.sound.volume = v;
-		if (FlxG.save.data != null) {
+		if (FlxG.save.data != null)
+		{
 			FlxG.save.data.volume = v;
-			try FlxG.save.flush() catch (_:Dynamic) {}
+			try
+				FlxG.save.flush()
+			catch (_:Dynamic) {}
 		}
 	}
 
 	/* ───────────────────────────── Progress / WebSave ────────────────────────── */
-
-	public static function beatLevel(lvl:Int = 1):Void {
+	public static function beatLevel(lvl:Int = 1):Void
+	{
 		#if !html5
 		if (!FlxG.save.data.levels_complete.contains(lvl))
 			FlxG.save.data.levels_complete.push(lvl);
@@ -228,12 +272,14 @@ class Global {
 		if (!WebSave.levels_complete.contains(lvl))
 			WebSave.levels_complete.push(lvl);
 
-		try FlxG.save.flush() catch (_:Dynamic) {}
+		try
+			FlxG.save.flush()
+		catch (_:Dynamic) {}
 	}
 
 	/* ───────────────────────────── Discord RPC ───────────────────────────────── */
-
-	public static function changeDiscordRPCPresence(state:String = null, details:Null<String> = null):Void {
+	public static function changeDiscordRPCPresence(state:String = null, details:Null<String> = null):Void
+	{
 		#if !DISCORDRPC
 		return;
 		#else
@@ -243,20 +289,23 @@ class Global {
 	}
 
 	/* ───────────────────────────── State Helpers ─────────────────────────────── */
-
-	public static function getCurrentState():String {
-		if (FlxG.state == null) return "Unknown";
+	public static function getCurrentState():String
+	{
+		if (FlxG.state == null)
+			return 'Unknown';
 		var cls = Type.getClass(FlxG.state);
-		if (cls == null) return "Unknown";
+		if (cls == null)
+			return 'Unknown';
 		var name = Type.getClassName(cls);
-		return name != null ? name.split(".").pop() : "Unknown";
+		return name != null ? name.split('.').pop() : 'Unknown';
 	}
 
 	/**
 	 * Switch to a new state *instance* and record previous state's class name.
 	 * If you use factories, prefer `switchStateFn` below.
 	 */
-	public static function switchState(new_state:FlxState):Void {
+	public static function switchState(new_state:FlxState):Void
+	{
 		previousState = getCurrentState();
 		FlxG.switchState(() -> new_state);
 	}
@@ -264,13 +313,13 @@ class Global {
 	/**
 	 * Switch using a factory function (() -> FlxState). Avoids capturing an old instance.
 	 */
-	public static function switchStateFn(make:()->FlxState):Void {
+	public static function switchStateFn(make:() -> FlxState):Void
+	{
 		previousState = getCurrentState();
 		FlxG.switchState(make);
 	}
 
 	/* ───────────────────────────── Input Sugar ───────────────────────────────── */
-
 	public static inline function anyKeysPressed(keys:Array<FlxKey>):Bool
 		return FlxG.keys.anyPressed(keys);
 
@@ -290,37 +339,39 @@ class Global {
 		return anyKeysJustPressed([key]);
 
 	/* ───────────────────────────── Quick UI Helpers ──────────────────────────── */
-
 	/**
 	 * Create a simple colored background Spr, scaled to the game's virtual size.
 	 * @param colorRGB [r,g,b] 0..255
 	 * @param w base width (default 160)
 	 * @param h base height (default 152)
 	 */
-	public static function dummyBG(colorRGB:Array<Int>, w:Int = 160, h:Int = 152):Spr {
+	public static function dummyBG(colorRGB:Array<Int>, w:Null<Int> = null, h:Null<Int> = null):Spr
+	{
 		var background:Spr = new Spr();
 		var r = colorSafe(colorRGB, 0);
 		var g = colorSafe(colorRGB, 1);
 		var b = colorSafe(colorRGB, 2);
-		background.makeGraphic(w, h, FlxColor.fromRGB(r, g, b));
-  // keep me in  mind
-		// background.makeGraphic(Std.int(FlxG.width / 4), Std.int(FlxG.height / 4), FlxColor.fromRGB(colorRGB[0], colorRGB[1], colorRGB[2]));
+		background.makeGraphic((w != null) ? w : Std.int(FlxG.width / 4), (h != null) ? h : Std.int(FlxG.height / 4),
+			FlxColor.fromRGB(colorRGB[0], colorRGB[1], colorRGB[2]));
 		background.scaleSpr();
 		background.screenCenter();
 		return background;
 	}
 
-	static inline function colorSafe(arr:Array<Int>, i:Int):Int {
+	static inline function colorSafe(arr:Array<Int>, i:Int):Int
 		return (arr != null && i >= 0 && i < arr.length) ? Std.int(Math.max(0, Math.min(255, arr[i]))) : 0;
-	}
 
 	/**
 	 * Camera flash convenience (works with state camera or default camera).
 	 */
-	public static function camflash(Color:FlxColor = FlxColor.WHITE, Duration:Float = 1, ?OnComplete:Void->Void, Force:Bool = false):Void {
-		if (FlxG.state != null && FlxG.state.camera != null) {
+	public static function camflash(Color:FlxColor = FlxColor.WHITE, Duration:Float = 1, ?OnComplete:Void->Void, Force:Bool = false):Void
+	{
+		if (FlxG.state != null && FlxG.state.camera != null)
+		{
 			FlxG.state.camera.flash(Color, Duration, OnComplete, Force);
-		} else if (FlxG.camera != null) {
+		}
+		else if (FlxG.camera != null)
+		{
 			FlxG.camera.flash(Color, Duration, OnComplete, Force);
 		}
 	}
@@ -330,10 +381,14 @@ class Global {
 	 * @param intensity typical small value like 0.01 .. 0.02
 	 * @param duration  seconds to shake
 	 */
-	public static function camshake(intensity:Float = 0.01, duration:Float = 0.3):Void {
-		if (FlxG.state != null && FlxG.state.camera != null) {
+	public static function camshake(intensity:Float = 0.01, duration:Float = 0.3):Void
+	{
+		if (FlxG.state != null && FlxG.state.camera != null)
+		{
 			FlxG.state.camera.shake(intensity, duration);
-		} else if (FlxG.camera != null) {
+		}
+		else if (FlxG.camera != null)
+		{
 			FlxG.camera.shake(intensity, duration);
 		}
 	}
