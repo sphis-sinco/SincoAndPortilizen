@@ -8,6 +8,7 @@ Mobile update
 - The clear save screen confirmation text has the correct intended alignment
 - When leaving the Clear Save Screen you can now see the message
 ### Changed
+- You can tap the screen to leave the outdated screen
 - More accurate range to pet Sinco
 - All the functions and variables in the credits state are no longer static functions and or variables
 - Improved Global.hx by @wonderinglostsoul44 in https://github.com/sphis-sinco/SincoAndPortilizen/pull/45

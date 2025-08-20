@@ -116,6 +116,10 @@ class SettingsMenu extends State
 		cursor.animation.play('idle');
 		add(cursor);
 
+		#if MOBILE_BUILD
+		cursor.visible = false;
+		#end
+
 		if (Global.previousState == 'ClearSaveScreen')
 		{
 			FlxG.sound.music.fadeIn(1);
@@ -130,9 +134,9 @@ class SettingsMenu extends State
 			FlxTween.tween(volume, {alpha: 1}, 1);
 			FlxTween.tween(descriptionText, {alpha: 1}, 1);
 		}
-		
+
 		#if MOBILE_BUILD
-		add(new backend.mobile.BackButton(new TitleScreen(), new FlxPoint(0,-64)));
+		add(new backend.mobile.BackButton(new TitleScreen(), new FlxPoint(0, -64)));
 		#end
 	}
 
@@ -159,8 +163,6 @@ class SettingsMenu extends State
 		{
 			Global.switchState(new TitleScreen());
 		}
-
-		cursor.visible = true;
 
 		descriptionText.text = '';
 		for (setting in pageCont)
@@ -252,9 +254,5 @@ class SettingsMenu extends State
 			if (cursor.animation.name != 'select')
 				selected = -1;
 		}
-
-		#if MOBILE_BUILD
-		cursor.visible = false;
-		#end
 	}
 }

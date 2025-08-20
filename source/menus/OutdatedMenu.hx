@@ -45,7 +45,7 @@ class OutdatedMenu extends State
 	{
 		super.update(elapsed);
 
-		if (Global.keyJustReleased(ENTER))
+		if (Global.keyJustReleased(ENTER) || FlxG.mouse.justReleased)
 		{
 			BEGONE = true;
 			Global.switchState(new InitState());

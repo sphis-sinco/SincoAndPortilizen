@@ -68,6 +68,10 @@ class ClearSaveScreen extends State
 		cursor.animation.play('idle');
 		add(cursor);
 
+		#if MOBILE_BUILD
+		cursor.visible = false;
+		#end
+
 		Global.changeDiscordRPCPresence('Contemplating everything they went through.', 'Settings Menu / Clear Save Screen');
 
 		yes.alpha = 0;
@@ -88,7 +92,6 @@ class ClearSaveScreen extends State
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
 
-		cursor.visible = true;
 		for (button in [yes, no])
 		{
 			button.scaleSpr();
@@ -154,9 +157,5 @@ class ClearSaveScreen extends State
 
 		confirmationText.screenCenter();
 		confirmationText.y -= (confirmationText.height * 4);
-
-		#if MOBILE_BUILD
-		cursor.visible = false;
-		#end
 	}
 }
