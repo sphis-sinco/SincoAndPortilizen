@@ -127,7 +127,7 @@ class Global
 	public static function dummyBG(colorRGB:Array<Int>):Spr
 	{
 		var background:Spr = new Spr();
-		background.makeGraphic(160, 152, FlxColor.fromRGB(colorRGB[0], colorRGB[1], colorRGB[2]));
+		background.makeGraphic(Std.int(FlxG.width / 4), Std.int(FlxG.height / 4), FlxColor.fromRGB(colorRGB[0], colorRGB[1], colorRGB[2]));
 		background.scaleSpr();
 		background.screenCenter();
 		return background;

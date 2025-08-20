@@ -23,7 +23,9 @@
 
         <!--These
         window settings apply to all targets-->
-        <window width="640" height="608" fps="60" background="#000000" hardware="true" vsync="false" />
+
+        <!-- why wont me changing the background work -->
+        <window width="640" height="608" fps="60" background="#0c0c0c" hardware="true" vsync="false" />
 
         <window if="html5" resizable="true" />
         <window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />

@@ -1,6 +1,8 @@
 # Beta
 ## 4b (Beta Milestone 5) - 8/20/2025
 Mobile update
+### Changed
+- `Global.dummyBG` will now generate a background that fits the window resolution
 ### Added
 - `MOBILE_TESTING` define
 - `MOBILE_BUILD` define
