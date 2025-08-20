@@ -42,6 +42,7 @@ class Credits extends State
 		#if MOBILE_BUILD
 		add(directional_up);
 		add(directional_down);
+		add(new backend.mobile.BackButton(new TitleScreen()));
 		#end
 
 		var cur_y:Float = 10;
