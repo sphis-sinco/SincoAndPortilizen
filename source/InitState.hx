@@ -1,5 +1,6 @@
 package;
 
+import haxe.macro.Compiler;
 import flixel.system.debug.log.LogStyle;
 
 // This is initalization stuff + compiler condition flags
@@ -8,8 +9,11 @@ class InitState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-	
-		Global.change_saveslot((#if debug true #else false #end) ? 'debug' : 'release');
+
+		if (Compiler.getDefine('SAVESLOT_SUFFIX').split('=').length <= 1)
+			Global.change_saveslot((#if debug true #else false #end) ? 'debug' : 'release');
+		else
+			Global.change_saveslot(Compiler.getDefine('SAVESLOT_SUFFIX').split('=')[0]);
 
 		#if DISCORDRPC
 		if (FlxG.save.data.discord_rpc)
@@ -20,7 +24,7 @@ class InitState extends FlxState
 
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;
-		else 
+		else
 			FlxG.sound.volume = 1;
 
 		FlxG.sound.showSoundTray(false);
