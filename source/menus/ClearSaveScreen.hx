@@ -1,5 +1,6 @@
 package menus;
 
+import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxCollision;
 import flixel.text.FlxText;
@@ -18,13 +19,13 @@ class ClearSaveScreen extends State
 	{
 		super.create();
 
-		clearSave = new Spr();
+		clearSave = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
 		clearSave.loadGraphic(Assets.getImagePath('settings/ClearSave'));
 		clearSave.scaleSpr();
 		clearSave.setPosition(SettingsMenu.clearSavePos.x, SettingsMenu.clearSavePos.y);
 		add(clearSave);
 
-		yes = new Spr(-2);
+		yes = new Spr(#if !MOBILE_BUILD - 2 #else 0 #end);
 		yes.loadGraphic(Assets.getImagePath('clearSave/buttons'), true, 64, 64);
 		yes.animation.add('yes', [0]);
 		yes.animation.play('yes');
@@ -33,7 +34,7 @@ class ClearSaveScreen extends State
 		yes.x -= yes.width;
 		add(yes);
 
-		no = new Spr(-2);
+		no = new Spr(#if !MOBILE_BUILD - 2 #else 0 #end);
 		no.loadGraphic(Assets.getImagePath('clearSave/buttons'), true, 64, 64);
 		no.animation.add('no', [1]);
 		no.animation.play('no');
@@ -45,6 +46,8 @@ class ClearSaveScreen extends State
 		confirmationText = new FlxText();
 		confirmationText.text = 'Are you sure?';
 		confirmationText.size = 16;
+		#if MOBILE_BUILD confirmationText.size = 32; #end
+		confirmationText.alignment = 'center';
 		add(confirmationText);
 
 		cursor = new Spr(-3);
@@ -85,6 +88,7 @@ class ClearSaveScreen extends State
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
 
+		cursor.visible = true;
 		for (button in [yes, no])
 		{
 			button.scaleSpr();
@@ -102,9 +106,12 @@ class ClearSaveScreen extends State
 					if (button == yes)
 					{
 						FlxTween.tween(no, {alpha: 0}, 1);
+						FlxTween.tween(yes, {alpha: 0}, .5, {
+							startDelay: .5
+						});
 						confirmationText.text = 'Hope you meant it.';
 						FlxG.save.erase();
-						
+
 						WebSave.volume = 1;
 						WebSave.levels_complete = [];
 						WebSave.medals = [];
@@ -115,6 +122,9 @@ class ClearSaveScreen extends State
 					else if (button == no)
 					{
 						FlxTween.tween(yes, {alpha: 0}, 1);
+						FlxTween.tween(no, {alpha: 0}, .5, {
+							startDelay: .5
+						});
 						confirmationText.text = 'Good choice';
 
 						#if !html5
@@ -130,7 +140,11 @@ class ClearSaveScreen extends State
 					if (ps)
 						Global.playSoundEffect('blipSelect');
 
-					Global.switchState(new SettingsMenu());
+					FlxTween.tween(confirmationText, {alpha: 0}, 1);
+					FlxTimer.wait(1, () ->
+					{
+						Global.switchState(new SettingsMenu());
+					});
 					FlxG.save.flush();
 
 					FlxG.sound.volume = FlxG.save.data.volume;
@@ -140,5 +154,9 @@ class ClearSaveScreen extends State
 
 		confirmationText.screenCenter();
 		confirmationText.y -= (confirmationText.height * 4);
+
+		#if MOBILE_BUILD
+		cursor.visible = false;
+		#end
 	}
 }

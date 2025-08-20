@@ -19,7 +19,7 @@ class TitleScreen extends State
 	{
 		super.create();
 
-		logo = new Spr(-3);
+		logo = new Spr(#if !MOBILE_BUILD - 3 #else - 2 #end);
 		logo.loadGraphic(Assets.getImagePath('title/logo${logoSuffixes[FlxG.random.int(0, logoSuffixes.length - 1)]}'));
 		logo.scaleSpr();
 		logo.screenCenter();
@@ -32,12 +32,13 @@ class TitleScreen extends State
 		cursor.animation.add('select', [1], 24);
 		cursor.animation.play('idle');
 
-		creditsButton = new Spr(-3);
+		creditsButton = new Spr(#if !MOBILE_BUILD - 3 #else 0 #end);
 		creditsButton.loadGraphic(Assets.getImagePath('levelSelect/credits'));
+		creditsButton.scaleSpr();
 		creditsButton.setPosition(FlxG.width - creditsButton.width - 32, FlxG.height - creditsButton.height - 32);
 		add(creditsButton);
 
-		levelSelect = new Spr(-2);
+		levelSelect = new Spr(#if !MOBILE_BUILD - 2 #else 0 #end);
 		levelSelect.loadGraphic(Assets.getImagePath('title/levelSelect'));
 		levelSelect.scaleSpr();
 		levelSelect.screenCenter();
@@ -45,7 +46,7 @@ class TitleScreen extends State
 		levelSelect.y += (logo.height / 4);
 		add(levelSelect);
 
-		settings = new Spr(-2);
+		settings = new Spr(#if !MOBILE_BUILD - 2 #else 0 #end);
 		settings.loadGraphic(Assets.getImagePath('title/settings'));
 		settings.scaleSpr();
 		settings.screenCenter();
@@ -55,7 +56,7 @@ class TitleScreen extends State
 
 		Global.changeDiscordRPCPresence('', 'Title Screen');
 
-		add(new FlxText(3, FlxG.height - 32, FlxG.width, 'v${Global.VERSION} (b${Global.BUILD})', 16));
+		add(new FlxText(3, FlxG.height - #if !MOBILE_BUILD 32 #else 64 #end, FlxG.width, 'v${Global.VERSION} (b${Global.BUILD})', #if !MOBILE_BUILD 16 #else 32 #end));
 		add(cursor);
 	}
 
@@ -68,6 +69,7 @@ class TitleScreen extends State
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
 
+		cursor.visible = true;
 		for (button in [levelSelect, settings, creditsButton])
 		{
 			button.scaleSpr();
@@ -92,5 +94,9 @@ class TitleScreen extends State
 				}
 			}
 		}
+
+		#if MOBILE_BUILD
+		cursor.visible = false;
+		#end
 	}
 }

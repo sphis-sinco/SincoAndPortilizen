@@ -303,6 +303,8 @@ class Global {
 		var g = colorSafe(colorRGB, 1);
 		var b = colorSafe(colorRGB, 2);
 		background.makeGraphic(w, h, FlxColor.fromRGB(r, g, b));
+  // keep me in  mind
+		// background.makeGraphic(Std.int(FlxG.width / 4), Std.int(FlxG.height / 4), FlxColor.fromRGB(colorRGB[0], colorRGB[1], colorRGB[2]));
 		background.scaleSpr();
 		background.screenCenter();
 		return background;

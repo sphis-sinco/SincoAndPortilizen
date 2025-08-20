@@ -26,18 +26,24 @@ class SettingsMenu extends State
 	{
 		super.create();
 
-		coloredLevelSelect = new Spr();
+		coloredLevelSelect = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
 		coloredLevelSelect.loadGraphic(Assets.getImagePath('settings/ColoredLevelSelect'), true, 64, 64);
 		coloredLevelSelect.animation.add('false', [0]);
 		coloredLevelSelect.animation.add('true', [1]);
 		coloredLevelSelect.scaleSpr();
 		coloredLevelSelect.setPosition(32, 32);
+
+		#if MOBILE_BUILD
+		coloredLevelSelect.screenCenter(X);
+		coloredLevelSelect.x -= (coloredLevelSelect.width / 2);
+		#end
+
 		coloredLevelSelect.ID = 0;
 		add(coloredLevelSelect);
 
 		pageCont.push(coloredLevelSelect);
 
-		discordRPC = new Spr();
+		discordRPC = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
 		discordRPC.loadGraphic(Assets.getImagePath('settings/DiscordRPC'), true, 64, 64);
 		discordRPC.animation.add('false', [0]);
 		discordRPC.animation.add('true', [1]);
@@ -52,7 +58,7 @@ class SettingsMenu extends State
 		pageCont.push(discordRPC);
 		add(discordRPC);
 
-		volume = new Spr();
+		volume = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
 		volume.loadGraphic(Assets.getImagePath('settings/Volume'), true, 64, 64);
 		volume.animation.add('100', [10]);
 		volume.animation.add('90', [9]);
@@ -73,7 +79,7 @@ class SettingsMenu extends State
 		pageCont.push(volume);
 		lowerPageCont.push(volume);
 
-		clearSave = new Spr();
+		clearSave = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
 		clearSave.loadGraphic(Assets.getImagePath('settings/ClearSave'));
 		clearSave.scaleSpr();
 		clearSave.setPosition(discordRPC.x, volume.y);
@@ -84,7 +90,7 @@ class SettingsMenu extends State
 		pageCont.push(clearSave);
 		lowerPageCont.push(clearSave);
 
-		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkeyballs', 16);
+		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkeyballs', #if !MOBILE_BUILD 16 #else 32 #end);
 		descriptionText.alignment = 'center';
 		add(descriptionText);
 
@@ -149,6 +155,8 @@ class SettingsMenu extends State
 		{
 			Global.switchState(new TitleScreen());
 		}
+
+		cursor.visible = true;
 
 		descriptionText.text = '';
 		for (setting in pageCont)
@@ -240,5 +248,9 @@ class SettingsMenu extends State
 			if (cursor.animation.name != 'select')
 				selected = -1;
 		}
+
+		#if MOBILE_BUILD
+		cursor.visible = false;
+		#end
 	}
 }
