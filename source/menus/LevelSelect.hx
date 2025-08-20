@@ -12,7 +12,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 class LevelSelect extends State
 {
-	final portPetX:Float = FlxG.width / 2.25;
+	final portPetX:Float = FlxG.width / 2;
 
 	public var startLevelTimer:FlxTimer;
 
@@ -55,8 +55,8 @@ class LevelSelect extends State
 
 		for (i in 0...levelNames.length)
 		{
-			var levelIcon:Spr = new Spr(-3);
-			var crown:Spr = new Spr(-3);
+			var levelIcon:Spr = new Spr(#if MOBILE_BUILD - 2 #else - 3 #end);
+			var crown:Spr = new Spr(#if MOBILE_BUILD - 2 #else - 3 #end);
 			levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/blank'));
 			crown.loadGraphic(Assets.getImagePath('levelSelect/crown'));
 
@@ -99,10 +99,14 @@ class LevelSelect extends State
 				}
 			}
 
-			levelIcon.x = (64 + 0) + (i * (128 + 64));
+			levelIcon.x = 0;
+			#if MOBILE_BUILD
+			levelIcon.x = (levelIcon.width / 4);
+			#end
+			levelIcon.x += (64 + 0) + (i * #if MOBILE_BUILD ((128 * 4) + (64 * 1)) #else (128 + 64) #end);
 
 			levelIcon.screenCenter(Y);
-			levelIcon.y -= levelIcon.height * 1;
+			levelIcon.y -= levelIcon.height * (#if MOBILE_BUILD 2 #else 1 #end);
 
 			crown.setPosition(levelIcon.x, levelIcon.y);
 
@@ -122,14 +126,14 @@ class LevelSelect extends State
 			levelIcons.add(levelIcon);
 		}
 
-		console = new Spr(-2);
+		console = new Spr(#if MOBILE_BUILD 0 #else -2 #end);
 		console.loadGraphic(Assets.getImagePath('levelSelect/console'));
 		console.scaleSpr();
 		console.screenCenter(X);
 		console.y = FlxG.height - console.height;
 
-		sinco = new Spr(-2);
-		port = new Spr(-2);
+		sinco = new Spr(#if MOBILE_BUILD 0 #else -2 #end);
+		port = new Spr(#if MOBILE_BUILD 0 #else -2 #end);
 
 		sinco.loadGraphic(Assets.getImagePath('levelSelect/chars/sinco'), true, 128, 128);
 		sinco.scaleSpr();
@@ -169,6 +173,10 @@ class LevelSelect extends State
 		add(console);
 		add(cursor);
 
+		#if MOBILE_BUILD
+		cursor.visible = false;
+		#end
+
 		message.size = 32;
 		message.screenCenter();
 		message.alignment = 'center';
@@ -187,7 +195,7 @@ class LevelSelect extends State
 				FlxG.sound.music.fadeIn(.25);
 			});
 		}
-		
+
 		#if MOBILE_BUILD
 		add(new backend.mobile.BackButton(new TitleScreen()));
 		#end
@@ -197,7 +205,7 @@ class LevelSelect extends State
 	{
 		super.update(elapsed);
 		Global.playMenuMusic();
-		
+
 		if (Global.keyJustReleased(ESCAPE))
 		{
 			Global.switchState(new TitleScreen());
