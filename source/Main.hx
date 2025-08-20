@@ -30,11 +30,14 @@ class Main extends openfl.display.Sprite
 		File.saveContent(sysPath, Std.string(Global.BUILD + 1));
 
 		if (!FileSystem.exists('prev-build')
-			|| FileSystem.exists('prev-build')
-			&& (File.getContent('prev-build') != File.getContent('assets/build.txt')))
+			|| (FileSystem.exists('prev-build') && (File.getContent('prev-build') != File.getContent('assets/build.txt'))))
 		{
 			File.saveContent('prev-build', Std.string(Global.BUILD));
 			File.saveContent('assets/build.txt', Std.string(Global.BUILD + 1));
+
+			@:privateAccess {
+				Global.__buildCache = null;
+			}
 		}
 		#end
 
