@@ -1,6 +1,7 @@
 # Final
 ## 1.1 - 8/21/2025
 ### Added
+- Level Folder Menu
 - Level JSONS have 2 new fields: `can_play_message` and `cant_play_message`
 - The `InteractableSpr` class now has a `unoverlap` signal and `overlapped` variable
 ### Fixed
