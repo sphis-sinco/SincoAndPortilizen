@@ -26,9 +26,10 @@ class LevelSelect extends State
 	public var levelIcons:FlxTypedGroup<InteractableSpr>;
 	public var levelCrowns:FlxTypedGroup<Spr>;
 
-	public var levelsFolder:String = 'base/';
-	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres'];
-	
+	public static var levelsFolder:String = 'base/';
+
+	public var levelNames:Array<String> = [];
+
 	public var selectedLevel:Int = 0;
 
 	override public function new(beatLvl:Bool = false)
@@ -44,6 +45,14 @@ class LevelSelect extends State
 	override function create()
 	{
 		super.create();
+
+		switch (levelsFolder.toLowerCase().replace('/', ''))
+		{
+			case 'base':
+				levelNames = ['string-quest', 'osin', 'tres'];
+			case 'sidebits':
+				levelNames = ['revenge'];
+		}
 
 		levelCrowns = new FlxTypedGroup<Spr>();
 		add(levelCrowns);
