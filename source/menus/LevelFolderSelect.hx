@@ -24,12 +24,14 @@ class LevelFolderSelect extends State
 		base.file.screenCenter();
                 base.file.x -= base.file.width / 2;
 		base.file.desiredPosition = base.file.getPosition();
+                base.file.justReleased.add(() -> switchToLS());
 
 		sidebits = new FolderSpr('sidebits', Assets.getFileJsonContent('level_folders/sidebits.json'));
 		add(sidebits);
 		sidebits.file.screenCenter();
                 sidebits.file.x += sidebits.file.width / 2;
 		sidebits.file.desiredPosition = sidebits.file.getPosition();
+                sidebits.file.justReleased.add(() -> switchToLS('sidebits/'));
 
 		add(cursor);
 

@@ -1,5 +1,7 @@
 # Final
 ## 2.0 (Addon 1) - 8/21/2025
+### Added
+- The `InteractableSpr` class now has a `unoverlap` signal and `overlapped` variable
 ### Fixed
 - On mobile you can no longer avoid attacks by staying in a specific region
 ### Changed
