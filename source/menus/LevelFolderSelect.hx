@@ -46,6 +46,9 @@ class LevelFolderSelect extends State
 
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
+
+		if (Global.keyJustReleased(ESCAPE))
+			Global.switchState(new TitleScreen());
 	}
 
 	public function switchToLS(folder:String = 'base/')
