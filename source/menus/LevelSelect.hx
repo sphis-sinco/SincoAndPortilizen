@@ -25,7 +25,10 @@ class LevelSelect extends State
 
 	public var levelIcons:FlxTypedGroup<InteractableSpr>;
 	public var levelCrowns:FlxTypedGroup<Spr>;
+
+	public var levelsFolder:String = 'base/';
 	public var levelNames:Array<String> = ['string-quest', 'osin', 'tres'];
+	
 	public var selectedLevel:Int = 0;
 
 	override public function new(beatLvl:Bool = false)
@@ -146,7 +149,7 @@ class LevelSelect extends State
 
 					try
 					{
-						data = Assets.getFileJsonContent('levels/${levelNames[selectedLevel]}.json');
+						data = Assets.getFileJsonContent('levels/$levelsFolder${levelNames[selectedLevel]}.json');
 					}
 					catch (e)
 					{
@@ -339,7 +342,7 @@ class LevelSelect extends State
 
 				try
 				{
-					data = Assets.getFileJsonContent('levels/${levelNames[icon.ID]}.json');
+					data = Assets.getFileJsonContent('levels/$levelsFolder${levelNames[icon.ID]}.json');
 				}
 				catch (e)
 				{
