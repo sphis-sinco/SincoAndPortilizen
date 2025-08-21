@@ -1,7 +1,8 @@
 # Final
 ## 2.0 (Addon 1) - 8/21/2025
 ### Added
-- Level JSONS have 2 new fields: `can_play_message` and `cant_play_message`
+- "new" icon to levels if your previous version isn't the level's added version
+- Level JSONS have 3 new fields: `can_play_message`, `cant_play_message` and `added_version`
 - The `InteractableSpr` class now has a `unoverlap` signal and `overlapped` variable
 ### Fixed
 - On mobile you can no longer avoid attacks by staying in a specific region

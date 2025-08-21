@@ -147,6 +147,22 @@ class Global
 		if (d.colored_levelSelect == null)
 			d.colored_levelSelect = false;
 
+		if (d.prevversion == null)
+			d.prevversion = VERSION;
+		if (d.version == null)
+			d.version = VERSION;
+		else
+		{
+			if (d.version != VERSION)
+			{
+				d.prevversion = d.version;
+				d.version = VERSION;
+			}
+		}
+
+		WebSave.version = VERSION;
+		WebSave.prevversion = VERSION;
+
 		// Persist immediately to avoid data loss if the app closes early
 		try
 			FlxG.save.flush()
