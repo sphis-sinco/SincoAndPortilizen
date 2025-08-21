@@ -1,4 +1,9 @@
-# Live Release
+# Final
+## 1.0.1 - 8/21/2025
+### Added
+- More credits have been added
+- In "Tres" Super Sinco now has a trail behind him similar to the Knight Trail in Deltarune (Thank you kivers9k)
+
 ## 1.0 - 8/20/2025
 The game is now to be known as complete
 

@@ -5,3 +5,6 @@ TJ - PlayTester
 
 Null - Programmer
 ZSolarDev - Programmer, Artist, Animator
+
+kivers9k - Deltarune Knight Trail code
+wonderinglostsoul44 - Global.hx Improver

@@ -62,7 +62,6 @@ class Tres extends PausableState
 		add(tdm2);
 
 		portParticles = new FlxTypedGroup<Spr>();
-		add(portParticles);
 
 		sinco = new Spr(#if MOBILE_BUILD 4 #else 0 #end);
 		sinco.loadGraphic(Assets.getImagePath('tres/superSinco'));
@@ -70,8 +69,11 @@ class Tres extends PausableState
 		sincoSCPos = new FlxPoint(sinco.x, sinco.y);
 		sinco.x -= (sinco.width * #if MOBILE_BUILD 35 #else 2 #end);
 		sinco.y -= sinco.height;
-		add(sinco);
 		sincoRPos = new FlxPoint(sinco.x, sinco.y);
+
+		var sincoTrail = Global.createTrail(sinco, -200, 0.1, .25, 25);
+		add(sincoTrail);
+		add(sinco);
 
 		port = new Spr(#if MOBILE_BUILD 4 #else 0 #end);
 		port.loadGraphic(Assets.getImagePath('tres/superPort'));
@@ -79,8 +81,12 @@ class Tres extends PausableState
 		portSCPos = new FlxPoint(port.x, port.y);
 		port.x -= (port.width * #if MOBILE_BUILD 35 #else 3 #end);
 		port.y += (port.height * 2);
-		add(port);
 		portRPos = new FlxPoint(port.x, port.y);
+
+		var portTrail = Global.createTrail(port, -200, 0.1, .5, 25);
+		// add(portTrail);
+		add(portParticles);
+		add(port);
 
 		playerPos = new FlxPoint();
 
@@ -146,6 +152,8 @@ class Tres extends PausableState
 	final playerSpeed:Float = 10;
 	final setPosSpeed:Float = 10;
 
+	public var timer:Float = 0;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -155,6 +163,8 @@ class Tres extends PausableState
 		Global.playMusic('StageTracks/Tres');
 
 		if (!paused)
+		{
+			timer += elapsed * 24;
 			switch (selectedHero)
 			{
 				case 0:
@@ -168,6 +178,7 @@ class Tres extends PausableState
 					port.x += (((portSCPos.x + playerPos.x) - port.x) / setPosSpeed);
 					port.y += (((portSCPos.y + playerPos.y) - port.y) / setPosSpeed);
 			}
+		}
 
 		if (Global.keyJustReleased(Z) && !paused)
 		{
@@ -237,7 +248,7 @@ class Tres extends PausableState
 						attack.loadGraphic(Assets.getImagePath('tres/TDM2Attack'));
 						attack.scaleSpr();
 						attack.setPosition(tdm2.x, tdm2.y);
-						
+
 						#if MOBILE_BUILD
 						attack.x += attack.width * 6;
 						attack.y += attack.height * 10;
