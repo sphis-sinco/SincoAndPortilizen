@@ -23,8 +23,9 @@ class LevelSelect extends State
 
 	public var cursor:Spr;
 
-	public var levelIcons:FlxTypedGroup<InteractableSpr>;
-	public var levelCrowns:FlxTypedGroup<Spr>;
+	var levelIcon:InteractableSpr = new InteractableSpr('levelSelect/level_icons/blank');
+	var crown:Spr = new Spr(#if MOBILE_BUILD (-2) #else (-3) #end);
+	var levelData:LevelData;
 
 	public static var levelsFolder:String = 'base/';
 
@@ -54,164 +55,102 @@ class LevelSelect extends State
 				levelNames = ['revenge'];
 		}
 
-		levelCrowns = new FlxTypedGroup<Spr>();
-		add(levelCrowns);
-		levelIcons = new FlxTypedGroup<InteractableSpr>();
-		add(levelIcons);
-
 		cursor = new Spr(-3);
 		cursor.loadGraphic(Assets.getImagePath('levelSelect/cursor'), true, 64, 64);
 		cursor.animation.add('idle', [0], 24);
 		cursor.animation.add('select', [1], 24);
 		cursor.animation.play('idle');
 
-		for (i in 0...levelNames.length)
+		levelIcon.scaleOffset = crown.scaleOffset;
+		crown.loadGraphic(Assets.getImagePath('levelSelect/crown'));
+
+		levelIcon.screenCenter(XY);
+		levelIcon.y -= levelIcon.height * (#if MOBILE_BUILD 2 #else 1 #end);
+
+		crown.setPosition(levelIcon.x, levelIcon.y);
+
+		levelIcon.scaleSpr();
+		crown.scaleSpr();
+
+		levelIcon.overlap.add(() ->
 		{
-			var levelIcon:InteractableSpr = new InteractableSpr('levelSelect/level_icons/blank');
-			var crown:Spr = new Spr(#if MOBILE_BUILD (-2) #else (-3) #end);
-			levelIcon.scaleOffset = crown.scaleOffset;
-			crown.loadGraphic(Assets.getImagePath('levelSelect/crown'));
+			cursor.animation.play('select');
 
-			var data:LevelData;
-
-			try
-			{
-				data = Assets.getFileJsonContent('levels/$levelsFolder${levelNames[i]}.json');
-			}
-			catch (e)
-			{
-				data = null;
-			}
-
-			if (data != null)
-			{
-				if (data.can_play)
-					try
-					{
-						levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/${levelNames[i]}'));
-					}
-					catch (e)
-					{
-						levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/unknown'));
-					}
-				else
-					levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/locked'));
-
+			if (levelData != null)
 				if (FlxG.save.data.colored_levelSelect)
 				{
-					crown.color = 0xe2e25e;
-
-					if (data.port_level)
+					if (levelData.port_level && levelData.sinco_level)
 						levelIcon.color = 0x4e0c6f;
-					if (data.sinco_level)
-						levelIcon.color = 0x4eb10c;
 
-					if (data.color != null && data.color.length >= 3)
-						levelIcon.color = FlxColor.fromRGB(data.color[0], data.color[1], data.color[2]);
+					if (levelData.color != null && levelData.color.length >= 3)
+						levelIcon.color = FlxColor.fromRGB(levelData.color[0], levelData.color[1], levelData.color[2]);
+
+					if (levelData.hover_color != null && levelData.hover_color.length >= 3)
+						levelIcon.color = FlxColor.fromRGB(levelData.hover_color[0], levelData.hover_color[1], levelData.hover_color[2]);
 				}
-			}
+		});
 
-			levelIcon.x = 0;
-			#if MOBILE_BUILD
-			levelIcon.x = (levelIcon.width / 4);
-			#end
-			levelIcon.x += (64 + 0) + (i * #if MOBILE_BUILD ((128 * 4) + (64 * 1)) #else (128 + 64) #end);
-
-			levelIcon.screenCenter(Y);
-			levelIcon.y -= levelIcon.height * (#if MOBILE_BUILD 2 #else 1 #end);
-
-			crown.setPosition(levelIcon.x, levelIcon.y);
-
-			levelIcon.scaleSpr();
-			crown.scaleSpr();
-
-			crown.ID = i;
-			levelIcon.ID = i;
-
-			#if !html5
-			crown.visible = FlxG.save.data.levels_complete.contains(levelNames[i]);
-			#else
-			crown.visible = WebSave.levels_complete.contains(levelNames[i]);
-			#end
-
-			levelIcon.overlap.add(() ->
+		levelIcon.justReleased.add(() ->
+		{
+			if (!startLevelTimer.active && selectedLevel > -1)
 			{
-				if (data != null)
-					if (FlxG.save.data.colored_levelSelect)
-					{
-						if (data.port_level && data.sinco_level)
-							levelIcon.color = 0x4e0c6f;
+				var data:LevelData;
 
-						if (data.color != null && data.color.length >= 3)
-							levelIcon.color = FlxColor.fromRGB(data.color[0], data.color[1], data.color[2]);
-
-						if (data.hover_color != null && data.hover_color.length >= 3)
-							levelIcon.color = FlxColor.fromRGB(data.hover_color[0], data.hover_color[1], data.hover_color[2]);
-					}
-			});
-
-			levelIcon.justReleased.add(() ->
-			{
-				if (!startLevelTimer.active && selectedLevel > -1)
+				try
 				{
-					var data:LevelData;
+					data = Assets.getFileJsonContent('levels/$levelsFolder${levelNames[selectedLevel]}.json');
+				}
+				catch (e)
+				{
+					data = null;
+				}
 
-					try
-					{
-						data = Assets.getFileJsonContent('levels/$levelsFolder${levelNames[selectedLevel]}.json');
-					}
-					catch (e)
-					{
-						data = null;
-					}
-
-					sinco.animation.play('notpicked');
-					port.animation.play('notpicked');
-					if (data == null)
-						flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
+				sinco.animation.play('notpicked');
+				port.animation.play('notpicked');
+				if (data == null)
+					flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
+				else
+				{
+					if (!data.can_play)
+						flashMessage('Can\'t play');
 					else
 					{
-						if (!data.can_play)
-							flashMessage('Can\'t play');
-						else
-						{
-							if (data.port_level)
-								port.animation.play('picked');
-							if (data.sinco_level)
-								sinco.animation.play('picked');
+						if (data.port_level)
+							port.animation.play('picked');
+						if (data.sinco_level)
+							sinco.animation.play('picked');
 
+						switch (levelNames[selectedLevel].toLowerCase())
+						{
+							case 'string-quest':
+								flashMessage('String Quest');
+							case 'osin':
+								flashMessage('Vs Osin');
+							case 'tres':
+								flashMessage('Tres');
+						}
+
+						Global.playSoundEffect('blipSelect');
+
+						startLevelTimer.start(10);
+						FlxTimer.wait(1, () ->
+						{
 							switch (levelNames[selectedLevel].toLowerCase())
 							{
-								case 'string-quest':
-									flashMessage('String Quest');
-								case 'osin':
-									flashMessage('Vs Osin');
+								case 'string-quest': Global.switchState(new StringQuest());
+								case 'osin': Global.switchState(new Osin());
 								case 'tres':
-									flashMessage('Tres');
+									Global.switchState(new Tres());
 							}
-
-							Global.playSoundEffect('blipSelect');
-
-							startLevelTimer.start(10);
-							FlxTimer.wait(1, () ->
-							{
-								switch (levelNames[selectedLevel].toLowerCase())
-								{
-									case 'string-quest': Global.switchState(new StringQuest());
-									case 'osin': Global.switchState(new Osin());
-									case 'tres':
-										Global.switchState(new Tres());
-								}
-							});
-						}
+						});
 					}
 				}
-			});
+			}
+		});
 
-			levelCrowns.add(crown);
-			levelIcons.add(levelIcon);
-			levelIcon.desiredPosition = levelIcon.getPosition();
-		}
+		add(crown);
+		add(levelIcon);
+		levelIcon.desiredPosition = levelIcon.getPosition();
 
 		console = new Spr(#if MOBILE_BUILD 0 #else (-2) #end);
 		console.loadGraphic(Assets.getImagePath('levelSelect/console'));
@@ -302,6 +241,7 @@ class LevelSelect extends State
 		{
 			sinco.color = 0x4eb10c;
 			port.color = 0x4e0c6f;
+			crown.color = 0xe2e25e;
 		}
 
 		add(console);
@@ -328,14 +268,72 @@ class LevelSelect extends State
 		#end
 	}
 
+	var psi = -1;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 		Global.playMenuMusic();
 
+		#if !html5
+		crown.visible = FlxG.save.data.levels_complete.contains(levelNames[selectedLevel]);
+		#else
+		crown.visible = WebSave.levels_complete.contains(levelNames[selectedLevel]);
+		#end
+
+		crown.scaleOffset = levelIcon.scaleOffset;
+		crown.scaleSpr();
+
+		if (levelIcon.scale.x < (Global.DEFAULT_IMAGE_SCALE_MULTIPLIER + crown.scaleOffset))
+			crown.scale.set(crown.scale.x - .1, crown.scale.y - .1);
+
 		if (Global.keyJustReleased(ESCAPE))
-		{
 			Global.switchState(new TitleScreen());
+
+		if (Global.keyJustReleased(LEFT))
+			if (selectedLevel - 1 > -1)
+				selectedLevel--;
+		if (Global.keyJustReleased(RIGHT))
+			if ((selectedLevel + 1) < levelNames.length)
+				selectedLevel++;
+
+		if (psi != selectedLevel)
+		{
+			psi = selectedLevel;
+			try
+			{
+				levelData = Assets.getFileJsonContent('levels/$levelsFolder${levelNames[selectedLevel]}.json');
+			}
+			catch (e)
+			{
+				levelData = null;
+			}
+
+			if (levelData != null)
+			{
+				if (levelData.can_play)
+					try
+					{
+						levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/${levelNames[selectedLevel]}'));
+					}
+					catch (e)
+					{
+						levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/unknown'));
+					}
+				else
+					levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/locked'));
+
+				if (FlxG.save.data.colored_levelSelect)
+				{
+					if (levelData.port_level)
+						levelIcon.color = 0x4e0c6f;
+					if (levelData.sinco_level)
+						levelIcon.color = 0x4eb10c;
+
+					if (levelData.color != null && levelData.color.length >= 3)
+						levelIcon.color = FlxColor.fromRGB(levelData.color[0], levelData.color[1], levelData.color[2]);
+				}
+			}
 		}
 
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
@@ -343,43 +341,14 @@ class LevelSelect extends State
 
 		if (!startLevelTimer.active)
 		{
-			final psl = selectedLevel;
-			selectedLevel = -1;
-			for (icon in levelIcons.members)
+			if (levelData != null)
 			{
-				var data:LevelData;
-
-				try
+				if (FlxG.save.data.colored_levelSelect)
 				{
-					data = Assets.getFileJsonContent('levels/$levelsFolder${levelNames[icon.ID]}.json');
-				}
-				catch (e)
-				{
-					data = null;
-				}
-
-				if (data != null)
-				{
-					if (FlxG.save.data.colored_levelSelect)
-					{
-						if (data.port_level && data.sinco_level && (data.color == null || data.color.length < 3))
-							icon.color = 0x4eb10c;
-					}
-				}
-
-				if (FlxG.mouse.overlaps(icon))
-				{
-					selectedLevel = icon.ID;
-					cursor.animation.play('select');
+					if (levelData.port_level && levelData.sinco_level && (levelData.color == null || levelData.color.length < 3))
+						levelIcon.color = 0x4eb10c;
 				}
 			}
-		}
-
-		for (crown in levelCrowns.members)
-		{
-			crown.scaleSpr();
-			if (selectedLevel == crown.ID)
-				crown.scale.set(crown.scale.x - .1, crown.scale.y - .1);
 		}
 
 		FlxG.watch.addQuick('selectedLevel', selectedLevel);
