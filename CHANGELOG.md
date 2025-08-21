@@ -1,4 +1,6 @@
 # Final
+## 2.0 (Addon 1) - 8/21/2025
+
 ## 1.0.1 - 8/21/2025
 ### Added
 - More credits have been added
