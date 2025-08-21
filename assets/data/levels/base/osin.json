@@ -6,7 +6,5 @@
 
         "can_play_message": "Osin",
 
-        "color": [144, 12, 45],
-
-        "added_version": "2.0b"
+        "color": [144, 12, 45]
 }
