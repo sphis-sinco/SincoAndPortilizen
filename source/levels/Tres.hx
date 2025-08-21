@@ -234,7 +234,7 @@ class Tres extends PausableState
 
 			enemyAttacking = true;
 			tdm2.animation.play('attack-pre');
-			FlxTween.tween(tdm2, {x: tdm2.width / 3}, (1 / 6) * 6, {
+			FlxTween.tween(tdm2, {x: #if !MOBILE_BUILD tdm2.width / 3 #else tdm2.width / 2 #end}, (1 / 6) * 6, {
 				ease: FlxEase.smoothStepInOut,
 				onComplete: tween ->
 				{

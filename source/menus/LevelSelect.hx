@@ -65,6 +65,9 @@ class LevelSelect extends State
 		crown.loadGraphic(Assets.getImagePath('levelSelect/crown'));
 
 		levelIcon.screenCenter(XY);
+		#if MOBILE_BUILD
+		levelIcon.x -= levelIcon.width / 2;
+		#end
 		levelIcon.y -= levelIcon.height * (#if MOBILE_BUILD 2 #else 1 #end);
 
 		crown.setPosition(levelIcon.x, levelIcon.y);
