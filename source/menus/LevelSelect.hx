@@ -100,6 +100,7 @@ class LevelSelect extends State
 		{
 			if (!startLevelTimer.active && selectedLevel > -1)
 			{
+				levelIcon.justReleased_soundPlay = false;
 				sinco.animation.play('notpicked');
 				port.animation.play('notpicked');
 				if (levelData == null)
