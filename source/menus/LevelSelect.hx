@@ -275,13 +275,15 @@ class LevelSelect extends State
 
 		directional_left.justReleased.add(() ->
 		{
-			if (selectedLevel - 1 > -1)
-				selectedLevel--;
+			if (!startLevelTimer.active && selectedLevel > -1)
+				if (selectedLevel - 1 > -1)
+					selectedLevel--;
 		});
 		directional_right.justReleased.add(() ->
 		{
-			if ((selectedLevel + 1) < levelNames.length)
-				selectedLevel++;
+			if (!startLevelTimer.active && selectedLevel > -1)
+				if ((selectedLevel + 1) < levelNames.length)
+					selectedLevel++;
 		});
 
 		#if MOBILE_BUILD
@@ -314,11 +316,13 @@ class LevelSelect extends State
 			Global.switchState(new LevelFolderSelect());
 
 		if (Global.keyJustReleased(LEFT))
-			if (selectedLevel - 1 > -1)
-				selectedLevel--;
+			if (!startLevelTimer.active && selectedLevel > -1)
+				if (selectedLevel - 1 > -1)
+					selectedLevel--;
 		if (Global.keyJustReleased(RIGHT))
-			if ((selectedLevel + 1) < levelNames.length)
-				selectedLevel++;
+			if (!startLevelTimer.active && selectedLevel > -1)
+				if ((selectedLevel + 1) < levelNames.length)
+					selectedLevel++;
 
 		if (psi != selectedLevel)
 		{
