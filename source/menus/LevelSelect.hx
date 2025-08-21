@@ -97,41 +97,28 @@ class LevelSelect extends State
 		{
 			if (!startLevelTimer.active && selectedLevel > -1)
 			{
-				var data:LevelData;
-
-				try
-				{
-					data = Assets.getFileJsonContent('levels/$levelsFolder${levelNames[selectedLevel]}.json');
-				}
-				catch (e)
-				{
-					data = null;
-				}
-
 				sinco.animation.play('notpicked');
 				port.animation.play('notpicked');
-				if (data == null)
+				if (levelData == null)
 					flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
 				else
 				{
-					if (!data.can_play)
-						flashMessage('Can\'t play');
+					if (!levelData.can_play)
+					{
+						if (levelData.cant_play_message != null)
+							flashMessage(levelData.cant_play_message);
+						else
+							flashMessage('Can\'t play');
+					}
 					else
 					{
-						if (data.port_level)
+						if (levelData.port_level)
 							port.animation.play('picked');
-						if (data.sinco_level)
+						if (levelData.sinco_level)
 							sinco.animation.play('picked');
 
-						switch (levelNames[selectedLevel].toLowerCase())
-						{
-							case 'string-quest':
-								flashMessage('String Quest');
-							case 'osin':
-								flashMessage('Vs Osin');
-							case 'tres':
-								flashMessage('Tres');
-						}
+						if (levelData.can_play_message != null)
+							flashMessage(levelData.can_play_message);
 
 						Global.playSoundEffect('blipSelect');
 
@@ -142,8 +129,7 @@ class LevelSelect extends State
 							{
 								case 'string-quest': Global.switchState(new StringQuest());
 								case 'osin': Global.switchState(new Osin());
-								case 'tres':
-									Global.switchState(new Tres());
+								case 'tres': Global.switchState(new Tres());
 							}
 						});
 					}

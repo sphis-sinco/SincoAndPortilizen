@@ -4,5 +4,7 @@
 
         "can_play": true,
 
+        "can_play_message": "Osin",
+
         "color": [144, 12, 45]
 }

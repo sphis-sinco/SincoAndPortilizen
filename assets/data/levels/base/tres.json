@@ -4,5 +4,7 @@
 
         "can_play": true,
 
+        "can_play_message": "Tres",
+
         "color": [243, 111, 78]
 }

@@ -8,4 +8,7 @@ typedef LevelData =
 
 	var ?color:Array<Int>;
 	var ?hover_color:Array<Int>;
+
+	var ?can_play_message:String;
+	var ?cant_play_message:String;
 }
