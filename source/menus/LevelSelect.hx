@@ -33,6 +33,9 @@ class LevelSelect extends State
 
 	public var selectedLevel:Int = 0;
 
+	public var directional_left:InteractableSpr;
+	public var directional_right:InteractableSpr;
+
 	override public function new(beatLvl:Bool = false)
 	{
 		super();
@@ -252,7 +255,38 @@ class LevelSelect extends State
 		if (Global.previousState == 'Tres')
 			Global.fadeToMusic('MenuTracks/Lado', 1.0, .25, .25);
 
+		directional_left = new InteractableSpr('mobile/directional');
+		directional_right = new InteractableSpr('mobile/directional');
+
+		directional_left.angle = -90;
+		directional_right.angle = 90;
+
+		directional_left.screenCenter(X);
+		directional_right.screenCenter(X);
+
+		directional_left.x = directional_left.width;
+		directional_right.x = FlxG.width - (directional_right.width * 4);
+
+		directional_left.y = levelIcon.y;
+		directional_right.y = levelIcon.y;
+
+		directional_left.desiredPosition = directional_left.getPosition();
+		directional_right.desiredPosition = directional_right.getPosition();
+
+		directional_left.justReleased.add(() ->
+		{
+			if (selectedLevel - 1 > -1)
+				selectedLevel--;
+		});
+		directional_right.justReleased.add(() ->
+		{
+			if ((selectedLevel + 1) < levelNames.length)
+				selectedLevel++;
+		});
+
 		#if MOBILE_BUILD
+		add(directional_left);
+		add(directional_right);
 		add(new backend.mobile.BackButton(new LevelFolderSelect()));
 		#end
 	}

@@ -1,7 +1,5 @@
 package menus;
 
-import flixel.util.FlxCollision;
-import flixel.input.FlxSwipe;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -12,8 +10,8 @@ class Credits extends State
 	public var creditsText:FlxTypedGroup<FlxText>;
 	public var totalSpacing:Int = 0;
 
-	public var directional_up:Spr;
-	public var directional_down:Spr;
+	public var directional_up:InteractableSpr;
+	public var directional_down:InteractableSpr;
 
 	override function create():Void
 	{
@@ -23,14 +21,9 @@ class Credits extends State
 		creditsText = new FlxTypedGroup<FlxText>();
 		add(creditsText);
 
-		directional_up = new Spr(0);
-		directional_down = new Spr(0);
+		directional_up = new InteractableSpr('mobile/directional');
+		directional_down = new InteractableSpr('mobile/directional');
 
-		directional_up.scaleSpr();
-		directional_down.scaleSpr();
-
-		directional_up.loadGraphic(Assets.getImagePath('mobile/directional'));
-		directional_down.loadGraphic(Assets.getImagePath('mobile/directional'));
 		directional_down.flipY = true;
 
 		directional_up.screenCenter();
@@ -38,6 +31,12 @@ class Credits extends State
 
 		directional_up.x = directional_up.width;
 		directional_down.x = FlxG.width - (directional_down.width * 2);
+
+		directional_up.desiredPosition = directional_up.getPosition();
+		directional_down.desiredPosition = directional_down.getPosition();
+
+		directional_up.justReleased.add(() -> scroll(SCROLL_AMOUNT));
+		directional_down.justReleased.add(() -> scroll(-SCROLL_AMOUNT));
 
 		#if MOBILE_BUILD
 		add(directional_up);
@@ -88,24 +87,11 @@ class Credits extends State
 			}
 		 */
 
-		for (button in [directional_up, directional_down])
-		{
-			button.scaleSpr();
+		directional_up.screenCenter();
+		directional_down.screenCenter();
 
-			if (FlxG.mouse.overlaps(button))
-			{
-				button.scale.set(button.scale.x - .1, button.scale.y - .1);
-
-				if (FlxG.mouse.pressed && button.visible)
-					scroll((button == directional_up) ? SCROLL_AMOUNT : -SCROLL_AMOUNT);
-			}
-
-			directional_up.screenCenter();
-			directional_down.screenCenter();
-
-			directional_up.x = 32;
-			directional_down.x = FlxG.width - directional_down.width - 32;
-		}
+		directional_up.x = 32;
+		directional_down.x = FlxG.width - directional_down.width - 32;
 	}
 
 	public var SCROLL_AMOUNT:Float = 10.0;

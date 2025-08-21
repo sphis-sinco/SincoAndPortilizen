@@ -18,7 +18,7 @@ class FolderSpr extends FlxSpriteGroup
 
 		this.folder = folder;
 
-		final scaleOffset = -2;
+		final scaleOffset = #if MOBILE_BUILD 0 #else (-2) #end;
 
 		folder_label = new Spr(scaleOffset);
 		folder_front = new Spr(scaleOffset);
@@ -70,7 +70,11 @@ class FolderSpr extends FlxSpriteGroup
 		folder_front.scale.set(file.scale.x, file.scale.y);
 		folder_back.scale.set(file.scale.x, file.scale.y);
 
-		folder_back.setPosition(file.x + (folder_back.width / 2), file.y + (folder_back.height / 2));
+		final divisionValue = #if MOBILE_BUILD 1 #else 2 #end;
+		final additionValue = #if MOBILE_BUILD 64 #else 0 #end;
+
+		folder_back.setPosition(file.x + (folder_back.width / divisionValue) + additionValue,
+			file.y + (folder_back.height / divisionValue) + additionValue);
 		folder_front.setPosition(folder_back.x, folder_back.y);
 		folder_label.setPosition(folder_front.x, folder_front.y);
 	}

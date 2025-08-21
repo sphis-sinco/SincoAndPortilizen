@@ -36,6 +36,7 @@ class LevelFolderSelect extends State
 		add(cursor);
 
 		#if MOBILE_BUILD
+		cursor.visible = false;
 		add(new backend.mobile.BackButton(new TitleScreen()));
 		#end
 	}
