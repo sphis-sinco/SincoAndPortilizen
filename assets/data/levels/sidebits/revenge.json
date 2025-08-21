@@ -1,0 +1,8 @@
+{
+        "port_level": true,
+        "sinco_level": false,
+
+        "can_play": true,
+
+        "color": [12, 45, 12]
+}
