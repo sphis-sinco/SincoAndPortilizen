@@ -122,6 +122,26 @@ class Global
 			d.discord_rpc = true;
 		if (d.levels_complete == null)
 			d.levels_complete = [];
+		else
+		{
+			//  backwards compatability
+
+			if (d.levels_complete.contains(1))
+			{
+				d.levels_complete.remove(1);
+				d.levels_complete.push('string-quest');
+			}
+			if (d.levels_complete.contains(2))
+			{
+				d.levels_complete.remove(2);
+				d.levels_complete.push('osin');
+			}
+			if (d.levels_complete.contains(3))
+			{
+				d.levels_complete.remove(3);
+				d.levels_complete.push('tres');
+			}
+		}
 		if (d.medals == null)
 			d.medals = [];
 		if (d.colored_levelSelect == null)
@@ -296,7 +316,7 @@ class Global
 	}
 
 	/* ───────────────────────────── Progress / WebSave ────────────────────────── */
-	public static function beatLevel(lvl:Int = 1):Void
+	public static function beatLevel(lvl:String = ''):Void
 	{
 		#if !html5
 		if (!FlxG.save.data.levels_complete.contains(lvl))

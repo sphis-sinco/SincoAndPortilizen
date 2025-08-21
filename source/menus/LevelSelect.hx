@@ -67,7 +67,7 @@ class LevelSelect extends State
 
 			try
 			{
-				data = Assets.getFileJsonContent('levels/${levelNames[i]}.json');
+				data = Assets.getFileJsonContent('levels/$levelsFolder${levelNames[i]}.json');
 			}
 			catch (e)
 			{
@@ -120,9 +120,9 @@ class LevelSelect extends State
 			levelIcon.ID = i;
 
 			#if !html5
-			crown.visible = FlxG.save.data.levels_complete.contains(i + 1);
+			crown.visible = FlxG.save.data.levels_complete.contains(levelNames[i]);
 			#else
-			crown.visible = WebSave.levels_complete.contains(i + 1);
+			crown.visible = WebSave.levels_complete.contains(levelNames[i]);
 			#end
 
 			levelIcon.overlap.add(() ->

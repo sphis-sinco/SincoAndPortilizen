@@ -1,5 +1,7 @@
 # Final
 ## 2.0 (Addon 1) - 8/21/2025
+### Changed
+- `levels_complete` is a `Dynamic` array now (for backwards compatability, it SHOULD be a `String` but..compatability)
 
 ## 1.0.1 - 8/21/2025
 ### Added
