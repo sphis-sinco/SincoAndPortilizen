@@ -77,7 +77,7 @@ class TitleScreen extends State
 		});
 		levelSelect.justReleased.add(() ->
 		{
-			Global.switchState(new LevelSelect());
+			Global.switchState(new LevelFolderSelect());
 		});
 		settings.justReleased.add(() ->
 		{

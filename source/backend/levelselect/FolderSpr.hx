@@ -1,0 +1,67 @@
+package backend.levelselect;
+
+import flixel.group.FlxSpriteGroup;
+
+class FolderSpr extends FlxSpriteGroup
+{
+        public var state:String = 'open';
+        public var folder:String = 'base';
+
+        public var folder_label:Spr;
+        public var folder_front:Spr;
+        public var file:InteractableSpr;
+        public var folder_back:Spr;
+
+	override public function new(folder:String = 'base', data:LevelFolderData)
+	{
+                super();
+
+                this.folder = folder;
+
+                final scaleOffset = -2;
+
+                folder_label = new Spr(scaleOffset);
+                folder_front = new Spr(scaleOffset);
+                file = new InteractableSpr('levelFolders/folder/$state-file');
+                file.scaleOffset = scaleOffset;
+                folder_back = new Spr(scaleOffset);
+
+                folder_label.scaleSpr();
+                folder_front.scaleSpr();
+                file.scaleSpr();
+                folder_back.scaleSpr();
+
+                folder_label.screenCenter();
+                folder_front.screenCenter();
+                file.screenCenter();
+                folder_back.screenCenter();
+
+                folder_label.color = FlxColor.fromRGB(data.folder_color[0], data.folder_color[1], data.folder_color[2]);
+                folder_front.color = FlxColor.fromRGB(data.folder_color[0], data.folder_color[1], data.folder_color[2]);
+                file.color = FlxColor.fromRGB(data.file_color[0], data.file_color[1], data.file_color[2]);
+                folder_back.color = FlxColor.fromRGB(data.folder_color[0], data.folder_color[1], data.folder_color[2]);
+
+                add(folder_back);
+                add(file);
+                add(folder_front);
+                add(folder_label);
+                file.desiredPosition = file.getPosition();
+	}
+
+        override function update(elapsed:Float) {
+                super.update(elapsed);
+
+                folder_label.loadGraphic(Assets.getImagePath('levelFolders/$folder-$state'));
+                folder_front.loadGraphic(Assets.getImagePath('levelFolders/folder/$state'));
+                file.loadGraphic(Assets.getImagePath('levelFolders/folder/$state-file'));
+                folder_back.loadGraphic(Assets.getImagePath('levelFolders/folder/$state-back'));
+
+                folder_label.scale.set(file.scale.x, file.scale.y);
+                folder_front.scale.set(file.scale.x, file.scale.y);
+                folder_back.scale.set(file.scale.x, file.scale.y);
+
+                folder_back.setPosition(file.x + (folder_back.width / 2), file.y + (folder_back.height / 2));
+                folder_front.setPosition(folder_back.x, folder_back.y);
+                folder_label.setPosition(folder_front.x, folder_front.y);
+        }
+}
