@@ -286,6 +286,9 @@ class LevelSelect extends State
 					selectedLevel++;
 		});
 
+		directional_left.justReleased_soundPlay = false;
+		directional_right.justReleased_soundPlay = false;
+
 		#if MOBILE_BUILD
 		add(directional_left);
 		add(directional_right);

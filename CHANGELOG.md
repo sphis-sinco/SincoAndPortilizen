@@ -6,6 +6,7 @@
 ### Fixed
 - On mobile you can no longer avoid attacks by staying in a specific region
 ### Changed
+- On mobile there are less bullets spawned max in Tres (from 50 to 30)
 - The Level Select now only has one level icon
 - `levels_complete` is a `Dynamic` array now (for backwards compatability, it SHOULD be a `String` but..compatability)
 

@@ -239,7 +239,7 @@ class Tres extends PausableState
 				onComplete: tween ->
 				{
 					tdm2.animation.play('attack');
-					var ogammoCount:Int = FlxG.random.int(#if MOBILE_BUILD 20, 50 #else 5, 20 #end);
+					var ogammoCount:Int = FlxG.random.int(#if MOBILE_BUILD 20, 30 #else 5, 20 #end);
 					var ammoCount:Int = ogammoCount;
 
 					while (ammoCount > 0)
