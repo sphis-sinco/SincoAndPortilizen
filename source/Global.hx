@@ -360,12 +360,20 @@ class Global
 			FlxG.save.data.medals.push(medal);
 			trace('Unlocked ${medal} into the Save data');
 		}
+		else
+		{
+			trace('${medal} already unlocked in the Save data');
+		}
 		#end
 
 		if (!WebSave.medals.contains(medal))
 		{
 			trace('Unlocked ${medal} into WebSave');
 			WebSave.medals.push(medal);
+		}
+		else
+		{
+			trace('${medal} already unlocked in WebSave');
 		}
 
 		try
