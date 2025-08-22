@@ -15,6 +15,12 @@ class PausableState extends State
 
 	var builtInPausing:Bool = false;
 
+	public var icon_left:Spr;
+	public var icon_right:Spr;
+
+	public var icon_left_id:Null<String> = null;
+	public var icon_right_id:Null<String> = null;
+
 	override public function new(builtInPausing:Bool = true):Void
 	{
 		this.builtInPausing = builtInPausing;
