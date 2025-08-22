@@ -65,7 +65,7 @@ class PausableState extends State
 		FlxTimer.globalManager.active = !paused;
 
 		if (behindPauseButtonLayer.members.contains(backButton))
-			backButton.visible  = true;
+			backButton.visible = true;
 
 		super.update(elapsed);
 	}
@@ -82,6 +82,17 @@ class PausableState extends State
 			behindPauseButtonLayer.members.remove(overlay);
 			backButton.destroy();
 			behindPauseButtonLayer.members.remove(backButton);
+
+			if (icon_left_id != null)
+			{
+				icon_left.destroy();
+				behindPauseButtonLayer.members.remove(icon_left);
+			}
+			if (icon_right_id != null)
+			{
+				icon_right.destroy();
+				behindPauseButtonLayer.members.remove(icon_right);
+			}
 		}
 		else
 		{
@@ -93,6 +104,26 @@ class PausableState extends State
 			pauseText.alignment = 'center';
 			pauseText.screenCenter(XY);
 			behindPauseButtonLayer.add(pauseText);
+
+			if (icon_left_id != null)
+			{
+				icon_left = new Spr(-2);
+				icon_left.loadGraphic(Assets.getImagePath('pauseScreen/icons/$icon_left_id'));
+				icon_left.screenCenter();
+				icon_left.x -= icon_left.width;
+
+				behindPauseButtonLayer.add(icon_left);
+			}
+
+			if (icon_right_id != null)
+			{
+				icon_right = new Spr(-2);
+				icon_right.loadGraphic(Assets.getImagePath('pauseScreen/icons/$icon_right_id'));
+				icon_right.screenCenter();
+				icon_right.x += icon_right.width;
+
+				behindPauseButtonLayer.add(icon_right);
+			}
 
 			#if MOBILE_BUILD
 			pauseText.text = 'PAUSED\n\nTap the back button to go to the Level Select';
@@ -109,7 +140,7 @@ class PausableState extends State
 
 				Global.switchState(new LevelSelect());
 			});
-			backButton.visible  = false;
+			backButton.visible = false;
 			behindPauseButtonLayer.add(backButton);
 			#end
 		}
