@@ -86,7 +86,13 @@ class TitleScreen extends State
 
 		Global.changeDiscordRPCPresence('', 'Title Screen');
 
-		add(new FlxText(3, FlxG.height - #if !MOBILE_BUILD 32 #else 64 #end, FlxG.width, 'v${Global.VERSION} (b${Global.BUILD})',
+		var watermarkText = 'v${Global.VERSION}';
+		#if NEWGROUNDS
+		watermarkText += '-NG';
+		#end
+		watermarkText += ' (b${Global.BUILD})';
+
+		add(new FlxText(3, FlxG.height - #if !MOBILE_BUILD 32 #else 64 #end, FlxG.width, watermarkText,
 			#if !MOBILE_BUILD 16 #else 32 #end));
 		add(cursor);
 	}

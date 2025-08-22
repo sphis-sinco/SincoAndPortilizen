@@ -7,6 +7,10 @@ import openfl.events.UncaughtErrorEvent;
 
 class Main extends openfl.display.Sprite
 {
+	#if NEWGROUNDS
+	public static var NG:NGio;
+	#end
+
 	public function new():Void
 	{
 		// Set the current working directory for Android and iOS devices
@@ -14,8 +18,8 @@ class Main extends openfl.display.Sprite
 		// On Android use External Files Dir.
 		Sys.setCwd(haxe.io.Path.addTrailingSlash(extension.androidtools.content.Context.getExternalFilesDir()));
 		/*#elseif ios
-		// On iOS use Documents Dir.
-		Sys.setCwd(haxe.io.Path.addTrailingSlash(lime.system.System.documentsDirectory));*/
+			// On iOS use Documents Dir.
+			Sys.setCwd(haxe.io.Path.addTrailingSlash(lime.system.System.documentsDirectory)); */
 		#end
 
 		#if CRASH_HANDLER
@@ -47,6 +51,10 @@ class Main extends openfl.display.Sprite
 		{
 			FlxG.save.flush();
 		}, true);
+
+		#if NEWGROUNDS
+		NG = new NGio(Credentials.APP_ID, Credentials.ENCRYPTION_KEY, Credentials.SESSION_ID);
+		#end
 
 		super();
 		addChild(new FlxGame(0, 0, InitState));
