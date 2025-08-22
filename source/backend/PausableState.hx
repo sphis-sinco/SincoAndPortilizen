@@ -110,23 +110,24 @@ class PausableState extends State
 
 			if (icon_left_id != null)
 			{
-				icon_left = new Spr((icon_left_id == MedalStrings.TRES) ? 0 : -2);
+				icon_left = new Spr(-2);
 				icon_left.loadGraphic(Assets.getImagePath('pauseScreen/icons/$icon_left_id'));
 				icon_left.scaleSpr();
 				icon_left.screenCenter();
-				icon_left.x -= icon_left.width / 2;
+				icon_left.x = icon_left.width / 2;
 
 				behindPauseButtonLayer.add(icon_left);
 			}
 
 			if (icon_right_id != null)
 			{
-				icon_right = new Spr((icon_right_id == MedalStrings.TRES) ? 0 : -2);
+				icon_right = new Spr(-2);
 				icon_right.loadGraphic(Assets.getImagePath('pauseScreen/icons/$icon_right_id'));
-				icon_right.flipX = (icon_right_id == MedalStrings.TRES) ? false : true;
+				icon_right.flipX = true;
 				icon_right.scaleSpr();
 				icon_right.screenCenter();
-				icon_right.x += icon_right.width / 2;
+				icon_right.x = FlxG.width;
+				icon_right.x -= icon_right.width * 1.5;
 
 				behindPauseButtonLayer.add(icon_right);
 			}
