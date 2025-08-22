@@ -9,6 +9,8 @@ class TitleScreen extends State
 	public var logo:Spr;
 	public var logoSuffixes:Array<String> = ['', '-dj', '-paul'];
 
+	public static var logoSuffix:String = '';
+
 	public var levelSelect:InteractableSpr;
 	public var settings:InteractableSpr;
 	public var creditsButton:InteractableSpr;
@@ -19,8 +21,11 @@ class TitleScreen extends State
 	{
 		super.create();
 
+		if (Global.previousState != 'TitleScreen')
+			logoSuffix = logoSuffixes[FlxG.random.int(0, logoSuffixes.length - 1)];
+
 		logo = new Spr(#if !MOBILE_BUILD (-3) #else (-2) #end);
-		logo.loadGraphic(Assets.getImagePath('title/logo${logoSuffixes[FlxG.random.int(0, logoSuffixes.length - 1)]}'));
+		logo.loadGraphic(Assets.getImagePath('title/logo$logoSuffix'));
 		logo.scaleSpr();
 		logo.screenCenter();
 		logo.y -= logo.height / 4;

@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxSignal;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.group.FlxSpriteGroup;
@@ -103,6 +104,41 @@ class Global
 	public static var SAVE_SLOT_PREFIX:String = 'SAP';
 	public static var SAVE_SLOT_SUFFIX:Dynamic = 1;
 
+	public static function SAVE_BACKWARDS_COMPATABILITY():Void
+	{
+		try
+		{
+			//  backwards compatability
+			if (FlxG.save.data.levels_complete.contains(1))
+			{
+				FlxG.save.data.levels_complete.remove(1);
+				Global.beatLevel(MedalStrings.STRING_QUEST);
+			}
+			if (FlxG.save.data.levels_complete.contains(2))
+			{
+				FlxG.save.data.levels_complete.remove(2);
+				Global.beatLevel(MedalStrings.OSIN);
+			}
+			if (FlxG.save.data.levels_complete.contains(3))
+			{
+				FlxG.save.data.levels_complete.remove(3);
+				Global.beatLevel(MedalStrings.TRES);
+			}
+
+			if (FlxG.save.data.levels_complete.contains(MedalStrings.STRING_QUEST)
+				|| FlxG.save.data.medals.contains(MedalStrings.STRING_QUEST))
+				Global.unlockMedal(MedalStrings.STRING_QUEST, MedalIDS.STRING_QUEST);
+			if (FlxG.save.data.levels_complete.contains(MedalStrings.OSIN) || FlxG.save.data.medals.contains(MedalStrings.OSIN))
+				Global.unlockMedal(MedalStrings.OSIN, MedalIDS.OSIN);
+			if (FlxG.save.data.levels_complete.contains(MedalStrings.TRES) || FlxG.save.data.medals.contains(MedalStrings.TRES))
+				Global.unlockMedal(MedalStrings.TRES, MedalIDS.TRES);
+
+			if (FlxG.save.data.medals.contains(MedalStrings.PROGRAMMER))
+				Global.unlockMedal(MedalStrings.PROGRAMMER, MedalIDS.PROGRAMMER);
+		}
+		catch (_:Dynamic) {}
+	}
+
 	/**
 	 * Bind a new save slot and ensure default keys exist.
 	 * @param slotsuffix e.g. profile index (1..N) or string tag
@@ -122,31 +158,12 @@ class Global
 			d.discord_rpc = true;
 		if (d.levels_complete == null)
 			d.levels_complete = [];
-		else
-		{
-			//  backwards compatability
-
-			if (d.levels_complete.contains(1))
-			{
-				d.levels_complete.remove(1);
-				d.levels_complete.push('string-quest');
-			}
-			if (d.levels_complete.contains(2))
-			{
-				d.levels_complete.remove(2);
-				d.levels_complete.push('osin');
-			}
-			if (d.levels_complete.contains(3))
-			{
-				d.levels_complete.remove(3);
-				d.levels_complete.push('tres');
-			}
-		}
 		if (d.medals == null)
 			d.medals = [];
 		if (d.colored_levelSelect == null)
 			d.colored_levelSelect = false;
 
+		SAVE_BACKWARDS_COMPATABILITY();
 		// Persist immediately to avoid data loss if the app closes early
 		try
 			FlxG.save.flush()
@@ -325,6 +342,39 @@ class Global
 
 		if (!WebSave.levels_complete.contains(lvl))
 			WebSave.levels_complete.push(lvl);
+
+		try
+			FlxG.save.flush()
+		catch (_:Dynamic) {}
+	}
+
+	public static function unlockMedal(medal:String = '', ngID:Int = 0):Void
+	{
+		#if NEWGROUNDS
+		NGio.unlockMedal(ngID);
+		#end
+
+		#if !html5
+		if (!FlxG.save.data.medals.contains(medal))
+		{
+			FlxG.save.data.medals.push(medal);
+			trace('Unlocked ${medal} into the Save data');
+		}
+		else
+		{
+			trace('${medal} already unlocked in the Save data');
+		}
+		#end
+
+		if (!WebSave.medals.contains(medal))
+		{
+			trace('Unlocked ${medal} into WebSave');
+			WebSave.medals.push(medal);
+		}
+		else
+		{
+			trace('${medal} already unlocked in WebSave');
+		}
 
 		try
 			FlxG.save.flush()
