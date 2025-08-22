@@ -1,3 +1,12 @@
+# NEWGROUNDS
+- This adds the `NEWGROUNDS_SPLASH` and `NEWGROUNDS_MEDALS` flags
+
+# NEWGROUNDS_**
+## NEWGROUNDS_SPLASH
+- This adds tankman to the splash
+## NEWGROUNDS_MEDALS
+- This adds support for the newgrounds medals
+
 # MOBILE_**
 ## MOBILE_TESTING
 - This tells the game that you're on mobile (you can just define this on desktop tho)

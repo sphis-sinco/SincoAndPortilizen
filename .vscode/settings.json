@@ -11,7 +11,7 @@
     {
       "label": "Hashlink / Debug (Newgrounds)",
       "target": "hl",
-      "args": ["-debug", "-DFEATURE_NEWGROUNDS"]
+      "args": ["-debug", "-D NEWGROUNDS"]
     }
   ]
 }

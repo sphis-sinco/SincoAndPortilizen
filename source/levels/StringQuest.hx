@@ -125,6 +125,9 @@ class StringQuest extends PausableState
 			FlxTimer.wait(timeStart, () ->
 			{
 				Global.beatLevel('string-quest');
+				#if NEWGROUNDS
+				NGio.unlockMedal(86130);
+				#end
 				Global.switchState(new LevelSelect(true));
 			});
 		}
