@@ -13,6 +13,7 @@ import sys.io.File;
 import Discord.DiscordClient;
 #end
 #if NEWGROUNDS
+import io.newgrounds.NG;
 import backend.newgrounds.NGio;
 import backend.newgrounds.Credentials;
 #end

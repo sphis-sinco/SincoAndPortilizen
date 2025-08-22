@@ -87,13 +87,26 @@ class TitleScreen extends State
 		Global.changeDiscordRPCPresence('', 'Title Screen');
 
 		var watermarkText = 'v${Global.VERSION}';
-		#if NEWGROUNDS
-		watermarkText += '-NG';
-		#end
 		watermarkText += ' (b${Global.BUILD})';
 
-		add(new FlxText(3, FlxG.height - #if !MOBILE_BUILD 32 #else 64 #end, FlxG.width, watermarkText,
-			#if !MOBILE_BUILD 16 #else 32 #end));
+		#if NEWGROUNDS
+		watermarkText += ' | Newgrounds: ';
+
+		try
+		{
+			if (NGio.isLoggedIn)
+				watermarkText += 'Logged in as ${NG.core.user.name}';
+			else
+				watermarkText += 'Not logged in';
+		}
+		catch (e)
+		{
+			trace(e);
+			watermarkText += 'Login check error: ${e.message}';
+		}
+		#end
+
+		add(new FlxText(3, FlxG.height - #if !MOBILE_BUILD 32 #else 64 #end, FlxG.width, watermarkText, #if !MOBILE_BUILD 16 #else 32 #end));
 		add(cursor);
 	}
 
