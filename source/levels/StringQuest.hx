@@ -42,8 +42,8 @@ class StringQuest extends PausableState
 	{
 		super.create();
 
-		icon_left_id = 'string-quest'; // MedalStrings.STRING_QUEST;
-		icon_left_id = 'port';
+		icon_left_id = MedalStrings.STRING_QUEST;
+		icon_right_id = 'port';
 
 		levelBlocks = new FlxTypedGroup<Spr>();
 		add(levelBlocks);
