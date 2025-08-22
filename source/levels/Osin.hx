@@ -37,6 +37,9 @@ class Osin extends PausableState
 		super.create();
 		add(Global.dummyBG([12, 12, 45]));
 
+		icon_left_id = MedalStrings.OSIN;
+		icon_right_id = 'sinco';
+		
 		levelTiles = new FlxTypedGroup<Spr>();
 		add(levelTiles);
 

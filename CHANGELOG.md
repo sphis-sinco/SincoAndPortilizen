@@ -1,6 +1,9 @@
 # Final
-## 2.0 - 8/22/2025
+## 2.0 (Addon 1) - 8/22/2025
+### Fixed 
+- Crash on non-mobile devices when unpausing in a level
 ### Added
+- Pause Screen Icons
 - Medal Unlocking if you already beat some levels
 - Medals (Newgrounds, no medal menu yet)
 - Newgrounds API Support

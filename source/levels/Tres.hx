@@ -46,6 +46,8 @@ class Tres extends PausableState
 		super.create();
 		add(Global.dummyBG([12, 12, 45]));
 
+		icon_right_id = MedalStrings.TRES;
+
 		tdm2 = new Spr(#if MOBILE_BUILD 1 #else - 1 #end);
 		tdm2.loadGraphic(Assets.getImagePath('tres/TDM2'), true, 320, 204);
 		tdm2.animation.add('idle', [0]);
@@ -169,11 +171,13 @@ class Tres extends PausableState
 			switch (selectedHero)
 			{
 				case 0:
+					icon_left_id = 'sinco';
 					sinco.x += (((sincoSCPos.x + playerPos.x) - sinco.x) / setPosSpeed);
 					sinco.y += (((sincoSCPos.y + playerPos.y) - sinco.y) / setPosSpeed);
 					port.x += ((portRPos.x - port.x) / setPosSpeed);
 					port.y += ((portRPos.y - port.y) / setPosSpeed);
 				case 1:
+					icon_left_id = 'port';
 					sinco.x += ((sincoRPos.x - sinco.x) / setPosSpeed);
 					sinco.y += ((sincoRPos.y - sinco.y) / setPosSpeed);
 					port.x += (((portSCPos.x + playerPos.x) - port.x) / setPosSpeed);

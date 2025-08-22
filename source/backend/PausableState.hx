@@ -15,6 +15,12 @@ class PausableState extends State
 
 	var builtInPausing:Bool = false;
 
+	public var icon_left:Spr;
+	public var icon_right:Spr;
+
+	public var icon_left_id:Null<String> = null;
+	public var icon_right_id:Null<String> = null;
+
 	override public function new(builtInPausing:Bool = true):Void
 	{
 		this.builtInPausing = builtInPausing;
@@ -59,7 +65,7 @@ class PausableState extends State
 		FlxTimer.globalManager.active = !paused;
 
 		if (behindPauseButtonLayer.members.contains(backButton))
-			backButton.visible  = true;
+			backButton.visible = true;
 
 		super.update(elapsed);
 	}
@@ -74,8 +80,22 @@ class PausableState extends State
 			behindPauseButtonLayer.members.remove(pauseText);
 			overlay.destroy();
 			behindPauseButtonLayer.members.remove(overlay);
-			backButton.destroy();
-			behindPauseButtonLayer.members.remove(backButton);
+			if (backButton != null)
+			{
+				backButton.destroy();
+				behindPauseButtonLayer.members.remove(backButton);
+			}
+
+			if (icon_left_id != null)
+			{
+				icon_left.destroy();
+				behindPauseButtonLayer.members.remove(icon_left);
+			}
+			if (icon_right_id != null)
+			{
+				icon_right.destroy();
+				behindPauseButtonLayer.members.remove(icon_right);
+			}
 		}
 		else
 		{
@@ -87,6 +107,30 @@ class PausableState extends State
 			pauseText.alignment = 'center';
 			pauseText.screenCenter(XY);
 			behindPauseButtonLayer.add(pauseText);
+
+			if (icon_left_id != null)
+			{
+				icon_left = new Spr(#if MOBILE_BUILD (-2) #else (-3) #end);
+				icon_left.loadGraphic(Assets.getImagePath('pauseScreen/icons/$icon_left_id'));
+				icon_left.scaleSpr();
+				icon_left.screenCenter();
+				icon_left.x = icon_left.width / #if MOBILE_BUILD 2 #else 10 #end;
+
+				behindPauseButtonLayer.add(icon_left);
+			}
+
+			if (icon_right_id != null)
+			{
+				icon_right = new Spr(#if MOBILE_BUILD (-2) #else (-3) #end);
+				icon_right.loadGraphic(Assets.getImagePath('pauseScreen/icons/$icon_right_id'));
+				icon_right.flipX = true;
+				icon_right.scaleSpr();
+				icon_right.screenCenter();
+				icon_right.x = FlxG.width;
+				icon_right.x -= icon_right.width * #if MOBILE_BUILD 1.5 #else 1 #end;
+
+				behindPauseButtonLayer.add(icon_right);
+			}
 
 			#if MOBILE_BUILD
 			pauseText.text = 'PAUSED\n\nTap the back button to go to the Level Select';
@@ -103,7 +147,7 @@ class PausableState extends State
 
 				Global.switchState(new LevelSelect());
 			});
-			backButton.visible  = false;
+			backButton.visible = false;
 			behindPauseButtonLayer.add(backButton);
 			#end
 		}
