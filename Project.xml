@@ -19,6 +19,10 @@
         <define name="MOBILE_BUILD" if="mobile" />
         <define name="MOBILE_BUILD" if="MOBILE_TESTING" />
 
+        <!-- Newgrounds~ -->
+        <define name="NEWGROUNDS_SPLASH" if="NEWGROUNDS"/>
+        <define name="NEWGROUNDS_MEDALS" if="NEWGROUNDS"/>
+
         <!-- ____________________________ Window Settings ___________________________ -->
 
         <!--These
