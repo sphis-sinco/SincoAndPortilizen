@@ -54,7 +54,7 @@ class Main extends openfl.display.Sprite
 
 		#if NEWGROUNDS
 		NG = new NGio(Credentials.APP_ID, Credentials.ENCRYPTION_KEY, Credentials.SESSION_ID);
-		// io.newgrounds.NG.core.verbose = false;
+		io.newgrounds.NG.core.verbose = false;
 		io.newgrounds.NG.core.log = function(any:Dynamic, ?pos:haxe.PosInfos):Void
 		{
 			FlxG.log.add('[Newgrounds API / ${pos.fileName}:${pos.lineNumber} ] :: ${any}');
