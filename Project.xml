@@ -23,7 +23,7 @@
         <define name="NEWGROUNDS_SPLASH" if="NEWGROUNDS"/>
         <define name="NEWGROUNDS_MEDALS" if="NEWGROUNDS"/>
         <error value="Compile with Windows." if="NEWGROUNDS hl"/>
-        <source path="docs/Credentials.hx" rename="source/backend/newgrounds/Credentials.hx" if="NEWGROUNDS NEWGROUNDS_GIT"/>
+        <prebuild haxe="source/Prebuild.hx" if="NEWGROUNDS NEWGROUNDS_GIT"/>
 
         <!-- ____________________________ Window Settings ___________________________ -->
 
