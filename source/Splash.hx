@@ -53,9 +53,21 @@ class Splash extends State
 		
 		NGio.ngDataLoaded.add(() ->
 		{
-			InitState.switchToState(new menus.TitleScreen(), 'Title Screen');
+			trace('NG Data Loaded n shit');
+			// InitState.switchToState(new menus.TitleScreen(), 'Title Screen');
 		});
-		#else
+
+		
+
+		FlxTween.tween(accessPls, {alpha: 0}, 1, {
+			ease: FlxEase.sineInOut,
+			startDelay: 1
+		});
+		FlxTween.tween(tankman, {alpha: 0}, 1, {
+			ease: FlxEase.sineInOut,
+			startDelay: 1
+		});
+		#end
 
 		FlxTween.tween(splash, {alpha: 0}, 1, {
 			ease: FlxEase.sineInOut,
@@ -65,7 +77,6 @@ class Splash extends State
 		{
 			InitState.switchToState(new menus.TitleScreen(), 'Title Screen');
 		});
-		#end
 	}
 
 	override function update(elapsed:Float)
