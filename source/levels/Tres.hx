@@ -134,10 +134,8 @@ class Tres extends PausableState
 
 			FlxTimer.wait(timeStart, () ->
 			{
-				Global.beatLevel('tres');
-				#if NEWGROUNDS
-				NGio.unlockMedal(86132);
-				#end
+				Global.beatLevel(MedalStrings.TRES);
+				Global.unlockMedal(MedalStrings.TRES, MedalIDS.TRES);
 				Global.switchState(new LevelSelect(true));
 			});
 		}
