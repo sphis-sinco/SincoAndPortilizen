@@ -59,6 +59,8 @@
 
         <haxelib name="discord_rpc" if="DISCORDRPC" />
 
+        <haxelib name="newgrounds" if="NEWGROUNDS" />
+
         <!-- _________________________________ After _______________________________ -->
 
         <!-- <error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile" /> -->

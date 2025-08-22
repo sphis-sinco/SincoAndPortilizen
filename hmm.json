@@ -33,6 +33,11 @@
       "version": null
     },
     {
+      "name": "newgrounds",
+      "type": "haxelib",
+      "version": null
+    },
+    {
       "name": "sphis",
       "type": "git",
       "dir": null,
