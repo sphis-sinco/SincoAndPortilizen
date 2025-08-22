@@ -34,7 +34,7 @@ jobs:
                           run: echo "${{github.run_id}}" > VERSION
 
                         - name: Compile
-                          run: haxelib run lime build linux -D NEWGROUNDS -D NEWGROUNDS_GIT
+                          run: haxelib run lime build linux -D NEWGROUNDS
 
                         - name: Clear Previous Cache
                           uses: actions/github-script@main
@@ -83,7 +83,7 @@ jobs:
                           run: echo "${{github.run_id}}" > VERSION
 
                         - name: Compile
-                          run: haxelib run lime build windows -D NEWGROUNDS -D NEWGROUNDS_GIT
+                          run: haxelib run lime build windows -D NEWGROUNDS
 
                         - name: Clear Previous Cache
                           uses: actions/github-script@main
@@ -132,7 +132,7 @@ jobs:
                           run: echo "${{github.run_id}}" > VERSION
 
                         - name: Compile
-                          run: haxelib run lime build mac -D NEWGROUNDS -D NEWGROUNDS_GIT
+                          run: haxelib run lime build mac -D NEWGROUNDS
 
                         - name: Clear Previous Cache
                           uses: actions/github-script@main
