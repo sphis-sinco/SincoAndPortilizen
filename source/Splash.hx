@@ -50,14 +50,19 @@ class Splash extends State
 		var accessPls = new FlxText(0, 16, FlxG.width, 'Please give access to your NG account\n(Or don\'t...)', 16);
 		accessPls.alignment = 'center';
 		add(accessPls);
-		
+
 		NGio.ngDataLoaded.add(() ->
 		{
 			trace('NG Data Loaded n shit');
-			// InitState.switchToState(new menus.TitleScreen(), 'Title Screen');
-		});
 
-		
+			var accessGranted = new FlxText(0, 16, FlxG.width, 'NG account access granted!', 16);
+			accessGranted.alignment = 'center';
+			FlxG.state.add(accessGranted);
+			FlxTween.tween(accessGranted, {alpha: 0}, 1, {
+				ease: FlxEase.sineInOut,
+				startDelay: 1
+			});
+		});
 
 		FlxTween.tween(accessPls, {alpha: 0}, 1, {
 			ease: FlxEase.sineInOut,
