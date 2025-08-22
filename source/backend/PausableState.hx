@@ -80,8 +80,11 @@ class PausableState extends State
 			behindPauseButtonLayer.members.remove(pauseText);
 			overlay.destroy();
 			behindPauseButtonLayer.members.remove(overlay);
-			backButton.destroy();
-			behindPauseButtonLayer.members.remove(backButton);
+			if (backButton != null)
+			{
+				backButton.destroy();
+				behindPauseButtonLayer.members.remove(backButton);
+			}
 
 			if (icon_left_id != null)
 			{
