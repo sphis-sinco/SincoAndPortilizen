@@ -109,7 +109,7 @@ class Osin extends PausableState
 
 			FlxTimer.wait(timeStart, () ->
 			{
-				Global.beatLevel('osin');
+				Global.beatLevel(MedalStrings.OSIN);
 				Global.unlockMedal(MedalStrings.OSIN, MedalIDS.OSIN);
 				Global.switchState(new LevelSelect(true));
 			});
