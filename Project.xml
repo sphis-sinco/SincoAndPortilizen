@@ -22,6 +22,7 @@
         <!-- Newgrounds~ -->
         <define name="NEWGROUNDS_SPLASH" if="NEWGROUNDS"/>
         <define name="NEWGROUNDS_MEDALS" if="NEWGROUNDS"/>
+        <error value="Compile with Windows." if="NEWGROUNDS hl"/>
 
         <!-- ____________________________ Window Settings ___________________________ -->
 
