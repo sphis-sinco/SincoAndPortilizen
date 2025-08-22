@@ -84,7 +84,7 @@ class NGio
 		// Load Scoreboards hten call onNGBoardsFetch()
 		NG.core.scoreBoards.loadList(outcome ->
 		{
-			onNGBoardsFetch();
+			// onNGBoardsFetch();
 		});
 
 		ngDataLoaded.dispatch();
@@ -175,12 +175,16 @@ class NGio
 
 	inline static public function unlockMedal(id:Int)
 	{
+		#if NEWGROUNDS_MEDALS
 		if (isLoggedIn)
 		{
 			var medal = NG.core.medals.get(id);
 			if (!medal.unlocked)
 				medal.sendUnlock();
 		}
+		#else
+		trace('NEWGROUNDS_MEDALS isn\'t enabled');
+		#end
 	}
 }
 #end

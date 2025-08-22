@@ -31,6 +31,32 @@ class Splash extends State
 
 		Global.playSoundEffect('splash');
 
+		#if NEWGROUNDS
+		#if NEWGROUNDS_SPLASH
+		splash.scaleOffset = -3;
+		splash.scaleSpr();
+		splash.screenCenter();
+		splash.x -= splash.width / 2;
+		var tankman:Spr;
+
+		tankman = new Spr(-3);
+		tankman.loadGraphic(Assets.getImagePath('splash-tank'));
+		tankman.scaleSpr();
+		tankman.screenCenter();
+		tankman.x += tankman.width / 2;
+		add(tankman);
+		#end
+
+		var accessPls = new FlxText(0, 16, FlxG.width, 'Please give access to your NG account\n(Or don\'t...)', 16);
+		accessPls.alignment = 'center';
+		add(accessPls);
+		
+		NGio.ngDataLoaded.add(() ->
+		{
+			InitState.switchToState(new menus.TitleScreen(), 'Title Screen');
+		});
+		#else
+
 		FlxTween.tween(splash, {alpha: 0}, 1, {
 			ease: FlxEase.sineInOut,
 			startDelay: 1
@@ -39,6 +65,7 @@ class Splash extends State
 		{
 			InitState.switchToState(new menus.TitleScreen(), 'Title Screen');
 		});
+		#end
 	}
 
 	override function update(elapsed:Float)
