@@ -65,7 +65,6 @@ class Splash extends State
 				ease: FlxEase.sineInOut,
 				startDelay: 1
 			});
-			Global.SAVE_BACKWARDS_COMPATABILITY();
 		});
 
 		FlxTween.tween(accessPls, {alpha: 0}, 1, {

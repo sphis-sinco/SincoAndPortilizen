@@ -107,29 +107,31 @@ class NGio
 		// var unlockingMedal = NG.core.medals.get(54352);// medal ids are listed in your NG project viewer
 		// if (!unlockingMedal.unlocked)
 		//	unlockingMedal.sendUnlock();
+
+		Global.SAVE_BACKWARDS_COMPATABILITY();
 	}
 
 	// --- SCOREBOARDS
 	function onNGBoardsFetch():Void
 	{
-		// Reading medal info
+		// Reading scoreboards info
 		for (id in NG.core.scoreBoards.keys())
 		{
 			var board = NG.core.scoreBoards.get(id);
 			trace('loaded scoreboard id:$id, name:${board.name}');
 		}
-		var board = NG.core.scoreBoards.get(15064); // ID found in NG project view
+		// var board = NG.core.scoreBoards.get(15064); // ID found in NG project view
 
-		// Posting a score thats OVER 9000!
+		// Posting a score thats NOT. ober 9000!
 		// board.postScore(FlxG.random.int(0, 1000));
 		// KAKAROT YOUR A FRAUD!
 
 		// --- To view the scores you first need to select the range of scores you want to see ---
 
 		// add an update listener so we know when we get the new scores
-		board.onUpdate.add(onNGScoresFetch);
-		trace("shoulda got score by NOW!");
-		board.requestScores(); // get the best 10 scores ever logged
+		// board.onUpdate.add(onNGScoresFetch);
+		// trace("shoulda got score by NOW!");
+		// board.requestScores(); // get the best 10 scores ever logged
 		// more info on scores --- http://www.newgrounds.io/help/components/#scoreboard-getscores
 	}
 
@@ -185,6 +187,10 @@ class NGio
 			{
 				trace('Unlocked ${medal.name} on Newgrounds');
 				medal.sendUnlock();
+			}
+			else
+			{
+				trace('${medal.name} already unlocked on Newgrounds');
 			}
 		}
 		#else

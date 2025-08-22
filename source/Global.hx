@@ -112,36 +112,28 @@ class Global
 			if (FlxG.save.data.levels_complete.contains(1))
 			{
 				FlxG.save.data.levels_complete.remove(1);
-				Global.beatLevel('string-quest');
-				Global.unlockMedal(MedalStrings.STRING_QUEST, MedalIDS.STRING_QUEST);
+				Global.beatLevel(MedalStrings.STRING_QUEST);
 			}
 			if (FlxG.save.data.levels_complete.contains(2))
 			{
 				FlxG.save.data.levels_complete.remove(2);
-				Global.beatLevel('osin');
-				Global.unlockMedal(MedalStrings.OSIN, MedalIDS.OSIN);
+				Global.beatLevel(MedalStrings.OSIN);
 			}
 			if (FlxG.save.data.levels_complete.contains(3))
 			{
 				FlxG.save.data.levels_complete.remove(3);
-				Global.beatLevel('tres');
-				Global.unlockMedal(MedalStrings.TRES, MedalIDS.TRES);
+				Global.beatLevel(MedalStrings.TRES);
 			}
-			
-			if (FlxG.save.data.levels_complete.contains('string-quest'))
+
+			if (FlxG.save.data.levels_complete.contains(MedalStrings.STRING_QUEST)
+				|| FlxG.save.data.medals.contains(MedalStrings.STRING_QUEST))
 				Global.unlockMedal(MedalStrings.STRING_QUEST, MedalIDS.STRING_QUEST);
-			if (FlxG.save.data.levels_complete.contains('osin'))
+			if (FlxG.save.data.levels_complete.contains(MedalStrings.OSIN) || FlxG.save.data.medals.contains(MedalStrings.OSIN))
 				Global.unlockMedal(MedalStrings.OSIN, MedalIDS.OSIN);
-			if (FlxG.save.data.levels_complete.contains('tres'))
+			if (FlxG.save.data.levels_complete.contains(MedalStrings.TRES) || FlxG.save.data.medals.contains(MedalStrings.TRES))
 				Global.unlockMedal(MedalStrings.TRES, MedalIDS.TRES);
 
-			if (FlxG.save.data.medals.contains('string-quest'))
-				Global.unlockMedal(MedalStrings.STRING_QUEST, MedalIDS.STRING_QUEST);
-			if (FlxG.save.data.medals.contains('osin'))
-				Global.unlockMedal(MedalStrings.OSIN, MedalIDS.OSIN);
-			if (FlxG.save.data.medals.contains('tres'))
-				Global.unlockMedal(MedalStrings.TRES, MedalIDS.TRES);
-			if (FlxG.save.data.medals.contains('programmer'))
+			if (FlxG.save.data.medals.contains(MedalStrings.PROGRAMMER))
 				Global.unlockMedal(MedalStrings.PROGRAMMER, MedalIDS.PROGRAMMER);
 		}
 		catch (_:Dynamic) {}
