@@ -100,6 +100,10 @@ class NGio
 			trace('loaded medal id:$id, name:${medal.name}, description:${medal.description}');
 		}
 
+		#if debug
+		unlockMedal(86133);
+		#end
+
 		// Unlocking medals
 		// var unlockingMedal = NG.core.medals.get(54352);// medal ids are listed in your NG project viewer
 		// if (!unlockingMedal.unlocked)
