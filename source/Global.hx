@@ -331,6 +331,25 @@ class Global
 		catch (_:Dynamic) {}
 	}
 
+	public static function unlockMedal(medal:String = '', ngID:Int = 0):Void
+	{
+		#if NEWGROUNDS
+		NGio.unlockMedal(ngID);
+		#end
+
+		#if !html5
+		if (!FlxG.save.data.medals.contains(medal))
+			FlxG.save.data.medals.push(medal);
+		#end
+
+		if (!WebSave.medals.contains(medal))
+			WebSave.medals.push(medal);
+
+		try
+			FlxG.save.flush()
+		catch (_:Dynamic) {}
+	}
+
 	/* ───────────────────────────── Discord RPC ───────────────────────────────── */
 	public static function changeDiscordRPCPresence(state:String = null, details:Null<String> = null):Void
 	{

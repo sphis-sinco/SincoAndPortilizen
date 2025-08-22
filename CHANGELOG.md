@@ -1,4 +1,10 @@
 # Final
+## 2.0 - 8/22/2025
+### Added
+- Medals
+- Newgrounds Medals
+- Newgrounds API Support
+
 ## 1.1 - 8/21/2025
 ### Added
 - Level Folder Menu
