@@ -57,11 +57,15 @@ class Splash extends State
 
 			var accessGranted = new FlxText(0, 16, FlxG.width, 'NG account access granted!', 16);
 			accessGranted.alignment = 'center';
+			if (Global.getCurrentState() == 'Splash')
+				accessGranted.y = FlxG.height - accessGranted.height;
+
 			FlxG.state.add(accessGranted);
 			FlxTween.tween(accessGranted, {alpha: 0}, 1, {
 				ease: FlxEase.sineInOut,
 				startDelay: 1
 			});
+			Global.SAVE_BACKWARDS_COMPATABILITY();
 		});
 
 		FlxTween.tween(accessPls, {alpha: 0}, 1, {

@@ -10,6 +10,8 @@ class InitState extends FlxState
 	{
 		super.create();
 
+		Global.SAVE_BACKWARDS_COMPATABILITY();
+		
 		#if !html5
 		try
 		{

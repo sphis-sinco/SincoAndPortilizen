@@ -1,4 +1,4 @@
-package backend.newgrounds;
+package backend;
 
 class MedalIDS
 {

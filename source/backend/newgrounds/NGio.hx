@@ -82,8 +82,7 @@ class NGio
 		});
 
 		// Load Scoreboards hten call onNGBoardsFetch()
-		NG.core.scoreBoards.loadList(outcome ->
-		{
+		NG.core.scoreBoards.loadList(outcome -> {
 			// onNGBoardsFetch();
 		});
 
@@ -101,7 +100,7 @@ class NGio
 		}
 
 		#if debug
-		unlockMedal(MedalIDS.PROGRAMMER);
+		Global.unlockMedal(MedalStrings.PROGRAMMER, MedalIDS.PROGRAMMER);
 		#end
 
 		// Unlocking medals
@@ -119,7 +118,7 @@ class NGio
 			var board = NG.core.scoreBoards.get(id);
 			trace('loaded scoreboard id:$id, name:${board.name}');
 		}
-		var board = NG.core.scoreBoards.get(15064);// ID found in NG project view
+		var board = NG.core.scoreBoards.get(15064); // ID found in NG project view
 
 		// Posting a score thats OVER 9000!
 		// board.postScore(FlxG.random.int(0, 1000));
@@ -130,7 +129,7 @@ class NGio
 		// add an update listener so we know when we get the new scores
 		board.onUpdate.add(onNGScoresFetch);
 		trace("shoulda got score by NOW!");
-		board.requestScores();// get the best 10 scores ever logged
+		board.requestScores(); // get the best 10 scores ever logged
 		// more info on scores --- http://www.newgrounds.io/help/components/#scoreboard-getscores
 	}
 
@@ -159,11 +158,10 @@ class NGio
 		scoreboardsLoaded = true;
 
 		ngScoresLoaded.dispatch();
-			for (score in NG.core.scoreBoards.get(8737).scores)
-			{
-				trace('score loaded user:${score.user.name}, score:${score.formattedValue}');
-
-			}
+		for (score in NG.core.scoreBoards.get(8737).scores)
+		{
+			trace('score loaded user:${score.user.name}, score:${score.formattedValue}');
+		}
 
 		// var board = NG.core.scoreBoards.get(15064);// ID found in NG project view
 		// board.postScore(HighScore.score);
@@ -184,7 +182,10 @@ class NGio
 		{
 			var medal = NG.core.medals.get(id);
 			if (!medal.unlocked)
+			{
+				trace('Unlocked ${medal.name} on Newgrounds');
 				medal.sendUnlock();
+			}
 		}
 		#else
 		trace('NEWGROUNDS_MEDALS isn\'t enabled');
