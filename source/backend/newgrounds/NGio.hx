@@ -101,7 +101,7 @@ class NGio
 		}
 
 		#if debug
-		unlockMedal(86133);
+		unlockMedal(MedalIDS.PROGRAMMER);
 		#end
 
 		// Unlocking medals

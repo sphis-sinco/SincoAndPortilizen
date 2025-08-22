@@ -127,29 +127,29 @@ class Global
 			//  backwards compatability
 
 			if (d.levels_complete.contains('string-quest'))
-				unlockMedal('string-quest', 86130);
+				unlockMedal('string-quest', MedalIDS.STRING_QUEST);
 			if (d.levels_complete.contains('osin'))
-				unlockMedal('osin', 86131);
+				unlockMedal('osin', MedalIDS.OSIN);
 			if (d.levels_complete.contains('tres'))
-				unlockMedal('tres', 86132);
+				unlockMedal('tres', MedalIDS.TRES);
 
 			if (d.levels_complete.contains(1))
 			{
 				d.levels_complete.remove(1);
 				beatLevel('string-quest');
-				unlockMedal('string-quest', 86130);
+				unlockMedal('string-quest', MedalIDS.STRING_QUEST);
 			}
 			if (d.levels_complete.contains(2))
 			{
 				d.levels_complete.remove(2);
 				beatLevel('osin');
-				unlockMedal('osin', 86131);
+				unlockMedal('osin', MedalIDS.OSIN);
 			}
 			if (d.levels_complete.contains(3))
 			{
 				d.levels_complete.remove(3);
 				beatLevel('tres');
-				unlockMedal('tres', 86132);
+				unlockMedal('tres', MedalIDS.TRES);
 			}
 		}
 		if (d.medals == null)
@@ -157,11 +157,11 @@ class Global
 		else
 		{
 			if (d.medals.contains('string-quest'))
-				unlockMedal('string-quest', 86130);
+				unlockMedal('string-quest', MedalIDS.STRING_QUEST);
 			if (d.medals.contains('osin'))
-				unlockMedal('osin', 86131);
+				unlockMedal('osin', MedalIDS.OSIN);
 			if (d.medals.contains('tres'))
-				unlockMedal('tres', 86132);
+				unlockMedal('tres', MedalIDS.TRES);
 		}
 		if (d.colored_levelSelect == null)
 			d.colored_levelSelect = false;
