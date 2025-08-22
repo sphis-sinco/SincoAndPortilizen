@@ -2,6 +2,7 @@ package backend.newgrounds;
 
 /**
  * Put this in `source/backend/newgrounds` if for some reason you're compiling with the `NEWGROUNDS` flag
+ * Or use `NEWGROUNDS_GIT`.
  */
 
 class Credentials

@@ -2,6 +2,8 @@
 - This adds the `NEWGROUNDS_SPLASH` and `NEWGROUNDS_MEDALS` flags
 
 # NEWGROUNDS_**
+## NEWGROUNDS_GIT
+- This moves `docs/Credentials.hx` to `source/backend/newgrounds/Credentials.hx` (this is mainly for github actions)
 ## NEWGROUNDS_SPLASH
 - This adds tankman to the splash
 ## NEWGROUNDS_MEDALS
