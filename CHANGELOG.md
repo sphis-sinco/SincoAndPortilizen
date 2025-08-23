@@ -1,7 +1,7 @@
 # Final
 ## 2.0 (Modified) - 8/23/2025
 ### Changed
-- Package Name
+- Package Name and Package
 
 ## 2.0 (Addon 1) - 8/22/2025
 ### Fixed 
