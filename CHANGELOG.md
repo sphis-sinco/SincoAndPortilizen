@@ -1,4 +1,6 @@
 # Final
+## 3.0 (Addon 2) - 8/23/2025
+
 ## 2.0 (Addon 1) - 8/22/2025
 ### Fixed 
 - Crash on non-mobile devices when unpausing in a level
