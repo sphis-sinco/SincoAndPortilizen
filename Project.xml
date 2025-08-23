@@ -5,7 +5,7 @@
 
         <!-- _________________________ Application Settings _________________________ -->
 
-        <app title="Sinco and Portilizen" file="SAP" main="Main" version="" company="SAPTeam" packageName="sap" package="sap"/>
+        <app title="Sinco and Portilizen" file="SAP" main="Main" version="" company="SAPTeam" packageName="com.sinco.sap" package="com.sinco.sap"/>
         <app preloader="flixel.system.FlxPreloader" />
         <set name="SWF_VERSION" value="11.8" />
 
