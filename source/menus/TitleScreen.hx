@@ -95,6 +95,7 @@ class TitleScreen extends State
 		watermarkText += ' (b${Global.BUILD})';
 
 		#if NEWGROUNDS
+		trace('NEWGROUNDS!');
 		watermarkText += ' | Newgrounds: ';
 
 		try
