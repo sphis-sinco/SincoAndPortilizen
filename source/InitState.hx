@@ -2,13 +2,54 @@ package;
 
 import haxe.macro.Compiler;
 import flixel.system.debug.log.LogStyle;
+import lime.app.Application;
 
 // This is initalization stuff + compiler condition flags
 class InitState extends FlxState
 {
+	
+	#if NEWGROUNDS
+	public static var NG:NGio;
+	#end
+
 	override public function create():Void
 	{
 		super.create();
+
+		#if (sys && debug)
+		var sysPath = Sys.programPath().substring(0, Sys.programPath().indexOf('\\export')).replace('\\', '/');
+		sysPath += '/build';
+
+		File.saveContent(sysPath, Std.string(Global.BUILD + 1));
+
+		if (!FileSystem.exists('prev-build')
+			|| (FileSystem.exists('prev-build') && (File.getContent('prev-build') != File.getContent('assets/build.txt'))))
+		{
+			File.saveContent('prev-build', Std.string(Global.BUILD));
+			File.saveContent('assets/build.txt', Std.string(Global.BUILD + 1));
+
+			@:privateAccess {
+				Global.__buildCache = null;
+			}
+		}
+		#end
+
+		trace(Global.GENERATED_BY);
+
+		Application.current.onExit.add(i ->
+		{
+			FlxG.save.flush();
+		}, true);
+
+		#if NEWGROUNDS
+		NG = new NGio(Credentials.APP_ID, Credentials.ENCRYPTION_KEY, Credentials.SESSION_ID);
+		io.newgrounds.NG.core.verbose = false;
+		io.newgrounds.NG.core.log = function(any:Dynamic, ?pos:haxe.PosInfos):Void
+		{
+			FlxG.log.add('[Newgrounds API / ${pos.fileName}:${pos.lineNumber} ] :: ${any}');
+		}
+		#end
+
 
 		Global.SAVE_BACKWARDS_COMPATABILITY();
 		

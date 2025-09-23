@@ -39,10 +39,8 @@
     },
     {
       "name": "sphis",
-      "type": "git",
-      "dir": null,
-      "ref": null,
-      "url": "https://github.com/sphis-sinco/sphis-haxelib"
+      "type": "haxelib",
+      "version": null
     }
   ]
 }
