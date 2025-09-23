@@ -7,7 +7,6 @@ import lime.app.Application;
 // This is initalization stuff + compiler condition flags
 class InitState extends FlxState
 {
-	
 	#if NEWGROUNDS
 	public static var NG:NGio;
 	#end
@@ -42,17 +41,39 @@ class InitState extends FlxState
 		}, true);
 
 		#if NEWGROUNDS
-		NG = new NGio(Credentials.APP_ID, Credentials.ENCRYPTION_KEY, Credentials.SESSION_ID);
-		io.newgrounds.NG.core.verbose = false;
-		io.newgrounds.NG.core.log = function(any:Dynamic, ?pos:haxe.PosInfos):Void
+		try
 		{
-			FlxG.log.add('[Newgrounds API / ${pos.fileName}:${pos.lineNumber} ] :: ${any}');
+			NG = new NGio(Credentials.APP_ID, Credentials.ENCRYPTION_KEY, Credentials.SESSION_ID);
+			io.newgrounds.NG.core.verbose = false;
+			io.newgrounds.NG.core.log = function(any:Dynamic, ?pos:haxe.PosInfos):Void
+			{
+				FlxG.log.add('[Newgrounds API / ${pos.fileName}:${pos.lineNumber} ] :: ${any}');
+			}
+
+			NGio.ngDataLoaded.add(() ->
+			{
+				trace('NG Data Loaded n shit');
+
+				var accessGranted = new FlxText(0, 16, FlxG.width, 'NG account access granted!', 16);
+				accessGranted.alignment = 'center';
+				if (Global.getCurrentState() == 'Splash')
+					accessGranted.y = FlxG.height - accessGranted.height;
+
+				FlxG.state.add(accessGranted);
+				FlxTween.tween(accessGranted, {alpha: 0}, 1, {
+					ease: FlxEase.sineInOut,
+					startDelay: 1
+				});
+			});
+		}
+		catch (e)
+		{
+			trace(e);
 		}
 		#end
 
-
 		Global.SAVE_BACKWARDS_COMPATABILITY();
-		
+
 		#if !html5
 		try
 		{

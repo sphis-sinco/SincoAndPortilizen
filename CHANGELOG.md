@@ -1,5 +1,7 @@
 # Final
-## 2.0 (Modified) - 8/23/2025
+## 2.0 (Modified) - 9/23/2025
+### Fixed
+- Newgrounds Crash
 ### Changed
 - Package Name and Package
 
