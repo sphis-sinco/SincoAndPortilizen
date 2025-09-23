@@ -47,10 +47,7 @@ class Splash extends State
 		add(tankman);
 		#end
 
-		FlxTween.tween(accessPls, {alpha: 0}, 1, {
-			ease: FlxEase.sineInOut,
-			startDelay: 1
-		});
+		
 		FlxTween.tween(tankman, {alpha: 0}, 1, {
 			ease: FlxEase.sineInOut,
 			startDelay: 1

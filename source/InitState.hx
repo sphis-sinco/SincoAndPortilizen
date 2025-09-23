@@ -1,5 +1,8 @@
 package;
 
+import flixel.tweens.FlxTween;
+import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
 import haxe.macro.Compiler;
 import flixel.system.debug.log.LogStyle;
 import lime.app.Application;
