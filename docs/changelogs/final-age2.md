@@ -10,4 +10,6 @@ The return era.
 
 ### Fixed
 
-- Incorrect dating for v2.0.1 (#51)
+- Incorrect dating for v2.0.1 ([#51][#51_link])
+
+[#51_link]: https://github.com/macohi/SincoAndPortilizen/issues/51
