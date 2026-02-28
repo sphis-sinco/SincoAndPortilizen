@@ -2,7 +2,7 @@
 
 The return era.
 
-## [UNRELEASED] - 3/2026
+## 3.0 (Addon 2 : Translation Addon) - 3/2026
 
 ### Added
 
