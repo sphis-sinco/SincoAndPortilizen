@@ -16,13 +16,6 @@ class InitState extends FlxState
 
 		trace(Global.GENERATED_BY);
 
-		Application.current.onExit.add(i ->
-		{
-			FlxG.save.flush();
-		}, true);
-
-		Global.SAVE_BACKWARDS_COMPATABILITY();
-
 		#if !html5
 		try
 		{
@@ -38,6 +31,8 @@ class InitState extends FlxState
 		#else
 		Global.change_saveslot((#if debug true #else false #end) ? 'debug' : 'release');
 		#end
+
+		Global.SAVE_BACKWARDS_COMPATABILITY();
 
 		#if DISCORDRPC
 		if (FlxG.save.data.discord_rpc)
@@ -86,6 +81,12 @@ class InitState extends FlxState
 		#if !MOBILE_TESTING
 		FlxG.mouse.visible = false;
 		#end
+
+		Application.current.onExit.add(i ->
+		{
+			FlxG.save.flush();
+		}, true);
+
 		switchToState(new Splash(), 'Splash');
 	}
 

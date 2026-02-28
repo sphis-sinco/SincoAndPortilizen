@@ -41,6 +41,9 @@ class Global
 
 	public static function SAVE_BACKWARDS_COMPATABILITY():Void
 	{
+		trace('---');
+		trace('backwards compatability');
+
 		try
 		{
 			//  backwards compatability
@@ -72,6 +75,8 @@ class Global
 				Global.unlockMedal(MedalStrings.PROGRAMMER);
 		}
 		catch (_:Dynamic) {}
+
+		trace('---');
 	}
 
 	public static function change_saveslot(slotsuffix:Dynamic = 1):Void

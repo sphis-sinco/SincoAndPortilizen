@@ -1,34 +1,38 @@
-# 0.5.3a - 6/4/2025
+# Alpha
 
-## Fixed
+The Alpha stages, filled with alot of content bloat if I'm being honest...
+
+## 0.5.3a - 6/4/2025
+
+### Fixed
 
 - (Desktop only) Json crashes
 
-## Changes
+### Changes
 
 - FileManager `readFile` can read assets with sys if sys
 
-# 0.5.2a - 4/19/2025
+## 0.5.2a - 4/19/2025
 
-## Fixed
+### Fixed
 
 - (Desktop only) Invalid char 0 at position 0
 
-# 0.5.1a - 4/19/2025
+## 0.5.1a - 4/19/2025
 
-## Added
+### Added
 
 - Sidebit 1 has SFX now
 
-## Fixed
+### Fixed
 
 - In the character select the character icon doesn't refresh when it's the same character
 - Programmer "Null"'s credit color
 - (Desktop only) Crash when accessing level 2(?)
 
-# 0.5.0a (Destination 3 - Rival clash) - 4/19/2025
+## 0.5.0a (Destination 3 - Rival clash) - 4/19/2025
 
-## Added
+### Added
 
 - LEVEL 5: RIVAL CLASH
 - NEW WORLDMAP
@@ -46,12 +50,12 @@
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - (Web only) Pixel perfect rendering ([#27][#27_link])
 
-## Removed
+### Removed
 
 - Sidebit menu (integrated into the new worldmap)
 - (Destop only) Old window resolution options besides 640x608 has been removed
 
-## Fixed
+### Fixed
 
 - Sidebit 1 can played with different difficulties
 - Fixed medals not popping up when you get a medal
@@ -65,7 +69,7 @@
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 - Fixed missing worldmap character assets
 
-## Changed
+### Changed
 
 - New medal SFX
 - The titleState version text now can contain the github sha
@@ -87,17 +91,17 @@
 - Several states now use the `switchState` function from Global
 - Global now has a `switchState` function
 
-# 0.4.3a - 4/15/2025
+## 0.4.3a - 4/15/2025
 
-## Added
+### Added
 
 - (Desktop only) Added oudated version menu
 
-## Fixed
+### Fixed
 
 - Fixed crash when switching from the stage 4 ending cutscene to the worldmap ([#23](#23_link))
 
-## Changed
+### Changed
 
 - Worldmap character asset grabbing is no longer case sensitive
 - Modding API version is now `0.1.3`
@@ -114,22 +118,22 @@
 - (source) The FileManager no longer only traces that it couldn't find a file when `EXCESS_TRACES` is enabled
 - (compiling) The project xml no longer echos the game name and version
 
-## Removed
+### Removed
 
 - (compiling) Sinlib is no longer required to compile and has been integrated into the source code
 
-# 0.4.2a - 4/14/2025
+## 0.4.2a - 4/14/2025
 
-## Added
+### Added
 
 - Sidebit 1 health icons
 - Portuguese Tutorial assets for sidebit1
 
-## Fixed
+### Fixed
 
 - Tutorial assets are visible in Sidebit 1 now
 
-## Changed
+### Changed
 
 - Modding API version is now `0.1.2`
      - `ModFolderManager` now traces the supported modding API versions
@@ -138,9 +142,9 @@
 - Sidebit 1 tutorial assets are more visible on the white background
 - Medals no longer unlock on web (the icon doesnt appear)
 
-# 0.4.1a - 4/13/2025
+## 0.4.1a - 4/13/2025
 
-## Added
+### Added
 
 - MOD MENU <!-- Moved up because it's the main addition -->
 - PROPER SAVING
@@ -151,15 +155,15 @@
 - `enabled_mods` save field
 - `StringSortAlphabetically` function to Random.hx
 
-## Fixed
+### Fixed
 
 - AnsiTrace now actually enforces `MAX_TRACES`
 
-## Removed
+### Removed
 
 - Source code mods
 
-## Changed
+### Changed
 
 - The `RECOMPILE_ON_MOD_UPDATE` build flag is enabled by default
 - This `CHANGELOG.md` file is now included in compiled builds
@@ -173,9 +177,9 @@
      - Mods now run `initalizeMod` after `loadScripts`
      - When using `getAssetFile` it now checks mod folders first before actually checking the assets folders, with a first come first serve system
 
-# 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
+## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
 
-## Added
+### Added
 
 <!-- These are moved up because they are epicer-->
 
@@ -211,11 +215,11 @@
 - (source) [Adjust Color Shader](https://github.com/FunkinCrew/Funkin/blob/main/source/funkin/graphics/shaders/AdjustColorShader.hx)
 - (Desktop and sys only) New settings menu option to download latest traces
 
-## Removed
+### Removed
 
 - Removed several unused assets
 
-## Fixed
+### Fixed
 
 - You can no longer select levels unlocked for one character but locked for another in the worldmap
 - The credits text no longer only updates to a new language by reloading the game
@@ -227,7 +231,7 @@
 - The "Huh, someone cares" medal icon now loads properly
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 
-## Changed
+### Changed
 
 - (Desktop only) the menu text box is longer vertically to fit the medals menu option
 - The version text on the title screen has the modding api version
@@ -250,23 +254,23 @@
 <!-- A patch content update? How peculiar... normally this would be v0.4.0a but versioning has changed, like right now, LOL -->
 <!-- If there ain't a new level or MAJOR content update then its a "patch" update, otherwise a minor-->
 
-# 0.3.2a - 4/9/2025
+## 0.3.2a - 4/9/2025
 
-## Removed
+### Removed
 
 - Removed `max_rocks` stage 2 difficulty json field
 
-## Fixed
+### Fixed
 
 - Fixed bug in stage 2 where sinco would float on air
 - Fixed bug in stage 2 where you could get 200% thanks to negative values
 - Fixed bug in stage 2 where you hit the first rock and it wouldnt spawn extra rocks(?) <!-- nope -->
 
-## Changed
+### Changed
 
 - Stage 1 UI is now updated and overhauled to be a health bar with text below it
 
-## Added
+### Added
 
 - Added `rock_speed_divider` field to Stage 2 difficulty json files (replaces `max_rocks` field)
 - Added crash keybind for states using the [`State.hx`](source/sap/utils/State.hx) file
@@ -285,21 +289,21 @@
      - Easy difficulty now has a 12.5% chance of attack
 - Added `-debug` text at the end of the version strings added when in debug builds
 
-# 0.3.1a - 4/8/2025
+## 0.3.1a - 4/8/2025
 
-## Added
+### Added
 
 - Added Post-Stage 2 panel Cutscene
 - Added spanish, and portuguese translation to the intro cutscene and post-stage1 cutscene
 
-## Fixed
+### Fixed
 
 - Fixed typos in the 3rd intro cutscene panel
 - Fixed web bug where pressing continue crashes the game
 
-# 0.3.0a (Destination 2 - Tierra) - 4/8/2025
+## 0.3.0a (Destination 2 - Tierra) - 4/8/2025
 
-## Added
+### Added
 
 - Added Spanish and Portuguese translations for the tutorial objects
 - Added difficulties: Easy, Normal, Hard, and Extreme
@@ -310,7 +314,7 @@
 - Added save for the window resolution before leaving the settings menu
 - Added a settings save data value
 
-## Changed
+### Changed
 
 - Main menu sinco and portilizen are now moves more to the left and right respectively
 - Main menu option box is now bigger
@@ -319,7 +323,7 @@
 - Updated all sinco assets
 - Updated osin assets
 
-## Fixed
+### Fixed
 
 - Fixed Main Menu option texts being able to escape the bounds of the box
 - Fixed stage 1 bug where you can dodge and jump at the same time
@@ -328,52 +332,52 @@
 - Fixed bug where stage 4 would crash because when jumping ([#19](#19_link))
 - Fixed window resolution option not being accurate to the actual resolution (This was due to the missing window resolution save value)
 
-# 0.2.1a - 3/12/2025
+## 0.2.1a - 3/12/2025
 
-## Nerd stuff
+### Nerd stuff
 
 - Reverted most shit to 0.1.1a
 
-## Removed
+### Removed
 
 - Removed HScript modding
 
-## Fixed
+### Fixed
 
 - Fixed hitHurt sounds trying to play a hitHurt-0 sound that doesn't exist.
 
-# 0.2.0a (Pitstop 1 - Scripting) - 3/12/2025
+## 0.2.0a (Pitstop 1 - Scripting) - 3/12/2025
 
-## Changed
+### Changed
 
 - Changed it so that now [Stage 1 and Stage 4 are now a mix of soft-coded and hard-coded.](#18_link)
 
-## Fixed
+### Fixed
 
 - Fixed internal bug where it would say "`Failed to change to language: english`" but `LANGUAGE` is supposed to be another language
 
-## Added
+### Added
 
 - Added custom Stage 1 background created by @iampauleps
 - Added mod support (`scripts/`) for: - MainMenu (`menus/MainMenu`) - WorldMap (`gameplay/Worldmap`) - TitleState (`menus/TitleState`) - Stage1 (`gameplay/MainMenu`) - Stage4 (`gameplay/MainMenu`) - Credits (`submenus/Credits`) - Settings (`submenus/Settings`) - Results (`gamplay/Results`)
 - Added [tutorial elements to stage 1 and 4](#14_link)
 
-# 0.1.1a - 2/22/2025
+## 0.1.1a - 2/22/2025
 
-## Fixed
+### Fixed
 
 - Fixed crash on web when trying to take a screenshot ([#16][#16_link])
 - Fixed when returning to the world map from a portilizen level the character wheel is on the sinco selection ([#11][#11_link])
 - Fixed no sound in stage 4 ([#12][#12_link])
 - Fixed volume being at 100% on desktop is 99.99...% on web ([#10][#10_link])
 
-# 0.1.0a (Destination 1 - Osin & Dimension String) - 2/22/2025
+## 0.1.0a (Destination 1 - Osin & Dimension String) - 2/22/2025
 
-## Added
+### Added
 
 - Added Results menu on death for stage 1
 
-## Fixed
+### Fixed
 
 - Fixed HTML5 crashing when beating a level
 - Fixed bug where in stage 1 the Results menu wouldn't adapt to the players max health.
@@ -381,7 +385,7 @@
 - Fixed bug where in stage 4 there is no results screen ([#9][#9_link])
 - Fixed bug where in stage 4 the timer stays the same as it last was ([#7][#7_link])
 
-## Changed
+### Changed
 
 - Changed Results menu so the music stops when you leave
 - Changed Company name in `project.xml` to `SAPTeam`

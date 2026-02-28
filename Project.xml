@@ -43,7 +43,7 @@
 	<source path="source" />
 
 	<assets path="assets" exclude="assets/exclude" />
-	<assets path="docs/changelogs/final.md" rename="CHANGELOG.md" />
+	<assets path="docs/changelogs" rename="CHANGELOGS" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
