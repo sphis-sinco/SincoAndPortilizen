@@ -42,7 +42,9 @@ class Global
 	public static function SAVE_BACKWARDS_COMPATABILITY():Void
 	{
 		trace('---');
+		trace('');
 		trace('backwards compatability');
+		trace('');
 
 		try
 		{
@@ -76,11 +78,17 @@ class Global
 		}
 		catch (_:Dynamic) {}
 
+		trace('');
 		trace('---');
 	}
 
 	public static function change_saveslot(slotsuffix:Dynamic = 1):Void
 	{
+		trace('---');
+		trace('');
+		trace('change saveslot($slotsuffix)');
+		trace('');
+
 		SAVE_SLOT_SUFFIX = slotsuffix;
 		SAVE_SLOT = '$SAVE_SLOT_PREFIX-$SAVE_SLOT_SUFFIX';
 		FlxG.save.bind(SAVE_SLOT, 'SAPTeam');
@@ -106,6 +114,10 @@ class Global
 		catch (_:Dynamic) {}
 
 		trace('Save dump: ${FlxG.save.data}');
+
+		
+		trace('');
+		trace('---');
 	}
 
 	public static function createTrail(sprite:FlxSprite, xEnd:Float, delay:Float, speed:Float, max:Int)
