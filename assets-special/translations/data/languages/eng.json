@@ -9,7 +9,9 @@
 		"tres": "Tres",
 		"revenge": "Revenge",
 
-		"indev": "Indev"
+		"indev": "Indev",
+		"cant_play": "Can't play",
+		"missing_level_file": "Missing level file:\n\n\"%1\""
 	},
 
 	"settings": {
@@ -38,6 +40,7 @@
 			"displayKey": "%1 - %3"
 		},
 
+		"value_unsupported": "unsupported",
 		"value_enabled": "enabled",
 		"value_disabled": "disabled"
 	}

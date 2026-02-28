@@ -1,0 +1,8 @@
+{
+	"settings": [
+		{ "id": "coloredLevelSelect", "type": "toggle" },
+		{ "id": "discordRPC", "type": "toggle" },
+		{ "id": "volume", "type": "increment", "min": 0, "max": 100 },
+		{ "id": "clearSave", "type": "method" }
+	]
+}

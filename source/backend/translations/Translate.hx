@@ -31,18 +31,29 @@ class Translate
 		}
 	}
 
-	public static function getLine(line:String, ?fallback:String):String
+	public static function getLine(line:String, ?replaces:Array<Dynamic>):String
 	{
+		var fallback:String = '{$line}';
+
+		if (languageData == null)
+			return fallback;
+
 		var lineObject:Dynamic = languageData;
 
 		for (piece in line.split('.'))
-		{
 			lineObject = Reflect.field(lineObject, piece);
-		}
 
-		if (lineObject != null)
-			return lineObject;
+		if (lineObject == null)
+			return fallback;
 
-		return '{$line}';
+		var lineObjectStr:String = Std.string(lineObject);
+
+		if (lineObjectStr == null)
+			return fallback;
+
+		for (i => replace in replaces)
+			lineObject = lineObject.replace('%${i + 1}', replace);
+
+		return lineObject;
 	}
 }
