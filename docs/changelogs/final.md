@@ -2,7 +2,7 @@
 
 ## Fixed
 
-- Discord RPC is no longer Windows only
+- Discord RPC is no longer Windows only (availible for all desktop platforms)
 
 ## Removed
 
