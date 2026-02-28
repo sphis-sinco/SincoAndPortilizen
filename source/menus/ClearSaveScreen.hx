@@ -22,9 +22,10 @@ class ClearSaveScreen extends State
 		FlxG.mouse.enabled = true;
 		
 		clearSave = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
+		clearSave.scaleOffset += .1;
 		clearSave.loadGraphic(Assets.getImagePath('settings/ClearSave'));
 		clearSave.scaleSpr();
-		clearSave.setPosition(SettingsMenu.clearSavePos.x, SettingsMenu.clearSavePos.y);
+		clearSave.screenCenter();
 		add(clearSave);
 
 		yes = new InteractableSpr('clearSave/buttons');
