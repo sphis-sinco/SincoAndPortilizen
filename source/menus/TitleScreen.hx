@@ -87,6 +87,7 @@ class TitleScreen extends State
 		});
 		settings.justReleased.add(() ->
 		{
+			SettingsMenu.selected = 0;
 			Global.switchState(new SettingsMenu());
 		});
 

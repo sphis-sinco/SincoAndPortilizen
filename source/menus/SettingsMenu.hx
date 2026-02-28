@@ -20,7 +20,7 @@ class SettingsMenu extends State
 
 	public static var cursorSkin:Int;
 
-	public var selected:Int = 0;
+	public static var selected:Int = 0;
 
 	public var descriptionText:FlxText;
 
