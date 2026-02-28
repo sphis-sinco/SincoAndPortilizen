@@ -290,8 +290,10 @@ class Tres extends PausableState
 
 		for (bullet in enemyAttacks)
 		{
-			if (!paused)
-				bullet.updateMotion(elapsed);
+			@:privateAccess {
+				if (!paused)
+					bullet.updateMotion(elapsed);
+			}
 
 			var player = sinco;
 			if (selectedHero == 1)
