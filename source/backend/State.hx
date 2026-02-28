@@ -16,5 +16,11 @@ class State extends FlxState
 		#if !MOBILE_TESTING
 		FlxG.mouse.visible = false;
 		#end
+
+		#if !html5
+		FlxG.save.data.volume = FlxG.sound.volume;
+		#else
+		WebSave.volume = FlxG.sound.volume;
+		#end
 	}
 }

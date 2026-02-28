@@ -221,6 +221,7 @@ class Global
 	{
 		var v = Math.max(0, Math.min(1, vol));
 		FlxG.sound.volume = v;
+		WebSave.volume = v;
 		if (FlxG.save.data != null)
 		{
 			FlxG.save.data.volume = v;

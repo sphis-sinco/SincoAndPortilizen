@@ -34,7 +34,8 @@ class SettingsMenu extends State
 
 		for (ID => setting in settingsData.settings)
 		{
-			if (setting == null) continue;
+			if (setting == null)
+				continue;
 
 			var settingSpr = new InteractableSpr('splash');
 
@@ -53,7 +54,11 @@ class SettingsMenu extends State
 					var a = 0;
 
 					for (i in 0...Math.floor(setting.max / 10))
+					{
 						settingSpr.animation.add('${i * 10}', [a]);
+
+						a += 1;
+					}
 				}
 			}
 			else
@@ -174,14 +179,7 @@ class SettingsMenu extends State
 		{
 			FlxG.sound.changeVolume(0.1);
 			if (FlxG.sound.volume >= 1)
-			{
-				FlxG.sound.changeVolume(-1);
-			}
-			#if !html5
-			FlxG.save.data.volume = FlxG.sound.volume;
-			#else
-			WebSave.volume = FlxG.sound.volume;
-			#end
+				Global.setMasterVolume(0);
 
 			FlxG.save.flush();
 		});
