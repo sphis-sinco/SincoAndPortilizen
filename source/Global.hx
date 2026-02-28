@@ -1,6 +1,5 @@
 package;
 
-import macohi.funkin.koya.backend.AssetPaths;
 import flixel.util.typeLimit.NextState;
 import lime.app.Application;
 import flixel.util.FlxSignal;
@@ -171,7 +170,7 @@ class Global
 	 */
 	public static function playMusic(filename:String):Void
 	{
-		var path = AssetPaths.music(filename);
+		var path = Assets.getMusicPath(filename);
 		if (FlxG.sound.music != null)
 		{
 			if (!FlxG.sound.music.playing)
@@ -189,7 +188,7 @@ class Global
 
 	public static function fadeToMusic(filename:String, volume:Float = 1.0, fadeOut:Float = 0.35, fadeIn:Float = 0.5, onlyIfDifferent:Bool = true):Void
 	{
-		var path = AssetPaths.music(filename);
+		var path = Assets.getMusicPath(filename);
 		if (onlyIfDifferent && __lastMusicId == path && FlxG.sound.music != null && FlxG.sound.music.playing)
 		{
 			// Update volume if needed but avoid restart
@@ -221,7 +220,7 @@ class Global
 	}
 
 	public static function playSoundEffect(name:String, volume:Float = 1.0):Void
-		FlxG.sound.play(AssetPaths.sound(name), volume);
+		FlxG.sound.play(Assets.getSoundPath(name), volume);
 
 	public static function hitHurt():Void
 		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(1, 4)}');
