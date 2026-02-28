@@ -1,5 +1,6 @@
 package;
 
+import lime.app.Application;
 import flixel.util.FlxSignal;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
@@ -49,20 +50,7 @@ class Global
 
 	public static dynamic function get_VERSION():String
 	{
-		if (__versionCache != null)
-			return __versionCache;
-		var v = '0.0.0';
-		try
-		{
-			// Prefer lime asset pipeline (works on native/HTML5)
-			if (LimeAssets.exists('version.txt'))
-			{
-				v = LimeAssets.getText('version.txt').trim();
-			}
-		}
-		catch (e:Dynamic) {}
-		__versionCache = v;
-		return v;
+		return Application.current.meta.get('version');
 	}
 
 	/** Numeric build (read once & cached). */

@@ -5,7 +5,7 @@
 
         <!-- _________________________ Application Settings _________________________ -->
 
-        <app title="Sinco and Portilizen" file="SAP" main="Main" version="" company="SAPTeam" packageName="com.sinco.sap" package="com.sinco.sap"/>
+        <app title="Sinco and Portilizen" file="SAP" main="Main" version="2.1" company="SAPTeam" packageName="com.sinco.sap" package="com.sinco.sap"/>
         <app preloader="flixel.system.FlxPreloader" />
         <set name="SWF_VERSION" value="11.8" />
 
@@ -45,7 +45,6 @@
 
         <assets path="assets" exclude="assets/exclude" />
         <assets path="CHANGELOG.md" />
-        <assets path="version.txt" />
         <assets path="build" rename="assets/build.txt" />
 
         <!-- _______________________________ Libraries ______________________________ -->
