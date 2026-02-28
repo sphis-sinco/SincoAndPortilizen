@@ -8,25 +8,28 @@ assignees: ''
 ---
 
 # Describe the bug
-A description on the bug is.
+<!-- A description on the bug is. -->
 
 # Instructions to reproduce the bug
+<!--
 Steps to reproduce the behavior:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
+-->
 
 # Expected behavior
-A clear and concise description of what you expected to happen.
+<!-- A clear and concise description of what you expected to happen. -->
 
 # Screenshots
-If applicable, add screenshots to help explain your problem.
+<!-- If applicable, add screenshots to help explain your problem. -->
 
-# Basic Information (please complete the following information as it may be a web or desktop-specific issue)
-<!-- If you are playing a github actions build say "gab-" and then the action number along with the first word in the workflow name (i.e gab-13-indev) for the game version field -->
- - Platform: Desktop/Web
- - Game Version: 0.4.2a
+# Basic Information
+<!-- Please complete the following information as it may be a web or desktop-specific issue -->
+<!-- If you're on a Github Actions build please specify -->
+ - Platform: Desktop  / Web
+ - Game Version: 3.0
 
 # Additional Information
-Provide any other context about the problem here.
+<!-- Provide any other context about the problem here. -->
