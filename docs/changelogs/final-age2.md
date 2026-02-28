@@ -6,7 +6,7 @@ The return era.
 
 ### Changed
 
-- Changed alot of the file paths, the organization isn't just fucked anymore
+- Changed alot of the image file paths, the organization isn't just fucked anymore
 
 ### Fixed
 
