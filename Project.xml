@@ -14,8 +14,11 @@
 
 	<define name="DISCORDRPC" if="desktop" unless="hl" />
 
-	<!-- Turn on Crash Handler -->
-	<define name="CRASH_HANDLER" />
+	<define name="CRASH_HANDLER" if="desktop" />
+
+	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_TRACE" if="CRASH_HANDLER" />
 
 	<define name="MOBILE_BUILD" if="mobile" />
 	<define name="MOBILE_BUILD" if="MOBILE_TESTING" />
