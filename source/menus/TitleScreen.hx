@@ -23,7 +23,7 @@ class TitleScreen extends State
 			logoSuffix = logoSuffixes[FlxG.random.int(0, logoSuffixes.length - 1)];
 
 		logo = new Spr(#if !MOBILE_BUILD (-3) #else (-2) #end);
-		logo.loadGraphic(Assets.getImagePath('title/logo$logoSuffix'));
+		logo.loadGraphic(Assets.getImagePath('title/logos/logo$logoSuffix'));
 		logo.scaleSpr();
 		logo.screenCenter();
 		logo.y -= logo.height / 4;

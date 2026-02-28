@@ -45,7 +45,9 @@
 
 	<source path="source" />
 
-	<assets path="assets" exclude="assets/exclude" />
+	<assets path="assets"/>
+	<assets path="assets-special/mobile" rename="assets" if="MOBILE_BUILD"/>
+	
 	<assets path="docs/changelogs" rename="CHANGELOGS" />
 
 	<!-- _______________________________ Libraries ______________________________ -->

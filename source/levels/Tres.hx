@@ -49,7 +49,7 @@ class Tres extends PausableState
 		icon_right_id = MedalStrings.TRES;
 
 		tdm2 = new Spr(#if MOBILE_BUILD 1 #else - 1 #end);
-		tdm2.loadGraphic(Assets.getImagePath('tres/TDM2'), true, 320, 204);
+		tdm2.loadGraphic(Assets.getImagePath('levels/tres/TDM2'), true, 320, 204);
 		tdm2.animation.add('idle', [0]);
 		tdm2.animation.add('attack-pre', [0, 0, 1, 2, 2, 3], 6, false);
 		tdm2.animation.add('attack', [4]);
@@ -66,7 +66,7 @@ class Tres extends PausableState
 		portParticles = new FlxTypedGroup<Spr>();
 
 		sinco = new Spr(#if MOBILE_BUILD 4 #else 0 #end);
-		sinco.loadGraphic(Assets.getImagePath('tres/superSinco'));
+		sinco.loadGraphic(Assets.getImagePath('levels/tres/superSinco'));
 		sinco.screenCenter();
 		sincoSCPos = new FlxPoint(sinco.x, sinco.y);
 		sinco.x -= (sinco.width * #if MOBILE_BUILD 35 #else 2 #end);
@@ -78,7 +78,7 @@ class Tres extends PausableState
 		add(sinco);
 
 		port = new Spr(#if MOBILE_BUILD 4 #else 0 #end);
-		port.loadGraphic(Assets.getImagePath('tres/superPort'));
+		port.loadGraphic(Assets.getImagePath('levels/tres/superPort'));
 		port.screenCenter();
 		portSCPos = new FlxPoint(port.x, port.y);
 		port.x -= (port.width * #if MOBILE_BUILD 35 #else 3 #end);
@@ -96,7 +96,7 @@ class Tres extends PausableState
 		add(enemyAttacks);
 
 		instructions = new Spr();
-		instructions.loadGraphic(Assets.getImagePath('tres/swapInstruction'), true, 256, 256);
+		instructions.loadGraphic(Assets.getImagePath('levels/tres/swapInstruction'), true, 256, 256);
 		instructions.animation.add('animate', [0, 1], 4);
 		instructions.animation.play('animate');
 		instructions.screenCenter();
@@ -199,7 +199,7 @@ class Tres extends PausableState
 		{
 			var particle = new Spr(-3);
 
-			particle.loadGraphic(Assets.getImagePath('tres/superPortParticles'), true, 32, 32);
+			particle.loadGraphic(Assets.getImagePath('levels/tres/superPortParticles'), true, 32, 32);
 			particle.animation.add('particles', [0, 1, 2, 3], 0);
 			particle.animation.randomFrame();
 
@@ -250,7 +250,7 @@ class Tres extends PausableState
 					while (ammoCount > 0)
 					{
 						var attack = new Spr(-2);
-						attack.loadGraphic(Assets.getImagePath('tres/TDM2Attack'));
+						attack.loadGraphic(Assets.getImagePath('levels/tres/TDM2Attack'));
 						attack.scaleSpr();
 						attack.setPosition(tdm2.x, tdm2.y);
 

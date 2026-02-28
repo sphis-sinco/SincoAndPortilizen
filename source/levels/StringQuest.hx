@@ -56,7 +56,7 @@ class StringQuest extends PausableState
 		for (i in 0...levelLength)
 		{
 			var spr:Spr = new Spr();
-			spr.loadGraphic(Assets.getImagePath('string-quest/block'));
+			spr.loadGraphic(Assets.getImagePath('levels/string-quest/block'));
 
 			final increaseHeightValue = #if MOBILE_BUILD 1 #else 10 #end;
 
@@ -73,7 +73,7 @@ class StringQuest extends PausableState
 		for (i in 0...#if MOBILE_BUILD 10 #else 5 #end)
 		{
 			var spr:Spr = new Spr();
-			spr.loadGraphic(Assets.getImagePath('string-quest/WingedEnemy'), true, 64, 64);
+			spr.loadGraphic(Assets.getImagePath('levels/string-quest/WingedEnemy'), true, 64, 64);
 
 			spr.animation.add('flap', [0, 1], 6);
 			spr.animation.play('flap');
@@ -89,7 +89,7 @@ class StringQuest extends PausableState
 		}
 
 		port = new Spr();
-		port.loadGraphic(Assets.getImagePath('string-quest/Port'), true, 64, 64);
+		port.loadGraphic(Assets.getImagePath('levels/string-quest/Port'), true, 64, 64);
 		port.animation.add('run', [0, 1, 2, 3], 6, true);
 		port.animation.add('jump', [4], 24);
 		port.animation.add('double-jump', [6], 24);
@@ -222,7 +222,7 @@ class StringQuest extends PausableState
 	public function getWingedEnemyPos(i:Int)
 	{
 		var spr:Spr = new Spr();
-		spr.loadGraphic(Assets.getImagePath('string-quest/WingedEnemy'), true, 64, 64);
+		spr.loadGraphic(Assets.getImagePath('levels/string-quest/WingedEnemy'), true, 64, 64);
 
 		spr.animation.add('flap', [0, 1], 6);
 		spr.animation.play('flap');

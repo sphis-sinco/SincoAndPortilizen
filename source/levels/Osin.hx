@@ -46,7 +46,7 @@ class Osin extends PausableState
 		for (i in 0...levelLength)
 		{
 			var spr:Spr = new Spr();
-			spr.loadGraphic(Assets.getImagePath('osin/tile'));
+			spr.loadGraphic(Assets.getImagePath('levels/osin/tile'));
 
 			spr.y = FlxG.height - spr.height;
 			spr.x = spr.width * i;
@@ -57,7 +57,7 @@ class Osin extends PausableState
 		}
 
 		osin = new Spr();
-		osin.loadGraphic(Assets.getImagePath('osin/osin'), true, 128, 128);
+		osin.loadGraphic(Assets.getImagePath('levels/osin/osin'), true, 128, 128);
 		osin.animation.add('idle', [0]);
 		osin.animation.add('prep', [1]);
 		osin.animation.add('attack', [2, 3, 3, 4, 4, 4, 4], 30, false);
@@ -79,7 +79,7 @@ class Osin extends PausableState
 		add(osinsBalls);
 
 		sinco = new Spr();
-		sinco.loadGraphic(Assets.getImagePath('osin/sinco'), true, 128, 128);
+		sinco.loadGraphic(Assets.getImagePath('levels/osin/sinco'), true, 128, 128);
 		sinco.animation.add('idle', [0]);
 		sinco.animation.add('jump', [1]);
 		sinco.animation.add('die', [2]);
@@ -265,7 +265,7 @@ class Osin extends PausableState
 		while (i > 0)
 		{
 			var testicle = new Spr();
-			testicle.loadGraphic(Assets.getImagePath('osin/osinAttack'));
+			testicle.loadGraphic(Assets.getImagePath('levels/osin/osinAttack'));
 			testicle.scaleSpr();
 			osinsBalls.add(testicle);
 

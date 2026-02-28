@@ -22,7 +22,7 @@ class FolderSpr extends FlxSpriteGroup
 
 		folder_label = new Spr(scaleOffset);
 		folder_front = new Spr(scaleOffset);
-		file = new InteractableSpr('levelFolders/folder/$state-file');
+		file = new InteractableSpr('levelSelect/levelFolders/folder/$state-file');
 		file.scaleOffset = scaleOffset;
 		folder_back = new Spr(scaleOffset);
 
@@ -61,10 +61,10 @@ class FolderSpr extends FlxSpriteGroup
 	{
 		super.update(elapsed);
 
-		folder_label.loadGraphic(Assets.getImagePath('levelFolders/$folder-$state'));
-		folder_front.loadGraphic(Assets.getImagePath('levelFolders/folder/$state'));
-		file.loadGraphic(Assets.getImagePath('levelFolders/folder/$state-file'));
-		folder_back.loadGraphic(Assets.getImagePath('levelFolders/folder/$state-back'));
+		folder_label.loadGraphic(Assets.getImagePath('levelSelect/levelFolders/$folder-$state'));
+		folder_front.loadGraphic(Assets.getImagePath('levelSelect/levelFolders/folder/$state'));
+		file.loadGraphic(Assets.getImagePath('levelSelect/levelFolders/folder/$state-file'));
+		folder_back.loadGraphic(Assets.getImagePath('levelSelect/levelFolders/folder/$state-back'));
 
 		folder_label.scale.set(file.scale.x, file.scale.y);
 		folder_front.scale.set(file.scale.x, file.scale.y);
