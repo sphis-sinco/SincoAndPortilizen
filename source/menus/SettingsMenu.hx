@@ -172,7 +172,7 @@ class SettingsMenu extends State
 			else
 				Discord.DiscordClient.shutdown();
 			#else
-			settingSpritemap.get('discordRPC')..justReleased_soundPlay = false;
+			settingSpritemap.get('discordRPC').justReleased_soundPlay = false;
 			#end
 
 			FlxG.save.flush();
