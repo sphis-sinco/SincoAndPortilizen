@@ -28,6 +28,14 @@
 			"savefield": "",
 			"type": "method",
 			"animated": false
+		},
+		{
+			"asset": "Language",
+			"id": "language",
+			"savefield": "language",
+			"type": "list",
+			"animated": true,
+			"list": ["eng", "por"]
 		}
 	]
 }
