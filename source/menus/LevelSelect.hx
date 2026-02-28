@@ -332,7 +332,7 @@ class LevelSelect extends State
 			psi = selectedLevel;
 			try
 			{
-				levelData = Assets.getFileJsonContent('levels/${levelFolderData.id}${levelNames[selectedLevel]}.json');
+				levelData = Assets.getFileJsonContent('levels/${levelFolderData.id}/${levelNames[selectedLevel]}.json');
 			}
 			catch (e)
 			{
