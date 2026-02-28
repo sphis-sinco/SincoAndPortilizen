@@ -1,7 +1,7 @@
-Sphis - Programmer, Artist, Animator
-Djotta Flow - Artist, Animator, PlayTester
-Paul Leps - Artist, Animator, PlayTester
-TJ - PlayTester
+Macohi - Programmer, Artist, Animator
+Djotta Flow - Artist, Animator, Playtester
+Paul Leps - Artist, Animator, Playtester
+TJ - Playtester
 
 Null - Programmer
 ZSolarDev - Programmer, Artist, Animator

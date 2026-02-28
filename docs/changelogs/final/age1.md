@@ -6,6 +6,7 @@ Release to Addon 1 and it's patch.
 
 ### Fixed
 
+- PlayTester credit
 - CRASH WHEN TRYING TO DO BACKWARDS COMPATIBILITY BEFORE THE SAVE EVEN EXISTED!
 - The crash handler finally exists now!
 - Discord RPC is no longer Windows only (availible for all desktop platforms)
@@ -18,6 +19,7 @@ Release to Addon 1 and it's patch.
 
 ### Changed
 
+- Sphis credit has been updated to Macohi
 - Changelogs have been split and the folder is included in the build
 - You can no longer go to the level folder select until sidebits are added
 - Package Name and Package
