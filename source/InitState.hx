@@ -1,5 +1,6 @@
 package;
 
+import macohi.funkin.koya.backend.AssetPaths;
 import menus.LevelSelect;
 import flixel.tweens.FlxTween;
 import flixel.text.FlxText;
@@ -14,6 +15,8 @@ class InitState extends FlxState
 	override public function create():Void
 	{
 		super.create();
+
+		AssetPaths.soundExt = 'wav';
 
 		trace(Global.GENERATED_BY);
 
@@ -86,7 +89,7 @@ class InitState extends FlxState
 			FlxG.save.flush();
 		}, true);
 
-		LevelSelect.levelFolderData = Assets.getFileJsonContent('level_folders/base.json');
+		LevelSelect.levelFolderData = Assets.getJsonFile('level_folders/base.json');
 
 		switchToState(new Splash(), 'Splash');
 	}
