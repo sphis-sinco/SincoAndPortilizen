@@ -2,6 +2,7 @@
 
 ## Fixed
 
+- The crash handler finally exists now!
 - Discord RPC is no longer Windows only (availible for all desktop platforms)
 
 ## Removed

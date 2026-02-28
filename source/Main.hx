@@ -1,5 +1,6 @@
 package;
 
+import macohi.debugging.CrashHandler;
 import lime.app.Application;
 import openfl.Lib;
 import haxe.CallStack;
@@ -9,6 +10,7 @@ class Main extends openfl.display.Sprite
 {
 	public function new():Void
 	{
+		CrashHandler.initalize('', 'SAP_', '', 'SincoAndPortilizen');
 		
 		// Set the current working directory for Android and iOS devices
 		#if android

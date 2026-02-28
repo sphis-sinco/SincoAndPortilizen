@@ -20,6 +20,8 @@
 	<define name="MOBILE_BUILD" if="mobile" />
 	<define name="MOBILE_BUILD" if="MOBILE_TESTING" />
 
+	<haxeflag name="--dce full" unless="debug" />
+
 	<!-- ____________________________ Window Settings ___________________________ -->
 
 	<!--These
@@ -35,6 +37,7 @@
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
+	<set name="BUILD_DIR" value="export/indev" if="indev" />
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 
 	<source path="source" />
