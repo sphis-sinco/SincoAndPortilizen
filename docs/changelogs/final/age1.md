@@ -1,6 +1,6 @@
 # Final (Age 1)
 
-Release to Addon 1 and it's pach
+Release to Addon 1 and it's patch.
 
 ## 2.0.1 - 3/2026
 

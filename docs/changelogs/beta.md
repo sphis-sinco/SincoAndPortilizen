@@ -1,6 +1,6 @@
 # Beta
 
-THE BETA STAGE! 
+THE BETA STAGE! The game has been remade from scratch and yeah, it's coolios.
 
 ## 4.0.1b - 8/20/2025
 
