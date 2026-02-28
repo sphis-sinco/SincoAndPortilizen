@@ -14,6 +14,9 @@ class Assets
 
 	public static function getPath(id:String):String
 	{
+		if (Translate.languageData == null)
+			return id;
+
 		var idLang = [
 			Path.directory(id) + '/',
 			Path.withoutDirectory(Path.withoutExtension(id)),
