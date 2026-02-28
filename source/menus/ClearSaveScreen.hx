@@ -7,7 +7,7 @@ import flixel.text.FlxText;
 
 class ClearSaveScreen extends State
 {
-	public var clearSave:Spr;
+	public var clearSave:InteractableSpr;
 	public var cursor:Spr;
 
 	public var yes:InteractableSpr;
@@ -21,12 +21,12 @@ class ClearSaveScreen extends State
 
 		FlxG.mouse.enabled = true;
 
-		clearSave = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
+		clearSave = new InteractableSpr('settings/ClearSave');
+		clearSave.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
 		clearSave.scaleOffset += .1;
-		clearSave.loadGraphic(Assets.getImagePath('settings/ClearSave'));
 		clearSave.scaleSpr();
 		clearSave.screenCenter();
-		clearSave.scale.set(clearSave.scale.x - .1, clearSave.scale.y - .1);
+		clearSave.desiredPosition = clearSave.getPosition();
 		add(clearSave);
 
 		yes = new InteractableSpr('clearSave/buttons');
@@ -147,6 +147,8 @@ class ClearSaveScreen extends State
 		super.update(elapsed);
 
 		Global.playMenuMusic();
+
+		clearSave.overlap.dispatch();
 
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
