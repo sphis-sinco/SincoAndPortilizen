@@ -21,8 +21,7 @@ class SettingsMenu extends State
 
 	public static var cursorSkin:Int;
 
-	public var cursor:Spr;
-	public var selected:Int = -1;
+	public var selected:Int = 0;
 
 	public var descriptionText:FlxText;
 
@@ -59,6 +58,7 @@ class SettingsMenu extends State
 				settingSpr.loadGraphic(Assets.getImagePath('settings/${setting.asset}'));
 
 			settingSpr.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
+			settingSpr.scaleOffset += .1; // the overlap scale
 			settingSpr.scaleSpr();
 
 			settingSpr.screenCenter(X);
@@ -68,6 +68,7 @@ class SettingsMenu extends State
 
 			settingDataFields.set(setting.id, setting);
 			settingSpritemap.set(setting.id, settingSpr);
+			settingsGroup.add(settingSpr);
 
 			settingSpr.overlap.add(() ->
 			{
@@ -106,27 +107,16 @@ class SettingsMenu extends State
 		descriptionText.alignment = 'center';
 		add(descriptionText);
 
-		cursor = new Spr(-3);
-
 		if (FlxG.random.bool() && Global.previousState == 'TitleScreen' || cursorSkin == 2)
 		{
 			cursorSkin = 2;
-			cursor.loadGraphic(Assets.getImagePath('settings/cursors/sinco'), true, 64, 64);
-			cursor.color = 0x4eb10c;
-			Global.changeDiscordRPCPresence('Powering their options', 'Settings Menu'); // electricity = power. Shut up
+			Global.changeDiscordRPCPresence('Powering their options', 'Settings Menu'); // electricity = power. Shut up // no
 		}
 		else
 		{
 			cursorSkin = 1;
-			cursor.loadGraphic(Assets.getImagePath('settings/cursors/port'), true, 64, 64);
-			cursor.color = 0x4e0c6f;
 			Global.changeDiscordRPCPresence('Sabotaging their options', 'Settings Menu');
 		}
-
-		cursor.animation.add('idle', [0], 24);
-		cursor.animation.add('select', [1], 24);
-		cursor.animation.play('idle');
-		add(cursor);
 
 		#if MOBILE_BUILD
 		cursor.visible = false;
@@ -223,20 +213,26 @@ class SettingsMenu extends State
 		Global.playMenuMusic();
 		super.update(elapsed);
 
-		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
-		cursor.animation.play('idle');
+		if (FlxG.keys.anyJustPressed([A, D, LEFT, RIGHT]))
+		{
+			if (FlxG.keys.anyJustPressed([A, LEFT]))
+				selected--;
+			if (FlxG.keys.anyJustPressed([D, RIGHT]))
+				selected++;
+		}
 
-		var i = 0;
+		if (selected < 0)
+			selected = settingsGroup.members.length - 1;
+		if (selected > settingsGroup.members.length - 1)
+			selected = 0;
+
 		for (settingID => setting in settingDataFields)
 		{
-			settingSpritemap.get(settingID).visible = selected == i;
-			if (selected != i) return;
-
 			#if DISCORDRPC
 			if (settingID == 'discordRPC')
 			{
 				settingSpritemap.get(settingID).animation.play('false');
-				return;
+				continue;
 			}
 			#end
 
@@ -244,8 +240,6 @@ class SettingsMenu extends State
 				settingSpritemap.get(settingID).animation.play(Std.string(Reflect.field(FlxG.save.data, setting.savefield)));
 			if (setting.type == INCREMENT)
 				settingSpritemap.get(settingID).animation.play(Std.string(FlxMath.roundDecimal(Reflect.field(FlxG.save.data, setting.savefield) * 100, 0)));
-		
-			i++;
 		}
 
 		if (Global.keyJustReleased(ESCAPE))
@@ -256,17 +250,13 @@ class SettingsMenu extends State
 		descriptionText.text = '';
 		for (setting in settingsGroup.members)
 		{
-			if (FlxCollision.pixelPerfectCheck(cursor, setting))
+			if (selected == setting.ID)
 			{
-				cursor.animation.play('select');
-
-				if (selected != setting.ID)
-					selected = setting.ID;
-
+				setting.visible = true;
 				setting.overlap.dispatch();
 			}
-			if (cursor.animation.name != 'select')
-				selected = -1;
+			else
+				setting.visible = true;
 		}
 
 		descriptionText.y = (FlxG.height * 0.9) - descriptionText.height;

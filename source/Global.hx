@@ -170,20 +170,12 @@ class Global
 	 */
 	public static function playMusic(filename:String):Void
 	{
+		if (FlxG.sound.music != null && FlxG.sound.music.playing)
+			return;
+
 		var path = Assets.getMusicPath(filename);
-		if (FlxG.sound.music != null)
-		{
-			if (!FlxG.sound.music.playing)
-			{
-				__lastMusicId = path;
-				FlxG.sound.playMusic(path);
-			}
-		}
-		else
-		{
-			__lastMusicId = path;
-			FlxG.sound.playMusic(path);
-		}
+		__lastMusicId = path;
+		FlxG.sound.playMusic(path);
 	}
 
 	public static function fadeToMusic(filename:String, volume:Float = 1.0, fadeOut:Float = 0.35, fadeIn:Float = 0.5, onlyIfDifferent:Bool = true):Void
