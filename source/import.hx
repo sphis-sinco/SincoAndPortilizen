@@ -12,7 +12,3 @@ import sys.io.File;
 #if DISCORDRPC
 import Discord.DiscordClient;
 #end
-#if NEWGROUNDS
-import io.newgrounds.NG;
-import backend.newgrounds.*;
-#end

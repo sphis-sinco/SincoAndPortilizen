@@ -4,7 +4,7 @@ class OutdatedCheck
 {
 	public static var LINK:String = 'https://raw.githubusercontent.com/[USER]/[REPO]/refs/heads/[BRANCH]/[FILE].txt';
 
-	public static var GIT_USER:String = 'sphis-sinco';
+	public static var GIT_USER:String = 'macohi';
 	public static var GIT_REPO:String = 'SincoAndPortilizen';
 	public static var GIT_BRANCH:String = #if debug 'main-indev' #else 'main' #end;
 	public static var GIT_FILE:String = 'version';

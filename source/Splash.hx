@@ -31,29 +31,6 @@ class Splash extends State
 
 		Global.playSoundEffect('splash');
 
-		#if NEWGROUNDS
-		#if NEWGROUNDS_SPLASH
-		splash.scaleOffset = -3;
-		splash.scaleSpr();
-		splash.screenCenter();
-		splash.x -= splash.width / 2;
-		var tankman:Spr;
-
-		tankman = new Spr(-3);
-		tankman.loadGraphic(Assets.getImagePath('splash-tank'));
-		tankman.scaleSpr();
-		tankman.screenCenter();
-		tankman.x += tankman.width / 2;
-		add(tankman);
-		#end
-
-		
-		FlxTween.tween(tankman, {alpha: 0}, 1, {
-			ease: FlxEase.sineInOut,
-			startDelay: 1
-		});
-		#end
-
 		FlxTween.tween(splash, {alpha: 0}, 1, {
 			ease: FlxEase.sineInOut,
 			startDelay: 1

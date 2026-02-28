@@ -33,12 +33,12 @@
       "version": null
     },
     {
-      "name": "newgrounds",
+      "name": "lime",
       "type": "haxelib",
       "version": null
     },
     {
-      "name": "sphis",
+      "name": "openfl",
       "type": "haxelib",
       "version": null
     }

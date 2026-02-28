@@ -250,10 +250,6 @@ class Global
 
 	public static function unlockMedal(medal:String = '', ngID:Int = 0):Void
 	{
-		#if NEWGROUNDS
-		NGio.unlockMedal(ngID);
-		#end
-
 		#if !html5
 		if (!FlxG.save.data.medals.contains(medal))
 		{

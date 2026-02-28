@@ -19,11 +19,6 @@
         <define name="MOBILE_BUILD" if="mobile" />
         <define name="MOBILE_BUILD" if="MOBILE_TESTING" />
 
-        <!-- Newgrounds~ -->
-        <define name="NEWGROUNDS_SPLASH" if="NEWGROUNDS"/>
-        <define name="NEWGROUNDS_MEDALS" if="NEWGROUNDS"/>
-        <error value="Compile with Windows." if="NEWGROUNDS hl"/>
-
         <!-- ____________________________ Window Settings ___________________________ -->
 
         <!--These
@@ -45,7 +40,6 @@
 
         <assets path="assets" exclude="assets/exclude" />
         <assets path="CHANGELOG.md" />
-        <assets path="build" rename="assets/build.txt" />
 
         <!-- _______________________________ Libraries ______________________________ -->
 
@@ -53,13 +47,10 @@
         <haxelib name="flixel-addons" />
 
         <haxelib name="flixel-modding" />
-        <haxelib name="sphis" />
 
         <haxelib name="extension-androidtools" if="android"/>
 
         <haxelib name="discord_rpc" if="DISCORDRPC" />
-
-        <haxelib name="newgrounds" if="NEWGROUNDS" />
 
         <!-- _________________________________ After _______________________________ -->
 

@@ -4,12 +4,9 @@
 
 ### Removed
 
+- Newgrounds shit
 - `build` file
 - `version.txt` file
-
-### Fixed
-
-- Newgrounds Crash
 
 ### Changed
 
