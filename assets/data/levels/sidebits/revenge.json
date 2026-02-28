@@ -4,8 +4,8 @@
 
         "can_play": false,
 
-        "cant_play_message": "Indev",
-        "can_play_message": "Revenge",
+        "cant_play_message_key": "indev",
+        "can_play_message_key": "revenge",
 
         "color": [12, 45, 12]
 }

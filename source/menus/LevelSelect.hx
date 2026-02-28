@@ -104,8 +104,8 @@ class LevelSelect extends State
 				{
 					if (!levelData.can_play)
 					{
-						if (levelData.cant_play_message != null)
-							flashMessage(levelData.cant_play_message);
+						if (levelData.cant_play_message_key != null)
+							flashMessage(levelData.cant_play_message_key);
 						else
 							flashMessage('Can\'t play');
 					}
@@ -116,8 +116,8 @@ class LevelSelect extends State
 						if (levelData.sinco_level)
 							sinco.animation.play('picked');
 
-						if (levelData.can_play_message != null)
-							flashMessage(levelData.can_play_message);
+						if (levelData.can_play_message_key != null)
+							flashMessage(levelData.can_play_message_key);
 
 						Global.playSoundEffect('blipSelect');
 
