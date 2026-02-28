@@ -16,7 +16,7 @@ jobs:
 
                         - uses: krdlab/setup-haxe@master
                           with:
-                                  haxe-version: 4.3.6
+                                  haxe-version: 4.3.7
 
                         - name: Restore Previous Cache
                           id: cache-build-restore
@@ -65,7 +65,7 @@ jobs:
 
                         - uses: krdlab/setup-haxe@master
                           with:
-                                  haxe-version: 4.3.6
+                                  haxe-version: 4.3.7
 
                         - name: Restore Previous Cache
                           id: cache-build-restore
@@ -107,14 +107,14 @@ jobs:
                                   name: windowsBuild
                                   path: export/release/windows/bin
         buildMac:
-                runs-on: macos-13
+                runs-on: macos-latest
 
                 steps:
                         - uses: actions/checkout@main
 
                         - uses: krdlab/setup-haxe@master
                           with:
-                                  haxe-version: 4.3.6
+                                  haxe-version: 4.3.7
 
                         - name: Restore Previous Cache
                           id: cache-build-restore
