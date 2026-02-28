@@ -134,7 +134,7 @@ class PausableState extends State
 			}
 
 			#if MOBILE_BUILD
-			pauseText.text = 'PAUSED\n\nTap the back button to go to the Level Select';
+			pauseText.text = Translate.getLine('pause-mobile');
 			pauseText.screenCenter(XY);
 
 			backButton = new InteractableSpr('mobile/back');

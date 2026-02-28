@@ -1,5 +1,6 @@
 package menus;
 
+import backend.translations.Translate;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxCollision;
@@ -46,7 +47,7 @@ class ClearSaveScreen extends State
 			FlxTween.tween(yes, {alpha: 0}, .5, {
 				startDelay: .5
 			});
-			confirmationText.text = 'Hope you meant it.';
+			confirmationText.text = Translate.getLine('clearSave.confirm');
 			FlxG.save.erase();
 
 			WebSave.volume = 1;
@@ -87,7 +88,7 @@ class ClearSaveScreen extends State
 			FlxTween.tween(no, {alpha: 0}, .5, {
 				startDelay: .5
 			});
-			confirmationText.text = 'Good choice';
+			confirmationText.text = Translate.getLine('clearSave.deny');
 
 			#if !html5
 			if (FlxG.save.data.levels_complete.contains(2))
@@ -95,7 +96,7 @@ class ClearSaveScreen extends State
 			if (WebSave.levels_complete.contains(2))
 			#end
 			{
-				confirmationText.text += '\nI wouldn\'t either.';
+				confirmationText.text += Translate.getLine('clearSave.deny_osin_append');
 			}
 
 			leave();
@@ -103,7 +104,7 @@ class ClearSaveScreen extends State
 		add(no);
 
 		confirmationText = new FlxText();
-		confirmationText.text = 'Are you sure?';
+		confirmationText.text = Translate.getLine('clearSave.sure');
 		confirmationText.size = 16;
 		#if MOBILE_BUILD confirmationText.size = 32; #end
 		confirmationText.alignment = 'center';

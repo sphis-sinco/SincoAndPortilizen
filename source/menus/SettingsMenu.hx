@@ -162,10 +162,6 @@ class SettingsMenu extends State
 			Global.changeDiscordRPCPresence('Sabotaging their options', 'Settings Menu');
 		}
 
-		#if MOBILE_BUILD
-		cursor.visible = false;
-		#end
-
 		if (Global.previousState == 'ClearSaveScreen')
 		{
 			FlxG.sound.music.fadeIn(1);

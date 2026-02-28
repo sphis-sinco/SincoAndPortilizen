@@ -1,7 +1,10 @@
 {
 	"assetSuffix": "-por",
 
+	"SAP_Team": "SAP Team",
+
 	"pause": "PAUSED\n\n[SPACE] to go to the Level Select",
+	"pause-mobile": "PAUSED\n\nTap the back button to go to the Level Select",
 
 	"levelSelect": {
 		"string-quest": "String Quest",
@@ -49,5 +52,14 @@
 		"value_unsupported": "unsupported",
 		"value_enabled": "enabled",
 		"value_disabled": "disabled"
+	},
+
+	"clearSave": {
+		"sure": "Are you sure?",
+
+		"confirm": "Hope you meant it.",
+
+		"deny": "Good choice",
+		"deny_osin_append": "\nI wouldn't either."
 	}
 }

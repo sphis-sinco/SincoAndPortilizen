@@ -1,5 +1,6 @@
 package;
 
+import backend.translations.Translate;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -21,7 +22,7 @@ class Splash extends State
 		add(splash);
 
 		splashText = new FlxText();
-		splashText.text = 'SAP Team';
+		splashText.text = Translate.getLine('SAP_Team');
 		splashText.size = 32;
 		splashText.fieldWidth = FlxG.width;
 		splashText.alignment = 'center';
