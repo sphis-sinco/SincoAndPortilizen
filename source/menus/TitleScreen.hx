@@ -19,6 +19,8 @@ class TitleScreen extends State
 	{
 		super.create();
 
+		FlxG.mouse.enabled = true;
+
 		if (Global.previousState != 'TitleScreen')
 			logoSuffix = logoSuffixes[FlxG.random.int(0, logoSuffixes.length - 1)];
 

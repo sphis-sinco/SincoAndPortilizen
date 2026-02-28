@@ -6,7 +6,6 @@ import flixel.group.FlxSpriteContainer.FlxTypedSpriteContainer;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxTween;
 import flixel.math.FlxPoint;
-import flixel.util.FlxCollision;
 import flixel.text.FlxText;
 
 class SettingsMenu extends State
@@ -28,6 +27,8 @@ class SettingsMenu extends State
 	override function create()
 	{
 		super.create();
+
+		FlxG.mouse.enabled = false;
 
 		settingsData = Assets.getJsonFile('settings');
 		add(settingsGroup);

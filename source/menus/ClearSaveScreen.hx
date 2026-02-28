@@ -19,6 +19,8 @@ class ClearSaveScreen extends State
 	{
 		super.create();
 
+		FlxG.mouse.enabled = true;
+		
 		clearSave = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
 		clearSave.loadGraphic(Assets.getImagePath('settings/ClearSave'));
 		clearSave.scaleSpr();
