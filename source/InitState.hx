@@ -1,5 +1,6 @@
 package;
 
+import backend.translations.Translate;
 import menus.LevelSelect;
 import flixel.tweens.FlxTween;
 import flixel.text.FlxText;
@@ -87,6 +88,11 @@ class InitState extends FlxState
 		}, true);
 
 		LevelSelect.levelFolderData = Assets.getFileJsonContent('level_folders/base.json');
+
+		if (FlxG.save.data.language != null)
+			Translate.getLanguage(FlxG.save.data.language);
+		else
+			Translate.getLanguage(Translate.DEFAULT_LANGUAGE);
 
 		switchToState(new Splash(), 'Splash');
 	}

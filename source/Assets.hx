@@ -1,3 +1,4 @@
+import backend.translations.Translate;
 import haxe.Json;
 
 class Assets
@@ -12,6 +13,9 @@ class Assets
 
 	public static function getPath(id:String):String
 	{
+		if (lime.utils.Assets.exists(id + Translate.languageData.assetSuffix))
+			return id + Translate.languageData.assetSuffix;
+
 		return id;
 	}
 
