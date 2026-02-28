@@ -63,7 +63,7 @@ class SettingsMenu extends State
 			settingSpr.scaleOffset += .1; // the overlap scale
 			settingSpr.scaleSpr();
 
-			settingSpr.screenCenter(X);
+			settingSpr.screenCenter();
 			settingSpr.ID = ID;
 
 			settingSpr.desiredPosition = settingSpr.getPosition();
