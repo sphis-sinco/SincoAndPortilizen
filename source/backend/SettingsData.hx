@@ -13,6 +13,7 @@ typedef SettingsDataSettingsItem =
 	type:SettingsDataSettingsItemType,
 
 	?max:Int,
+	?list:Array<Dynamic>,
 
 	?animated:Bool,
 }
@@ -22,4 +23,5 @@ enum abstract SettingsDataSettingsItemType(String) from String to String
 	var TOGGLE = 'toggle';
 	var INCREMENT = 'increment';
 	var METHOD = 'method';
+	var LIST = 'list';
 }

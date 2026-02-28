@@ -84,17 +84,21 @@ class SettingsMenu extends State
 					Translate.getLine('settings.${setting.id}.name'),
 					() ->
 					{
+						var field:Dynamic = Reflect.field(FlxG.save.data, setting.savefield);
+
 						#if !DISCORDRPC
 						if (setting.id == 'discordRPC')
 							return Translate.getLine('settings.value_unsupported');
 						#end
 
+						if (setting.type == LIST)
+							return Std.string(Translate.getLine('${field}'));
+
 						if (setting.type == TOGGLE)
-							return (Reflect.field(FlxG.save.data,
-								setting.savefield) ? Translate.getLine('settings.value_enabled') : Translate.getLine('settings.value_disabled'));
+							return ((field) ? Translate.getLine('settings.value_enabled') : Translate.getLine('settings.value_disabled'));
 
 						if (setting.type == INCREMENT)
-							return Std.string(FlxMath.roundDecimal(Reflect.field(FlxG.save.data, setting.savefield) * 100, 0));
+							return Std.string(FlxMath.roundDecimal(field * 100, 0));
 
 						return 'Monkey Testicles';
 					},
@@ -152,7 +156,6 @@ class SettingsMenu extends State
 		settingSpritemap.get('coloredLevelSelect').justReleased.add(() ->
 		{
 			FlxG.save.data.colored_levelSelect = !FlxG.save.data.colored_levelSelect;
-
 			FlxG.save.flush();
 		});
 
@@ -229,6 +232,8 @@ class SettingsMenu extends State
 
 		for (settingID => setting in settingDataFields)
 		{
+			if (!setting.animated) return;
+
 			#if DISCORDRPC
 			if (settingID == 'discordRPC')
 			{
@@ -237,10 +242,15 @@ class SettingsMenu extends State
 			}
 			#end
 
-			if (setting.type == TOGGLE)
-				settingSpritemap.get(settingID).animation.play(Std.string(Reflect.field(FlxG.save.data, setting.savefield)));
-			if (setting.type == INCREMENT)
-				settingSpritemap.get(settingID).animation.play(Std.string(FlxMath.roundDecimal(Reflect.field(FlxG.save.data, setting.savefield) * 100, 0)));
+			var field:Dynamic = Reflect.field(FlxG.save.data, setting.savefield);
+
+			switch (setting.type)
+			{
+				case INCREMENT:
+					settingSpritemap.get(settingID).animation.play(Std.string(FlxMath.roundDecimal(field * 100, 0)));
+				default:
+					settingSpritemap.get(settingID).animation.play(Std.string(field));
+			}
 		}
 
 		if (Global.keyJustReleased(ESCAPE))
