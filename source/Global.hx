@@ -170,20 +170,12 @@ class Global
 	 */
 	public static function playMusic(filename:String):Void
 	{
+		if (FlxG.sound.music != null && FlxG.sound.music.playing)
+			return;
+
 		var path = Assets.getMusicPath(filename);
-		if (FlxG.sound.music != null)
-		{
-			if (!FlxG.sound.music.playing)
-			{
-				__lastMusicId = path;
-				FlxG.sound.playMusic(path);
-			}
-		}
-		else
-		{
-			__lastMusicId = path;
-			FlxG.sound.playMusic(path);
-		}
+		__lastMusicId = path;
+		FlxG.sound.playMusic(path);
 	}
 
 	public static function fadeToMusic(filename:String, volume:Float = 1.0, fadeOut:Float = 0.35, fadeIn:Float = 0.5, onlyIfDifferent:Bool = true):Void
@@ -229,6 +221,7 @@ class Global
 	{
 		var v = Math.max(0, Math.min(1, vol));
 		FlxG.sound.volume = v;
+		WebSave.volume = v;
 		if (FlxG.save.data != null)
 		{
 			FlxG.save.data.volume = v;
@@ -269,12 +262,12 @@ class Global
 
 		if (!WebSave.medals.contains(medal))
 		{
-			trace('Unlocked ${medal} into WebSave');
+			// trace('Unlocked ${medal} into WebSave');
 			WebSave.medals.push(medal);
 		}
 		else
 		{
-			trace('${medal} already unlocked in WebSave');
+			// trace('${medal} already unlocked in WebSave');
 		}
 
 		try

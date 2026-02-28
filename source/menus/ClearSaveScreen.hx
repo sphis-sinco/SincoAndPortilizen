@@ -1,5 +1,6 @@
 package menus;
 
+import backend.translations.Translate;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxCollision;
@@ -7,7 +8,7 @@ import flixel.text.FlxText;
 
 class ClearSaveScreen extends State
 {
-	public var clearSave:Spr;
+	public var clearSave:InteractableSpr;
 	public var cursor:Spr;
 
 	public var yes:InteractableSpr;
@@ -19,10 +20,14 @@ class ClearSaveScreen extends State
 	{
 		super.create();
 
-		clearSave = new Spr(#if !MOBILE_BUILD 0 #else 2 #end);
-		clearSave.loadGraphic(Assets.getImagePath('settings/ClearSave'));
+		FlxG.mouse.enabled = true;
+
+		clearSave = new InteractableSpr('settings/ClearSave');
+		clearSave.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
+		clearSave.scaleOffset += .1;
 		clearSave.scaleSpr();
-		clearSave.setPosition(SettingsMenu.clearSavePos.x, SettingsMenu.clearSavePos.y);
+		clearSave.screenCenter();
+		clearSave.desiredPosition = clearSave.getPosition();
 		add(clearSave);
 
 		yes = new InteractableSpr('clearSave/buttons');
@@ -42,7 +47,7 @@ class ClearSaveScreen extends State
 			FlxTween.tween(yes, {alpha: 0}, .5, {
 				startDelay: .5
 			});
-			confirmationText.text = 'Hope you meant it.';
+			confirmationText.text = Translate.getLine('clearSave.confirm');
 			FlxG.save.erase();
 
 			WebSave.volume = 1;
@@ -83,7 +88,7 @@ class ClearSaveScreen extends State
 			FlxTween.tween(no, {alpha: 0}, .5, {
 				startDelay: .5
 			});
-			confirmationText.text = 'Good choice';
+			confirmationText.text = Translate.getLine('clearSave.deny');
 
 			#if !html5
 			if (FlxG.save.data.levels_complete.contains(2))
@@ -91,7 +96,7 @@ class ClearSaveScreen extends State
 			if (WebSave.levels_complete.contains(2))
 			#end
 			{
-				confirmationText.text += '\nI wouldn\'t either.';
+				confirmationText.text += Translate.getLine('clearSave.deny_osin_append');
 			}
 
 			leave();
@@ -99,7 +104,7 @@ class ClearSaveScreen extends State
 		add(no);
 
 		confirmationText = new FlxText();
-		confirmationText.text = 'Are you sure?';
+		confirmationText.text = Translate.getLine('clearSave.sure');
 		confirmationText.size = 16;
 		#if MOBILE_BUILD confirmationText.size = 32; #end
 		confirmationText.alignment = 'center';
@@ -143,6 +148,8 @@ class ClearSaveScreen extends State
 		super.update(elapsed);
 
 		Global.playMenuMusic();
+
+		clearSave.overlap.dispatch();
 
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');

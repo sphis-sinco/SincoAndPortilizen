@@ -1,5 +1,6 @@
 package backend;
 
+import backend.translations.Translate;
 import backend.mobile.BackButton;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import menus.LevelSelect;
@@ -103,7 +104,7 @@ class PausableState extends State
 			overlay.alpha = 0.5;
 			behindPauseButtonLayer.add(overlay);
 
-			pauseText = new FlxText(0, 0, 0, 'PAUSED\n\n[SPACE] to go to the Level Select', 16);
+			pauseText = new FlxText(0, 0, 0, Translate.getLine('pause'), 16);
 			pauseText.alignment = 'center';
 			pauseText.screenCenter(XY);
 			behindPauseButtonLayer.add(pauseText);
@@ -133,7 +134,7 @@ class PausableState extends State
 			}
 
 			#if MOBILE_BUILD
-			pauseText.text = 'PAUSED\n\nTap the back button to go to the Level Select';
+			pauseText.text = Translate.getLine('pause-mobile');
 			pauseText.screenCenter(XY);
 
 			backButton = new InteractableSpr('mobile/back');

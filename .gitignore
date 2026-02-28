@@ -5,9 +5,9 @@ NDA/
 source/NDA/
 
 .DS_Store
-RECOVER_**.fla
 
-*.mp4
+RECOVER_**.fla
+**.swf
 
 checkstyle.json
 

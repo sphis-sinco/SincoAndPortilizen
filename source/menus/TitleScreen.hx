@@ -19,6 +19,8 @@ class TitleScreen extends State
 	{
 		super.create();
 
+		FlxG.mouse.enabled = true;
+
 		if (Global.previousState != 'TitleScreen')
 			logoSuffix = logoSuffixes[FlxG.random.int(0, logoSuffixes.length - 1)];
 
@@ -85,6 +87,7 @@ class TitleScreen extends State
 		});
 		settings.justReleased.add(() ->
 		{
+			SettingsMenu.selected = 0;
 			Global.switchState(new SettingsMenu());
 		});
 

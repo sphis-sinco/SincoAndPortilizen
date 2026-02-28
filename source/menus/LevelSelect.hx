@@ -1,5 +1,6 @@
 package menus;
 
+import backend.translations.Translate;
 import backend.levelselect.LevelFolderData;
 import flixel.tweens.FlxEase;
 import levels.Tres;
@@ -77,63 +78,68 @@ class LevelSelect extends State
 		{
 			cursor.animation.play('select');
 
-			if (levelData != null)
-				if (FlxG.save.data.colored_levelSelect)
-				{
-					if (levelData.port_level && levelData.sinco_level)
-						levelIcon.color = 0x4e0c6f;
+			if (levelData == null)
+				return;
+			if (!FlxG.save.data.colored_levelSelect)
+				return;
 
-					if (levelData.color != null && levelData.color.length >= 3)
-						levelIcon.color = FlxColor.fromRGB(levelData.color[0], levelData.color[1], levelData.color[2]);
+			if (levelData.port_level && levelData.sinco_level)
+				levelIcon.color = 0x4e0c6f;
 
-					if (levelData.hover_color != null && levelData.hover_color.length >= 3)
-						levelIcon.color = FlxColor.fromRGB(levelData.hover_color[0], levelData.hover_color[1], levelData.hover_color[2]);
-				}
+			if (levelData.color != null && levelData.color.length >= 3)
+				levelIcon.color = FlxColor.fromRGB(levelData.color[0], levelData.color[1], levelData.color[2]);
+
+			if (levelData.hover_color != null && levelData.hover_color.length >= 3)
+				levelIcon.color = FlxColor.fromRGB(levelData.hover_color[0], levelData.hover_color[1], levelData.hover_color[2]);
 		});
 
 		levelIcon.justReleased.add(() ->
 		{
-			if (!startLevelTimer.active && selectedLevel > -1)
+			if (startLevelTimer.active)
+				return;
+			if (selectedLevel < 0)
+				return;
+
+			levelIcon.justReleased_soundPlay = false;
+			sinco.animation.play('notpicked');
+			port.animation.play('notpicked');
+			if (levelData == null)
 			{
-				levelIcon.justReleased_soundPlay = false;
-				sinco.animation.play('notpicked');
-				port.animation.play('notpicked');
-				if (levelData == null)
-					flashMessage('Missing level file:\n\n"${levelNames[selectedLevel]}"');
-				else
-				{
-					if (!levelData.can_play)
-					{
-						if (levelData.cant_play_message != null)
-							flashMessage(levelData.cant_play_message);
-						else
-							flashMessage('Can\'t play');
-					}
-					else
-					{
-						if (levelData.port_level)
-							port.animation.play('picked');
-						if (levelData.sinco_level)
-							sinco.animation.play('picked');
+				flashMessage(Translate.getLine('levelSelect.missing_level_file', [levelNames[selectedLevel]]));
 
-						if (levelData.can_play_message != null)
-							flashMessage(levelData.can_play_message);
-
-						Global.playSoundEffect('blipSelect');
-
-						startLevelTimer.start(10);
-						FlxTimer.wait(1, () ->
-						{
-							switch (levelNames[selectedLevel].toLowerCase())
-							{
-								case 'string-quest': Global.switchState(new StringQuest());
-								case 'osin': Global.switchState(new Osin());
-								case 'tres': Global.switchState(new Tres());
-							}
-						});
-					}
-				}
+				return;
 			}
+
+			if (!levelData.can_play)
+			{
+				if (levelData.cant_play_message_key != null)
+					flashMessage(Translate.getLine('levelSelect.${levelData.cant_play_message_key}'));
+				else
+					flashMessage(Translate.getLine('levelSelect.cant_play'));
+
+				return;
+			}
+
+			if (levelData.port_level)
+				port.animation.play('picked');
+			if (levelData.sinco_level)
+				sinco.animation.play('picked');
+
+			if (levelData.can_play_message_key != null)
+				flashMessage(Translate.getLine('levelSelect.${levelData.can_play_message_key}'));
+
+			Global.playSoundEffect('blipSelect');
+
+			startLevelTimer.start(10);
+			FlxTimer.wait(1, () ->
+			{
+				switch (levelNames[selectedLevel].toLowerCase())
+				{
+					case 'string-quest': Global.switchState(new StringQuest());
+					case 'osin': Global.switchState(new Osin());
+					case 'tres': Global.switchState(new Tres());
+				}
+			});
 		});
 
 		add(crown);
@@ -339,31 +345,31 @@ class LevelSelect extends State
 				levelData = null;
 			}
 
-			if (levelData != null)
-			{
-				if (levelData.can_play)
-					try
-					{
-						levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/${levelNames[selectedLevel]}'));
-					}
-					catch (e)
-					{
-						levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/unknown'));
-					}
-				else
-					levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/locked'));
+			if (levelData == null)
+				return;
 
-				if (FlxG.save.data.colored_levelSelect)
+			if (levelData.can_play)
+				try
 				{
-					if (levelData.port_level)
-						levelIcon.color = 0x4e0c6f;
-					if (levelData.sinco_level)
-						levelIcon.color = 0x4eb10c;
-
-					if (levelData.color != null && levelData.color.length >= 3)
-						levelIcon.color = FlxColor.fromRGB(levelData.color[0], levelData.color[1], levelData.color[2]);
+					levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/${levelNames[selectedLevel]}'));
 				}
-			}
+				catch (e)
+				{
+					levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/unknown'));
+				}
+			else
+				levelIcon.loadGraphic(Assets.getImagePath('levelSelect/level_icons/locked'));
+
+			if (!FlxG.save.data.colored_levelSelect)
+				return;
+
+			if (levelData.port_level)
+				levelIcon.color = 0x4e0c6f;
+			if (levelData.sinco_level)
+				levelIcon.color = 0x4eb10c;
+
+			if (levelData.color != null && levelData.color.length >= 3)
+				levelIcon.color = FlxColor.fromRGB(levelData.color[0], levelData.color[1], levelData.color[2]);
 		}
 
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
@@ -371,14 +377,13 @@ class LevelSelect extends State
 
 		if (!startLevelTimer.active)
 		{
-			if (levelData != null)
-			{
-				if (FlxG.save.data.colored_levelSelect)
-				{
-					if (levelData.port_level && levelData.sinco_level && (levelData.color == null || levelData.color.length < 3))
-						levelIcon.color = 0x4eb10c;
-				}
-			}
+			if (levelData == null)
+				return;
+			if (!FlxG.save.data.colored_levelSelect)
+				return;
+
+			if (levelData.port_level && levelData.sinco_level && (levelData.color == null || levelData.color.length < 3))
+				levelIcon.color = 0x4eb10c;
 		}
 
 		FlxG.watch.addQuick('selectedLevel', selectedLevel);
@@ -394,15 +399,11 @@ class LevelSelect extends State
 
 			if (cursor.y < (pos - 64))
 				return;
-			else
-			{
-				if (cursor.x > (portPetX) && cursor.y < pos)
-					return;
-			}
-			if (cursor.y > FlxG.height - (console.height / 2) + 32)
-			{
+			else if (cursor.x > (portPetX) && cursor.y < pos)
 				return;
-			}
+
+			if (cursor.y > FlxG.height - (console.height / 2) + 32)
+				return;
 
 			cursor.animation.play('select');
 		}

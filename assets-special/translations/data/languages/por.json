@@ -1,0 +1,65 @@
+{
+	"assetSuffix": "-por",
+
+	"SAP_Team": "SAP Team",
+
+	"pause": "PAUSED\n\n[SPACE] to go to the Level Select",
+	"pause-mobile": "PAUSED\n\nTap the back button to go to the Level Select",
+
+	"levelSelect": {
+		"string-quest": "String Quest",
+		"osin": "Osin",
+		"tres": "Tres",
+		"revenge": "Revenge",
+
+		"indev": "Indev",
+		"cant_play": "Can't play",
+		"missing_level_file": "Missing level file:\n\n\"%1\""
+	},
+
+	"settings": {
+		"coloredLevelSelect": {
+			"name": "Colored Level Select",
+			"description": "Enables Color on the Level Select",
+
+			"displayKey": "%1 (%2) - %3"
+		},
+		"discordRPC": {
+			"name": "Discord RPC",
+			"description": "Enables Rich Presence Support on Discord",
+
+			"displayKey": "%1 (%2) - %3"
+		},
+		"volume": {
+			"name": "Volume",
+			"description": "Sets the game volume",
+
+			"displayKey": "%1 (%2) - %3"
+		},
+		"clearSave": {
+			"name": "Clear Save",
+			"description": "You will lose everything you hold dear to you in this game.",
+
+			"displayKey": "%1 - %3"
+		},
+		"language": {
+			"name": "Language",
+			"description": "Change your language",
+
+			"displayKey": "%1 (%2) - %3"
+		},
+
+		"value_unsupported": "unsupported",
+		"value_enabled": "enabled",
+		"value_disabled": "disabled"
+	},
+
+	"clearSave": {
+		"sure": "Are you sure?",
+
+		"confirm": "Hope you meant it.",
+
+		"deny": "Good choice",
+		"deny_osin_append": "\nI wouldn't either."
+	}
+}
