@@ -91,7 +91,7 @@ class SettingsMenu extends State
 
 						if (setting.type == TOGGLE)
 							return (Reflect.field(FlxG.save.data,
-								setting.savefield) ? Translate.getLine('settings.value_enabled') : Translate.getLine('settings.value_diabled'));
+								setting.savefield) ? Translate.getLine('settings.value_enabled') : Translate.getLine('settings.value_disabled'));
 
 						if (setting.type == INCREMENT)
 							return Std.string(FlxMath.roundDecimal(Reflect.field(FlxG.save.data, setting.savefield) * 100, 0));
