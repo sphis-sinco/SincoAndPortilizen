@@ -7,9 +7,18 @@ typedef SettingsData =
 
 typedef SettingsDataSettingsItem =
 {
+	asset:String,
 	id:String,
-	type:String,
-	
-	?min:Int,
-	?max:Int
+	savefield:String,
+	type:SettingsDataSettingsItemType,
+
+	?max:Int,
+
+	?animated:Bool,
+}
+
+enum abstract SettingsDataSettingsItemType(String) from String to String
+{
+	var TOGGLE = 'toggle';
+	var INCREMENT = 'increment';
 }

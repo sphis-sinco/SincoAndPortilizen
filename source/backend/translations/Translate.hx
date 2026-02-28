@@ -53,7 +53,12 @@ class Translate
 
 		if (replaces != null)
 			for (i => replace in replaces)
-				lineObject = lineObject.replace('%${i + 1}', replace);
+			{
+				if (replace == null)
+					continue;
+
+				lineObject = lineObject.replace('%${i + 1}', ((Reflect.isFunction(replace)) ? replace() : replace));
+			}
 
 		return lineObject;
 	}

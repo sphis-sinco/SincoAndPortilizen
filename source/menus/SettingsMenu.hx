@@ -1,5 +1,8 @@
 package menus;
 
+import backend.translations.Translate;
+import backend.SettingsData.SettingsDataSettingsItem;
+import flixel.group.FlxSpriteContainer.FlxTypedSpriteContainer;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxTween;
 import flixel.math.FlxPoint;
@@ -8,10 +11,11 @@ import flixel.text.FlxText;
 
 class SettingsMenu extends State
 {
-	public var coloredLevelSelect:InteractableSpr;
-	public var discordRPC:InteractableSpr;
-	public var volume:InteractableSpr;
-	public var clearSave:InteractableSpr;
+	public var settingsData:SettingsData;
+
+	public var settingSpritemap:Map<String, InteractableSpr> = [];
+	public var settingDataFields:Map<String, SettingsDataSettingsItem> = [];
+	public var settingsGroup:FlxTypedSpriteContainer<InteractableSpr> = new FlxTypedSpriteContainer<InteractableSpr>();
 
 	public static var clearSavePos:FlxPoint;
 
@@ -26,75 +30,79 @@ class SettingsMenu extends State
 	{
 		super.create();
 
-		coloredLevelSelect = new InteractableSpr('settings/ColoredLevelSelect');
-		coloredLevelSelect.loadGraphic(Assets.getImagePath('settings/ColoredLevelSelect'), true, 64, 64);
-		coloredLevelSelect.animation.add('false', [0]);
-		coloredLevelSelect.animation.add('true', [1]);
-		coloredLevelSelect.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
-		coloredLevelSelect.scaleSpr();
-		coloredLevelSelect.setPosition(32, 32);
+		settingsData = Assets.getJsonFile('settings');
+		add(settingsGroup);
 
-		#if MOBILE_BUILD
-		coloredLevelSelect.screenCenter(X);
-		coloredLevelSelect.x -= (coloredLevelSelect.width / 2);
-		#end
+		for (ID => setting in settingsData.settings)
+		{
+			var settingSpr = new InteractableSpr('splash');
 
-		coloredLevelSelect.ID = 0;
-		add(coloredLevelSelect);
+			if (setting.animated)
+			{
+				settingSpr.loadGraphic(Assets.getImagePath('settings/${setting.asset}'), true, 64, 64);
 
-		pageCont.push(coloredLevelSelect);
+				if (setting.type == TOGGLE)
+				{
+					settingSpr.animation.add('false', [0]);
+					settingSpr.animation.add('true', [1]);
+				}
 
-		discordRPC = new InteractableSpr('settings/DiscordRPC');
-		discordRPC.loadGraphic(Assets.getImagePath('settings/DiscordRPC'), true, 64, 64);
-		discordRPC.animation.add('false', [0]);
-		discordRPC.animation.add('true', [1]);
-		discordRPC.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
-		discordRPC.scaleSpr();
-		discordRPC.setPosition(coloredLevelSelect.x + coloredLevelSelect.width + 32, coloredLevelSelect.y);
-		discordRPC.ID = 1;
+				if (setting.type == INCREMENT)
+				{
+					var a = 0;
 
-		discordRPC.color = 0x5e5ea0;
-		#if !DISCORDRPC
-		discordRPC.color = 0x4e4e4e;
-		#end
-		pageCont.push(discordRPC);
-		add(discordRPC);
+					for (i in 0...Math.floor(setting.max / 10))
+						settingSpr.animation.add('${i * 10}', [a]);
+				}
+			}
+			else
+				settingSpr.loadGraphic(Assets.getImagePath('settings/${setting.asset}'));
 
-		volume = new InteractableSpr('settings/Volume');
-		volume.loadGraphic(Assets.getImagePath('settings/Volume'), true, 64, 64);
-		volume.animation.add('100', [10]);
-		volume.animation.add('90', [9]);
-		volume.animation.add('80', [8]);
-		volume.animation.add('70', [7]);
-		volume.animation.add('60', [6]);
-		volume.animation.add('50', [5]);
-		volume.animation.add('40', [4]);
-		volume.animation.add('30', [3]);
-		volume.animation.add('20', [2]);
-		volume.animation.add('10', [1]);
-		volume.animation.add('0', [0]);
-		volume.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
-		volume.scaleSpr();
-		volume.setPosition(coloredLevelSelect.x, coloredLevelSelect.y + coloredLevelSelect.height + 32);
-		volume.ID = 2;
-		add(volume);
+			settingSpr.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
+			settingSpr.scaleSpr();
 
-		pageCont.push(volume);
-		lowerPageCont.push(volume);
+			settingSpr.screenCenter(X);
+			settingSpr.ID = ID;
 
-		clearSave = new InteractableSpr('settings/ClearSave');
-		clearSave.loadGraphic(Assets.getImagePath('settings/ClearSave'));
-		clearSave.scaleOffset = #if !MOBILE_BUILD 0 #else 2 #end;
-		clearSave.scaleSpr();
-		clearSave.setPosition(discordRPC.x, volume.y);
-		clearSave.ID = 3;
-		add(clearSave);
-		clearSavePos = new FlxPoint(clearSave.x, clearSave.y);
+			settingSpr.desiredPosition = settingSpr.getPosition();
 
-		pageCont.push(clearSave);
-		lowerPageCont.push(clearSave);
+			settingDataFields.set(setting.id, setting);
+			settingSpritemap.set(setting.id, settingSpr);
 
-		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkeyballs', #if !MOBILE_BUILD 16 #else 32 #end);
+			settingSpr.overlap.add(() ->
+			{
+				descriptionText.text = Translate.getLine('settings.${setting.id}.displayKey', [
+					Translate.getLine('settings.${setting.id}.name'),
+					() ->
+					{
+						#if !DISCORDRPC
+						if (setting.id == 'discordRPC')
+							return Translate.getLine('settings.value_unsupported');
+						#end
+
+						if (setting.type == TOGGLE)
+							return (Reflect.field(FlxG.save.data,
+								setting.savefield) ? Translate.getLine('settings.value_enabled') : Translate.getLine('settings.value_diabled'));
+
+						if (setting.type == INCREMENT)
+							return Std.string(FlxMath.roundDecimal(Reflect.field(FlxG.save.data, setting.savefield) * 100, 0));
+
+						return 'Monkey Testicles';
+					},
+					Translate.getLine('settings.${setting.id}.description'),
+				]);
+			});
+		}
+
+		if (settingSpritemap.exists('discordRPC'))
+		{
+			settingSpritemap.get('discordRPC').color = 0x5e5ea0;
+			#if !DISCORDRPC settingSpritemap.get('discordRPC').color = 0x4e4e4e; #end
+		}
+
+		clearSavePos = new FlxPoint(settingSpritemap.get('clearSave')?.x, settingSpritemap.get('clearSave')?.y);
+
+		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkey Testicles', #if !MOBILE_BUILD 16 #else 32 #end);
 		descriptionText.alignment = 'center';
 		add(descriptionText);
 
@@ -128,14 +136,14 @@ class SettingsMenu extends State
 		{
 			FlxG.sound.music.fadeIn(1);
 
-			coloredLevelSelect.alpha = 0;
-			discordRPC.alpha = 0;
-			volume.alpha = 0;
-			descriptionText.alpha = 0;
+			for (setting => settingSpr in settingSpritemap)
+				if (setting != 'clearSave')
+				{
+					settingSpr.alpha = 0;
+					FlxTween.tween(settingSpr, {alpha: 1}, 1);
+				}
 
-			FlxTween.tween(coloredLevelSelect, {alpha: 1}, 1);
-			FlxTween.tween(discordRPC, {alpha: 1}, 1);
-			FlxTween.tween(volume, {alpha: 1}, 1);
+			descriptionText.alpha = 0;
 			FlxTween.tween(descriptionText, {alpha: 1}, 1);
 		}
 
@@ -143,38 +151,17 @@ class SettingsMenu extends State
 		add(new backend.mobile.BackButton(new TitleScreen(), new FlxPoint(0, -64)));
 		#end
 
-		coloredLevelSelect.desiredPosition = coloredLevelSelect.getPosition();
-		discordRPC.desiredPosition = discordRPC.getPosition();
-		volume.desiredPosition = volume.getPosition();
-		clearSave.desiredPosition = clearSave.getPosition();
-
-		coloredLevelSelect.overlap.add(() ->
-		{
-			descriptionText.text = 'Colored Level Select (${(FlxG.save.data.colored_levelSelect) ? 'enabled' : 'disabled'}) - Enables Color on the Level Select';
-		});
-		discordRPC.overlap.add(() ->
-		{
-			descriptionText.text = 'Discord RPC (${#if DISCORDRPC(FlxG.save.data.discord_rpc) ? 'enabled' : 'disabled' #else 'unsupported' #end}) - Enables Rich Presence Support on Discord';
-		});
-		volume.overlap.add(() ->
-		{
-			descriptionText.text = 'Volume (${FlxMath.roundDecimal(FlxG.sound.volume * 100, 0)}) - Sets the game volume';
-		});
-		clearSave.overlap.add(() ->
-		{
-			descriptionText.text = 'Clear Save - You will lose everything you hold dear to you in this game.';
-		});
-
-		coloredLevelSelect.justReleased.add(() ->
+		settingSpritemap.get('coloredLevelSelect').justReleased.add(() ->
 		{
 			FlxG.save.data.colored_levelSelect = !FlxG.save.data.colored_levelSelect;
 
 			FlxG.save.flush();
 		});
 
-		discordRPC.justReleased.add(() -> {
+		settingSpritemap.get('discordRPC').justReleased.add(() ->
+		{
 			#if DISCORDRPC
-			discordRPC.justReleased_soundPlay = true;
+			settingSpritemap.get('discordRPC').justReleased_soundPlay = true;
 			FlxG.save.data.discord_rpc = !FlxG.save.data.discord_rpc;
 
 			if (FlxG.save.data.discord_rpc)
@@ -185,13 +172,13 @@ class SettingsMenu extends State
 			else
 				Discord.DiscordClient.shutdown();
 			#else
-			discordRPC.justReleased_soundPlay = false;
+			settingSpritemap.get('discordRPC')..justReleased_soundPlay = false;
 			#end
 
 			FlxG.save.flush();
 		});
 
-		volume.justReleased.add(() ->
+		settingSpritemap.get('volume').justReleased.add(() ->
 		{
 			FlxG.sound.changeVolume(0.1);
 			if (FlxG.sound.volume >= 1)
@@ -206,32 +193,30 @@ class SettingsMenu extends State
 
 			FlxG.save.flush();
 		});
-		volume.justReleased_soundPlay = false;
+		settingSpritemap.get('volume').justReleased_soundPlay = false;
 
-		clearSave.justReleased.add(() ->
+		settingSpritemap.get('clearSave').justReleased.add(() ->
 		{
-			if (coloredLevelSelect.alpha == 1)
+			if (settingSpritemap.get(settingsData.settings[0].id)?.alpha == 1)
 			{
-				clearSave.justReleased_soundPlay = true;
+				settingSpritemap.get('clearSave').justReleased_soundPlay = true;
 				FlxG.sound.music.fadeOut(1, 0, tween ->
 				{
 					Global.switchState(new ClearSaveScreen());
 				});
 
-				FlxTween.tween(coloredLevelSelect, {alpha: 0}, 1);
-				FlxTween.tween(discordRPC, {alpha: 0}, 1);
-				FlxTween.tween(volume, {alpha: 0}, 1);
+				for (setting => settingSpr in settingSpritemap)
+					if (setting != 'clearSave')
+						FlxTween.tween(settingSpr, {alpha: 0}, 1);
+
 				FlxTween.tween(descriptionText, {alpha: 0}, 1);
 			}
 			else
-				clearSave.justReleased_soundPlay = false;
-			
+				settingSpritemap.get('clearSave').justReleased_soundPlay = false;
+
 			FlxG.save.flush();
 		});
 	}
-
-	public var pageCont:Array<InteractableSpr> = [];
-	public var lowerPageCont:Array<InteractableSpr> = [];
 
 	override function update(elapsed:Float)
 	{
@@ -241,13 +226,27 @@ class SettingsMenu extends State
 		cursor.setPosition(FlxG.mouse.x - (cursor.width / 2), FlxG.mouse.y - (cursor.height / 2));
 		cursor.animation.play('idle');
 
-		coloredLevelSelect.animation.play(Std.string(FlxG.save.data.colored_levelSelect));
-		#if DISCORDRPC
-		discordRPC.animation.play(Std.string(FlxG.save.data.discord_rpc));
-		#else
-		discordRPC.animation.play(Std.string(false));
-		#end
-		volume.animation.play(Std.string(FlxMath.roundDecimal(FlxG.sound.volume * 100, 0)));
+		var i = 0;
+		for (settingID => setting in settingDataFields)
+		{
+			settingSpritemap.get(settingID).visible = selected == i;
+			if (selected != i) return;
+
+			#if DISCORDRPC
+			if (settingID == 'discordRPC')
+			{
+				settingSpritemap.get(settingID).animation.play('false');
+				return;
+			}
+			#end
+
+			if (setting.type == TOGGLE)
+				settingSpritemap.get(settingID).animation.play(Std.string(Reflect.field(FlxG.save.data, setting.savefield)));
+			if (setting.type == INCREMENT)
+				settingSpritemap.get(settingID).animation.play(Std.string(FlxMath.roundDecimal(Reflect.field(FlxG.save.data, setting.savefield) * 100, 0)));
+		
+			i++;
+		}
 
 		if (Global.keyJustReleased(ESCAPE))
 		{
@@ -255,7 +254,7 @@ class SettingsMenu extends State
 		}
 
 		descriptionText.text = '';
-		for (setting in pageCont)
+		for (setting in settingsGroup.members)
 		{
 			if (FlxCollision.pixelPerfectCheck(cursor, setting))
 			{
@@ -265,13 +264,11 @@ class SettingsMenu extends State
 					selected = setting.ID;
 
 				setting.overlap.dispatch();
-
-				descriptionText.y = 0;
-				if (lowerPageCont.contains(setting))
-					descriptionText.y = FlxG.height - descriptionText.height;
 			}
 			if (cursor.animation.name != 'select')
 				selected = -1;
 		}
+
+		descriptionText.y = (FlxG.height * 0.9) - descriptionText.height;
 	}
 }

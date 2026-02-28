@@ -1,8 +1,30 @@
 {
 	"settings": [
-		{ "id": "coloredLevelSelect", "type": "toggle" },
-		{ "id": "discordRPC", "type": "toggle" },
-		{ "id": "volume", "type": "increment", "min": 0, "max": 100 },
-		{ "id": "clearSave", "type": "method" }
+		{
+			"asset": "ColoredLevelSelect",
+			"id": "coloredLevelSelect",
+			"savefield": "colored_levelSelect",
+			"type": "toggle"
+		},
+		{
+			"asset": "DiscordRPC",
+			"id": "discordRPC",
+			"savefield": "discord_rpc",
+			"type": "toggle"
+		},
+		{
+			"asset": "Volume",
+			"id": "volume",
+			"savefield": "volume",
+			"type": "increment",
+			"max": 100
+		},
+		{
+			"asset": "ClearSave",
+			"id": "clearSave",
+			"savefield": null,
+			"type": "method",
+			"animated": false
+		}
 	]
 }
