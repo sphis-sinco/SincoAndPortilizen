@@ -11,7 +11,7 @@
 
         <!-- _____________________________ Custom Defines ___________________________ -->
 
-        <define name="DISCORDRPC" if="windows" unless="hl" />
+        <define name="DISCORDRPC" if="desktop" unless="hl" />
 
         <!-- Turn on Crash Handler -->
         <define name="CRASH_HANDLER" />
@@ -39,7 +39,7 @@
         <source path="source" />
 
         <assets path="assets" exclude="assets/exclude" />
-        <assets path="CHANGELOG.md" />
+        <assets path="docs/changelogs/final.md" rename="CHANGELOG.md" />
 
         <!-- _______________________________ Libraries ______________________________ -->
 

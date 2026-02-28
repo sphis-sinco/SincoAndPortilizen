@@ -1,338 +1,34 @@
-# Final
+# 0.5.3a - 6/4/2025
 
-## 2.1 - 3/2026
-
-### Changed
-
-- You can no longer go to the level folder select until sidebits are added
-
-### Removed
-
-- Newgrounds shit
-- `build` file
-- `version.txt` file
-
-### Changed
-
-- Package Name and Package
-
-## 2.0 (Addon 1) - 8/22/2025
-
-### Fixed
-
-- Crash on non-mobile devices when unpausing in a level
-
-### Added
-
-- Pause Screen Icons
-- Medal Unlocking if you already beat some levels
-- Medals (Newgrounds, no medal menu yet)
-- Newgrounds API Support
-
-## 1.1 - 8/21/2025
-
-### Added
-
-- Level Folder Menu
-- Level JSONS have 2 new fields: `can_play_message` and `cant_play_message`
-- The `InteractableSpr` class now has a `unoverlap` signal and `overlapped` variable
-
-### Fixed
-
-- When you tap the level icon while "transitioning" a sound will no longer play
-- On mobile you can no longer avoid attacks by staying in a specific region
-
-### Changed
-
-- On mobile there are less bullets spawned max in Tres (from 50 to 30)
-- The Level Select now only has one level icon
-- `levels_complete` is a `Dynamic` array now (for backwards compatability, it SHOULD be a `String` but..compatability)
-
-## 1.0.1 - 8/21/2025
-
-### Added
-
-- More credits have been added
-- In "Tres" Super Sinco now has a trail behind him similar to the Knight Trail in Deltarune (Thank you kivers9k)
-
-## 1.0 - 8/20/2025
-
-The game is now to be known as complete
-
-# Beta
-
-## 4.0.1 - 8/20/2025
-
-### Fixed
-
-- Button sizes on web builds
-
-## 4b (Beta Milestone 5) - 8/20/2025
-
-Mobile update:
-This update adds _support_ for mobile devices (idk about iOS but android works defenitely). But the mobile compiled build isn't on the itch.io page
-
-### New Contributors
-
-- @wonderinglostsoul44 made their first contribution in https://github.com/sphis-sinco/SincoAndPortilizen/pull/45
-
-### Removed
-
-- Error message related to compiling on mobile
-
-### Fixed
-
-- Bullets in Tres will no longer move when the game is paused
-- The clear save screen confirmation text has the correct intended alignment
-- When leaving the Clear Save Screen you can now see the message
-
-### Changed
-
-- The default app icon is the 512x app icon
-- The instructions for swapping are removed on mobile for Tres
-- On mobile in Tres the player moves differently
-- You can tap the screen to jump in Osin
-- You can press and hold the screen (moving your finger OR MOUSE) to move in String Quest
-- On mobile "Tres" will have the T-DM2 firing more bullets
-- On mobile "Osin" will have osin firing a max of 10 "bullets"
-- On mobile "String Quest" will have 10 enemies and 6 _can_ be attacking at once
-- On mobile "String Quest" will have a bridge-like floor
-- You can tap the screen to leave the outdated screen
-- More accurate range to pet Sinco
-- All the functions and variables in the credits state are no longer static functions and or variables
-- Improved Global.hx by @wonderinglostsoul44 in https://github.com/sphis-sinco/SincoAndPortilizen/pull/45
-- You can swipe to scroll on the credits
-- When leaving the Clear Save Screen the confirmation text fades out
-- When leaving the Clear Save Screen all buttons fade out
-- Several UI elements are made bigger on mobile
-- `Global.dummyBG` will now generate a background that fits the window resolution
-
-### Added
-
-- Mobile support
-- `InteractableSpr` class so that interactable sprite buttons are easier
-- `MOBILE_TESTING` define
-- `MOBILE_BUILD` define
-
-## 3.1.2b (desktop-only) - 8/20/2025
-
-### Fixed
-
-- Null Access crash on desktop builds related to the `SAVESLOT_SUFFIX` define
-
-## 3.1.1b (web-only) - 8/20/2025
-
-### Fixed
-
-- Crash related to the `SAVESLOT_SUFFIX` define
-
-## 3.1b - 8/19/2025
-
-### Fixed
-
-- When entering the clear save screen the description text will fade out too
-- When entering the clear save screen you can no longer press the clear save button
-- When leaving the clear save screen the cursor will no longer change (if the proper condition was met)
-
-### Changed
-
-- Leaving the settings menu will send you to the title screen
-- Leaving the credits menu will send you to the title screen
-- The credits button has been moved to the title screen
-- The console in the Level Select will no longer send you to the settings menu
-
-### Added
-
-- `SAVESLOT_SUFFIX=` build define
-- Title Screen
-
-## 3b (Beta Milestone 4) - 8/19/2025
-
-### Added
-
-- Levels can now have a custom hover color defined in their json file
-- Levels can now have a custom color defined in their json file
-- **NEW OST TRACK: TRES**
-- **LEVEL 3: TRES**
-
-### Fixed
-
-- The volume setting is made up-to-date with the actual volume value
-- Crashes on web related to save data
-- The default flixel cursor is no longer seen in the splash screen
-
-## 2b (Beta Milestone 3) - 8/19/2025
-
-### Removed
-
-- Tweening for the Winged Enemy in Level 1
-
-### Fixed
-
-- Volume 10000
-- Issues with reading the `build` file on desktop platforms
-- Settings menu will now properly allow the menu music to loop in the background
-- Fixed all timers and tweens being disabled when going back to the level select after pausing in a level
-
-### Added
-
-- Splash Screen
-- Clear Save Setting
-- **LEVEL 2: OSIN**
-- Credits menu
-- Different cursors for Sinco and Port for the settings menu
-- Volume Setting (how the hell did I forget this?)
-- A crown is added to the level cards when the level's been beat
-- `volume` argument (back) to `Global.playSoundEffect`
-- Pet sounds for Sinco and Portilizen
-- 2 new pet "animations" for Sinco and Portilizen on the Level Select for when they are/aren't picked
-
-### Changed
-
-- Your save is now flushed when the window is exitted.
-- Updated App Icons
-- In debug builds the `build` file is changed along with the `build` file in the source-code
-- Slightly bigger region for clicking on port and sinco to pet them
-- shifted level icons over to the left by a few pixels
-
-## 1b (Beta Milestone 2) - 8/18/2025
-
-Game remade from the (almost) ground up
-**This version clears your save. Sorry, the Save data merge from previous versions was crashing the game**
-
-### Removed
-
-- All levels entirely from the game except for String Quest and Osin, though only String Quest is playable right now
-
-### Changed
-
-- Discord RPC says "Ready" when ready instead of "Starting the Game"
-- The Game Version text file is included in compiled builds now
-- Hitboxes are updated automatically when scaled using `Global.scaleSprite`
-
-### Added
-
-- Build file and build number, currently at 16 (this is just a random one cuz I've seen too many videos on windows development and the build numbers interested me)
-- Overhauled String Quest Level
-- Overhauled Level Select
-- Decimal scale offsets for `Global.scaleSprite`
-
-## 0.1.1b - 7/2/2025
-
-### Added
-
-- New build flags
-- Pause menu artwork
-- **Stage 5 OST Song: Family Rivalry**
-- New preloader art
-
-### Removed
-
-- Web build
-
-### Fixed
-
-- Mainmenu changelog option sending you to the main menu when the mod option is gone
-- "The OC of today" Medal unlock condition (was flipped basically and I'm going insane)
-
-## 0.1_01b - 7/1/2025
-
-### Changed
-
-- When the `spanish` locale is enabled, the mainmenu texts chage size
-
-### Fixed
-
-- Clear save crash on web (Issue #41)
-- Incorrect sizing on mainmenu option box (Issue #40)
-- Missing locale changes for "mods" and "changelog" in the main menu (Issue #39)
-- Medal text doesn't change when a locale does (Issue #38 / #40)
-
-## 0.1b (Pitstop 3 - Sidebit 2) - 7/1/2025
-
-### Added
-
-- **Sidebit 2**
-- Preloader artwork (easy to add more on desktop, and if you don't want antialiasing add "-px" to the end of the filename)
-- Asset preloading
-- SongPlayer class
-     - When a song plays if there is a json then a text will display with song
-     - I call this the SPJC system
-- **Stage 1 OST Song: Like Brothers (Extreme)**
-- Spanish and Portuguese translations for the "download latest traces" option
-- **Level pausing (Issue #15)**
-- "Clear save" option in the settings menu
-- **Stage 4 OST Song: Inner Hardware**
-- **Stage 1 OST Song: Like Brothers**
-- CHANGELOG_MENU Build flag
-- **Changelog Menu**
-
-### Removed
-
-- Unused texture atlas for the stage1 background
-- MASS MOD mentions
-- Intro Cutscene
-
-### Changed
-
-- `getScriptArray` has been turned into `getTypeArray` in FileManager and can support any type now. (`getTypeArray`)
-- The stage 5 timer text is black now for visability
-- Music tracks are now apart of the SPJC system
-- SparrowSprites have antialiasing set to enabled by default now
-- Sidebit 1 post-cutscene
-- Sidebit 1 pre-cutscene is a sparrow cutscene
-- Adjusted time when you can't attack Osin in stage 1
-- Mods no longer are enabled by default when loaded
-- Mod API version is 1.5 - FileManager has `getTypeArray` which is `getScriptArray` but with **any type** - Global has a previousState variable - Version is a valid variable
-- The main menu music 22 has been replaced with Lado.
-- Beta changelog format
-- The changelog has been split for every section of production
-- FileManager's writeToPath function has been improved
-- Version system is now the same as Creative
-- (Desktop only) Version system is softcoded
-- Locale system
-
-### Fixed
-
-- When going to the worldmap, portilization levels use the right character json
-- When reseting stages 1, and 4 the jump variables should be initalized
-- Sidebit 1 cutscenes
-- "The OC of today" Medal unlock condition (was flipped basically)
-- (Web only) Worldmap crash when switching to Sidebit mode
-
-# Alpha
-
-## 0.5.3a - 6/4/2025
-
-### Fixed
+## Fixed
 
 - (Desktop only) Json crashes
 
-### Changes
+## Changes
 
 - FileManager `readFile` can read assets with sys if sys
 
-## 0.5.2a - 4/19/2025
+# 0.5.2a - 4/19/2025
 
-### Fixed
+## Fixed
 
 - (Desktop only) Invalid char 0 at position 0
 
-## 0.5.1a - 4/19/2025
+# 0.5.1a - 4/19/2025
 
-### Added
+## Added
 
 - Sidebit 1 has SFX now
 
-### Fixed
+## Fixed
 
 - In the character select the character icon doesn't refresh when it's the same character
 - Programmer "Null"'s credit color
 - (Desktop only) Crash when accessing level 2(?)
 
-## 0.5.0a (Destination 3 - Rival clash) - 4/19/2025
+# 0.5.0a (Destination 3 - Rival clash) - 4/19/2025
 
-### Added
+## Added
 
 - LEVEL 5: RIVAL CLASH
 - NEW WORLDMAP
@@ -350,12 +46,12 @@ Game remade from the (almost) ground up
 - (Source) FileManager has 2 new QOL functions: `getPackerAtlas` and `getSparrowAtlas`
 - (Web only) Pixel perfect rendering ([#27][#27_link])
 
-### Removed
+## Removed
 
 - Sidebit menu (integrated into the new worldmap)
 - (Destop only) Old window resolution options besides 640x608 has been removed
 
-### Fixed
+## Fixed
 
 - Sidebit 1 can played with different difficulties
 - Fixed medals not popping up when you get a medal
@@ -369,7 +65,7 @@ Game remade from the (almost) ground up
 - Fixed the character ring characters on the titlescreen blinking from invisible to visible when switching to the titlestate
 - Fixed missing worldmap character assets
 
-### Changed
+## Changed
 
 - New medal SFX
 - The titleState version text now can contain the github sha
@@ -391,17 +87,17 @@ Game remade from the (almost) ground up
 - Several states now use the `switchState` function from Global
 - Global now has a `switchState` function
 
-## 0.4.3a - 4/15/2025
+# 0.4.3a - 4/15/2025
 
-### Added
+## Added
 
 - (Desktop only) Added oudated version menu
 
-### Fixed
+## Fixed
 
 - Fixed crash when switching from the stage 4 ending cutscene to the worldmap ([#23](#23_link))
 
-### Changed
+## Changed
 
 - Worldmap character asset grabbing is no longer case sensitive
 - Modding API version is now `0.1.3`
@@ -418,22 +114,22 @@ Game remade from the (almost) ground up
 - (source) The FileManager no longer only traces that it couldn't find a file when `EXCESS_TRACES` is enabled
 - (compiling) The project xml no longer echos the game name and version
 
-### Removed
+## Removed
 
 - (compiling) Sinlib is no longer required to compile and has been integrated into the source code
 
-## 0.4.2a - 4/14/2025
+# 0.4.2a - 4/14/2025
 
-### Added
+## Added
 
 - Sidebit 1 health icons
 - Portuguese Tutorial assets for sidebit1
 
-### Fixed
+## Fixed
 
 - Tutorial assets are visible in Sidebit 1 now
 
-### Changed
+## Changed
 
 - Modding API version is now `0.1.2`
      - `ModFolderManager` now traces the supported modding API versions
@@ -442,9 +138,9 @@ Game remade from the (almost) ground up
 - Sidebit 1 tutorial assets are more visible on the white background
 - Medals no longer unlock on web (the icon doesnt appear)
 
-## 0.4.1a - 4/13/2025
+# 0.4.1a - 4/13/2025
 
-### Added
+## Added
 
 - MOD MENU <!-- Moved up because it's the main addition -->
 - PROPER SAVING
@@ -455,15 +151,15 @@ Game remade from the (almost) ground up
 - `enabled_mods` save field
 - `StringSortAlphabetically` function to Random.hx
 
-### Fixed
+## Fixed
 
 - AnsiTrace now actually enforces `MAX_TRACES`
 
-### Removed
+## Removed
 
 - Source code mods
 
-### Changed
+## Changed
 
 - The `RECOMPILE_ON_MOD_UPDATE` build flag is enabled by default
 - This `CHANGELOG.md` file is now included in compiled builds
@@ -477,9 +173,9 @@ Game remade from the (almost) ground up
      - Mods now run `initalizeMod` after `loadScripts`
      - When using `getAssetFile` it now checks mod folders first before actually checking the assets folders, with a first come first serve system
 
-## 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
+# 0.4.0a (Pitstop 2 - Sidebit 1) - 4/13/2025
 
-### Added
+## Added
 
 <!-- These are moved up because they are epicer-->
 
@@ -515,11 +211,11 @@ Game remade from the (almost) ground up
 - (source) [Adjust Color Shader](https://github.com/FunkinCrew/Funkin/blob/main/source/funkin/graphics/shaders/AdjustColorShader.hx)
 - (Desktop and sys only) New settings menu option to download latest traces
 
-### Removed
+## Removed
 
 - Removed several unused assets
 
-### Fixed
+## Fixed
 
 - You can no longer select levels unlocked for one character but locked for another in the worldmap
 - The credits text no longer only updates to a new language by reloading the game
@@ -531,7 +227,7 @@ Game remade from the (almost) ground up
 - The "Huh, someone cares" medal icon now loads properly
 - (Desktop only) The settings menu no longer displays the incorrect window resolution
 
-### Changed
+## Changed
 
 - (Desktop only) the menu text box is longer vertically to fit the medals menu option
 - The version text on the title screen has the modding api version
@@ -554,23 +250,23 @@ Game remade from the (almost) ground up
 <!-- A patch content update? How peculiar... normally this would be v0.4.0a but versioning has changed, like right now, LOL -->
 <!-- If there ain't a new level or MAJOR content update then its a "patch" update, otherwise a minor-->
 
-## 0.3.2a - 4/9/2025
+# 0.3.2a - 4/9/2025
 
-### Removed
+## Removed
 
 - Removed `max_rocks` stage 2 difficulty json field
 
-### Fixed
+## Fixed
 
 - Fixed bug in stage 2 where sinco would float on air
 - Fixed bug in stage 2 where you could get 200% thanks to negative values
 - Fixed bug in stage 2 where you hit the first rock and it wouldnt spawn extra rocks(?) <!-- nope -->
 
-### Changed
+## Changed
 
 - Stage 1 UI is now updated and overhauled to be a health bar with text below it
 
-### Added
+## Added
 
 - Added `rock_speed_divider` field to Stage 2 difficulty json files (replaces `max_rocks` field)
 - Added crash keybind for states using the [`State.hx`](source/sap/utils/State.hx) file
@@ -589,21 +285,21 @@ Game remade from the (almost) ground up
      - Easy difficulty now has a 12.5% chance of attack
 - Added `-debug` text at the end of the version strings added when in debug builds
 
-## 0.3.1a - 4/8/2025
+# 0.3.1a - 4/8/2025
 
-### Added
+## Added
 
 - Added Post-Stage 2 panel Cutscene
 - Added spanish, and portuguese translation to the intro cutscene and post-stage1 cutscene
 
-### Fixed
+## Fixed
 
 - Fixed typos in the 3rd intro cutscene panel
 - Fixed web bug where pressing continue crashes the game
 
-## 0.3.0a (Destination 2 - Tierra) - 4/8/2025
+# 0.3.0a (Destination 2 - Tierra) - 4/8/2025
 
-### Added
+## Added
 
 - Added Spanish and Portuguese translations for the tutorial objects
 - Added difficulties: Easy, Normal, Hard, and Extreme
@@ -614,7 +310,7 @@ Game remade from the (almost) ground up
 - Added save for the window resolution before leaving the settings menu
 - Added a settings save data value
 
-### Changed
+## Changed
 
 - Main menu sinco and portilizen are now moves more to the left and right respectively
 - Main menu option box is now bigger
@@ -623,7 +319,7 @@ Game remade from the (almost) ground up
 - Updated all sinco assets
 - Updated osin assets
 
-### Fixed
+## Fixed
 
 - Fixed Main Menu option texts being able to escape the bounds of the box
 - Fixed stage 1 bug where you can dodge and jump at the same time
@@ -632,52 +328,52 @@ Game remade from the (almost) ground up
 - Fixed bug where stage 4 would crash because when jumping ([#19](#19_link))
 - Fixed window resolution option not being accurate to the actual resolution (This was due to the missing window resolution save value)
 
-## 0.2.1a - 3/12/2025
+# 0.2.1a - 3/12/2025
 
-### Nerd stuff
+## Nerd stuff
 
 - Reverted most shit to 0.1.1a
 
-### Removed
+## Removed
 
 - Removed HScript modding
 
-### Fixed
+## Fixed
 
 - Fixed hitHurt sounds trying to play a hitHurt-0 sound that doesn't exist.
 
-## 0.2.0a (Pitstop 1 - Scripting) - 3/12/2025
+# 0.2.0a (Pitstop 1 - Scripting) - 3/12/2025
 
-### Changed
+## Changed
 
 - Changed it so that now [Stage 1 and Stage 4 are now a mix of soft-coded and hard-coded.](#18_link)
 
-### Fixed
+## Fixed
 
 - Fixed internal bug where it would say "`Failed to change to language: english`" but `LANGUAGE` is supposed to be another language
 
-### Added
+## Added
 
 - Added custom Stage 1 background created by @iampauleps
 - Added mod support (`scripts/`) for: - MainMenu (`menus/MainMenu`) - WorldMap (`gameplay/Worldmap`) - TitleState (`menus/TitleState`) - Stage1 (`gameplay/MainMenu`) - Stage4 (`gameplay/MainMenu`) - Credits (`submenus/Credits`) - Settings (`submenus/Settings`) - Results (`gamplay/Results`)
 - Added [tutorial elements to stage 1 and 4](#14_link)
 
-## 0.1.1a - 2/22/2025
+# 0.1.1a - 2/22/2025
 
-### Fixed
+## Fixed
 
 - Fixed crash on web when trying to take a screenshot ([#16][#16_link])
 - Fixed when returning to the world map from a portilizen level the character wheel is on the sinco selection ([#11][#11_link])
 - Fixed no sound in stage 4 ([#12][#12_link])
 - Fixed volume being at 100% on desktop is 99.99...% on web ([#10][#10_link])
 
-## 0.1.0a (Destination 1 - Osin & Dimension String) - 2/22/2025
+# 0.1.0a (Destination 1 - Osin & Dimension String) - 2/22/2025
 
-### Added
+## Added
 
 - Added Results menu on death for stage 1
 
-### Fixed
+## Fixed
 
 - Fixed HTML5 crashing when beating a level
 - Fixed bug where in stage 1 the Results menu wouldn't adapt to the players max health.
@@ -685,7 +381,7 @@ Game remade from the (almost) ground up
 - Fixed bug where in stage 4 there is no results screen ([#9][#9_link])
 - Fixed bug where in stage 4 the timer stays the same as it last was ([#7][#7_link])
 
-### Changed
+## Changed
 
 - Changed Results menu so the music stops when you leave
 - Changed Company name in `project.xml` to `SAPTeam`
@@ -705,124 +401,3 @@ Game remade from the (almost) ground up
 [#24_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/24
 [#34_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/34
 [#35_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/35
-
-# Prototype
-
-## 0.0.8-p - 2/22/2025
-
-### Added
-
-- Settings menu
-- Language Setting
-- Volume Setting
-- Window resolution Setting (neko, windows, linux and mac only)
-
-### Removed
-
-- Translations folder
-
-## 0.0.7-p - 2/19/2025
-
-This update adds a `Build.py` file that helps with compiling :)
-
-### Changed
-
-- Changed the following custom BUILD_DIR conditions to no longer depend on being a release build for their directory to take place unless specified by `DEFAULT_DIRECTORY` - MASS_MOD - FORCED_ENGLISH_LANGUAGE - SPANISH_LANGUAGE - PORTUGUESE_LANGUAGE
-- Changed it so credits alignment is now center
-- Changed Results percent text to be opaque
-
-### Fixed
-
-- Fixed Djotta flow credits exitting screen bounds
-
-### Added
-
-- Readded Translations (they are back and now they work on windows!) - Added Translations for Credits
-- Added new Build directories
-
-## 0.0.6-p - 2/18/2025
-
-This update fixes crashes on 0.0.5-p with no additional content.
-
-### Fixed
-
-- [Fixed game crashing on launch][#6_link]
-
-### Removed
-
-- Translations (cause of [crash][#6_link])
-
-## 0.0.5-p - 2/15/2025
-
-### Removed
-
-- Removed "Press any" alpha fade in
-
-### Added
-
-- Added Indicator for when Osin is going to attack (Stage 1)
-- [Added Localization][#4_link] - Added Build flags for Localization - Added Spanish Translation (Google Translate) - Added Portuguese Translation (by Djotta Flow) - Added Localized Assets for images with text (for both languages) - Added `cur_lang.txt` file that can control the language thats set (gets overwritten by build flags) - Added BUILD_DIRs for the different languages
-- [Added `.bat` files for compiling (some for different languages too!)][#4_link]
-- [Added source code mod support through a plugin-like system][#5_link] - Added Mass mod (modifies every state that can be changed)
-
-### Changed
-
-- [Changed the Sound Tray][#3_link]
-- [Changed almost every state's custom functions to be `public static dynamic` functions (Source Code Mod Support)][#5_link]
-
-## 0.0.4-p - 2/14/2025
-
-### Changed
-
-- Changed system for levels beat
-- Changed savedata `level` to `levels_completed`
-- Changed Screenshot plugin to now be the FNF Screenshot Plugin (same keybind, its just based of funkin to fix a bug)
-
-### Added
-
-- Added countdown text to Stage 4
-- Added HMM file
-- Added Results State
-- Added Several Build Flags
-- Added Discord RPC
-- Added [Build Flags markdown file](/compiling/BUILD%20FLAGS.md)
-- [Added Credits Menu][#2_link]
-
-### Removed
-
-- Removed unused data files
-- Removed Chaos Emeralds (Gameplay and code)
-
-### Fixed
-
-- Fixed bug where DISABLE_PLUGINS enables plugins
-- Fixed bug where the screenshot [didnt do things](/random/screenshotplugin-before.png) it [should've been doing](/random/screenshotplugin-after.png)
-- Fixed bug where you couldn't select the level you're on after you swap in the Worldmap
-
-## 0.0.3-p - 2/13/2025
-
-- Gameplay changes - Added screenshot plugin (you can take a screenshot with F2 unless in debug, you do F1) - Added stage 4 winning condition (you have to survive the level for a minute) - We are now in the prototype era officially
-- Code changes: - Modified `Global.setEmeraldAmount()` function - Moved every folder that is sap specific to the new sap folder - Moved Debug build and Game version traces to the project xml - Added echo for build/test targets - Added ability to enable and disable annoying errors and warnings - Added compiler error for mobile - Compiling for mobile doesnt work - `FileManager_v8` now has been replaced with `Sinlib`'s `FileManager` (basically the same though) - Now using 8 tabs instead of like 2 or 4 spaces or smth? - In the code I have this little code style I've started implementing: - Don't leave unused imports in the code - Code shouldnt be more than 4 tabs long unless optimizing wouldn't do much.
-
-## 0.0.2-p - 2/6/2025
-
-- Added post-stage 1 cutscene
-- Added title screen version text
-- Worldmap Changes: - Added character wheel to worldmap - Added Portilizen world map character - Map now reloads when you swap - Added "Background" to the Worldmap - Worldmap tiles are now dark for levels that are not implemented - Worldmap tiles with unimplemented levels dont send you to the Mainmenu when you try and play them anymore
-- Added Stage 4 (Portilizens first level)
-
-## 0.0.1-p - 2/2/2025
-
-CURRENT FEATURES:
-
-- Title Screen
-- Main Menu
-- Intro Cutscene
-- World map
-- Stage 1 (Sinco)
-
-[#2_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/2
-[#3_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/3
-[#4_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/4
-[#5_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/pull/5
-[#6_link]: https://github.com/sphis-Sinco/SincoAndPortilizen/issues/6
