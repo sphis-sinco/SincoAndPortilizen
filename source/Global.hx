@@ -269,12 +269,12 @@ class Global
 
 		if (!WebSave.medals.contains(medal))
 		{
-			trace('Unlocked ${medal} into WebSave');
+			// trace('Unlocked ${medal} into WebSave');
 			WebSave.medals.push(medal);
 		}
 		else
 		{
-			trace('${medal} already unlocked in WebSave');
+			// trace('${medal} already unlocked in WebSave');
 		}
 
 		try
