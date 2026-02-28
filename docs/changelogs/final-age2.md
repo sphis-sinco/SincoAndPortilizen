@@ -6,8 +6,7 @@ The return era.
 
 ### Added
 
-- PORTUGUESE LANGUAGE!
-- LANGUAGE SETTING!
+- LANGUAGE SUPPORT!
 - `id` field to Level Folder Data : For the level select icon
 - `levels` field to Level Folder Data : This avoids hardcoded levels, atleast in the adding them to the lists
 

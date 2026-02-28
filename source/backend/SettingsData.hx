@@ -16,6 +16,7 @@ typedef SettingsDataSettingsItem =
 	?list:Array<Dynamic>,
 
 	?animated:Bool,
+	?included:Bool,
 }
 
 enum abstract SettingsDataSettingsItemType(String) from String to String

@@ -35,7 +35,8 @@
 			"savefield": "language",
 			"type": "list",
 			"animated": true,
-			"list": ["eng", "por"]
+			"list": ["eng", "por"],
+			"included": false
 		}
 	]
 }

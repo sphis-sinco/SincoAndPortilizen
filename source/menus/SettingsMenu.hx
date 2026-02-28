@@ -31,16 +31,23 @@ class SettingsMenu extends State
 		settingsData = Assets.getJsonFile('settings');
 		add(settingsGroup);
 
+		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkey Testicles', #if !MOBILE_BUILD 16 #else 32 #end);
+		descriptionText.alignment = 'center';
+		add(descriptionText);
+
 		for (ID => setting in settingsData.settings)
 		{
 			if (setting == null)
 				continue;
 
+			if (setting.included == false)
+				return;
+
 			var settingSpr = new InteractableSpr('splash');
 
 			if (setting.animated)
 			{
-					var a = 0;
+				var a = 0;
 
 				settingSpr.loadGraphic(Assets.getImagePath('settings/${setting.asset}'), true, 64, 64);
 
@@ -61,7 +68,6 @@ class SettingsMenu extends State
 
 				if (setting.type == LIST)
 				{
-
 					for (entry in setting.list)
 					{
 						settingSpr.animation.add('$entry', [a]);
@@ -87,6 +93,9 @@ class SettingsMenu extends State
 
 			settingSpr.overlap.add(() ->
 			{
+				if (descriptionText == null)
+					return;
+
 				descriptionText.text = Translate.getLine('settings.${setting.id}.displayKey', [
 					Translate.getLine('settings.${setting.id}.name'),
 					() ->
@@ -147,10 +156,6 @@ class SettingsMenu extends State
 
 		clearSavePos = new FlxPoint(settingSpritemap.get('clearSave')?.x, settingSpritemap.get('clearSave')?.y);
 
-		descriptionText = new FlxText(0, 0, FlxG.width, 'Monkey Testicles', #if !MOBILE_BUILD 16 #else 32 #end);
-		descriptionText.alignment = 'center';
-		add(descriptionText);
-
 		if (FlxG.random.bool() && Global.previousState == 'TitleScreen' || cursorSkin == 2)
 		{
 			cursorSkin = 2;
@@ -173,8 +178,11 @@ class SettingsMenu extends State
 					FlxTween.tween(settingSpr, {alpha: 1}, 1);
 				}
 
-			descriptionText.alpha = 0;
-			FlxTween.tween(descriptionText, {alpha: 1}, 1);
+			if (descriptionText != null)
+			{
+				descriptionText.alpha = 0;
+				FlxTween.tween(descriptionText, {alpha: 1}, 1);
+			}
 		}
 
 		#if MOBILE_BUILD
@@ -236,7 +244,8 @@ class SettingsMenu extends State
 					if (setting != 'clearSave')
 						FlxTween.tween(settingSpr, {alpha: 0}, 1);
 
-				FlxTween.tween(descriptionText, {alpha: 0}, 1);
+				if (descriptionText != null)
+					FlxTween.tween(descriptionText, {alpha: 0}, 1);
 			}
 			else
 				settingSpritemap.get('clearSave').justReleased_soundPlay = false;
@@ -294,7 +303,8 @@ class SettingsMenu extends State
 			Global.switchState(new TitleScreen());
 		}
 
-		descriptionText.text = '';
+		if (descriptionText != null)
+			descriptionText.text = '';
 		for (setting in settingsGroup.members)
 		{
 			if (selected == setting.ID)
@@ -311,6 +321,7 @@ class SettingsMenu extends State
 				setting.visible = false;
 		}
 
-		descriptionText.y = (FlxG.height * 0.9) - descriptionText.height;
+		if (descriptionText != null)
+			descriptionText.y = (FlxG.height * 0.9) - descriptionText.height;
 	}
 }
