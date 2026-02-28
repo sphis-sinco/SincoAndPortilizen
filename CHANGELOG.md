@@ -2,6 +2,10 @@
 
 ## 2.1 - 3/2026
 
+### Changed
+
+- You can no longer go to the level folder select until sidebits are added
+
 ### Removed
 
 - Newgrounds shit

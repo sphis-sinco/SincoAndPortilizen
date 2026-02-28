@@ -26,7 +26,6 @@ class Global
 	static function get_GENERATED_BY():String
 		return '${GENERATED_BY_PREFIX} v${VERSION}';
 
-
 	public static var VERSION(get, never):String;
 
 	public static dynamic function get_VERSION():String
@@ -63,14 +62,14 @@ class Global
 
 			if (FlxG.save.data.levels_complete.contains(MedalStrings.STRING_QUEST)
 				|| FlxG.save.data.medals.contains(MedalStrings.STRING_QUEST))
-				Global.unlockMedal(MedalStrings.STRING_QUEST, MedalIDS.STRING_QUEST);
+				Global.unlockMedal(MedalStrings.STRING_QUEST);
 			if (FlxG.save.data.levels_complete.contains(MedalStrings.OSIN) || FlxG.save.data.medals.contains(MedalStrings.OSIN))
-				Global.unlockMedal(MedalStrings.OSIN, MedalIDS.OSIN);
+				Global.unlockMedal(MedalStrings.OSIN);
 			if (FlxG.save.data.levels_complete.contains(MedalStrings.TRES) || FlxG.save.data.medals.contains(MedalStrings.TRES))
-				Global.unlockMedal(MedalStrings.TRES, MedalIDS.TRES);
+				Global.unlockMedal(MedalStrings.TRES);
 
 			if (FlxG.save.data.medals.contains(MedalStrings.PROGRAMMER))
-				Global.unlockMedal(MedalStrings.PROGRAMMER, MedalIDS.PROGRAMMER);
+				Global.unlockMedal(MedalStrings.PROGRAMMER);
 		}
 		catch (_:Dynamic) {}
 	}
@@ -248,7 +247,7 @@ class Global
 		catch (_:Dynamic) {}
 	}
 
-	public static function unlockMedal(medal:String = '', ngID:Int = 0):Void
+	public static function unlockMedal(medal:String = ''):Void
 	{
 		#if !html5
 		if (!FlxG.save.data.medals.contains(medal))

@@ -293,7 +293,8 @@ class LevelSelect extends State
 		#if MOBILE_BUILD
 		add(directional_left);
 		add(directional_right);
-		add(new backend.mobile.BackButton(new LevelFolderSelect()));
+		// add(new backend.mobile.BackButton(new LevelFolderSelect()));
+		add(new backend.mobile.BackButton(new TitleScreen()));
 		#end
 	}
 
@@ -317,7 +318,10 @@ class LevelSelect extends State
 			crown.scale.set(crown.scale.x - .1, crown.scale.y - .1);
 
 		if (Global.keyJustReleased(ESCAPE))
-			Global.switchState(new LevelFolderSelect());
+		{
+			Global.switchState(new TitleScreen());
+			// Global.switchState(new LevelFolderSelect());
+		}
 
 		if (Global.keyJustReleased(LEFT))
 			if (!startLevelTimer.active && selectedLevel > -1)
