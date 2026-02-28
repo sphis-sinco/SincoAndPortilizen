@@ -258,7 +258,7 @@ class SettingsMenu extends State
 				setting.overlap.dispatch();
 			}
 			else
-				setting.visible = true;
+				setting.visible = false;
 		}
 
 		descriptionText.y = (FlxG.height * 0.9) - descriptionText.height;
