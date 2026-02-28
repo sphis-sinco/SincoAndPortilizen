@@ -1,7 +1,7 @@
 # Sinco and Portilizen
-A game to celebrate 3 years (2022-2025) of youtube on the [Sphis](https://www.youtube.com/@sphis_sinco) channel.
+A game to celebrate 3 years (2022-2025) of youtube on the [Sphis](https://www.youtube.com/@sphis-sinco) channel.
 
 ## Links
-[Github Issues Page](https://github.com/sphis-sinco/SincoAndPortilizen/issues)<br>
-[Itch.io (Web and Desktop)](https://macohi-sphis.itch.io/sinco-and-portilizen)<br>
+[Github Issues Page](https://github.com/macohi/SincoAndPortilizen/issues)<br>
+[Itch.io (Web and Desktop)](https://macohi.itch.io/sinco-and-portilizen)<br>
 [Newgrounds (Web only)](https://www.newgrounds.com/portal/view/994528)
