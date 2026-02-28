@@ -51,8 +51,9 @@ class Translate
 		if (lineObjectStr == null)
 			return fallback;
 
-		for (i => replace in replaces)
-			lineObject = lineObject.replace('%${i + 1}', replace);
+		if (replaces != null)
+			for (i => replace in replaces)
+				lineObject = lineObject.replace('%${i + 1}', replace);
 
 		return lineObject;
 	}
