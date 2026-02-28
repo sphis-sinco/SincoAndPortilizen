@@ -8,7 +8,11 @@ class BackButton extends InteractableSpr
 
 	override public function new(returnState:FlxState, mypositionOffset:FlxPoint = null)
 	{
+		#if MOBILE_BUILD
 		super('mobile/back');
+		#else
+		super('');
+		#end
 
 		positionOffset = mypositionOffset ?? new FlxPoint();
 
