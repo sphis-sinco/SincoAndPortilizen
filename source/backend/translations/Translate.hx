@@ -31,9 +31,9 @@ class Translate
 		}
 	}
 
-	public static function getLine(line:String, ?replaces:Array<Dynamic>):String
+	public static function getLine(line:String, ?replaces:Array<Dynamic>, ?wantedfallback:String):String
 	{
-		var fallback:String = '{$line}';
+		var fallback:String = wantedfallback ?? '{$line}';
 
 		if (languageData == null)
 			return fallback;

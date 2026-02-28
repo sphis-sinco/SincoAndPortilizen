@@ -28,8 +28,6 @@ class SettingsMenu extends State
 	{
 		super.create();
 
-		FlxG.mouse.enabled = false;
-
 		settingsData = Assets.getJsonFile('settings');
 		add(settingsGroup);
 
@@ -42,6 +40,8 @@ class SettingsMenu extends State
 
 			if (setting.animated)
 			{
+					var a = 0;
+
 				settingSpr.loadGraphic(Assets.getImagePath('settings/${setting.asset}'), true, 64, 64);
 
 				if (setting.type == TOGGLE)
@@ -52,12 +52,19 @@ class SettingsMenu extends State
 
 				if (setting.type == INCREMENT)
 				{
-					var a = 0;
-
 					for (i in 0...Math.floor(setting.max / 10) + 1)
 					{
 						settingSpr.animation.add('${i * 10}', [a]);
+						a += 1;
+					}
+				}
 
+				if (setting.type == LIST)
+				{
+
+					for (entry in setting.list)
+					{
+						settingSpr.animation.add('$entry', [a]);
 						a += 1;
 					}
 				}
@@ -92,7 +99,7 @@ class SettingsMenu extends State
 						#end
 
 						if (setting.type == LIST)
-							return Std.string(Translate.getLine('${field}'));
+							return Std.string(Translate.getLine('settings.${setting.id}.values.${field}', [], field));
 
 						if (setting.type == TOGGLE)
 							return ((field) ? Translate.getLine('settings.value_enabled') : Translate.getLine('settings.value_disabled'));
@@ -105,6 +112,31 @@ class SettingsMenu extends State
 					Translate.getLine('settings.${setting.id}.description'),
 				]);
 			});
+
+			if (setting.type == LIST)
+			{
+				settingSpr.justReleased.add(() ->
+				{
+					var field:Dynamic = Reflect.field(FlxG.save.data, setting.savefield);
+
+					var list:Array<Dynamic> = setting.list ?? [];
+
+					if (list.indexOf(Translate.DEFAULT_LANGUAGE) == -1 && setting.id == 'language')
+						list.push(Translate.DEFAULT_LANGUAGE);
+
+					var index = list.indexOf(field);
+					if (index == -1)
+						index = 0;
+
+					index++;
+
+					if (index > list.length - 1)
+						index = 0;
+
+					Reflect.setField(FlxG.save.data, setting.savefield, list[index]);
+					FlxG.save.flush();
+				});
+			}
 		}
 
 		if (settingSpritemap.exists('discordRPC'))
@@ -152,6 +184,11 @@ class SettingsMenu extends State
 		#if MOBILE_BUILD
 		add(new backend.mobile.BackButton(new TitleScreen(), new FlxPoint(0, -64)));
 		#end
+
+		settingSpritemap.get('language').justReleased.add(() ->
+		{
+			Translate.getLanguage(FlxG.save.data.language);
+		});
 
 		settingSpritemap.get('coloredLevelSelect').justReleased.add(() ->
 		{
@@ -214,6 +251,8 @@ class SettingsMenu extends State
 
 	override function update(elapsed:Float)
 	{
+		FlxG.mouse.enabled = false;
+
 		Global.playMenuMusic();
 		super.update(elapsed);
 
@@ -232,7 +271,8 @@ class SettingsMenu extends State
 
 		for (settingID => setting in settingDataFields)
 		{
-			if (!setting.animated) return;
+			if (!setting.animated)
+				continue;
 
 			#if DISCORDRPC
 			if (settingID == 'discordRPC')
