@@ -53,7 +53,7 @@ class SettingsMenu extends State
 				{
 					var a = 0;
 
-					for (i in 0...Math.floor(setting.max / 10))
+					for (i in 0...Math.floor(setting.max / 10) + 1)
 					{
 						settingSpr.animation.add('${i * 10}', [a]);
 
