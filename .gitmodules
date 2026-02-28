@@ -1,0 +1,4 @@
+[submodule "source/macohi"]
+	path = source/macohi
+	url = https://github.com/macohi/macohi-haxe-submod
+	branch = main
