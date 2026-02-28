@@ -4,10 +4,16 @@ import macohi.util.WindowUtil;
 
 class Translate
 {
+	public static var DEFAULT_LANGUAGE_DATA:Language = null;
 	public static var languageData:Language = DEFAULT_LANGUAGE_DATA;
 
 	public static final DEFAULT_LANGUAGE:String = 'eng';
-	public static final DEFAULT_LANGUAGE_DATA:Language = Assets.getJsonFile('languages/$DEFAULT_LANGUAGE');
+
+	public static function init()
+	{
+		DEFAULT_LANGUAGE_DATA = Assets.getJsonFile('languages/$DEFAULT_LANGUAGE');
+		languageData = DEFAULT_LANGUAGE_DATA;
+	}
 
 	public static function getLanguage(language:String)
 	{

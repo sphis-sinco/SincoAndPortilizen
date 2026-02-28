@@ -89,6 +89,7 @@ class InitState extends FlxState
 
 		LevelSelect.levelFolderData = Assets.getFileJsonContent('level_folders/base.json');
 
+		Translate.init();
 		if (FlxG.save.data.language != null)
 			Translate.getLanguage(FlxG.save.data.language);
 		else
