@@ -4,6 +4,7 @@
 
 ### Removed
 
+- `build` file
 - `version.txt` file
 
 ### Fixed

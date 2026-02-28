@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.typeLimit.NextState;
 import lime.app.Application;
 import flixel.util.FlxSignal;
 import flixel.tweens.FlxTween;
@@ -15,37 +16,17 @@ import lime.utils.Assets as LimeAssets;
 
 using StringTools;
 
-/**
- * Global utility hub for app/build metadata, save-slot handling, audio helpers,
- * simple input sugar, and quick UI helpers.
- *
- * Backwards compatible with existing calls, but expanded with:
- * - safer version/build getters with caching & fallbacks
- * - flexible music control (fade, volume, only-if-different)
- * - quick camera effects (flash/shake)
- * - stronger save-slot bootstrap & flushing
- * - improved sprite scaling helpers (center/origin/pixel-perfect)
- * - safer current state detection
- */
-// Thank you wonderinglostsoul44
 class Global
 {
-	/** Name of the last state class before a switch. */
 	public static var previousState:String;
 
-	/* ───────────────────────────── App / Build Info ───────────────────────────── */
-	public static var GENERATED_BY(get, set):String;
-	static inline var _GENERATOR_PREFIX = 'Sinco and Portilizen';
-	static var __versionCache:Null<String> = null;
-	static var __buildCache:Null<Int> = null;
+	public static var GENERATED_BY(get, never):String;
+	static inline var GENERATED_BY_PREFIX = 'Sinco and Portilizen';
 
 	static function get_GENERATED_BY():String
-		return '${_GENERATOR_PREFIX} v${VERSION} (b${BUILD})';
+		return '${GENERATED_BY_PREFIX} v${VERSION}';
 
-	static inline function set_GENERATED_BY(v:String):String
-		return v; // allow external override if desired
 
-	/** Human version string (read once & cached). */
 	public static var VERSION(get, never):String;
 
 	public static dynamic function get_VERSION():String
@@ -53,41 +34,8 @@ class Global
 		return Application.current.meta.get('version');
 	}
 
-	/** Numeric build (read once & cached). */
-	public static var BUILD(get, never):Int;
-
-	public static dynamic function get_BUILD():Int
-	{
-		if (__buildCache != null)
-			return __buildCache;
-		var b = 0;
-		try
-		{
-			// Project-specific Assets helper may be present; fallback to lime
-			var raw:String = null;
-			#if (cpp || hl || neko || js)
-			try
-				raw = Assets.getFileTextContent('build.txt', false)
-			catch (_:Dynamic) {}
-			#end
-			if (raw == null && LimeAssets.exists('build.txt'))
-				raw = LimeAssets.getText('build.txt');
-			if (raw != null)
-			{
-				var parsed = Std.parseInt(raw.trim());
-				if (parsed != null)
-					b = parsed;
-			}
-		}
-		catch (e:Dynamic) {}
-		__buildCache = b;
-		return b;
-	}
-
-	/* ───────────────────────────── Visual Defaults ───────────────────────────── */
 	public static var DEFAULT_IMAGE_SCALE_MULTIPLIER:Float = 4.0;
 
-	/* ───────────────────────────── Save Slot System ──────────────────────────── */
 	public static var SAVE_SLOT:Dynamic = 1;
 	public static var SAVE_SLOT_PREFIX:String = 'SAP';
 	public static var SAVE_SLOT_SUFFIX:Dynamic = 1;
@@ -127,10 +75,6 @@ class Global
 		catch (_:Dynamic) {}
 	}
 
-	/**
-	 * Bind a new save slot and ensure default keys exist.
-	 * @param slotsuffix e.g. profile index (1..N) or string tag
-	 */
 	public static function change_saveslot(slotsuffix:Dynamic = 1):Void
 	{
 		SAVE_SLOT_SUFFIX = slotsuffix;
@@ -160,15 +104,6 @@ class Global
 		trace('Save dump: ${FlxG.save.data}');
 	}
 
-	/* ───────────────────────────── Sprite Helpers ────────────────────────────── */
-	/**
-	 * Creates a trail similar to that of the roaring knight from Deltarune
-	 * @param sprite the sprite you wish to have this effect
-	 * @param xEnd when the trail sprites get deleted
-	 * @param delay how long until each trail sprite spawns
-	 * @param speed How fast the trail sprites go
-	 * @param max how many trail sprites you want
-	 */
 	public static function createTrail(sprite:FlxSprite, xEnd:Float, delay:Float, speed:Float, max:Int)
 	{
 		var trails = new FlxSpriteGroup(0, 0, max);
@@ -192,10 +127,6 @@ class Global
 		return trails;
 	}
 
-	/**
-	 * Scale a sprite by DEFAULT_IMAGE_SCALE_MULTIPLIER plus optional addition.
-	 * Optionally centers origin and performs pixel-perfect rounding after scaling.
-	 */
 	public static function scaleSprite(sprite:FlxSprite, ?addition:Float = 0, centerOrigin:Bool = true, pixelPerfect:Bool = true):FlxSprite
 	{
 		var s = DEFAULT_IMAGE_SCALE_MULTIPLIER + (addition != null ? addition : 0);
@@ -211,9 +142,6 @@ class Global
 		return sprite;
 	}
 
-	/**
-	 * Scale sprite to *fit height* (preserve aspect), then update hitbox.
-	 */
 	public static function scaleSpriteToHeight(sprite:FlxSprite, targetHeight:Float, centerOrigin:Bool = true):FlxSprite
 	{
 		if (sprite.frameHeight <= 0)
@@ -226,7 +154,6 @@ class Global
 		return sprite;
 	}
 
-	/* ───────────────────────────── Music / SFX Helpers ───────────────────────── */
 	// Track last requested music path to avoid redundant restarts
 	static var __lastMusicId:String = null;
 
@@ -254,14 +181,6 @@ class Global
 		}
 	}
 
-	/**
-	 * Fade out current track (if any) and fade in the new one.
-	 * @param filename asset key/path
-	 * @param volume target volume [0..1]
-	 * @param fadeOut seconds to fade out old music
-	 * @param fadeIn seconds to fade in new music
-	 * @param onlyIfDifferent if true, will not restart same track
-	 */
 	public static function fadeToMusic(filename:String, volume:Float = 1.0, fadeOut:Float = 0.35, fadeIn:Float = 0.5, onlyIfDifferent:Bool = true):Void
 	{
 		var path = Assets.getMusicPath(filename);
@@ -295,18 +214,12 @@ class Global
 		}
 	}
 
-	/**
-	 * Quick SFX play with optional volume (0..1). Uses project Assets helper.
-	 */
 	public static function playSoundEffect(name:String, volume:Float = 1.0):Void
 		FlxG.sound.play(Assets.getSoundPath(name), volume);
 
 	public static function hitHurt():Void
 		playSoundEffect('gameplay/hitHurt/hitHurt-${FlxG.random.int(1, 4)}');
 
-	/**
-	 * Global master volume helper with clamping and save persistence.
-	 */
 	public static function setMasterVolume(vol:Float):Void
 	{
 		var v = Math.max(0, Math.min(1, vol));
@@ -320,7 +233,6 @@ class Global
 		}
 	}
 
-	/* ───────────────────────────── Progress / WebSave ────────────────────────── */
 	public static function beatLevel(lvl:String = ''):Void
 	{
 		#if !html5
@@ -369,7 +281,6 @@ class Global
 		catch (_:Dynamic) {}
 	}
 
-	/* ───────────────────────────── Discord RPC ───────────────────────────────── */
 	public static function changeDiscordRPCPresence(state:String = null, details:Null<String> = null):Void
 	{
 		#if !DISCORDRPC
@@ -380,7 +291,6 @@ class Global
 		#end
 	}
 
-	/* ───────────────────────────── State Helpers ─────────────────────────────── */
 	public static function getCurrentState():String
 	{
 		if (FlxG.state == null)
@@ -392,26 +302,21 @@ class Global
 		return name != null ? name.split('.').pop() : 'Unknown';
 	}
 
-	/**
-	 * Switch to a new state *instance* and record previous state's class name.
-	 * If you use factories, prefer `switchStateFn` below.
-	 */
 	public static function switchState(new_state:FlxState):Void
 	{
 		previousState = getCurrentState();
 		FlxG.switchState(() -> new_state);
 	}
 
-	/**
-	 * Switch using a factory function (() -> FlxState). Avoids capturing an old instance.
-	 */
-	public static function switchStateFn(make:() -> FlxState):Void
+	public static function switchStateFn(make:NextState):Void
 	{
 		previousState = getCurrentState();
 		FlxG.switchState(make);
 	}
 
 	/* ───────────────────────────── Input Sugar ───────────────────────────────── */
+	// I like this comment
+
 	public static inline function anyKeysPressed(keys:Array<FlxKey>):Bool
 		return FlxG.keys.anyPressed(keys);
 
@@ -430,13 +335,6 @@ class Global
 	public static inline function keyJustPressed(key:FlxKey):Bool
 		return anyKeysJustPressed([key]);
 
-	/* ───────────────────────────── Quick UI Helpers ──────────────────────────── */
-	/**
-	 * Create a simple colored background Spr, scaled to the game's virtual size.
-	 * @param colorRGB [r,g,b] 0..255
-	 * @param w base width (default 160)
-	 * @param h base height (default 152)
-	 */
 	public static function dummyBG(colorRGB:Array<Int>, w:Null<Int> = null, h:Null<Int> = null):Spr
 	{
 		var background:Spr = new Spr();
@@ -453,9 +351,6 @@ class Global
 	static inline function colorSafe(arr:Array<Int>, i:Int):Int
 		return (arr != null && i >= 0 && i < arr.length) ? Std.int(Math.max(0, Math.min(255, arr[i]))) : 0;
 
-	/**
-	 * Camera flash convenience (works with state camera or default camera).
-	 */
 	public static function camflash(Color:FlxColor = FlxColor.WHITE, Duration:Float = 1, ?OnComplete:Void->Void, Force:Bool = false):Void
 	{
 		if (FlxG.state != null && FlxG.state.camera != null)
@@ -468,11 +363,6 @@ class Global
 		}
 	}
 
-	/**
-	 * Camera shake helper.
-	 * @param intensity typical small value like 0.01 .. 0.02
-	 * @param duration  seconds to shake
-	 */
 	public static function camshake(intensity:Float = 0.01, duration:Float = 0.3):Void
 	{
 		if (FlxG.state != null && FlxG.state.camera != null)
