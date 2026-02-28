@@ -32,8 +32,6 @@ class InitState extends FlxState
 		Global.change_saveslot((#if debug true #else false #end) ? 'debug' : 'release');
 		#end
 
-		Global.SAVE_BACKWARDS_COMPATABILITY();
-
 		#if DISCORDRPC
 		if (FlxG.save.data.discord_rpc)
 			Discord.DiscordClient.initialize();
