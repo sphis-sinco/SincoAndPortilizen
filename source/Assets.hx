@@ -1,3 +1,4 @@
+import haxe.io.Path;
 import backend.translations.Translate;
 import haxe.Json;
 
@@ -13,8 +14,17 @@ class Assets
 
 	public static function getPath(id:String):String
 	{
-		if (lime.utils.Assets.exists(id + Translate.languageData.assetSuffix))
-			return id + Translate.languageData.assetSuffix;
+		var idLang = [
+			Path.directory(id) + '/',
+			Path.withoutDirectory(Path.withoutExtension(id)),
+			Translate.languageData.assetSuffix,
+			'.' + Path.extension(id),
+		];
+
+		trace(idLang.join(''));
+
+		if (lime.utils.Assets.exists(idLang.join('')))
+			return idLang.join('');
 
 		return id;
 	}
