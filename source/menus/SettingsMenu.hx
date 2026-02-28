@@ -215,11 +215,11 @@ class SettingsMenu extends State
 		Global.playMenuMusic();
 		super.update(elapsed);
 
-		if (FlxG.keys.anyJustPressed([A, D, LEFT, RIGHT]))
+		if (Global.anyKeysJustReleased([A, D, LEFT, RIGHT]))
 		{
-			if (FlxG.keys.anyJustPressed([A, LEFT]))
+			if (Global.anyKeysJustReleased([A, LEFT]))
 				selected--;
-			if (FlxG.keys.anyJustPressed([D, RIGHT]))
+			if (Global.anyKeysJustReleased([D, RIGHT]))
 				selected++;
 		}
 
@@ -256,6 +256,11 @@ class SettingsMenu extends State
 			{
 				setting.visible = true;
 				setting.overlap.dispatch();
+
+				if (Global.keyJustPressed(ENTER))
+					setting.justPressed.dispatch();
+				if (Global.keyJustReleased(ENTER))
+					setting.justReleased.dispatch();
 			}
 			else
 				setting.visible = false;

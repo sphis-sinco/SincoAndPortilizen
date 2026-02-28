@@ -11,9 +11,8 @@ The return era.
 
 ### Changed
 
-
+- THE SETTINGS MENU HAS BEEN OVERHAULED!
 - Renamed Level JSON fields: `can_play_message` to `can_play_message_key` and `cant_play_message` to `cant_play_message_key`
-
 - Changed alot of the image file paths, the organization isn't just fucked anymore
 
 ### Fixed
