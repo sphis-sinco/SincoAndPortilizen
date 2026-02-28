@@ -21,4 +21,5 @@ enum abstract SettingsDataSettingsItemType(String) from String to String
 {
 	var TOGGLE = 'toggle';
 	var INCREMENT = 'increment';
+	var METHOD = 'method';
 }

@@ -4,25 +4,28 @@
 			"asset": "ColoredLevelSelect",
 			"id": "coloredLevelSelect",
 			"savefield": "colored_levelSelect",
-			"type": "toggle"
+			"type": "toggle",
+			"animated": true
 		},
 		{
 			"asset": "DiscordRPC",
 			"id": "discordRPC",
 			"savefield": "discord_rpc",
-			"type": "toggle"
+			"type": "toggle",
+			"animated": true
 		},
 		{
 			"asset": "Volume",
 			"id": "volume",
 			"savefield": "volume",
 			"type": "increment",
-			"max": 100
+			"max": 100,
+			"animated": true
 		},
 		{
 			"asset": "ClearSave",
 			"id": "clearSave",
-			"savefield": null,
+			"savefield": "",
 			"type": "method",
 			"animated": false
 		}

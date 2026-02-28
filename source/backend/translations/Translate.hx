@@ -57,9 +57,9 @@ class Translate
 				if (replace == null)
 					continue;
 
-				lineObject = lineObject.replace('%${i + 1}', ((Reflect.isFunction(replace)) ? replace() : replace));
+				lineObjectStr = lineObjectStr.replace('%${i + 1}', ((Reflect.isFunction(replace)) ? replace() : replace));
 			}
 
-		return lineObject;
+		return lineObjectStr;
 	}
 }

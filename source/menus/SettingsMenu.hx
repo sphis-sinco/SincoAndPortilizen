@@ -34,6 +34,8 @@ class SettingsMenu extends State
 
 		for (ID => setting in settingsData.settings)
 		{
+			if (setting == null) continue;
+
 			var settingSpr = new InteractableSpr('splash');
 
 			if (setting.animated)
