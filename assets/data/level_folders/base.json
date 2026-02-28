@@ -1,4 +1,5 @@
 {
+	"id": "base",
 	"levels": ["string-quest", "osin", "tres"],
         "folder_color": [226, 226, 28],
         "file_color": [226, 226, 226]
