@@ -1,5 +1,6 @@
 package menus;
 
+import backend.levelselect.LevelFolderData;
 import flixel.tweens.FlxEase;
 import levels.Tres;
 import levels.StringQuest;
@@ -27,7 +28,7 @@ class LevelSelect extends State
 	var crown:Spr = new Spr(#if MOBILE_BUILD (-2) #else (-3) #end);
 	var levelData:LevelData;
 
-	public static var levelsFolder:String = 'base/';
+	public static var levelFolderData:LevelFolderData = null;
 
 	public var levelNames:Array<String> = [];
 
@@ -50,13 +51,7 @@ class LevelSelect extends State
 	{
 		super.create();
 
-		switch (levelsFolder.toLowerCase().replace('/', ''))
-		{
-			case 'base':
-				levelNames = ['string-quest', 'osin', 'tres'];
-			case 'sidebits':
-				levelNames = ['revenge'];
-		}
+		levelNames = levelFolderData.levels;
 
 		cursor = new Spr(-3);
 		cursor.loadGraphic(Assets.getImagePath('levelSelect/cursor'), true, 64, 64);
@@ -337,7 +332,7 @@ class LevelSelect extends State
 			psi = selectedLevel;
 			try
 			{
-				levelData = Assets.getFileJsonContent('levels/$levelsFolder${levelNames[selectedLevel]}.json');
+				levelData = Assets.getFileJsonContent('levels/${levelFolderData.id}${levelNames[selectedLevel]}.json');
 			}
 			catch (e)
 			{

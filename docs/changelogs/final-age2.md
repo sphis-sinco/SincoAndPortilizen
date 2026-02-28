@@ -4,6 +4,11 @@ The return era.
 
 ## [UNRELEASED] - 3/2026
 
+### Added
+
+- `id` field to Level Folder Data : For the level select icon
+- `levels` field to Level Folder Data : This avoids hardcoded levels, atleast in the adding them to the lists
+
 ### Changed
 
 - Changed alot of the image file paths, the organization isn't just fucked anymore

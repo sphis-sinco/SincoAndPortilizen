@@ -12,10 +12,13 @@ class FolderSpr extends FlxSpriteGroup
 	public var file:InteractableSpr;
 	public var folder_back:Spr;
 
+	public var data:LevelFolderData;
+
 	override public function new(folder:String = 'base', data:LevelFolderData)
 	{
 		super();
 
+		this.data = data;
 		this.folder = folder;
 
 		final scaleOffset = #if MOBILE_BUILD 0 #else (-2) #end;
@@ -73,8 +76,11 @@ class FolderSpr extends FlxSpriteGroup
 		final divisionValue = #if MOBILE_BUILD 1 #else 2 #end;
 		final additionValue = #if MOBILE_BUILD 64 #else 0 #end;
 
-		folder_back.setPosition(file.x + (folder_back.width / divisionValue) + additionValue,
-			file.y + (folder_back.height / divisionValue) + additionValue);
+		folder_back.setPosition(file.x
+			+ (folder_back.width / divisionValue)
+			+ additionValue, file.y
+			+ (folder_back.height / divisionValue)
+			+ additionValue);
 		folder_front.setPosition(folder_back.x, folder_back.y);
 		folder_label.setPosition(folder_front.x, folder_front.y);
 	}

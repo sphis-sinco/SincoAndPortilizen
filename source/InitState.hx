@@ -1,5 +1,6 @@
 package;
 
+import menus.LevelSelect;
 import flixel.tweens.FlxTween;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
@@ -84,6 +85,8 @@ class InitState extends FlxState
 		{
 			FlxG.save.flush();
 		}, true);
+
+		LevelSelect.levelFolderData = Assets.getFileJsonContent('level_folders/base.json');
 
 		switchToState(new Splash(), 'Splash');
 	}

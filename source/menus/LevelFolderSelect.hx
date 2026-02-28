@@ -1,5 +1,6 @@
 package menus;
 
+import backend.levelselect.LevelFolderData;
 import backend.levelselect.FolderSpr;
 
 class LevelFolderSelect extends State
@@ -24,14 +25,14 @@ class LevelFolderSelect extends State
 		base.file.screenCenter();
                 // base.file.x -= base.file.width / 2;
 		base.file.desiredPosition = base.file.getPosition();
-                base.file.justReleased.add(() -> switchToLS());
+                base.file.justReleased.add(() -> switchToLS(base.data));
 
 		sidebits = new FolderSpr('sidebits', Assets.getFileJsonContent('level_folders/sidebits.json'));
 		// add(sidebits);
 		sidebits.file.screenCenter();
                 sidebits.file.x += sidebits.file.width / 2;
 		sidebits.file.desiredPosition = sidebits.file.getPosition();
-                sidebits.file.justReleased.add(() -> switchToLS('sidebits/'));
+                sidebits.file.justReleased.add(() -> switchToLS(sidebits.data));
 
 		add(cursor);
 
@@ -52,9 +53,9 @@ class LevelFolderSelect extends State
 			Global.switchState(new TitleScreen());
 	}
 
-	public function switchToLS(folder:String = 'base/')
+	public function switchToLS(folder:LevelFolderData)
 	{
-		LevelSelect.levelsFolder = folder;
+		LevelSelect.levelFolderData = folder;
 		Global.switchState(new LevelSelect());
 	}
 }
