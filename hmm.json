@@ -23,11 +23,6 @@
       "version": null
     },
     {
-      "name": "flixel-modding",
-      "type": "haxelib",
-      "version": null
-    },
-    {
       "name": "hxcpp-debug-server",
       "type": "haxelib",
       "version": null
