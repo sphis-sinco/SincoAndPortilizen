@@ -24,7 +24,7 @@ class Assets
 			'.' + Path.extension(id),
 		];
 
-		trace(idLang.join(''));
+		// trace(idLang.join(''));
 
 		if (lime.utils.Assets.exists(idLang.join('')))
 			return idLang.join('');
