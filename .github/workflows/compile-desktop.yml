@@ -2,9 +2,9 @@ name: Auto-compiled builds (Dekstop)
 
 on:
         push:
-                branches-ignore: [randomBranchName]
+                branches-ignore: [main-indev]
         pull_request:
-                branches-ignore: [randomBranchName]
+                branches-ignore: [main-indev]
         workflow_dispatch:
 
 jobs:
