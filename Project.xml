@@ -1,81 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://lime.openfl.org/project/1.0.4"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
 
-        <!-- _________________________ Application Settings _________________________ -->
+	<!-- _________________________ Application Settings _________________________ -->
 
-        <app title="Sinco and Portilizen" file="SAP" main="Main" version="2.0.1" company="SAPTeam" packageName="com.sinco.sap" package="com.sinco.sap"/>
-        <app preloader="flixel.system.FlxPreloader" />
-        <set name="SWF_VERSION" value="11.8" />
+	<app title="Sinco and Portilizen" file="SAP" main="Main" version="2.0.1" company="SAPTeam"
+		packageName="com.sinco.sap" package="com.sinco.sap" />
+	<app preloader="flixel.system.FlxPreloader" />
+	<set name="SWF_VERSION" value="11.8" />
 
-        <!-- _____________________________ Custom Defines ___________________________ -->
+	<!-- _____________________________ Custom Defines ___________________________ -->
 
-        <define name="DISCORDRPC" if="desktop" unless="hl" />
+	<define name="DISCORDRPC" if="desktop" unless="hl" />
 
-        <!-- Turn on Crash Handler -->
-        <define name="CRASH_HANDLER" />
+	<!-- Turn on Crash Handler -->
+	<define name="CRASH_HANDLER" />
 
-        <define name="MOBILE_BUILD" if="mobile" />
-        <define name="MOBILE_BUILD" if="MOBILE_TESTING" />
+	<define name="MOBILE_BUILD" if="mobile" />
+	<define name="MOBILE_BUILD" if="MOBILE_TESTING" />
 
-        <!-- ____________________________ Window Settings ___________________________ -->
+	<!-- ____________________________ Window Settings ___________________________ -->
 
-        <!--These
+	<!--These
         window settings apply to all targets-->
 
-        <!-- why wont me changing the background work -->
-        <window width="640" height="608" fps="60" background="#0c0c0c" hardware="true" vsync="false" />
+	<!-- why wont me changing the background work -->
+	<window width="640" height="608" fps="60" background="#0c0c0c" hardware="true" vsync="false" />
 
-        <window if="html5" resizable="true" />
-        <window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
-        <window if="MOBILE_BUILD" orientation="landscape" fullscreen="true" width="0" height="0" />
+	<window if="html5" resizable="true" />
+	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
+	<window if="MOBILE_BUILD" orientation="landscape" fullscreen="true" width="0" height="0" />
 
-        <!-- _____________________________ Path Settings ____________________________ -->
+	<!-- _____________________________ Path Settings ____________________________ -->
 
-        <set name="BUILD_DIR" value="export/debug" if="debug" />
-        <set name="BUILD_DIR" value="export/release" unless="debug" />
+	<set name="BUILD_DIR" value="export/debug" if="debug" />
+	<set name="BUILD_DIR" value="export/release" unless="debug" />
 
-        <source path="source" />
+	<source path="source" />
 
-        <assets path="assets" exclude="assets/exclude" />
-        <assets path="docs/changelogs/final.md" rename="CHANGELOG.md" />
+	<assets path="assets" exclude="assets/exclude" />
+	<assets path="docs/changelogs/final.md" rename="CHANGELOG.md" />
 
-        <!-- _______________________________ Libraries ______________________________ -->
+	<!-- _______________________________ Libraries ______________________________ -->
 
-        <haxelib name="flixel" />
-        <haxelib name="flixel-addons" />
+	<haxelib name="flixel" />
+	<haxelib name="flixel-addons" />
 
-        <haxelib name="extension-androidtools" if="android"/>
+	<haxelib name="extension-androidtools" if="android" />
 
-        <haxelib name="discord_rpc" if="DISCORDRPC" />
+	<haxelib name="discord_rpc" if="DISCORDRPC" />
 
-        <!-- _________________________________ After _______________________________ -->
+	<!-- _________________________________ After _______________________________ -->
 
-        <!-- <error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile" /> -->
+	<!-- <error value="GAME NOT FOR MOBILE: GTFO OFF MOBILE YOU DUMBASS" if="mobile" /> -->
 
-        <!-- ______________________________ Haxedefines _____________________________ -->
+	<!-- ______________________________ Haxedefines _____________________________ -->
 
-        <haxedef name="FLX_NO_HEALTH" />
+	<haxedef name="FLX_NO_HEALTH" />
 
-        <!-- <haxedef name="FLX_NO_MOUSE" if="mobile" /> <haxedef name="FLX_NO_KEYBOARD" if="mobile" /> <haxedef name="FLX_NO_TOUCH" if="desktop" /> -->
+	<!-- <haxedef name="FLX_NO_MOUSE" if="mobile" /> <haxedef name="FLX_NO_KEYBOARD" if="mobile"
+	/> <haxedef name="FLX_NO_TOUCH" if="desktop" /> -->
 
-        <haxedef name="FLX_NO_DEBUG" unless="debug" />
+	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 
-        <haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
-        <haxedef name="message.reporting" value="pretty" />
+	<haxedef name="message.reporting" value="pretty" />
 
-        <!-- _________________________________ Icons _______________________________ -->
+	<!-- _________________________________ Icons _______________________________ -->
 
-        <!--Place
+	<!--Place
         custom nodes like icons here-->
-        <icon path=".dev/AppIcons/AppIcon-16.png" size="16" />
-        <icon path=".dev/AppIcons/AppIcon-32.png" size="32" />
-        <icon path=".dev/AppIcons/AppIcon-64.png" size="64" />
-        <icon path=".dev/AppIcons/AppIcon-128.png" size="128" />
-        <icon path=".dev/AppIcons/AppIcon-256.png" size="256" />
-        <icon path=".dev/AppIcons/AppIcon-512.png" size="512" />
-        <icon path=".dev/AppIcons/AppIcon-512.png" />
+	<icon path=".dev/AppIcons/AppIcon-16.png" size="16" />
+	<icon path=".dev/AppIcons/AppIcon-32.png" size="32" />
+	<icon path=".dev/AppIcons/AppIcon-64.png" size="64" />
+	<icon path=".dev/AppIcons/AppIcon-128.png" size="128" />
+	<icon path=".dev/AppIcons/AppIcon-256.png" size="256" />
+	<icon path=".dev/AppIcons/AppIcon-512.png" size="512" />
+	<icon path=".dev/AppIcons/AppIcon-512.png" />
 
 </project>
